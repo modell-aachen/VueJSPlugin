@@ -1,0 +1,169 @@
+%TMPL:INCLUDE{"foswiki"}%%{
+---------------------------------------------------
+}%%TMPL:DEF{"htmldoctype"}%<!DOCTYPE html>
+<html lang="%LANG%">%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"head"}%<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="%TOPIC%">
+  <meta name="TEXT_NUM_TOPICS" content="%MAKETEXT{"Number of topics:"}%">
+  <meta name="TEXT_MODIFY_SEARCH" content="%MAKETEXT{"Modify search"}%">
+  <meta name="robots" content="noindex">
+  <script src="/pub/System/FlatSkinPlugin/js/pace.js"></script>
+  <link rel="icon" href="%FAVICON%" type="image/x-icon" />
+  <link rel="shortcut icon" href="%FAVICON%" type="image/x-icon" />
+  <link rel="alternate" href="%SCRIPTURL{edit}%/%BASEWEB%/%BASETOPIC%?t=%GMTIME{"$epoch"}%" type="application/x-wiki" title="edit %BASETOPIC%" />
+  <link rel="stylesheet" href="/pub/System/FlatSkinPlugin/css/flat.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/pub/System/FlatSkinPlugin/js/jquery-2.1.1.js"></script>
+  <script src="/pub/System/FlatSkinPlugin/js/flat.js"></script>
+  <script src="/pub/System/FlatSkinPlugin/bootstrap/dist/js/bootstrap.min.js"></script>
+  <base href="%SCRIPTURL{%SCRIPTNAME%}%/%WEB%/%TOPIC%" />
+  %TMPL:P{"windowtitle"}%
+  %TMPL:P{"script"}%
+  %TMPL:P{"defaultstyle"}%
+</head>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"ma-context"}%ma-context-view%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"ma-context:view-visible"}%%IF{"$'TMPL:P{ma-context}'!='ma-context-view'" then="hidden" else=""}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"ma-context:view-hidden"}%%IF{"$'TMPL:P{ma-context}'='ma-context-view'" then="hidden" else=""}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"ma-context:topbar-brand-left"}%%IF{"$'TMPL:P{ma-context}'='ma-context-view'" then="success" else="default"}%%TMPL:END%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"ma-context:topbar-brand-right"}%%IF{"$'TMPL:P{ma-context}'='ma-context-view'" then="default" else="danger"}%%TMPL:END%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"bodystart"}%<body class="%TMPL:P{"ma-context"}%">%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"ma-content"}%
+<div class="row">
+  <div class="col-sm-12">%TMPL:P{"content"}%</div>
+</div>
+%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"main"}%%TMPL:P{"topbar"}%
+<div class="container-fluid ma-container">
+  <div class="row">
+    <div class="col-md-9 col-lg-8 col-lg-offset-1 ma-content">
+      %TMPL:P{"ma-content-header"}%
+      %TMPL:P{"ma-content"}%
+      <div class="row">
+        <div class="col-sm-12">%TMPL:P{"topicaction"}%</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-lg-2">
+      <div class="row">
+        <div class="col-sm-12 ma-kvp-box">
+          <p>Freigabeverlauf</p>
+          <div class="progress progress-danger">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+              <span class="sr-only">80% Complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 ma-kvp-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, molestias?</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 ma-kvp-box"><button type="button" class="btn btn-primary btn-block">freigeben</button></div>
+        <div class="col-sm-6 ma-kvp-box"><button type="button" class="btn btn-default btn-block btn-borderless">bitte überarbeiten</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="ma-usermenu" class="hidden">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <button id="ma-usermenu-close" type="button" class="close pull-right"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"bodyend"}%</body></html>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"topbar:primary"}%<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse">
+        <span class="sr-only">%MAKETEXT{"Toggle navigation"}%</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <ul class="nav navbar-nav">
+        <li id="ma-btn-usermenu" style="width: 150px;"><a href="#"><i class="fa fa-navicon"></i>&nbsp;%MAKETEXT{"Menu"}%&nbsp;<span class="badge pull-right">42</span></a></li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="nav-collapse">
+      %TMPL:P{"topbar:primary:infoarea"}%
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control input-sm" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+</nav>
+%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"topbar:secondary"}%<nav class="ma-navbar-secondary">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-offset-1 col-lg-8 col-md-9 ma-col-left">
+        <a href="/bin/view/%WEB%/%TOPIC%" role="button" class='btn btn-%TMPL:P{"ma-context:topbar-brand-left"}%'>%TMPL:P{"topbar:secondary:title-left"}%</a>
+        <a href="/bin/edit/%WEB%/%TOPIC%" role="button" class='btn btn-%TMPL:P{"ma-context:topbar-brand-right"}%'>%TMPL:P{"topbar:secondary:title-right"}%</a>
+        <div class='btn-group pull-right %TMPL:P{"ma-context:view-visible"}%'>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">deutsch <i class="fa fa-angle-down"></i></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">lang1</a></li>
+            <li><a href="#">lang2</a></li>
+            <li><a href="#">lang3</a></li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-default pull-right"><i class="fa fa-cog"></i></button>
+        <button type="button" class="btn btn-default pull-right"><i class="fa fa-print"></i></button>
+        <button type="button" class="btn btn-default pull-right"><i class="fa fa-bookmark-o"></i></button>
+      </div>
+      <div class="col-md-3 col-lg-2 ma-col-right hidden-xs hidden-sm">
+        <button type="button" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp;kont. Verbesserung</button>
+      </div>
+    </div>
+    <div class="row %TMPL:P{"ma-context:view-hidden"}%">
+      <div class="col-lg-offset-1 col-lg-8 col-md-9" id="ma-cke-top" style="margin-top:-15px; padding:0"></div>
+    </div>
+  </div>
+</nav>
+%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"topbar"}%%TMPL:P{"topbar:primary"}%%TMPL:P{"topbar:secondary"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"topbar:primary:infoarea"}%<ul class="nav navbar-nav">%TMPL:P{"breadcrumb"}%</ul>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"topbar:secondary:title-left"}%%MAKETEXT{"Version"}%%REVINFO{format="&nbsp;$rev, "}%%MAKETEXT{"approved"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"topbar:secondary:title-right"}%%MAKETEXT{"Edit draft"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"breadcrumb"}%<ul class="ma-breadcrumb nav navbar-nav">%TMPL:P{"breadcrumb:wikitoolname"}%%TMPL:P{"breadcrumb:currentweb"}%%TMPL:P{"breadcrumb:parents"}%%TMPL:P{"breadcrumb:currenttopic"}%</ul>%TMPL:END%
+%TMPL:DEF{"breadcrumb:wikitoolname"}%<li>[[%USERSWEB%.%HOMETOPIC%][<i class="fa fa-sitemap fa-lg"></i>]]</li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:currentweb"}%%MA_WEBLIST%%TMPL:END%
+%TMPL:DEF{"breadcrumb:currentweb2"}%<li><a href="%SCRIPTURLPATH{"view"}%/%WEB%/%HOMETOPIC%">%MAKETEXT{"[_1]" args="<nop>%WEB%"}%</a></li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:parents"}%%META{"parent" nowebhome="on" prefix="<li>" separator="" suffix="</li>"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:currenttopic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li>[[%TOPIC%][%TOPIC%]]</li>" else=" "}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic"}%<nop>%TOPIC%%TMPL:END%%{
+---------------------------------------------------
+}%
+%TMPL:DEF{"topicaction"}%%TMPL:P{"topicactionbuttons"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"topicinfo"}%%TMPL:END%%{
+---------------------------------------------------
+}%
+
+

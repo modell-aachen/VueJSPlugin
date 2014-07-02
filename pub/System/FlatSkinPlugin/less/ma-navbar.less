@@ -1,0 +1,145 @@
+.navbar > .container-fluid {
+  // padding-left: 0px;
+}
+
+.ma-navbar-secondary {
+  position: fixed;
+  top: 1 + @navbar-height;
+  width: 100%;
+  z-index: 2;
+  background: @ma-body-bg;
+  min-height: 54px;
+
+  .row {
+    padding-top: 15px;
+    // padding-left: 13px;
+    // padding-right: 17px;
+  }
+
+  .btn-default {
+    background: transparent;
+
+    &:hover, &:active {
+      background: darken( @ma-body-bg, 10% );
+    }
+  }
+}
+
+.ma-context-view {
+  .ma-col-left {
+    border-bottom: 5px solid @brand-success;
+  }
+
+  .ma-col-right {
+    border-bottom: 5px solid #ccc;
+  }
+}
+
+.ma-context-edit {
+  .ma-col-left {
+    border-bottom: 5px solid @brand-danger;
+  }
+
+  .ma-col-right {
+    border-bottom: 5px solid #ccc;
+  }
+}
+
+.ma-col-right {
+  // margin-left: 10px;
+  // margin-right: 10px;
+}
+
+.ma-col-left, .ma-col-right {
+  padding-left: 0;
+  padding-right: 0;
+
+  > .btn, .dropdown-toggle {
+    border-radius: 0;
+    border: 1px solid transparent;
+  }
+}
+
+// nav {
+//   position: fixed;
+//   left: 0px;
+//   width: 100%;
+//   z-index: 999;
+//   overflow: hidden hidden;
+
+//   &.ma-nav-primary {
+//     top: 0px;
+
+//     background: @ma-nav-primary-bg;
+//     color: @ma-nav-primary-fg;
+//     min-height: @ma-nav-primary-height;
+//     border-bottom: @ma-nav-primary-border-width solid @ma-nav-primary-border-color;
+
+//     .input-group {
+//       padding: 3px 0;
+//     }
+//   }
+
+//   &.ma-nav-secondary {
+//     top: @ma-nav-primary-height + @ma-nav-primary-border-width;
+
+//     background: @ma-nav-secondary-bg;
+//     color: @ma-nav-secondary-fg;
+//     min-height: @ma-nav-secondary-height;
+
+//     padding: 0 18px 0 13px;
+
+//     > .container-fluid > .row {
+//       > * {
+//         padding: 16px 0 0 0;
+//         min-height: @ma-navbar-secondary-height;
+
+//         > .btn {
+//           border: none;
+//           border-radius: 0px;
+//           font-size: 0.85em;
+//           padding: 10px;
+//         }
+
+//         > .btn-default {
+//           background: transparent;
+//         }
+
+//         > .btn-group > .dropdown-toggle {
+//           background: transparent;
+//           border: none;
+//           font-size: 0.85em;
+//           margin-top: 4px;
+//         }
+
+//         > .btn-success:hover {
+//           background: @brand-success;
+//         }
+//       }
+
+//       > .ma-col-right {
+//         margin-left: 15px;
+//         margin-right: -15px;
+//       }
+//     }
+//   }
+// }
+
+// .ma-context-view {
+//   .ma-nav-secondary .row > .ma-col-left {
+//     border-bottom: 5px solid @brand-success;
+//   }
+// }
+
+// .ma-context-view {
+//   .ma-nav-secondary .row > .ma-col-right {
+//     border-bottom: 5px solid #E4E4E4;
+//   }
+// }
+
+// .ma-context-edit {
+//   .ma-nav-secondary .row > .ma-col-left {
+//     border-bottom: 5px solid @brand-danger;
+//   }
+// }
+

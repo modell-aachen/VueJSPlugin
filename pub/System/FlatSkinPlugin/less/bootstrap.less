@@ -1,0 +1,29 @@
+@import "../bootstrap/less/bootstrap.less";
+@import "ma-navbar.less";
+@import "vars.less";
+
+// see http://getbootstrap.com/getting-started/#support-ie10-width
+// in short: fixes some bugs with IE10 and WP8 <GDR3
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
+// customization of builtin navbar
+@navbar-height: 40px;
+@navbar-border-radius: 0;
+@navbar-default-bg: @ma-content-bg;
+
+.navbar {
+  border-bottom:1px solid #bdbdbd;
+}
+
+// page background color
+@body-bg: @ma-body-bg;
+
+// font path. relative from compiled css
+@icon-font-path: "../bootstrap/dist/fonts/";
+
+// Padding between columns.
+@grid-gutter-width: @ma-grid-gutter-width;

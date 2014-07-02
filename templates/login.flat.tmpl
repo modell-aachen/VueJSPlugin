@@ -1,0 +1,126 @@
+%TMPL:INCLUDE{"foswiki"}%
+%TMPL:DEF{"ma-context"}%ma-context-login%TMPL:END%
+
+%TMPL:DEF{"webaction"}%%MAKETEXT{"Foswiki User Authentication"}%%TMPL:END%
+%TMPL:DEF{"titleaction"}%%MAKETEXT{"(login)"}% %TMPL:END%
+%TMPL:DEF{"LOG_IN_BANNER"}%%TMPL:END%
+%TMPL:DEF{"LOGGED_IN_BANNER"}%%MAKETEXT{"[_1] is currently logged in" args="%USERSWEB%.%WIKINAME%"}%%TMPL:END%
+%TMPL:DEF{"NEW_USER_NOTE"}%%MAKETEXT{"Enter a new username and password to change identity"}%%TMPL:END%
+%TMPL:DEF{"UNRECOGNISED_USER"}%%MAKETEXT{"Oops: we could not recognize you. Try again or [[[_1]][reset your password]]." args="%SCRIPTURLPATH{view}%/%SYSTEMWEB%/ResetPassword?username=%URLPARAM{usernamestep}%"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"titleaction"}%%MAKETEXT{"([_1] login)" args="<nop>%WIKITOOLNAME%"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"main"}%
+<div class="container-fluid ma-container ma-container-login">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8 col-md-8 col-md-offset-2 col-lg-offset-4 col-lg-4"><div class="ma-content">%TMPL:P{"content"}%</div></div>
+  </div>
+</div>
+%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"title"}%<div class="row"><div class="col-md-12"><h3>%MAKETEXT{"Log on to [_1]" args="%WIKITOOLNAME%"}%</h3></div></div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"titlestep"}%<div class='foswikiFormStep'>%TMPL:P{"title"}%</div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"notestep"}%%IF{
+    "defined NOTE AND $NOTE != ''"
+    then="<div class='alert alert-success alert-dismissible' role='alert'>
+<button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>%NOTE%</div>"
+}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"errorstep"}%%IF{
+    "(defined ERROR AND $ERROR != '') or (defined BANNER AND $BANNER != '')"
+    then="<div class='alert alert-danger alert-dismissible' role='alert'>
+<button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>%BANNER%%IF{
+        "defined ERROR AND $ERROR != ''"
+        then="$percntTMPL:P{$quoterror$quot}$percnt"
+    }%</div>"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"error"}%<div>$percntERROR$percnt</div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"authrealm"}%%MAKETEXT{"This is your name written as !WikiWord, for example: !JohnSmith. [[[_1]][Register]] if you do not have an account yet." args="%SYSTEMWEB%.UserRegistration"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"formstart"}%<form class="form-horizontal" role="form" action='%SCRIPTURLPATH{"login"}%%PATH_INFO%' name='loginform' method='post' onsubmit='document.loginform.foswiki_origin.value+=window.location.hash'>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"formend"}%<literal>
+%QUERYPARAMS{encoding="entity" format="<input type='hidden' name='$name' value='$value' />"}%
+</literal><input type="hidden" name="foswiki_origin" value="%FOSWIKI_ORIGIN%" />
+</form>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"usernamefield"}%<input type="text" tabindex="1" class="form-control" id="username" placeholder='%MAKETEXT{"Username"}%' size='40' name='username' value='%URLPARAM{"usernamestep"}%' %TMPL:P{context="no_auto_complete_login" then="autocomplete_off"}%>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"usernamestep"}%<div class="form-group">
+  <label for="username" class="col-sm-3 control-label">%MAKETEXT{"Username"}%</label>
+  <div class="col-sm-8">
+    %TMPL:P{"usernamefield"}%
+  </div>
+  <div class="col-sm-1">
+    <button type="button" class="btn btn-default btn-borderless popover-dismiss" data-container="body" data-toggle="popover" data-placement="right" data-content='%TMPL:P{"authrealm"}%'><i class="fa fa-question-circle"></i></button>
+  </div>
+</div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"usernamenote"}%%TMPL:END%
+%TMPL:DEF{"usernamefieldhelplink"}%%TMPL:END%
+%TMPL:DEF{"usernamefieldhelpcontents"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"autocomplete_off"}% autocomplete='off' %TMPL:END%
+%TMPL:DEF{"passwordfield"}%<input type="password" tabindex="2" class="form-control" id="password" placeholder='%MAKETEXT{"Password"}%' size='40' name='password' value='' %TMPL:P{context="no_auto_complete_login" then="autocomplete_off"}%>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"passwordstep"}%<div class="form-group">
+  <label for="password" class="col-sm-3 control-label">%MAKETEXT{"Password"}%</label>
+  <div class="col-sm-8">
+    %TMPL:P{"passwordfield"}%
+  </div>
+  <div class="col-sm-1">
+    <button type="button" class="btn btn-default btn-borderless popover-dismiss" data-container="body" data-toggle="popover" data-placement="right" data-content='%TMPL:P{"passwordnote"}%'><i class="fa fa-question-circle"></i></button>
+  </div>
+</div>
+%TMPL:P{context="can_remember_login" then="rememberbox"}%%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"passwordnote"}%[[%SCRIPTURLPATH{view}%/%SYSTEMWEB%/ResetPassword?username=%URLPARAM{usernamestep}%][%MAKETEXT{"I forgot my password"}%]]%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"rememberbox"}%
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-8">
+    <div class="checkbox">
+      <label>
+        <input tabindex='3' id="remember" name="remember" type="checkbox" value="1" /><label for="remember">&nbsp;%MAKETEXT{"Remember me on this computer"}%</label>
+      </label>
+    </div>
+  </div>
+</div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"submitstep"}%<div class="foswikiFormStep">%TMPL:P{"submit"}%</div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"submit"}%
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-8">
+    <button tabindex='4' type="submit" class="btn btn-default">%MAKETEXT{"Logon"}%</button>
+  </div>
+</div>%TMPL:END%%{
+---------------------------------------------------
+}%%{ please keep the spaces between the div and the TMPL seealsonote, it allows Foswiki to process the emailaddress }%
+%TMPL:DEF{"seealsostep"}%<div class="foswikiFormStep"> %TMPL:P{"seealsonote"}% </div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"seealsonote"}%
+<div class="row">
+  <div class="col-sm-offset-3 col-sm-8">
+    <p class="text-muted">
+      %MAKETEXT{"If you have any questions, please contact [_1]" args="%IF{"defined WIKIWEBMASTER AND $WIKIWEBMASTER != ''" then="<strong>%WIKIWEBMASTER%</strong>" else="your Wiki administrator"}%"}%
+    </p>
+  </div>
+</div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"form"}%<div id="foswikiLogin">
+<div class="foswikiFormSteps">
+%TMPL:P{"formstart"}%
+%TMPL:P{"titlestep"}%
+%TMPL:P{"notestep"}%
+%TMPL:P{"errorstep"}%
+%TMPL:P{"usernamestep"}%%TMPL:P{"passwordstep"}%%TMPL:P{"submitstep"}%
+%TMPL:P{"formend"}%
+%TMPL:P{"seealsostep"}%
+</div>
+</div>%TMPL:END%%{
+---------------------------------------------------
+}%%TMPL:DEF{"content"}%%TMPL:P{"form"}%%TMPL:END%
