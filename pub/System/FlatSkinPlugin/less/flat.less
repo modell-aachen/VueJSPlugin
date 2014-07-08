@@ -1,19 +1,16 @@
-@import "bootstrap.less";
-@import "vars.less";
+@import "variables.less";
+@import "breadcrumb.less";
 @import "helper.less";
-@import "ma-breadcrumb.less";
-@import "ma-navbar.less";
-@import "pace.less";
-@import "cke_overrides.less";
-@import "progress.less";
 
+@import "overrides/bootstrap/include.less";
+@import "overrides/ckeditor/include.less";
+@import "overrides/font-awesome/include.less";
+@import "overrides/jasny/include.less";
+@import "overrides/pace/include.less";
 
-.ma-container {
-  margin: @ma-container-margin-top 0 @ma-container-margin-top/2 0;
-
-  &.ma-container-login {
-    margin-top: 20px;
-  }
+body {
+  padding-top: 102px;
+  padding-bottom: 50px;
 }
 
 .ma-content {
@@ -21,51 +18,11 @@
   padding: 30px;
 }
 
-.ma-kvp-box {
-  background: @ma-content-bg;
-  padding: 5px;
-  border-top: 1px solid @ma-body-bg;
-}
+.affix, .slimScrollDiv {
+  width: inherit !important;
 
-#ma-usermenu {
-  position: fixed;
-  top: @navbar-height;
-  left: 0px;
-  bottom: 0px;
-  width: 0px;
-  background: @ma-body-bg;
-  border-right: 1px solid #bdbdbd;
-  z-index: 999;
-  padding: 10px;
-}
-
-.btn-borderless {
-  border-color: transparent !important;
-}
-
-.alert {
-  border: 0;
-  border-left: 5px solid;
-  border-radius: 0;
-  background: #fdfdfd;
-}
-
-.foswikiInputField, .foswikiSelect {
-  .form-control();
-}
-
-.foswikiSubmit {
-  .btn();
-  .btn-primary();
-}
-
-.foswikiButton {
-  .btn();
-  .btn-default();
-}
-
-.foswikiTable {}
-
-.foswikiTable {
-  .table();
+  &.list-group {
+    padding-right: 20px;
+    word-wrap: break-word;
+  }
 }

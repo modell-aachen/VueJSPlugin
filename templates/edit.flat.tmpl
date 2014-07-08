@@ -57,9 +57,18 @@
 %TMPL:P{"textarea"}%
 %TMPL:P{"formbottom"}%
 %TMPL:P{"topicinfo"}%
+%TMPL:P{"topicactionbuttons"}%
 %TMPL:P{"formend"}%
 %TMPL:END%
-%TMPL:DEF{"ma-context"}%ma-context-edit%TMPL:END%
-%TMPL:DEF{"topbar:secondary:title-right"}%%MAKETEXT{"Version"}%%REVINFO{format="&nbsp; $percentCALC{\"$INT(1+$rev)\"}$percent, "}%%MAKETEXT{"draft"}%%TMPL:END%
-%TMPL:DEF{"topbar:primary:infoarea"}%<div class="navbar-header"><a class="navbar-brand" href="#">Text und so...</a></div>%TMPL:END%
 
+%TMPL:DEF{"ma-ctx"}%ma-ctx-edit%TMPL:END%
+%TMPL:DEF{"topbar:primary:content"}%<div class="navbar-header"><a class="navbar-brand" href="#">Text und so...</a></div>%TMPL:END%
+%TMPL:DEF{"topbar:secondary:tabs:text-right"}%<i class="fa fa-edit ma-margin-right"></i>%MAKETEXT{"Version"}%%REVINFO{format="&nbsp;$percentCALC{\"$INT(1+$rev)\"}$percent, "}%%MAKETEXT{"Draft"}%%TMPL:END%
+%TMPL:DEF{"topbar:primary:actions2"}%%{
+}%<ul class="nav navbar-nav navbar-right">
+   <li><a href="#">später fertigstellen</a></li>
+   <li><a href="#">um Freigabe bitten</a></li>
+</ul>%TMPL:END%
+%TMPL:DEF{"topbar:primary:actions"}%%{
+}%<button type="button" class="btn btn-default navbar-btn navbar-right">btn 1</button>
+<button type="button" class="btn btn-info navbar-btn navbar-right">btn 2</button>%TMPL:END%

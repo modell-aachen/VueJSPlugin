@@ -1,0 +1,29 @@
+@import "../../variables.less";
+@import "variables.less";
+
+.navbar {
+  border-bottom: @ma-border-width solid @ma-border-color;
+  z-index: 1000;
+}
+
+.navbar-secondary {
+  margin-top: @navbar-height + @ma-border-width;
+  min-height: auto;
+  background: @ma-body-bg;
+  z-index: 1;
+  border: none;
+  z-index: 999;
+}
+
+.navbar-secondary-border {
+  background: @ma-body-bg;
+  border-bottom: 5px solid darken( @ma-body-bg, 15% );
+
+  &.ma-ctx-view {
+    border-bottom-color: @brand-success;
+  }
+
+  &.ma-ctx-edit {
+    border-bottom-color: @brand-danger;
+  }
+}

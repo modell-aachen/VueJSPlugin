@@ -1,6 +1,7 @@
 !noci
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444 Plugin Perl module
 
+templates/attachtables.flat.tmpl 0444
 templates/login.flat.tmpl 0444
 templates/foswiki.flat.tmpl 0444
 templates/edit.flat.tmpl 0444
@@ -9,6 +10,7 @@ templates/view.flat.tmpl 0444
 pub/System/FlatSkinPlugin/js/flat.js 0444
 pub/System/FlatSkinPlugin/js/pace.js 0444
 pub/System/FlatSkinPlugin/js/jquery-2.1.1.js 0444
+pub/System/FlatSkinPlugin/js/jquery.slimscroll.min.js 0444
 pub/System/FlatSkinPlugin/css/flat.css 0444
 pub/System/FlatSkinPlugin/bootstrap/dist/js/bootstrap.min.js 0444
 pub/System/FlatSkinPlugin/bootstrap/dist/fonts/glyphicons-halflings-regular.eot 0444

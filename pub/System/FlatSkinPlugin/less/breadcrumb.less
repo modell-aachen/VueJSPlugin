@@ -1,3 +1,5 @@
+@import "variables.less";
+
 .ma-breadcrumb {
   list-style: none;
   overflow: hidden;
@@ -6,7 +8,7 @@
     float: left;
 
     &:first-child {
-      border-left: 1px solid #bdbdbd;
+      border-left: @ma-border-width solid @ma-border-color;
 
       a {
         padding-left: 20px !important;
@@ -62,7 +64,7 @@
         height: 0;
         border-top: 50px solid transparent;
         border-bottom: 50px solid transparent;
-        border-left: 30px solid #bdbdbd;
+        border-left: 30px solid @ma-border-color;
         position: absolute;
         top: 50%;
         margin-top: -50px;

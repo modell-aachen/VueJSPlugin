@@ -23,6 +23,17 @@ sub initPlugin {
 
   Foswiki::Func::registerTagHandler( 'MA_WEBLIST', \&handleWebList );
 
+  my $pluginURL = '%PUBURLPATH%/%SYSTEMWEB%/FlatSkinPlugin';
+  # <script type="text/javascript" src="$pluginURL/SCRIPTPATH"></script>
+
+  Foswiki::Func::addToZone( 'script', 'MA::FLATSKIN', <<'SCRIPT', 'JQUERYPLUGIN::FOSWIKI' );
+<script src="/pub/System/FlatSkinPlugin/src/pace/pace.js"></script>
+<script src="/pub/System/FlatSkinPlugin/js/flat.js"></script>
+<script src="/pub/System/FlatSkinPlugin/src/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/pub/System/FlatSkinPlugin/src/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+<script src="/pub/System/FlatSkinPlugin/js/jquery.slimscroll.min.js"></script>
+SCRIPT
+
   return 1;
 }
 

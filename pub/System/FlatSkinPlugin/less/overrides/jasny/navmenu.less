@@ -1,0 +1,38 @@
+@import "variables.less";
+
+.navmenu {
+  padding-left: @ma-leftbar-pad-left;
+  padding-right: @ma-leftbar-pad-right;
+}
+
+.navmenu-fixed-left,
+.navmenu-fixed-right,
+.navbar-offcanvas {
+  position: fixed;
+  z-index: @zindex-navmenu-fixed;
+  top: @navbar-height + 1px;
+  bottom: 0;
+  overflow-y: auto;
+  border-radius: 0;
+}
+
+.navbar-toggle {
+  margin-top: 0;
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.navmenu {
+  z-index: 1;
+}
+
+.canvas {
+  position: relative;
+  left: 0;
+  z-index: 2;
+  min-height: 100%;
+  padding: 0;
+  background: @navmenu-default-bg;
+}
+

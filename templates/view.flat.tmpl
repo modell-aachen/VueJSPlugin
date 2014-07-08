@@ -1,42 +1,10 @@
-%TMPL:INCLUDE{"view"}%
-%TMPL:DEF{"topicaction"}%%TMPL:END%
-%TMPL:DEF{"ma-content-header"}%
-<div class="row ma-border-bottom" style="margin-top: -30px;">
-   <div class="col-sm-1 ma-border-right">
-      <p class="text-muted ma-text-small">%MAKETEXT{"Type"}%</p>
-      <p class="ma-text-bold">Prozess</p>
-   </div>
-   <div class="col-sm-5">
-      <p class="text-muted ma-text-small">%MAKETEXT{"Title"}%</p>
-      <p class="ma-text-bold">Typische Prozess-Seite</p>
-   </div>
-   <div class="col-sm-5 ma-border-left ma-border-right">
-      <p class="text-muted ma-text-small">%MAKETEXT{"Scope"}%</p>
-      <p class="ma-text-bold">unternehmensweit</p>
-   </div>
-   <div class="col-sm-1">
-      <p class="text-muted ma-text-small">%MAKETEXT{"Version"}%</p>
-      <p class="ma-text-bold">%MAKETEXT{"Version"}%%REVINFO{format="&nbsp;$rev"}%</p>
-   </div>
-</div>
-<div class="row ma-border-bottom">
-   <div class="col-sm-3 ma-border-right">
-      <p class="text-muted ma-text-small ma-padding-top">%MAKETEXT{"Last author"}%</p>
-      <p class="ma-text-bold"><i class="fa fa-user"></i><span class="ma-padding-left-small">Max Mustermann</span></p>
-   </div>
-   <div class="col-sm-3 ma-border-right">
-      <p class="text-muted ma-text-small ma-padding-top">%MAKETEXT{"Responsible"}%</p>
-      <p class="ma-text-bold"><i class="fa fa-user"></i><span class="ma-padding-left-small">Max Mustermann</span></span></p>
-   </div>
-   <div class="col-sm-3 ma-border-right">
-      <p class="text-muted ma-text-small ma-padding-top">%MAKETEXT{"Approved by"}%</p>
-      <p class="ma-text-bold"><i class="fa fa-user"></i><span class="ma-padding-left-small">Max Mustermann</span></p>
-   </div>
-   <div class="col-sm-3">
-      <p class="text-muted ma-text-small ma-padding-top">%MAKETEXT{"Date of approval"}%</p>
-      <p class="ma-text-bold">%DATE%</p>
-   </div>
-</div>
-%TMPL:END%%{
----------------------------------------------------
+%TMPL:INCLUDE{"foswiki"}%
+
+%{ Set current context to VIEW. }%
+%TMPL:DEF{"ma-ctx"}%ma-ctx-view%TMPL:END%
+
+%{
+   Prints the document.
+   Note: The usage of the content template is mandatory.
 }%
+%TMPL:DEF{"content"}%%TEXT%#TopicEnd%TMPL:END%

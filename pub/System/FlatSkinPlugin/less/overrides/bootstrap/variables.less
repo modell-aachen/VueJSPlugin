@@ -1,6 +1,4 @@
-@import "../bootstrap/less/bootstrap.less";
-@import "ma-navbar.less";
-@import "vars.less";
+@import "../../variables.less";
 
 // see http://getbootstrap.com/getting-started/#support-ie10-width
 // in short: fixes some bugs with IE10 and WP8 <GDR3
@@ -11,19 +9,22 @@
 @viewport           { width: device-width; }
 
 // customization of builtin navbar
-@navbar-height: 40px;
-@navbar-border-radius: 0;
-@navbar-default-bg: @ma-content-bg;
+@navbar-height: @ma-topbar-height;
+@navbar-border-radius: @ma-topbar-border-radius;
+@navbar-default-bg: @ma-topbar-bg;
 
-.navbar {
-  border-bottom:1px solid #bdbdbd;
-}
-
-// page background color
+// // page background color
 @body-bg: @ma-body-bg;
 
 // font path. relative from compiled css
-@icon-font-path: "../bootstrap/dist/fonts/";
+@icon-font-path: @ma-glyph-path;
 
 // Padding between columns.
 @grid-gutter-width: @ma-grid-gutter-width;
+
+// brand colors
+@brand-success: @ma-brand-success;
+@brand-primary: @ma-brand-primary;
+@brand-danger: @ma-brand-danger;
+@brand-info: @ma-brand-info;
+@brand-yellow: @ma-brand-yellow;
