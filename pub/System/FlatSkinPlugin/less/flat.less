@@ -9,20 +9,40 @@
 @import "overrides/pace/include.less";
 
 body {
-  padding-top: 102px;
-  padding-bottom: 50px;
+  padding-top: 5px + @ma-topbar-height + @ma-topbar-secondary-height;
+  padding-bottom: @ma-topbar-height;
 }
 
 .ma-content {
   background: @ma-content-bg;
-  padding: 30px;
+  padding: @ma-content-padding;
 }
 
 .affix, .slimScrollDiv {
   width: inherit !important;
 
   &.list-group {
-    padding-right: 20px;
+    padding-right: @ma-grid-gutter-width;
     word-wrap: break-word;
   }
+}
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.ma-offcanvas-left {
+  z-index: 1;
+}
+
+.ma-offcanvas-right {
+  display: none;
+
+  &.in {
+    display: block;
+  }
+}
+
+.ma-offcanvas-search {
+  background: @ma-content-bg;
 }

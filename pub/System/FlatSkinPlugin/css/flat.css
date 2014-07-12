@@ -1,39 +1,39 @@
-.ma-breadcrumb {
+.nav.ma-breadcrumb {
   list-style: none;
   overflow: hidden;
 }
-.ma-breadcrumb li {
+.nav.ma-breadcrumb > li {
   float: left;
 }
-.ma-breadcrumb li:first-child {
+.nav.ma-breadcrumb > li:first-child {
   border-left: 1px solid #bdbdbd;
 }
-.ma-breadcrumb li:first-child a {
+.nav.ma-breadcrumb > li:first-child a {
   padding-left: 20px !important;
   padding-right: 0 !important;
 }
-.ma-breadcrumb li:last-child a {
+.nav.ma-breadcrumb > li:last-child a {
   background: transparent !important;
   color: #333333;
   cursor: default;
   pointer-events: none;
 }
-.ma-breadcrumb li:last-child a:after {
+.nav.ma-breadcrumb > li:last-child a:after {
   border-left: 30px solid transparent;
 }
-.ma-breadcrumb li:last-child a:before {
+.nav.ma-breadcrumb > li:last-child a:before {
   border-left: 30px solid transparent;
 }
-.ma-breadcrumb li a {
+.nav.ma-breadcrumb > li > a {
   color: #333333;
   text-decoration: none;
-  padding: 10px 15px 10px 65px;
+  padding: 15px 15px 15px 55px;
   background: #fff;
   position: relative;
   display: block;
   float: left;
 }
-.ma-breadcrumb li a:after {
+.nav.ma-breadcrumb > li > a:after {
   content: " ";
   display: block;
   width: 0;
@@ -47,7 +47,7 @@
   left: 100%;
   z-index: 2;
 }
-.ma-breadcrumb li a:before {
+.nav.ma-breadcrumb > li > a:before {
   content: " ";
   display: block;
   width: 0;
@@ -62,10 +62,10 @@
   left: 100%;
   z-index: 1;
 }
-.ma-breadcrumb li a:hover {
+.nav.ma-breadcrumb > li > a:hover {
   background: #f2f2f2 !important;
 }
-.ma-breadcrumb li a:hover:after {
+.nav.ma-breadcrumb > li > a:hover:after {
   border-left-color: #f2f2f2 !important;
 }
 .ma-border {
@@ -6474,6 +6474,7 @@ button.close {
   width: inherit;
   z-index: 1000;
   padding-right: 20px;
+  margin-top: 12px;
 }
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -8674,9 +8675,6 @@ button.close {
   border: none;
   border-radius: 0;
 }
-.navmenu {
-  z-index: 1;
-}
 .canvas {
   position: relative;
   left: 0;
@@ -8701,7 +8699,7 @@ button.close {
   display: none;
 }
 body {
-  padding-top: 102px;
+  padding-top: 105px;
   padding-bottom: 50px;
 }
 .ma-content {
@@ -8716,4 +8714,19 @@ body {
 .slimScrollDiv.list-group {
   padding-right: 20px;
   word-wrap: break-word;
+}
+.nav-tabs {
+  border-bottom: none;
+}
+.ma-offcanvas-left {
+  z-index: 1;
+}
+.ma-offcanvas-right {
+  display: none;
+}
+.ma-offcanvas-right.in {
+  display: block;
+}
+.ma-offcanvas-search {
+  background: #ffffff;
 }

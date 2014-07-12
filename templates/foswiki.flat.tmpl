@@ -42,7 +42,6 @@
     * all off-screen menus (offcanvas)
     * the actual topic content
 }%
-
 %TMPL:DEF{"body"}%%{
 }%<body class="%TMPL:P{"ma-ctx"}%">
   %TMPL:P{"topbar:primary"}%
@@ -82,7 +81,6 @@
       * VIEW: shows the search bar
       * EDIT: shows save/cancel buttons
 }%
-
 %TMPL:DEF{"topbar:primary"}%%{
 }%<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -109,7 +107,7 @@
 %TMPL:DEF{"topbar:primary:actions"}%%{
 }%<form class="navbar-form navbar-right" role="search">
   <div class="form-group">
-    <input type="text" class="form-control input-sm" placeholder="Search">
+    <input type="text" class="form-control input-sm" placeholder="Search" data-toggle="offcanvas" data-target=".ma-offcanvas-search" data-autohide="true">
   </div>
   <button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
 </form>%TMPL:END%
@@ -127,6 +125,32 @@
     * right side: topic action buttons
     * Non-customizable CKE placeholder
 }%
+%TMPL:DEF{"topbar:secondary:tabs"}%%{
+}%<nav class="navbar navbar-default navbar-secondary navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="%TMPL:P{"ma-col-layout-left"}% ma-padding-top-large">
+        <div class="btn-group pull-left">%TMPL:P{"topbar:secondary:tabs"}%</div>
+        <div class="btn-group pull-right">%TMPL:P{"topbar:secondary:buttons"}%</div>
+      </div>
+      <div class="%TMPL:P{"ma-col-layout-right"}% ma-padding-top-large">
+        <ul class="nav nav-tabs" role="tablist">
+          <li><a href="#tab-cip" role="tab" data-toggle="tab">%MAKETEXT{"CIP"}%</a></li>
+          <li class="active"><a href="#tab-attachments" role="tab" data-toggle="tab">%MAKETEXT{"Attachments"}%</a></li>
+          <li><a href="#tab-comments" role="tab" data-toggle="tab">%MAKETEXT{"Comments"}%</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="%TMPL:P{"ma-col-layout-left"}%">
+        <div class="navbar-secondary-border %TMPL:P{"ma-ctx"}%"></div>
+      </div>
+      <div class="%TMPL:P{"ma-col-layout-right"}%">
+        <div class="navbar-secondary-border"></div>
+      </div>
+    </div>
+  </div>
+</nav>%TMPL:END%
 %TMPL:DEF{"topbar:secondary"}%%{
 }%<nav class="navbar navbar-default navbar-secondary navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -224,14 +248,15 @@
   include a suitable navmenu container or not.
 }%
 %TMPL:DEF{"offcanvas"}%%{
-}%%IF{"$'TMPL:P{offcanvas:leftbar}'" then="<div class='navmenu navmenu-default navmenu-fixed-left'>$percntTMPL:P{\"offcanvas:leftbar\"}$percnt</div>" else=""}%%{
-}%%IF{"$'TMPL:P{offcanvas:rightbar}'" then="<div class='navmenu navmenu-default navmenu-fixed-right'>$percntTMPL:P{\"offcanvas:rightbar\"}$percnt</div>" else=""}%%{
-}%%IF{"$'TMPL:P{offcanvas:search}'" then="<div class='navmenu navmenu-default navmenu-fixed-right'>$percntTMPL:P{\"offcanvas:search\"}$percnt</div>" else=""}%%{
+}%%IF{"$'TMPL:P{offcanvas:leftbar}'" then="$percntTMPL:P{\"offcanvas:leftbar\"}$percnt" else=""}%%{
+}%%IF{"$'TMPL:P{offcanvas:rightbar}'" then="$percntTMPL:P{\"offcanvas:rightbar\"}$percnt" else=""}%%{
+}%%IF{"$'TMPL:P{offcanvas:search}'" then="$percntTMPL:P{\"offcanvas:search\"}$percnt" else=""}%%{
 }%%TMPL:END%
 
 %{ Left sidebar entries }%
 %TMPL:DEF{"offcanvas:leftbar"}%%{
-}%<a class="navmenu-brand" href="#">Brand</a>
+}%<div class="navmenu navmenu-default navmenu-fixed-left ma-offcanvas-left">
+  <a class="navmenu-brand" href="#">Brand</a>
   <ul class="nav nav-pills nav-stacked">
     <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
   </ul>
@@ -244,13 +269,17 @@
   <ul class="nav nav-pills nav-stacked ma-padding-top-large">
     <li class="active"><a href="#"><i class="fa fa-sitemap"></i> Prozesse <span class="pull-right"><i class="fa fa-cog"></i></span></a></li>
     <li><a href="#"><i class="fa fa-inbox"></i> Projekte <span class="pull-right"><i class="fa fa-cog"></i></span></a></li>
-  </ul>%TMPL:END%
+  </ul>
+</div>%TMPL:END%
 
 %{ placeholder for future use }%
 %TMPL:DEF{"offcanvas:rightbar"}%%TMPL:END%
 
 %{ placeholder for future use }%
-%TMPL:DEF{"offcanvas:search"}%%TMPL:END%
+%TMPL:DEF{"offcanvas:search"}%%{
+}%<div class="navmenu navmenu-default navmenu-fixed-right offcanvas ma-offcanvas-right ma-offcanvas-search">
+  tbd
+</div>%TMPL:END%
 %{ ---------------------------------------------------------------------------}%
 %{ ---------------------------------------------------------------------------}%
 
