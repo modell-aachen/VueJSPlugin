@@ -5,6 +5,7 @@ use warnings;
 
 use Foswiki::Func ();
 use Foswiki::Plugins ();
+use Foswiki::Contrib::JsonRpcContrib ();
 
 use version;
 our $VERSION = version->declare( '1.0.0' );
@@ -32,9 +33,17 @@ sub initPlugin {
 <script src="/pub/System/FlatSkinPlugin/src/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/pub/System/FlatSkinPlugin/src/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="/pub/System/FlatSkinPlugin/js/jquery.slimscroll.min.js"></script>
+<script src="/pub/System/FlatSkinPlugin/js/comment.js"></script>
 SCRIPT
 
+  Foswiki::Contrib::JsonRpcContrib::registerMethod( "flatskin", "foo", \&callback );
+
   return 1;
+}
+
+sub callback {
+  my ($session, $request) = @_;
+  return "foobar";
 }
 
 sub handleWebList {

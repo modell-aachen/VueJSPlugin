@@ -43,7 +43,7 @@
     * the actual topic content
 }%
 %TMPL:DEF{"body"}%%{
-}%<body class="%TMPL:P{"ma-ctx"}%">
+}%<body class="%TMPL:P{"ma-ctx"}%">%JQREQUIRE{"jsonrpc"}%
   %TMPL:P{"topbar:primary"}%
   %TMPL:P{"offcanvas"}%
   <div class="canvas">%{
@@ -58,9 +58,7 @@
             </div>
           </div>
         </div>
-        <div class="%TMPL:P{"ma-col-layout-right"}%">
-          <ul id="foobar" class="list-group" data-spy="affix" data-offset-top="0" data-offset-bottom="0">%META{"attachments"}%</ul>
-        </div>
+        <div class="%TMPL:P{"ma-col-layout-right"}%">%TMPL:P{"ma-comments"}%</div>
       </div>
     </div>
   </div>
@@ -160,17 +158,6 @@
         <div class="btn-group pull-right">%TMPL:P{"topbar:secondary:buttons"}%</div>
       </div>
       <div class="%TMPL:P{"ma-col-layout-right"}% ma-padding-top-large">
-        <div class="btn-group pull-left">
-          <button type="button" class="btn btn-default btn-borderless btn-square btn-transparent">
-            <i class="fa fa-refresh"></i><span class="ma-margin-left hidden-md">%MAKETEXT{"CIP"}%</span>
-          </button>
-          <button type="button" class="btn btn-default btn-muted btn-borderless btn-square">
-            <i class="fa fa-download"></i><span class="ma-margin-left hidden-md">%MAKETEXT{"Attachments"}%</span>
-          </button>
-          <button type="button" class="btn btn-default btn-borderless btn-square btn-transparent">
-            <i class="fa fa-comments-o"></i><span class="ma-margin-left hidden-md">%MAKETEXT{"Comments"}%</span>
-          </button>
-        </div>
       </div>
     </div>
     <div class="row">
@@ -284,6 +271,42 @@
 %{ ---------------------------------------------------------------------------}%
 
 
+%TMPL:DEF{"ma-comments"}%%{
+}%<div id="cmt-target" class="hidden ma-padding ma-border ma-border-light" style="background: white;">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-default btn-comment-suggestion" data-brand="info">
+          <input type="radio" name="options" id="rd-suggestion"><i class="fa fa-lightbulb-o"></i>&nbsp;Vorschlag</label>
+        <label class="btn btn-default btn-comment-neutral active" data-brand="warning">
+          <input type="radio" name="options" id="rd-neutral" checked><i class="fa fa-comment"></i>&nbsp;Neutral</label>
+        <label class="btn btn-default btn-comment-issue" data-brand="danger">
+          <input type="radio" name="options" id="rd-issue"><i class="fa fa-exclamation-circle"></i>&nbsp;Problem</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 ma-margin-top ma-margin-bottom">
+      <textarea id="ma-tb-cmt" class="form-control" rows="3"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div id="ma-btn-submit-cmt" class="btn btn-primary btn-block">absenden</div>
+    </div>
+    <div class="col-xs-6">
+      <div id="ma-btn-cancel-cmt" class="btn btn-link btn-block">abbrechen</div>
+    </div>
+  </div>
+</div><!-- cmt-target -->
+<div class="row">
+  <div class="col-xs-12">
+    <div id="cmt-adorner" class="hidden">
+      <div></div>
+      <div><i class="fa fa-comment fa-lg"></i></div>
+    </div>
+  </div>
+</div>%TMPL:END%
 
 %{
   Helper(s)
