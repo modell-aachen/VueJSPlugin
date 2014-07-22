@@ -25,7 +25,7 @@ sub initPlugin {
   Foswiki::Func::registerTagHandler( 'MA_WEBLIST', \&handleWebList );
 
   my $pluginURL = '%PUBURLPATH%/%SYSTEMWEB%/FlatSkinPlugin';
-  Foswiki::Func::addToZone( 'script', 'MA::FLATSKIN', <<'SCRIPT', 'JQUERYPLUGIN::FOSWIKI' );
+  Foswiki::Func::addToZone( 'script', 'MA::FLATSKIN', <<"SCRIPT", 'JQUERYPLUGIN::FOSWIKI' );
 <script src="$pluginURL/src/pace/pace.js"></script>
 <script src="$pluginURL/js/flat.js"></script>
 <script src="$pluginURL/src/bootstrap/dist/js/bootstrap.min.js"></script>
