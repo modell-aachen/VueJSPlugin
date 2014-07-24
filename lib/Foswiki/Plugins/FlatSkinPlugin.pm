@@ -18,9 +18,15 @@ my $plugin = 'FlatSkinPlugin';
 sub initPlugin {
   my ( $topic, $web, $user, $installWeb ) = @_;
 
-  my $skin = Foswiki::Func::getPreferencesValue( 'SKIN' );
-  if ( $skin && $skin !~ m/flat/i ) {
-    return 1;
+  # stop processing if VarSKIN is not set to 'flat'
+  my $session = $Foswiki::Plugins::SESSION;
+  my $params = $session->{request}->{param};
+  if ( $params && $params->{skin} ) {
+    my $skins = $params->{skin};
+    return 1 unless grep( /flat/, @$skins );
+  } else {
+    my $skin = Foswiki::Func::getPreferencesValue( 'SKIN' );
+    return 1 if ( $skin && $skin !~ m/flat/i );
   }
 
   if ( $Foswiki::Plugins::VERSION < 2.0 ) {
@@ -38,7 +44,7 @@ sub initPlugin {
 }
 
 sub _suffix {
-  my $dev = $Foswiki::cfg{Plugins}{$plugin}{UseSource} || 0;
+  my $dev = $Foswiki::cfg{Plugins}{$plugin}{Debug} || 0;
   return ($dev ? '' : '.min');
 }
 
