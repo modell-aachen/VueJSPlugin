@@ -18,6 +18,11 @@ my $plugin = 'FlatSkinPlugin';
 sub initPlugin {
   my ( $topic, $web, $user, $installWeb ) = @_;
 
+  my $skin = Foswiki::Func::getPreferencesValue( 'SKIN' );
+  if ( $skin && $skin !~ m/flat/i ) {
+    return 1;
+  }
+
   if ( $Foswiki::Plugins::VERSION < 2.0 ) {
       Foswiki::Func::writeWarning( 'Version mismatch between ',
           __PACKAGE__, ' and Plugins.pm' );
