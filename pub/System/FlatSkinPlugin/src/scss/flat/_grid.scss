@@ -1,0 +1,14 @@
+.row {
+  // expand grid rows to 100% screen width
+  max-width: 100%;
+
+  // default column configuration.
+  // skipped if class 'columns' is present
+  > div:first-child:not(.columns) {
+    @extend .columns;
+    @extend .small-12;
+    @extend .medium-8;
+    @extend .large-8;
+    @extend .large-offset-1;
+  }
+}

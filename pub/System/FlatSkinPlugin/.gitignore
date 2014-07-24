@@ -1,0 +1,6 @@
+*.DS_Store
+/fonts/*
+/css/*
+/js/*
+/bower_components/*
+/node_modules/*
