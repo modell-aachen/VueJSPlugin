@@ -114,6 +114,12 @@ sub _writefile {
   close( M );
 }
 
+my ($spec_vol, $spec_path) = File::Spec->splitpath(__FILE__);
+my $mani_path = File::Spec->catfile($spec_vol.$spec_path, 'MANIFEST');
+if (!-f $mani_path) {
+  open(MANI, '>', $mani_path) or die "Cannot create $mani_path: $!";
+  close(MANI);
+}
 
 package main;
 my $build = new FlatSkinPluginBuild();
