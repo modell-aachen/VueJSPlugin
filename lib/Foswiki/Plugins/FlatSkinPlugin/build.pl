@@ -16,6 +16,7 @@ my $plugin = "FlatSkinPlugin";
 my @manifest = ();
 my $basedir;
 my @ignore = (
+  ".cache/",
   "lib/Foswiki/Plugins/$plugin/build.pl",
   "lib/Foswiki/Plugins/$plugin/MANIFEST",
   "pub/System/$plugin/Gruntfile.js",
