@@ -1,25 +1,121 @@
 #!/usr/bin/perl -w
+use strict;
+
 BEGIN { unshift @INC, split( /:/, $ENV{FOSWIKI_LIBS} ); }
+
+package FlatSkinPluginBuild;
+
 use Foswiki::Contrib::Build;
+our @ISA = qw( Foswiki::Contrib::Build );
+
+use File::Copy;
+use File::Find;
+use File::Spec;
+
+my $plugin = "FlatSkinPlugin";
+my @manifest = ();
+my $basedir;
+my @ignore = (
+  "lib/Foswiki/Plugins/$plugin/build.pl",
+  "lib/Foswiki/Plugins/$plugin/MANIFEST",
+  "pub/System/$plugin/Gruntfile.js",
+  "pub/System/$plugin/bower.json",
+  "pub/System/$plugin/package.json",
+  "pub/System/$plugin/.bowerrc",
+  "pub/System/$plugin/bower_components/",
+  "pub/System/$plugin/node_modules/",
+  "pub/System/$plugin/src/"
+);
+
+sub new {
+  my $class = shift;
+  return bless( $class->SUPER::new( $plugin ), $class );
+}
+
+sub target_dev {
+  my $this = shift;
+
+  $this->_installDeps( "dev" );
+  $this->_createManifest();
+}
+
+sub target_build {
+  my $this = shift;
+
+  $this->_installDeps( "dist" );
+  $this->_createManifest();
+
+  my $mpath = "$basedir/lib/Foswiki/Plugins/$plugin/MANIFEST";
+  my $old = -f $mpath ? _readfile( $mpath ) : undef;
+  my $new = join( "\n", @manifest );
+  $this->_writefile( $new, $mpath );
+
+  exec('perl', __FILE__, @ARGV) if ( $old ne $new );
+}
+
+sub _installDeps {
+  my $this = shift;
+  my $type = shift;
+
+  my $pdir = "pub/System/$plugin";
+  my $pub = "$this->{basedir}/$pdir";
+  $this->pushd( $pub );
+
+  local $| = 1;
+  print "Fetching dependencies:\n";
+  print $this->sys_action( qw(npm install) ) . "\n";
+  print $this->sys_action( qw(bower update) ) . "\n";
+
+  print "Cleaning directories...\n";
+  print $this->sys_action( qw(grunt clean) ) . "\n";
+
+  print "Building...\n";
+  print $this->sys_action( qw(grunt build), "--target=$type" ) . "\n";
+}
+
+sub _createManifest {
+  my $this = shift;
+
+  print "Creating MANIFEST file...\n";
+  my $opts = { no_chdir => 1, wanted => \&_wanted };
+  $basedir = $this->{basedir};
+  find( $opts, $basedir );
+}
+
+sub _wanted {
+  return if -d;
+
+  my $file = $_;
+  return if $file =~ m#\.bak|\.dist|\.git|dev/#;
+  foreach (@ignore) {
+    return if ( $file =~ m/$_/ );
+  }
+
+  my $relpath = File::Spec->abs2rel( $file, $basedir );
+  return if $relpath !~ m#/#;
+  push @manifest, "$relpath 0644";
+}
+
+sub _readfile {
+  my $name = shift;
+  open(IN, "<", $name) or die "Can't open `$name' for reading: $!";
+  my @data = grep { !/\@Packager\.RemoveLine/ } <IN>;
+  close(IN);
+  return join('', @data);
+}
+
+sub _writefile {
+  my $this = shift;
+  my $data = shift;
+  my $path = shift;
+
+  open( M, ">", $path ) or die "Can't create MANIFEST file: $!";
+  print M $data;
+  close( M );
+}
 
 
-# Create the build object
-$build = new Foswiki::Contrib::Build('FlatSkinPlugin');
-
-# (Optional) Set the details of the repository for uploads.
-# This can be any web on any accessible Foswiki installation.
-# These defaults will be used when expanding tokens in .txt
-# files, but be warned, they can be overridden at upload time!
-
-# name of web to upload to
-$build->{UPLOADTARGETWEB} = 'Extensions';
-# Full URL of pub directory
-$build->{UPLOADTARGETPUB} = 'http://extensions.open-quality.com/pub';
-# Full URL of bin directory
-$build->{UPLOADTARGETSCRIPT} = 'http://extensions.open-quality.com/bin';
-# Script extension
-$build->{UPLOADTARGETSUFFIX} = '';
-
-# Build the target on the command line, or the default target
-$build->build($build->{target});
+package main;
+my $build = new FlatSkinPluginBuild();
+$build->build( $build->{target} );
 

@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      main: {
+      'font-awesome': {
         files: [
           {
             expand: true,
@@ -86,7 +86,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          compress: true,
+          compress: { drop_console: true },
           mangle: true,
           preserveComments: false
         },
