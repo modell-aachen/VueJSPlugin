@@ -34,7 +34,7 @@ sub initPlugin {
 
 sub _suffix {
   my $dev = $Foswiki::cfg{Plugins}{$plugin}{UseSource} || 0;
-  return ($dev ? '.min' : '');
+  return ($dev ? '' : '.min');
 }
 
 sub _zoneConfig {
@@ -45,6 +45,14 @@ sub _zoneConfig {
 
   if ( $suffix ) {
     $styles = <<"STYLES";
+<link rel="stylesheet" href="$path/css/app$suffix.css" />
+STYLES
+
+    $scripts = <<"SCRIPTS";
+<script src="$path/js/app$suffix.js"></script>
+SCRIPTS
+  } else {
+    $styles = <<"STYLES";
 <link rel="stylesheet" href="$path/css/app.css" />
 STYLES
 
@@ -54,14 +62,6 @@ STYLES
 <script src="$path/js/fastclick.js"></script>
 <script src="$path/js/foundation.js"></script>
 <script src="$path/js/app.js"></script>
-SCRIPTS
-  } else {
-    $styles = <<"STYLES";
-<link rel="stylesheet" href="$path/css/app$suffix.css" />
-STYLES
-
-    $scripts = <<"SCRIPTS";
-<script src="$path/js/app$suffix.js"></script>
 SCRIPTS
   }
 
