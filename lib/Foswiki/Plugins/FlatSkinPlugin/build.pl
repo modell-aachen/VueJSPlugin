@@ -50,7 +50,12 @@ sub target_build {
   my $new = join( "\n", @manifest );
   $this->_writefile( $new, $mpath );
 
-  exec('perl', __FILE__, @ARGV) if ( $old ne $new );
+  if ( $old ne $new ) {
+    $this->popd;
+    print "MANIFEST has changed. Restarting build process.\n";
+    exec('perl', __FILE__, @ARGV);
+  }
+
 }
 
 sub _installDeps {
