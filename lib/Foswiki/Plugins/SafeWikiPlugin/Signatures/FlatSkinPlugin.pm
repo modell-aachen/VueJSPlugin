@@ -1,5 +1,6 @@
 # This contains signatures for inline JS code contained in FlatSkinPlugin.
 [
   # templates/foswiki.flat.tmpl
-  '4iiDoEUmeFuzX+tljaSXTBYJmUMihpIdffMCNcwh5PM'
+  # foundation, pace & offline initialization
+  '7eCZWIF+i02nMPhaLuHzYfN0FjojSUCDjigVi8QR4ss'
 ];
