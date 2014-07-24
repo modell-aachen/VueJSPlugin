@@ -8,12 +8,13 @@ use Foswiki::Plugins ();
 use Foswiki::Plugins::JQueryPlugin ();
 
 use version;
-our $VERSION = version->declare( '2.0.0' );
-our $RELEASE = '2.0.0';
+our $VERSION = version->declare( '1.0.0' );
+our $RELEASE = '1.0.0';
 
 our $NO_PREFS_IN_TOPIC = 1;
 our $SHORTDESCRIPTION = 'Q.Wiki Skin';
 my $plugin = 'FlatSkinPlugin';
+my $VERSIONQUERY = "?version=$RELEASE";
 
 sub initPlugin {
   my ( $topic, $web, $user, $installWeb ) = @_;
@@ -36,6 +37,7 @@ sub initPlugin {
   }
 
   Foswiki::Func::registerTagHandler( 'MA_PACE', \&_handlePACE );
+  Foswiki::Func::registerTagHandler( 'MA_OFFLINE', \&_handleOFFLINE );
 
   # inject scripts and styles
   _zoneConfig();
@@ -56,23 +58,23 @@ sub _zoneConfig {
 
   if ( $suffix ) {
     $styles = <<"STYLES";
-<link rel="stylesheet" href="$path/css/app$suffix.css" />
+<link rel="stylesheet" href="$path/css/app$suffix.css$VERSIONQUERY" />
 STYLES
 
     $scripts = <<"SCRIPTS";
-<script src="$path/js/app$suffix.js"></script>
+<script src="$path/js/app$suffix.js$VERSIONQUERY"></script>
 SCRIPTS
   } else {
     $styles = <<"STYLES";
-<link rel="stylesheet" href="$path/css/app.css" />
+<link rel="stylesheet" href="$path/css/app.css$VERSIONQUERY" />
 STYLES
 
     $scripts = <<"SCRIPTS";
-<script src="$path/js/underscore.js"></script>
-<script src="$path/js/modernizr.js"></script>
-<script src="$path/js/fastclick.js"></script>
-<script src="$path/js/foundation.js"></script>
-<script src="$path/js/app.js"></script>
+<script src="$path/js/underscore.js$VERSIONQUERY"></script>
+<script src="$path/js/modernizr.js$VERSIONQUERY"></script>
+<script src="$path/js/fastclick.js$VERSIONQUERY"></script>
+<script src="$path/js/foundation.js$VERSIONQUERY"></script>
+<script src="$path/js/app.js$VERSIONQUERY"></script>
 SCRIPTS
   }
 
@@ -86,13 +88,37 @@ SCRIPTS
   # }
 }
 
-sub _handlePACE {
+sub _handleOFFLINE {
   my( $session, $params, $topic, $web, $topicObject ) = @_;
+return '';
+  my $disabled = $Foswiki::cfg{Plugins}{$plugin}{DisableOffline} || 0;
+  return '' if $disabled;
+
   my $min = _suffix;
   my $path = "%PUBURLPATH%/%SYSTEMWEB%/$plugin";
+  my $theme = $Foswiki::cfg{Plugins}{$plugin}{CustomOffline} || '';
+  $theme = "$path/css/offline$min.css$VERSIONQUERY" unless $theme;
+
+  my $pace = <<"OFFLINE";
+<link rel="stylesheet" href="$theme" />
+<script src="$path/js/offline$min.js$VERSIONQUERY"></script>
+OFFLINE
+}
+
+sub _handlePACE {
+  my( $session, $params, $topic, $web, $topicObject ) = @_;
+
+  my $disabled = $Foswiki::cfg{Plugins}{$plugin}{DisablePACE} || 0;
+  return '' if $disabled;
+
+  my $min = _suffix;
+  my $path = "%PUBURLPATH%/%SYSTEMWEB%/$plugin";
+  my $theme = $Foswiki::cfg{Plugins}{$plugin}{CustomPACE} || '';
+  $theme = "$path/css/pace$min.css$VERSIONQUERY" unless $theme;
+
   my $pace = <<"PACE";
-<link rel="stylesheet" href="$path/css/pace$min.css" />
-<script src="$path/js/pace$min.js"></script>
+<link rel="stylesheet" href="$theme" />
+<script src="$path/js/pace$min.js$VERSIONQUERY"></script>
 PACE
 }
 
