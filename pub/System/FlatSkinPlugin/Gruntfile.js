@@ -113,7 +113,7 @@ module.exports = function(grunt) {
       },
       uglify: {
         files: ['src/js/**/*.js'],
-        tasks: ['uglify']
+        tasks: ['jshint','uglify:dev']
       }
     }
   });

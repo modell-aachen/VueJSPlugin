@@ -5,7 +5,8 @@
     "underscore": "~1.6.0",
     "font-awesome": "~4.1.0",
     "pace": "~0.5.5",
-    "offline": "~0.7.10"
+    "offline": "~0.7.10",
+    "iscroll": "~5.1.2"
   },
   "version": "1.0.0",
   "authors": [

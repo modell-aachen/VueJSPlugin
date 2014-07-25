@@ -36,8 +36,9 @@ sub initPlugin {
       return 0;
   }
 
-  Foswiki::Func::registerTagHandler( 'MA_PACE', \&_handlePACE );
+  Foswiki::Func::registerTagHandler( 'MA_JOYRIDE', \&_handleJOYRIDE );
   Foswiki::Func::registerTagHandler( 'MA_OFFLINE', \&_handleOFFLINE );
+  Foswiki::Func::registerTagHandler( 'MA_PACE', \&_handlePACE );
 
   # inject scripts and styles
   _zoneConfig();
@@ -86,6 +87,12 @@ SCRIPTS
   # foreach (@jqdeps) {
   #   Foswiki::Plugins::JQueryPlugin::createPlugin( $_ );
   # }
+}
+
+sub _handleJOYRIDE {
+  my( $session, $params, $topic, $web, $topicObject ) = @_;
+
+  return '';
 }
 
 sub _handleOFFLINE {
