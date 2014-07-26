@@ -5,9 +5,9 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      js: ["js/*.js"],
       css: ["css/*.css"],
       fonts: ["fonts/*"],
+      js: ["js/*.js"]
     },
 
     copy: {
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'bower_components/font-awesome/fonts/',
+            cwd: 'bower_components/uikit/dist/fonts/',
             src: '**',
             dest: 'fonts/',
             flatten: true,
@@ -24,6 +24,32 @@ module.exports = function(grunt) {
           }
         ]
       },
+      'uikit-dev': {
+        files: [
+          {
+            expand: true,
+            cwd: 'bower_components/uikit/dist/js/',
+            src: ['**/*.js', '!**/*.min.js'],
+            dest: 'js/',
+            flatten: false,
+            filter: 'isFile',
+            mode: 0644
+          }
+        ]
+      },
+      'uikit-dist': {
+        files: [
+          {
+            expand: true,
+            cwd: 'bower_components/uikit/dist/js/',
+            src: '**/*.min.js',
+            dest: 'js/',
+            flatten: false,
+            filter: 'isFile',
+            mode: 0644
+          }
+        ]
+      }
     },
 
     jshint: {
@@ -40,29 +66,30 @@ module.exports = function(grunt) {
       beforeconcat: ['src/js/**/*.js']
     },
 
-    sass: {
-      options: {
-        includePaths: [
-          'bower_components/foundation/scss',
-          'bower_components/font-awesome/scss'
-        ]
-      },
+    less: {
       dev: {
         options: {
-          outputStyle: 'nested'
+          ieCompat: true,
+          strictImports: true,
+          strictUnits: true,
+          paths: ["bower_components/uikit/src/less/"]
         },
         files: {
-          'css/app.css': 'src/scss/app.scss',
-          'css/pace.css': 'src/scss/pace.scss'
+          "css/app.css": "src/less/app.less",
+          "css/app-addons.css": "src/less/app-addons.less"
         }
       },
       dist: {
         options: {
-          outputStyle: 'compressed'
+          cleancss: true,
+          ieCompat: true,
+          strictImports: true,
+          strictUnits: true,
+          paths: ["bower_components/uikit/src/less/"]
         },
         files: {
-          'css/app.min.css': 'src/scss/app.scss',
-          'css/pace.min.css': 'src/scss/pace.scss'
+          "css/app.min.css": "src/less/app.less",
+          "css/app-addons.min.css": "src/less/app-addons.less"
         }
       }
     },
@@ -77,10 +104,8 @@ module.exports = function(grunt) {
         },
         files: {
           'js/app.js': ['src/js/**/*.js'],
-          'js/foundation.js': ['bower_components/foundation/js/foundation.js'],
           'js/fastclick.js': ['bower_components/fastclick/lib/fastclick.js'],
           'js/modernizr.js': ['bower_components/modernizr/modernizr.js'],
-          'js/underscore.js': ['bower_components/underscore/underscore.js'],
           'js/pace.js': ['bower_components/pace/pace.js']
         }
       },
@@ -91,14 +116,10 @@ module.exports = function(grunt) {
           preserveComments: false
         },
         files: {
-          'js/app.min.js': [
-            'bower_components/modernizr/modernizr.js',
-            'bower_components/underscore/underscore.js',
-            'bower_components/fastclick/lib/fastclick.js',
-            'bower_components/foundation/js/foundation.js',
-            'src/js/**/*.js'
-          ],
-          'js/pace.min.js': ['bower_components/pace/pace.min.js'],
+          'js/app.min.js': ['src/js/**/*.js'],
+          'js/fastclick.min.js': ['bower_components/fastclick/lib/fastclick.js'],
+          'js/modernizr.min.js': ['bower_components/modernizr/modernizr.js'],
+          'js/pace.min.js': ['bower_components/pace/pace.js']
         }
       }
     },
@@ -107,9 +128,9 @@ module.exports = function(grunt) {
       grunt: {
         files: ['Gruntfile.js']
       },
-      sass: {
-        files: ['src/scss/**/*.scss'],
-        tasks: ['sass']
+      less: {
+        files: ['src/less/**/*.less'],
+        tasks: ['less']
       },
       uglify: {
         files: ['src/js/**/*.js'],
@@ -118,14 +139,20 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   var target = grunt.option('target') || 'dev';
-  grunt.registerTask('build', ['copy', 'sass:' + target, 'jshint', 'uglify:' + target]);
   grunt.registerTask('default', ['build','watch']);
+  grunt.registerTask('build', [
+    'copy:font-awesome',
+    'copy:uikit-' + target,
+    'less:' + target,
+    'jshint',
+    'uglify:' + target]
+  );
 }
