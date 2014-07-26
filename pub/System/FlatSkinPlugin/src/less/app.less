@@ -1,0 +1,33 @@
+@import "settings";
+@import "foundation";
+@import "font-awesome";
+
+@import "flat/grid";
+
+// body {
+//   margin-top: 150px;
+// }
+
+.ma-content {
+  background: #fff;
+  padding: 30px;
+}
+
+
+.inner-wrap,
+#foo {
+  transition: transform 500ms ease;
+}
+
+.move-right > .inner-wrap,
+.move-right > #foo {
+  transform: translate3d(250px, 0, 0);
+}
+
+
+.off-canvas-wrap,.inner-wrap{
+    height:100%;
+}
+.page{
+    height:100%;
+}
