@@ -36,9 +36,7 @@ sub initPlugin {
       return 0;
   }
 
-  Foswiki::Func::registerTagHandler( 'MA_JOYRIDE', \&_handleJOYRIDE );
-  Foswiki::Func::registerTagHandler( 'MA_OFFLINE', \&_handleOFFLINE );
-  Foswiki::Func::registerTagHandler( 'MA_PACE', \&_handlePACE );
+  Foswiki::Func::registerTagHandler( 'MAREGISTER', \&_handleREGISTER );
 
   # inject scripts and styles
   _zoneConfig();
@@ -52,89 +50,70 @@ sub _suffix {
 }
 
 sub _zoneConfig {
-  my $styles = '';
-  my $scripts = '';
   my $suffix = _suffix;
   my $path = "%PUBURLPATH%/%SYSTEMWEB%/$plugin";
 
-  if ( $suffix ) {
-    $styles = <<"STYLES";
-<link rel="stylesheet" href="$path/css/app$suffix.css$VERSIONQUERY" />
+  my $styles = <<"STYLES";
+<link rel="stylesheet" href="$path/css/qwiki$suffix.css$VERSIONQUERY" />
 STYLES
 
-    $scripts = <<"SCRIPTS";
-<script src="$path/js/app$suffix.js$VERSIONQUERY"></script>
+  my $scripts = <<"SCRIPTS";
+<script src="$path/js/modernizr$suffix.js$VERSIONQUERY"></script>
+<script src="$path/js/foundation$suffix.js$VERSIONQUERY"></script>
+<script src="$path/js/fastclick$suffix.js$VERSIONQUERY"></script>
+<script src="$path/js/qwiki$suffix.js$VERSIONQUERY"></script>
 SCRIPTS
-  } else {
-    $styles = <<"STYLES";
-<link rel="stylesheet" href="$path/css/app.css$VERSIONQUERY" />
-STYLES
-
-    $scripts = <<"SCRIPTS";
-<script src="$path/js/underscore.js$VERSIONQUERY"></script>
-<script src="$path/js/modernizr.js$VERSIONQUERY"></script>
-<script src="$path/js/fastclick.js$VERSIONQUERY"></script>
-<script src="$path/js/foundation.js$VERSIONQUERY"></script>
-<script src="$path/js/app.js$VERSIONQUERY"></script>
-SCRIPTS
-  }
 
   Foswiki::Func::addToZone( 'head', 'FLATSKIN::STYLES', $styles );
   Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS', $scripts, 'JQUERYPLUGIN::FOSWIKI' );
-
-  # register jquery dependencies
-  # my @jqdeps = ( 'blockui', 'cookie', 'jsonrpc', 'placeholder' );
-  # foreach (@jqdeps) {
-  #   Foswiki::Plugins::JQueryPlugin::createPlugin( $_ );
-  # }
 }
 
-sub _handleJOYRIDE {
+# Handles macro %MAREGISTER%
+# Req. params: offline|pace
+# Used to inject one or both script(s) as soon as possible into the DOM.
+sub _handleREGISTER {
   my( $session, $params, $topic, $web, $topicObject ) = @_;
 
-  return '';
-}
-
-sub _handleOFFLINE {
-  my( $session, $params, $topic, $web, $topicObject ) = @_;
-return '';
-  my $disabled = $Foswiki::cfg{Plugins}{$plugin}{DisableOffline} || 0;
-  return '' if $disabled;
+  my $cmpt = $params->{_DEFAULT};
+  return '' unless $cmpt && $cmpt =~ m/pace|offline/i;
 
   my $min = _suffix;
   my $path = "%PUBURLPATH%/%SYSTEMWEB%/$plugin";
-  my $theme = $Foswiki::cfg{Plugins}{$plugin}{CustomOffline} || '';
-  $theme = "$path/css/offline$min.css$VERSIONQUERY" unless $theme;
 
-  my $pace = <<"OFFLINE";
-<link rel="stylesheet" href="$theme" />
-<script src="$path/js/offline$min.js$VERSIONQUERY"></script>
-OFFLINE
-}
+  # progress indicator
+  if ( $cmpt =~ m/pace/i ) {
+    my $disabled = $Foswiki::cfg{Plugins}{$plugin}{DisablePACE} || 0;
+    return '' if $disabled;
 
-sub _handlePACE {
-  my( $session, $params, $topic, $web, $topicObject ) = @_;
-
-  my $disabled = $Foswiki::cfg{Plugins}{$plugin}{DisablePACE} || 0;
-  return '' if $disabled;
-
-  my $min = _suffix;
-  my $path = "%PUBURLPATH%/%SYSTEMWEB%/$plugin";
-  my $theme = $Foswiki::cfg{Plugins}{$plugin}{CustomPACE} || '';
-  $theme = "$path/css/pace$min.css$VERSIONQUERY" unless $theme;
-
-  my $pace = <<"PACE";
+    my $theme = $Foswiki::cfg{Plugins}{$plugin}{CustomPACE} || '';
+    $theme = "$path/css/pace$min.css$VERSIONQUERY" unless $theme;
+    return <<"PACE";
 <link rel="stylesheet" href="$theme" />
 <script src="$path/js/pace$min.js$VERSIONQUERY"></script>
 PACE
+  }
+
+  # connectivity checks
+  if ( $cmpt =~ m/offline/i ) {
+    my $disabled = $Foswiki::cfg{Plugins}{$plugin}{DisableOffline} || 0;
+    return '' if $disabled;
+
+    my $theme = $Foswiki::cfg{Plugins}{$plugin}{CustomOffline} || '';
+    $theme = "$path/css/offline$min.css$VERSIONQUERY" unless $theme;
+    return <<"OFFLINE";
+<link rel="stylesheet" href="$theme" />
+<script src="$path/js/offline$min.js$VERSIONQUERY"></script>
+OFFLINE
+  }
 }
+
 
 1;
 
 __END__
 Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Author: Sven Meyer <meyer@modell-aachen.de>
+Author: Modell Aachen GmbH (http://www.modell-aachen.de)
 
 Copyright (C) 2008-2014 Foswiki Contributors. Foswiki Contributors
 are listed in the AUTHORS file in the root of this distribution.

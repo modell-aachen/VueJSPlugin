@@ -16,15 +16,16 @@ my $plugin = "FlatSkinPlugin";
 my @manifest = ();
 my $basedir;
 my @ignore = (
-  ".cache/",
+  "node_modules/",
+  "\\.bowerrc",
+  "\\.cache/",
+  "\\.git",
+  "Gruntfile.js",
+  "bower.json",
+  "package.json",
+  "bower_components/",
   "lib/Foswiki/Plugins/$plugin/build.pl",
   "lib/Foswiki/Plugins/$plugin/MANIFEST",
-  "pub/System/$plugin/Gruntfile.js",
-  "pub/System/$plugin/bower.json",
-  "pub/System/$plugin/package.json",
-  "pub/System/$plugin/.bowerrc",
-  "pub/System/$plugin/bower_components/",
-  "pub/System/$plugin/node_modules/",
   "pub/System/$plugin/src/"
 );
 
@@ -36,8 +37,10 @@ sub new {
 sub target_dev {
   my $this = shift;
 
-  $this->_installDeps( "dev" );
   $this->_createManifest();
+  my $mpath = "$basedir/lib/Foswiki/Plugins/$plugin/MANIFEST";
+  my $data = join( "\n", @manifest );
+  $this->_writefile( $data, $mpath );
 }
 
 sub target_build {
@@ -52,7 +55,6 @@ sub target_build {
   $this->_writefile( $new, $mpath );
 
   if ( $old ne $new ) {
-    $this->popd;
     print "MANIFEST has changed. Restarting build process.\n";
     exec('perl', __FILE__, @ARGV);
   }
@@ -70,6 +72,8 @@ sub _installDeps {
   local $| = 1;
   print "Fetching dependencies:\n";
   print $this->sys_action( qw(npm install) ) . "\n";
+
+  print "Updating components:\n";
   print $this->sys_action( qw(bower update) ) . "\n";
 
   print "Cleaning directories...\n";
@@ -77,6 +81,8 @@ sub _installDeps {
 
   print "Building...\n";
   print $this->sys_action( qw(grunt build), "--target=$type" ) . "\n";
+
+  $this->popd;
 }
 
 sub _createManifest {
@@ -92,9 +98,8 @@ sub _wanted {
   return if -d;
 
   my $file = $_;
-  return if $file =~ m#\.bak|\.dist|\.git|dev/#;
   foreach (@ignore) {
-    return if ( $file =~ m/$_/ );
+    return if ( $file =~ m#$_# );
   }
 
   my $relpath = File::Spec->abs2rel( $file, $basedir );

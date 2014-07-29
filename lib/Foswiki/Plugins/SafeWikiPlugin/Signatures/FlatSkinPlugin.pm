@@ -2,5 +2,5 @@
 [
   # templates/foswiki.flat.tmpl
   # foundation, pace & offline initialization
-  '7eCZWIF+i02nMPhaLuHzYfN0FjojSUCDjigVi8QR4ss'
+  'bhF+H3GVQwPzRBLvQYLQWpvshDVdN2yKQjpGmOqmZF8'
 ];
