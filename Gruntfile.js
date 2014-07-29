@@ -21,22 +21,22 @@ module.exports = function(grunt) {
 
   // foundation components (javascript)
   var fdnScripts = {
-    abide: 0,
-    accordion: 0,
-    alert: 0,
-    clearing: 0,
-    dropdown: 0,
-    equalizer: 0,
-    interchange: 0,
-    joyride: 0,
-    magellan: 0,
-    offcanvas: 0,
-    orbit: 0,
-    reveal: 0,
-    slider: 0,
-    tab: 0,
-    tooltop: 0,
-    topbar: 0
+    abide: 1,
+    accordion: 1,
+    alert: 1,
+    clearing: 1,
+    dropdown: 1,
+    equalizer: 1,
+    interchange: 1,
+    joyride: 1,
+    magellan: 1,
+    offcanvas: 1,
+    orbit: 1,
+    reveal: 1,
+    slider: 1,
+    tab: 1,
+    tooltop: 1,
+    topbar: 1
   };
 
   var fdnScriptFiles = function() {
