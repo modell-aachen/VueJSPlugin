@@ -1,0 +1,31 @@
+@import "foundation/functions";
+@import "fdnvars/settings";
+
+// colors
+$body-bg: #f2f2f2;
+$qw-cnt-l-bg: #fff;
+
+
+// topbar 1 (top topbar)
+$qw-tb-1-h: 33px;
+$qw-tb-1-bg: $qw-cnt-l-bg;
+
+// topbar 2 (bottom topbar)
+$qw-tb-2-h: 40px;
+$qw-tb-2-bg: $body-bg;
+
+
+// content alignment
+$qw-cnt-l-p: rem-calc(30);
+$qw-page-pt: $qw-tb-1-h + $qw-tb-2-h;
+
+
+// offcanvas
+$qw-ocvs-l-w: 250px;
+$qw-ocvs-r-w: 250px;
+
+
+// pace
+$qw-pace-bg: #29d;
+$qw-pace-h: 2px;
+$qw-pace-t: $qw-tb-1-h;

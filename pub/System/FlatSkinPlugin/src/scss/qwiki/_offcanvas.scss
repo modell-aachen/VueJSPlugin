@@ -1,0 +1,44 @@
+@import "../settings";
+
+.follows-canvas {
+  transition: margin-left 0.3s ease-in-out,
+              margin-right 0.3s ease-in-out;
+}
+
+// ToDo: not-selector requires IE9+
+:not(.qw-ocvs-l) .follows-canvas {
+  margin-left: 0;
+}
+
+:not(.qw-ocvs-l) .follows-canvas {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.qw-ocvs-l,
+.qw-ocvs-r {
+  overflow-x: hidden !important;
+}
+
+.qw-ocvs-l .follows-canvas {
+  margin-left: $qw-ocvs-l-w;
+}
+
+.qw-ocvs-r .follows-canvas {
+  margin-left: -1 * $qw-ocvs-l-w;
+  margin-right: $qw-ocvs-r-w;
+}
+
+.qw-ocvs-tgt-l {
+  position: fixed;
+  left: -1 * $qw-ocvs-l-w;
+  top: $qw-tb-1-h + $qw-tb-2-h;
+  bottom: 0;
+  width: $qw-ocvs-l-w;
+  overflow-y: auto;
+  transition: left 0.3s ease-in-out;
+
+  &.active {
+    left: 0;
+  }
+}

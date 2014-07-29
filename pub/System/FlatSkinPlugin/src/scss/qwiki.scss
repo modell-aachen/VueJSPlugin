@@ -1,0 +1,51 @@
+// variables, needs to be the fist import!
+@import "settings";
+
+@import "normalize";
+@import "foundation";
+@import "font-awesome";
+
+@import "qwiki/layout";
+@import "qwiki/offcanvas";
+@import "qwiki/topbar";
+
+
+
+// ABBREVIATIONS
+//
+// Compounds are not listed separately, eg.:
+//    pl: padding-left
+//    mt: margin-top
+//    mt: margin-top
+//
+// Variable and class names are constructed by the following rules:
+//    PREFIX-ID-[ID2]-*-PROPERTY
+//
+//    Where:
+//      PREFIX:       qw (qwiki)
+//      ID:   eg. ocvs (offcanvas)
+//      *:            omitted, position (t,r,b,l) or a consecutive number
+//      PROPERTY:     eg. m (margin)
+//
+//    Example:
+//      qw-ocvs-l-w:  qwiki-offcanvas-left-width
+//      qw-tb-1-h:    qwiki-topbar-1-height
+//      qw-page-pt:   qwiki-page-padding-top
+//
+// l:     left
+// r:     right
+// t:     top
+// b:     bottom
+// w:     width
+// h:     height
+// c:     color
+//
+// m:     margin
+// p:     padding
+//
+// bg:    background
+// tb:    topbar
+//
+// cnt:   content
+//
+// ocvs:  offcanvas

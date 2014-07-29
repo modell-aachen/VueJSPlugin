@@ -1,0 +1,30 @@
+@import "../settings";
+
+.qw-page {
+  padding-top: $qw-page-pt;
+}
+
+.qw-row {
+  @extend .row;
+  min-width: 100%;
+
+  > .qw-col-l {
+    @extend .small-12;
+    @extend .medium-8;
+    @extend .large-offset-1;
+    @extend .columns;
+  }
+
+  > .qw-col-r {
+    @extend .large-3;
+    @extend .medium-4;
+    @extend .columns;
+  }
+}
+
+.qw-cnt-l {
+  background: $qw-cnt-l-bg;
+  padding: $qw-cnt-l-p;
+}
+
+.qw-cnt-r {}
