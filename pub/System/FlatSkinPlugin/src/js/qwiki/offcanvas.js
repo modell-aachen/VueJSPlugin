@@ -97,7 +97,7 @@
       $body.removeClass( self.classes.left + ' ' + self.classes.right );
       $('[data-target]').each( function() {
         var selector = $(this).data('target');
-        self.Q.raiseEvent( selector, self, etype );
+        self.Q.raiseEvent( selector, self, 'closing' );
         $(selector).removeClass('active');
       });
     }
