@@ -1,0 +1,6 @@
+*.DS_Store
+/pub/System/FlatSkinPlugin/fonts/*
+/pub/System/FlatSkinPlugin/css/*
+/pub/System/FlatSkinPlugin/js/*
+/bower_components/*
+/node_modules/*

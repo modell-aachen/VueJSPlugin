@@ -1,0 +1,33 @@
+{
+  "name": "FlatSkinPlugin",
+  "dependencies": {
+    "pace": "~0.5.5",
+    "offline": "~0.7.10",
+    "fastclick": "~1.0.2",
+    "modernizr": "~2.8.3",
+    "foundation": "~5.3.1",
+    "font-awesome": "~4.1.0",
+    "underscore": "~1.6.0"
+  },
+  "version": "1.0.0",
+  "authors": [
+    "Sven Meyer <meyer@modell-aachen.de>"
+  ],
+  "description": "Q.Wiki Skin",
+  "moduleType": [
+    "node"
+  ],
+  "license": "GPLv3",
+  "homepage": "http://www.modell-aachen.de",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "jquery": ">=1.2"
+  }
+}
