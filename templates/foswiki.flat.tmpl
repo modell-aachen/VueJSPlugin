@@ -3,9 +3,6 @@
 %TMPL:P{"htmlstart"}%
 %TMPL:P{"head"}%
 %TMPL:P{"body"}%
-<script>
-  $(document).foundation();
-</script>
 %TMPL:P{"htmlend"}%
 %TMPL:END%
 
@@ -29,7 +26,7 @@
   <meta name="TEXT_NUM_TOPICS" content="%MAKETEXT{"Number of topics:"}%">
   <meta name="TEXT_MODIFY_SEARCH" content="%MAKETEXT{"Modify search"}%">
   <meta name="robots" content="noindex">
-  %MA_PACE%
+  %MAREGISTER{"pace"}%
   <link rel="icon" href="%FAVICON%" type="image/x-icon" />
   <link rel="shortcut icon" href="%FAVICON%" type="image/x-icon" />
   <link rel="alternate" href="%SCRIPTURL{edit}%/%BASEWEB%/%BASETOPIC%?t=%GMTIME{"$epoch"}%" type="application/x-wiki" title="edit %BASETOPIC%" />
@@ -39,110 +36,66 @@
   <base href="%SCRIPTURL{%SCRIPTNAME%}%/%WEB%/%TOPIC%" />
 </head>%TMPL:END%
 
+%TMPL:DEF{"body"}%%{
+}%%TMPL:P{"body:start"}%%{
+}%%TMPL:P{"topbar"}%%{
+}%%TMPL:P{"body:content"}%%{
+}%%TMPL:P{"body:end"}%%{
+}%%TMPL:END%
 
+%TMPL:DEF{"context"}%approved%TMPL:END%
+%TMPL:DEF{"body:start"}%<body>%JQREQUIRE{"blockui, cookie, jsonrpc, placeholder"}%
+<div class="qw-page context-%TMPL:P{"context"}% follows-canvas" data-offcanvas>
+%TMPL:END%
 
-%{
-  Default page layout containing placeholders for
-    * both topbars (primary/secondary)
-    * all off-screen menus (offcanvas)
-    * the actual topic content
-}%
-%TMPL:DEF{"body"}%
-<body>%JQREQUIRE{"blockui, cookie, jsonrpc, placeholder"}%
-<div class="fixed">%TMPL:P{"topbar"}%</div>
-<div class="off-canvas-wrap" data-offcanvas>
-  <div class="inner-wrap">
-    <aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        <li><label>Title</label></li>
-        <li><a href="#">Entry</a></li>
-        <li><a href="#">...</a></li>
-        <li><a href="#">...</a></li>
-        <li><a href="#">...</a></li>
-      </ul>
-    </aside>
-
-    <aside class="right-off-canvas-menu">
-      <ul class="off-canvas-list">
-        <li><label>Foo</label></li>
-        <li><a href="#">Bar</a></li>
-        <li><a href="#">...</a></li>
-        <li><a href="#">...</a></li>
-        <li><a href="#">...</a></li>
-      </ul>
-    </aside>
-
-    <section class="main-section">
-      <div class="row">
-        <div>
-          <div class="ma-content">%TMPL:P{"content"}%</div>
-        </div>
-      </div>
-    </section>
-
-    <a class="exit-off-canvas"></a>
-  </div>
-</div>
+%TMPL:DEF{"body:end"}%</div>
+%TMPL:P{"leftbar"}%
+<script>
+  $(document).foundation().qwiki();
+</script>
 </body>%TMPL:END%
 
+%TMPL:DEF{"body:content"}%
+<div class="qw-left">
+  <div class="qw-content">%TMPL:P{"content"}%</div>
+</div>
+<div class="qw-right">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quibusdam nisi modi at, vitae aperiam rem illo voluptates eum voluptate doloremque exercitationem distinctio assumenda maiores harum delectus error eveniet saepe ab numquam asperiores quae provident aspernatur? Porro ullam vitae repudiandae fuga adipisci fugiat voluptate temporibus, reiciendis corporis similique maiores ex eveniet quisquam, illo est ut molestias odio sequi excepturi delectus nesciunt eius iure error. Asperiores, at est, inventore odio aut molestiae. Error autem sed possimus sapiente recusandae cupiditate eius iusto vel exercitationem, sunt inventore consequatur, obcaecati fugiat vero assumenda, modi vitae iste molestias cum tenetur esse sint nihil, velit. Porro, iusto unde voluptatem. Eligendi tempora et praesentium quidem repellat, nulla neque dolores iure molestias nostrum. Rerum fuga ipsa maxime officia, nihil laudantium consectetur accusamus, alias distinctio impedit repellat suscipit natus molestiae maiores dolor molestias dolore? Eligendi id omnis impedit nisi harum fuga ratione aperiam quasi accusantium illo. Consequuntur similique alias quas obcaecati. Culpa libero dicta vitae suscipit, sunt quaerat perferendis, quis et eos id sit modi! Neque quibusdam sed illum voluptatem earum, nobis doloribus officia corporis quidem qui ad aut, numquam reprehenderit beatae quas perferendis. Deserunt, harum possimus corporis quia dolore nobis quidem suscipit modi doloribus reiciendis odio animi laudantium!</p>
+</div>
+%TMPL:END%
+
+%TMPL:DEF{"topbar"}%%TMPL:P{"topbar:one"}%%TMPL:P{"topbar:two"}%%TMPL:END%
+
+%TMPL:DEF{"topbar:one"}%
+<div class="qw-top-one">
+  <div class="qw-menu">
+    <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
+  </div>
+  <div class="qw-breadcrumbs"></div>
+  <div class="qw-search">
+    <a href="#" class="button tiny right" data-offcanvas-toggle data-right data-target="#bar">TR</a>
+  </div>
+</div>
+%TMPL:END%
+
+%TMPL:DEF{"topbar:two"}%
+<div class="qw-top-two follows-canvas">
+  <div class="qw-context">
+    <div>
+      <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
+      <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
+      <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
+    </div>
+  </div>
+  <div class="qw-actions">
+    <div></div>
+  </div>
+</div>
+%TMPL:END%
 
 
-%TMPL:DEF{"topbar"}%
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><a class="left-off-canvas-toggle" href="#"><i class="fa fa-navicon"></i><span>%MAKETEXT{"Menu"}%</span></a></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <ul class="left">
-      <li><a href="#">Left Nav Button</a></li>
-    </ul>
-
-    <ul class="right">
-      <li class="has-form">
-        <div class="row collapse">
-          <div class="large-8 small-9 columns">
-            <input type="text" placeholder="Find Stuff" class="right-off-canvas-toggle">
-          </div>
-          <div class="large-4 small-3 columns">
-            <a href="#" class="alert button expand">Search</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </section>
-</nav>
-%TMPL:END%%{
----------------------------------------------------
-}%%TMPL:DEF{"topbar2"}%
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><a class="left-off-canvas-toggle" href="#"><i class="fa fa-navicon"></i><span>%MAKETEXT{"Menu"}%</span></a></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <ul class="left">
-      <li><a href="#">Left Nav Button</a></li>
-    </ul>
-
-    <ul class="right">
-      <li class="has-form">
-        <div class="row collapse">
-          <div class="large-8 small-9 columns">
-            <input type="text" placeholder="Find Stuff" class="right-off-canvas-toggle">
-          </div>
-          <div class="large-4 small-3 columns">
-            <a href="#" class="alert button expand">Search</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </section>
-</nav>
+%TMPL:DEF{"leftbar"}%
+<div id="qw-leftbar" class="qw-ocvs-tgt-l">
+  %IF{"istopic 'WebLeftBar'" then="$percntINCLUDE{$quot%WEB%.WebLeftBar$quot}$percnt" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%.WebLeftBarDefault'" then="$dollarpercntINCLUDE{$dollarquot%CUSTOMIZINGWEB{default="Custom"}%.WebLeftBarDefault$dollarquot}$dollarpercnt" else="$dollarpercntINCLUDE{$dollarquot%SYSTEMWEB%.WebLeftBarDefault$dollarquot}$dollarpercnt"}%"}%
+</div>
 %TMPL:END%
