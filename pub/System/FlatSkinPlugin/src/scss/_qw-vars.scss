@@ -1,0 +1,34 @@
+@import "foundation/functions";
+@import "fdn-vars";
+
+// colors
+$qw-content-bg: #fff;
+
+
+$qw-top-one-height: 33px;
+$qw-top-two-height: 50px;
+$qw-top-height: $qw-top-one-height + $qw-top-two-height;
+
+$qw-top-one-bg: $qw-content-bg;
+$qw-top-two-bg: $body-bg;
+
+
+
+// content alignment
+$qw-cnt-l-p: rem-calc(30);
+
+
+
+// offcanvas
+$qw-ocvs-l-w: 250px;
+$qw-ocvs-r-w: 250px;
+
+
+// pace
+$qw-pace-bg: #29d;
+$qw-pace-h: 2px;
+$qw-pace-t: $qw-top-one-height;
+
+// borders
+$qw-border-bg: #dbdbd9;
+$qw-border-width: 1px;
