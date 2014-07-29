@@ -1,6 +1,4 @@
-@import "../settings";
-
-.qw-topbar {
+@mixin qw-topbar {
   position: fixed;
   left:0;
   min-width: 100%;
@@ -8,19 +6,16 @@
 }
 
 .qw-tb-1 {
-  @extend .qw-topbar;
+  @include qw-topbar;
   top: 0;
-  height: $qw-tb-1-h;
-  background: $qw-tb-1-bg;
-
-  // * {
-  //   max-height: $qw-tb-1-h;
-  // }
+  height: $qw-top-one-height;
+  background: $qw-top-one-bg;
+  border-bottom: $qw-border-width solid $qw-border-bg;
 }
 
 .qw-tb-2 {
-  @extend .qw-topbar;
-  top: $qw-tb-1-h;
-  height: $qw-tb-2-h;
-  background: $qw-tb-2-bg;
+  @include qw-topbar;
+  top: $qw-top-one-height;
+  height: $qw-top-two-height;
+  background: $qw-top-two-bg;
 }

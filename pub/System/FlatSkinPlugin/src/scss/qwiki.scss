@@ -1,14 +1,13 @@
-// variables, needs to be the fist import!
-@import "settings";
-
 @import "normalize";
+@import "fdn-vars";
+@import "qw-vars";
+
 @import "foundation";
 @import "font-awesome";
 
 @import "qwiki/layout";
 @import "qwiki/offcanvas";
 @import "qwiki/topbar";
-
 
 
 // ABBREVIATIONS

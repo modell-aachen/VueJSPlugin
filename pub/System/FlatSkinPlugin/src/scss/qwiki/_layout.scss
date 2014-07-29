@@ -1,30 +1,88 @@
-@import "../settings";
-
+// content container (main layout)
 .qw-page {
-  padding-top: $qw-page-pt;
-}
+  padding-top: $qw-top-height;
+  $row-width: 100%;
+  @include grid-row();
 
-.qw-row {
-  @extend .row;
-  min-width: 100%;
-
-  > .qw-col-l {
-    @extend .small-12;
-    @extend .medium-8;
-    @extend .large-offset-1;
-    @extend .columns;
+  > .qw-left {
+    @media #{$small-only} { @include grid-column( $total-columns ); }
+    @media #{$medium-up} { @include grid-column( $columns: 8 ); }
+    @media #{$large-up} { @include grid-column( $offset: 1 ); }
   }
 
-  > .qw-col-r {
-    @extend .large-3;
-    @extend .medium-4;
-    @extend .columns;
+  > .qw-right {
+    @media #{$small-only} { display: none; }
+    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true, $float:right ); }
+    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true, $float:right ); }
   }
 }
 
-.qw-cnt-l {
-  background: $qw-cnt-l-bg;
-  padding: $qw-cnt-l-p;
+@mixin qw-top {
+  $row-width: 100%;
+  @include grid-row();
+
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: 99;
 }
 
-.qw-cnt-r {}
+.qw-top-one {
+  @include qw-top();
+  background: $qw-top-one-bg;
+  min-height: $qw-top-one-height;
+
+  > .qw-menu {
+    @media #{$small-up} { @include grid-column( $columns: 1 ); }
+  }
+
+  > .qw-breadcrumbs {
+    @media #{$small-only} { @include grid-column( $columns: 10 ); }
+    @media #{$medium-up} { @include grid-column( $columns: 8 ); }
+  }
+
+  > .qw-search {
+    @media #{$small-only} { @include grid-column( $columns: 1, $last-column: true, $float:right ); }
+    @media #{$medium-up} { @include grid-column( $columns: 3, $last-column: true, $float:right ); }
+  }
+}
+
+.qw-top-two {
+  @include qw-top();
+  top: $qw-top-one-height;
+  background: $qw-top-two-bg;
+  min-height: $qw-top-two-height;
+  border-top: 1px solid $qw-border-bg;
+
+  $bw: 5px;
+
+  > .qw-context {
+    @media #{$small-only} { @include grid-column( $total-columns ); }
+    @media #{$medium-up} { @include grid-column( $columns: 8 ); }
+    @media #{$large-up} { @include grid-column( $offset: 1 ); }
+
+    > div {
+      border-bottom: $bw solid $secondary-color;
+      height: $bw + $qw-top-two-height;
+      padding-top: 17px;
+    }
+  }
+
+  > .qw-actions {
+    @media #{$small-only} { display: none; }
+    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true, $float:right ); }
+    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true, $float:right ); }
+
+    > div {
+      border-bottom: $bw solid $secondary-color;
+      height: $bw + $qw-top-two-height;
+      padding-top: 17px;
+    }
+  }
+}
+
+
+.context-info .qw-context > div { border-color: $primary-color; }
+.context-draft .qw-context > div { border-color: $alert-color; }
+.context-approved .qw-context > div { border-color: $success-color; }
+.context-edit .qw-context > div { border-color: $warning-color; }
