@@ -1,0 +1,58 @@
+[data-accordion] section {
+  > .heading {
+    text-transform: uppercase;
+    font-weight: bold;
+    background: darken($body-bg, 2.5%);
+    color: darken($body-bg, 25%);
+    display: block;
+    width: 100%;
+    padding: rem-calc(10 5);
+    cursor: pointer;
+
+    &:hover {
+      background: darken($body-bg, 10%);
+      color: darken($body-bg, 25%);
+    }
+
+    .fa {
+      &:first-child {
+        margin-right: 10px;
+      }
+
+      &:not(:first-child) {
+        margin-right: 10px;
+        float: right;
+      }
+    }
+  }
+
+  > ul {
+    transition: max-height 0.3s ease-in-out;
+    overflow-y: hidden;
+  }
+
+  &.active {
+    > .heading {
+      color: darken($body-bg, 50%);
+    }
+
+    > .heading > .fa:first-child {
+      @extend .fa-chevron-down;
+    }
+
+      > ul {
+      height: 100%;
+      max-height: 1000px;
+    }
+  }
+
+  &:not(.active) {
+    > .heading > .fa:first-child {
+      @extend .fa-chevron-right;
+    }
+
+    > ul {
+      max-height: 0;
+    }
+  }
+}
