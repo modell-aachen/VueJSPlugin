@@ -1,0 +1,25 @@
+ul.qw-weblist {
+  @include side-nav(
+    $divider-color: $qw-weblist-divider-color,
+    $font-size: $qw-weblist-font-size,
+    $link-color: $qw-weblist-link-color,
+    $link-color-hover: $qw-weblist-link-color-hover
+  );
+
+  padding: 0 0;
+  li {
+    margin: 0;
+
+    a:not(.button) {
+      padding: 0 0.875rem;
+    }
+  }
+
+  ul.qw-weblist {
+    padding-left: $qw-weblist-intend;
+
+    > li > a {
+      padding-left: $qw-weblist-intend;
+    }
+  }
+}

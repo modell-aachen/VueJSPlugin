@@ -1,0 +1,85 @@
+.nav.ma-breadcrumb {
+  list-style: none;
+  overflow: hidden;
+
+  > li {
+    float: left;
+
+
+    &:first-child {
+      border-left: 1px solid $qw-border-bg;
+
+      a {
+        padding-left: 20px !important;
+        padding-right: 10px !important;
+      }
+    }
+
+    &:last-child {
+      a {
+        background: transparent !important;
+        color: $qw-breadcrumb-color;
+        cursor: default;
+        pointer-events: none;
+
+        &:after {
+          border-left: 30px solid transparent;
+        }
+
+        &:before {
+          border-left: 30px solid transparent;
+        }
+      }
+    }
+
+    > a {
+      color: $qw-breadcrumb-color;
+      height: $qw-top-one-height - 1px;
+      text-decoration: none;
+      padding: 5px 10px 5px 30px;
+      background: $qw-content-bg;
+      position: relative;
+      display: block;
+      float: left;
+
+      &:after {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 18px solid transparent;
+        border-bottom: 18px solid transparent;
+        border-left: 15px solid $qw-content-bg;
+        position: absolute;
+        top: 50%;
+        margin-top: -18px;
+        left: 100%;
+        z-index: 2;
+      }
+
+      &:before {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 18px solid transparent;
+        border-bottom: 18px solid transparent;
+        border-left: 15px solid $qw-border-bg;
+        position: absolute;
+        top: 50%;
+        margin-top: -18px;
+        margin-left: 1px;
+        left: 100%;
+        z-index: 1;
+      }
+
+      &:hover {
+        background: $qw-breadcrumb-hover-color !important;
+
+        &:after {
+          border-left-color: $qw-breadcrumb-hover-color !important;
+        }
+      }
+    }
+  }
+}
