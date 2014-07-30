@@ -1,24 +1,31 @@
+// force 12 columns, full width rows
+$total-columns: 12;
+$row-width: 100%;
+
 // content container (main layout)
 .qw-page {
-  padding-top: $qw-top-height;
-  $row-width: 100%;
   @include grid-row();
+  padding: $qw-top-height 0;
 
   > .qw-left {
-    @media #{$small-only} { @include grid-column( $total-columns ); }
+    @media #{$small-only} { @include grid-column( $columns: $total-columns ); }
     @media #{$medium-up} { @include grid-column( $columns: 8 ); }
     @media #{$large-up} { @include grid-column( $offset: 1 ); }
+
+    > .content {
+      background: $qw-content-bg;
+      padding: $qw-content-padding;
+    }
   }
 
   > .qw-right {
     @media #{$small-only} { display: none; }
-    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true, $float:right ); }
-    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true, $float:right ); }
+    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true, $float: right ); }
+    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true, $float: right ); }
   }
 }
 
 @mixin qw-top {
-  $row-width: 100%;
   @include grid-row();
 
   position: fixed;
@@ -31,19 +38,21 @@
   @include qw-top();
   background: $qw-top-one-bg;
   min-height: $qw-top-one-height;
+  max-height: $qw-top-one-height;
+  border-bottom: 1px solid $qw-border-bg;
 
   > .qw-menu {
     @media #{$small-up} { @include grid-column( $columns: 1 ); }
   }
 
   > .qw-breadcrumbs {
-    @media #{$small-only} { @include grid-column( $columns: 10 ); }
+    @media #{$small-only} { display: none; }
     @media #{$medium-up} { @include grid-column( $columns: 8 ); }
   }
 
   > .qw-search {
-    @media #{$small-only} { @include grid-column( $columns: 1, $last-column: true, $float:right ); }
-    @media #{$medium-up} { @include grid-column( $columns: 3, $last-column: true, $float:right ); }
+    @media #{$small-only} { @include grid-column( $columns: 1, $offset: 10, $last-column: true, $float: right ); }
+    @media #{$medium-up} { @include grid-column( $columns: 3, $last-column: true, $float: right ); }
   }
 }
 
@@ -52,37 +61,45 @@
   top: $qw-top-one-height;
   background: $qw-top-two-bg;
   min-height: $qw-top-two-height;
-  border-top: 1px solid $qw-border-bg;
+  max-height: $qw-top-two-height;
 
-  $bw: 5px;
-
+  // left side containing tabs + topic interaction buttons
   > .qw-context {
-    @media #{$small-only} { @include grid-column( $total-columns ); }
+    @media #{$small-only} { @include grid-column( $columns: $total-columns ); }
     @media #{$medium-up} { @include grid-column( $columns: 8 ); }
     @media #{$large-up} { @include grid-column( $offset: 1 ); }
 
-    > div {
-      border-bottom: $bw solid $secondary-color;
-      height: $bw + $qw-top-two-height;
-      padding-top: 17px;
+    > .content {
+      border-bottom: $qw-context-border-width solid $secondary-color;
+      height: $qw-context-border-width + $qw-top-two-height;
+      padding-top: $qw-top-two-height - 33px;
+
+      > * {
+        max-height: 33px;
+      }
+
+      .qw-ctx-button {
+        @extend .button;
+        @extend .tiny;
+      }
     }
   }
 
+  // right side, containing cip, comments, history etc.
   > .qw-actions {
     @media #{$small-only} { display: none; }
-    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true, $float:right ); }
-    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true, $float:right ); }
+    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true, $float: right ); }
+    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true, $float: right ); }
 
-    > div {
-      border-bottom: $bw solid $secondary-color;
-      height: $bw + $qw-top-two-height;
+    > .content {
+      border-bottom: $qw-context-border-width solid $secondary-color;
+      height: $qw-context-border-width + $qw-top-two-height;
       padding-top: 17px;
     }
   }
 }
 
-
-.context-info .qw-context > div { border-color: $primary-color; }
-.context-draft .qw-context > div { border-color: $alert-color; }
-.context-approved .qw-context > div { border-color: $success-color; }
-.context-edit .qw-context > div { border-color: $warning-color; }
+.context-info .qw-context > .content { border-color: $primary-color; }
+.context-draft .qw-context > .content { border-color: $alert-color; }
+.context-approved .qw-context > .content { border-color: $success-color; }
+.context-edit .qw-context > .content { border-color: $warning-color; }

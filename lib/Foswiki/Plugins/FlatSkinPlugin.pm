@@ -37,6 +37,7 @@ sub initPlugin {
   }
 
   Foswiki::Func::registerTagHandler( 'MAREGISTER', \&_handleREGISTER );
+  Foswiki::Func::registerTagHandler( 'MAWEBLIST', \&_handleWEBLIST );
 
   # inject scripts and styles
   _zoneConfig();
@@ -105,6 +106,25 @@ PACE
 <script src="$path/js/offline$min.js$VERSIONQUERY"></script>
 OFFLINE
   }
+}
+
+sub _handleWEBLIST {
+  my( $session, $params, $topic, $web, $topicObject ) = @_;
+
+  my @webs = split( '/', $web );
+  my @retval = ();
+  foreach (@webs) {
+    my $parent = $_;
+    my $pos = index( $web, "/$_" );
+    if ( $pos ne -1 ) {
+      $parent = substr( $web, 0, $pos ) . "/$_";
+    }
+
+    my $entry = "<li><a href=\"%SCRIPTURLPATH{\"view\"}%/$parent/%HOMETOPIC%\">%MAKETEXT{\"[_1]\" args=\"<nop>$_\"}%</a></li>";
+    push( @retval, $entry );
+  }
+
+  return join( '', @retval );
 }
 
 

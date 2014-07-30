@@ -6,8 +6,8 @@
 
     // CSS classes which are used to move the target container off canvas
     classes: {
-      left: 'qw-ocvs-l',
-      right: 'qw-ocvs-r'
+      left: 'qw-offcanvas-left',
+      right: 'qw-offcanbas-right'
     },
 
     // Attributes used within markup

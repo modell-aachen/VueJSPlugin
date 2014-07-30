@@ -223,10 +223,12 @@ module.exports = function(grunt) {
           '<%= pkg.pubDir %>/js/modernizr.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
           '<%= pkg.pubDir %>/js/pace.js': ['<%= pkg.bower %>/pace/pace.js'],
           '<%= pkg.pubDir %>/js/foundation.js': (fdnScriptFiles()),
+
           '<%= pkg.pubDir %>/js/qwiki.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
-            '<%= pkg.pubDir %>/src/js/*/*.js'
+            '<%= pkg.pubDir %>/src/js/qwiki/core.js',
+            '<%= pkg.pubDir %>/src/js/qwiki/!(core).js'
           ]
         }
       },
@@ -241,10 +243,12 @@ module.exports = function(grunt) {
           '<%= pkg.pubDir %>/js/modernizr.min.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
           '<%= pkg.pubDir %>/js/pace.min.js': ['<%= pkg.bower %>/pace/pace.js'],
           '<%= pkg.pubDir %>/js/foundation.min.js': (fdnScriptFiles()),
+
           '<%= pkg.pubDir %>/js/qwiki.min.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
-            '<%= pkg.pubDir %>/src/js/*/*.js'
+            '<%= pkg.pubDir %>/src/js/qwiki/core.js',
+            '<%= pkg.pubDir %>/src/js/qwiki/!(core).js'
           ],
         }]
       }

@@ -51,51 +51,120 @@
 %TMPL:DEF{"body:end"}%</div>
 %TMPL:P{"leftbar"}%
 <script>
-  $(document).foundation().qwiki();
+  $(document).qwiki();
 </script>
 </body>%TMPL:END%
 
 %TMPL:DEF{"body:content"}%
-<div class="qw-left">
-  <div class="qw-content">%TMPL:P{"content"}%</div>
-</div>
-<div class="qw-right">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quibusdam nisi modi at, vitae aperiam rem illo voluptates eum voluptate doloremque exercitationem distinctio assumenda maiores harum delectus error eveniet saepe ab numquam asperiores quae provident aspernatur? Porro ullam vitae repudiandae fuga adipisci fugiat voluptate temporibus, reiciendis corporis similique maiores ex eveniet quisquam, illo est ut molestias odio sequi excepturi delectus nesciunt eius iure error. Asperiores, at est, inventore odio aut molestiae. Error autem sed possimus sapiente recusandae cupiditate eius iusto vel exercitationem, sunt inventore consequatur, obcaecati fugiat vero assumenda, modi vitae iste molestias cum tenetur esse sint nihil, velit. Porro, iusto unde voluptatem. Eligendi tempora et praesentium quidem repellat, nulla neque dolores iure molestias nostrum. Rerum fuga ipsa maxime officia, nihil laudantium consectetur accusamus, alias distinctio impedit repellat suscipit natus molestiae maiores dolor molestias dolore? Eligendi id omnis impedit nisi harum fuga ratione aperiam quasi accusantium illo. Consequuntur similique alias quas obcaecati. Culpa libero dicta vitae suscipit, sunt quaerat perferendis, quis et eos id sit modi! Neque quibusdam sed illum voluptatem earum, nobis doloribus officia corporis quidem qui ad aut, numquam reprehenderit beatae quas perferendis. Deserunt, harum possimus corporis quia dolore nobis quidem suscipit modi doloribus reiciendis odio animi laudantium!</p>
-</div>
+<section class="qw-left">
+  <article class="content">%TMPL:P{"content"}%</article>
+</section>
+<section class="qw-right">
+<dl class="accordion" data-accordion>
+  <dd class="accordion-navigation">
+    <a href="#panel1">Accordion 1</a>
+    <div id="panel1" class="content active">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus totam ad itaque veritatis a non et aliquam eaque impedit tenetur reprehenderit, beatae accusamus assumenda commodi? Ullam cumque pariatur, qui dolorum mollitia odit facilis provident tempora autem, facere consectetur dolore nostrum, harum doloremque voluptatum a quaerat amet ad voluptatibus soluta quos at veritatis reprehenderit? Doloremque cumque tenetur neque nemo culpa dicta suscipit labore, ex iste, sunt quae libero est porro ipsam totam earum nihil. Quaerat distinctio vel nemo nostrum, a ad modi ullam libero tempora autem tenetur similique quidem laborum facilis quo facere! Ad aliquid odio explicabo et consequatur iste sapiente.
+    </div>
+  </dd>
+  <dd class="accordion-navigation">
+    <a href="#panel2">Accordion 2</a>
+    <div id="panel2" class="content">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur repudiandae similique, nostrum sunt itaque iste atque quisquam libero rerum ab accusamus unde necessitatibus minus adipisci laboriosam aut aliquid neque, praesentium, ducimus expedita. Ex voluptatibus voluptatum suscipit nemo iure deleniti expedita tempore amet. Nulla ipsum ab repellendus. Nemo modi numquam quam voluptas minus ad voluptatem blanditiis quisquam eaque esse exercitationem, aperiam voluptates a impedit sed laborum, dicta, minima necessitatibus libero aut rem mollitia ea eos maiores. Sequi repudiandae architecto ipsa, libero, ea voluptatum eum maiores rerum aperiam adipisci itaque nam tempora saepe a optio similique enim dolore perferendis cumque quas soluta.
+    </div>
+  </dd>
+  <dd class="accordion-navigation">
+    <a href="#panel3">Accordion 3</a>
+    <div id="panel3" class="content">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, possimus, numquam. Quibusdam numquam perspiciatis esse nesciunt aliquam, unde, optio, tempore nemo, necessitatibus placeat cum! Fugiat animi earum deserunt, voluptates officiis corporis quisquam possimus dolores dolorum, iste ratione non veritatis ad assumenda quod debitis placeat et iusto, suscipit nulla inventore voluptatem esse nemo praesentium? Molestias quae cupiditate, adipisci, praesentium, et iure voluptatibus, impedit sunt vero pariatur dolores sapiente maiores eaque cum temporibus suscipit dicta animi quod deserunt voluptas iusto. Dignissimos officia magnam obcaecati, dolorum, rerum iure inventore perferendis, sunt sed sapiente quos. Aperiam neque veniam amet repellat rerum quia officiis incidunt!
+    </div>
+  </dd>
+</dl>
+</section>
 %TMPL:END%
 
 %TMPL:DEF{"topbar"}%%TMPL:P{"topbar:one"}%%TMPL:P{"topbar:two"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:one"}%
-<div class="qw-top-one">
+<nav class="qw-top-one">
   <div class="qw-menu">
-    <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
+    <a href="#" class="button tiny alert" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
   </div>
-  <div class="qw-breadcrumbs"></div>
+  <div class="qw-breadcrumbs">
+    %TMPL:P{"breadcrumb"}%
+  </div>
   <div class="qw-search">
-    <a href="#" class="button tiny right" data-offcanvas-toggle data-right data-target="#bar">TR</a>
+    <form>
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <input type="text" placeholder="%MAKETEXT{"Search"}%" style="height: 34px" data-offcanvas-toggle data-right data-target="#bar">
+        </div>
+        <div class="small-2 columns">
+          <a href="#" class="button tiny postfix" style="height: 33px"><i class="fa fa-search"></i></a>
+        </div>
+      </div>
+    </form>
   </div>
-</div>
+</nav>
 %TMPL:END%
 
 %TMPL:DEF{"topbar:two"}%
-<div class="qw-top-two follows-canvas">
+<nav class="qw-top-two follows-canvas">
   <div class="qw-context">
-    <div>
+    <div class="content">
+      <a href="#" class="button tiny secondary success" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
       <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
-      <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
-      <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-leftbar">%MAKETEXT{"Menu"}%</a>
+      <ul class="button-group right">
+        <li><a href="#" class="qw-ctx-button secondary"><i class="fa fa-bookmark-o"></i></a></li>
+        <li><a href="#" class="qw-ctx-button secondary"><i class="fa fa-print"></i></a></li>
+        <li><a href="#" class="qw-ctx-button secondary"><i class="fa fa-cog"></i></a></li>
+        <li>
+          <a href="#" data-dropdown="drop1" class="qw-ctx-button secondary dropdown">
+            <i class="fa fa-flag show-for-small-only"></i>
+            <span class="show-for-medium-up">deutsch</span>
+          </a>
+        </li>
+        <ul id="drop1" data-dropdown-content class="f-dropdown">
+          <li><a href="#">lang 1</a></li>
+          <li><a href="#">lang 2</a></li>
+          <li><a href="#">lang 3</a></li>
+        </ul>
+      </ul>
     </div>
   </div>
   <div class="qw-actions">
-    <div></div>
+    <div class="content">
+    </div>
   </div>
-</div>
+</nav>
 %TMPL:END%
 
 
 %TMPL:DEF{"leftbar"}%
-<div id="qw-leftbar" class="qw-ocvs-tgt-l">
-  %IF{"istopic 'WebLeftBar'" then="$percntINCLUDE{$quot%WEB%.WebLeftBar$quot}$percnt" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%.WebLeftBarDefault'" then="$dollarpercntINCLUDE{$dollarquot%CUSTOMIZINGWEB{default="Custom"}%.WebLeftBarDefault$dollarquot}$dollarpercnt" else="$dollarpercntINCLUDE{$dollarquot%SYSTEMWEB%.WebLeftBarDefault$dollarquot}$dollarpercnt"}%"}%
+<div id="qw-leftbar" class="qw-offcanvas-target-left" data-accordion>
+  <section>
+    <span class="heading"><i class="fa"></i>%MAKETEXT{"Webs"}%<i class="fa fa-sitemap"></i></span>
+    %INCLUDE{"System.QWikiWebListDefault"}%
+  </section>
+  <section>
+    <span class="heading"><i class="fa"></i>%MAKETEXT{"Webs"}%<i class="fa fa-cog"></i></span>
+    %INCLUDE{"System.QWikiWebListDefault"}%
+  </section>
+  <section>
+    <span class="heading"><i class="fa"></i>%MAKETEXT{"Webs"}%<i class="fa fa-pencil"></i></span>
+    %INCLUDE{"System.QWikiWebListDefault"}%
+  </section>
 </div>
 %TMPL:END%
+
+%TMPL:DEF{"breadcrumb"}%%{
+}%<ul class="nav navbar-nav ma-breadcrumb ">%{
+  }%%TMPL:P{"breadcrumb:home"}%%{
+  }%%TMPL:P{"breadcrumb:parentwebs"}%%{
+  }%%TMPL:P{"breadcrumb:parenttopics"}%%{
+  }%%TMPL:P{"breadcrumb:topic"}%%{
+}%</ul>%TMPL:END%
+%TMPL:DEF{"breadcrumb:home"}%<li>[[%USERSWEB%.%HOMETOPIC%][<i class="fa fa-sitemap fa-lg"></i>]]</li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
+%TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li>" separator="" suffix="</li>"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li>[[%TOPIC%][%TOPIC%]]</li>" else=" "}%%TMPL:END%

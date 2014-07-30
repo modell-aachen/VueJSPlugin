@@ -4,38 +4,38 @@
 }
 
 // ToDo: not-selector requires IE9+
-:not(.qw-ocvs-l) .follows-canvas {
+:not(.qw-offcanvas-left) .follows-canvas {
   margin-left: 0;
 }
 
-:not(.qw-ocvs-l) .follows-canvas {
+:not(.qw-offcanvas-left) .follows-canvas {
   margin-left: 0;
   margin-right: 0;
 }
 
-.qw-ocvs-l,
-.qw-ocvs-r {
+.qw-offcanvas-left,
+.qw-offcanvas-right {
   overflow-x: hidden !important;
 }
 
-.qw-ocvs-l .follows-canvas {
-  margin-left: $qw-ocvs-l-w;
+.qw-offcanvas-left .follows-canvas {
+  margin-left: $qw-offcanvas-left-width;
   @media #{$large-up} {
     margin-left: 100px;
   }
 }
 
-.qw-ocvs-r .follows-canvas {
-  margin-left: -1 * $qw-ocvs-l-w;
-  margin-right: $qw-ocvs-r-w;
+.qw-offcanvas-right .follows-canvas {
+  margin-left: -1 * $qw-offcanvas-left-width;
+  margin-right: $qw-offcanvas-right-width;
 }
 
-.qw-ocvs-tgt-l {
+.qw-offcanvas-target-left {
   position: fixed;
-  left: -1 * $qw-ocvs-l-w;
+  left: -1 * $qw-offcanvas-left-width;
   top: $qw-top-one-height;
   bottom: 0;
-  width: $qw-ocvs-l-w;
+  width: $qw-offcanvas-left-width;
   overflow-y: auto;
   z-index: 100;
   background: $body-bg;

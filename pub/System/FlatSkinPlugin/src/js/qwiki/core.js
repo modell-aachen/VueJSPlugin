@@ -4,10 +4,12 @@
   window.QWiki = {
     name: 'qwiki',
     plugins: {},
+    options: {},
     version: '1.0.0', // ToDo. replace by git?
     global: {
       debug: 0,
       namespace: 'qw',
+      priority: 0,
       scope: document,
       Q: undefined
     },
@@ -21,20 +23,71 @@
       this.global.Q = this;
 
       // Merge options but prioritize those which are passed inline.
-      var opts = typeof window.QWikiOptions === 'object' ? window.QWikiOptions : {};
-      $.extend( opts, options );
+      if ( typeof options === 'object' ) {
+        _.extend( this.options, options );
+      }
 
-      // Initialize each plugin.
+      // Collect plugins
+      var plugins = [];
       for ( var name in this.plugins ) {
         var plugin = this.plugins[name];
         if ( typeof plugin.name !== 'string' ) {
           plugin.name = name;
         }
 
-        this.registerPlugin( plugin, opts[name] );
+        plugins.push( plugin );
       }
 
+      // Sort plugins by priority, then initialize them
+      var sorted = _.sortBy( plugins, 'priority' ).reverse();
+      for( var i in sorted ) {
+        this.registerPlugin( sorted[i], this.options[sorted[i].name] );
+      }
+
+      // Intialize Foundation if we're in document scope
+      if ( scope === document && typeof window.Foundation === 'object' ) {
+        $(scope).foundation();
+      }
+
+      // delegate back to caller
       return scope;
+    },
+
+    debug: function() {
+      if ( !this.global.debug ) {
+        return;
+      }
+
+      this.log.apply( arguments );
+    },
+
+    error: function() {
+      if ( console && console.error ) {
+        var args = [].slice.apply( arguments );
+        for( var i in args ) {
+          console.error( args[i] );
+        }
+      }
+    },
+
+    extend: function( source ) {
+      if ( typeof source !== 'object' ) {
+        this.error( 'Invalid source.' );
+        return;
+      }
+
+      var blacklist = _.keys( this ).concat( _.keys( this.global ) );
+      var src = _.omit( source, blacklist );
+      _.extend( this, src );
+    },
+
+    log: function() {
+      if ( console && console.log ) {
+        var args = [].slice.apply( arguments );
+        for( var i in args ) {
+          console.log( args[i] );
+        }
+      }
     },
 
     raiseEvent: function( callee, caller, evt, params ) {
@@ -49,21 +102,21 @@
 
     registerPlugin: function( plugin, options ) {
       if ( typeof plugin !== 'object' ) {
-        console.error( 'Invalid plugin type: ' + typeof plugin );
+        this.error( 'Invalid plugin type: ' + typeof plugin );
         return undefined;
       }
 
-      if ( typeof plugin.name !== 'string' ) {
-        console.error( 'Invalid or missing property "name"' );
+      if ( !_.isString( plugin.name ) ) {
+        this.error( 'Invalid or missing property "name"' );
         return undefined;
       }
 
-      if ( typeof plugin.init !== 'function' ) {
-        console.error( 'Missing init function for plugin: ' + plugin.name );
+      if ( !_.isFunction( plugin.init ) ) {
+        this.error( 'Missing init function for plugin: ' + plugin.name );
         return undefined;
       }
 
-      $.extend( plugin, this.global );
+      _.extend( plugin, this.global );
       return plugin.init( options );
     }
   };
