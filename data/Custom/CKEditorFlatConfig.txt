@@ -1,0 +1,75 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1379602373" format="1.1" reprev="9" version="9"}%
+
+---++ Configuration
+<verbatim class="js">
+%STARTSECTION{"CKE_CONFIG_MAIN"}%
+wikitoolname: '%WIKITOOLNAME%',
+skin: 'moono-dark',
+toolbar: 'MA',
+allowedContent: true,
+resize_enabled: false,
+toolbarCanCollapse: false,
+enterMode: CKEDITOR.ENTER_P,
+shiftEnterMode: CKEDITOR.ENTER_BR,
+extraPlugins: 'qwikisave,autogrow,divarea,link,magicline,qwikiautosuggest,qwikifilebrowser,qwiki,qwikitabletools,qwikitable,qwikiprovis,qwikitableresize',
+removePlugins: 'autosave,filebrowser,table,tabletools,wordcount,qwikitoolbar,elementspath,save',
+removeFormatTags: 'b,big,code,del,dfn,em,font,i,ins,kbd,q,s,samp,small,span,strike,strong,sub,sup,tt,u,var,h1,h2,h3,h4,h5,h6,ol,ul,dl,li,dd,dt,pre,xmp',
+removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign',
+language: '%LANGUAGE%',
+forcePasteAsPlainText: false,
+filebrowserUploadUrl: '/bin/rest/WysiwygPlugin/upload?noredirect',
+linkShowAdvancedTab: false,
+linkShowTargetTab: false,
+contentsCss: [ '/pub/System/CKEditorPlugin/styles/cke_qwiki.css'],
+toolbar_MA: [
+    { name: '', items: [ 'ma-save', 'ma-cancel' ] },
+    { name: '', items: [ 'Undo', 'Redo' ] },
+    { name: '', items: [ 'Bold','Italic','Underline' ] },
+    { name: '', items: [ 'Link','Unlink' ] },
+    { name: '', items: [ 'NumberedList','BulletedList', 'Outdent','Indent' ] },
+    { name: '', items: [ 'QwikiProvis', 'QwikiAttach', 'Image', 'QwikiTable', 'Code', 'Document' ] },
+    { name: '', items: [ 'Source' ] },
+],
+%ENDSECTION{"CKE_CONFIG_MAIN"}%
+</verbatim>
+
+
+
+<verbatim class="js">
+%STARTSECTION{"CKE_CONFIG_FORMFIELD"}%
+uiColor: '#f0f0f0',
+skin: 'moono',
+toolbar: 'FORMFIELD',
+height: 125,
+width: 450,
+allowedContent: true,
+resize_enabled: true,
+toolbarCanCollapse: false,
+enterMode: CKEDITOR.ENTER_P,
+shiftEnterMode: CKEDITOR.ENTER_BR,
+extraPlugins: 'divarea,link,qwiki,qwikiautosuggest,qwikifilebrowser',
+removePlugins: 'autosave,filebrowser,table,tabletools,wordcount,magicline,qwikisave,qwikitable,qwikitabletools,qwikitoolbar,elementspath',
+language: '%LANGUAGE%',
+forcePasteAsPlainText: false,
+filebrowserUploadUrl: '/bin/rest/WysiwygPlugin/upload?noredirect',
+linkShowAdvancedTab: false,
+linkShowTargetTab: false,
+contentsCss: [ '/pub/System/CKEditorPlugin/styles/cke_qwiki.css'],
+toolbar_FORMFIELD: [
+    { name: '', items: [ 'Undo', 'Redo' ] },
+    { name: '', items: [ 'Link','Unlink' ] },
+    { name: '', items: [ 'Bold','Italic','Underline' ] },
+    { name: '', items: [ 'NumberedList','BulletedList' ] }
+]
+%ENDSECTION{"CKE_CONFIG_FORMFIELD"}%
+</verbatim>
+
+---++ Info
+
+|  Author: | SvenMeyer |
+|  Copyright: | 2014, Modell Aachen GmbH, All Rights Reserved |
+|  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
+|  Dependencies: | %$DEPENDENCIES% |
+|  Version: | %$VERSION% |
+|  Release: | %$RELEASE% |
+|  Change&nbsp;History: | <!-- versions below in reverse order --> |

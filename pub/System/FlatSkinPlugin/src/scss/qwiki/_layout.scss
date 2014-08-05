@@ -1,7 +1,3 @@
-// force 12 columns, full width rows
-$total-columns: 12;
-$row-width: 100%;
-
 // content container (main layout)
 .qw-page {
   @include grid-row();
@@ -20,8 +16,8 @@ $row-width: 100%;
 
   > .qw-right {
     @media #{$small-only} { display: none; }
-    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true, $float: right ); }
-    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true, $float: right ); }
+    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true ); }
+    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true ); }
   }
 }
 
@@ -41,18 +37,50 @@ $row-width: 100%;
   max-height: $qw-top-one-height;
   border-bottom: 1px solid $qw-border-bg;
 
+  .button {
+    background: transparent;
+    color: $qw-top-one-fg;
+    max-height: $qw-top-one-height;
+    font-size: 1rem;
+  }
+
   > .qw-menu {
     @media #{$small-up} { @include grid-column( $columns: 1 ); }
+    @media #{$medium-up} {
+      margin-left: $column-gutter/2;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      border-right: 1px solid $qw-border-bg;
+    }
+
+    max-height: $qw-top-one-height;
+    transition-property: width;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    @media #{$large-up} {
+      transition-duration: 0.15s;
+    }
   }
 
   > .qw-breadcrumbs {
     @media #{$small-only} { display: none; }
-    @media #{$medium-up} { @include grid-column( $columns: 8 ); }
+    @media #{$medium-only} { @include grid-column( $columns: 7 ); }
+    @media #{$large-up} { @include grid-column( $columns: 8 ); }
+
+    @media #{$medium-up} {
+      padding-left: 0 !important;
+      margin-right: -1 * $column-gutter/2;
+
+      ul {
+        margin-left: 0;
+      }
+    }
   }
 
   > .qw-search {
-    @media #{$small-only} { @include grid-column( $columns: 1, $offset: 10, $last-column: true, $float: right ); }
-    @media #{$medium-up} { @include grid-column( $columns: 3, $last-column: true, $float: right ); }
+    @media #{$small-only} { @include grid-column( $columns: 1, $offset: 10, $last-column: true ); }
+    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true ); }
+    @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true ); }
   }
 }
 

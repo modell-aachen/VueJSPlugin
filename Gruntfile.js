@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     reveal: 1,
     slider: 1,
     tab: 1,
-    tooltop: 1,
+    tooltip: 1,
     topbar: 1
   };
 

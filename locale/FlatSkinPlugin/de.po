@@ -1,0 +1,7 @@
+#: login.flat.tmpl
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: login.flat.tmpl
+msgid "Sign in to %1"
+msgstr "An %1 anmelden"

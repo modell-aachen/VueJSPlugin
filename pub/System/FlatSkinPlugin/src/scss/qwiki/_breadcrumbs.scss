@@ -1,4 +1,4 @@
-.nav.ma-breadcrumb {
+.nav.qw-breadcrumb {
   list-style: none;
   overflow: hidden;
 
@@ -7,7 +7,7 @@
 
 
     &:first-child {
-      border-left: 1px solid $qw-border-bg;
+      border-left: none;
 
       a {
         padding-left: 20px !important;

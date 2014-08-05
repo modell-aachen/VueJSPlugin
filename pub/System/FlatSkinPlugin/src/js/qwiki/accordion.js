@@ -3,7 +3,7 @@
 
   QWiki.plugins.accordion = {
     name: 'accordion',
-    autoclose: 1,
+    autoclose: 0,
 
     init: function( options ) {
       if ( typeof options === 'object' ) {

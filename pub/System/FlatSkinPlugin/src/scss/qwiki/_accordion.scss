@@ -2,7 +2,6 @@
   > .heading {
     text-transform: uppercase;
     font-weight: bold;
-    background: darken($body-bg, 2.5%);
     color: darken($body-bg, 25%);
     display: block;
     width: 100%;
@@ -14,21 +13,45 @@
       color: darken($body-bg, 25%);
     }
 
-    .fa {
-      &:first-child {
-        margin-right: 10px;
-      }
-
-      &:not(:first-child) {
-        margin-right: 10px;
-        float: right;
-      }
+    .adorner {
+      @extend .fa;
+      @extend .right;
+      padding-right: rem-calc(14);
     }
+
+  }
+
+  &:first-child {
+      margin-top: 5px + $qw-top-two-height;
+      border-top: 1px solid $qw-border-bg;
   }
 
   > ul {
+    @include side-nav(
+      $divider-color: $qw-weblist-divider-color,
+      $font-size: $qw-weblist-font-size,
+      $link-color: $qw-weblist-link-color,
+      $link-color-hover: $qw-weblist-link-color-hover
+    );
+
     transition: max-height 0.3s ease-in-out;
     overflow-y: hidden;
+    padding: 0 0;
+
+    li {
+      margin: 0;
+      list-style: none;
+      a:not(.button) {
+        padding: 0.25rem 0.875rem;
+      }
+    }
+
+    ul {
+      padding-left: 0;
+      > li > a {
+        padding-left: 0;
+      }
+    }
   }
 
   &.active {
@@ -36,7 +59,7 @@
       color: darken($body-bg, 50%);
     }
 
-    > .heading > .fa:first-child {
+    > .heading > .adorner {
       @extend .fa-chevron-down;
     }
 
@@ -47,8 +70,8 @@
   }
 
   &:not(.active) {
-    > .heading > .fa:first-child {
-      @extend .fa-chevron-right;
+    > .heading > .adorner {
+      @extend .fa-chevron-left;
     }
 
     > ul {

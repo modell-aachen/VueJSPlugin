@@ -1,0 +1,45 @@
+@mixin login-layout {
+  @media #{$small-only} { @include grid-column( $offset: 1, $columns: 10 ); }
+  @media #{$medium-up} { @include grid-column( $offset: 3, $columns: 6 ); }
+  @media #{$large-up} { @include grid-column( $offset: 4, $columns: 4 ); }
+}
+
+.qw-login-page {
+  padding: $qw-top-height 0;
+
+  > .qw-login-framgment {
+    @include grid-row();
+
+    > .qw-form {
+      @include login-layout();
+
+      border-top: 5px solid $success-color;
+      background: $qw-content-bg;
+      box-shadow: 2px 0 10px $success-color;
+
+      .content {
+        padding: rem-calc(30 20 10 20);
+      }
+
+    }
+
+    > .qw-errors {
+      @include login-layout();
+      padding: rem-calc(30 0 0 0) !important;
+    }
+  }
+
+  .qw-top-two > .header {
+    @include login-layout();
+
+    background: transparent;
+    height: $qw-top-two-height;
+    padding-left: 0 !important;
+
+    > * {
+      max-height: 33px;
+      margin-top: $qw-top-two-height - 33px;
+      box-shadow: 1px 0 10px $success-color;
+    }
+  }
+}

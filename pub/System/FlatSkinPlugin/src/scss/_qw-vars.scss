@@ -1,6 +1,10 @@
 @import "foundation/functions";
 @import "fdn-vars";
 
+// grid properties
+$total-columns: 12;
+$row-width: 100%;
+
 // colors
 $qw-content-bg: #fff;
 $qw-content-padding: rem-calc(30);
@@ -9,23 +13,23 @@ $qw-content-padding: rem-calc(30);
 $qw-breadcrumb-color: #7b7b7b;
 $qw-breadcrumb-hover-color: #f2f2f2;
 
-$qw-top-one-height: 34px;
+$qw-top-one-height: 40px;
 $qw-top-two-height: 70px;
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
 $qw-top-one-bg: $qw-content-bg;
+$qw-top-one-fg: #555;
 $qw-top-two-bg: $body-bg;
 
 
 
 // offcanvas
 $qw-offcanvas-left-width: 250px;
-$qw-offcanvas-right-width: 250px;
-
 
 // pace
 $qw-pace-bg: #29d;
 $qw-pace-h: 2px;
-$qw-pace-t: $qw-top-one-height;
+// $qw-pace-t: $qw-top-one-height;
+$qw-pace-t: 0;
 
 // borders
 $qw-border-bg: #dbdbd9;
@@ -38,7 +42,7 @@ $qw-context-border-width: 5px;
 
 // weblist
 $qw-weblist-divider-color: #333;
-$qw-weblist-font-size: 1rem;
+$qw-weblist-font-size: 0.8rem;
 $qw-weblist-link-color: $primary-color;
 $qw-weblist-link-color-hover: darken($qw-weblist-link-color, 30%);
 $qw-weblist-intend: rem-calc(15);
