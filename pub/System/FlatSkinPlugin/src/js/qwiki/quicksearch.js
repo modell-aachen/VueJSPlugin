@@ -8,8 +8,7 @@
       if ( typeof options === 'object' ) {
         $.extend( this, options );
       }
-var scripts = document.getElementsByTagName("script");
-console.log(scripts);
+
       this.bind();
     },
 
@@ -57,9 +56,11 @@ console.log(scripts);
     toggleAutocomplete( input );
 
     // call solr
-    $.get( '/bin/rest/SolrPlugin/search?rows=5&q=' + query, function( data ) { 
+    var f = self.Q.foswiki;
+    var url = f.SCRIPTURLPATH + '/rest' + f.SCRIPTSUFFIX + '/SolrPlugin/search?rows=5&q=';
+    $.get( url + query, function( data ) {
       results.removeClass('searching');
-      
+
       if ( data.response.numFound === 0 ) {
         var noResults = tmplNoResults();
         $(noResults).appendTo( results );
