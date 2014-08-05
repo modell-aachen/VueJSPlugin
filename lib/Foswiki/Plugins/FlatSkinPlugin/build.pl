@@ -65,9 +65,9 @@ sub _installDeps {
   my $this = shift;
   my $type = shift;
 
-  my $pdir = "pub/System/$plugin";
-  my $pub = "$this->{basedir}/$pdir";
-  $this->pushd( $pub );
+  # my $pdir = "pub/System/$plugin";
+  # my $pub = "$this->{basedir}/$pdir";
+  # $this->pushd( $pub );
 
   local $| = 1;
   print "Fetching dependencies:\n";
@@ -82,7 +82,7 @@ sub _installDeps {
   print "Building...\n";
   print $this->sys_action( qw(grunt build), "--target=$type" ) . "\n";
 
-  $this->popd;
+  # $this->popd;
 }
 
 sub _createManifest {
