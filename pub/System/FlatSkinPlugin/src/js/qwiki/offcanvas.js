@@ -12,6 +12,7 @@
 
     // Attributes used within markup
     dataAttributes: {
+      autoclose: 'offcanvas-autoclose',
       canvas: 'offcanvas',
       reveal: 'reveal',
       target: 'target',
@@ -51,6 +52,7 @@
     // click handler, initiates offcanvas animation
     var toggle = '[data-' + attrs.toggle + ']';
     $(toggle).on( 'click', self, handleClick );
+    $(toggle).on( 'focus', self, handleClick );
   };
 
   var handleResize = function( evt ) {
@@ -69,6 +71,14 @@
     if ( target === undefined ) {
       evt.preventDefault();
       return;
+    }
+
+    if ( $(target).hasClass('active') ) {
+      var close = $(this).data( attr.autoclose );
+      if ( close === 0 ) {
+        evt.preventDefault();
+        return;
+      }
     }
 
     var $body = $('body');
@@ -127,5 +137,6 @@
     $(self.canvas).off( 'transitionend', self, transitionEndListener );
     var toggle = '[data-' + self.dataAttributes.toggle + ']';
     $(toggle).off( 'click', self, handleClick );
+    $(toggle).off( 'focus', self, handleClick );
   };
 }(jQuery, window._, window.document, window));

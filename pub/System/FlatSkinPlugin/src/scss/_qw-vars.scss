@@ -14,7 +14,7 @@ $qw-breadcrumb-color: #7b7b7b;
 $qw-breadcrumb-hover-color: #f2f2f2;
 
 $qw-top-one-height: 40px;
-$qw-top-two-height: 70px;
+$qw-top-two-height: 50px;
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
 $qw-top-one-bg: $qw-content-bg;
 $qw-top-one-fg: #555;
@@ -28,13 +28,14 @@ $qw-offcanvas-left-width: 250px;
 // pace
 $qw-pace-bg: #29d;
 $qw-pace-h: 2px;
-// $qw-pace-t: $qw-top-one-height;
 $qw-pace-t: 0;
 
 // borders
 $qw-border-bg: #dbdbd9;
+
 // default border width
 $qw-border-width: 1px;
+
 // qw-top-two border-bottom
 $qw-context-border-width: 5px;
 

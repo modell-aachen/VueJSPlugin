@@ -10,12 +10,12 @@
     position: absolute;
     color: #999;
     padding: 7px 6px;
-    top: 2px;
+    top: 7px;
     right: 100%;
     width: 100%;
     margin-right: -100%;
     bottom: 2px;
-    max-height: 33px;
+    max-height: 26px;
     background: white;
   }
 
@@ -26,7 +26,8 @@
     top: 0;
     left: 0;
     z-index: 1;
-    padding: 8px 12px;
+    max-height: 30px;
+    margin-top: ($qw-top-one-height - 30px) / 2;
 
     &:valid {
       background: white;
@@ -42,6 +43,7 @@
       min-width: rem-calc(80);;
       width: auto;
       padding-left: rem-calc(15);
+      padding-top: 4px;
     }
 
     &.ui-autocomplete-loading {

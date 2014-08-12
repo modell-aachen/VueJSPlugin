@@ -1,26 +1,18 @@
 [data-quicksearch] {
-  [data-template] {
-    display: none !important;
-  }
-
-  > .form {
-    @include grid-row();
-    @include grid-column( $columns: $total-columns );
-    padding-top: $qw-top-two-height - 33px;
-    background: $body-bg;
-  }
-
   > .filter {
-    @include grid-row();
-    @include grid-column( $columns: $total-columns );
+    float:left;
+    width: 100%;
+    padding-left: rem-calc(30);
+    min-height: $qw-top-two-height;
+    background: $body-bg;
   }
 
   .results {
     @include grid-row();
-    @include grid-column( $columns: $total-columns );
+    @include grid-column($columns: $total-columns);
 
     width: 100%;
-    border-top: 1px solid $qw-border-bg;
+    border-top: 5px solid $qw-border-bg;
     padding: 0;
 
     &.searching {
@@ -41,20 +33,39 @@
   }
 
   .qw-search-result {
-    width: 100%;
-    float: left;
-    padding-left: rem-calc(20);
-    padding-right: rem-calc(20);
-    margin-bottom: rem-calc(20);
+    @include grid-row();
 
-    &:hover {
+    min-width: 100%;
+    float: left;
+    min-height: 85px;
+    padding-left: rem-calc(20);
+    padding-right: 0;
+    border-top: 1px solid $qw-border-bg;
+
+    &:last-child {
+      border-bottom: 1px solid $qw-border-bg;
+    }
+
+    &:hover,
+    &:hover > .open {
       background-color: $body-bg;
       cursor: pointer;
     }
 
     > .inner {
-      min-height: 85px;
-      border-bottom: 1px solid $qw-border-bg;
+      @include grid-column($columns: $total-columns - 1);
+    }
+
+    
+
+    > .open {
+      @include grid-column($columns: 1);
+      min-height: inherit;
+      padding: rem-calc(30 20);
+
+      &:hover {
+        background: darken($body-bg, 15%);
+      }
     }
   }
 }

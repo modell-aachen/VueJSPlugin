@@ -80,6 +80,29 @@
   @media #{$large-up} { transition: margin-left 0.15s ease-in-out; }
 }
 
+// shrink breadcrumbs and extend search input by 1 column
+.qw-offcanvas-right {
+  $p: percentage( 1 / $total-columns);
+  .qw-breadcrumbs {
+    @media #{$large-up} {
+      @include grid-column( $columns: 7 );
+    }
+  }
+
+  .qw-search {
+    background: $body-bg;
+
+    @media #{$large-up} {
+      @include grid-column( $columns: 4 );
+      padding-left: 0;
+    }
+
+    > .close {
+      display: block;
+    }
+  }
+}
+
 .qw-offcanvas-left {
   $width: rem-calc($qw-offcanvas-left-width) - $column-gutter/2;
   .qw-menu {

@@ -81,15 +81,34 @@
     @media #{$small-only} { @include grid-column( $columns: 1, $offset: 10, $last-column: true ); }
     @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true ); }
     @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true ); }
+
+    > .close {
+      position: absolute;
+      height: 100%;
+      margin-left: -25px;
+      width: 25px;
+      padding: rem-calc(10 5);
+      background: $body-bg;
+      cursor: pointer;
+      display: none;
+      border-left: 1px solid $qw-border-bg;
+
+      &:hover {
+        background: $qw-content-bg;
+      }
+    }
   }
 }
 
 .qw-top-two {
+  $maxHeight: 33px;
+
   @include qw-top();
   top: $qw-top-one-height;
   background: $qw-top-two-bg;
   min-height: $qw-top-two-height;
   max-height: $qw-top-two-height;
+  z-index: 98;
 
   // left side containing tabs + topic interaction buttons
   > .qw-context {
@@ -100,15 +119,17 @@
     > .content {
       border-bottom: $qw-context-border-width solid $secondary-color;
       height: $qw-context-border-width + $qw-top-two-height;
-      padding-top: $qw-top-two-height - 33px;
+      padding-top: $qw-top-two-height - $maxHeight;
 
       > * {
-        max-height: 33px;
+        max-height: $maxHeight;
       }
 
-      .qw-ctx-button {
+      .action-button {
         @extend .button;
         @extend .tiny;
+        @extend .secondary;
+        background: transparent;
       }
     }
   }
@@ -122,7 +143,11 @@
     > .content {
       border-bottom: $qw-context-border-width solid $secondary-color;
       height: $qw-context-border-width + $qw-top-two-height;
-      padding-top: 17px;
+      padding-top: $qw-top-two-height - $maxHeight;
+
+      > * {
+        max-height: $maxHeight;
+      }
     }
   }
 }

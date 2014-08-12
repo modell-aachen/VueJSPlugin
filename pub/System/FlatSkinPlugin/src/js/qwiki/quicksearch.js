@@ -14,13 +14,13 @@
 
     bind: function() {
       this.unbind();
-      $('[data-quicksearch] input').on( 'keydown', this, handleKeydown );
-      $('[data-quicksearch] input + label').on( 'click', this, handleClick );
+      $('[data-quicksearch-toggle]').on( 'keydown', this, handleKeydown );
+      $('[data-quicksearch-toggle] + label').on( 'click', this, handleClick );
     },
 
     unbind: function() {
-      $('[data-quicksearch] input').off( 'keydown', this, handleKeydown );
-      $('[data-quicksearch] input + label').off( 'click', this, handleClick );
+      $('[data-quicksearch-toggle]').off( 'keydown', this, handleKeydown );
+      $('[data-quicksearch-toggle] + label').off( 'click', this, handleClick );
     }
   };
 
@@ -40,11 +40,17 @@
   };
 
   var doSearch = function( input, self ) {
-    var parent = $(input).closest('[data-quicksearch]');
-    var results = $(parent).find('.results');
-
+    var selector = $(input).data('target');
+    var target = {};
+    if ( !selector ) {
+      target = $(input).closest('[data-quicksearch]');
+    } else {
+      target = $(selector);
+    }
+    
+    var results = $(target).find('.results');
     var query = $(input).val();
-    if ( query.trim() === "" ) {
+    if ( _.isUndefined( query ) || query.trim() === "" ) {
       return;
     }
 
@@ -63,7 +69,7 @@
 
       if ( data.response.numFound === 0 ) {
         var noResults = tmplNoResults();
-        $(noResults).appendTo( results );
+        $(noResults()).appendTo( results );
       } else {
         var total = tmplFirstRow();
         var firstRow = total( data.response );
@@ -75,6 +81,13 @@
           var entry = tmpl( doc );
           $(entry).appendTo( results );
         }
+
+        // in case we found some results, allow to show them all by clicking 'show all'
+        // with top row
+        $('.qw-total-results > a').on( 'click', input, function( evt ) {
+          var form = $(evt.data).closest('form');
+          form.submit();
+        });
       }
 
       // re-enable autocomplete
@@ -117,13 +130,26 @@
       '<h5><%= title %></h5>',
       '<span><%= text.substr( 0, 100 ) %></span>',
       '</div>',
+      '<div class="open">',
+      '<i class="fa fa-lg fa-chevron-right"></i>',
+      '</div>',
       '</div>'
     ];
 
     return _.template( tmpl.join( '\n' ) );
   };
 
-  var tmplLastRow = function() {};
+  var tmplLastRow = function() {
+    // ToDo
+  };
 
-  var tmplNoResults = function() {};
+  var tmplNoResults = function() {
+    var tmpl = [
+      '<div class="qw-total-results">',
+      '<h3 class="left">TBD. No results...</h3>',
+      '</div>'
+    ];
+
+    return _.template( tmpl.join( '\n' ) );
+  };
 }(jQuery, window._, window.document, window));
