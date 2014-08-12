@@ -14,19 +14,21 @@
 
     bind: function() {
       this.unbind();
-      $('[data-quicksearch-toggle]').on( 'keydown', this, handleKeydown );
+
       $('[data-quicksearch-toggle] + label').on( 'click', this, handleClick );
+      $('[data-quicksearch-toggle]').on( 'keydown', this, handleKeydown );
     },
 
     unbind: function() {
+      $('[data-quicksearch-toggle] + label').on( 'click', this, handleClick );
       $('[data-quicksearch-toggle]').off( 'keydown', this, handleKeydown );
-      $('[data-quicksearch-toggle] + label').off( 'click', this, handleClick );
     }
   };
 
   var handleClick = function( evt ) {
     evt.preventDefault();
-    doSearch( $(this).closest('input'), evt.data );
+    var input = $(this).parent().find('input');
+    doSearch( input, evt.data );
   };
 
   var handleKeydown = function( evt ) {
