@@ -11,7 +11,8 @@
     @include grid-row();
     @include grid-column($columns: $total-columns);
 
-    width: 100%;
+    min-width: 100%;
+    min-height: rem-calc(150);
     border-top: 5px solid $qw-border-bg;
     padding: 0;
 

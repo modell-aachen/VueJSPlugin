@@ -5,51 +5,16 @@
 @import "foundation";
 @import "font-awesome";
 
+// import those two first...
+@import "qwiki/layout";
+@import "qwiki/context";
+
 @import "qwiki/accordion";
 @import "qwiki/breadcrumbs";
+@import "qwiki/breadcrumbs";
+@import "qwiki/ckeditor";
 @import "qwiki/input";
-@import "qwiki/layout";
 @import "qwiki/login";
 @import "qwiki/offcanvas";
 @import "qwiki/quicksearch";
 @import "qwiki/weblist";
-
-
-// ABBREVIATIONS
-//
-// Compounds are not listed separately, eg.:
-//    pl: padding-left
-//    mt: margin-top
-//    mt: margin-top
-//
-// Variable and class names are constructed by the following rules:
-//    PREFIX-ID-[ID2]-*-PROPERTY
-//
-//    Where:
-//      PREFIX:       qw (qwiki)
-//      ID:   eg. ocvs (offcanvas)
-//      *:            omitted, position (t,r,b,l) or a consecutive number
-//      PROPERTY:     eg. m (margin)
-//
-//    Example:
-//      qw-ocvs-l-w:  qwiki-offcanvas-left-width
-//      qw-tb-1-h:    qwiki-topbar-1-height
-//      qw-page-pt:   qwiki-page-padding-top
-//
-// l:     left
-// r:     right
-// t:     top
-// b:     bottom
-// w:     width
-// h:     height
-// c:     color
-//
-// m:     margin
-// p:     padding
-//
-// bg:    background
-// tb:    topbar
-//
-// cnt:   content
-//
-// ocvs:  offcanvas

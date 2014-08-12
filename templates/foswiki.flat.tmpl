@@ -62,7 +62,7 @@
     <article class="content">%TMPL:P{"content"}%</article>
   </section>
   <section class="qw-right">
-    <article class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas libero, doloribus a architecto consectetur facere doloremque molestias dolore vitae, officiis quos? Laudantium optio ipsam ea enim quasi suscipit nesciunt aliquid, inventore reprehenderit iure. Mollitia, veritatis molestias nostrum, perferendis, quia ut obcaecati assumenda alias voluptate accusamus explicabo aut quasi aspernatur quae laborum nisi inventore qui. Fuga ipsa quasi, tempora laudantium. Unde dolorum numquam, quos dolorem cupiditate magnam fugit, esse nulla sint consequatur deleniti sunt ea. Voluptatum velit debitis, delectus, eveniet, tempora voluptate doloribus animi nisi possimus non magnam ipsam. Alias nobis consequuntur enim nisi tempore illum iste tempora corrupti numquam sequi.</article>
+    <article class="content"></article>
   </section>
 </div>
 %TMPL:END%
@@ -88,7 +88,7 @@
         <div class="small-12 columns qw-inline-input">%JQREQUIRE{"UI::autocomplete"}%
           <input name="search"
                  type="text"
-                 class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5'}"
+                 class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
                  data-offcanvas-toggle
                  data-offcanvas-autoclose="0"
                  data-quicksearch-toggle
@@ -107,14 +107,16 @@
 <nav class="qw-top-two follows-canvas">
   <div class="qw-context">
     <div class="content">
-      <a href="#" class="button tiny secondary success" data-offcanvas-toggle data-target="#qw-offcanvas-left">%MAKETEXT{"Menu"}%</a>
-      <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-offcanvas-left">%MAKETEXT{"Menu"}%</a>
-      <ul class="button-group right">
-        <li><a href="#" class="action-button"><i class="fa fa-bookmark-o"></i></a></li>
-        <li><a href="#" class="action-button"><i class="fa fa-print"></i></a></li>
-        <li><a href="#" class="action-button"><i class="fa fa-cog"></i></a></li>
+      <!-- ToDo. -->
+      <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%" class="qw-tab view"><i class="fa fa-check"></i>%MAKETEXT{"Version"}%%REVINFO{format=" $rev"}%</a>
+      <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%%WORKFLOWSUFFIX%" class="qw-tab draft"><i class="fa fa-file-text-o"></i>%MAKETEXT{"Version"}%%REVINFO{format=" $percentCALC{\"$INT(1+$rev)\"}$percent, "}%%MAKETEXT{"Draft"}%</a>
+      <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%" class="qw-tab edit"><i class="fa fa-pencil"></i>%MAKETEXT{"Edit draft"}%</a>
+      <ul class="button-group right visible-for-large-up">
+        <li><a href="#" class="qw-action-button"><i class="fa fa-bookmark-o"></i></a></li>
+        <li><a href="#" class="qw-action-button"><i class="fa fa-print"></i></a></li>
+        <li><a href="#" class="qw-action-button"><i class="fa fa-cog"></i></a></li>
         <li>
-          <a href="#" data-dropdown="qw-lang-drop" class="action-button dropdown">
+          <a href="#" data-dropdown="qw-lang-drop" class="qw-action-button dropdown">
             <i class="fa fa-flag show-for-small-only"></i>
             <span class="show-for-medium-up">deutsch</span>
           </a>
@@ -129,7 +131,7 @@
   </div>
   <div class="qw-actions">
     <div class="content">
-      <a href="#" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-offcanvas-left">%MAKETEXT{"Menu"}%</a>
+      <a href="#" class="button tiny secondary">%MAKETEXT{"ToDo"}%</a>
     </div>
   </div>
 </nav>

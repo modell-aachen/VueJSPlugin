@@ -17,11 +17,13 @@
 
       $('[data-quicksearch-toggle] + label').on( 'click', this, handleClick );
       $('[data-quicksearch-toggle]').on( 'keydown', this, handleKeydown );
+      $('[data-quicksearch-toggle]').on( "autocompleteselect", this, handleSelect );
     },
 
     unbind: function() {
-      $('[data-quicksearch-toggle] + label').on( 'click', this, handleClick );
+      $('[data-quicksearch-toggle] + label').off( 'click', this, handleClick );
       $('[data-quicksearch-toggle]').off( 'keydown', this, handleKeydown );
+      $('[data-quicksearch-toggle]').off( "autocompleteselect", this, handleSelect );
     }
   };
 
@@ -39,6 +41,11 @@
     // don't submit form on enter key down
     evt.preventDefault();
     doSearch( this, evt.data );
+  };
+
+  var handleSelect = function( evt, ui ) {
+    evt.preventDefault();
+    doSearch( evt.delegateTarget, evt.data );
   };
 
   var doSearch = function( input, self ) {

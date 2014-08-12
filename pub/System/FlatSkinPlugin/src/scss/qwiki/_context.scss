@@ -1,0 +1,56 @@
+.context-approved .qw-tab {
+  &.view {
+    @include button( $padding: $button-tny, $bg: $success-color );
+  }
+  
+  &:not(.view) {
+    @include button( $padding: $button-tny, $bg: $secondary-color );
+
+    &:hover {
+      background: $warning-color;
+    }
+  }
+}
+
+.context-draft .qw-tab {
+  &.draft {
+    @include button( $padding: $button-tny, $bg: $warning-color );
+  }
+  
+  &:not(.draft) {
+    @include button( $padding: $button-tny, $bg: $secondary-color );
+  }
+
+  &.view:hover {
+    background: $success-color;
+  }
+}
+
+.context-edit .qw-tab {
+  &.edit {
+    @include button( $padding: $button-tny, $bg: $warning-color );
+  }
+  
+  &:not(.edit) {
+    @include button( $padding: $button-tny, $bg: $secondary-color );
+  }
+
+  &.draft:hover {
+    background: $warning-color;
+  }
+
+  &.view:hover {
+    background: $success-color;
+  }
+}
+
+.qw-tab {
+  > .fa {
+    margin-right: rem-calc(10);
+  }
+}
+
+.context-info .qw-context > .content { border-color: $primary-color; }
+.context-draft .qw-context > .content { border-color: $alert-color; }
+.context-edit .qw-context > .content { border-color: $warning-color; }
+.context-approved .qw-context > .content { border-color: $success-color; }

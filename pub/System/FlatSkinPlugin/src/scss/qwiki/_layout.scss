@@ -124,13 +124,6 @@
       > * {
         max-height: $maxHeight;
       }
-
-      .action-button {
-        @extend .button;
-        @extend .tiny;
-        @extend .secondary;
-        background: transparent;
-      }
     }
   }
 
@@ -152,7 +145,8 @@
   }
 }
 
-.context-info .qw-context > .content { border-color: $primary-color; }
-.context-draft .qw-context > .content { border-color: $alert-color; }
-.context-approved .qw-context > .content { border-color: $success-color; }
-.context-edit .qw-context > .content { border-color: $warning-color; }
+// printing, further topic actions, language selector, etc
+.qw-action-button {
+  @include button( $padding: $button-tny, $bg: $secondary-color );
+  background: transparent;
+}

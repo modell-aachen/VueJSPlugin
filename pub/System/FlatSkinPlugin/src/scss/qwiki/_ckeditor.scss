@@ -1,0 +1,15 @@
+#ckarea {
+  @include grid-row();
+  @media #{$small-only} { @include grid-column( $columns: $total-columns ); }
+  @media #{$medium-up} { @include grid-column( $columns: 8 ); }
+  @media #{$large-up} { @include grid-column( $offset: 1 ); }
+
+  background: transparent;
+  height: auto;
+
+  position: fixed;
+  top: $qw-top-one-height + $qw-top-two-height + 4px;
+  z-index: 1;
+}
+
+.context-edit .qw-page > .qw-left > .content { padding-top: rem-calc(60); }

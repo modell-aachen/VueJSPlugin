@@ -110,7 +110,7 @@
   }
 
   // due to the fact the .qw-menu changes its width, we need to substract
-  // the difference here. otherwise the search are will disappear.
+  // the difference here. otherwise the search area will disappear.
   .qw-search {
     $p: percentage( 1 / $total-columns);
     margin-left: calc( #{-1 * $width} + #{$p} );
