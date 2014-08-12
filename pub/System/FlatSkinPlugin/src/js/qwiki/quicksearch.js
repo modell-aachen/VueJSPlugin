@@ -92,24 +92,30 @@
 
       // re-enable autocomplete
       var ctrl = toggleAutocomplete( input );
-      ctrl.autocomplete( 'close' );
+      if ( ctrl ) {
+        ctrl.autocomplete( 'close' );
+      }
     });
   };
 
   var toggleAutocomplete = function( input ) {
-    var ctrl = $(input).autocomplete('instance');
-    if ( _.isUndefined( ctrl ) ) {
-      return;
-    }
+    try {
+      var ctrl = $(input).autocomplete('instance');
+      if ( _.isUndefined( ctrl ) ) {
+        return;
+      }
 
-    var $ctrl = $(ctrl);
-    if ( $ctrl.autocomplete( 'option', 'disabled' ) ) {
-      $ctrl.autocomplete( 'enable' );
-    } else {
-      $ctrl.autocomplete( 'disable' );
-    }
+      var $ctrl = $(ctrl);
+      if ( $ctrl.autocomplete( 'option', 'disabled' ) ) {
+        $ctrl.autocomplete( 'enable' );
+      } else {
+        $ctrl.autocomplete( 'disable' );
+      }
 
-    return $ctrl;
+      return $ctrl;
+    } catch ( err ) {
+      // ToDo
+    }
   };
 
   var tmplFirstRow = function() {
