@@ -6,8 +6,9 @@
 
     // CSS classes which are used to move the target container off canvas
     classes: {
-      left: 'qw-offcanvas-left',
-      right: 'qw-offcanvas-right'
+      leftbar: 'ocvs-leftbar',
+      rightbar: 'ocvs-rightbar',
+      search: 'ocvs-search'
     },
 
     // Attributes used within markup
@@ -17,10 +18,11 @@
       reveal: 'reveal',
       target: 'target',
       toggle: 'offcanvas-toggle',
-      direction: {
-        left: 'left',
-        right: 'right'
-      }
+      type: 'type'
+      // direction: {
+      //   left: 'left',
+      //   right: 'right'
+      // }
     },
 
     init: function( options ) {
@@ -85,10 +87,14 @@
     var $canvas = $(self.canvas);
 
     // default to left if no direction is specified
-    var direction = attr.direction;
-    var isLeft = $(this).attr('data-' + direction.left) !== undefined;
-    var isRight = $(this).attr('data-' + direction.right) !== undefined;
-    var cls = (isLeft || !isRight) ? self.classes.left : self.classes.right;
+    var type = $(this).attr('data-' + attr.type);
+    if ( type === undefined || !/(leftbar|rightbar|search)/i.test( type ) ) {
+      self.Q.error( 'Invalid offcanvas type!' );
+      return;
+    }
+
+
+    var cls = self.classes[type];
 
     // decide whether to just show the target container without any offcanvas animation
     var isReveal = $(this).attr('data-' + attr.reveal) !== undefined;

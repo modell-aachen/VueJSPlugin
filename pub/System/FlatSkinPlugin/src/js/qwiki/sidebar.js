@@ -5,7 +5,7 @@
     name: 'sidebar',
     autoclose: 0,
     container: {
-      left: 'qw-offcanvas-left',
+      left: 'qw-offcanvas-leftbar',
       right: ''
     },
     templates: {

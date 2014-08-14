@@ -48,20 +48,26 @@
 %TMPL:END%
 
 %TMPL:DEF{"body:end"}%
-%TMPL:P{"leftbar"}%
-%TMPL:P{"searchbar"}%
+%TMPL:P{"offcanvas:leftbar"}%
+%TMPL:P{"offcanvas:rightbar"}%
+%TMPL:P{"offcanvas:search"}%
 <script>
   $(document).qwiki();
 </script>
-<!-- leftbar -->
+<!-- sidebar:left -->
 </body>%TMPL:END%
+
+
+%TMPL:DEF{"content:head"}%
+<a href="#" class="button default tiny" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
+  <span class="show-for-large-up">Toggle rightbar</span>
+</a>
+%TMPL:END%
 
 %TMPL:DEF{"body:content"}%
 <div class="qw-page follows-canvas" data-offcanvas>
   <section class="qw-left">
-    <article class="meta">
-      <div style="width:100%; height:100px; background:#ccc;"></div>
-    </article>
+    <article class="meta">%TMPL:P{"content:head"}%</article>
     <article class="content">%TMPL:P{"content"}%</article>
   </section>
   <section class="qw-right">
@@ -75,15 +81,13 @@
 %TMPL:DEF{"topbar:one"}%
 <nav class="qw-top-one">
   <div class="qw-menu">
-    <a href="#" class="button default tiny qw-close-left" title="%MAKETEXT{"Menu"}%" data-offcanvas-toggle data-target="#qw-offcanvas-left">
+    <a href="#" class="button default tiny qw-close-left" title="%MAKETEXT{"Menu"}%" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar">
       <i class="fa fa-reorder "></i><span class="show-for-large-up">&nbsp;&nbsp;%MAKETEXT{"Menu"}%</span>
     </a>
   </div>
-  <div class="qw-breadcrumbs">
-    %TMPL:P{"breadcrumb"}%
-  </div>
+  <div class="qw-breadcrumbs">%TMPL:P{"breadcrumb"}%</div>
   <div class="qw-search">
-    <span class="close" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-right>
+    <span class="close" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right>
       <i class="fa fa-lg fa-chevron-right"></i>
     </span>
     <form action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
@@ -96,6 +100,7 @@
                  data-offcanvas-autoclose="0"
                  data-quicksearch-toggle
                  data-target="#qw-searchbar"
+                 data-type="search"
                  data-right
                  required>
           <label for="search"><span>%MAKETEXT{"Search"}%</span></label>
@@ -141,8 +146,8 @@
 %TMPL:END%
 
 
-%TMPL:DEF{"leftbar"}%
-<div id="qw-offcanvas-left" class="qw-offcanvas-target-left" data-leftbar>
+%TMPL:DEF{"offcanvas:leftbar"}%
+<div id="qw-offcanvas-leftbar" class="qw-offcanvas-leftbar" data-leftbar>
   <section class="active">
     <span class="heading">%MAKETEXT{"Webs"}%<i class="adorner"></i></span>
     %INCLUDE{"System.QWWebListDefault"}% <!-- ToDo. IF oder configure -->
@@ -154,8 +159,17 @@
 </div>
 %TMPL:END%
 
-%TMPL:DEF{"searchbar"}%
-<section id="qw-searchbar" class="qw-offcanvas-target-right" data-quicksearch>
+%TMPL:DEF{"offcanvas:rightbar"}%
+<div id="qw-offcanvas-rightbar" class="qw-offcanvas-rightbar" data-rightbar>
+  <section class="heading">
+    <h3>%MAKETEXT{"Further Information"}%</h3>
+  </section>
+  <section class="content"></section>
+</div>
+%TMPL:END%
+
+%TMPL:DEF{"offcanvas:search"}%
+<section id="qw-searchbar" class="qw-offcanvas-search" data-quicksearch>
   <div class="filter">
   </div>
 

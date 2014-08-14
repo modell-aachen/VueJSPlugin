@@ -1,6 +1,7 @@
 // close buttons
-.qw-offcanvas-left .qw-close-left,
-.qw-offcanvas-right .qw-close-right {
+// ToDo. weg mit dem rotz...
+.ocvs-leftbar .qw-close-left,
+.ocvs-search .qw-close-right {
   @extend .alert;
   display: inline-block;
 
@@ -16,22 +17,23 @@
 
 
 // reset canvas
-:not(.qw-offcanvas-left) .follows-canvas {
+:not(.ocvs-leftbar) .follows-canvas {
   transform: translate3d( 0, 0, 0 );
 }
 
-:not(.qw-offcanvas-left) .follows-canvas {
+:not(.ocvs-leftbar) .follows-canvas {
   transform: translate3d( 0, 0, 0 );
 }
 
 // hide scoll bar(s)
-.qw-offcanvas-left,
-.qw-offcanvas-right {
+.ocvs-leftbar,
+.ocvs-rightbar,
+.ocvs-search {
   overflow-x: hidden !important;
 }
 
 // left canvas animation (user menu)
-.qw-offcanvas-left .follows-canvas {
+.ocvs-leftbar .follows-canvas {
   transform: translate3d( $qw-offcanvas-left-width, 0, 0 );
   @media #{$large-up} {
     transform: translate3d( 100px, 0, 0 );
@@ -39,7 +41,8 @@
 }
 
 // right canvas animation (search, attachments, history, etc)
-.qw-offcanvas-right .follows-canvas {
+.ocvs-rightbar .follows-canvas,
+.ocvs-search .follows-canvas {
   @media #{$small-only} {
     transform: translate3d( -100%, 0, 0 );
   }
@@ -51,7 +54,7 @@
 }
 
 // left off canvas area (user menu)
-.qw-offcanvas-target-left {
+.qw-offcanvas-leftbar {
   position: fixed;
   transform: translate3d( -1 * $qw-offcanvas-left-width, 0, 0 );
   top: $qw-top-one-height;
@@ -81,7 +84,7 @@
 }
 
 // shrink breadcrumbs and extend search input by 1 column
-.qw-offcanvas-right {
+.ocvs-search {
   $p: percentage( 1 / $total-columns);
   .qw-breadcrumbs {
     @media #{$large-up} {
@@ -103,7 +106,7 @@
   }
 }
 
-.qw-offcanvas-left {
+.ocvs-leftbar {
   $width: rem-calc($qw-offcanvas-left-width) - $column-gutter/2;
   .qw-menu {
     width: $width;
@@ -121,7 +124,7 @@
 // large screens (and up): move the main canvas 1 column left
 // medium: regular slider
 // small: full width transition
-.qw-offcanvas-target-right {
+.qw-offcanvas-search {
   $width: percentage( 1 / $total-columns );
   @media #{$small-only} {
     right: -1 * 100%;
@@ -140,6 +143,39 @@
   z-index: 100;
   // background: $qw-content-bg;
   background: $qw-content-bg !important;
+  border-left: $qw-border-width solid $qw-border-bg;
+
+  transition-property: right, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  @media #{$large-up} {
+    transition-duration: 0.15s;
+  }
+
+  &.active {
+    right: 0;
+    background: $body-bg;
+  }
+}
+
+.qw-offcanvas-rightbar {
+  $width: percentage( 1 / $total-columns );
+  @media #{$small-only} {
+    right: -1 * 100%;
+    width: 100%;
+  }
+
+  @media #{$medium-up} {
+    right: -4 * $width;
+    width: 4 * $width;
+  }
+
+  position: fixed;
+  top: $qw-top-one-height;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+  background: $qw-content-bg;
   border-left: $qw-border-width solid $qw-border-bg;
 
   transition-property: right, background;

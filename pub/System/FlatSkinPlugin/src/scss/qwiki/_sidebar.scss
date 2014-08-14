@@ -85,3 +85,25 @@
     }
   }
 }
+
+
+[data-rightbar] {
+  height: calc( 100% - #{$qw-top-one-height} );
+  > section {
+    @include grid-column( $columns: 12 );
+  }
+
+  > .heading {
+    min-height: 5px + $qw-top-two-height;
+    max-height: 5px + $qw-top-two-height;
+    border-bottom: 5px solid $qw-border-bg;
+    padding: rem-calc(5 15);
+
+    h3 { color: darken($body-bg, 15%); }
+  }
+
+  > .content {
+    height: calc( 100% - (5px + #{$qw-top-two-height}) );
+    background: $qw-content-bg;
+  }
+}

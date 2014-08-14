@@ -8,9 +8,13 @@
     @media #{$medium-up} { @include grid-column( $columns: 8 ); }
     @media #{$large-up} { @include grid-column( $offset: 1 ); }
 
-    > .content {
+    > .content, .meta {
       background: $qw-content-bg;
       padding: $qw-content-padding;
+    }
+
+    > .meta label {
+      color: #ccc;
     }
   }
 

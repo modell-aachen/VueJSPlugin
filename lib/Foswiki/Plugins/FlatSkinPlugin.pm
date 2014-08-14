@@ -72,7 +72,7 @@ sub completePageHandler {
     Foswiki::Plugins::SafeWikiPlugin::Signatures::permitInlineCode( $script );
   }
 
-  $_[0] =~ s/<!-- leftbar -->/<script>$script<\/script>/;
+  $_[0] =~ s/<!-- sidebar:left -->/<script>$script<\/script>/;
 }
 
 sub _suffix {
