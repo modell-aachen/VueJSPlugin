@@ -45,7 +45,6 @@
 
 %TMPL:DEF{"context"}%approved%TMPL:END%
 %TMPL:DEF{"body:start"}%<body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, jsonrpc, placeholder"}%
-
 %TMPL:END%
 
 %TMPL:DEF{"body:end"}%
@@ -54,11 +53,15 @@
 <script>
   $(document).qwiki();
 </script>
+<!-- leftbar -->
 </body>%TMPL:END%
 
 %TMPL:DEF{"body:content"}%
 <div class="qw-page follows-canvas" data-offcanvas>
   <section class="qw-left">
+    <article class="meta">
+      <div style="width:100%; height:100px; background:#ccc;"></div>
+    </article>
     <article class="content">%TMPL:P{"content"}%</article>
   </section>
   <section class="qw-right">
@@ -139,18 +142,14 @@
 
 
 %TMPL:DEF{"leftbar"}%
-<div id="qw-offcanvas-left" class="qw-offcanvas-target-left" data-accordion>
+<div id="qw-offcanvas-left" class="qw-offcanvas-target-left" data-leftbar>
   <section class="active">
     <span class="heading">%MAKETEXT{"Webs"}%<i class="adorner"></i></span>
-    %INCLUDE{"System.QWikiWebListDefault"}%
+    %INCLUDE{"System.QWWebListDefault"}% <!-- ToDo. IF oder configure -->
   </section>
   <section>
     <span class="heading">%MAKETEXT{"Webs"}%<i class="adorner"></i></span>
-    %INCLUDE{"System.QWikiWebListDefault"}%
-  </section>
-  <section>
-    <span class="heading">%MAKETEXT{"Webs"}%<i class="adorner"></i></span>
-    %INCLUDE{"System.QWikiWebListDefault"}%
+    %INCLUDE{"System.QWWebListDefault"}% <!-- ToDo. IF oder configure -->
   </section>
 </div>
 %TMPL:END%
@@ -162,6 +161,14 @@
 
   <div class="results">
   </div>
+</section>
+<section id="qw-searchpreview">
+  <div class="heading">
+    <span class="qw-preview-title">%MAKETEXT{"Preview"}%</span>
+    <a href="#" class="qw-preview-open-button">%MAKETEXT{"Open"}%</a>
+    <a href="#" class="qw-preview-close-button" data-close-preview><i class="fa fa-times"></i> %MAKETEXT{"Close"}%</a>
+  </div>
+  <div class="content"></div>
 </section>
 %TMPL:END%
 

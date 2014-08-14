@@ -7,6 +7,8 @@ use Foswiki::Func ();
 use Foswiki::Plugins ();
 use Foswiki::Plugins::JQueryPlugin ();
 
+use JSON;
+
 use version;
 our $VERSION = version->declare( '1.0.0' );
 our $RELEASE = '1.0.0';
@@ -41,8 +43,36 @@ sub initPlugin {
 
   # inject scripts and styles
   _zoneConfig();
-
   return 1;
+}
+
+my @entries = ();
+sub addToLeftbar {
+  my %entry = @_;
+
+  return unless $entry{container};
+  return unless $entry{title};
+  return unless $entry{content};
+  push( @entries, \%entry );
+}
+
+sub completePageHandler {
+  my( $html, $httpHeaders ) = @_;
+
+  return unless scalar @entries;
+  my @scripts = ();
+
+  for (@entries) {
+    my $json = encode_json( $_ );
+    push ( @scripts, "QWiki.plugins.leftbar.registerEntry( $json );" );
+  }
+
+  my $script = join("\n", @scripts);
+  if ( Foswiki::Func::getContext()->{SafeWikiSignable} ) {
+    Foswiki::Plugins::SafeWikiPlugin::Signatures::permitInlineCode( $script );
+  }
+
+  $_[0] =~ s/<!-- leftbar -->/<script>$script<\/script>/;
 }
 
 sub _suffix {

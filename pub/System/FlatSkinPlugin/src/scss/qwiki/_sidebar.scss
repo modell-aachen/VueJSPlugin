@@ -1,22 +1,22 @@
-[data-accordion] section {
+[data-leftbar] section {
   > .heading {
     text-transform: uppercase;
-    font-weight: bold;
-    color: darken($body-bg, 25%);
+    color: darken($body-bg, 50%);
     display: block;
     width: 100%;
-    padding: rem-calc(10 5);
+    padding: rem-calc(5);
     cursor: pointer;
 
     &:hover {
       background: darken($body-bg, 10%);
-      color: darken($body-bg, 25%);
     }
 
     .adorner {
       @extend .fa;
       @extend .right;
-      padding-right: rem-calc(14);
+      padding-top: rem-calc(5);
+      padding-right: rem-calc(10);
+      font-size: 0.8rem;
     }
 
   }
@@ -34,29 +34,34 @@
       $link-color-hover: $qw-weblist-link-color-hover
     );
 
-    transition: max-height 0.3s ease-in-out;
+    background: $qw-content-bg;
+    transition: max-height 0.2s ease-in-out;
     overflow-y: hidden;
-    padding: 0 0;
+    padding: 0 0 0 0.2rem;
 
     li {
       margin: 0;
       list-style: none;
+
       a:not(.button) {
-        padding: 0.25rem 0.875rem;
+        padding: 0.1rem 0.5rem;
       }
     }
 
     ul {
-      padding-left: 0;
+      padding-left: 0.5rem;
+      margin-left: 0;
       > li > a {
-        padding-left: 0;
+        padding-left: 0.5rem;
+        margin-left: 0;
       }
     }
   }
 
   &.active {
     > .heading {
-      color: darken($body-bg, 50%);
+      background: darken($body-bg, 5%);
+      border-bottom: 1px solid $qw-border-bg;
     }
 
     > .heading > .adorner {
@@ -66,6 +71,7 @@
       > ul {
       height: 100%;
       max-height: 1000px;
+      border-bottom: 1px solid $qw-border-bg;
     }
   }
 

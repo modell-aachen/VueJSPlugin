@@ -17,13 +17,15 @@
 
       $('[data-quicksearch-toggle] + label').on( 'click', this, handleClick );
       $('[data-quicksearch-toggle]').on( 'keydown', this, handleKeydown );
-      $('[data-quicksearch-toggle]').on( "autocompleteselect", this, handleSelect );
+      $('[data-quicksearch-toggle]').on( 'autocompleteselect', this, handleSelect );
+      $('[data-close-preview]').on( 'click', this, closePreview );
     },
 
     unbind: function() {
-      $('[data-quicksearch-toggle] + label').off( 'click', this, handleClick );
-      $('[data-quicksearch-toggle]').off( 'keydown', this, handleKeydown );
-      $('[data-quicksearch-toggle]').off( "autocompleteselect", this, handleSelect );
+      $('[data-quicksearch-toggle] + label').off( 'click', handleClick );
+      $('[data-quicksearch-toggle]').off( 'keydown', handleKeydown );
+      $('[data-quicksearch-toggle]').off( 'autocompleteselect', handleSelect );
+      $('[data-close-preview]').off( 'click', closePreview );
     }
   };
 
@@ -46,6 +48,11 @@
   var handleSelect = function( evt, ui ) {
     evt.preventDefault();
     doSearch( evt.delegateTarget, evt.data );
+  };
+
+  var closePreview = function( evt ) {
+    $('#qw-searchpreview').removeClass('active');
+    $('.qw-search-result.active').removeClass('active');
   };
 
   var doSearch = function( input, self ) {
@@ -72,7 +79,7 @@
 
     // call solr
     var f = self.Q.foswiki;
-    var url = f.SCRIPTURLPATH + '/rest' + f.SCRIPTSUFFIX + '/SolrPlugin/search?rows=5&q=';
+    var url = f.SCRIPTURLPATH + '/rest' + f.SCRIPTSUFFIX + '/SolrPlugin/search?rows=50&q=';
     $.get( url + query, function( data ) {
       results.removeClass('searching');
 
@@ -96,6 +103,42 @@
         $('.qw-total-results > a').on( 'click', input, function( evt ) {
           var form = $(evt.data).closest('form');
           form.submit();
+          evt.preventDefault();
+        });
+
+        $('.qw-search-result > .open').on( 'click', function( evt ) {
+          var target = [
+            self.Q.foswiki.SCRIPTURL,
+            '/view',
+            self.Q.foswiki.SCRIPTSUFFIX,
+            $(this).data('url')
+          ];
+
+          evt.preventDefault();
+          window.location = target.join('');
+        });
+
+        $('.qw-search-result').on( 'click', function( evt ) {
+          $('.qw-search-result.active').removeClass('active');
+          $(this).addClass('active');
+
+          var target = [
+            self.Q.foswiki.SCRIPTURL,
+            '/view',
+            self.Q.foswiki.SCRIPTSUFFIX,
+            $(this).data('url')
+          ];
+
+          var uri = target.join('') + ' .qw-page > .qw-left article.content';
+          $('#qw-searchpreview > .content').load( uri, function() {
+            if ( !$('#qw-searchpreview').hasClass('active') ) {
+              $('#qw-searchpreview').toggleClass('active');
+            }
+
+            $('.qw-preview-open-button').attr( 'href', target.join('') );
+          } );
+
+          evt.preventDefault();
         });
       }
 
@@ -140,7 +183,7 @@
 
   var tmplEntry = function() {
     var tmpl = [
-      '<div class="qw-search-result">',
+      '<div class="qw-search-result" data-url="<%= url %>">',
       '<div class="inner">',
       '<h5><%= title %></h5>',
       '<span><%= text.substr( 0, 100 ) %></span>',
