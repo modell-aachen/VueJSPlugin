@@ -1,6 +1,7 @@
 ;(function ($, _, document, window, undefined) {
   'use strict';
 
+  var initialized = false;
   QWiki.plugins.sidebar = {
     name: 'sidebar',
     autoclose: 0,
@@ -15,7 +16,10 @@
         '<%= content %>',
         '</section>'
       ].join('\n'),
-      right: [].join('\n')
+      right: {
+        heading: '<li><a href="#" data-rightbar-content="<%= target %>"><%= title %><i class="fa fa-chevron-right right"></i></a></li>',
+        content: '<div id="<%= target %>" data-rightbar-content><%= content %></div>'
+      }
     },
 
     init: function( options ) {
@@ -23,19 +27,40 @@
         $.extend( this, options );
       }
 
-      this.bind();
+      this.bindLeftbar();
+      this.bindRightbar();
     },
 
-    bind: function() {
-      this.unbind();
-      $('[data-leftbar] > section > .heading').on( 'click', this, handleClickLeft );
+    bindLeftbar: function() {
+      this.unbindLeftbar();
+      $('[data-leftbar] > section > .heading').on( 'click', this, handleLeftBarClick );
     },
 
-    unbind: function() {
-      $('[data-leftbar] > section > .heading').off( 'click', handleClickLeft );
+    unbindLeftbar: function() {
+      $('[data-leftbar] > section > .heading').off( 'click', handleLeftBarClick );
     },
 
-    createEntry: function() {
+    bindRightbar: function() {
+      this.unbindRightbar();
+
+      if ( !initialized ) {
+        loadRightBarItems( this ).done(function() {
+          $('[data-rightbar] .links a').on( 'click', this, handleRightBarClick );
+          $('[data-rightbar] .container .close').on( 'click', handleRightBarClose );
+          initialized = true;
+        });
+      } else {
+        $('[data-rightbar] .links a').on( 'click', this, handleRightBarClick );
+        $('[data-rightbar] .container .close').on( 'click', this, handleRightBarClose );
+      }
+    },
+
+    unbindRightbar: function() {
+      $('[data-rightbar] .links a').off( 'click', handleRightBarClick );
+      $('[data-rightbar] .container .close').off( 'click', handleRightBarClose );
+    },
+
+    createLeftBarEntry: function() {
       var entry = {
         collapsed: 1,
         container: '', // left|right, mandatory
@@ -48,7 +73,7 @@
       return entry;
     },
 
-    registerEntry: function( obj ) {
+    registerLeftBarEntry: function( obj ) {
       if ( _.isUndefined( obj ) || !_.isObject( obj ) ) {
         this.Q.error( 'Invalid entry type.' );
         return;
@@ -70,18 +95,18 @@
 
         if ( cnt === 'left' ) {
           // rebind event handler
-          this.init();
+          this.bindLeftbar();
         }
       }
     }
   };
 
-  var handleClickLeft = function( evt ) {
+  var handleLeftBarClick = function( evt ) {
     var $this = $(this);
     var self = evt.data;
 
     if ( self.autoclose ) {
-      var container = $this.closest('[data-accordion]');
+      var container = $this.closest('[data-leftbar]');
       container.children('.active').each( function() {
         if ( $(this)[0] === $this.parent()[0] ) {
           return;
@@ -92,5 +117,56 @@
     }
 
     $this.parent().toggleClass('active');
+  };
+
+  var handleRightBarClick = function( evt ) {
+    var self = evt.data;
+
+    var target = $(this).data('content');
+    var title = $(this).data('title');
+    if ( !target || !title ) {
+      self.Q.error( 'Missing target or title property.' );
+      return;
+    }
+
+    $('[data-rightbar] .container .title').text( title );
+    $(target).removeClass('hidden');
+
+    $('[data-rightbar] .links').addClass('active');
+    $('[data-rightbar] .container').addClass('active');
+  };
+
+  var handleRightBarClose = function( evt ) {
+    $('[data-rightbar] .links').removeClass('active');
+    $('[data-rightbar] .container').removeClass('active');
+  };
+
+  var loadRightBarItems = function( self ) {
+    var deferred = $.Deferred();
+
+    var container = $('[data-rightbar-item]');
+    for( var i = 0; i < container.length; ++i ) {
+      var c = container[i];
+      var link = container.children('a[data-content]');
+      if ( link.length === 0 ) {
+        self.Q.error( 'Missing content property.' );
+        return;
+      }
+
+      link.appendTo('[data-rightbar] .links > ul');
+      link.wrap('<li></li>');
+
+      var selector = link.data('content');
+      var content = $(selector);
+      if ( content.length === 0 ) {
+        self.Q.error( 'Missing DOM element: ' + selector );
+        return;
+      }
+
+      content.appendTo('[data-rightbar] .container > .content');
+    }
+
+    deferred.resolve();
+    return deferred.promise();
   };
 }(jQuery, window._, window.document, window));

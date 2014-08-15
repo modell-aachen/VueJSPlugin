@@ -30,8 +30,8 @@
     @include side-nav(
       $divider-color: $qw-weblist-divider-color,
       $font-size: $qw-weblist-font-size,
-      $link-color: $qw-weblist-link-color,
-      $link-color-hover: $qw-weblist-link-color-hover
+      $link-color: $body-font-color,
+      $link-color-hover: $body-font-color
     );
 
     background: $qw-content-bg;
@@ -89,21 +89,96 @@
 
 [data-rightbar] {
   height: calc( 100% - #{$qw-top-one-height} );
+  border-top: 1px solid $qw-border-bg;
+  overflow-x: hidden;
+
   > section {
     @include grid-column( $columns: 12 );
   }
 
-  > .heading {
+  > .title {
     min-height: 5px + $qw-top-two-height;
     max-height: 5px + $qw-top-two-height;
     border-bottom: 5px solid $qw-border-bg;
-    padding: rem-calc(5 15);
+    padding-top: 0;
+    padding-left: 0;
 
-    h3 { color: darken($body-bg, 15%); }
+    .close {
+      @include button( $padding: $button-tny, $bg: $secondary-color );
+      background: transparent;
+      height: $qw-top-two-height;
+      $pt: ($qw-top-two-height/2) - 5px;
+      padding: $pt 15px;
+    }
   }
 
-  > .content {
+  > .links {
+    position: absolute;
+    top: $qw-top-two-height + 5px;
+    left: 0;
     height: calc( 100% - (5px + #{$qw-top-two-height}) );
     background: $qw-content-bg;
+    transition: left 0.2s ease-in-out;
+
+    &.active {
+      left: -100%;
+    }
+
+    .fa {
+      font-size: 0.7rem;
+      padding-top: rem-calc(5);
+    }
+
+    > ul {
+      @include side-nav(
+        $divider-color: $qw-weblist-divider-color,
+        $font-size: $qw-weblist-font-size,
+        $link-color: $body-font-color,
+        $link-color-hover: $body-font-color,
+        $link-bg-hover: darken($body-bg, 10%)
+      );
+    }
   }
+
+  > .container {
+    position: absolute;
+    top: $qw-top-two-height + 5px;
+    transition: left 0.2s ease-in-out;
+    left: 100%;
+    height: calc( 100% - (5px + #{$qw-top-two-height}) );
+    background: $qw-content-bg;
+
+    &.active {
+      left: 0;
+    }
+
+    > .top {
+      margin-top: rem-calc(10);
+      .close {
+        @include button( $padding: $button-tny, $bg: $secondary-color );
+      }
+    }
+
+    .title {
+      margin-left: rem-calc(10);
+      margin-top: rem-calc(2);
+    }
+
+    .content {
+      > .hidden {
+        display: none;
+      }
+    }
+  }
+}
+
+
+[data-rightbar-item-container] {
+  display: none !important;
+}
+
+[data-rightbar-item] {
+}
+
+[data-rightbar-content] {
 }

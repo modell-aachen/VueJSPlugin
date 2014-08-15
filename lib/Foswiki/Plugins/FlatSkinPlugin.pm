@@ -64,7 +64,7 @@ sub completePageHandler {
 
   for (@entries) {
     my $json = encode_json( $_ );
-    push ( @scripts, "QWiki.plugins.leftbar.registerEntry( $json );" );
+    push ( @scripts, "QWiki.plugins.sidebar.registerLeftBarEntry( $json );" );
   }
 
   my $script = join("\n", @scripts);

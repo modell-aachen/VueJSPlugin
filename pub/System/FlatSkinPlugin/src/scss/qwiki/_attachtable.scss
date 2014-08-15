@@ -1,0 +1,11 @@
+.qw-attachtable {
+  @include side-nav(
+    $link-color: $body-font-color,
+    $link-color-hover: $body-font-color,
+    $link-bg-hover: darken($body-bg, 10%)
+  );
+
+  .fa {
+    margin-top: rem-calc(5);
+  }
+}

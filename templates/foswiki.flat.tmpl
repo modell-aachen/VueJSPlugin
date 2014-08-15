@@ -51,6 +51,7 @@
 %TMPL:P{"offcanvas:leftbar"}%
 %TMPL:P{"offcanvas:rightbar"}%
 %TMPL:P{"offcanvas:search"}%
+%TMPL:P{"offcanvas:rightbar:includes"}%
 <script>
   $(document).qwiki();
 </script>
@@ -161,20 +162,28 @@
 
 %TMPL:DEF{"offcanvas:rightbar"}%
 <div id="qw-offcanvas-rightbar" class="qw-offcanvas-rightbar" data-rightbar>
-  <section class="heading">
-    <h3>%MAKETEXT{"Further Information"}%</h3>
+  <section class="title">
+    <a href="#" class="close" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
+      <i class="fa fa-chevron-right"></i>
+    </a>
+    <span>%MAKETEXT{"Further Information"}%</span>
   </section>
-  <section class="content"></section>
+  <section class="links"><ul></ul></section>
+  <section class="container">
+    <div class="top">
+      <a href="#" class="close"><i class="fa fa-chevron-left"></i> %MAKETEXT{"Back"}%</a>
+      <span class="title"></span>
+    </div>
+    <div class="content">
+    </div>
+  </section>
 </div>
 %TMPL:END%
 
 %TMPL:DEF{"offcanvas:search"}%
 <section id="qw-searchbar" class="qw-offcanvas-search" data-quicksearch>
-  <div class="filter">
-  </div>
-
-  <div class="results">
-  </div>
+  <div class="filter"></div>
+  <div class="results"></div>
 </section>
 <section id="qw-searchpreview">
   <div class="heading">
@@ -203,5 +212,15 @@
 %TMPL:DEF{"breadcrumb:processmap"}%
 <div id="qw-processmap" class="f-dropdown content large" data-dropdown-content >
   %INCLUDE{"Main.WebHome" section="PROCESSMAP"}%
+</div>
+%TMPL:END%
+
+%TMPL:DEF{"attachments"}%%META{"attachments"}%%TMPL:END%
+%TMPL:DEF{"offcanvas:rightbar:includes"}%
+<div data-rightbar-item>
+  <a href="#" data-content="#qw-attachments" data-title="%MAKETEXT{"Attachments"}%">
+    %MAKETEXT{"Attachments"}% <i class="fa fa-chevron-right right"></i>
+  </a>
+  <div id="qw-attachments">%TMPL:P{"attachments"}%</div>
 </div>
 %TMPL:END%
