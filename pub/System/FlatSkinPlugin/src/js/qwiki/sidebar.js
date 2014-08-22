@@ -17,8 +17,6 @@
         '</section>'
       ].join('\n'),
       right: {
-        heading: '<li><a href="#" data-rightbar-content="<%= target %>"><%= title %><i class="fa fa-chevron-right right"></i></a></li>',
-        content: '<div id="<%= target %>" data-rightbar-content><%= content %></div>'
       }
     },
 
