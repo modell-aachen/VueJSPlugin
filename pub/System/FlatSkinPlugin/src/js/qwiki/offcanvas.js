@@ -54,7 +54,6 @@
     // click handler, initiates offcanvas animation
     var toggle = '[data-' + attrs.toggle + ']';
     $(toggle).on( 'click', self, handleClick );
-    $(toggle).on( 'focus', self, handleClick );
   };
 
   var handleResize = function( evt ) {

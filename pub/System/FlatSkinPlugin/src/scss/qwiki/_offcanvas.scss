@@ -21,14 +21,8 @@
   transform: translate3d( 0, 0, 0 );
 }
 
-:not(.ocvs-leftbar) .follows-canvas {
-  transform: translate3d( 0, 0, 0 );
-}
-
 // hide scoll bar(s)
-.ocvs-leftbar,
-.ocvs-rightbar,
-.ocvs-search {
+body {
   overflow-x: hidden !important;
 }
 
@@ -64,11 +58,9 @@
   z-index: 100;
   background: $body-bg;
   border-right: $qw-border-width solid $qw-border-bg;
-  transition-property: transform;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.3s;
+  transition: transform 0.3s ease-in-out;
   @media #{$large-up} {
-    transition-duration: 0.15s;
+    transition: transform 0.15s ease-in-out;
   }
 
   &.active {
