@@ -134,3 +134,10 @@ Toggle:
 * foo
 * bar
 * 2000
+
+
+### ckeditor
+In Main- oder WebPreferences:
+```
+   * Set CKE_CONFIG_TOPIC = System.FlatSkinPlugin
+```
