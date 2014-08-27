@@ -1,1 +1,77 @@
-TBD.
+---++ CKEditor Configuration
+---+++ Main Editor
+%TWISTY{showlink="Show configuration" hidelink="Hide configuration" start="hide"}%
+<verbatim class="panel callout radius">
+%STARTSECTION{"CKE_CONFIG_MAIN"}%
+wikitoolname: '%WIKITOOLNAME%',
+skin: 'moono-dark',
+toolbar: 'MA',
+height: 500,
+allowedContent: true,
+resize_enabled: false,
+toolbarCanCollapse: false,
+enterMode: CKEDITOR.ENTER_P,
+shiftEnterMode: CKEDITOR.ENTER_BR,
+extraPlugins: 'autogrow,link,magicline,qwikiautosuggest,qwikitable,,qwikitableresize,qwikitabletools,sharedspace',
+removePlugins: 'autosave,divarea,elementspath,filebrowser,table,tabletools,wordcount',
+removeFormatTags: 'b,big,code,del,dfn,em,font,i,ins,kbd,q,s,samp,small,span,strike,strong,sub,sup,tt,u,var,h1,h2,h3,h4,h5,h6,ol,ul,dl,li,dd,dt,pre,xmp',
+removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign',
+autosave_delay: 10,
+sharedSpaces: {top: 'ckarea'},
+language: '%LANGUAGE%',
+forcePasteAsPlainText: false,
+filebrowserUploadUrl: '%SCRIPTURLPATH{"rest"}%/WysiwygPlugin/upload?noredirect',
+linkShowAdvancedTab: false,
+linkShowTargetTab: false,
+contentsCss: [ '%PUBURLPATH%/%SYSTEMWEB%/CKEditorPlugin/styles/cke_qwiki.css'],
+
+toolbar_MA: [
+    { name: '', items: [ 'Undo', 'Redo' ] },
+    { name: '', items: [ 'Bold','Italic','Underline' ] },
+    { name: '', items: [ 'NumberedList','BulletedList'] },
+    { name: '', items: [ 'Link','Unlink' ] },
+    { name: '', items: [ 'RemoveFormat', 'ShowBlocks' ] },
+    { name: '', items: ['Format' ] },
+    { name: '', items: [ 'QwikiProvis', 'QwikiAttach', 'Image', 'QwikiTable', 'Code', 'Document' ] }
+],
+
+stylesSet:[
+    { name: /de/.test( '%LANGUAGE%' ) ? "Roter Text" : "Red text", element: 'span', styles: {'color': 'red'} },
+    { name: /de/.test( '%LANGUAGE%' ) ? "Marker: Gelb" : "Marker: Yellow", element: 'span', styles: {'background-color': 'yellow'} },
+    { name: /de/.test( '%LANGUAGE%' ) ? "Marker: Gr\u00FCn" : "Marker: Green", element: 'span', styles: {'background-color': 'lime'} }
+]
+%ENDSECTION{"CKE_CONFIG_MAIN"}%
+</verbatim>
+%ENDTWISTY%
+
+---+++ Form Fields
+%TWISTY{showlink="Show configuration" hidelink="Hide configuration" start="hide"}%
+<verbatim class="panel callout radius">
+%STARTSECTION{"CKE_CONFIG_FORMFIELD"}%
+uiColor: '#f0f0f0',
+skin: 'moono',
+toolbar: 'FORMFIELD',
+height: 125,
+width: 450,
+allowedContent: true,
+resize_enabled: true,
+toolbarCanCollapse: false,
+enterMode: CKEDITOR.ENTER_P,
+shiftEnterMode: CKEDITOR.ENTER_BR,
+extraPlugins: 'divarea,link,qwiki,qwikiautosuggest,qwikifilebrowser',
+removePlugins: 'autosave,filebrowser,table,tabletools,wordcount,magicline,qwikisave,qwikitable,qwikitabletools,qwikitoolbar,elementspath',
+language: '%LANGUAGE%',
+forcePasteAsPlainText: false,
+filebrowserUploadUrl: '%SCRIPTURLPATH{"rest"}%/WysiwygPlugin/upload?noredirect',
+linkShowAdvancedTab: false,
+linkShowTargetTab: false,
+contentsCss: [ '%PUBURLPATH%/%SYSTEMWEB%/CKEditorPlugin/styles/cke_qwiki.css'],
+toolbar_FORMFIELD: [
+    { name: '', items: [ 'Undo', 'Redo' ] },
+    { name: '', items: [ 'Link','Unlink' ] },
+    { name: '', items: [ 'Bold','Italic','Underline' ] },
+    { name: '', items: [ 'NumberedList','BulletedList' ] }
+]
+%ENDSECTION{"CKE_CONFIG_FORMFIELD"}%
+</verbatim>
+%ENDTWISTY%
