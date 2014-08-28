@@ -2,8 +2,25 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   var target = grunt.option('target') || 'dev';
-  var foswikiBase = grunt.option('foswiki') || '/opt/qwiki';
-  var checkoutBase = grunt.option('git') || '/opt/git';
+
+  /*
+  Template für grunt.config (im root Verzeichnis):
+    {
+      "foswiki": "/opt/qwiki",
+      "git": "/opt/git"
+    }
+   */
+
+  var cfg = {};
+  if( grunt.file.exists( 'grunt.config' ) ) {
+    cfg = grunt.file.readJSON( 'grunt.config' );
+  } else {
+    cfg.foswiki = '/opt/qwiki';
+    cfg.git = '/opt/git';
+  }
+
+  var foswikiBase = grunt.option('foswiki') || cfg.foswiki;
+  var checkoutBase = grunt.option('git') || cfg.git;
 
   var pkg = grunt.file.readJSON('package.json');
   var isPlugin = /Plugin$/.test( pkg.name );
