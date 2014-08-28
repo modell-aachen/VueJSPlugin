@@ -3,17 +3,17 @@
   <ul class="qw-attachtable">
 %TMPL:END%
 
-%TMPL:DEF{"ATTACH:files:row"}%
+%TMPL:DEF{"ATTACH:files:row"}%<!--ATTACH:files:row-->
     <li>
       <a href="%ATTACHURLPATH%/%ENCODE{%A_FILE%}%" target="_blank">%A_ICON% %A_FILE% <i class="fa fa-download right"></i></a>
     </li>
-%TMPL:END%
+<!--/ATTACH:files:row-->%TMPL:END%
 
 %TMPL:DEF{"ATTACH:files:footer"}%
   </ul>
 </div>
 %TMPL:END%
 
-%TMPL:DEF{"ATTACH:versions:footer"}%%TMPL:END%
-%TMPL:DEF{"ATTACH:versions:header"}%%TMPL:END%
-%TMPL:DEF{"ATTACH:versions:row"}%%TMPL:END%
+%TMPL:DEF{"ATTACH:versions:footer"}%<!--unused-->%TMPL:END%
+%TMPL:DEF{"ATTACH:versions:header"}%<!--unused-->%TMPL:END%
+%TMPL:DEF{"ATTACH:versions:row"}%<!--unused-->%TMPL:END%

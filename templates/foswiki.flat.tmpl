@@ -39,10 +39,10 @@
 </head>%TMPL:END%
 
 %TMPL:DEF{"body"}%%{
-}%%TMPL:P{"body:start"}%%{
-}%%TMPL:P{"topbar"}%%{
-}%%TMPL:P{"body:content"}%%{
-}%%TMPL:P{"body:end"}%%{
+}%<!--body:start-->%TMPL:P{"body:start"}%<!--/body:start-->%{
+}%<!--topbar-->%TMPL:P{"topbar"}%<!--/topbar-->%{
+}%<!--body:content-->%TMPL:P{"body:content"}%<!--/body:content-->%{
+}%<!--body:end-->%TMPL:P{"body:end"}%<!--/body:end-->%{
 }%%TMPL:END%
 
 %TMPL:DEF{"context"}%approved%TMPL:END%
@@ -50,10 +50,10 @@
 %TMPL:END%
 
 %TMPL:DEF{"body:end"}%
-%TMPL:P{"offcanvas:leftbar"}%
-%TMPL:P{"offcanvas:rightbar"}%
-%TMPL:P{"offcanvas:search"}%
-%TMPL:P{"offcanvas:rightbar:includes"}%
+<!--offcanvas:leftbar-->%TMPL:P{"offcanvas:leftbar"}%<!--/offcanvas:leftbar-->
+<!--offcanvas:rightbar-->%TMPL:P{"offcanvas:rightbar"}%<!--offcanvas:rightbar-->
+<!--offcanvas:search-->%TMPL:P{"offcanvas:search"}%<!--/offcanvas:search-->
+<!--offcanvas:rightbar:includes-->%TMPL:P{"offcanvas:rightbar:includes"}%<!--/offcanvas:rightbar:includes-->
 <script>
   $(document).qwiki();
 </script>
@@ -79,7 +79,7 @@
 </div>
 %TMPL:END%
 
-%TMPL:DEF{"topbar"}%%TMPL:P{"topbar:one"}%%TMPL:P{"topbar:two"}%%TMPL:END%
+%TMPL:DEF{"topbar"}%<!--topbar:one-->%TMPL:P{"topbar:one"}%<!--/topbar:one--><!--topbar:two-->%TMPL:P{"topbar:two"}%<!--/topbar:two-->%TMPL:END%
 
 %TMPL:DEF{"topbar:one"}%
 <nav class="qw-top-one">
@@ -91,7 +91,7 @@
       <i class="qw-menu-close"></i>
     </span>
   </div>
-  <div class="qw-breadcrumbs">%TMPL:P{"breadcrumb"}%</div>
+  <div class="qw-breadcrumbs"><!--breadcrumb-->%TMPL:P{"breadcrumb"}%<!--/breadcrumb--></div>
   <div class="qw-search">
     <span class="close" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right>
       <i class="fa fa-lg fa-chevron-right"></i>
@@ -187,12 +187,12 @@
 
 %TMPL:DEF{"breadcrumb"}%
 <ul class="nav navbar-nav qw-breadcrumb ">
-  %TMPL:P{"breadcrumb:home"}%
-  %TMPL:P{"breadcrumb:parentwebs"}%
-  %TMPL:P{"breadcrumb:parenttopics"}%
-  %TMPL:P{"breadcrumb:topic"}%
+  <!--breadcrumb:home-->%TMPL:P{"breadcrumb:home"}%<!--/breadcrumb:home-->
+  <!--breadcrumb:parentwebs-->%TMPL:P{"breadcrumb:parentwebs"}%<!--/breadcrumb:parentwebs-->
+  <!--breadcrumb:parenttopics-->%TMPL:P{"breadcrumb:parenttopics"}%<!--/breadcrumb:parenttopics-->
+  <!--breadcrumb:topic-->%TMPL:P{"breadcrumb:topic"}%<!--/breadcrumb:topic-->
 </ul>
-%TMPL:P{"breadcrumb:processmap"}%
+<!--breadcrumb:processmap-->%TMPL:P{"breadcrumb:processmap"}%<!--/breadcrumb:processmap-->
 %TMPL:END%
 
 %TMPL:DEF{"breadcrumb:home"}%<li><a href="#" data-dropdown="qw-processmap"><i class="fa fa-sitemap fa-lg"></i></a></li>%TMPL:END%
