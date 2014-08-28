@@ -81,17 +81,21 @@
 
 %TMPL:DEF{"topbar:one"}%
 <nav class="qw-top-one">
-  <div class="qw-menu">
-    <a href="#" class="button default tiny qw-close-left" title="%MAKETEXT{"Menu"}%" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar">
-      <i class="fa fa-reorder "></i><span class="show-for-large-up">&nbsp;&nbsp;%MAKETEXT{"Menu"}%</span>
-    </a>
+  <div class="qw-menu" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar">
+    <span>
+      <i class="qw-menu-icon"></i><span class="qw-menu-text">&nbsp;%MAKETEXT{"Menu"}%</span>
+    </span>
+    <span>
+      <i class="qw-menu-close"></i>
+    </span>
   </div>
   <div class="qw-breadcrumbs">%TMPL:P{"breadcrumb"}%</div>
   <div class="qw-search">
     <span class="close" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right>
       <i class="fa fa-lg fa-chevron-right"></i>
     </span>
-    <form action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
+    <span><i class="qw-search-icon" data-offcanvas-toggle data-offcanvas-autoclose="0" data-quicksearch-toggle data-target="#qw-searchbar" data-type="search" data-right></i></span>
+    <form action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch" class="qw-search-form">
       <div class="row collapse">
         <div class="small-12 columns qw-inline-input">%JQREQUIRE{"UI::autocomplete"}%
           <input name="search"
