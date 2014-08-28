@@ -1,7 +1,7 @@
 %TMPL:DEF{"topbar:two:left"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard"}%
-<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%" class="qw-tab view"><i class="fa fa-check"></i>%MAKETEXT{"Version"}%%REVINFO{format=" $rev"}%</a>
+<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%" class="qw-tab view"><i class="fa fa-check"></i>%MAKETEXT{"Version [_1]" args="%REVINFO{format=" $rev"}%"}%</a>
 %TMPL:END%
 
 %TMPL:DEF{"topbar:two:right"}%

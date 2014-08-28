@@ -5,3 +5,7 @@ msgstr "Anmelden"
 #: login.flat.tmpl
 msgid "Sign in to %1"
 msgstr "An %1 anmelden"
+
+#: data/System/FlatSkinTopbarButtonsTemplate.txt
+msgid "Version %1"
+msgstr "Version %1"
