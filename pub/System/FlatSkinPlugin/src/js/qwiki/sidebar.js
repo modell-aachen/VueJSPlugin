@@ -45,6 +45,12 @@
         loadRightBarItems( this ).done(function() {
           $('[data-rightbar] .links a').on( 'click', this, handleRightBarClick );
           $('[data-rightbar] .container .close').on( 'click', handleRightBarClose );
+
+          $('[data-rightbar] [data-content]').each( function() {
+            var target = $(this).data('content');
+            $(target).addClass('hidden');
+          });
+
           initialized = true;
         });
       } else {
@@ -135,6 +141,11 @@
   };
 
   var handleRightBarClose = function( evt ) {
+    $('[data-rightbar] .links [data-content]').each( function() {
+      var target = $(this).data('content');
+      $(target).addClass('hidden');
+    });
+
     $('[data-rightbar] .links').removeClass('active');
     $('[data-rightbar] .container').removeClass('active');
   };
@@ -143,9 +154,8 @@
     var deferred = $.Deferred();
 
     var container = $('[data-rightbar-item]');
-    for( var i = 0; i < container.length; ++i ) {
-      var c = container[i];
-      var link = container.children('a[data-content]');
+    container.each( function() {
+      var link = $(this).children('a[data-content]');
       if ( link.length === 0 ) {
         self.Q.error( 'Missing content property.' );
         return;
@@ -162,7 +172,7 @@
       }
 
       content.appendTo('[data-rightbar] .container > .content');
-    }
+    });
 
     deferred.resolve();
     return deferred.promise();

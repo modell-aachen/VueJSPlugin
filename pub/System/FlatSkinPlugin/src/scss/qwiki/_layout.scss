@@ -1,7 +1,7 @@
 // content container (main layout)
 .qw-page {
   @include grid-row();
-  padding: $qw-top-height 0;
+  margin: $qw-top-height 0;
 
   > .qw-left {
     @media #{$small-only} { @include grid-column( $columns: $total-columns ); }
@@ -49,31 +49,70 @@
   }
 
   > .qw-menu {
+    color: $qw-breadcrumb-color;
+    cursor: pointer;
+    padding-top: rem-calc(8);
+
     @media #{$small-up} { @include grid-column( $columns: 1 ); }
     @media #{$medium-up} {
-      margin-left: $column-gutter/2;
-      padding-left: 0 !important;
+      padding-left: $column-gutter/2 !important;
       padding-right: 0 !important;
-      border-right: 1px solid $qw-border-bg;
     }
 
     max-height: $qw-top-one-height;
+    min-height: $qw-top-one-height;
     transition-property: width;
     transition-timing-function: ease-in-out;
     transition-duration: 0.3s;
     @media #{$large-up} {
       transition-duration: 0.15s;
     }
+
+    .qw-menu-icon {
+      @extend .fa;
+      @extend .fa-reorder;
+      @extend .fa-lg;
+      @extend .left;
+      padding: rem-calc(4);
+    }
+
+    .qw-menu-text {
+      @extend .left;
+      margin-bottom: 3px;
+      display: none;
+      transition: opacity 0.15s ease-in-out;
+      opacity: 0;
+
+      @media #{$large-up} {
+        opacity: 1;
+        display: inline-block;
+      }
+    }
+
+    .qw-menu-close {
+      @extend .fa;
+      @extend .fa-times;
+      @extend .fa-lg;
+      @extend .right;
+      padding: rem-calc(4);
+      transition: opacity 0.15s ease-in-out;
+      opacity: 0;
+    }
   }
 
   > .qw-breadcrumbs {
+    max-height: $qw-top-one-height;
+    min-height: $qw-top-one-height;
+
     @media #{$small-only} { display: none; }
     @media #{$medium-only} { @include grid-column( $columns: 7 ); }
     @media #{$large-up} { @include grid-column( $columns: 8 ); }
 
     @media #{$medium-up} {
       padding-left: 0 !important;
+      margin-left: $column-gutter/2;
       margin-right: -1 * $column-gutter/2;
+      border-left: 1px solid $qw-border-bg;
 
       ul {
         margin-left: 0;
@@ -82,9 +121,16 @@
   }
 
   > .qw-search {
-    @media #{$small-only} { @include grid-column( $columns: 1, $offset: 10, $last-column: true ); }
-    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true ); }
+    max-height: $qw-top-one-height;
+    min-height: $qw-top-one-height;
+
     @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true ); }
+    @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true ); }
+    @media #{$small-only} {
+      @include grid-column( $columns: 1, $offset: 10, $last-column: true );
+      float: right;
+    }
+    
 
     > .close {
       position: absolute;
@@ -99,6 +145,27 @@
 
       &:hover {
         background: $qw-content-bg;
+      }
+    }
+
+    > .qw-search-form {
+      @media #{$small-only} {
+        display: none;
+      }
+    }
+
+    .qw-search-icon {
+      @extend .fa;
+      @extend .fa-lg;
+      @extend .fa-search;
+
+      cursor: pointer;
+      display: inline-block;
+      color: $qw-breadcrumb-color;
+      margin-top: rem-calc(12);
+
+      @media #{$medium-up} {
+        display: none;
       }
     }
   }
