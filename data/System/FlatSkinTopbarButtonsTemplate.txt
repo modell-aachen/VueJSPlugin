@@ -2,8 +2,6 @@
 
 %TMPL:DEF{"topbar:two:left:standard"}%
 <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%" class="qw-tab view"><i class="fa fa-check"></i>%MAKETEXT{"Version"}%%REVINFO{format=" $rev"}%</a>
-<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%%WORKFLOWSUFFIX%" class="qw-tab draft"><i class="fa fa-file-text-o"></i>%MAKETEXT{"Version"}%%REVINFO{format=" $percentCALC{\"$INT(1+$rev)\"}$percent, "}%%MAKETEXT{"Draft"}%</a>
-<a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%" class="qw-tab edit"><i class="fa fa-pencil"></i>%MAKETEXT{"Edit draft"}%</a>
 %TMPL:END%
 
 %TMPL:DEF{"topbar:two:right"}%
