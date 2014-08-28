@@ -1,3 +1,5 @@
+%TMPL:INCLUDE{"TopbarButtons"}%
+
 %TMPL:DEF{"document"}%
 %TMPL:P{"doctype"}%
 %TMPL:P{"htmlstart"}%
@@ -120,25 +122,9 @@
 <nav class="qw-top-two follows-canvas">
   <div class="qw-context">
     <div class="content">
-      <!-- ToDo. -->
-      <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%" class="qw-tab view"><i class="fa fa-check"></i>%MAKETEXT{"Version"}%%REVINFO{format=" $rev"}%</a>
-      <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%%WORKFLOWSUFFIX%" class="qw-tab draft"><i class="fa fa-file-text-o"></i>%MAKETEXT{"Version"}%%REVINFO{format=" $percentCALC{\"$INT(1+$rev)\"}$percent, "}%%MAKETEXT{"Draft"}%</a>
-      <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%" class="qw-tab edit"><i class="fa fa-pencil"></i>%MAKETEXT{"Edit draft"}%</a>
+      <!--topbar:two:left-->%TMPL:P{"topbar:two:left"}%<!--/topbar:two:left-->
       <ul class="button-group right visible-for-large-up">
-        <li><a href="#" class="qw-action-button"><i class="fa fa-bookmark-o"></i></a></li>
-        <li><a href="#" class="qw-action-button"><i class="fa fa-print"></i></a></li>
-        <li><a href="#" class="qw-action-button"><i class="fa fa-cog"></i></a></li>
-        <li>
-          <a href="#" data-dropdown="qw-lang-drop" class="qw-action-button dropdown">
-            <i class="fa fa-flag show-for-small-only"></i>
-            <span class="show-for-medium-up">deutsch</span>
-          </a>
-        </li>
-        <ul id="qw-lang-drop" data-dropdown-content class="f-dropdown">
-          <li><a href="#">lang 1</a></li>
-          <li><a href="#">lang 2</a></li>
-          <li><a href="#">lang 3</a></li>
-        </ul>
+        <!--topbar:two:right-->%TMPL:P{"topbar:two:right"}%<!--/topbar:two:right-->
       </ul>
     </div>
   </div>
