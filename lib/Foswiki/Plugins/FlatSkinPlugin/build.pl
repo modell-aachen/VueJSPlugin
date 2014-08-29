@@ -23,6 +23,7 @@ my @ignore = (
   "Gruntfile.js",
   "bower.json",
   "package.json",
+  "grunt.json",
   "bower_components/",
   "lib/Foswiki/Plugins/$plugin/build.pl",
   "lib/Foswiki/Plugins/$plugin/MANIFEST",

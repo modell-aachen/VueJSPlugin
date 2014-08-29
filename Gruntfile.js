@@ -3,20 +3,22 @@ module.exports = function(grunt) {
 
   var target = grunt.option('target') || 'dev';
 
-  /*
-  Template für grunt.config (im root Verzeichnis):
+  /* Template für grunt.json (im root Verzeichnis):
+
     {
       "foswiki": "/opt/qwiki",
       "git": "/opt/git"
     }
+
    */
 
-  var cfg = {};
-  if( grunt.file.exists( 'grunt.config' ) ) {
-    cfg = grunt.file.readJSON( 'grunt.config' );
-  } else {
-    cfg.foswiki = '/opt/qwiki';
-    cfg.git = '/opt/git';
+  var cfg = {foswiki: '/opt/qwiki', git: '/opt/git'};
+  if( grunt.file.exists( 'grunt.json' ) ) {
+    try {
+      cfg = grunt.file.readJSON( 'grunt.json' );
+    } catch ( e ) {
+      console.log( 'Invalid file format: grunt.json' );
+    }
   }
 
   var foswikiBase = grunt.option('foswiki') || cfg.foswiki;
