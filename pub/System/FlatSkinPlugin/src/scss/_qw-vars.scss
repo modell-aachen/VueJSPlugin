@@ -9,6 +9,11 @@ $row-width: 100%;
 $qw-content-bg: #fff;
 $qw-content-padding: rem-calc(30);
 
+$qw-info-color: $primary-color;
+$qw-draft-color: $alert-color;
+$qw-edit-color: $warning-color;
+$qw-approved-color: $success-color;
+
 // breadcrumbs
 $qw-breadcrumb-color: #7b7b7b;
 $qw-breadcrumb-hover-color: #f2f2f2;
