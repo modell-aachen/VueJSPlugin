@@ -18,11 +18,8 @@
       reveal: 'reveal',
       target: 'target',
       toggle: 'offcanvas-toggle',
+      trigger: 'trigger',
       type: 'type'
-      // direction: {
-      //   left: 'left',
-      //   right: 'right'
-      // }
     },
 
     init: function( options ) {
@@ -53,7 +50,15 @@
 
     // click handler, initiates offcanvas animation
     var toggle = '[data-' + attrs.toggle + ']';
-    $(toggle).on( 'click', self, handleClick );
+    $(toggle).each( function() {
+      var $this = $(this);
+      var trigger = $this.data(attrs.trigger);
+      if ( trigger ) {
+        $this.on( trigger, self, handleClick );
+      } else {
+        $this.on( 'click', self, handleClick );
+      }
+    });
   };
 
   var handleResize = function( evt ) {
