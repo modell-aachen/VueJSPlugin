@@ -185,6 +185,11 @@
       padding: rem-calc(5 15);
     }
   }
+
+  > .qw-cancel-edit > a {
+    color: $qw-breadcrumb-color;
+    float: right;
+  }
 }
 
 .qw-top-two {
