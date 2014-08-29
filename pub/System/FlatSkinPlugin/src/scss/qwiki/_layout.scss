@@ -238,8 +238,11 @@
   background: transparent;
 }
 
-// .qw-left > .meta > .qw-document-head {
 .qw-document-head {
+  margin: 0 -$column-gutter;
+  padding: $column-gutter $column-gutter 0 $column-gutter;
+  border-bottom: $qw-border-width solid $qw-border-bg ;
+
   label {
     display: inline-block;
   }
