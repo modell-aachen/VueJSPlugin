@@ -1,7 +1,43 @@
 %TMPL:INCLUDE{"edit"}%
 %TMPL:DEF{"context"}%edit%TMPL:END%
 
-%TMPL:DEF{"body:content"}%
+%TMPL:DEF{"content"}%<!--content-->
+%TMPL:P{"formstart"}%
+%TMPL:P{"formtop"}%
+%TMPL:P{"textarea"}%
+%TMPL:P{"formbottom"}%
+%TMPL:P{"topicinfo"}%
+%TMPL:P{"formend"}%
+%TMPL:END%<!--/content-->
+
+%TMPL:DEF{"document:head"}%%TMPL:END%
+
+%TMPL:DEF{"body:content"}%<!--body:content-->
 %TMPL:PREV%
 <div id="ckarea" class="follows-canvas"></div>
-%TMPL:END%
+<a href="#" class="button" onclick="$('#main').append('<input type=&quot;hidden&quot; name=&quot;action_save&quot; value=&quot;Save&quot;>').submit();">Default Button</a>
+%TMPL:END%<!--/body:content-->
+
+
+%TMPL:DEF{"topbar:one:mid"}%<!--topbar:one:mid-->
+<div class="qw-edit-title">
+  <h5 class="content">
+    <span class="edit-color">%MAKETEXT{"Draft"}%:</span>
+    <span>%IF{"'%TOPIC%'/TopicTitle" then="TopicTitle" else="%TOPIC%"}%</span>
+    <span class="edit-color">[%MAKETEXT{"Version"}% %CALC{"$INT(%REVINFO{format="$rev"}% + 1)"}%]</span>
+  </h5>
+</div>
+%TMPL:END%<!--/topbar:one:mid-->
+
+%TMPL:DEF{"topbar:one:right"}%<!--topbar:one:right-->
+%TMPL:END%<!--/topbar:one:right-->
+
+%TMPL:DEF{"offcanvas:rightbar:includes"}%<!--offcanvas:rightbar:includes-->
+%TMPL:PREV%
+<div data-rightbar-item>
+  <a href="#" data-content="#qw-documentform" data-title="%MAKETEXT{"TBD Dokumentenlenkung"}%">
+    %MAKETEXT{"Fübär"}% <i class="fa fa-chevron-right right"></i>
+  </a>
+  <div id="qw-documentform">%TMPL:P{"form"}%</div>
+</div>
+%TMPL:END%<!--/offcanvas:rightbar:includes-->

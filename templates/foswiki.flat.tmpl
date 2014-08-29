@@ -1,4 +1,5 @@
 %TMPL:INCLUDE{"TopbarButtons"}%
+%TMPL:INCLUDE{"DocumentHead"}%
 
 %TMPL:DEF{"document"}%
 %TMPL:P{"doctype"}%
@@ -61,11 +62,9 @@
 </body>%TMPL:END%
 
 
-%TMPL:DEF{"content:head"}%
-<a href="#" class="button default tiny" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
-  <span class="show-for-large-up">Toggle rightbar</span>
-</a>
-%TMPL:END%
+%TMPL:DEF{"content:head"}%<!--content:head-->
+%TMPL:P{"document:head"}%
+%TMPL:END%<!--/content:head-->
 
 %TMPL:DEF{"body:content"}%
 <div class="qw-page follows-canvas" data-offcanvas>
@@ -81,42 +80,54 @@
 
 %TMPL:DEF{"topbar"}%<!--topbar:one-->%TMPL:P{"topbar:one"}%<!--/topbar:one--><!--topbar:two-->%TMPL:P{"topbar:two"}%<!--/topbar:two-->%TMPL:END%
 
-%TMPL:DEF{"topbar:one"}%
-<nav class="qw-top-one">
-  <div class="qw-menu" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar">
-    <span>
-      <i class="qw-menu-icon"></i><span class="qw-menu-text">&nbsp;%MAKETEXT{"Menu"}%</span>
-    </span>
-    <span>
-      <i class="qw-menu-close"></i>
-    </span>
-  </div>
-  <div class="qw-breadcrumbs"><!--breadcrumb-->%TMPL:P{"breadcrumb"}%<!--/breadcrumb--></div>
-  <div class="qw-search">
-    <span class="close" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right>
-      <i class="fa fa-lg fa-chevron-right"></i>
-    </span>
-    <span><i class="qw-search-icon" data-offcanvas-toggle data-offcanvas-autoclose="0" data-quicksearch-toggle data-target="#qw-searchbar" data-type="search" data-right></i></span>
-    <form action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch" class="qw-search-form">
-      <div class="row collapse">
-        <div class="small-12 columns qw-inline-input">%JQREQUIRE{"UI::autocomplete"}%
-          <input name="search"
-                 type="text"
-                 class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
-                 data-offcanvas-toggle
-                 data-offcanvas-autoclose="0"
-                 data-quicksearch-toggle
-                 data-target="#qw-searchbar"
-                 data-type="search"
-                 data-right
-                 required>
-          <label for="search"><span>%MAKETEXT{"Search"}%</span></label>
-        </div>
+%TMPL:DEF{"topbar:one:left"}%<!--topbar:one:menu-->
+<div class="qw-menu" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar">
+  <span>
+    <i class="qw-menu-icon"></i><span class="qw-menu-text">&nbsp;%MAKETEXT{"Menu"}%</span>
+  </span>
+  <span>
+    <i class="qw-menu-close"></i>
+  </span>
+</div>
+%TMPL:END%<!--/topbar:one:menu-->
+
+%TMPL:DEF{"topbar:one:mid"}%<!--topbar:one:breadcrumbs-->
+<div class="qw-breadcrumbs"><!--breadcrumb-->%TMPL:P{"breadcrumb"}%<!--/breadcrumb--></div>
+%TMPL:END%<!--/topbar:one:breadcrumbs-->
+
+%TMPL:DEF{"topbar:one:right"}%<!--topbar:one:right-->
+<div class="qw-search">
+  <span class="close" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right>
+    <i class="fa fa-lg fa-chevron-right"></i>
+  </span>
+  <span><i class="qw-search-icon" data-offcanvas-toggle data-offcanvas-autoclose="0" data-quicksearch-toggle data-target="#qw-searchbar" data-type="search" data-right></i></span>
+  <form action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch" class="qw-search-form">
+    <div class="row collapse">
+      <div class="small-12 columns qw-inline-input">%JQREQUIRE{"UI::autocomplete"}%
+        <input name="search"
+               type="text"
+               class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
+               data-offcanvas-toggle
+               data-offcanvas-autoclose="0"
+               data-quicksearch-toggle
+               data-target="#qw-searchbar"
+               data-type="search"
+               data-right
+               required>
+        <label for="search"><span>%MAKETEXT{"Search"}%</span></label>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
+%TMPL:END%<!--/topbar:one:right-->
+
+%TMPL:DEF{"topbar:one"}%<!--topbar:one-->
+<nav class="qw-top-one">
+  %TMPL:P{"topbar:one:left"}%
+  %TMPL:P{"topbar:one:mid"}%
+  %TMPL:P{"topbar:one:right"}%
 </nav>
-%TMPL:END%
+%TMPL:END%<!--/topbar:one-->
 
 %TMPL:DEF{"topbar:two"}%
 <nav class="qw-top-two follows-canvas">
