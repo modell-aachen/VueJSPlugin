@@ -35,6 +35,13 @@ body {
   }
 }
 
+.ocvs-rightbar #ckarea.follows-canvas {
+  @media #{$large-up} {
+    $width: percentage( 1 / $total-columns );
+    transform: translate3d( -1.5 * $width, 0, 0 );
+  }
+}
+
 // left off canvas area (user menu)
 .qw-offcanvas-leftbar {
   position: fixed;
