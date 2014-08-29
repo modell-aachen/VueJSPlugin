@@ -1,0 +1,85 @@
+%TMPL:DEF{"document:head:de"}%<!--document:head:de-->
+<div class='qw-document-head'>
+  <input type="button" value="Erweiterte Informationen" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
+  <label>
+    Typ
+    <input type="text" value="%QUERY{"DocumentType"}%" disabled>
+  </label>
+  <label>
+    geltend
+    <input type="text" value="%QUERY{"AreaOfApplication"}%" disabled>
+  </label>
+  <label>
+    verantwortlich
+    <input type="text" value="%QUERY{"Responsible"}%" disabled>
+  </label>
+  <label>
+    Stand
+    <input type="text" value="%REVINFO{format="$date"}%" disabled>
+  </label>
+  <label>
+    Letzter Autor
+    <input type="text" value="%REVINFO{format="$wikiusername"}%" disabled>
+  </label>
+  <div class="clearfix"></div>
+</div>
+%TMPL:END%<!--/document:head:de-->
+
+%TMPL:DEF{"document:head:en"}%<!--document:head:en-->
+<div class='qw-document-head'>
+  <input type="button" value="Erweiterte Informationen" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
+  <label>
+    Typ
+    <input type="text" value="%QUERY{"DocumentType"}%" disabled>
+  </label>
+  <label>
+    geltend
+    <input type="text" value="%QUERY{"AreaOfApplication"}%" disabled>
+  </label>
+  <label>
+    verantwortlich
+    <input type="text" value="%QUERY{"Responsible"}%" disabled>
+  </label>
+  <label>
+    Stand
+    <input type="text" value="%REVINFO{format="$date"}%" disabled>
+  </label>
+  <label>
+    Letzter Autor
+    <input type="text" value="%REVINFO{format="$wikiusername"}%" disabled>
+  </label>
+  <div class="clearfix"></div>
+</div>
+%TMPL:END%<!--/document:head:en-->
+
+%TMPL:DEF{"document:head:auto"}%<!--document:head:auto-->
+<div class='qw-document-head'>
+  <input type="button" value="Erweiterte Informationen" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
+  <label>
+    Typ
+    <input type="text" value="%QUERY{"DocumentType"}%" disabled>
+  </label>
+  <label>
+    geltend
+    <input type="text" value="%QUERY{"AreaOfApplication"}%" disabled>
+  </label>
+  <label>
+    verantwortlich
+    <input type="text" value="%QUERY{"Responsible"}%" disabled>
+  </label>
+  <label>
+    Stand
+    <input type="text" value="%REVINFO{format="$date"}%" disabled>
+  </label>
+  <label>
+    Letzter Autor
+    <input type="text" value="%REVINFO{format="$wikiusername"}%" disabled>
+  </label>
+  <div class="clearfix"></div>
+</div>
+%TMPL:END%<!--/document:head:auto-->
+
+%TMPL:DEF{"document:head"}%<!--document:head-->
+%SWITCHTMPL{"%CONTENT_LANGUAGE%" prefix="document:head:" defaultTo="auto"}%
+%TMPL:END%<!--/document:head-->
+
