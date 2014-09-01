@@ -4,4 +4,4 @@
 /pub/System/FlatSkinPlugin/js/*
 /bower_components/*
 /node_modules/*
-/grunt.config
+/grunt.json
