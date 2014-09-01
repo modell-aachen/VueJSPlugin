@@ -5,7 +5,9 @@
 $total-columns: 12;
 $row-width: 100%;
 
+
 // colors
+$qw-body-bg: #f2f2f2;
 $qw-content-bg: #fff;
 $qw-content-padding: rem-calc(30);
 
@@ -14,10 +16,13 @@ $qw-draft-color: $alert-color;
 $qw-edit-color: $warning-color;
 $qw-approved-color: $success-color;
 
+
 // breadcrumbs
 $qw-breadcrumb-color: #7b7b7b;
 $qw-breadcrumb-hover-color: #f2f2f2;
 
+
+// topbar(s)
 $qw-top-one-height: 40px;
 $qw-top-two-height: 50px;
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
@@ -26,24 +31,26 @@ $qw-top-one-fg: #555;
 $qw-top-two-bg: $body-bg;
 
 
-
-// offcanvas
+// offcanvas ares
 $qw-offcanvas-left-width: 250px;
+
 
 // pace
 $qw-pace-bg: #29d;
 $qw-pace-h: 2px;
 $qw-pace-t: 0;
 
+
 // borders
 $qw-border-bg: #dbdbd9;
+
 
 // default border width
 $qw-border-width: 1px;
 
+
 // qw-top-two border-bottom
 $qw-context-border-width: 5px;
-
 
 
 // weblist
