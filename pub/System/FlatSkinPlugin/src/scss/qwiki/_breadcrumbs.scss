@@ -7,7 +7,6 @@
   > li {
     float: left;
 
-
     &:first-child {
       border-left: none;
 
@@ -23,13 +22,14 @@
     &:last-child {
       a {
         color: $qw-breadcrumb-color;
-        cursor: default;
-        pointer-events: none;
+        // cursor: default;
+        // pointer-events: none;
         border-top-right-radius: $qw-breadcrumb-radius;
         border-bottom-right-radius: $qw-breadcrumb-radius;
 
         &:after {
-          border-left: 30px solid transparent;
+          border-left: none;
+          background: transparent;
         }
 
         &:before {
@@ -80,10 +80,10 @@
       }
 
       &:hover {
-        background: $qw-breadcrumb-hover-bg !important;
+        background: $qw-breadcrumb-hover-bg;
 
         &:after {
-          border-left-color: $qw-breadcrumb-hover-bg !important;
+          border-left-color: $qw-breadcrumb-hover-bg;
         }
       }
     }

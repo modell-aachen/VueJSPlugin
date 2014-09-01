@@ -42,7 +42,7 @@ $qw-border-width: 1px;
 
 
 // contextual borders (default values if no context is set)
-$qw-context-border-width: 5px;
+$qw-context-border-width: 3px;
 $qw-context-border-color: $secondary-color;
 
 
@@ -62,7 +62,7 @@ $qw-top-height: $qw-top-one-height + $qw-top-two-height;
 // breadcrumbs
 $qw-breadcrumb-bg: #d9dbdb;
 $qw-breadcrumb-color: #65686e;
-$qw-breadcrumb-hover-bg: $qw-body-bg;
+$qw-breadcrumb-hover-bg: darken( $qw-top-one-bg, 5% );
 $qw-breadcrumb-border-color: #f2f2f2;
 $qw-breadcrumb-border-color: $qw-body-bg;
 $qw-breadcrumb-border-width: $qw-border-width;
@@ -114,8 +114,10 @@ $qw-searchbar-bg: $qw-content-bg;
 $qw-searchbar-active-bg: $qw-body-bg;
 $qw-searchbar-border-width: $qw-border-width;
 $qw-searchbar-border-color: $qw-border-bg;
+$qw-searchbar-close-btn-bg: #e7edf3;
+$qw-searchbar-close-btn-color: #236aa2;
 
-$qw-search-bg: $qw-body-bg;
+$qw-search-bg: $qw-content-bg;
 $qw-search-border-width: $qw-border-width;
 $qw-search-border-color: $qw-border-bg;
 
