@@ -105,6 +105,9 @@ body {
 
     > .close {
       display: block;
+      background: inherit;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
     }
 
     .qw-search-form {
@@ -112,6 +115,10 @@ body {
         display: inline-block;
         max-height: $qw-top-one-height !important;
         width: 100%;
+      }
+
+      input {
+        background: $qw-top-one-bg;
       }
     }
 

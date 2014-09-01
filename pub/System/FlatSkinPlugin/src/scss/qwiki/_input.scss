@@ -1,49 +1,24 @@
 .qw-inline-input {
-  label {
-    transition:
-      background 0.1s,
-      color 0.2s,
-      top 0.2s,
-      bottom 0.2s,
-      right 0.2s,
-      left 0.2s;
-    position: absolute;
-    color: #999;
-    padding: 7px 6px;
-    top: 7px;
-    right: 100%;
-    width: 100%;
-    margin-right: -100%;
-    bottom: 2px;
-    max-height: 26px;
-    background: white;
-  }
-
   input {
     width: 100%;
-    background: none;
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    max-height: 30px;
-    margin-top: ($qw-top-one-height - 30px) / 2;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    transition: background-color 0.3s ease-in-out;
+
+    max-height: $qw-top-one-height - 10px;
+    margin-top: 5px;
+
+    &:focus {
+      box-shadow: none;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      -ms-box-shadow: none;
+      -o-box-shadow: none;
+    }
 
     &:valid {
       background: white;
-    }
-
-    &:focus + label,
-    &:valid + label {
-      background: $primary-color;
-      color: white;
-      z-index: 2;
-      right: 2px;
-      margin-right: 0;
-      min-width: rem-calc(80);;
-      width: auto;
-      padding-left: rem-calc(15);
-      padding-top: 4px;
     }
 
     &.ui-autocomplete-loading {
