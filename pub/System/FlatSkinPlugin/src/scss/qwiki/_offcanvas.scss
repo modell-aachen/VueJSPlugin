@@ -16,7 +16,7 @@ body {
 
 // left canvas animation (user menu)
 .ocvs-leftbar .follows-canvas {
-  transform: translate3d( $qw-offcanvas-left-width, 0, 0 );
+  transform: translate3d( $qw-leftbar-width, 0, 0 );
   @media #{$large-up} {
     transform: translate3d( 100px, 0, 0 );
   }
@@ -45,14 +45,14 @@ body {
 // left off canvas area (user menu)
 .qw-offcanvas-leftbar {
   position: fixed;
-  transform: translate3d( -1 * $qw-offcanvas-left-width, 0, 0 );
+  transform: translate3d( -1 * $qw-leftbar-width, 0, 0 );
   top: $qw-top-one-height;
   bottom: 0;
-  width: $qw-offcanvas-left-width;
+  width: $qw-leftbar-width;
   overflow-y: auto;
   z-index: 100;
   background: $body-bg;
-  border-right: $qw-border-width solid $qw-border-bg;
+  border-right: $qw-leftbar-border-width solid $qw-leftbar-border-color;
   transition: transform 0.3s ease-in-out;
   @media #{$large-up} {
     transition: transform 0.15s ease-in-out;
@@ -90,12 +90,12 @@ body {
   }
 
   .qw-search {
-    background: $body-bg;
+    background: $qw-search-bg;
 
     @media #{$small-only} {
       @include grid-column( $columns: 11, $offset: 1 );
       padding-left: 0;
-      border-bottom: $qw-border-width solid $qw-border-bg;
+      border-bottom: $qw-search-border-width solid $qw-search-border-color;
     }
 
     @media #{$large-up} {
@@ -125,7 +125,7 @@ body {
 
 // left offcanvas (menu) activated
 .ocvs-leftbar {
-  $width: rem-calc($qw-offcanvas-left-width) - $column-gutter/2;
+  $width: rem-calc($qw-leftbar-width) - $column-gutter/2;
   .qw-menu {
     width: $width;
   }
@@ -174,8 +174,8 @@ body {
   overflow-y: auto;
   z-index: 100;
   // background: $qw-content-bg;
-  background: $qw-content-bg !important;
-  border-left: $qw-border-width solid $qw-border-bg;
+  background: $qw-searchbar-bg !important;
+  border-left: $qw-searchbar-border-width solid $qw-searchbar-border-color;
 
   transition-property: right, background;
   transition-timing-function: ease-in-out;
@@ -186,7 +186,7 @@ body {
 
   &.active {
     right: 0;
-    background: $body-bg;
+    background: $qw-searchbar-active-bg;
   }
 }
 
@@ -207,8 +207,8 @@ body {
   bottom: 0;
   overflow-y: auto;
   z-index: 100;
-  background: $qw-content-bg;
-  border-left: $qw-border-width solid $qw-border-bg;
+  background: $qw-rightbar-bg;
+  border-left: $qw-rightbar-border-width solid $qw-rightbar-border-color;
 
   transition-property: right, background;
   transition-timing-function: ease-in-out;
@@ -219,6 +219,6 @@ body {
 
   &.active {
     right: 0;
-    background: $body-bg;
+    background: $qw-rightbar-active-bg;
   }
 }

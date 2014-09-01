@@ -13,9 +13,9 @@
     > .qw-form {
       @include login-layout();
 
-      border-top: 5px solid $success-color;
-      background: $qw-content-bg;
-      box-shadow: 2px 0 10px $success-color;
+      border-top: $qw-login-border-top;
+      background: $qw-login-bg;
+      box-shadow: $qw-login-form-box-shadow;
 
       .content {
         padding: rem-calc(30 20 10 20);
@@ -39,7 +39,7 @@
     > * {
       max-height: 33px;
       margin-top: $qw-top-two-height - 33px;
-      box-shadow: 1px 0 10px $success-color;
+      box-shadow: $qw-login-header-box-shadow;
     }
   }
 }

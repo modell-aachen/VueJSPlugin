@@ -1,8 +1,8 @@
 .qw-attachtable {
   @include side-nav(
-    $link-color: $body-font-color,
-    $link-color-hover: $body-font-color,
-    $link-bg-hover: darken($body-bg, 10%)
+    $link-color: $qw-attachtable-link-color,
+    $link-color-hover: $qw-attachtable-link-hover-color,
+    $link-bg-hover: $qw-attachtable-link-bg-color
   );
 
   .fa {

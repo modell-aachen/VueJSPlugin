@@ -1,5 +1,5 @@
 
-.context-info .qw-context > .content { border-color: $primary-color; }
-.context-draft .qw-context > .content { border-color: $alert-color; }
-.context-edit .qw-context > .content { border-color: $warning-color; }
-.context-approved .qw-context > .content { border-color: $success-color; }
+.context-info .qw-context > .content { border-color: $qw-info-color; }
+.context-draft .qw-context > .content { border-color: $qw-draft-color; }
+.context-edit .qw-context > .content { border-color: $qw-edit-color; }
+.context-approved .qw-context > .content { border-color: $qw-approved-color; }

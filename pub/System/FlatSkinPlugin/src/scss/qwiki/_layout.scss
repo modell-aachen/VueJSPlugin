@@ -39,11 +39,11 @@
   background: $qw-top-one-bg;
   min-height: $qw-top-one-height;
   max-height: $qw-top-one-height;
-  border-bottom: 1px solid $qw-border-bg;
+  border-bottom: $qw-top-one-border-width solid $qw-top-one-border-color;
 
   .button {
     background: transparent;
-    color: $qw-top-one-fg;
+    color: $qw-top-one-color;
     max-height: $qw-top-one-height;
     font-size: 1rem;
   }
@@ -112,7 +112,7 @@
       padding-left: 0 !important;
       margin-left: $column-gutter/2;
       margin-right: -1 * $column-gutter/2;
-      border-left: 1px solid $qw-border-bg;
+      border-left: $qw-breadcrumb-border-width solid $qw-breadcrumb-border-color;
 
       ul {
         margin-left: 0;
@@ -141,7 +141,7 @@
       background: $body-bg;
       cursor: pointer;
       display: none;
-      border-left: 1px solid $qw-border-bg;
+      border-left: $qw-searchbar-border-width solid $qw-searchbar-border-color;
 
       &:hover {
         background: $qw-content-bg;
@@ -173,7 +173,6 @@
   > .qw-edit-title {
     max-height: $qw-top-one-height;
     min-height: $qw-top-one-height;
-    
 
     @media #{$small-only} { display: none; }
     @media #{$medium-only} { @include grid-column( $columns: 7 ); }
@@ -226,7 +225,7 @@
     @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true, $float: right ); }
 
     > .content {
-      border-bottom: $qw-context-border-width solid $secondary-color;
+      border-bottom: $qw-context-border-width solid $qw-context-border-color;
       height: $qw-context-border-width + $qw-top-two-height;
       padding-top: $qw-top-two-height - $maxHeight;
 
@@ -246,11 +245,13 @@
 .qw-document-head {
   margin: 0 -$column-gutter;
   padding: $column-gutter $column-gutter 0 $column-gutter;
-  border-bottom: $qw-border-width solid $qw-border-bg ;
+  border-bottom: $qw-document-head-border-width solid $qw-document-head-border-color;
 
   label {
     display: inline-block;
   }
+
+  // todo @below
 
   input, input:disabled {
     border: none;

@@ -37,7 +37,7 @@
       height: $qw-top-one-height - 1px;
       text-decoration: none;
       padding: 5px 10px 5px 30px;
-      background: $qw-content-bg;
+      background: $qw-breadcrumb-bg;
       position: relative;
       display: block;
       float: left;
@@ -49,7 +49,7 @@
         height: 0;
         border-top: 18px solid transparent;
         border-bottom: 18px solid transparent;
-        border-left: 15px solid $qw-content-bg;
+        border-left: 15px solid $qw-breadcrumb-bg;
         position: absolute;
         top: 50%;
         margin-top: -18px;
@@ -64,7 +64,7 @@
         height: 0;
         border-top: 18px solid transparent;
         border-bottom: 18px solid transparent;
-        border-left: 15px solid $qw-border-bg;
+        border-left: 15px solid $qw-breadcrumb-border-color;
         position: absolute;
         top: 50%;
         margin-top: -18px;
