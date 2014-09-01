@@ -46,26 +46,30 @@ $qw-context-border-width: 5px;
 $qw-context-border-color: $secondary-color;
 
 
-// breadcrumbs
-$qw-breadcrumb-bg: $qw-content-bg;
-$qw-breadcrumb-color: #7b7b7b;
-$qw-breadcrumb-hover-color: #f2f2f2;
-$qw-breadcrumb-border-color: #f2f2f2;
-$qw-breadcrumb-border-color: $qw-border-bg;
-$qw-breadcrumb-border-width: $qw-border-width;
-
-
 // topbar(s)
-$qw-top-one-height: 40px;
-$qw-top-one-bg: #65686e;
+$qw-top-one-height: 50px;
+$qw-top-one-bg: $qw-body-bg;
 $qw-top-one-color: #555;
 $qw-top-one-border-color: #e6e7e8;
 $qw-top-one-border-width: $qw-border-width;
 
-$qw-top-two-height: 50px;
+$qw-top-two-height: 55px;
 $qw-top-two-bg: $qw-body-bg;
 
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
+
+
+// breadcrumbs
+$qw-breadcrumb-bg: #d9dbdb;
+$qw-breadcrumb-color: #65686e;
+$qw-breadcrumb-hover-bg: $qw-body-bg;
+$qw-breadcrumb-border-color: #f2f2f2;
+$qw-breadcrumb-border-color: $qw-body-bg;
+$qw-breadcrumb-border-width: $qw-border-width;
+$qw-breadcrumb-radius: 5px;
+$qw-breadcrumb-height: $qw-top-one-height - 10px;
+$qw-breadcrumb-offset-top: 5px;
+$qw-breadcrumb-spacing: 3px;
 
 
 // pace

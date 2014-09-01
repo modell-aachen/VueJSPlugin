@@ -1,6 +1,8 @@
 .nav.qw-breadcrumb {
   list-style: none;
   overflow: hidden;
+  margin-top: $qw-breadcrumb-offset-top;
+  max-height: $qw-breadcrumb-height;
 
   > li {
     float: left;
@@ -12,15 +14,19 @@
       a {
         padding-left: 20px !important;
         padding-right: 10px !important;
+
+        border-top-left-radius: $qw-breadcrumb-radius;
+        border-bottom-left-radius: $qw-breadcrumb-radius;
       }
     }
 
     &:last-child {
       a {
-        background: transparent !important;
         color: $qw-breadcrumb-color;
         cursor: default;
         pointer-events: none;
+        border-top-right-radius: $qw-breadcrumb-radius;
+        border-bottom-right-radius: $qw-breadcrumb-radius;
 
         &:after {
           border-left: 30px solid transparent;
@@ -34,9 +40,9 @@
 
     > a {
       color: $qw-breadcrumb-color;
-      height: $qw-top-one-height - 1px;
+      height: $qw-breadcrumb-height;
       text-decoration: none;
-      padding: 5px 10px 5px 30px;
+      padding: 8px 10px 5px 35px;
       background: $qw-breadcrumb-bg;
       position: relative;
       display: block;
@@ -47,12 +53,12 @@
         display: block;
         width: 0;
         height: 0;
-        border-top: 18px solid transparent;
-        border-bottom: 18px solid transparent;
+        border-top: 25px solid transparent;
+        border-bottom: 25px solid transparent;
         border-left: 15px solid $qw-breadcrumb-bg;
         position: absolute;
         top: 50%;
-        margin-top: -18px;
+        margin-top: -25px;
         left: 100%;
         z-index: 2;
       }
@@ -62,22 +68,22 @@
         display: block;
         width: 0;
         height: 0;
-        border-top: 18px solid transparent;
-        border-bottom: 18px solid transparent;
+        border-top: 25px solid transparent;
+        border-bottom: 25px solid transparent;
         border-left: 15px solid $qw-breadcrumb-border-color;
         position: absolute;
         top: 50%;
-        margin-top: -18px;
-        margin-left: 1px;
+        margin-top: -25px;
+        margin-left: $qw-breadcrumb-spacing;
         left: 100%;
         z-index: 1;
       }
 
       &:hover {
-        background: $qw-breadcrumb-hover-color !important;
+        background: $qw-breadcrumb-hover-bg !important;
 
         &:after {
-          border-left-color: $qw-breadcrumb-hover-color !important;
+          border-left-color: $qw-breadcrumb-hover-bg !important;
         }
       }
     }
