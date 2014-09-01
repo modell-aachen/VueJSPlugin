@@ -1,23 +1,43 @@
 @import "foundation/functions";
-@import "fdn-vars";
 
 // grid properties
 $total-columns: 12;
 $row-width: 100%;
 
 
+// screen sizes
+$qw-small-range: (0, rem-calc(768));
+$qw-medium-range: (rem-calc(769), rem-calc(1200));
+$qw-large-range: (rem-calc(1201), rem-calc(1440));
+$qw-xlarge-range: (rem-calc(1441), rem-calc(1920));
+$qw-xxlarge-range: (rem-calc(1921));
+
+// foundation colors
+$primary-color: #06c;
+$secondary-color: #ccc;
+$alert-color: maroon;
+$success-color: #70af57;
+$warning-color: #dd6936;
+$info-color: #a0d3e8;
+
+
 // colors
-$qw-body-bg: #f2f2f2;
+$qw-body-bg: #edeff0;
 $qw-content-bg: #fff;
 $qw-info-color: $primary-color;
 $qw-draft-color: $alert-color;
 $qw-edit-color: $warning-color;
-$qw-approved-color: $success-color;
+$qw-approved-color: #70af57;
 $qw-content-padding: rem-calc(30);
 
 
+// font defaults
+$qw-body-font-color: #222;
+$qw-font-weight-normal: normal;
+
+
 // default border values borders
-$qw-border-bg: #dbdbd9;
+$qw-border-bg: #d9dbdb;
 $qw-border-width: 1px;
 
 
@@ -37,13 +57,13 @@ $qw-breadcrumb-border-width: $qw-border-width;
 
 // topbar(s)
 $qw-top-one-height: 40px;
-$qw-top-one-bg: $qw-content-bg;
+$qw-top-one-bg: #65686e;
 $qw-top-one-color: #555;
-$qw-top-one-border-color: $qw-border-bg;
+$qw-top-one-border-color: #e6e7e8;
 $qw-top-one-border-width: $qw-border-width;
 
 $qw-top-two-height: 50px;
-$qw-top-two-bg: $body-bg;
+$qw-top-two-bg: $qw-body-bg;
 
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
 
@@ -68,9 +88,9 @@ $qw-tab-active-style: bold;
 
 
 // attachtable
-$qw-attachtable-link-color: $body-font-color;
-$qw-attachtable-link-hover-color: $body-font-color;
-$qw-attachtable-link-bg-color: darken($body-bg, 10%);
+$qw-attachtable-link-color: $qw-body-font-color;
+$qw-attachtable-link-hover-color: $qw-body-font-color;
+$qw-attachtable-link-bg-color: darken($qw-body-bg, 10%);
 
 
 // login
@@ -87,16 +107,16 @@ $qw-leftbar-border-width: $qw-border-width;
 $qw-leftbar-border-color: $qw-border-bg;
 
 $qw-searchbar-bg: $qw-content-bg;
-$qw-searchbar-active-bg: $body-bg;
+$qw-searchbar-active-bg: $qw-body-bg;
 $qw-searchbar-border-width: $qw-border-width;
 $qw-searchbar-border-color: $qw-border-bg;
 
-$qw-search-bg: $body-bg;
+$qw-search-bg: $qw-body-bg;
 $qw-search-border-width: $qw-border-width;
 $qw-search-border-color: $qw-border-bg;
 
 $qw-rightbar-bg: $qw-content-bg;
-$qw-rightbar-active-bg: $body-bg;
+$qw-rightbar-active-bg: $qw-body-bg;
 $qw-rightbar-border-width: $qw-border-width;
 $qw-rightbar-border-color: $qw-border-bg;
 
