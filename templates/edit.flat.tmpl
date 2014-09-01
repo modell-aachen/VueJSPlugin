@@ -8,7 +8,7 @@
 %TMPL:P{"formbottom"}%
 %TMPL:P{"topicinfo"}%
 %TMPL:P{"formend"}%
-%TMPL:END%<!--/content-->
+<!--/content-->%TMPL:END%
 
 
 
@@ -16,7 +16,7 @@
 %TMPL:PREV%
 <div id="ckarea" class="follows-canvas"></div>
 <a href="#" class="button" onclick="$('#main').append('<input type=&quot;hidden&quot; name=&quot;action_save&quot; value=&quot;Save&quot;>').submit();">Default Button</a>
-%TMPL:END%<!--/body:content-->
+<!--/body:content-->%TMPL:END%
 
 
 %TMPL:DEF{"topbar:one:mid"}%<!--topbar:one:mid-->
@@ -27,13 +27,13 @@
     <span class="edit-color">[%MAKETEXT{"Version"}% %CALC{"$INT(%REVINFO{format="$rev"}% + 1)"}%]</span>
   </h5>
 </div>
-%TMPL:END%<!--/topbar:one:mid-->
+<!--/topbar:one:mid-->%TMPL:END%
 
 %TMPL:DEF{"topbar:one:right"}%<!--topbar:one:right-->
 <div class="qw-cancel-edit">
   <a href="/%WEB%/%TOPIC%" class="button tiny secondary"><i class="fa fa-times"></i> %MAKETEXT{"Cancel"}%</a>
 </div>
-%TMPL:END%<!--/topbar:one:right-->
+<!--/topbar:one:right-->%TMPL:END%
 
 %TMPL:DEF{"offcanvas:rightbar:includes"}%<!--offcanvas:rightbar:includes-->
 %TMPL:PREV%
@@ -43,4 +43,4 @@
   </a>
   <div id="qw-documentform">%TMPL:P{"form"}%</div>
 </div>
-%TMPL:END%<!--/offcanvas:rightbar:includes-->
+<!--/offcanvas:rightbar:includes-->%TMPL:END%
