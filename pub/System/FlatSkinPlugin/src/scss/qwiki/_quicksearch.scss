@@ -4,16 +4,17 @@
     width: 100%;
     padding-left: rem-calc(30);
     min-height: $qw-top-two-height;
-    background: $body-bg;
+    background: $qw-searchbar-result-bg;
   }
 
   .results {
     @include grid-row();
     @include grid-column($columns: $total-columns);
 
+    background: $qw-searchbar-result-bg;
     min-width: 100%;
     min-height: rem-calc(150);
-    border-top: 5px solid $qw-border-bg;
+    border-top: $qw-context-border-width solid $qw-context-border-color;
     padding: 0;
 
     &.searching {
@@ -49,12 +50,12 @@
 
     &:hover,
     &:hover > .open {
-      background-color: $body-bg;
+      background-color: $qw-searchbar-result-hover-bg;
       cursor: pointer;
     }
 
     &.active {
-      background-color: darken($body-bg, 5%);
+      background-color: $qw-searchbar-result-hover-bg;
     }
 
     > .inner {
@@ -76,25 +77,23 @@
 }
 
 #qw-searchpreview {
-  @include grid-row();
+  @include grid-row($behavior: collapse);
 
   $p: percentage( 1 / $total-columns);
   $width: 8 * $p;
 
   position: fixed;
   top: 0;
-  left: -1 * $width;
+  left: -1 * ($width + 1);
+  background: rgba(0, 0, 0, 0.6);
 
-  // background: rgba(51, 51, 51, 0.6);
-  background: $body-bg;
-
-  width: $width;
+  width: $width + 1;
   height: 100%;
-  z-index: 100;
+  z-index: 101;
   transition: left 0.2s ease-in-out;
 
-  $pt: $qw-top-one-height + $qw-top-two-height;
-  padding: rem-calc($pt 25);
+  $pt: $qw-top-one-height + $qw-top-two-height + $qw-context-border-width;
+  padding: rem-calc($pt 0 $pt $pt);
 
   &.active {
     left: 0;
@@ -103,26 +102,14 @@
   > .content {
     @include grid-column($columns: $total-columns);
     background: $qw-content-bg;
-    border-top: 5px solid $info-color;
+    border-right: 15px solid $qw-searchbar-result-hover-bg;
     padding: rem-calc(15);
-  }
+    min-height: calc( 100% + #{$pt} );
+    height: calc( 100% + #{$pt} );
+    max-height: calc( 100% + #{$pt} );
 
-  > .heading {
-    position: absolute;
-    width: 100%;
-
-    $t: $pt - 33px;
-    top: rem-calc($t);
-    left: rem-calc(25);
-    padding-right: rem-calc(50);
-
-    > * {
-      max-height: 33px;
-    }
-
-    > span {
-      background: $info-color;
-    }
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }
 

@@ -1,3 +1,8 @@
+// disable scrolling while offcanvas areas are active
+.ocvs-leftbar, .ocvs-rightbar, .ocvs-search {
+  overflow-y: hidden !important;
+}
+
 // any element tag by this class will follow a canvas animation
 .follows-canvas {
   transition: transform 0.3s ease-in-out;
@@ -135,6 +140,7 @@ body {
   $width: rem-calc($qw-leftbar-width) - $column-gutter/2;
   .qw-menu {
     width: $width;
+    background: red;
   }
 
   // due to the fact the .qw-menu changes its width, we need to substract

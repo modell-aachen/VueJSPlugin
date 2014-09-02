@@ -22,7 +22,7 @@
     }
 
     &.ui-autocomplete-loading {
-      $pos: calc( 100% - #{rem-calc(90)} );
+      $pos: calc( 100% - #{rem-calc(10)} );
       background-position: $pos center !important;
     }
   }

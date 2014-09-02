@@ -13,7 +13,7 @@ $qw-xlarge-range: (rem-calc(1441), rem-calc(1920));
 $qw-xxlarge-range: (rem-calc(1921));
 
 // foundation colors
-$primary-color: #06c;
+$primary-color: #236aa2;
 $secondary-color: #ccc;
 $alert-color: maroon;
 $success-color: #70af57;
@@ -73,7 +73,7 @@ $qw-breadcrumb-spacing: 3px;
 
 
 // pace
-$qw-pace-bg: #29d;
+$qw-pace-bg: $primary-color;
 $qw-pace-h: 2px;
 $qw-pace-t: 0;
 
@@ -81,7 +81,7 @@ $qw-pace-t: 0;
 // weblist (will be removed soon)
 $qw-weblist-divider-color: #333;
 $qw-weblist-font-size: 0.8rem;
-$qw-weblist-link-color: $qw-info-color;
+$qw-weblist-link-color: $primary-color;
 $qw-weblist-link-color-hover: darken($qw-weblist-link-color, 30%);
 $qw-weblist-intend: rem-calc(15);
 
@@ -115,7 +115,9 @@ $qw-searchbar-active-bg: $qw-body-bg;
 $qw-searchbar-border-width: $qw-border-width;
 $qw-searchbar-border-color: $qw-border-bg;
 $qw-searchbar-close-btn-bg: #e7edf3;
-$qw-searchbar-close-btn-color: #236aa2;
+$qw-searchbar-close-btn-color: $primary-color;
+$qw-searchbar-result-bg: $qw-content-bg;
+$qw-searchbar-result-hover-bg: #e7edf3;
 
 $qw-search-bg: $qw-content-bg;
 $qw-search-border-width: $qw-border-width;

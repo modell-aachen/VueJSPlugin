@@ -189,7 +189,7 @@
       '<span><%= text.substr( 0, 100 ) %></span>',
       '</div>',
       '<div class="open">',
-      '<i class="fa fa-lg fa-chevron-right"></i>',
+      '<a href="#" class="button primary tiny">öffnen</a>',
       '</div>',
       '</div>'
     ];

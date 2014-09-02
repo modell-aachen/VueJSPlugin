@@ -133,8 +133,9 @@
     
 
     > .close {
-      position: absolute;
-      height: 100%;
+      position: fixed;
+      // height: 100%;
+      height: $qw-top-one-height;
       margin-left: -60px;
       width: 60px;
       padding: rem-calc(5 15 5 5);
@@ -142,6 +143,7 @@
       cursor: pointer;
       display: none;
       border-left: $qw-searchbar-border-width solid $qw-searchbar-border-color;
+      z-index: 200;
 
       &:hover {
         background: $qw-content-bg;
