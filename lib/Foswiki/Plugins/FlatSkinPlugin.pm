@@ -41,6 +41,12 @@ sub initPlugin {
   Foswiki::Func::registerTagHandler( 'MAREGISTER', \&_handleREGISTER );
   Foswiki::Func::registerTagHandler( 'MAWEBLIST', \&_handleWEBLIST );
 
+  Foswiki::Func::registerRESTHandler( 'rendermulti', \&_handleRenderMulti,
+    authenticate => 0,
+    validate => 0,
+    http_allow => 'GET,POST',
+  );
+
   # inject scripts and styles
   _zoneConfig();
   return 1;
@@ -158,6 +164,25 @@ sub _handleWEBLIST {
   return join( '', @retval );
 }
 
+sub _handleRenderMulti {
+  my $session = shift;
+  my $q = $session->{request};
+  my ($web, $topic) = Foswiki::Func::normalizeWebTopicName(undef, $q->param('topic'));
+  my $meta = Foswiki::Meta->new($session, $web, $topic);
+
+  my $json = decode_json($q->param('request'));
+  my $res;
+  while (my ($k, $v) = each(%$json)) {
+    $res->{$k} = Foswiki::Func::expandCommonVariables($v, $topic, $web, $meta);
+  }
+  $res = encode_json($res);
+  $session->{response}->header(
+      -type    => 'text/plain',
+      -charset => 'UTF-8'
+  );
+  $session->{response}->print($res);
+  return undef;
+}
 
 1;
 
