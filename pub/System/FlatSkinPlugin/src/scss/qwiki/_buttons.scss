@@ -1,0 +1,16 @@
+.qw-close-btn {
+  @include button( $radius: true, $padding: rem-calc(6), $bg: $qw-closebtn-bg-color );
+  @include fa-icon();
+  &:before { content: $fa-var-times-circle };
+  color: $qw-closebtn-fg-color;
+
+  &:hover {
+    background-color: $qw-closebtn-bg-hover-color;
+    color: $qw-closebtn-fg-color;
+  }
+  &:active {
+    background-color: $qw-closebtn-bg-active-color;
+    color: $qw-closebtn-fg-active-color;
+  }
+}
+
