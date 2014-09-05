@@ -130,33 +130,34 @@
       @include grid-column( $columns: 1, $offset: 10, $last-column: true );
       float: right;
     }
-    
 
     > .close {
       position: fixed;
-      // height: 100%;
       height: $qw-top-one-height;
-      margin-left: -60px;
-      width: 60px;
-      padding: rem-calc(5 15 5 5);
+      margin-left: -1 * $qw-search-close-btn-width;
+      width: $qw-search-close-btn-width;
+      padding: rem-calc(5 10);
       background: $body-bg;
       cursor: pointer;
       display: none;
       border-left: $qw-searchbar-border-width solid $qw-searchbar-border-color;
-      z-index: 200;
 
-      &:hover {
-        background: $qw-content-bg;
+      .qw-close-btn {
+        padding: rem-calc( 10 );
       }
 
-      > div {
-        background: $qw-searchbar-close-btn-bg;
-        color: $qw-searchbar-close-btn-color;
-        border-radius: 5px;
-        padding: rem-calc(7 12 7 10);
-        width: 100%;
-        height: 100%;
-      }
+      // &:hover {
+      //   background: $qw-content-bg;
+      // }
+
+      // > div {
+      //   background: $qw-searchbar-close-btn-bg;
+      //   color: $qw-searchbar-close-btn-color;
+      //   border-radius: 5px;
+      //   padding: rem-calc(7 12 7 10);
+      //   width: 100%;
+      //   height: 100%;
+      // }
     }
 
     > .qw-search-form {

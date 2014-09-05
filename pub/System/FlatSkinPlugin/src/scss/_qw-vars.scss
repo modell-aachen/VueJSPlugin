@@ -167,6 +167,7 @@ $qw-login-header-box-shadow: 1px 0 10px $qw-approved-color;
 // offcanvas areas
 // leftbar, rightbar, searchbar
 $qw-leftbar-width: 250px;
+$qw-leftbar-bg: #306a96;
 $qw-leftbar-border-width: $qw-border-width;
 $qw-leftbar-border-color: $qw-border-bg;
 
@@ -182,6 +183,7 @@ $qw-searchbar-result-hover-bg: $qw-closebtn-bg-color;
 $qw-search-bg: $qw-content-bg;
 $qw-search-border-width: $qw-border-width;
 $qw-search-border-color: $qw-border-bg;
+$qw-search-close-btn-width: 60px;
 
 $qw-rightbar-bg: $qw-content-bg;
 $qw-rightbar-active-bg: $qw-body-bg;

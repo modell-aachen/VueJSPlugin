@@ -137,10 +137,11 @@ body {
 
 // left offcanvas (menu) activated
 .ocvs-leftbar {
-  $width: rem-calc($qw-leftbar-width) - $column-gutter/2;
+  $width: rem-calc($qw-leftbar-width);
   .qw-menu {
-    width: $width;
-    background: red;
+    width: $width - rem-calc(1);
+    background: $qw-leftbar-bg;
+    color: white;
   }
 
   // due to the fact the .qw-menu changes its width, we need to substract

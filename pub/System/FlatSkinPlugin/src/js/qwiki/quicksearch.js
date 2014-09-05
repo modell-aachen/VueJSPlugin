@@ -51,6 +51,7 @@
   };
 
   var closePreview = function( evt ) {
+    $('#qw-search-pageoverlay').removeClass('active');
     $('#qw-searchpreview').removeClass('active');
     $('.qw-search-result.active').removeClass('active');
   };
@@ -93,7 +94,14 @@
 
         var tmpl = tmplEntry();
         for( var i = 0; i < data.response.docs.length; ++i ) {
+          // assign icons
           var doc = data.response.docs[i];
+          doc.previewIcon = 'approved';
+          if ( doc.workflow_controlled_b && !doc.workflow_isapproved) {
+            doc.previewIcon = 'draft';
+          }
+
+          // apply (underscore) template (see below)
           var entry = tmpl( doc );
           $(entry).appendTo( results );
         }
@@ -106,19 +114,25 @@
           evt.preventDefault();
         });
 
-        $('.qw-search-result > .open').on( 'click', function( evt ) {
-          var target = [
+        var $results = $('.qw-search-result');
+        $results.each( function() {
+          var href = [
             self.Q.foswiki.SCRIPTURL,
             '/view',
             self.Q.foswiki.SCRIPTSUFFIX,
             $(this).data('url')
-          ];
+          ].join('');
 
-          evt.preventDefault();
-          window.location = target.join('');
+          var $link = $(this).find('a');
+          $link.attr('href', href);
         });
 
-        $('.qw-search-result').on( 'click', function( evt ) {
+        $results.on( 'click', function( evt ) {
+          // return if the user clicked the 'open' button
+          if ( evt.srcElement.localName === 'a' ) {
+            return;
+          }
+
           $('.qw-search-result.active').removeClass('active');
           $(this).addClass('active');
 
@@ -130,12 +144,16 @@
           ];
 
           var uri = target.join('') + ' .qw-page > .qw-left article.content';
+          var $overlay = $('#qw-search-pageoverlay');
+          var $preview = $('#qw-searchpreview');
           $('#qw-searchpreview > .content').load( uri, function() {
-            if ( !$('#qw-searchpreview').hasClass('active') ) {
-              $('#qw-searchpreview').toggleClass('active');
+            if ( !$overlay.hasClass('active') ) {
+              $overlay.addClass('active');
             }
 
-            $('.qw-preview-open-button').attr( 'href', target.join('') );
+            if ( !$preview.hasClass('active') ) {
+              $preview.addClass('active');
+            }
           } );
 
           evt.preventDefault();
@@ -184,12 +202,12 @@
   var tmplEntry = function() {
     var tmpl = [
       '<div class="qw-search-result" data-url="<%= url %>">',
-      '<div class="inner">',
-      '<h5><%= title %></h5>',
-      '<span><%= text.substr( 0, 100 ) %></span>',
-      '</div>',
+      '<div class="content">',
       '<div class="open">',
       '<a href="#" class="button primary tiny">öffnen</a>',
+      '</div>',
+      '<span class="title"><i class="icon-<%= previewIcon %>"></i><%= title %></span>',
+      '<span class="snippet"><%= text.substr( 0, 160 ) + (text.length > 160 ? "..." : "") %></span>',
       '</div>',
       '</div>'
     ];

@@ -73,7 +73,8 @@
     <article class="content">%TMPL:P{"content"}%</article>
   </section>
   <section class="qw-right">
-    <article class="content"></article>
+    <article class="content">
+    </article>
   </section>
 </div>
 %TMPL:END%
@@ -97,8 +98,8 @@
 
 %TMPL:DEF{"topbar:one:right"}%<!--topbar:one:right-->
 <div class="qw-search">
-  <div class="close" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right>
-    <div><i class="fa fa-lg fa-times-circle"></i></div>
+  <div class="close">
+    <div class="qw-close-btn" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right></div>
   </div>
   <span><i class="qw-search-icon" data-offcanvas-toggle data-offcanvas-autoclose="0" data-quicksearch-toggle data-target="#qw-searchbar" data-type="search" data-trigger="focus" data-right></i></span>
   <form action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch" class="qw-search-form">
@@ -107,7 +108,7 @@
         <input name="search"
                type="text"
                class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
-               placeholder="%MAKETEXT{"Keyword"}%"
+               placeholder="%MAKETEXT{"search..."}%"
                data-offcanvas-toggle
                data-offcanvas-autoclose="0"
                data-quicksearch-toggle
@@ -186,21 +187,23 @@
 
 %TMPL:DEF{"offcanvas:search"}%
 <section id="qw-searchbar" class="qw-offcanvas-search" data-quicksearch>
-  <div class="filter"></div>
+  <div class="filter">
+  </div>
   <div class="results"></div>
 </section>
+<section id="qw-search-pageoverlay">
+  <div class="overlay-top"></div>
+</section>
 <section id="qw-searchpreview">
-  <!-- <div class="heading">
-    <span class="qw-preview-title">%MAKETEXT{"Preview"}%</span>
-    <a href="#" class="qw-preview-open-button">%MAKETEXT{"Open"}%</a>
-    <a href="#" class="qw-preview-close-button" data-close-preview><i class="fa fa-times"></i> %MAKETEXT{"Close"}%</a>
-  </div> -->
+  <div class="close">
+    <div class="qw-close-btn" data-close-preview></div>
+  </div>
   <div class="content"></div>
 </section>
 %TMPL:END%
 
 %TMPL:DEF{"breadcrumb"}%
-<ul class="nav navbar-nav qw-breadcrumb">
+<ul class="qw-breadcrumb">
   <!--breadcrumb:home-->%TMPL:P{"breadcrumb:home"}%<!--/breadcrumb:home-->
   <!--breadcrumb:parentwebs-->%TMPL:P{"breadcrumb:parentwebs"}%<!--/breadcrumb:parentwebs-->
   <!--breadcrumb:parenttopics-->%TMPL:P{"breadcrumb:parenttopics"}%<!--/breadcrumb:parenttopics-->
@@ -212,7 +215,7 @@
 %TMPL:DEF{"breadcrumb:home"}%<li><a href="#" data-dropdown="qw-processmap"><i class="fa fa-sitemap fa-lg"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li>" separator="" suffix="</li>"}%%TMPL:END%
-%TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li>[[%TOPIC%][%TOPIC%]]</li>" else=" "}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li>[[%TOPIC%][%TOPIC%]]</li>" else="<li>[[%TOPIC%][TBD. Index Text]]</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:processmap"}%
 <div id="qw-processmap" class="f-dropdown content large" data-dropdown-content >
   %INCLUDE{"Main.WebHome" section="PROCESSMAP"}%

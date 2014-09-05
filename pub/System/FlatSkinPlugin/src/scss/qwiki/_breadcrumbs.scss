@@ -1,8 +1,9 @@
-.nav.qw-breadcrumb {
+ul.qw-breadcrumb {
   list-style: none;
   overflow: hidden;
   margin-top: $qw-breadcrumb-offset-top;
   max-height: $qw-breadcrumb-height;
+  display: inline-block;
 
   > li {
     float: left;
@@ -22,10 +23,11 @@
     &:last-child {
       a {
         color: $qw-breadcrumb-color;
-        // cursor: default;
-        // pointer-events: none;
+        cursor: default;
+        pointer-events: none;
         border-top-right-radius: $qw-breadcrumb-radius;
         border-bottom-right-radius: $qw-breadcrumb-radius;
+        background: transparent;
 
         &:after {
           border-left: none;

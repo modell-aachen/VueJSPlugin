@@ -1,4 +1,6 @@
 [data-quicksearch] {
+  z-index: 101;
+
   > .filter {
     float:left;
     width: 100%;
@@ -35,43 +37,113 @@
   }
 
   .qw-search-result {
-    @include grid-row();
+    @include grid-row($behavior: collapse);
 
     min-width: 100%;
     float: left;
+    display: inline-block;
     min-height: 85px;
     padding-left: rem-calc(20);
     padding-right: 0;
     border-top: 1px solid $qw-border-bg;
+    overflow-x: hidden;
 
     &:last-child {
       border-bottom: 1px solid $qw-border-bg;
     }
 
     &:hover,
-    &:hover > .open {
+    &:hover .open {
+      opacity: 1;
       background-color: $qw-searchbar-result-hover-bg;
       cursor: pointer;
     }
 
     &.active {
       background-color: $qw-searchbar-result-hover-bg;
+
+      .open {
+        opacity: 1;
+      }
     }
 
-    > .inner {
-      @include grid-column($columns: $total-columns - 1);
+    > .content {
+      @include grid-column($columns: $total-columns, $collapse: true);
+      padding: rem-calc(20 10);
+
+      > .title {
+        display: inline-block;
+        color: black;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      > .snippet {
+        display: inline-block;
+        font-size: 0.8rem;
+      }
     }
 
-    
-
-    > .open {
-      @include grid-column($columns: 1);
-      min-height: inherit;
-      padding: rem-calc(30 20);
+    .open {
+      float: right;
+      transition: opacity 0.15s ease-in-out;
+      opacity: 0;
+      max-height: 33px;
+      margin-right: -1 * rem-calc(10);
+      margin-top: -1 * rem-calc(10);
 
       &:hover {
         background: darken($body-bg, 15%);
       }
+
+      .button {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+    }
+  }
+}
+
+#qw-search-pageoverlay {
+  $p: percentage( 1 / $total-columns);
+  $width: 8 * $p;
+
+  position: fixed;
+  top: $qw-top-one-height;
+  left: -1 * ($width + 1);
+  background: rgba(0, 0, 0, 0);
+
+  width: $width;
+  height: 100%;
+  z-index: 100;
+  transition: background 0.2s ease-in-out;
+
+  > .overlay-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $qw-top-one-height;
+    background: rgba(0, 0, 0, 00);
+    transition: background 0.2s ease-in-out;
+
+    @media #{$medium-up} { 
+      $width: 8 * percentage( 1 / $total-columns );
+      width: calc( #{$width} - #{$qw-search-close-btn-width} );
+      left: calc( #{-1 * $width} + #{$qw-search-close-btn-width} );
+    }
+
+    @media #{$small-only} {
+      display: none !important;
+    }
+  }
+
+  &.active {
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+
+    > .overlay-top {
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
     }
   }
 }
@@ -84,32 +156,54 @@
 
   position: fixed;
   top: 0;
-  left: -1 * ($width + 1);
-  background: rgba(0, 0, 0, 0.6);
+  right: -1 * ($width + 1);
 
-  width: $width + 1;
+  width: $width;
   height: 100%;
-  z-index: 101;
-  transition: left 0.2s ease-in-out;
+  z-index: 100;
+  transition: right 0.5s ease-in-out;
 
   $pt: $qw-top-one-height + $qw-top-two-height + $qw-context-border-width;
   padding: rem-calc($pt 0 $pt $pt);
 
   &.active {
-    left: 0;
+    @media #{$medium-up} { 
+      right: 4 * percentage( 1 / $total-columns );
+    }
+
+    > .content {
+      // display: block;
+    }
   }
 
   > .content {
-    @include grid-column($columns: $total-columns);
+    $pad: rem-calc(15);
+
+    // display: none;
     background: $qw-content-bg;
     border-right: 15px solid $qw-searchbar-result-hover-bg;
-    padding: rem-calc(15);
+    padding: $pad;
+
     min-height: calc( 100% + #{$pt} );
-    height: calc( 100% + #{$pt} );
     max-height: calc( 100% + #{$pt} );
+    width: calc( 100% - #{$p} - #{2 * $pad} );
 
     overflow-y: auto;
     overflow-x: hidden;
+
+    position: absolute;
+    right: 0;
+  }
+
+  > .close {
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+
+    .qw-close-btn {
+      padding: rem-calc(10);
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -133,4 +227,20 @@
 .qw-preview-open-button {
   @include button( $padding: $button-tny, $bg: $secondary-color );
   max-height: 33px;
+}
+
+.icon-draft {
+  @extend .fa;
+  @extend .fa-times;
+
+  color: red;
+  margin-right: rem-calc(5);
+}
+
+.icon-approved {
+  @extend .fa;
+  @extend .fa-check;
+
+  color: green;
+  margin-right: rem-calc(10);
 }
