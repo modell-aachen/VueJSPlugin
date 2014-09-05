@@ -155,24 +155,26 @@
   $width: 8 * $p;
 
   position: fixed;
-  top: 0;
-  right: -1 * ($width + 1);
+  top: $qw-top-one-height;
+  right: 0;
+  transform: translate3d( 100%, 0, 0 );
 
   width: $width;
   height: 100%;
   z-index: 100;
-  transition: right 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 
   $pt: $qw-top-one-height + $qw-top-two-height + $qw-context-border-width;
   padding: rem-calc($pt 0 $pt $pt);
 
   &.active {
     @media #{$medium-up} { 
-      right: 4 * percentage( 1 / $total-columns );
+      transform: translate3d( -50%, 0, 0 );
     }
 
     > .content {
-      // display: block;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
     }
   }
 
@@ -192,11 +194,13 @@
     overflow-x: hidden;
 
     position: absolute;
+    top: $qw-top-two-height;
     right: 0;
   }
 
   > .close {
     position: absolute;
+    top: $qw-top-two-height;
     right: 0;
     z-index: 1000;
 
