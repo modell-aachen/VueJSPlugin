@@ -64,6 +64,6 @@
       target.css('left', '');
     }
 
-    evt.preventDefault();
+    return false;
   };
 }(jQuery, window._, window.document, window));
