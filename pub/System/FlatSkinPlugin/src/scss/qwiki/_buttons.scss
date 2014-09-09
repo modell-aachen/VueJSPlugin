@@ -119,12 +119,17 @@ input[type="text"].qw-input {
 
 .qw-split-btn {
   @include button( $radius: true, $bg: $qw-split-bg-color );
+
   padding: rem-calc(11);
   font-size: rem-calc(14);
   line-height: 1rem;
   border: 1px solid transparent;
-  min-width: rem-calc(210);
+  width: auto;
   text-align: left;
+
+  &.expand {
+    min-width: 100%;
+  }
 
   &:before {
     @include fa-icon();
@@ -155,7 +160,7 @@ input[type="text"].qw-input {
     float: right;
     height: 43px;
     padding: rem-calc(10 15);
-    margin: rem-calc(-12 -12 -15 -15);
+    margin: rem-calc(-12 -12 -15 10);
 
     &:hover {
       background: darken($qw-split-bg-hover-color, 5%);
@@ -180,7 +185,6 @@ ul[data-drop] {
   position: absolute;
   left: -10000px;
   background-color: $qw-split-bg-color;
-  width: rem-calc(210);
   list-style: none;
   border-bottom-left-radius: $global-radius;
   border-bottom-right-radius: $global-radius;
@@ -200,5 +204,28 @@ ul[data-drop] {
     padding: rem-calc(8 15);
     min-width: 100%;
     color: white;
+  }
+}
+
+.qw-menu-btn {
+  @include button( $bg: $qw-top-one-bg, $radius: true, $full-width: true );
+  background: transparent;
+  color: $qw-menu-closed-fg-color;
+
+  &:hover {
+    color: $qw-menu-closed-fg-hover-color;
+  }
+
+  &:active {
+    color: $qw-menu-closed-fg-active-color;
+  }
+
+  &.active {
+    background: $qw-menu-open-bg-color;
+    color: $qw-menu-open-fg-color;
+
+    &:active {
+      background: $qw-menu-open-active-bg-color;
+    }
   }
 }

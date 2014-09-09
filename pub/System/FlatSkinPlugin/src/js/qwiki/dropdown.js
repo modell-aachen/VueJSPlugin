@@ -53,15 +53,19 @@
     var target = $(selector);
 
     if ( $self.hasClass( 'active' ) ) {
-      var pos = $self.position();
       var height = $self.outerHeight();
+      var width = $self.outerWidth();
+
+      var pos = $self.position();
       var top = pos.top + height;
 
       target.css( 'top', top );
       target.css( 'left', pos.left );
+      target.css( 'width', width );
     } else {
       target.css('top', '');
       target.css('left', '');
+      target.css('width', '');
     }
 
     return false;
