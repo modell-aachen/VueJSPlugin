@@ -34,28 +34,34 @@ $qw-button1-bg-color: $primary-color;
 $qw-button1-bg-hover-color: #287ab8;
 $qw-button1-bg-active-color: #1e5b8a;
 $qw-button1-shadow-color: #164263;
+
 $qw-button2-bg-color: white;
 $qw-button2-bg-hover-color: #e1e2e3;
 $qw-button2-bg-active-color: #bbbcbd;
 $qw-button2-shadow-color: $qw-button2-bg-hover-color;
+
 $qw-backbtn-bg-color: $qw-button2-bg-hover-color;
 $qw-backbtn-bg-hover-color: $qw-button2-bg-hover-color;
 $qw-backbtn-bg-active-color: $qw-button2-bg-active-color;
 $qw-backbtn-shadow-color: $qw-button2-bg-active-color;
+
 $qw-link-bg-color: #e7edf3;
 $qw-link-fg-color: $primary-color;
 $qw-link-bg-hover-color: #cfdae6;
 $qw-link-bg-active-color: $primary-color;
 $qw-link-fg-active-color: white;
 $qw-link-inlay-bg-color: white;
+
 $qw-closebtn-bg-color: $qw-link-bg-color;
 $qw-closebtn-fg-color: $qw-link-fg-color;
 $qw-closebtn-bg-hover-color: $qw-link-bg-hover-color;
 $qw-closebtn-bg-active-color: $qw-link-bg-active-color;
 $qw-closebtn-fg-active-color: $qw-link-fg-active-color;
+
 $qw-input-bg-color: #f0f0f0;
 $qw-input-placeholder-color: #a3a3a3;
 $qw-input-fg-color: black;
+
 // colors: menu/topbar elements
 $qw-topbtn-bg-color: #d9dbdb;
 $qw-topbtn-shadow-color: #e6e7e8;
@@ -64,6 +70,7 @@ $qw-topbtn-bg-hover-color: white;
 $qw-topbtn-fg-hover-color: black;
 $qw-topbtn-bg-active-color: white;
 $qw-topbtn-fg-active-color: #306a96;
+
 $qw-menu-closed-fg-color: $qw-topbtn-fg-color;
 $qw-menu-closed-fg-hover-color: $qw-topbtn-fg-hover-color;
 $qw-menu-closed-fg-active-color: $qw-topbtn-fg-active-color;
@@ -72,6 +79,7 @@ $qw-menu-open-bg-color: $qw-topbtn-fg-active-color;
 $qw-menu-open-inlay-bg-color: #28587d;
 $qw-menu-open-inlay-bg-hover-color: #154060;
 $qw-menu-open-active-bg-color: $qw-menu-open-inlay-bg-hover-color;
+
 $qw-bread-bg-color: $qw-topbtn-bg-color;
 $qw-bread-shadow-color: $qw-topbtn-shadow-color;
 $qw-bread-fg-color: $qw-topbtn-fg-color;
@@ -79,6 +87,7 @@ $qw-bread-bg-hover-color: $qw-topbtn-bg-hover-color;
 $qw-bread-fg-hover-color: $qw-topbtn-fg-hover-color;
 $qw-bread-bg-active-color: $qw-topbtn-bg-active-color;
 $qw-bread-fg-active-color: $qw-topbtn-fg-active-color;
+
 $qw-iconbtn-bg-color: transparent;
 $qw-iconbtn-shadow-color: transparent;
 $qw-iconbtn-fg-color: $qw-topbtn-fg-color;
@@ -86,6 +95,12 @@ $qw-iconbtn-bg-hover-color: $qw-topbtn-bg-hover-color;
 $qw-iconbtn-fg-hover-color: $qw-topbtn-fg-hover-color;
 $qw-iconbtn-bg-active-color: $qw-topbtn-bg-active-color;
 $qw-iconbtn-fg-active-color: $qw-topbtn-fg-active-color;
+
+$qw-split-bg-color: $primary-color;
+$qw-split-bg-hover-color: #287ab8;
+$qw-split-bg-active-color: #1e5b8a;
+$qw-split-shadow-color: #164263;
+
 
 // wat
 $qw-content-padding: rem-calc(30);
