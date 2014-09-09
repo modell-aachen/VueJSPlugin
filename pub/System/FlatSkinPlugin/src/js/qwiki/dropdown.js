@@ -49,6 +49,9 @@
     var $self = $(evt.data);
     $self.toggleClass( 'active' );
 
+    var selector = $self.data('target');
+    var target = $(selector);
+
     if ( $self.hasClass( 'active' ) ) {
       var pos = $self.position();
       var height = $self.outerHeight();
