@@ -98,7 +98,6 @@ STYLES
 <script src="$path/js/modernizr$suffix.js$VERSIONQUERY"></script>
 <script src="$path/js/foundation$suffix.js$VERSIONQUERY"></script>
 <script src="$path/js/fastclick$suffix.js$VERSIONQUERY"></script>
-<script src="$path/js/knockout$suffix.js$VERSIONQUERY"></script>
 <script src="$path/js/qwiki$suffix.js$VERSIONQUERY"></script>
 SCRIPTS
 

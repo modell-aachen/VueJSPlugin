@@ -1,8 +1,17 @@
 .qw-close-btn {
-  @include button( $radius: true, $padding: rem-calc(6), $bg: $qw-closebtn-bg-color );
-  @include fa-icon();
-  &:before { content: $fa-var-times-circle };
+  @include button( $radius: true, $bg: $qw-closebtn-bg-color );
+
+  padding: rem-calc(12);
+  font-size: 1rem;
+  line-height: 1rem;
+  border: 1px solid transparent;
   color: $qw-closebtn-fg-color;
+
+  &:before {
+    @include fa-icon();
+    content: $fa-var-times-circle;
+    font-size: rem-calc(20);
+  }
 
   &:hover {
     background-color: $qw-closebtn-bg-hover-color;
@@ -14,3 +23,182 @@
   }
 }
 
+.qw-prio1-btn {
+  @include button( $radius: true, $bg: $qw-button1-bg-color );
+
+  padding: rem-calc(14);
+  font-size: rem-calc(14);
+  line-height: 1rem;
+  border: 1px solid transparent;
+  
+
+  &:hover {
+    background-color: $qw-button1-bg-hover-color;
+    border-bottom: 1px solid $qw-button1-shadow-color;
+  }
+  &:active {
+    background-color: $qw-button1-bg-active-color
+  }
+}
+
+.qw-prio2-btn {
+  @include button( $radius: true, $bg: $qw-button2-bg-color );
+
+  padding: rem-calc(14);
+  font-size: rem-calc(14);
+  line-height: 1rem;
+  color: #333;
+  border: 1px solid $qw-button2-bg-hover-color;
+
+  &:hover {
+    background-color: $qw-button2-bg-hover-color;
+  }
+  &:active {
+    background-color: $qw-button2-bg-active-color;
+  }
+}
+
+.qw-back-btn {
+  @include button( $radius: true, $bg: $qw-backbtn-bg-color );
+
+  padding: rem-calc(14);
+  font-size: rem-calc(14);
+  line-height: 1rem;
+  color: #333;
+  border: 1px solid transparent;
+
+  &:before { 
+    @include fa-icon();
+    content: $fa-var-chevron-left;
+    margin-left: rem-calc(-5);
+    margin-right: rem-calc(10);
+  }
+
+  &:hover {
+    background-color: $qw-backbtn-bg-hover-color;
+    border-bottom: 1px solid $qw-backbtn-shadow-color;
+  }
+  &:active {
+    background-color: $qw-backbtn-bg-active-color;
+  }
+}
+
+input[type="text"].qw-input {
+  background: $qw-input-bg-color;
+  color: $qw-input-fg-color;
+  border: 1px solid $qw-input-bg-color;
+  border-radius: $global-radius;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  -webkit-box-shadow: none;
+
+  // WebKit
+  &::-webkit-input-placeholder {
+    color: $qw-input-placeholder-color;
+  }
+
+  // FF 4-18
+  &:-moz-placeholder {
+    color: $qw-input-placeholder-color;
+    opacity:  1;
+  }
+  
+  // FF 19+
+  &::-moz-placeholder {
+    color: $qw-input-placeholder-color;
+    opacity:  1;
+  }
+
+  // IE 10+
+  &:-ms-input-placeholder { 
+    color: $qw-input-placeholder-color;
+  }
+}
+
+.qw-split-btn {
+  @include button( $radius: true, $bg: $qw-split-bg-color );
+  padding: rem-calc(11);
+  font-size: rem-calc(14);
+  line-height: 1rem;
+  border: 1px solid transparent;
+  min-width: rem-calc(210);
+  text-align: left;
+
+  &:before {
+    @include fa-icon();
+    content: $fa-var-check-circle;
+    font-size: rem-calc(20);
+    margin-left: rem-calc(-5);
+    margin-right: rem-calc(10);
+  }
+
+  &:hover {
+    background-color: $qw-split-bg-hover-color;
+    border-bottom: 1px solid $qw-split-shadow-color;
+  }
+
+  &:active {
+    background-color: $qw-split-bg-active-color;
+  }
+
+  > [data-adorner] {
+    @include fa-icon();
+    &:before {
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      content: $fa-var-angle-down;
+    }
+
+    border-left: 1px solid white;
+    float: right;
+    height: 43px;
+    padding: rem-calc(10 15);
+    margin: rem-calc(-12 -12 -15 -15);
+
+    &:hover {
+      background: darken($qw-split-bg-hover-color, 5%);
+      border-top-right-radius: $global-radius;
+    }
+  }
+
+  &.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid white;
+
+    > [data-adorner] {
+      &:before {
+        content: $fa-var-angle-up;
+      }
+    }
+  }
+}
+
+ul[data-drop] {
+  position: absolute;
+  left: -10000px;
+  background-color: $qw-split-bg-color;
+  width: rem-calc(210);
+  list-style: none;
+  border-bottom-left-radius: $global-radius;
+  border-bottom-right-radius: $global-radius;
+  margin: 0;
+
+  > li {
+    width: 100%;
+
+    &:hover { background: $qw-split-bg-hover-color; }
+    &:active { background: $qw-split-bg-active-color; }
+    &:last-child { margin-bottom: rem-calc(10); }
+  }
+
+  > li a {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: rem-calc(8 15);
+    min-width: 100%;
+    color: white;
+  }
+}

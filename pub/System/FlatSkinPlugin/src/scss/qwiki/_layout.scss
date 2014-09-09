@@ -7,6 +7,7 @@
     @media #{$small-only} { @include grid-column( $columns: $total-columns ); }
     @media #{$medium-up} { @include grid-column( $columns: 8 ); }
     @media #{$large-up} { @include grid-column( $offset: 1 ); }
+    position: relative;
 
     > .content, .meta {
       background: $qw-content-bg;
@@ -22,6 +23,7 @@
     @media #{$small-only} { display: none; }
     @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true ); }
     @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true ); }
+    position: relative;
   }
 }
 

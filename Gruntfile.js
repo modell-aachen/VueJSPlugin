@@ -44,7 +44,7 @@ module.exports = function(grunt) {
     accordion: 1,
     alert: 1,
     clearing: 1,
-    dropdown: 1,
+    dropdown: 0,
     equalizer: 1,
     interchange: 1,
     joyride: 1,
@@ -242,15 +242,17 @@ module.exports = function(grunt) {
           '<%= pkg.pubDir %>/js/modernizr.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
           '<%= pkg.pubDir %>/js/pace.js': ['<%= pkg.bower %>/pace/pace.js'],
           '<%= pkg.pubDir %>/js/foundation.js': (fdnScriptFiles()),
-          '<%= pkg.pubDir %>/js/knockout.js': [
-            '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
-            '<%= pkg.bower %>/knockout-mapping/build/output/knockout.mapping-latest.debug.js'
-          ],
+          // '<%= pkg.pubDir %>/js/knockout.js': [
+          //   '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
+          //   '<%= pkg.bower %>/knockout-mapping/build/output/knockout.mapping-latest.debug.js'
+          // ],
           '<%= pkg.pubDir %>/js/qwiki.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
             '<%= pkg.pubDir %>/src/js/qwiki/core.js',
-            '<%= pkg.pubDir %>/src/js/qwiki/!(core).js'
+            '<%= pkg.pubDir %>/src/js/qwiki/!(core).js',
+            '<%= pkg.bower %>/spin.js/spin.js',
+            '<%= pkg.bower %>/spin.js/jquery.spin.js'
           ]
         }
       },
@@ -265,15 +267,17 @@ module.exports = function(grunt) {
           '<%= pkg.pubDir %>/js/modernizr.min.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
           '<%= pkg.pubDir %>/js/pace.min.js': ['<%= pkg.bower %>/pace/pace.js'],
           '<%= pkg.pubDir %>/js/foundation.min.js': (fdnScriptFiles()),
-          '<%= pkg.pubDir %>/js/knockout.min.js': [
-            '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
-            '<%= pkg.bower %>/knockout-mapping/build/output/knockout.mapping-latest.debug.js'
-          ],
+          // '<%= pkg.pubDir %>/js/knockout.min.js': [
+          //   '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
+          //   '<%= pkg.bower %>/knockout-mapping/build/output/knockout.mapping-latest.debug.js'
+          // ],
           '<%= pkg.pubDir %>/js/qwiki.min.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
             '<%= pkg.pubDir %>/src/js/qwiki/core.js',
-            '<%= pkg.pubDir %>/src/js/qwiki/!(core).js'
+            '<%= pkg.pubDir %>/src/js/qwiki/!(core).js',
+            '<%= pkg.bower %>/spin.js/spin.js',
+            '<%= pkg.bower %>/spin.js/jquery.spin.js'
           ],
         }]
       }
