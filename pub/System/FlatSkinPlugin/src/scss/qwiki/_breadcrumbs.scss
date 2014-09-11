@@ -1,15 +1,16 @@
 ul.qw-breadcrumb {
   list-style: none;
-  overflow: hidden;
   margin-top: $qw-breadcrumb-offset-top;
   max-height: $qw-breadcrumb-height;
   display: inline-block;
 
   > li {
     float: left;
+    margin-left: $qw-breadcrumb-spacing;
 
     &:first-child {
       border-left: none;
+      margin-left: 0;
 
       a {
         padding-left: 20px !important;
@@ -55,12 +56,11 @@ ul.qw-breadcrumb {
         display: block;
         width: 0;
         height: 0;
-        border-top: 25px solid transparent;
-        border-bottom: 25px solid transparent;
+        border-top: $qw-breadcrumb-border-size solid transparent;
+        border-bottom: $qw-breadcrumb-border-size solid transparent;
         border-left: 15px solid $qw-breadcrumb-bg;
         position: absolute;
-        top: 50%;
-        margin-top: -25px;
+        top: 0;
         left: 100%;
         z-index: 2;
       }
@@ -70,12 +70,11 @@ ul.qw-breadcrumb {
         display: block;
         width: 0;
         height: 0;
-        border-top: 25px solid transparent;
-        border-bottom: 25px solid transparent;
+        border-top: $qw-breadcrumb-border-size solid transparent;
+        border-bottom: $qw-breadcrumb-border-size solid transparent;
         border-left: 15px solid $qw-breadcrumb-border-color;
         position: absolute;
-        top: 50%;
-        margin-top: -25px;
+        top: 0;
         margin-left: $qw-breadcrumb-spacing;
         left: 100%;
         z-index: 1;
@@ -89,5 +88,44 @@ ul.qw-breadcrumb {
         }
       }
     }
+  }
+
+  > li.qw-breadcrumb-ellipsis {
+    position: relative;
+  }
+  > li.qw-breadcrumb-ellipsis ul {
+    visibility: hidden;
+    position: fixed;
+    top: $qw-breadcrumb-offset-top + $qw-breadcrumb-height;
+    z-index: 200;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      display: block;
+      border-top: solid $qw-breadcrumb-spacing $qw-breadcrumb-border-color;
+      background: $qw-breadcrumb-bg;
+
+      > a {
+        color: $qw-breadcrumb-color;
+        height: $qw-breadcrumb-height;
+        text-decoration: none;
+        padding: 8px 10px 5px;
+        display: block;
+      }
+      &:hover {
+        background: $qw-breadcrumb-hover-bg;
+      }
+    }
+
+    > li:first-child a {
+      border-top: none;
+      border-top-left-radius: $qw-breadcrumb-radius;
+      border-top-right-radius: $qw-breadcrumb-radius;
+    }
+  }
+  > li.qw-breadcrumb-ellipsis:hover > ul {
+    visibility: visible;
   }
 }

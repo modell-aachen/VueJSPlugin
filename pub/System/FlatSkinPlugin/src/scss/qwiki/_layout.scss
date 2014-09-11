@@ -106,7 +106,7 @@
     max-height: $qw-top-one-height;
     min-height: $qw-top-one-height;
 
-    @media #{$small-only} { display: none; }
+    @media #{$small-only} { @include grid-column( $columns: 10 ); }
     @media #{$medium-only} { @include grid-column( $columns: 7 ); }
     @media #{$large-up} { @include grid-column( $columns: 8 ); }
 
@@ -129,7 +129,7 @@
     @media #{$large-up} { @include grid-column( $columns: 3, $last-column: true ); }
     @media #{$medium-only} { @include grid-column( $columns: 4, $last-column: true ); }
     @media #{$small-only} {
-      @include grid-column( $columns: 1, $offset: 10, $last-column: true );
+      @include grid-column( $columns: 1, $last-column: true );
       float: right;
     }
 
