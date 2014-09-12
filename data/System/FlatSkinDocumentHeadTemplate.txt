@@ -23,7 +23,7 @@
   </label>
   <div class="clearfix"></div>
 </div>
-%TMPL:END%<!--/document:head:de-->
+<!--/document:head:de-->%TMPL:END%
 
 %TMPL:DEF{"document:head:en"}%<!--document:head:en-->
 <div class='qw-document-head'>
@@ -50,7 +50,7 @@
   </label>
   <div class="clearfix"></div>
 </div>
-%TMPL:END%<!--/document:head:en-->
+<!--/document:head:en-->%TMPL:END%
 
 %TMPL:DEF{"document:head:auto"}%<!--document:head:auto-->
 <div class='qw-document-head'>
@@ -77,9 +77,8 @@
   </label>
   <div class="clearfix"></div>
 </div>
-%TMPL:END%<!--/document:head:auto-->
+<!--/document:head:auto-->%TMPL:END%
 
 %TMPL:DEF{"document:head"}%<!--document:head-->
 %SWITCHTMPL{"%CONTENT_LANGUAGE%" prefix="document:head:" defaultTo="auto"}%
-%TMPL:END%<!--/document:head-->
-
+<!--/document:head-->%TMPL:END%
