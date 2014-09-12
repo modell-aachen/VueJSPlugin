@@ -51,54 +51,16 @@
   }
 
   > .qw-menu {
-    color: $qw-breadcrumb-color;
-    cursor: pointer;
-    padding-top: rem-calc(8);
-
-    @media #{$small-up} { @include grid-column( $columns: 1 ); }
-    @media #{$medium-up} {
-      padding-left: $column-gutter/2 !important;
-      padding-right: 0 !important;
-    }
+    @media #{$small-up} { @include grid-column( $columns: 1, $collapse: true ); }
 
     max-height: $qw-top-one-height;
     min-height: $qw-top-one-height;
+
     transition-property: width;
     transition-timing-function: ease-in-out;
     transition-duration: 0.3s;
     @media #{$large-up} {
       transition-duration: 0.15s;
-    }
-
-    .qw-menu-icon {
-      @extend .fa;
-      @extend .fa-reorder;
-      @extend .fa-lg;
-      @extend .left;
-      padding: rem-calc(4);
-    }
-
-    .qw-menu-text {
-      @extend .left;
-      margin-bottom: 3px;
-      display: none;
-      transition: opacity 0.15s ease-in-out;
-      opacity: 0;
-
-      @media #{$large-up} {
-        opacity: 1;
-        display: inline-block;
-      }
-    }
-
-    .qw-menu-close {
-      @extend .fa;
-      @extend .fa-times;
-      @extend .fa-lg;
-      @extend .right;
-      padding: rem-calc(4);
-      transition: opacity 0.15s ease-in-out;
-      opacity: 0;
     }
   }
 
