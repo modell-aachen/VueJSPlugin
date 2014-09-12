@@ -126,8 +126,19 @@
     $(target).toggleClass('active');
     $body.toggleClass( cls );
 
+    // toggle class active for annotated selectors
+    var activateSelector = $(this).data('activate');
+    if ( activateSelector ) {
+      var activations = activateSelector.split(',');
+      for ( var i = 0; i < activations.length; ++i ) {
+        var activate = activations[i];
+        var $a = $(activate);
+        $a.toggleClass('active');
+      }
+    }
+
     // stop propagation
-    evt.preventDefault();
+    return false;
   };
 
   var transitionEndListener = function( evt ) {
