@@ -1,6 +1,6 @@
 %TMPL:DEF{"document:head:de"}%<!--document:head:de-->
 <div class='qw-document-head'>
-  <input type="button" value="Erweiterte Informationen" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
+  <a href="#" class="qw-prio2-btn right" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar"><i class="fa fa-info-circle fa-lg"></i> %MAKETEXT{"More information"}%</a>
   <label>
     Typ
     <input type="text" value="%QUERY{"DocumentType"}%" disabled>
@@ -27,7 +27,7 @@
 
 %TMPL:DEF{"document:head:en"}%<!--document:head:en-->
 <div class='qw-document-head'>
-  <input type="button" value="Erweiterte Informationen" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
+  <a href="#" class="qw-prio2-btn right" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar"><i class="fa fa-info-circle fa-lg"></i> %MAKETEXT{"More information"}%</a>
   <label>
     Typ
     <input type="text" value="%QUERY{"DocumentType"}%" disabled>
@@ -54,7 +54,7 @@
 
 %TMPL:DEF{"document:head:auto"}%<!--document:head:auto-->
 <div class='qw-document-head'>
-  <input type="button" value="Erweiterte Informationen" class="button tiny secondary" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
+  <a href="#" class="qw-prio2-btn right" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar"><i class="fa fa-info-circle fa-lg"></i> %MAKETEXT{"More information"}%</a>
   <label>
     Typ
     <input type="text" value="%QUERY{"DocumentType"}%" disabled>
