@@ -1,8 +1,12 @@
 %TMPL:DEF{"topbar:two:left"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard"}%
-<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%" class="qw-tab approved active"><i class="fa fa-check"></i>%MAKETEXT{"Version [_1]" args="%REVINFO{format=" $rev"}%"}%</a>
+<div class="qw-joinedtab approved active">%TMPL:P{"topbar:two:left:standard:view"}%%IF{"$TOPIC allows 'CHANGE'" then="&nbsp;$percentTMPL:P{\"topbar:two:left:standard:edit\"}$percent"}%</div>
 %TMPL:END%
+
+%TMPL:DEF{"topbar:two:left:standard:view"}%<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%"><i class="fa fa-check"></i>%MAKETEXT{"Version [_1]" args="%REVINFO{format=" $rev"}%"}%</a>%TMPL:END%
+
+%TMPL:DEF{"topbar:two:left:standard:edit"}%<div class="sub-tab edit %IF{"context edit" then="active" else="inactive"}%"><a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?t=%GMTIME{"$epoch"}%"><i class="fa fa-pencil"></i><span class="expander">%MAKETEXT{"Edit topic"}%</span></a></div>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right"}%
 <li><a href="#" class="qw-action-button"><i class="fa fa-bookmark-o"></i></a></li>

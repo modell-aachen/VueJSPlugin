@@ -26,3 +26,73 @@
   }
 }
 
+div.qw-joinedtab {
+  @include button( $padding: $button-tny, $bg: $secondary-color );
+  & a { color: #333; }
+  display: inline-block;
+  white-space: nowrap;
+
+  &.approved {
+    &.active {
+      background: $success-color;
+    }
+    &:hover {
+      background: $success-color;
+      color: $qw-tab-active-color;
+      > .sub-tab {
+        background: lighten($success-color, 10%);
+      }
+    }
+  }
+
+  &.unapproved {
+    &.active {
+      background: $warning-color;
+    }
+    &:hover {
+      background: $warning-color;
+      > .sub-tab {
+        color: $qw-tab-active-color;
+        background: darken($warning-color, 10%);
+      }
+    }
+  }
+
+  &.active {
+    & a {
+      color: $qw-tab-active-color;
+    }
+    color: $qw-tab-active-color;
+    font-weight: $qw-tab-active-style;
+  }
+
+  &:hover {
+    & a {
+      color: $qw-tab-active-color;
+    }
+    color: $qw-tab-active-color;
+  }
+
+  > .sub-tab {
+    & i {
+      padding-left: rem-calc(2);
+      margin-left: rem-calc(2);
+    }
+    display: inline-block;
+
+    > a > .expander {
+      overflow-x: hidden;
+      vertical-align: bottom;
+      display: inline-block;
+      padding-left: rem-calc(4);
+      transition: max-width 0.5s ease-in-out;
+      max-width: 0;
+    }
+    &:hover {
+      > a > .expander {
+        width: auto;
+        max-width: 300px;
+      }
+    }
+  }
+}
