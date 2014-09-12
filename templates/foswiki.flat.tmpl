@@ -85,17 +85,6 @@
 <div class="qw-menu" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar" data-activate="#qw-menu-btn">
   <a id="qw-menu-btn" href="#" class="qw-menu-btn"><span class="text">&nbsp;%MAKETEXT{"Menu"}%</span></a>
 </div>
-
-<!--/topbar:one:menu-->%TMPL:END%
-%TMPL:DEF{"topbar:one:left:backup"}%<!--topbar:one:menu-->
-<div class="qw-menu" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar">
-  <span>
-    <i class="qw-menu-icon"></i><span class="text">&nbsp;%MAKETEXT{"Menu"}%</span>
-  </span>
-  <span>
-    <i class="qw-menu-close"></i>
-  </span>
-</div>
 <!--/topbar:one:menu-->%TMPL:END%
 
 %TMPL:DEF{"topbar:one:mid"}%<!--topbar:one:breadcrumbs-->
@@ -161,10 +150,6 @@
 %TMPL:DEF{"offcanvas:leftbar"}%
 <div id="qw-offcanvas-leftbar" class="qw-offcanvas-leftbar" data-leftbar>
   <section class="active">
-    <span class="heading">%MAKETEXT{"Webs"}%<i class="adorner"></i></span>
-    %INCLUDE{"System.QWWebListDefault"}% <!-- ToDo. IF oder configure -->
-  </section>
-  <section>
     <span class="heading">%MAKETEXT{"Webs"}%<i class="adorner"></i></span>
     %INCLUDE{"System.QWWebListDefault"}% <!-- ToDo. IF oder configure -->
   </section>
