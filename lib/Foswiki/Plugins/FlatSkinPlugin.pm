@@ -149,6 +149,7 @@ sub _handleWEBLIST {
 
   my @webs = split( '/', $web );
   my @retval = ();
+  my $format = $params->{format} || '<li class="qw-breadcrumb-web"><a href="$link">$title</a></li>';
   foreach (@webs) {
     my $parent = $_;
     my $pos = index( $web, "/$_" );
@@ -156,7 +157,9 @@ sub _handleWEBLIST {
       $parent = substr( $web, 0, $pos ) . "/$_";
     }
 
-    my $entry = "<li><a href=\"%SCRIPTURLPATH{\"view\"}%/$parent/%HOMETOPIC%\">%MAKETEXT{\"[_1]\" args=\"<nop>$_\"}%</a></li>";
+    my $entry = $format;
+    $entry =~ s#\$link#%SCRIPTURLPATH{view}%/$parent/%HOMETOPIC%#g;
+    $entry =~ s#\$title#%MAKETEXT{"[_1]" args="<nop>$_"}%#g;
     push( @retval, $entry );
   }
 

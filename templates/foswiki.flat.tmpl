@@ -209,7 +209,7 @@
 %TMPL:END%
 
 %TMPL:DEF{"breadcrumb"}%
-<ul class="qw-breadcrumb">
+<ul class="qw-breadcrumb" data-breadcrumb>
   <!--breadcrumb:home-->%TMPL:P{"breadcrumb:home"}%<!--/breadcrumb:home-->
   <!--breadcrumb:parentwebs-->%TMPL:P{"breadcrumb:parentwebs"}%<!--/breadcrumb:parentwebs-->
   <!--breadcrumb:parenttopics-->%TMPL:P{"breadcrumb:parenttopics"}%<!--/breadcrumb:parenttopics-->
@@ -218,10 +218,10 @@
 <!--breadcrumb:processmap-->%TMPL:P{"breadcrumb:processmap"}%<!--/breadcrumb:processmap-->
 %TMPL:END%
 
-%TMPL:DEF{"breadcrumb:home"}%<li><a href="#" data-dropdown="qw-processmap"><i class="fa fa-sitemap fa-lg"></i></a></li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home"><a href="#" data-dropdown="qw-processmap"><i class="fa fa-sitemap fa-lg"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
-%TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li>" separator="" suffix="</li>"}%%TMPL:END%
-%TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li>[[%TOPIC%][%TOPIC%]]</li>" else="<li>[[%TOPIC%][TBD. Index Text]]</li>"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="" suffix="</li>"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][%TOPIC%]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%]][TBD. Index Text]]</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:processmap"}%
 <div id="qw-processmap" class="f-dropdown content large" data-dropdown-content >
   %INCLUDE{"Main.WebHome" section="PROCESSMAP"}%
