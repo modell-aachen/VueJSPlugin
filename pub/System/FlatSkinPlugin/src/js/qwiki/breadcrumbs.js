@@ -22,7 +22,6 @@
         return;
       }
       this._origElems = $self.children();
-      console.log(this._origElems);
       var data = {elem: $self, o: this};
       $(window).on('resize', data, handleResize);
       handleResize({"data": data});
