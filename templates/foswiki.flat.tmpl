@@ -122,13 +122,13 @@
 
 %TMPL:DEF{"topbar:one"}%<!--topbar:one-->
 <nav class="qw-top-one">
-  %TMPL:P{"topbar:one:left"}%
-  %TMPL:P{"topbar:one:mid"}%
-  %TMPL:P{"topbar:one:right"}%
+  <!--topbar:one:left-->%TMPL:P{"topbar:one:left"}%<!--/topbar:one:left-->
+  <!--topbar:one:mid-->%TMPL:P{"topbar:one:mid"}%<!--/topbar:one:mid-->
+  <!--topbar:one:right-->%TMPL:P{"topbar:one:right"}%<!--/topbar:one:right-->
 </nav>
 <!--/topbar:one-->%TMPL:END%
 
-%TMPL:DEF{"topbar:two"}%
+%TMPL:DEF{"topbar:two"}%<!--topbar:two-->
 <nav class="qw-top-two follows-canvas">
   <div class="qw-context">
     <div class="content">
@@ -141,23 +141,39 @@
   <div class="qw-actions">
     <div class="content">
       <a href="#" class="button tiny secondary">%MAKETEXT{"ToDo"}%</a>
-      <div>%TMPL:P{"qw::actions"}%</div>
+      <div><!--qw:actions-->%TMPL:P{"qw::actions"}%<!--/qw:actions--></div>
     </div>
   </div>
 </nav>
-%TMPL:END%
+<!--/topbar:two-->%TMPL:END%
 
-
-%TMPL:DEF{"offcanvas:leftbar"}%
+%TMPL:DEF{"offcanvas:leftbar"}%<!--offcanvas:leftbar-->
 <div id="qw-offcanvas-leftbar" class="qw-offcanvas-leftbar" data-leftbar>
-  <section class="active">
-    <span class="heading">%MAKETEXT{"Webs"}%<i class="adorner"></i></span>
-    %INCLUDE{"System.QWWebListDefault"}% <!-- ToDo. IF oder configure -->
+  <section class="user">
+    %TMPL:P{"user:table"}%
+  </section>
+  <section class="actions">
+  </section>
+  <section class="webs">
   </section>
 </div>
-%TMPL:END%
+<!--/offcanvas:leftbar-->%TMPL:END%
 
-%TMPL:DEF{"offcanvas:rightbar"}%
+%TMPL:DEF{"user:table"}%<!--user:table-->
+<table style="background: transparent">
+  <tbody>
+    <tr>
+      <td rowspan="2">
+        <img width="32" height="32" src="%PUBURLPATH%/%SYSTEMWEB%/FlatSkinPlugin/assets/avatar.png" alt="" />
+      </td>
+      <td><div data-split-string data-pattern="(?=[A-Z])">%USERINFO{format="$wikiname"}%</div></td>
+    </tr>
+    <tr><td><div>%USERINFO{format="$emails"}%</div></td></tr>
+  </tbody>
+</table>
+<!--/user:table-->%TMPL:END%
+
+%TMPL:DEF{"offcanvas:rightbar"}%<!--offcanvas:rightbar-->
 <div id="qw-offcanvas-rightbar" class="qw-offcanvas-rightbar" data-rightbar>
   <section class="title">
     <a href="#" class="close" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
@@ -175,9 +191,9 @@
     </div>
   </section>
 </div>
-%TMPL:END%
+<!--/offcanvas:rightbar-->%TMPL:END%
 
-%TMPL:DEF{"offcanvas:search"}%
+%TMPL:DEF{"offcanvas:search"}%<!--offcanvas:search-->
 <section id="qw-searchbar" class="qw-offcanvas-search" data-quicksearch>
   <div class="filter">
   </div>
@@ -192,9 +208,9 @@
   </div>
   <div class="content"></div>
 </section>
-%TMPL:END%
+<!--/offcanvas:search-->%TMPL:END%
 
-%TMPL:DEF{"breadcrumb"}%
+%TMPL:DEF{"breadcrumb"}%<!--breadcrumb-->
 <ul class="qw-breadcrumb" data-breadcrumb>
   <!--breadcrumb:home-->%TMPL:P{"breadcrumb:home"}%<!--/breadcrumb:home-->
   <!--breadcrumb:parentwebs-->%TMPL:P{"breadcrumb:parentwebs"}%<!--/breadcrumb:parentwebs-->
@@ -202,24 +218,24 @@
   <!--breadcrumb:topic-->%TMPL:P{"breadcrumb:topic"}%<!--/breadcrumb:topic-->
 </ul>
 <!--breadcrumb:processmap-->%TMPL:P{"breadcrumb:processmap"}%<!--/breadcrumb:processmap-->
-%TMPL:END%
+<!--/breadcrumb-->%TMPL:END%
 
 %TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home"><a href="#" data-dropdown="qw-processmap"><i class="fa fa-sitemap fa-lg"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="" suffix="</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][%TOPIC%]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%]][TBD. Index Text]]</li>"}%%TMPL:END%
-%TMPL:DEF{"breadcrumb:processmap"}%
+%TMPL:DEF{"breadcrumb:processmap"}%<!--breadcrumb:processmap-->
 <div id="qw-processmap" class="f-dropdown content large" data-dropdown-content >
   %INCLUDE{"Main.WebHome" section="PROCESSMAP"}%
 </div>
-%TMPL:END%
+<!--/breadcrumb:processmap-->%TMPL:END%
 
 %TMPL:DEF{"attachments"}%%META{"attachments"}%%TMPL:END%
-%TMPL:DEF{"offcanvas:rightbar:includes"}%
+%TMPL:DEF{"offcanvas:rightbar:includes"}%<!--offcanvas:rightbar:includes-->
 <div data-rightbar-item>
   <a href="#" data-content="#qw-attachments" data-title="%MAKETEXT{"Attachments"}%">
     %MAKETEXT{"Attachments"}% <i class="fa fa-chevron-right right"></i>
   </a>
   <div id="qw-attachments">%TMPL:P{"attachments"}%</div>
 </div>
-%TMPL:END%
+<!--/offcanvas:rightbar:includes-->%TMPL:END%
