@@ -1,23 +1,23 @@
 %TMPL:INCLUDE{"login"}%
 
 
-%TMPL:DEF{"form"}%
+%TMPL:DEF{"form"}%<!--form-->
 %TMPL:P{"form:start"}%
 %TMPL:P{"field:username"}%
 %TMPL:P{"field:password"}%
 %TMPL:P{"field:submit"}%
 %TMPL:P{"form:end"}%
-%TMPL:END%
+<!--/form-->%TMPL:END%
 
-%TMPL:DEF{"form:start"}%
+%TMPL:DEF{"form:start"}%<!--form:start-->
 <form action="%SCRIPTURLPATH{"login"}%%PATH_INFO%" name="loginform" method="post" onsubmit="document.loginform.foswiki_origin.value+=window.location.hash" data-abide>
-%TMPL:END%
+<!--/form:start-->%TMPL:END%
 
-%TMPL:DEF{"form:end"}%
+%TMPL:DEF{"form:end"}%<!--form:end-->
 <literal>%QUERYPARAMS{encoding="entity" format="<input type='hidden' name='$name' value='$value' />"}%</literal>
 <input type="hidden" name="foswiki_origin" value="%FOSWIKI_ORIGIN%" />
 </form>
-%TMPL:END%
+<!--/form:end-->%TMPL:END%
 
 %TMPL:DEF{"username"}%<strong>%IF{"{TemplateLogin}{AllowLoginUsingEmailAddress}" then="%MAKETEXT{"Username or email address"}%" else="%MAKETEXT{"Username"}%"}%</strong>%TMPL:END%
 
@@ -31,7 +31,6 @@
   </div>
 </div>
 <!--/field:username-->%TMPL:END%
-
 
 %TMPL:DEF{"password"}%<strong>%MAKETEXT{"Password"}%</strong>%TMPL:END%
 
@@ -58,7 +57,7 @@
 <!--/field:submit-->%TMPL:END%
 
 
-%TMPL:DEF{"errorstep"}%
+%TMPL:DEF{"errorstep"}%<!--errorstep-->
 %IF{
   "defined ERROR AND $ERROR != ''"
   then="<div data-alert class='alert-box alert'>%ERROR%<a href='#' class='close'>&times;</a></div>"
@@ -66,17 +65,17 @@
 %IF{
   "(defined BANNER AND $BANNER != '')"
   then="<div data-alert class='alert-box secondary'>%BANNER%<a href='#' class='close'>&times;</a></div>"}%
-%TMPL:END%
+<!--/errorstep-->%TMPL:END%
 
 %TMPL:DEF{"topbar:one"}%%TMPL:END%
 %TMPL:DEF{"topbar:two"}%%TMPL:END%
 
-%TMPL:DEF{"body:start"}%
+%TMPL:DEF{"body:start"}%<!--body:start-->
 <body>
 <div class="qw-login-page">
-%TMPL:END%
+<!--/body:start-->%TMPL:END%
 
-%TMPL:DEF{"body:content"}%
+%TMPL:DEF{"body:content"}%<!--body:content-->
 <section class="qw-login-framgment">
   <div class="qw-form">%TMPL:P{"form"}%</div>
 </section>
@@ -87,18 +86,18 @@
     </div>
   </div>
 </section>
-%TMPL:END%
+<!--/body:content-->%TMPL:END%
 
-%TMPL:DEF{"body:end"}%
+%TMPL:DEF{"body:end"}%<!--body:end-->
 </div>
 <script>
   $(document).qwiki();
 </script>
 </body>
-%TMPL:END%
+<!--/body:end-->%TMPL:END%
 
-%TMPL:DEF{"body"}%
+%TMPL:DEF{"body"}%<!--body-->
 %TMPL:P{"body:start"}%
 %TMPL:P{"body:content"}%
 %TMPL:P{"body:end"}%
-%TMPL:END%
+<!--/body-->%TMPL:END%
