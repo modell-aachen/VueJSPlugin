@@ -58,6 +58,43 @@
   }
 }
 
+.qw-login-btn {
+  @include button( $radius: true, $bg: $qw-button1-bg-color, $full-width: true );
+
+  padding: rem-calc(14);
+  font-size: rem-calc(14);
+  line-height: 1rem;
+  border: 1px solid transparent;
+  max-height: 46px;
+
+  &:hover {
+    background-color: $qw-button1-bg-hover-color;
+    border-bottom: 1px solid $qw-button1-shadow-color;
+  }
+  &:active {
+    background-color: $qw-button1-bg-active-color
+  }
+}
+
+.qw-reset-login-btn {
+  @include button( $radius: true, $bg: $qw-body-bg, $full-width: true );
+
+  padding: rem-calc(7 14);
+  font-size: rem-calc(14);
+  line-height: 1rem;
+  color: #333;
+  border: 1px solid $qw-button2-bg-hover-color;
+  min-height: 46px;
+  max-height: 46px;
+
+  &:hover {
+    background-color: $qw-button2-bg-hover-color;
+  }
+  &:active {
+    background-color: $qw-button2-bg-active-color;
+  }
+}
+
 .qw-back-btn {
   @include button( $radius: true, $bg: $qw-backbtn-bg-color );
 

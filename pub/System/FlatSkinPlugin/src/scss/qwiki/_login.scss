@@ -1,45 +1,41 @@
-@mixin login-layout {
-  @media #{$small-only} { @include grid-column( $offset: 1, $columns: 10 ); }
-  @media #{$medium-up} { @include grid-column( $offset: 3, $columns: 6 ); }
-  @media #{$large-up} { @include grid-column( $offset: 4, $columns: 4 ); }
-}
-
 .qw-login-page {
-  padding: $qw-top-height 0;
+  background-image: url(../assets/logo-gray.png);
+  background-position: center rem-calc($qw-top-height);
+  background-repeat: no-repeat;
+  padding: (2 * $qw-top-height) 0;
 
   > .qw-login-framgment {
-    @include grid-row();
+    @include grid-row( $behavior: collapse );
 
     > .qw-form {
-      @include login-layout();
-
-      border-top: $qw-login-border-top;
-      background: $qw-login-bg;
-      box-shadow: $qw-login-form-box-shadow;
+      @media #{$small-only} { @include grid-column( $offset: 1, $columns: 10 ); }
+      @media #{$medium-up} { @include grid-column( $offset: 3, $columns: 6 ); }
+      @media #{$large-up} { @include grid-column( $offset: 4, $columns: 4 ); }
+      background: $qw-body-bg;
 
       .content {
-        padding: rem-calc(30 20 10 20);
-      }
+        @include grid-row( $behavior: collapse );
 
+        > .input {
+          @include grid-column( $offset: 2, $columns: 8, $collapse: true );
+        }
+
+        > .submit {
+          @include grid-column( $columns: 5, $offset: 2, $float: left, $collapse: false );
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        > .reset {
+          @include grid-column( $columns: 3, $last-column: true, $collapse: false );
+          padding-right: 0
+        }
+      }
     }
 
     > .qw-errors {
-      @include login-layout();
+      @include grid-column( $offset: 2, $columns: 8 );
       padding: rem-calc(30 0 0 0) !important;
-    }
-  }
-
-  .qw-top-two > .header {
-    @include login-layout();
-
-    background: transparent;
-    height: $qw-top-two-height;
-    padding-left: 0 !important;
-
-    > * {
-      max-height: 33px;
-      margin-top: $qw-top-two-height - 33px;
-      box-shadow: $qw-login-header-box-shadow;
     }
   }
 }
