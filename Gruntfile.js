@@ -298,6 +298,27 @@ module.exports = function(grunt) {
         files: ['<%= pkg.pubDir %>/src/js/**/*.js'],
         tasks: ['jshint','uglify:' + target]
       }
+    },
+
+    webfont: {
+      'qwiki-font': {
+        src: '<%= pkg.pubDir %>/src/fonts/**/*.svg',
+        dest: '<%= pkg.pubDir %>/fonts',
+        destCss: '<%= pkg.pubDir %>/src/scss/qwiki',
+        options: {
+          htmlDemo: false,
+          autoHint: false,
+          stylesheet: 'scss',
+          hashes: false,
+          font: 'qwiki-font',
+          syntax: 'bootstrap',
+          templateOptions: {
+            baseClass: 'icon',
+            classPrefix: 'icon-',
+            mixinPrefix: 'icon-'
+          }
+        }
+      }
     }
   });
 
@@ -310,6 +331,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-todo');
+  grunt.loadNpmTasks('grunt-webfont');
 
   grunt.registerTask('default', ['build', 'watch']);
   grunt.registerTask('install', ['clean', 'build', 'manifest', 'pseudo-install']);
@@ -318,6 +340,7 @@ module.exports = function(grunt) {
   grunt.registerTask('pseudo-install', ['exec:install']);
   grunt.registerTask('build', [
     'copy:font-awesome',
+    'webfont',
     'sass:' + target,
     'jshint',
     'uglify:' + target
