@@ -302,7 +302,7 @@ module.exports = function(grunt) {
 
     webfont: {
       'qwiki-font': {
-        src: '<%= pkg.pubDir %>/src/fonts/**/*.svg',
+        src: '<%= pkg.pubDir %>/src/fonts/icons/*.svg',
         dest: '<%= pkg.pubDir %>/fonts',
         destCss: '<%= pkg.pubDir %>/src/scss/qwiki',
         options: {
@@ -310,6 +310,7 @@ module.exports = function(grunt) {
           autoHint: false,
           stylesheet: 'scss',
           hashes: false,
+          relativeFontPath: '../fonts',
           font: 'qwiki-font',
           syntax: 'bootstrap',
           templateOptions: {
