@@ -27,10 +27,27 @@
 }
 
 div.qw-joinedtab {
-  @include button( $padding: $button-tny, $bg: $secondary-color );
-  & a { color: #333; }
+  // @include button( $padding: $button-tny, $bg: $secondary-color );
+  @include button( $padding: 0, $bg: $secondary-color );
+
   display: inline-block;
   white-space: nowrap;
+  padding-left: $button-tny;
+  font-weight: normal;
+  font-size: rem-calc(12);
+  vertical-align: middle;
+  border-top-left-radius: rem-calc(6);
+  border-top-right-radius: rem-calc(6);
+
+  &:before {
+    @extend .icon-page-free;
+    font-family:"qwiki-font";
+    font-size: 1.75rem;
+    vertical-align: middle;
+    margin-right: rem-calc(10);
+  }
+
+  & a { color: #333; }
 
   &.approved {
     &.active {
@@ -74,20 +91,30 @@ div.qw-joinedtab {
   }
 
   > .sub-tab {
-    & i {
-      padding-left: rem-calc(2);
-      margin-left: rem-calc(2);
+    &.edit {
+      &:before {
+        @extend .icon-edit;
+        font-family: "qwiki-font";
+        font-size: 1.5rem;
+        vertical-align: middle;
+        margin-right: rem-calc(5);
+        margin-left: rem-calc(5);
+      }
     }
+
+    padding: $button-tny;
     display: inline-block;
+    border-top-right-radius: rem-calc(6);
 
     > a > .expander {
       overflow-x: hidden;
-      vertical-align: bottom;
+      vertical-align: middle;
       display: inline-block;
       padding-left: rem-calc(4);
       transition: max-width 0.5s ease-in-out;
       max-width: 0;
     }
+
     &:hover {
       > a > .expander {
         width: auto;
@@ -95,4 +122,10 @@ div.qw-joinedtab {
       }
     }
   }
+}
+
+// printing, further topic actions, language selector, etc
+.qw-action-button {
+  @include button( $padding: $button-tny, $bg: $secondary-color );
+  background: transparent;
 }
