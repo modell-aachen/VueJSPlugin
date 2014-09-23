@@ -1,8 +1,8 @@
 ;(function ($, _, document, window, undefined) {
   'use strict';
 
-  QWiki.plugins.NAME = {
-    name: 'NAME',
+  QWiki.plugins.utils = {
+    name: 'utils',
 
     init: function( options ) {
       if ( typeof options === 'object' ) {
@@ -34,7 +34,6 @@
 
     var regex = new RegExp( pattern );
     if ( regex.test( text ) === false ) {
-      console.log('returning');
       return;
     }
 
