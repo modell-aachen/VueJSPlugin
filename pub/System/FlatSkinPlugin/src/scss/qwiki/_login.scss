@@ -8,7 +8,7 @@
     @include grid-row( $behavior: collapse );
 
     > .qw-form {
-      @media #{$small-only} { @include grid-column( $offset: 1, $columns: 10 ); }
+      @media #{$small-only} { @include grid-column( $columns: 12 ); }
       @media #{$medium-up} { @include grid-column( $offset: 3, $columns: 6 ); }
       @media #{$large-up} { @include grid-column( $offset: 4, $columns: 4 ); }
       background: $qw-body-bg;
@@ -17,18 +17,23 @@
         @include grid-row( $behavior: collapse );
 
         > .input {
-          @include grid-column( $offset: 2, $columns: 8, $collapse: true );
+          @media #{$small-only} { @include grid-column( $offset: 1, $columns: 10, $collapse: true ); }
+          @media #{$medium-up} { @include grid-column( $offset: 2, $columns: 8, $collapse: true ); }
         }
 
         > .submit {
-          @include grid-column( $columns: 5, $offset: 2, $float: left, $collapse: false );
-          padding-left: 0;
-          padding-right: 0;
+          @media #{$small-only} { @include grid-column( $columns: 5, $offset: 1, $float: left, $collapse: false ); }
+          @media #{$medium-up} { @include grid-column( $columns: 5, $offset: 2, $float: left, $collapse: false ); }
+
+          padding-left: 0 !important;
+          padding-right: 0 !important;
         }
 
         > .reset {
-          @include grid-column( $columns: 3, $last-column: true, $collapse: false );
-          padding-right: 0
+          @media #{$small-only} { @include grid-column( $columns: 5, $last-column: true, $collapse: false ); }
+          @media #{$medium-up} { @include grid-column( $columns: 3, $last-column: true, $collapse: false ); }
+
+          padding-right: 0 !important;
         }
       }
     }
