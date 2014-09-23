@@ -7,11 +7,9 @@
   border: 1px solid transparent;
   color: $qw-closebtn-fg-color;
 
-  &:before {
-    @include fa-icon();
-    content: $fa-var-times-circle;
-    font-size: rem-calc(20);
-  }
+  @extend .icon-close;
+  font-family:"qwiki-font";
+  &:before { font-size: rem-calc(20); }
 
   &:hover {
     background-color: $qw-closebtn-bg-hover-color;
@@ -257,11 +255,11 @@ ul[data-drop] {
     color: $qw-menu-closed-fg-active-color;
   }
 
+  font-family:"qwiki-font";
+  @extend .icon-menu;
   &:before {
-    @include fa-icon();
     font-size: 1.2rem;
     line-height: 1.5rem;
-    content: $fa-var-bars;
   }
 
   &:hover {
@@ -300,4 +298,8 @@ ul[data-drop] {
 .qw-menu-btn .text {
   @media #{$small-only} { display: none; }
   @media #{$medium-only} { display: none; }
+}
+
+.qw-leftbar-user-btn {
+  color: $qw-leftbar-bg-dark;
 }

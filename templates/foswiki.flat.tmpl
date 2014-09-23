@@ -147,7 +147,7 @@
 <!--/topbar:two-->%TMPL:END%
 
 %TMPL:DEF{"offcanvas:leftbar"}%<!--offcanvas:leftbar-->
-<div id="qw-offcanvas-leftbar" class="qw-offcanvas-leftbar" data-leftbar>
+<div id="qw-offcanvas-leftbar" class="qw-offcanvas-leftbar qw-leftbar" data-leftbar>
   <section class="user">
     %TMPL:P{"user:table"}%
   </section>
@@ -155,21 +155,25 @@
   </section>
   <section class="webs">
   </section>
+  <section class="logo">
+  </section>
 </div>
 <!--/offcanvas:leftbar-->%TMPL:END%
 
 %TMPL:DEF{"user:table"}%<!--user:table-->
-<table style="background: transparent">
-  <tbody>
-    <tr>
-      <td rowspan="2">
-        <img width="32" height="32" src="%PUBURLPATH%/%SYSTEMWEB%/FlatSkinPlugin/assets/avatar.png" alt="" />
-      </td>
-      <td><div data-split-string data-pattern="(?=[A-Z])">%USERINFO{format="$wikiname"}%</div></td>
-    </tr>
-    <tr><td><div>%USERINFO{format="$emails"}%</div></td></tr>
-  </tbody>
-</table>
+<div class="avatar">
+  <img width="64" height="64" src="%PUBURLPATH%/%SYSTEMWEB%/FlatSkinPlugin/assets/avatar.png" alt="" />
+</div>
+<div class="info">
+  <div class="name">
+    <div>%SPACEOUT{%WIKINAME%}%</div>
+    <div><a class="qw-leftbar-user-btn" href="%IF{"istopic '%WIKIUSERNAME%'" then="/%WIKIUSERNAME%" else="#"}%"><i class="icon-configuration"></i></a></div>
+  </div>
+  <div class="role">
+    <div>%USERINFO{format="$emails"}%</div>
+    <div><a class="qw-leftbar-user-btn" href="/%WEB%/%TOPIC%?logout=1" title="%MAKETEXT{"Logout"}%"><i class="icon-logout"></i></a></div>
+  </div>
+</div>
 <!--/user:table-->%TMPL:END%
 
 %TMPL:DEF{"offcanvas:rightbar"}%<!--offcanvas:rightbar-->

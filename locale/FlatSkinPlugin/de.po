@@ -1,3 +1,7 @@
+#: foswiki.flat.tmpl
+msgid "Logout"
+msgstr "Abmelden"
+
 #: login.flat.tmpl
 msgid "Sign in"
 msgstr "Anmelden"

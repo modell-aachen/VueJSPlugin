@@ -270,3 +270,53 @@
     clear: both;
   }
 }
+
+.qw-leftbar {
+  > .user {
+    @include grid-row();
+    margin-top: rem-calc(10);
+    padding-right: rem-calc(10);
+    padding-left: rem-calc(10);
+    border-bottom: 1px solid $qw-leftbar-divider;
+    border-top: 1px solid $qw-leftbar-divider;
+
+    > .avatar {
+      @include grid-column($columns: 3);
+      padding: rem-calc(10);
+    }
+
+    > .info {
+      @include grid-column($columns: 9);
+
+      > .name, .role {
+        @include grid-row($behavior: nest);
+
+        > div:first-child {
+          @include grid-column($columns: 10, $collapse: true);
+          font-size: 0.8rem;
+          color: white;
+          padding-top: rem-calc(5);
+          padding-bottom: rem-calc(5);
+        }
+
+        > div:last-child {
+          @include grid-column($columns: 2, $last-column: true, $collapse: false, $float: right);
+          color: $qw-leftbar-bg-dark;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  > .logo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: rem-calc(110);
+    border-top: 1px solid $qw-leftbar-divider;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../assets/logo-white.png');
+  }
+}
