@@ -192,8 +192,7 @@ module.exports = function(grunt) {
           outputStyle: 'nested',
         },
         files: {
-          "<%= pkg.pubDir %>/css/qwiki.css": "<%= pkg.pubDir %>/src/scss/qwiki.scss",
-          "<%= pkg.pubDir %>/css/pace.css": "<%= pkg.pubDir %>/src/scss/pace.scss"
+          "<%= pkg.pubDir %>/css/qwiki.css": "<%= pkg.pubDir %>/src/scss/qwiki.scss"
         }
       },
       dist: {
@@ -201,8 +200,7 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          "<%= pkg.pubDir %>/css/qwiki.min.css": "<%= pkg.pubDir %>/src/scss/qwiki.scss",
-          "<%= pkg.pubDir %>/css/pace.min.css": "<%= pkg.pubDir %>/src/scss/pace.scss"
+          "<%= pkg.pubDir %>/css/qwiki.min.css": "<%= pkg.pubDir %>/src/scss/qwiki.scss"
         }
       }
     },
@@ -240,7 +238,6 @@ module.exports = function(grunt) {
         files: {
           '<%= pkg.pubDir %>/js/fastclick.js': ['<%= pkg.bower %>/fastclick/lib/fastclick.js'],
           '<%= pkg.pubDir %>/js/modernizr.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
-          '<%= pkg.pubDir %>/js/pace.js': ['<%= pkg.bower %>/pace/pace.js'],
           '<%= pkg.pubDir %>/js/foundation.js': (fdnScriptFiles()),
           // '<%= pkg.pubDir %>/js/knockout.js': [
           //   '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
@@ -265,7 +262,6 @@ module.exports = function(grunt) {
         files: [{
           '<%= pkg.pubDir %>/js/fastclick.min.js': ['<%= pkg.bower %>/fastclick/lib/fastclick.js'],
           '<%= pkg.pubDir %>/js/modernizr.min.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
-          '<%= pkg.pubDir %>/js/pace.min.js': ['<%= pkg.bower %>/pace/pace.js'],
           '<%= pkg.pubDir %>/js/foundation.min.js': (fdnScriptFiles()),
           // '<%= pkg.pubDir %>/js/knockout.min.js': [
           //   '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
