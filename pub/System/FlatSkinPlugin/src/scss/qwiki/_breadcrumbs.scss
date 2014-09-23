@@ -2,7 +2,7 @@ ul.qw-breadcrumb {
   list-style: none;
   margin-top: $qw-breadcrumb-offset-top;
   max-height: $qw-breadcrumb-height;
-  display: inline-block;
+  white-space: nowrap;
 
   > li {
     float: left;
@@ -49,7 +49,6 @@ ul.qw-breadcrumb {
       background: $qw-breadcrumb-bg;
       position: relative;
       display: block;
-      float: left;
 
       &:after {
         content: " ";
@@ -127,5 +126,16 @@ ul.qw-breadcrumb {
   }
   > li.qw-breadcrumb-ellipsis:hover > ul {
     visibility: visible;
+  }
+  > li.qw-breadcrumb-topic {
+    float: none;
+    > a {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis-word;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
   }
 }

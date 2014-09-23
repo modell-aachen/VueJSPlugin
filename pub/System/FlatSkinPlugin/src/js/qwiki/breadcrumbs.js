@@ -64,7 +64,7 @@
     return 9001; // over 9000!
   };
 
-  var handleResize = function( evt ) {
+  var handleResize = function(evt) {
     // Reliable in all browsers we care about, Bugzilla #156388 c14
     var winWidth = document.documentElement.clientWidth;
     var c = sizeClass(winWidth);
@@ -77,24 +77,26 @@
     o._prevSize = c;
 
     $self.empty();
-    // Small: no breadcrumbs, only topic
-    if (c === 640) {
-      $self.append(o._origElems.filter('.qw-breadcrumb-topic'));
-      return;
-    }
     $self.append(o._origElems.filter('.qw-breadcrumb-home'));
     var abbrev = $('<li class="qw-breadcrumb-ellipsis"><a>⋯</a><ul class="qw-breadcrumb-sublist"></ul></li>');
     abbrev.find('a').click(function() { return false; });
     var sublist = abbrev.find('.qw-breadcrumb-sublist');
-    if (c === 1024) {
+
+    if (c === 640 || c === 1024) {
       // Abbreviated webs, abbreviated parents
       sublist.append(o._origElems.filter('.qw-breadcrumb-web, .qw-breadcrumb-parent'));
-      $self.append(abbrev);
+      if (sublist.children().length > 0) {
+        // This one-statement block required by jshint
+        $self.append(abbrev);
+      }
     } else if (c === 1440) {
       // Full webs, abbreviated parents
       $self.append(o._origElems.filter('.qw-breadcrumb-web'));
       sublist.append(o._origElems.filter('.qw-breadcrumb-parent'));
-      $self.append(abbrev);
+      if (sublist.children().length > 0) {
+        // This one-statement block required by jshint
+        $self.append(abbrev);
+      }
     } else {
       // Full webs, full parents
       $self.append(o._origElems.filter('.qw-breadcrumb-web, .qw-breadcrumb-parent'));
