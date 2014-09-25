@@ -1,31 +1,3 @@
-// topicactionsa...
-.qw-tab {
-  @include button( $padding: $button-tny, $bg: $secondary-color );
-
-  &.approved {
-    &.active {
-      background: $success-color;
-    }
-    &:hover {
-      background: $success-color;
-    }
-  }
-
-  &.unapproved {
-    &.active {
-      background: $warning-color;
-    }
-    &:hover {
-      background: $warning-color;
-    }
-  }
-
-  &.active {
-    color: $qw-tab-active-color;
-    font-weight: $qw-tab-active-style;
-  }
-}
-
 div.qw-joinedtab {
   // @include button( $padding: $button-tny, $bg: $secondary-color );
   @include button( $padding: 0, $bg: $secondary-color );
