@@ -1,7 +1,7 @@
 %TMPL:DEF{"topbar:two:left"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard"}%
-<div class="qw-joinedtab approved active">%TMPL:P{"topbar:two:left:standard:view"}%%IF{"$TOPIC allows 'CHANGE'" then="&nbsp;$percentTMPL:P{\"topbar:two:left:standard:edit\"}$percent"}%</div>
+<div class="qw-joinedtab approved active">%TMPL:P{"topbar:two:left:standard:view"}%%IF{"$TOPIC allows 'CHANGE'" then="$percentTMPL:P{\"topbar:two:left:standard:edit\"}$percent"}%</div>
 %TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard:view"}%<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%">%MAKETEXT{"Version [_1]" args="%REVINFO{format=" $rev"}%"}%</a>%TMPL:END%

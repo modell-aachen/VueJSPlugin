@@ -1,31 +1,40 @@
 div.qw-joinedtab {
-  // @include button( $padding: $button-tny, $bg: $secondary-color );
-  @include button( $padding: 0, $bg: $secondary-color );
-
   display: inline-block;
   white-space: nowrap;
-  padding-left: $button-tny;
   font-weight: normal;
   font-size: rem-calc(12);
   vertical-align: middle;
-  border-top-left-radius: rem-calc(6);
-  border-top-right-radius: rem-calc(6);
 
-  &:before {
-    @extend .icon-page-free;
-    font-family:"qwiki-font";
-    font-size: 1.75rem;
-    vertical-align: middle;
-    margin-right: rem-calc(10);
+  & > a:first-child {
+    border-top-left-radius: rem-calc(6);
+  }
+  & a:last-child {
+    border-top-right-radius: rem-calc(6);
+    padding-right: $button-tny;
   }
 
-  & a { color: #333; }
+  & a {
+    &:before {
+      @extend .icon-page-free;
+      font-family:"qwiki-font";
+      font-size: 1.75rem;
+      vertical-align: middle;
+      margin-right: rem-calc(5);
+    }
+
+    @include button( $padding: 0, $bg: $secondary-color );
+    padding-left: $button-tny;
+    padding-top: $button-tny / 2;
+    padding-bottom: $button-tny / 2;
+    color: #333;
+    margin-bottom: 0px;
+  }
 
   &.approved {
-    &.active {
+    &.active a {
       background: $success-color;
     }
-    &:hover {
+    &:hover a {
       background: $success-color;
       color: $qw-tab-active-color;
       > .sub-tab {
@@ -35,14 +44,19 @@ div.qw-joinedtab {
   }
 
   &.unapproved {
-    &.active {
+    &.active a {
       background: $warning-color;
     }
+    & div.sub-tab.active a {
+      background: lighten($warning-color, 10%);
+    }
     &:hover {
-      background: $warning-color;
-      > .sub-tab {
+      & a {
+        background: $warning-color;
+      }
+      & div.sub-tab.edit a {
         color: $qw-tab-active-color;
-        background: darken($warning-color, 10%);
+        background: lighten($warning-color, 10%);
       }
     }
   }
@@ -63,27 +77,24 @@ div.qw-joinedtab {
   }
 
   > .sub-tab {
-    &.edit {
+    display: inline-block;
+
+    &.edit a {
       &:before {
         @extend .icon-edit;
         font-family: "qwiki-font";
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         vertical-align: middle;
-        margin-right: rem-calc(5);
-        margin-left: rem-calc(5);
+        margin-right: 0;
       }
     }
-
-    padding: $button-tny;
-    display: inline-block;
-    border-top-right-radius: rem-calc(6);
 
     > a > .expander {
       overflow-x: hidden;
       vertical-align: middle;
       display: inline-block;
-      padding-left: rem-calc(4);
       transition: max-width 0.5s ease-in-out;
+      margin-left: rem-calc(4); // XXX does not hide, makes right border of tab quite large
       max-width: 0;
     }
 
@@ -99,5 +110,6 @@ div.qw-joinedtab {
 // printing, further topic actions, language selector, etc
 .qw-action-button {
   @include button( $padding: $button-tny, $bg: $secondary-color );
+  margin-bottom: 0px;
   background: transparent;
 }
