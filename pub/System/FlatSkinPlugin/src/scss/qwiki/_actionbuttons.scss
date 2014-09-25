@@ -44,6 +44,9 @@ div.qw-joinedtab {
   }
 
   &.unapproved {
+    & a:before {
+      @extend .icon-page-draft;
+    }
     &.active a {
       background: $warning-color;
     }
