@@ -291,7 +291,7 @@
       > .name, .role {
         @include grid-row($behavior: nest);
 
-        > div:first-child {
+        > div:first-child, div:first-child a {
           @include grid-column($columns: 10, $collapse: true);
           font-size: 0.8rem;
           color: white;
@@ -308,6 +308,41 @@
     }
   }
 
+  > .actions,
+  > .webs {
+    ul {
+      list-style: none;
+      min-width: 100%;
+      margin: 0;
+      padding: 0;
+
+      li {
+        background: transparent;
+        transition: background 0.1s ease-in-out;
+        min-width: 100%;
+
+        &:hover {
+          background: $qw-leftbar-bg-light;
+        }
+
+        &:active {
+          background: $qw-leftbar-bg-dark;
+        }
+      }
+    }
+
+    a {
+      display: block;
+      color: white;
+      padding-left: 20px;
+
+      i {
+        font-size: 2rem;
+        padding-right: 10px;
+      }
+    }
+  }
+
   > .logo {
     position: absolute;
     bottom: 0;
@@ -319,4 +354,32 @@
     background-position: center center;
     background-image: url('../assets/logo-white.png');
   }
+}
+
+.qw-leftbar-twisty {
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding: rem-calc(10);
+  text-transform: uppercase;
+  transition: background 0.1s ease-in-out;
+
+  &:hover {
+    background: $qw-leftbar-bg-light;
+  }
+
+  &:active {
+    background: $qw-leftbar-bg-dark;
+  }
+
+  &:after {
+    @include fa-icon();
+    float: right;
+    padding: rem-calc(5);
+    content: $fa-var-chevron-up;
+  }
+}
+
+#qw-actions-twisty1show .qw-leftbar-twisty:after,
+#qw-webs-twisty2show .qw-leftbar-twisty:after {
+  content: $fa-var-chevron-down;
 }

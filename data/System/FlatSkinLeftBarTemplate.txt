@@ -1,0 +1,39 @@
+%TMPL:DEF{"leftbar:actions"}%<!--leftbar:actions-->
+<ul>
+  <li><a href="#"><i class="icon-home"></i> %MAKETEXT{"Dashboard"}%</a></li>
+  <li><a href="#"><i class="icon-home"></i> %MAKETEXT{"Tasks"}%</a></li>
+  <li><a href="#"><i class="icon-home"></i> %MAKETEXT{"Calendar"}%</a></li>
+  <li><a href="#"><i class="icon-home"></i> %MAKETEXT{"Activities"}%</a></li>
+  <li><a href="#"><i class="icon-unmark"></i> %MAKETEXT{"Bookmarks"}%</a></li>
+</ul>
+<!--/leftbar:actions-->%TMPL:END%
+
+%TMPL:DEF{"leftbar:webs"}%<!--leftbar:webs-->
+<ul>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+  <li><a href="#">FooBar 2000</a></li>
+</ul>
+<!--/leftbar:webs-->%TMPL:END%
