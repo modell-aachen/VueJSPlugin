@@ -284,7 +284,8 @@ module.exports = function(grunt) {
         interrupt: true,
       },
       grunt: {
-        files: ['Gruntfile.js']
+        files: ['Gruntfile.js'],
+        tasks: ['build:' +  target]
       },
       sass: {
         files: ['<%= pkg.pubDir %>/src/scss/**/*.scss'],
@@ -303,7 +304,8 @@ module.exports = function(grunt) {
         destCss: '<%= pkg.pubDir %>/src/scss/qwiki',
         options: {
           htmlDemo: false,
-          autoHint: false,
+          autoHint: true,
+          descent: 96,
           stylesheet: 'scss',
           hashes: false,
           relativeFontPath: '../fonts',
