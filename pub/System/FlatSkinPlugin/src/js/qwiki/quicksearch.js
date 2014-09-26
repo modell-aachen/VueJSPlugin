@@ -3,12 +3,33 @@
 
   QWiki.plugins.quicksearch = {
     name: 'quicksearch',
+    spinner: null,
 
     init: function( options ) {
       if ( typeof options === 'object' ) {
         $.extend( this, options );
       }
 
+      var opts = {
+        lines: 15,
+        length: 40,
+        width: 20,
+        radius: 60,
+        corners: 1,
+        rotate: 0,
+        direction: 1,
+        color: '#fff',
+        speed: 1.4,
+        trail: 70,
+        shadow: false,
+        hwaccel: true,
+        className: 'spinner',
+        zIndex: 2e9,
+        top: '50%',
+        left: '50%'
+      };
+
+      this.spinner = new Spinner( opts );
       this.bind();
     },
 
@@ -129,7 +150,7 @@
 
         $results.on( 'click', function( evt ) {
           // return if the user clicked the 'open' button
-          if ( evt.srcElement.localName === 'a' ) {
+          if ( evt.target.localName === 'a' ) {
             return;
           }
 
@@ -149,32 +170,13 @@
             $overlay.addClass('active');
           }
 
-          var opts = {
-            lines: 15,
-            length: 40,
-            width: 20,
-            radius: 60,
-            corners: 1,
-            rotate: 0,
-            direction: 1,
-            color: '#fff',
-            speed: 1.4,
-            trail: 70,
-            shadow: false,
-            hwaccel: true,
-            className: 'spinner',
-            zIndex: 2e9,
-            top: '50%',
-            left: '50%'
-          };
-
-          var spinner = new Spinner( opts );
-          spinner.spin( document.getElementById('qw-search-pageoverlay') );
+          self.spinner.spin( document.getElementById('qw-search-pageoverlay') );
 
           var $preview = $('#qw-searchpreview');
           $('#qw-searchpreview > .content').load( uri, function() {
             if ( !$preview.hasClass('active') ) {
               $preview.addClass('active');
+              self.spinner.stop();
             }
           } );
 
