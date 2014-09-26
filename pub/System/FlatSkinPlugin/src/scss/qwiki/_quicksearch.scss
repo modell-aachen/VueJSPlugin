@@ -236,18 +236,24 @@
   max-height: 33px;
 }
 
-.icon-draft {
-  @extend .fa;
-  @extend .fa-times;
+.qw-ico-draft {
+  @extend .icon-page-draft;
 
+  font-family:"qwiki-font";
+  font-weight: normal;
+  font-style: normal;
   color: red;
+  font-size: 2rem;
   margin-right: rem-calc(5);
 }
 
-.icon-approved {
-  @extend .fa;
-  @extend .fa-check;
+.qw-ico-approved {
+  @extend .icon-page-free;
 
+  font-family:"qwiki-font";
+  font-weight: normal;
+  font-style: normal;
   color: green;
+  font-size: 2rem;
   margin-right: rem-calc(10);
 }

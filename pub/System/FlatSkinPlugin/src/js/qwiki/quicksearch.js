@@ -230,7 +230,7 @@
       '<div class="open">',
       '<a href="#" class="button primary tiny">öffnen</a>',
       '</div>',
-      '<span class="title"><i class="icon-<%= previewIcon %>"></i><%= title %></span>',
+      '<span class="title"><i class="qw-ico-<%= previewIcon %>"></i><%= title %></span>',
       '<span class="snippet"><%= text.substr( 0, 160 ) + (text.length > 160 ? "..." : "") %></span>',
       '</div>',
       '</div>'
