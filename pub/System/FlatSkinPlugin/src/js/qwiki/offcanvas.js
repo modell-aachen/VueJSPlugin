@@ -28,6 +28,10 @@
       }
 
       bind( this );
+    },
+
+    toggleOffcanvas: function( target, type ) {
+      toggleOffcanvas( this, target, type );
     }
   };
 
@@ -87,26 +91,32 @@
       }
     }
 
+    // default to left if no direction is specified
+    var type = $(this).attr('data-' + attr.type);
+    toggleOffcanvas( self, target, type, this );
+
+    // stop propagation
+    return false;
+  };
+
+  var toggleOffcanvas = function( self, target, type, elem ) {
     var $body = $('body');
     var $canvas = $(self.canvas);
 
-    // default to left if no direction is specified
-    var type = $(this).attr('data-' + attr.type);
     if ( type === undefined || !/(leftbar|rightbar|search)/i.test( type ) ) {
       self.Q.error( 'Invalid offcanvas type!' );
       return;
     }
 
-
     var cls = self.classes[type];
-
-    // decide whether to just show the target container without any offcanvas animation
-    var isReveal = $(this).attr('data-' + attr.reveal) !== undefined;
-
     // apply fixed width to supress content alignment
-    if ( !isReveal && !$body.hasClass( cls ) ) {
+    if ( !$body.hasClass( cls ) ) {
       $canvas.css( 'min-width', $canvas.width() );
     }
+
+    // start animation
+    $(target).toggleClass('active');
+    $body.toggleClass( cls );
 
     // raise opening/closing event
     var etype = $body.hasClass( cls ) ? 'closing' : 'opening';
@@ -122,23 +132,18 @@
       });
     }
 
-    // start animation
-    $(target).toggleClass('active');
-    $body.toggleClass( cls );
-
-    // toggle class active for annotated selectors
-    var activateSelector = $(this).data('activate');
-    if ( activateSelector ) {
-      var activations = activateSelector.split(',');
-      for ( var i = 0; i < activations.length; ++i ) {
-        var activate = activations[i];
-        var $a = $(activate);
-        $a.toggleClass('active');
+    if ( _.isObject( elem ) ) {
+      // toggle class active for annotated selectors
+      var activateSelector = $(elem).data('activate');
+      if ( activateSelector ) {
+        var activations = activateSelector.split(',');
+        for ( var i = 0; i < activations.length; ++i ) {
+          var activate = activations[i];
+          var $a = $(activate);
+          $a.toggleClass('active');
+        }
       }
     }
-
-    // stop propagation
-    return false;
   };
 
   var transitionEndListener = function( evt ) {
