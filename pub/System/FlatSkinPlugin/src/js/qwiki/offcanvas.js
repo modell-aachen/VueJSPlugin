@@ -114,21 +114,40 @@
       $canvas.css( 'min-width', $canvas.width() );
     }
 
-    // start animation
-    $(target).toggleClass('active');
-    $body.toggleClass( cls );
-
     // raise opening/closing event
     var etype = $body.hasClass( cls ) ? 'closing' : 'opening';
     self.Q.raiseEvent( target, self, etype );
 
+    // start animation
+    $(target).toggleClass('active');
+    var set = $body.toggleClass( cls ).hasClass( cls );
+
     // auto-close all opened offcanvas areas
     if ( etype === 'opening' ) {
-      $body.removeClass( self.classes.left + ' ' + self.classes.right );
+      var toRemove = [];
+      for( var c in self.classes ) {
+        if ( self.classes[c] !== cls ) {
+          toRemove.push( self.classes[c] );
+        }
+      }
+
+      $body.removeClass( toRemove.join(' ') );
       $('[data-target]').each( function() {
-        var selector = $(this).data('target');
-        self.Q.raiseEvent( selector, self, 'closing' );
-        $(selector).removeClass('active');
+        var $this = $(this);
+        var selector = $this.data('target');
+
+        if ( selector !== target ) {
+          self.Q.raiseEvent( selector, self, 'closing' );
+          $(selector).removeClass('active');
+
+           var deactivate = $this.attr('data-activate');
+           if ( deactivate ) {
+            var arr = deactivate.split(',');
+            for( var i = 0; i < arr.length; ++i ) {
+              $(arr[i]).removeClass('active');
+            }
+           }
+        }
       });
     }
 
