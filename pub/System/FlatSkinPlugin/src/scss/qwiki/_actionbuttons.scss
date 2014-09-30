@@ -1,111 +1,128 @@
-div.qw-joinedtab {
-  display: inline-block;
-  white-space: nowrap;
-  font-weight: normal;
-  font-size: rem-calc(12);
-  vertical-align: middle;
+.qw-joinedtab {
+  float: left;
+  margin-right: $button-tny;
+  height: 100%;
 
-  & > a:first-child {
-    border-top-left-radius: rem-calc(6);
-  }
-  & a:last-child {
-    border-top-right-radius: rem-calc(6);
-    padding-right: $button-tny;
-  }
+  > a {
+    @include button( $padding: $button-sml, $bg: $secondary-color );
+    padding: $button-sml $button-tny;
+    height: inherit;
+    font-size: rem-calc(13);
+    border-top-left-radius: $qw-tab-radius;
+    // border-top-right-radius: $qw-tab-radius;
 
-  & a {
     &:before {
-      @extend .icon-page-free;
       font-family:"qwiki-font";
       font-size: 1.75rem;
-      vertical-align: middle;
-      margin-right: rem-calc(5);
+      line-height: 1rem;
+      vertical-align: text-top;
+      margin-right: $button-tny;
     }
-
-    @include button( $padding: 0, $bg: $secondary-color );
-    padding-left: $button-tny;
-    padding-top: $button-tny / 2;
-    padding-bottom: $button-tny / 2;
-    color: #333;
-    margin-bottom: 0px;
   }
 
   &.approved {
-    &.active a {
-      background: $success-color;
-    }
-    &:hover a {
-      background: $success-color;
-      color: $qw-tab-active-color;
-      > .sub-tab {
-        background: lighten($success-color, 10%);
+    > a {
+      border-top-right-radius: $qw-tab-radius;
+
+      &:before {
+        @extend .icon-page-free;
       }
+    }
+
+    &.active > a,
+    &:not(.active) > a:hover {
+      background: $qw-approved-color;
+      color: white;
     }
   }
 
   &.unapproved {
-    & a:before {
+    > a:before {
       @extend .icon-page-draft;
     }
-    &.active a {
-      background: $warning-color;
-    }
-    & div.sub-tab.active a {
-      background: lighten($warning-color, 10%);
-    }
-    &:hover {
-      & a {
-        background: $warning-color;
-      }
-      & div.sub-tab.edit a {
-        color: $qw-tab-active-color;
-        background: lighten($warning-color, 10%);
-      }
-    }
-  }
 
-  &.active {
-    & a {
-      color: $qw-tab-active-color;
+    &.active > a,
+    &:not(.active) > a:hover {
+      background: $qw-edit-color;
+      color: white;
     }
-    color: $qw-tab-active-color;
-    font-weight: $qw-tab-active-style;
-  }
 
-  &:hover {
-    & a {
-      color: $qw-tab-active-color;
+    &:hover,
+    &.active {
+      > a {
+        background: $qw-edit-color;
+        color: white;
+      }
+
+      > .sub-tab {
+        background: $qw-joined-draft-hover-color;
+        border-color: $qw-edit-color;
+        color: white;
+
+        > a:before {
+          color: white !important;
+        }
+      }
     }
-    color: $qw-tab-active-color;
   }
 
   > .sub-tab {
-    display: inline-block;
+    transition: background 0.2s ease-in-out,
+                border-color 0.2s ease-in-out;
+    background: darken($secondary-color, 5%);
+    border: 3px solid $secondary-color;
+    float: right;
+    height: inherit;
 
-    &.edit a {
+    > a {
+      display: block;
+      height: inherit;
+      font-size: rem-calc(13);
+      line-height: normal;
+      font-weight: normal;
+
+      padding-top: $button-tny;
+      padding-left: $button-tny;
+      padding-right: $button-tny;
+
       &:before {
-        @extend .icon-edit;
-        font-family: "qwiki-font";
+        font-family:"qwiki-font";
         font-size: 1.75rem;
-        vertical-align: middle;
-        margin-right: 0;
+        line-height: 1rem;
+        vertical-align: text-top;
+        margin-right: $button-tny;
+        transition: margin-right 0.1s linear;
       }
-    }
 
-    > a > .expander {
-      overflow-x: hidden;
-      vertical-align: middle;
-      display: inline-block;
-      transition: max-width 0.5s ease-in-out;
-      margin-left: rem-calc(4); // XXX does not hide, makes right border of tab quite large
-      max-width: 0;
-    }
+      &:hover {
+        color: white;
+      }
 
-    &:hover {
-      > a > .expander {
+      &:not(:hover) {
+        &:before {
+          margin-right: 0;
+          color: #333 !important;
+        }
+
+        .expander {
+          max-width: 0;
+        }
+      }
+
+      .expander {
+        display: block;
         width: auto;
-        max-width: 300px;
+        max-width: rem-calc(500);
+        overflow-x: hidden;
+        float: right;
+        transition: max-width 0.1s ease-in-out;
+        white-space: nowrap;
       }
+    }
+
+    &.edit > a:before {
+      @extend .icon-edit;
+      color: white;
     }
   }
 }

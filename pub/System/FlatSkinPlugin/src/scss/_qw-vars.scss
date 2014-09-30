@@ -28,7 +28,8 @@ $qw-content-bg: #fff;
 $qw-info-color: $primary-color;
 $qw-draft-color: $alert-color;
 $qw-edit-color: $warning-color;
-$qw-approved-color: #70af57;
+$qw-joined-draft-hover-color: #c44a2b;
+$qw-approved-color: $success-color;
 // colors: generic interaction elements
 $qw-button1-bg-color: $primary-color;
 $qw-button1-bg-hover-color: #287ab8;
@@ -159,6 +160,7 @@ $qw-weblist-intend: rem-calc(15);
 // tabs
 $qw-tab-active-color: white;
 $qw-tab-active-style: bold;
+$qw-tab-radius: rem-calc(3);
 
 
 // attachtable
