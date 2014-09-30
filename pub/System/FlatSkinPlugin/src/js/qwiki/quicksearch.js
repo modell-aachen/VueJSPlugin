@@ -170,7 +170,9 @@
             $overlay.addClass('active');
           }
 
-          self.spinner.spin( document.getElementById('qw-search-pageoverlay') );
+          if ($overlay.find('.spinner').length === 0) {
+            self.spinner.spin( $overlay[0] );
+          }
 
           var $preview = $('#qw-searchpreview');
           $('#qw-searchpreview > .content').load( uri, function() {
