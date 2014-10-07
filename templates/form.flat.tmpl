@@ -18,9 +18,4 @@
 %TMPL:P{context="mandatoryfields" then="mandatory"}%
 %TMPL:END%
 
-<div class="foswikiForm foswikiEditForm">
-<h2>%MAKETEXT{"Document Control"}%</h2>
-<table class="foswikiFormTable" summary="%MAKETEXT{"Document Control"}%">
-%TMPL:P{"modacformtable"}%
-<tr><td>%MAKETEXT{"Form definition"}%</td><td>%FORMTITLE% <div class="%IF{"not $USERNAME ingroup 'AdminGroup'" then="modacHide"}%">%TMPL:P{"changeform"}%</div></td></tr></table>%TMPL:P{"formtail"}%</div>
-<!-- %TMPL:P{"repeatedformrows"}% -->
+%TMPL:P{"modacformtable:edit"}%

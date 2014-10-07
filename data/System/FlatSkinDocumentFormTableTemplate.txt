@@ -1,0 +1,54 @@
+%{
+The span.title string will be picked up by the "You have not filled out the mandatory form field '...'." message as the formfields name.
+}%
+
+%{ overload/append to this definition for localization of titles }%
+%TMPL:DEF{"modacformtable_mappings"}%DocumentType=%MAKETEXT{"Document type"}%,TopicTitle=%MAKETEXT{"Topic title"}%,Responsible=%MAKETEXT{"Responsible"}%,AreaOfApplication=%MAKETEXT{"Area of application"}%,ISO9001=%MAKETEXT{"ISO 9001"}%,ISO14001=%MAKETEXT{"ISO 14001"}%%TMPL:END%
+
+%{ print this definition for an editable documents control }%
+%TMPL:DEF{"modacformtable:edit"}%
+<div class="foswikiForm foswikiEditForm">
+<h2>%MAKETEXT{"Document Control"}%</h2>
+<table class="foswikiFormTable" summary="%MAKETEXT{"Document Control"}%">
+<!-- modacformtable_table:edit -->%TMPL:P{"modacformtable_table:edit"}%<!-- /modacformtable_table:edit -->
+<tr><td>%MAKETEXT{"Form definition"}%</td><td>%FORMTITLE% <div class="%IF{"not $USERNAME ingroup 'AdminGroup'" then="modacHide"}%">%TMPL:P{"changeform"}%</div></td></tr></table>%TMPL:P{"formtail"}%</div>
+%TMPL:END%
+
+%{ print this definition for a display-only documents control }%
+%TMPL:DEF{"modacformtable:view"}%
+<div class="foswikiForm">
+<h2>%MAKETEXT{"Document Control"}%</h2>
+<table class="foswikiFormTable" summary="%MAKETEXT{"Document Control"}%">
+<!-- modacformtable_table:view -->%TMPL:P{"modacformtable_table:view"}%<!-- /modacformtable_table:view -->
+</table>%TMPL:P{"formtail"}%</div>
+%TMPL:END%
+
+%{ if you need additional parameters to the RENDERFORXYZ, append to modacformtable_extraparameters, modacformtable_extraparameters:edit or modacformtable_extraparameters:view }%
+
+%{ This is the definition for the table in edit-mode. Normally it should not require any change. }%
+%TMPL:DEF{"modacformtable_table:edit"}%
+%RENDERFOREDIT{
+form="%QUERY{"form.name" topic="%BASETOPIC%"%IF{"defined rev" then=" rev=\"$percentURLPARAM{\"rev\" default=\"%rev%\"}$percent\""}%}%"
+format="<tr class='modacForm'><td><span class='form:title'>$title</span>$mandatory</td><td>$edit</td></tr>"
+map="%TMPL:P{"modacformtable_mappings"}%"
+mandatory="&nbsp;<span class='foswikiAlert'>*</span>"
+topic="%IF{"istopic '%WEB%.%TOPIC%'" then="%WEB%.%TOPIC%" else="%URLPARAM{"templatetopic" encode="quote"}%"}%"
+%IF{"defined rev" then=" revision=\"$percentURLPARAM{\"rev\" default=\"%rev%\"}$percent\""}%
+%TMPL:P{"modacformtable_extraparameters"}%
+%TMPL:P{"modacformtable_extraparameters:edit"}%
+}%
+%TMPL:END%
+
+%{ This is the definition for the table in view-mode. Normally it should not require any change. }%
+%TMPL:DEF{"modacformtable_table:view"}%
+%RENDERFORDISPLAY{
+form="%QUERY{"form.name" topic="%BASETOPIC%"%IF{"defined rev" then=" rev=\"$percentURLPARAM{\"rev\" default=\"%rev%\"}$percent\""}%}%"
+format="<tr class='modacForm'><td><span class='form:title'>$title</span></td><td>$value</td></tr>"
+map="%TMPL:P{"modacformtable_mappings"}%"
+mandatory="&nbsp;<span class='foswikiAlert'>*</span>"
+topic="%IF{"istopic '%WEB%.%TOPIC%'" then="%WEB%.%TOPIC%" else="%URLPARAM{"templatetopic" encode="quote"}%"}%"
+%IF{"defined rev" then=" revision=\"$percentURLPARAM{\"rev\" default=\"%rev%\"}$percent\""}%
+%TMPL:P{"modacformtable_extraparameters"}%
+%TMPL:P{"modacformtable_extraparameters:view"}%
+}%
+%TMPL:END%
