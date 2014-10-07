@@ -122,6 +122,8 @@
     }
 
     $this.parent().toggleClass('active');
+
+    return false;
   };
 
   var handleRightBarClick = function( evt ) {
@@ -141,6 +143,8 @@
     var cnt = $('[data-rightbar] .container').addClass('active');
 
     self.Q.raiseEvent( $(this).data('content'), self, 'opening' );
+
+    return false;
   };
 
   var handleRightBarClose = function( evt ) {
@@ -159,6 +163,8 @@
     $('[data-rightbar] .links').removeClass('active');
     $('[data-rightbar] .container').removeClass('active');
     self.Q.raiseEvent( cnt, self, 'closing' );
+
+    return false;
   };
 
   var loadRightBarItems = function( self ) {
