@@ -220,6 +220,25 @@ input[type="text"].qw-input {
   }
 }
 
+.qw-person {
+  @include label(
+    $padding: rem-calc(14),
+    $text-size: rem-calc(14),
+    $bg:$qw-button2-bg-color,
+    $radius:4px
+  );
+  line-height: 1rem;
+  color: #333;
+  border: 1px solid $qw-button2-bg-hover-color;
+
+  &:before {
+    @include fa-icon();
+    content: $fa-var-user;
+    margin-left: rem-calc(-5);
+    margin-right: rem-calc(10);
+  }
+}
+
 ul[data-drop] {
   position: absolute;
   left: -10000px;
