@@ -41,10 +41,11 @@
     bindRightbar: function() {
       this.unbindRightbar();
 
+      var self = this;
       if ( !initialized ) {
         loadRightBarItems( this ).done(function() {
-          $('[data-rightbar] .links a').on( 'click', this, handleRightBarClick );
-          $('[data-rightbar] .container .close').on( 'click', handleRightBarClose );
+          $('[data-rightbar] .links a').on( 'click', self, handleRightBarClick );
+          $('[data-rightbar] .container .close').on( 'click', self, handleRightBarClose );
 
           $('[data-rightbar] [data-content]').each( function() {
             var target = $(this).data('content');
@@ -137,17 +138,27 @@
     $(target).removeClass('hidden');
 
     $('[data-rightbar] .links').addClass('active');
-    $('[data-rightbar] .container').addClass('active');
+    var cnt = $('[data-rightbar] .container').addClass('active');
+
+    self.Q.raiseEvent( $(this).data('content'), self, 'opening' );
   };
 
   var handleRightBarClose = function( evt ) {
+    var self = evt.data;
+
+    var cnt = '';
     $('[data-rightbar] .links [data-content]').each( function() {
       var target = $(this).data('content');
+      if ( !$(target).hasClass('hidden') ) {
+        cnt = target;
+      }
+
       $(target).addClass('hidden');
     });
 
     $('[data-rightbar] .links').removeClass('active');
     $('[data-rightbar] .container').removeClass('active');
+    self.Q.raiseEvent( cnt, self, 'closing' );
   };
 
   var loadRightBarItems = function( self ) {
