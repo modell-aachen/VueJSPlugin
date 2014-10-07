@@ -20,10 +20,12 @@
     }
   }
 
+  > *:last-child {
+      border-top-right-radius: $qw-tab-radius;
+  }
+
   &.approved {
     > a {
-      border-top-right-radius: $qw-tab-radius;
-
       &:before {
         @extend .icon-page-free;
       }
