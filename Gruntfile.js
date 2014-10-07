@@ -243,6 +243,9 @@ module.exports = function(grunt) {
           //   '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
           //   '<%= pkg.bower %>/knockout-mapping/build/output/knockout.mapping-latest.debug.js'
           // ],
+          '<%= pkg.pubDir %>/js/qwiki-edit.js': [
+            '<%= pkg.pubDir %>/src/js/qwiki-edit/*.js'
+          ],
           '<%= pkg.pubDir %>/js/qwiki.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
@@ -267,6 +270,9 @@ module.exports = function(grunt) {
           //   '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
           //   '<%= pkg.bower %>/knockout-mapping/build/output/knockout.mapping-latest.debug.js'
           // ],
+          '<%= pkg.pubDir %>/js/qwiki-edit.min.js': [
+            '<%= pkg.pubDir %>/src/js/qwiki-edit/*.js'
+          ],
           '<%= pkg.pubDir %>/js/qwiki.min.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
