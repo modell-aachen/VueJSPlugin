@@ -118,6 +118,10 @@
     var etype = $body.hasClass( cls ) ? 'closing' : 'opening';
     self.Q.raiseEvent( target, self, etype );
 
+    if ( etype === 'closing' && type === 'rightbar' ) {
+      $('[data-rightbar] .container.active .close').click();
+    }
+
     // start animation
     $(target).toggleClass('active');
     var set = $body.toggleClass( cls ).hasClass( cls );
