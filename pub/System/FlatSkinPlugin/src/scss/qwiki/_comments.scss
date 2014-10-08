@@ -1,0 +1,181 @@
+$cmt-content-width: $qw-content-padding + rem-calc(25);
+
+[data-commentable="1"] {
+  &:hover {
+    cursor: pointer;
+    margin-right: -1 * $cmt-content-width;
+    padding-right: $cmt-content-width;
+    margin-left: -1 * $cmt-content-width;
+    padding-left: $cmt-content-width;
+    background-color: $qw-body-bg;
+  }
+
+  &.active {
+    border-right: 5px solid;
+    margin-right: -1 * $qw-content-padding;
+    padding-right: $qw-content-padding;
+
+    &.idea { border-color: $qw-comment-idea-color; }
+    &.neutral { border-color: $qw-comment-neutral-color; }
+    &.issue { border-color: $qw-comment-issue-color; }
+  }
+}
+
+[data-hascomments] {
+  margin-right: -1 * $cmt-content-width;
+  padding-right: $cmt-content-width;
+
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+[data-hascomments="0"] { background-image: url('../assets/cmt-idea.png'); }
+[data-hascomments="1"] { background-image: url('../assets/cmt-neutral.png'); }
+[data-hascomments="2"] { background-image: url('../assets/cmt-issue.png'); }
+
+#qw-comment-container {
+  display: none !important;
+}
+
+#qw-comment-adorner {
+  position: fixed;
+  display: none;
+  z-index: 95;
+  width: auto;
+  height: auto;
+  background: $primary-color;
+  color: white;
+  cursor: pointer;
+  padding: rem-calc(15 25);
+  border-top-right-radius: $global-radius;
+  border-bottom-right-radius: $global-radius;
+
+  &:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: " ";
+    width: 0;
+    height: 100%;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 20px solid $primary-color;
+    margin-left: -20px;
+  }
+}
+
+input[type="radio"][name="commentType"] {
+  display:none;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  & + label {
+    min-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+
+    span {
+      @include button( $padding: $button-sml, $bg: #e7edf3, $full-width: true );
+      color: #236aa2;
+
+      &.left {
+        border-bottom-left-radius: $global-radius;
+        border-top-left-radius: $global-radius;
+        border-right: 1px solid white;
+      }
+
+      &.right {
+        border-bottom-right-radius: $global-radius;
+        border-top-right-radius: $global-radius;
+        border-left: 1px solid white;
+      }
+
+      .fa { margin-right: rem-calc(10); }
+    }
+  }
+
+  &:checked + label span {
+    &.left {
+      border-bottom-left-radius: $global-radius;
+      border-top-left-radius: $global-radius;
+      border-right: 1px solid white;
+    }
+
+    &.right {
+      border-bottom-right-radius: $global-radius;
+      border-top-right-radius: $global-radius;
+      border-left: 1px solid white;
+    }
+
+    &.neutral {
+      @include button( $padding: $button-sml, $bg: $qw-comment-neutral-color, $full-width: true );
+    }
+
+    &.idea {
+      @include button( $padding: $button-sml, $bg: $qw-comment-idea-color, $full-width: true );
+    }
+
+    &.issue {
+      @include button( $padding: $button-sml, $bg: $qw-comment-issue-color, $full-width: true );
+    }
+  }
+}
+
+.qw-comment-box {
+  background: white;
+  padding: rem-calc(10);
+  border-radius: $global-radius;
+  display: none;
+  position: absolute;
+  min-width: calc(100% - #{$qw-content-padding});
+  left: $qw-content-padding / 2;
+  top: 0;
+
+  &.active {
+    display: block;
+  }
+
+  > .options {
+    @include grid-row( $behavior: collapse );
+    max-height: rem-calc(60);
+    overflow: hidden;
+
+    > .content {
+      @include grid-column( $columns: 4, $collapse: true );
+    }
+  }
+
+  > .text {
+    @include grid-row( $behavior: collapse );
+
+    > .content {
+      @include grid-column( $columns: 12, $collapse: true );
+    }
+  }
+
+  > .actions {
+    @include grid-row( $behavior: collapse );
+
+    > .content {
+      &:first-child {
+        @include grid-column( $columns: 8, $collapse: true );
+        padding-right: rem-calc(10);
+      }
+
+      &:last-child {
+        @include grid-column( $columns: 4, $collapse: true );
+      }
+
+      .submit {
+        @include button( $padding: $button-sml, $radius: $global-radius, $full-width: true );
+        border: 1px solid transparent;
+      }
+
+      .cancel {
+        @include button( $padding: $button-sml, $radius: $global-radius, $full-width: true, $bg: white );
+        border: 1px solid #ccc;
+      }
+    }
+  }
+}

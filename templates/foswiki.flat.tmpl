@@ -59,7 +59,7 @@
 <script>
   $(document).qwiki();
 </script>
-<!-- sidebar:left -->
+%TMPL:P{"comments"}%
 </body>%TMPL:END%
 
 
@@ -75,6 +75,42 @@
   </section>
   <section class="qw-right">
     <article class="content">
+      <div class="qw-comment-box">
+        <div class="viewer">
+          <div class="meta"></div>
+          <div class="comment"></div>
+        </div>
+        <div class="options">
+          <div class="content">
+            <input type="radio" name="commentType" value="0" id="qw-cmt-type0"><label for="qw-cmt-type0"><span class="idea left"><i class="fa fa-lightbulb-o fa-lg"></i> %MAKETEXT{"idea"}%</span></label>
+          </div>
+          <div class="content">
+            <input type="radio" name="commentType" value="1" id="qw-cmt-type1"><label for="qw-cmt-type1"><span class="neutral"><i class="fa fa-align-left fa-lg"></i> %MAKETEXT{"neutral"}%</span></label>
+          </div>
+          <div class="content">
+            <input type="radio" name="commentType" value="2" id="qw-cmt-type2"><label for="qw-cmt-type2"><span class="issue right"><i class="fa fa-exclamation fa-lg"></i> %MAKETEXT{"issue"}%</span></label>
+          </div>
+        </div>
+        <div class="text">
+          <div class="content">
+            <form data-abide>
+              <div>
+                <textarea id="qw-comment-textarea" cols="30" rows="5" required pattern="^[^\s]$|.+"></textarea>
+                <small class="error">%MAKETEXT{"required"}%</small>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+        <div class="actions">
+          <div class="content">
+            <a href="#" class="submit">%MAKETEXT{"save"}%</a>
+          </div>
+          <div class="content">
+            <a href="#" class="cancel">%MAKETEXT{"cancel"}%</a>
+          </div>
+        </div>
+      </div>
     </article>
   </section>
 </div>
@@ -155,12 +191,12 @@
   </section>
   <section class="actions">
     %TWISTY{id="qw-actions-twisty" link="$percntMAKETEXT{\"personal\"}$percnt" linkclass="qw-leftbar-twisty" start="show" remember="on"}%
-    %TMPL:P{"leftbar:actions"}%
+    <div id="foo1">%TMPL:P{"leftbar:actions"}%</div>
     %ENDTWISTY%
   </section>
   <section class="webs">
     %TWISTY{id="qw-webs-twisty" link="$percntMAKETEXT{\"modules\"}$percnt" linkclass="qw-leftbar-twisty" start="hide" remember="on"}%
-    %TMPL:P{"leftbar:webs"}%
+    <div id="foo2">%TMPL:P{"leftbar:webs"}%</div>
     %ENDTWISTY%
   </section>
   <section class="logo">
@@ -175,11 +211,11 @@
 <div class="info">
   <div class="name">
     <div>%SPACEOUT{%WIKINAME%}%</div>
-    <div><a class='qw-leftbar-user-btn %TMPL:P{"user:hide_icons"}%' href="%IF{"istopic '%WIKIUSERNAME%'" then="/%WIKIUSERNAME%" else="#"}%"><i class="icon-configuration"></i></a></div>
+    <div><a class='qw-leftbar-user-btn %TMPL:P{"user:hide_icons"}%' href="%IF{"istopic '%WIKIUSERNAME%'" then="%SCRIPTURLPATH{"view"}%/%WIKIUSERNAME%" else="#"}%"><i class="icon-configuration"></i></a></div>
   </div>
   <div class="role">
     <div>%IF{"$WIKINAME='WikiGuest'" then="$percntTMPL:P{\"user:login\"}$percnt" else="$percntTMPL:P{\"user:mail\"}$percnt"}%</div>
-    <div><a class='qw-leftbar-user-btn %TMPL:P{"user:hide_icons"}%' href="/%WEB%/%TOPIC%?logout=1" title="%MAKETEXT{"Logout"}%"><i class="icon-logout"></i></a></div>
+    <div><a class='qw-leftbar-user-btn %TMPL:P{"user:hide_icons"}%' href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%?logout=1" title="%MAKETEXT{"Logout"}%"><i class="icon-logout"></i></a></div>
   </div>
 </div>
 <!--/user:table-->%TMPL:END%
@@ -242,7 +278,7 @@
 %TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home"><a href="#" data-dropdown="qw-processmap"><i class="fa fa-sitemap fa-lg"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
-%TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][TBD. Index Text]]</li>"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][TBD. WebHome Text]]</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%TOPIC%'/TopicTitle" then="$percntFORMFIELD{\"TopicTitle\"}$percnt" else="$percntTOPIC$percnt"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:processmap"}%<!--breadcrumb:processmap-->
 <div id="qw-processmap" class="f-dropdown content large" data-dropdown-content >
@@ -258,7 +294,31 @@
   </a>
   <div id="qw-attachments">%TMPL:P{"attachments"}%</div>
 </div>
+<div data-rightbar-item>
+  <a href="#" data-content="#qw-foobar" data-title="Foobar">
+    Foobar <i class="fa fa-chevron-right right"></i>
+  </a>
+  <div id="qw-foobar">Foobar 2000!</div>
+</div>
 <!--/offcanvas:rightbar:includes-->%TMPL:END%
+
+
+%TMPL:DEF{"comments"}%<!--comments-->
+%TMPL:P{"comments:adorner"}%
+%TMPL:P{"comments:container"}%
+%TMPL:P{"comments:editbox"}%
+<!--/comments-->%TMPL:END%
+
+%TMPL:DEF{"comments:adorner"}%<!--comments:adorner-->
+<div id="qw-comment-adorner">%MAKETEXT{"post comment"}%</div>
+<!--/comments:adorner-->%TMPL:END%
+
+%TMPL:DEF{"comments:container"}%<!--comments:container-->
+<div id="qw-comment-container">%FLATCOMMENTS%</div>
+<!--/comments:container-->%TMPL:END%
+
+%TMPL:DEF{"comments:editbox"}%<!--comments:editbox-->
+<!--/comments:editbox-->%TMPL:END%
 
 
 %TMPL:DEF{"LIBJS"}%%ADDTOZONE{

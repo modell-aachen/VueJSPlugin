@@ -1,4 +1,8 @@
 #: foswiki.flat.tmpl
+msgid "post comment"
+msgstr "kommentieren"
+
+#: foswiki.flat.tmpl
 msgid "Logout"
 msgstr "Abmelden"
 

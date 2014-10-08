@@ -33,18 +33,32 @@ sub initPlugin {
   }
 
   if ( $Foswiki::Plugins::VERSION < 2.0 ) {
-      Foswiki::Func::writeWarning( 'Version mismatch between ',
-          __PACKAGE__, ' and Plugins.pm' );
-      return 0;
+    Foswiki::Func::writeWarning( 'Version mismatch between ', 
+      __PACKAGE__, ' and Plugins.pm' );
+    return 0;
   }
 
+  Foswiki::Meta::registerMETA(
+    'FLATCOMMENT',
+    many => 1,
+    require => ['author', 'date', 'pid', 'text', 'type']
+  );
+
+  # TBD. werden die beiden MA... macros überhaupt noch gebraucht?
   Foswiki::Func::registerTagHandler( 'MAREGISTER', \&_handleREGISTER );
   Foswiki::Func::registerTagHandler( 'MAWEBLIST', \&_handleWEBLIST );
+  Foswiki::Func::registerTagHandler( 'FLATCOMMENTS', \&_handleFLATCOMMENTS );
 
   Foswiki::Func::registerRESTHandler( 'rendermulti', \&_handleRenderMulti,
     authenticate => 0,
     validate => 0,
     http_allow => 'GET,POST',
+  );
+
+  Foswiki::Func::registerRESTHandler( 'comment', \&_handleComment,
+    authenticate => 1,
+    http_allow => 'DELETE,POST',
+    validate => 0
   );
 
   # inject scripts and styles
@@ -166,6 +180,16 @@ sub _handleWEBLIST {
   return join( '', @retval );
 }
 
+sub _handleFLATCOMMENTS {
+  my( $session, $params, $topic, $web, $topicObject ) = @_;
+  my ($w, $t) = Foswiki::Func::normalizeWebTopicName($web, $topic);
+  my ($meta, $text) = Foswiki::Func::readTopic($web, $topic);
+
+  my @cmts = $meta->find('FLATCOMMENT');
+  my $json = encode_json( \@cmts );
+  return $json;
+}
+
 sub _handleRenderMulti {
   my $session = shift;
   my $q = $session->{request};
@@ -184,6 +208,60 @@ sub _handleRenderMulti {
   );
   $session->{response}->print($res);
   return undef;
+}
+
+sub _handleComment {
+  my ($session, $subject, $verb, $response) = @_;
+  my $q = $session->{request};
+  my ($web, $topic) = Foswiki::Func::normalizeWebTopicName(undef, $q->param('topic'));
+  my ($meta, $text) = Foswiki::Func::readTopic($web, $topic);
+
+  my $changed = 0;
+  my $method = $q->{method};
+  if ($method =~ m/^post$/i) {
+    my $cmt = decode_json($q->param('comment'));
+    $cmt->{author} = Foswiki::Func::getWikiName($session->{user});
+    $cmt->{date} = time;
+    $cmt->{name} = _uniqueID();
+
+     my $hasType = $cmt->{type} =~ m/^[012]$/;
+     my $hasPID=  $cmt->{pid} =~ m/^[\w\d]+$/;
+     my $hasText = $cmt->{text};
+     if ( $hasText ) {
+      $hasText =~ s/\s+$//;
+      $hasText =~ s/^\s+//;
+     }
+
+     if ( $hasType && $hasPID && $hasText ) {
+      $meta->putKeyed('FLATCOMMENT', $cmt);
+      $changed = 1;
+      $response->{status} = 204;
+     } else {
+      $response->{status} = 400;
+     }
+  } elsif ($method =~ m/^delete$/i) {
+
+### TODO!!
+
+    my $id = $q->param('id');
+
+    my $foo = $meta->get( 'FLATCOMMENT', $id );
+    Foswiki::Func::writeWarning( $foo->{name} );
+    $meta->remove('FLATCOMMENT', $id) if ($id);
+    $changed = 1;
+    $response->{status} = 204;
+  }
+
+  $meta->save(dontlog => 1, minor => 1) if $changed;
+}
+
+sub _uniqueID {
+  my $rng = sprintf ("%x", time);;
+  for (my $i = 0; $i < 5; $i++) {
+    $rng .= sprintf("%x", int(rand(1) * 65535))
+  }
+
+  return $rng;
 }
 
 1;
