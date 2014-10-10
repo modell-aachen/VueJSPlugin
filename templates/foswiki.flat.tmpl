@@ -57,7 +57,11 @@
 <!--offcanvas:search-->%TMPL:P{"offcanvas:search"}%<!--/offcanvas:search-->
 <!--offcanvas:rightbar:includes-->%TMPL:P{"offcanvas:rightbar:includes"}%<!--/offcanvas:rightbar:includes-->
 <script>
-  $(document).qwiki();
+(function($) {
+  $(document).ready( function() {
+    $(this).qwiki();
+  });
+})(jQuery);
 </script>
 %TMPL:P{"comments"}%
 </body>%TMPL:END%
@@ -75,11 +79,26 @@
   </section>
   <section class="qw-right">
     <article class="content">
-      <div class="qw-comment-box">
-        <div class="viewer">
-          <div class="meta"></div>
-          <div class="comment"></div>
+      <div class="qw-comment-viewbox">
+        <div class="meta">
+          <div class="content">
+            <span class="user"></span>
+          </div>
+          <div class="content">
+            <span class="date"></span>
+          </div>
         </div>
+        <div class="comment">
+          <div class="content"></div>
+        </div>
+        <div class="more">
+          <div class="content">
+            <a id="qw-comment-more" href="#">%MAKETEXT{"read more"}% <i class="fa fa-chevron-down"></i></a>
+            <a id="qw-comment-less" class="hidden" href="#">%MAKETEXT{"less"}% <i class="fa fa-chevron-up"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="qw-comment-editbox">
         <div class="options">
           <div class="content">
             <input type="radio" name="commentType" value="0" id="qw-cmt-type0"><label for="qw-cmt-type0"><span class="idea left"><i class="fa fa-lightbulb-o fa-lg"></i> %MAKETEXT{"idea"}%</span></label>
@@ -99,7 +118,6 @@
                 <small class="error">%MAKETEXT{"required"}%</small>
               </div>
             </form>
-            
           </div>
         </div>
         <div class="actions">

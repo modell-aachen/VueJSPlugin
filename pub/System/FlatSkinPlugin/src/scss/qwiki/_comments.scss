@@ -46,7 +46,8 @@ $cmt-content-width: $qw-content-padding + rem-calc(25);
   background: $primary-color;
   color: white;
   cursor: pointer;
-  padding: rem-calc(15 25);
+  padding: rem-calc(5 15);
+  font-size: 0.8rem;
   border-top-right-radius: $global-radius;
   border-bottom-right-radius: $global-radius;
 
@@ -58,10 +59,12 @@ $cmt-content-width: $qw-content-padding + rem-calc(25);
     content: " ";
     width: 0;
     height: 100%;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    border-right: 20px solid $primary-color;
-    margin-left: -20px;
+
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+
+    border-right: 15px solid $primary-color;
+    margin-left: -15px;
   }
 }
 
@@ -76,7 +79,7 @@ input[type="radio"][name="commentType"] {
     margin-right: 0;
 
     span {
-      @include button( $padding: $button-sml, $bg: #e7edf3, $full-width: true );
+      @include button( $padding: $button-tny, $bg: #e7edf3, $full-width: true );
       color: #236aa2;
 
       &.left {
@@ -109,20 +112,20 @@ input[type="radio"][name="commentType"] {
     }
 
     &.neutral {
-      @include button( $padding: $button-sml, $bg: $qw-comment-neutral-color, $full-width: true );
+      @include button( $padding: $button-tny, $bg: $qw-comment-neutral-color, $full-width: true );
     }
 
     &.idea {
-      @include button( $padding: $button-sml, $bg: $qw-comment-idea-color, $full-width: true );
+      @include button( $padding: $button-tny, $bg: $qw-comment-idea-color, $full-width: true );
     }
 
     &.issue {
-      @include button( $padding: $button-sml, $bg: $qw-comment-issue-color, $full-width: true );
+      @include button( $padding: $button-tny, $bg: $qw-comment-issue-color, $full-width: true );
     }
   }
 }
 
-.qw-comment-box {
+.qw-comment-editbox {
   background: white;
   padding: rem-calc(10);
   border-radius: $global-radius;
@@ -138,7 +141,7 @@ input[type="radio"][name="commentType"] {
 
   > .options {
     @include grid-row( $behavior: collapse );
-    max-height: rem-calc(60);
+    max-height: rem-calc(50);
     overflow: hidden;
 
     > .content {
@@ -156,6 +159,8 @@ input[type="radio"][name="commentType"] {
 
   > .actions {
     @include grid-row( $behavior: collapse );
+    max-height: rem-calc(40);
+    overflow: hidden;
 
     > .content {
       &:first-child {
@@ -168,14 +173,89 @@ input[type="radio"][name="commentType"] {
       }
 
       .submit {
-        @include button( $padding: $button-sml, $radius: $global-radius, $full-width: true );
+        @include button( $padding: $button-tny, $radius: $global-radius, $full-width: true );
         border: 1px solid transparent;
       }
 
       .cancel {
-        @include button( $padding: $button-sml, $radius: $global-radius, $full-width: true, $bg: white );
+        @include button( $padding: $button-tny, $radius: $global-radius, $full-width: true, $bg: white );
         border: 1px solid #ccc;
       }
+    }
+  }
+}
+
+.qw-comment-viewbox {
+  background: white;
+  padding: rem-calc(10);
+  border-radius: $global-radius;
+  display: none;
+  position: absolute;
+  min-width: calc(100% - #{$qw-content-padding});
+  left: $qw-content-padding / 2;
+  top: 0;
+
+  &.active {
+    display: block;
+  }
+
+  > .meta {
+    @include grid-row( $behavior: collapse );
+    max-height: rem-calc(50);
+    overflow: hidden;
+
+    > .content:first-child {
+      @include grid-column( $columns: 6, $collapse: true );
+    }
+
+    > .content:last-child {
+      @include grid-column( $columns: 6, $collapse: true, $last-column: true );
+    }
+
+    .user {
+      background: $qw-field1-bg-color;
+      color: $qw-field1-fg-color;
+
+      &:before {
+        @include fa-icon();
+        content: $fa-var-user;
+        margin-right: rem-calc(5);
+      }
+    }
+
+    .date {
+      background: $qw-field2-bg-color;
+      color: $qw-field2-fg-color;
+      float: right;
+    }
+
+    .user, .date {
+      display: inline-block;
+      padding: rem-calc(3 10);
+      border-radius: $global-radius;
+      font-size: .8rem;
+    }
+  }
+
+  > .comment {
+    @include grid-row( $behavior: collapse );
+
+    > .content {
+      @include grid-column( $columns: 12, $collapse: true );
+      padding: rem-calc(12 3);
+    }
+  }
+
+  > .more {
+    @include grid-row( $behavior: collapse );
+
+    > .content {
+      @include grid-column( $columns: 12, $collapse: true );
+      border-top: $qw-border-width solid $qw-border-bg;
+      padding: rem-calc(12 3 0 3);
+      font-size: .8rem;
+
+      .fa { font-size: .6rem; }
     }
   }
 }
