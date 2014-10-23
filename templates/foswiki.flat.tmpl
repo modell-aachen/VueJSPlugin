@@ -57,11 +57,9 @@
 <!--offcanvas:search-->%TMPL:P{"offcanvas:search"}%<!--/offcanvas:search-->
 <!--offcanvas:rightbar:includes-->%TMPL:P{"offcanvas:rightbar:includes"}%<!--/offcanvas:rightbar:includes-->
 <script>
-(function($) {
-  $(document).ready( function() {
-    $(this).qwiki();
-  });
-})(jQuery);
+jQuery(function($) {
+  $(this).qwiki();
+});
 </script>
 %TMPL:P{"comments"}%
 </body>%TMPL:END%
