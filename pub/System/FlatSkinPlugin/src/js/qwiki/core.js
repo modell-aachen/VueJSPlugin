@@ -34,6 +34,9 @@
         if ( typeof plugin.name !== 'string' ) {
           plugin.name = name;
         }
+        if ( typeof plugin.priority === 'undefined' ) {
+          plugin.priority = 0;
+        }
 
         plugins.push( plugin );
       }
