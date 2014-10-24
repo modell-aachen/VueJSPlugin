@@ -8,11 +8,6 @@
 # <strong style="color:maroon;">Do NOT check this option unless you're using a development environment.</strong>
 $Foswiki::cfg{Plugins}{FlatSkinPlugin}{Debug} = 0;
 
-# ---+++ PACE
-# **BOOLEAN**
-# Disable the automatic page load progress bar.
-$Foswiki::cfg{Plugins}{FlatSkinPlugin}{DisablePACE} = 0;
-
 # **STRING**
 # URL to custom CSS theme.
 # <br />

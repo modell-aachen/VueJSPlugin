@@ -236,13 +236,9 @@ module.exports = function(grunt) {
           preserveComments: 'all'
         },
         files: {
-          '<%= pkg.pubDir %>/js/fastclick.js': ['<%= pkg.bower %>/fastclick/lib/fastclick.js'],
-          '<%= pkg.pubDir %>/js/modernizr.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
-          '<%= pkg.pubDir %>/js/foundation.js': (fdnScriptFiles()),
-          // '<%= pkg.pubDir %>/js/knockout.js': [
-          //   '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
-          //   '<%= pkg.bower %>/knockout-mapping/build/output/knockout.mapping-latest.debug.js'
-          // ],
+          // '<%= pkg.pubDir %>/js/fastclick.js': ['<%= pkg.bower %>/fastclick/lib/fastclick.js'],
+          // '<%= pkg.pubDir %>/js/modernizr.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
+          // '<%= pkg.pubDir %>/js/foundation.js': (fdnScriptFiles()),
           '<%= pkg.pubDir %>/js/qwiki-edit.js': [
             '<%= pkg.pubDir %>/src/js/qwiki-edit/*.js'
           ],
@@ -252,7 +248,8 @@ module.exports = function(grunt) {
             '<%= pkg.pubDir %>/src/js/qwiki/core.js',
             '<%= pkg.pubDir %>/src/js/qwiki/!(core).js',
             '<%= pkg.bower %>/spin.js/spin.js',
-            '<%= pkg.bower %>/spin.js/jquery.spin.js'
+            '<%= pkg.bower %>/spin.js/jquery.spin.js',
+            '<%= pkg.bower %>/slimScroll/jquery.slimscroll.js'
           ]
         }
       },
@@ -263,13 +260,9 @@ module.exports = function(grunt) {
           preserveComments: false
         },
         files: [{
-          '<%= pkg.pubDir %>/js/fastclick.min.js': ['<%= pkg.bower %>/fastclick/lib/fastclick.js'],
-          '<%= pkg.pubDir %>/js/modernizr.min.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
-          '<%= pkg.pubDir %>/js/foundation.min.js': (fdnScriptFiles()),
-          // '<%= pkg.pubDir %>/js/knockout.min.js': [
-          //   '<%= pkg.bower %>/knockout/dist/knockout.debug.js',
-          //   '<%= pkg.bower %>/knockout-mapping/build/output/knockout.mapping-latest.debug.js'
-          // ],
+          // '<%= pkg.pubDir %>/js/fastclick.min.js': ['<%= pkg.bower %>/fastclick/lib/fastclick.js'],
+          // '<%= pkg.pubDir %>/js/modernizr.min.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
+          // '<%= pkg.pubDir %>/js/foundation.min.js': (fdnScriptFiles()),
           '<%= pkg.pubDir %>/js/qwiki-edit.min.js': [
             '<%= pkg.pubDir %>/src/js/qwiki-edit/*.js'
           ],
@@ -279,7 +272,8 @@ module.exports = function(grunt) {
             '<%= pkg.pubDir %>/src/js/qwiki/core.js',
             '<%= pkg.pubDir %>/src/js/qwiki/!(core).js',
             '<%= pkg.bower %>/spin.js/spin.js',
-            '<%= pkg.bower %>/spin.js/jquery.spin.js'
+            '<%= pkg.bower %>/spin.js/jquery.spin.js',
+            '<%= pkg.bower %>/slimScroll/jquery.slimscroll.js'
           ],
         }]
       }

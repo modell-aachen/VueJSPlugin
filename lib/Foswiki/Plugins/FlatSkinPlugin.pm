@@ -108,10 +108,10 @@ sub _zoneConfig {
 <link rel="stylesheet" href="$path/css/qwiki$suffix.css$VERSIONQUERY" />
 STYLES
 
+# <script src="$path/js/modernizr$suffix.js$VERSIONQUERY"></script>
+# <script src="$path/js/foundation$suffix.js$VERSIONQUERY"></script>
+# <script src="$path/js/fastclick$suffix.js$VERSIONQUERY"></script>
   my $scripts = <<"SCRIPTS";
-<script src="$path/js/modernizr$suffix.js$VERSIONQUERY"></script>
-<script src="$path/js/foundation$suffix.js$VERSIONQUERY"></script>
-<script src="$path/js/fastclick$suffix.js$VERSIONQUERY"></script>
 <script src="$path/js/qwiki$suffix.js$VERSIONQUERY"></script>
 SCRIPTS
 
@@ -134,19 +134,6 @@ sub _handleREGISTER {
 
   my $min = _suffix;
   my $path = "%PUBURLPATH%/%SYSTEMWEB%/$plugin";
-
-  # progress indicator
-  if ( $cmpt =~ m/pace/i ) {
-    my $disabled = $Foswiki::cfg{Plugins}{$plugin}{DisablePACE} || 0;
-    return '' if $disabled;
-
-    my $theme = $Foswiki::cfg{Plugins}{$plugin}{CustomPACE} || '';
-    $theme = "$path/css/pace$min.css$VERSIONQUERY" unless $theme;
-    return <<"PACE";
-<link rel="stylesheet" href="$theme" />
-<script src="$path/js/pace$min.js$VERSIONQUERY"></script>
-PACE
-  }
 
   # connectivity checks
   if ( $cmpt =~ m/offline/i ) {
