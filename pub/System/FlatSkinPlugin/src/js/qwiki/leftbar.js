@@ -10,13 +10,13 @@
       }
 
       $('.links .button').addClass('invisible');
-      $('.qw-leftbar .buttons').tooltip({
-        position: {
-          my: "left+15 center",
-          at: "right center"
-        },
-        tooltipClass: "qw-tooltips"
-      });
+      // $('.qw-leftbar .buttons').tooltip({
+      //   position: {
+      //     my: "left center",
+      //     at: "right+10 center",
+      //     collision: "none"
+      //   },
+      // });
       this.bind();
     },
 

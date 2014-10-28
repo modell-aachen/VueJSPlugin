@@ -1,235 +1,261 @@
-// any element tag by this class will follow a canvas animation
-.follows-canvas {
-  transition: transform 0.3s ease-in-out;
-}
-
-
-// reset canvas
-:not(.ocvs-leftbar) .follows-canvas {
-  transform: translate3d( 0, 0, 0 );
-}
-
-// hide scoll bar(s)
 body {
   overflow-x: hidden !important;
 }
 
-// left canvas animation (user menu)
-.ocvs-leftbar .follows-canvas {
-  transform: translate3d( $qw-leftbar-width, 0, 0 );
-  @media #{$large-up} {
-    $width: percentage( 1 / $total-columns );
-    transform: translate3d( calc(#{$qw-leftbar-width} - #{$width}), 0, 0 );
-  }
-}
-
-// right canvas animation (search, attachments, history, etc)
-.ocvs-rightbar .follows-canvas,
-.ocvs-search .follows-canvas {
-  @media #{$small-only} {
-    transform: translate3d( -100%, 0, 0 );
-  }
-
-  @media #{$large-up} {
-    $width: percentage( 1 / $total-columns );
-    transform: translate3d( -1 * $width, 0, 0 );
-  }
-}
-
-.ocvs-rightbar #ckarea.follows-canvas {
-  @media #{$large-up} {
-    $width: percentage( 1 / $total-columns );
-    transform: translate3d( -1.5 * $width, 0, 0 );
-  }
-}
-
-// left off canvas area (user menu)
-.qw-offcanvas-leftbar {
-  position: fixed;
-  transform: translate3d( -1 * $qw-leftbar-width, 0, 0 );
-  top: $qw-top-one-height;
-  bottom: 0;
-  width: $qw-leftbar-width;
-  overflow-y: auto;
-  z-index: 100;
-  background: $body-bg;
-  border-right: $qw-leftbar-border-width solid $qw-leftbar-border-color;
+[data-offcanvas] {
   transition: transform 0.3s ease-in-out;
-  @media #{$large-up} {
-    transition: transform 0.15s ease-in-out;
-  }
 
-  &.active {
-    transform: translate3d( 0, 0, 0 );
-  }
-}
+  &.leftbar {
+    $w: $qw-leftbar-width + $qw-leftbar-width-expanded;
 
-// animate search icon
-// reason see below
-.qw-search {
-  transition: margin-left 0.3s ease-in-out;
-  @media #{$large-up} { transition: margin-left 0.15s ease-in-out; }
-}
-
-// shrink breadcrumbs and extend search input according to viewport size
-.ocvs-search {
-  $p: percentage( 1 / $total-columns);
-  .qw-breadcrumbs {
-    @media #{$small-only} {
-      display: none !important;
+    @media #{$small-up} {
+      $l: calc( #{$w} - #{$qw-leftbar-width} );
+      transform: translate3d( $l, 0, 0 );
     }
 
     @media #{$large-up} {
-      @include grid-column( $columns: 7 );
+      $p: percentage(1/12);
+      $l: calc( #{$w} - #{$p} );
+      transform: translate3d( $l, 0, 0 );
     }
   }
 
-  .qw-menu {
-    @media #{$small-only} {
-      display: none !important;
-    }
-  }
+  &.ocvs-rightbar {}
+  &.ocvs-searchbar {}}
 
-  .qw-search {
-    background: $qw-search-bg;
 
-    @media #{$small-only} {
-      @include grid-column( $columns: 11, $offset: 1 );
-      padding-left: 0;
-      border-bottom: $qw-search-border-width solid $qw-search-border-color;
-    }
+// // any element tag by this class will follow a canvas animation
+// .follows-canvas {
+//   transition: transform 0.3s ease-in-out;
+// }
 
-    @media #{$large-up} {
-      @include grid-column( $columns: 4 );
-      padding-left: 0;
-    }
 
-    > .close {
-      display: block;
-      background: inherit;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
+// // reset canvas
+// :not(.ocvs-leftbar) .follows-canvas {
+//   transform: translate3d( 0, 0, 0 );
+// }
 
-    .qw-search-form {
-      @media #{$small-only} {
-        display: inline-block;
-        max-height: $qw-top-one-height !important;
-        width: 100%;
-      }
+// // hide scoll bar(s)
+// body {
+//   overflow-x: hidden !important;
+// }
 
-      input {
-        background: $qw-top-one-bg;
-      }
-    }
+// // left canvas animation (user menu)
+// .ocvs-leftbar .follows-canvas {
+//   transform: translate3d( $qw-leftbar-width, 0, 0 );
+//   @media #{$large-up} {
+//     $width: percentage( 1 / $total-columns );
+//     transform: translate3d( calc(#{$qw-leftbar-width} - #{$width}), 0, 0 );
+//   }
+// }
 
-    .qw-search-icon {
-      @media #{$small-only} {
-        display: none;
-      }
-    }
-  }
-}
+// // right canvas animation (search, attachments, history, etc)
+// .ocvs-rightbar .follows-canvas,
+// .ocvs-search .follows-canvas {
+//   @media #{$small-only} {
+//     transform: translate3d( -100%, 0, 0 );
+//   }
 
-// left offcanvas (menu) activated
-.ocvs-leftbar {
-  $width: rem-calc($qw-leftbar-width);
-  .qw-menu {
-    width: $width - rem-calc(1);
-    background: $qw-leftbar-bg;
-    color: white;
-  }
+//   @media #{$large-up} {
+//     $width: percentage( 1 / $total-columns );
+//     transform: translate3d( -1 * $width, 0, 0 );
+//   }
+// }
 
-  // due to the fact the .qw-menu changes its width, we need to substract
-  // the difference here. otherwise the search area will disappear.
-  .qw-search {
-    $p: percentage( 1 / $total-columns);
-    @media #{$medium-up} {
-      margin-left: calc( #{-1 * $width} + #{$p} );
-    }
+// .ocvs-rightbar #ckarea.follows-canvas {
+//   @media #{$large-up} {
+//     $width: percentage( 1 / $total-columns );
+//     transform: translate3d( -1.5 * $width, 0, 0 );
+//   }
+// }
 
-    @media #{$small-only} {
-      @include grid-column( $columns: 1, $offset: 0, $last-column: true );
-      float: right;
-    }
-  }
+// // left off canvas area (user menu)qw-page
+// .qw-offcanvas-leftbar {
+//   position: fixed;
+//   transform: translate3d( -1 * $qw-leftbar-width, 0, 0 );
+//   top: $qw-top-one-height;
+//   bottom: 0;
+//   width: $qw-leftbar-width;
+//   overflow-y: auto;
+//   z-index: 100;
+//   background: $body-bg;
+//   border-right: 1px solid red;
+//   transition: transform 0.3s ease-in-out;
+//   @media #{$large-up} {
+//     transition: transform 0.15s ease-in-out;
+//   }
 
-  // show close button and menu text
-  .qw-menu-close { opacity: 1 !important; }
-  .qw-menu-text {
-    opacity: 1 !important;
-    display: inline-block !important;
-  }
-}
+//   &.active {
+//     transform: translate3d( 0, 0, 0 );
+//   }
+// }
 
-// right off canvas area (search)
-// large screens (and up): move the main canvas 1 column left
-// medium: regular slider
-// small: full width transition
-.qw-offcanvas-search {
-  $width: percentage( 1 / $total-columns );
+// // animate search icon
+// // reason see below
+// .qw-search {
+//   transition: margin-left 0.3s ease-in-out;
+//   @media #{$large-up} { transition: margin-left 0.15s ease-in-out; }
+// }
 
-  right: 0;
-  transform: translate3d( 100%, 0, 0 );
-  @media #{$small-only} {
-    width: 100%;
-  }
+// // shrink breadcrumbs and extend search input according to viewport size
+// .ocvs-search {
+//   $p: percentage( 1 / $total-columns);
+//   .qw-breadcrumbs {
+//     @media #{$small-only} {
+//       display: none !important;
+//     }
 
-  @media #{$medium-up} {
-    width: 4 * $width;
-  }
+//     @media #{$large-up} {
+//       @include grid-column( $columns: 7 );
+//     }
+//   }
 
-  position: fixed;
-  top: $qw-top-one-height;
-  bottom: 0;
-  overflow-y: auto;
-  z-index: 100;
-  background: $qw-searchbar-bg !important;
-  border-left: $qw-searchbar-border-width solid $qw-searchbar-border-color;
+//   .qw-menu {
+//     @media #{$small-only} {
+//       display: none !important;
+//     }
+//   }
 
-  transition-property: transform, background;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.3s;
-  @media #{$large-up} {
-    transition-duration: 0.15s;
-  }
+//   .qw-search {
+//     background: $qw-search-bg;
 
-  &.active {
-    // right: 0;
-    transform: translate3d( 0, 0, 0 );
-    background: $qw-searchbar-active-bg;
-  }
-}
+//     @media #{$small-only} {
+//       @include grid-column( $columns: 11, $offset: 1 );
+//       padding-left: 0;
+//       border-bottom: $qw-search-border-width solid $qw-search-border-color;
+//     }
 
-.qw-offcanvas-rightbar {
-  $width: percentage( 1 / $total-columns );
-  @media #{$small-only} {
-    right: -1 * 100%;
-    width: 100%;
-  }
+//     @media #{$large-up} {
+//       @include grid-column( $columns: 4 );
+//       padding-left: 0;
+//     }
 
-  @media #{$medium-up} {
-    right: -4 * $width;
-    width: 4 * $width;
-  }
+//     > .close {
+//       display: block;
+//       background: inherit;
+//       border-top-left-radius: 5px;
+//       border-bottom-left-radius: 5px;
+//     }
 
-  position: fixed;
-  top: $qw-top-one-height;
-  bottom: 0;
-  overflow-y: auto;
-  z-index: 100;
-  background: $qw-rightbar-bg;
-  border-left: $qw-rightbar-border-width solid $qw-rightbar-border-color;
+//     .qw-search-form {
+//       @media #{$small-only} {
+//         display: inline-block;
+//         max-height: $qw-top-one-height !important;
+//         width: 100%;
+//       }
 
-  transition-property: right, background;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.3s;
-  @media #{$large-up} {
-    transition-duration: 0.15s;
-  }
+//       input {
+//         background: $qw-top-one-bg;
+//       }
+//     }
 
-  &.active {
-    right: 0;
-    background: $qw-rightbar-active-bg;
-  }
-}
+//     .qw-search-icon {
+//       @media #{$small-only} {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+
+// // left offcanvas (menu) activated
+// .ocvs-leftbar {
+//   $width: rem-calc($qw-leftbar-width);
+//   .qw-menu {
+//     width: $width - rem-calc(1);
+//     background: $qw-leftbar-bg;
+//     color: white;
+//   }
+
+//   // due to the fact the .qw-menu changes its width, we need to substract
+//   // the difference here. otherwise the search area will disappear.
+//   .qw-search {
+//     $p: percentage( 1 / $total-columns);
+//     @media #{$medium-up} {
+//       margin-left: calc( #{-1 * $width} + #{$p} );
+//     }
+
+//     @media #{$small-only} {
+//       @include grid-column( $columns: 1, $offset: 0, $last-column: true );
+//       float: right;
+//     }
+//   }
+
+//   // show close button and menu text
+//   .qw-menu-close { opacity: 1 !important; }
+//   .qw-menu-text {
+//     opacity: 1 !important;
+//     display: inline-block !important;
+//   }
+// }
+
+// // right off canvas area (search)
+// // large screens (and up): move the main canvas 1 column left
+// // medium: regular slider
+// // small: full width transition
+// .qw-offcanvas-search {
+//   $width: percentage( 1 / $total-columns );
+
+//   right: 0;
+//   transform: translate3d( 100%, 0, 0 );
+//   @media #{$small-only} {
+//     width: 100%;
+//   }
+
+//   @media #{$medium-up} {
+//     width: 4 * $width;
+//   }
+
+//   position: fixed;
+//   top: $qw-top-one-height;
+//   bottom: 0;
+//   overflow-y: auto;
+//   z-index: 100;
+//   background: $qw-searchbar-bg !important;
+//   border-left: $qw-searchbar-border-width solid $qw-searchbar-border-color;
+
+//   transition-property: transform, background;
+//   transition-timing-function: ease-in-out;
+//   transition-duration: 0.3s;
+//   @media #{$large-up} {
+//     transition-duration: 0.15s;
+//   }
+
+//   &.active {
+//     // right: 0;
+//     transform: translate3d( 0, 0, 0 );
+//     background: $qw-searchbar-active-bg;
+//   }
+// }
+
+// .qw-offcanvas-rightbar {
+//   $width: percentage( 1 / $total-columns );
+//   @media #{$small-only} {
+//     right: -1 * 100%;
+//     width: 100%;
+//   }
+
+//   @media #{$medium-up} {
+//     right: -4 * $width;
+//     width: 4 * $width;
+//   }
+
+//   position: fixed;
+//   top: $qw-top-one-height;
+//   bottom: 0;
+//   overflow-y: auto;
+//   z-index: 100;
+//   background: $qw-rightbar-bg;
+//   border-left: $qw-rightbar-border-width solid $qw-rightbar-border-color;
+
+//   transition-property: right, background;
+//   transition-timing-function: ease-in-out;
+//   transition-duration: 0.3s;
+//   @media #{$large-up} {
+//     transition-duration: 0.15s;
+//   }
+
+//   &.active {
+//     right: 0;
+//     background: $qw-rightbar-active-bg;
+//   }
+// }

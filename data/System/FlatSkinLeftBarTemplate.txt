@@ -1,39 +1,17 @@
-%TMPL:DEF{"leftbar:actions"}%<!--leftbar:actions-->
-<ul>
-  <li><a href="#"><i class="icon-home"></i> %MAKETEXT{"Dashboard"}%</a></li>
-  <li><a href="#"><i class="icon-home"></i> %MAKETEXT{"Tasks"}%</a></li>
-  <li><a href="#"><i class="icon-home"></i> %MAKETEXT{"Calendar"}%</a></li>
-  <li><a href="#"><i class="icon-home"></i> %MAKETEXT{"Activities"}%</a></li>
-  <li><a href="#"><i class="icon-unmark"></i> %MAKETEXT{"Bookmarks"}%</a></li>
-</ul>
-<!--/leftbar:actions-->%TMPL:END%
+%TMPL:DEF{"leftbar:buttons"}%<!--leftbar:buttons-->
+<div title="Dashboard" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-home"></i></div>
+<div title="Cockpit" class="jqUITooltip button active" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-cockpit"></i></div>
+<div title="Audit" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-audit"></i></div>
+<div title="Protocols" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-protocol"></i></div>
+<div title="Projects" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-projects"></i></div>
+<div title="Processes" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-processes"></i></div>
+<!--/leftbar:buttons-->%TMPL:END%
 
-%TMPL:DEF{"leftbar:webs"}%<!--leftbar:webs-->
-<ul>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-  <li><a href="#">FooBar 2000</a></li>
-</ul>
-<!--/leftbar:webs-->%TMPL:END%
+%TMPL:DEF{"leftbar:links"}%<!--leftbar:links-->
+<div class="button"><i class="icon-home"></i> Dashboard</div>
+<div class="button active"><i class="icon-app-cockpit"></i> Cockpit</div>
+<div class="button"><i class="icon-app-audit"></i> Audits</div>
+<div class="button"><i class="icon-app-protocol"></i> Protocols</div>
+<div class="button"><i class="icon-app-projects"></i> Projects</div>
+<div class="button"><i class="icon-app-processes"></i> Processes</div>
+<!--/leftbar:links-->%TMPL:END%

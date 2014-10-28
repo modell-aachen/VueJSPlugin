@@ -39,29 +39,31 @@
   %TMPL:P{"JavascriptFiles/foswikiPref"}%
 </head>%TMPL:END%
 
-%TMPL:DEF{"body"}%%{
-}%<!--body:start-->%TMPL:P{"body:start"}%<!--/body:start-->%{
-}%<!--topbar-->%TMPL:P{"topbar"}%<!--/topbar-->%{
-}%<!--body:content-->%TMPL:P{"body:content"}%<!--/body:content-->%{
-}%<!--body:end-->%TMPL:P{"body:end"}%<!--/body:end-->%{
-}%%TMPL:END%
+%TMPL:DEF{"body"}%<!--body-->
+<!--body:start-->%TMPL:P{"body:start"}%<!--/body:start-->
+<!--topbar-->%TMPL:P{"topbar"}%<!--/topbar-->
+<!--body:content-->%TMPL:P{"body:content"}%<!--/body:content-->
+<!--body:end-->%TMPL:P{"body:end"}%<!--/body:end-->
+<!--/body-->%TMPL:END%
 
 %TMPL:DEF{"context"}%approved%TMPL:END%
-%TMPL:DEF{"body:start"}%<body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, jsonrpc, placeholder"}%
-%TMPL:END%
+%TMPL:DEF{"body:start"}%<!--body:start-->
+<body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, jsonrpc, placeholder, ui::tooltip"}%
+<!--/body:start-->%TMPL:END%
 
-%TMPL:DEF{"body:end"}%
-<!--offcanvas:leftbar-->%TMPL:P{"offcanvas:leftbar"}%<!--/offcanvas:leftbar-->
-<!--offcanvas:rightbar-->%TMPL:P{"offcanvas:rightbar"}%<!--offcanvas:rightbar-->
-<!--offcanvas:search-->%TMPL:P{"offcanvas:search"}%<!--/offcanvas:search-->
-<!--offcanvas:rightbar:includes-->%TMPL:P{"offcanvas:rightbar:includes"}%<!--/offcanvas:rightbar:includes-->
+%TMPL:DEF{"body:end"}%<!--body:end-->
+<!--offcanvas:leftbar-->%TMPL:P{"offcanvas:leftbar123"}%<!--/offcanvas:leftbar-->
+<!--offcanvas:rightbar-->%TMPL:P{"offcanvas:rightbar123"}%<!--offcanvas:rightbar-->
+<!--offcanvas:search-->%TMPL:P{"offcanvas:search123"}%<!--/offcanvas:search-->
+<!--offcanvas:rightbar:includes-->%TMPL:P{"offcanvas:rightbar:includes123"}%<!--/offcanvas:rightbar:includes-->
+%TMPL:P{"leftbar"}%
 <script>
 jQuery(function($) {
   $(this).qwiki();
 });
 </script>
-%TMPL:P{"comments"}%
-</body>%TMPL:END%
+<!--comments-->%TMPL:P{"comments123"}%<!--/comments-->
+<!--/body:end--></body>%TMPL:END%
 
 
 %TMPL:DEF{"content:head"}%<!--content:head-->
@@ -69,81 +71,27 @@ jQuery(function($) {
 <!--/content:head-->%TMPL:END%
 
 %TMPL:DEF{"body:content"}%
-<div class="qw-page follows-canvas" data-offcanvas>
-  <section class="qw-left">
-    <article class="meta">%TMPL:P{"content:head"}%</article>
-    <article class="content">%TMPL:P{"content"}%</article>
-  </section>
-  <section class="qw-right">
-    <article class="content">
-      <div class="qw-comment-viewbox">
-        <div class="meta">
-          <div class="content">
-            <span class="user"></span>
-          </div>
-          <div class="content">
-            <span class="date"></span>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="content"></div>
-        </div>
-        <div class="more">
-          <div class="content">
-            <a id="qw-comment-more" href="#">%MAKETEXT{"read more"}% <i class="fa fa-chevron-down"></i></a>
-            <a id="qw-comment-less" class="hidden" href="#">%MAKETEXT{"less"}% <i class="fa fa-chevron-up"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="qw-comment-editbox">
-        <div class="options">
-          <div class="content">
-            <input type="radio" name="commentType" value="0" id="qw-cmt-type0"><label for="qw-cmt-type0"><span class="idea left"><i class="fa fa-lightbulb-o fa-lg"></i> %MAKETEXT{"idea"}%</span></label>
-          </div>
-          <div class="content">
-            <input type="radio" name="commentType" value="1" id="qw-cmt-type1"><label for="qw-cmt-type1"><span class="neutral"><i class="fa fa-align-left fa-lg"></i> %MAKETEXT{"neutral"}%</span></label>
-          </div>
-          <div class="content">
-            <input type="radio" name="commentType" value="2" id="qw-cmt-type2"><label for="qw-cmt-type2"><span class="issue right"><i class="fa fa-exclamation fa-lg"></i> %MAKETEXT{"issue"}%</span></label>
-          </div>
-        </div>
-        <div class="text">
-          <div class="content">
-            <form data-abide>
-              <div>
-                <textarea id="qw-comment-textarea" cols="30" rows="5" required pattern="^[^\s]$|.+"></textarea>
-                <small class="error">%MAKETEXT{"required"}%</small>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="actions">
-          <div class="content">
-            <a href="#" class="submit">%MAKETEXT{"save"}%</a>
-          </div>
-          <div class="content">
-            <a href="#" class="cancel">%MAKETEXT{"cancel"}%</a>
-          </div>
-        </div>
-      </div>
-    </article>
-  </section>
+<div class="qw-page" data-offcanvas>
+  <section class="content">%TMPL:P{"content"}%</section>
 </div>
 %TMPL:END%
 
-%TMPL:DEF{"topbar"}%<!--topbar:one-->%TMPL:P{"topbar:one"}%<!--/topbar:one--><!--topbar:two-->%TMPL:P{"topbar:two"}%<!--/topbar:two-->%TMPL:END%
+%TMPL:DEF{"topbar"}%<!--topbar-->
+<nav class="qw-top" data-offcanvas>
+  <div class="one">
+    <div class="content">%TMPL:P{"breadcrumb"}%</div>
+  </div>
+  <div class="two">%TMPL:P{"topbar:two:temp"}%</div>
+</nav>
+<!--/topbar-->%TMPL:END%
 
-%TMPL:DEF{"topbar:one:left"}%<!--topbar:one:menu-->
+%TMPL:DEF{"topbar:one:left:old"}%<!--topbar:one:menu-->
 <div class="qw-menu" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar" data-activate="#qw-menu-btn">
   <a id="qw-menu-btn" href="#" class="qw-menu-btn"><span class="text">&nbsp;%MAKETEXT{"Menu"}%</span></a>
 </div>
 <!--/topbar:one:menu-->%TMPL:END%
 
-%TMPL:DEF{"topbar:one:mid"}%<!--topbar:one:breadcrumbs-->
-<div class="qw-breadcrumbs"><!--breadcrumb-->%TMPL:P{"breadcrumb"}%<!--/breadcrumb--></div>
-<!--/topbar:one:breadcrumbs-->%TMPL:END%
-
-%TMPL:DEF{"topbar:one:right"}%<!--topbar:one:right-->
+%TMPL:DEF{"topbar:one:right:old"}%<!--topbar:one:right-->
 <div class="qw-search">
   <div class="close">
     <div class="qw-close-btn" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right data-close-preview></div>
@@ -172,16 +120,8 @@ jQuery(function($) {
 </div>
 <!--/topbar:one:right-->%TMPL:END%
 
-%TMPL:DEF{"topbar:one"}%<!--topbar:one-->
-<nav class="qw-top-one">
-  <!--topbar:one:left-->%TMPL:P{"topbar:one:left"}%<!--/topbar:one:left-->
-  <!--topbar:one:mid-->%TMPL:P{"topbar:one:mid"}%<!--/topbar:one:mid-->
-  <!--topbar:one:right-->%TMPL:P{"topbar:one:right"}%<!--/topbar:one:right-->
-</nav>
-<!--/topbar:one-->%TMPL:END%
-
 %TMPL:DEF{"topbar:two"}%<!--topbar:two-->
-<nav class="qw-top-two follows-canvas">
+<nav class="qw-top-two">
   <div class="qw-context">
     <div class="content">
       <!--topbar:two:left-->%TMPL:P{"topbar:two:left"}%<!--/topbar:two:left-->
@@ -198,6 +138,22 @@ jQuery(function($) {
   </div>
 </nav>
 <!--/topbar:two-->%TMPL:END%
+
+%TMPL:DEF{"leftbar"}%<!--leftbar-->
+<nav class="qw-leftbar">
+  <span class="toggle" data-offcanvas-toggle="leftbar"><i class="icon-menu"></i></span>
+  <section class="buttons">%TMPL:P{"leftbar:buttons"}%</section>
+  <section class="menu">
+    <div class="customer-logo">%TMPL:P{"logo"}%</div>
+    <div class="links">%TMPL:P{"leftbar:links"}%</div>
+    <div class="user"></div>
+    <div class="actions"></div>
+    <div class="ma-logo">
+      <span>Modell Aachen GmbH</span>
+    </div>
+  </section>
+</nav>
+<!--/leftbar-->%TMPL:END%
 
 %TMPL:DEF{"offcanvas:leftbar"}%<!--offcanvas:leftbar-->
 <div id="qw-offcanvas-leftbar" class="qw-offcanvas-leftbar qw-leftbar" data-leftbar>
@@ -287,19 +243,13 @@ jQuery(function($) {
   <!--breadcrumb:parenttopics-->%TMPL:P{"breadcrumb:parenttopics"}%<!--/breadcrumb:parenttopics-->
   <!--breadcrumb:topic-->%TMPL:P{"breadcrumb:topic"}%<!--/breadcrumb:topic-->
 </ul>
-<!--breadcrumb:processmap-->%TMPL:P{"breadcrumb:processmap"}%<!--/breadcrumb:processmap-->
 <!--/breadcrumb-->%TMPL:END%
 
-%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home"><a href="#" data-dropdown="qw-processmap"><i class="fa fa-sitemap fa-lg"></i></a></li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home"><a href="#" data-dropdown="qw-processmap"><i class="icon-app-processes"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][TBD. WebHome Text]]</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%TOPIC%'/TopicTitle" then="$percntFORMFIELD{\"TopicTitle\"}$percnt" else="$percntTOPIC$percnt"}%%TMPL:END%
-%TMPL:DEF{"breadcrumb:processmap"}%<!--breadcrumb:processmap-->
-<div id="qw-processmap" class="f-dropdown content large" data-dropdown-content >
-  %INCLUDE{"Main.WebHome" section="PROCESSMAP"}%
-</div>
-<!--/breadcrumb:processmap-->%TMPL:END%
 
 %TMPL:DEF{"attachments"}%%META{"attachments"}%%TMPL:END%
 %TMPL:DEF{"offcanvas:rightbar:includes"}%<!--offcanvas:rightbar:includes-->
@@ -334,6 +284,9 @@ jQuery(function($) {
 
 %TMPL:DEF{"comments:editbox"}%<!--comments:editbox-->
 <!--/comments:editbox-->%TMPL:END%
+
+
+%TMPL:DEF{"logo"}%<div class="patternSimpleLogo"><img src="%WIKILOGOIMG%" border="0" alt="%WIKILOGOALT%"/></div>%TMPL:END%
 
 
 %TMPL:DEF{"LIBJS"}%%ADDTOZONE{
