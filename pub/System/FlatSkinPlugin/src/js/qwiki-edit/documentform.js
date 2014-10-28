@@ -7,6 +7,7 @@
             var $original = $('#qw-documentform .foswikiForm');
 
             var $formdataclone = $('<div></div>').addClass('formdataclone').hide();
+            $formdataclone.find('form').remove();
             $formdataclone.append($original.clone());
 
             // for some reason the cloned selects do not have the 'selected' set
@@ -42,5 +43,16 @@
     $(function($){
         $('#qw-documentform').on('qw.sidebar.closing', updateForm);
         cloneForm();
+        var $changeForm = $('<form></form>').submit(function(){
+            cloneForm();
+            var $main = $('form#main');
+            $(this).find('input').each(function() {
+                var $this = $(this);
+                $main.append($('<input type="hidden"/>').attr('name', $this.attr('name')).val($this.val()));
+            });
+            $main.submit();
+            return false;
+        });
+        $('#qw-documentform input[name="action_replaceform"]').wrap($changeForm);
     });
 }(jQuery, window._, window.document, window));
