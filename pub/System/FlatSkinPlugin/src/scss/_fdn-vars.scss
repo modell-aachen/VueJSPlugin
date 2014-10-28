@@ -11,7 +11,6 @@
 
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
-@import "qw-vars";
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
@@ -25,9 +24,9 @@
 // $base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
-$include-html-classes: true;
+// $include-html-classes: true;
 // $include-print-styles: true;
-$include-html-global-classes: $include-html-classes;
+// $include-html-global-classes: $include-html-classes;
 
 // Grid
 
@@ -44,11 +43,11 @@ $include-html-global-classes: $include-html-classes;
 // $font-weight-bold: bold !default;
 
 // We use these to control various global styles
-$body-bg: $qw-body-bg;
-$body-font-color: $qw-body-font-color;
+// $body-bg: #fff;
+// $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$font-weight-normal: $qw-font-weight-normal;
-$body-font-weight: $qw-font-weight-normal;
+// $font-weight-normal:normal;
+// $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
 // We use this to control font-smoothing
@@ -60,13 +59,12 @@ $body-font-weight: $qw-font-weight-normal;
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #06c;
-// $secondary-color: #ccc;
-// $alert-color: maroon;
-// $success-color: #70af57;
-// $warning-color: #dd6936;
+// $primary-color: #008CBA;
+// $secondary-color: #e7e7e7;
+// $alert-color: #f04124;
+// $success-color: #43AC6A;
+// $warning-color: #f08a24;
 // $info-color: #a0d3e8;
-
 
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;
@@ -80,31 +78,31 @@ $body-font-weight: $qw-font-weight-normal;
 // $column-gutter: rem-calc(30);
 
 // Media Query Ranges
-$small-range: $qw-small-range;
-$medium-range: $qw-medium-range;
-$large-range: $qw-large-range;
-$xlarge-range: $qw-xlarge-range;
-$xxlarge-range: $qw-xxlarge-range;
+// $small-range: (0em, 40em);
+// $medium-range: (40.063em, 64em);
+// $large-range: (64.063em, 90em);
+// $xlarge-range: (90.063em, 120em);
+// $xxlarge-range: (120.063em, 99999999em);
 
-// Media Queries
-$screen: "only screen" !default;
-$landscape: "#{$screen} and (orientation: landscape)" !default;
-$portrait: "#{$screen} and (orientation: portrait)" !default;
+// $screen: "only screen";
 
-$small-up: $screen !default;
-$small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})" !default;
+// $landscape: "#{$screen} and (orientation: landscape)";
+// $portrait: "#{$screen} and (orientation: portrait)";
 
-$medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})" !default;
-$medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})" !default;
+// $small-up: $screen;
+// $small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})";
 
-$large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})" !default;
-$large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})" !default;
+// $medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})";
+// $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})";
 
-$xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})" !default;
-$xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})" !default;
+// $large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})";
+// $large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})";
 
-$xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})" !default;
-$xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})" !default;
+// $xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})";
+// $xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})";
+
+// $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
+// $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";
 
 // Legacy
 // $small: $medium-up;
@@ -173,9 +171,14 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // $paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style <code> tags
-// $code-color: scale-color($alert-color, $lightness: -27%);
+// $code-color: #333;
 // $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
-// $code-font-weight: $font-weight-bold;
+// $code-font-weight: $font-weight-normal;
+// $code-background-color: scale-color($secondary-color, $lightness: 70%);
+// $code-border-size: 1px;
+// $code-border-style: solid;
+// $code-border-color: scale-color($code-background-color, $lightness: -10%);
+// $code-padding: rem-calc(2) rem-calc(5) rem-calc(1);
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
@@ -367,18 +370,26 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // We use these to control various hover effects.
 // $button-function-factor: -20%;
 
-// We use these to control button border styles.
+// We use these to control button border and hover styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-// $button-bg: $primary-color;
-// $button-border-color: scale-color($button-bg, $lightness: $button-function-factor);
+// $button-bg-color: $primary-color;
+// $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
+// $button-border-color: $button-bg-hover;
+// $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
+// $secondary-button-border-color: $secondary-button-bg-hover;
+// $success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor);
+// $success-button-border-color: $success-button-bg-hover;
+// $alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor);
+// $alert-button-border-color: $alert-button-bg-hover;
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
 // $button-round: $global-rounded;
 
-// We use this to set default opacity for disabled buttons.
+// We use this to set default opacity and cursor for disabled buttons.
 // $button-disabled-opacity: 0.7;
+// $button-disabled-cursor: $cursor-default-value;
 
 // Button Groups
 
@@ -538,8 +549,8 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // $input-border-width: 1px;
 // $input-border-radius: $global-radius;
 // $input-disabled-bg: #ddd;
+// $input-disabled-cursor: $cursor-default-value;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-// $input-include-glowing-effect: true;
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
@@ -562,6 +573,9 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // $input-prefix-font-color: #333;
 // $input-prefix-font-color-alt: #fff;
 
+// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+// $input-number-spinners: true;
+
 // We use these to style the error states for inputs and labels
 // $input-error-message-padding: rem-calc(6 9 9);
 // $input-error-message-top: -1px;
@@ -572,6 +586,7 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // $input-error-message-font-color-alt: #333;
 
 // We use this to style the glowing effect of inputs when focused
+// $input-include-glowing-effect: true;
 // $glowing-effect-fade-time: 0.45s;
 // $glowing-effect-color: $input-focus-border-color;
 
@@ -675,7 +690,7 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // $include-html-magellan-classes: $include-html-classes;
 
 // $magellan-bg: #fff;
-$magellan-padding: 0 !important;
+// $magellan-padding: 0 !important;
 
 // Off-canvas
 
@@ -1036,18 +1051,18 @@ $magellan-padding: 0 !important;
 // $sub-nav-font-color: #999;
 // $sub-nav-font-weight: $font-weight-normal;
 // $sub-nav-text-decoration: none;
-$sub-nav-padding: rem-calc(3 16);
+// $sub-nav-padding: rem-calc(3 16);
 // $sub-nav-border-radius: 3px;
 // $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 
 
 // We use these to control the active item styles
-$sub-nav-active-font-weight: $font-weight-normal;
-$sub-nav-active-bg: $primary-color;
-$sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
-$sub-nav-active-color: #fff;
-$sub-nav-active-padding: $sub-nav-padding;
-$sub-nav-active-cursor: default;
+// $sub-nav-active-font-weight: $font-weight-normal;
+// $sub-nav-active-bg: $primary-color;
+// $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
+// $sub-nav-active-color: #fff;
+// $sub-nav-active-padding: $sub-nav-padding;
+// $sub-nav-active-cursor: default;
 
 // $sub-nav-item-divider: "";
 // $sub-nav-item-divider-margin: rem-calc(12);
