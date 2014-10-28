@@ -172,7 +172,10 @@
     var $this = $(this);
 
     if ( $('.qw-comment-editbox.active').length > 0 ) {
-      return;
+      var content = $('#qw-comment-textarea').val();
+      if ( content.trim() !== '' ) {
+        return;
+      }
     }
 
     var height = $this.height();
