@@ -26,7 +26,7 @@ sub initPlugin {
   my $params = $session->{request}->{param};
   if ( $params && $params->{skin} ) {
     my $skins = $params->{skin};
-    return 1 unless grep( /flat/, @$skins );
+    return 1 unless grep( /flat/, @$skins ) || join('', @$skins) eq '';
   } else {
     my $skin = Foswiki::Func::getPreferencesValue( 'SKIN' );
     return 1 if ( $skin && $skin !~ m/flat/i );
