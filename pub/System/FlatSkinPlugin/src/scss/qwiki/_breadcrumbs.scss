@@ -3,6 +3,7 @@ ul.qw-breadcrumb {
   margin-top: $qw-breadcrumb-offset-top;
   max-height: $qw-breadcrumb-height;
   white-space: nowrap;
+  padding-left: 0;
 
   > li {
     float: left;
@@ -13,11 +14,11 @@ ul.qw-breadcrumb {
       margin-left: 0;
 
       a {
-        padding-left: 20px !important;
-        padding-right: 10px !important;
-
         border-top-left-radius: $qw-breadcrumb-radius;
         border-bottom-left-radius: $qw-breadcrumb-radius;
+
+        font-size: 1rem;
+        padding: 11px 5px 11px 15px !important;
       }
     }
 
@@ -43,12 +44,14 @@ ul.qw-breadcrumb {
 
     > a {
       color: $qw-breadcrumb-color;
-      height: $qw-breadcrumb-height;
-      text-decoration: none;
-      padding: 8px 10px 5px 35px;
+      font-size: rem-calc(12);
+      font-family: $body-font-family;
+      max-height: $qw-breadcrumb-height;
       background: $qw-breadcrumb-bg;
+      text-decoration: none;
+      padding: 12.5px 10px 13px 25px;
       position: relative;
-      display: block;
+      display: inline-block;
 
       &:after {
         content: " ";
@@ -57,7 +60,7 @@ ul.qw-breadcrumb {
         height: 0;
         border-top: $qw-breadcrumb-border-size solid transparent;
         border-bottom: $qw-breadcrumb-border-size solid transparent;
-        border-left: 15px solid $qw-breadcrumb-bg;
+        border-left: 10px solid $qw-breadcrumb-bg;
         position: absolute;
         top: 0;
         left: 100%;
@@ -71,7 +74,7 @@ ul.qw-breadcrumb {
         height: 0;
         border-top: $qw-breadcrumb-border-size solid transparent;
         border-bottom: $qw-breadcrumb-border-size solid transparent;
-        border-left: 15px solid $qw-breadcrumb-border-color;
+        border-left: 10px solid $qw-breadcrumb-border-color;
         position: absolute;
         top: 0;
         margin-left: $qw-breadcrumb-spacing;
@@ -136,6 +139,8 @@ ul.qw-breadcrumb {
       text-overflow: ellipsis-word;
       text-overflow: ellipsis;
       min-width: 0;
+      color: $qw-breadcrumb-topic-color;
+      font-size: 1rem;
     }
   }
 }
