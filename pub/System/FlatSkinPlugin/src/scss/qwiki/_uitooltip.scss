@@ -1,7 +1,7 @@
 .ui-tooltip.flat {
-  background-color: #4d4d4d;
-  border:1px solid #333;
-  color: white;
+  background-color: $qw-tooltip-bg;
+  border:1px solid $qw-tooltip-bg;
+  color: $qw-tooltip-color;
   font-size: 12px;
   height: auto;
   padding: rem-calc(9 15) !important;
@@ -15,6 +15,6 @@
     margin-top: -16px;
     border-top: 16px solid transparent;
     border-bottom: 16px solid transparent;
-    border-right: 16px solid #4d4d4d;
+    border-right: 16px solid $qw-tooltip-bg;
   }
 }
