@@ -77,12 +77,12 @@
 .qw-reset-login-btn {
   @include button( $radius: true, $bg: $qw-body-bg, $full-width: true );
 
-  padding: rem-calc(7 14);
-  font-size: rem-calc(14);
-  line-height: 1rem;
+  font-size: rem-calc(12);
+  line-height: 1;
   color: #333;
   border: 1px solid $qw-button2-bg-hover-color;
-  min-height: 46px;
+  padding-left: 0;
+  padding-right: 0;
   max-height: 46px;
 
   &:hover {
@@ -321,8 +321,4 @@ ul[data-drop] {
 .qw-menu-btn .text {
   @media #{$small-only} { display: none; }
   @media #{$medium-only} { display: none; }
-}
-
-.qw-leftbar-user-btn {
-  color: $qw-leftbar-bg-dark;
 }
