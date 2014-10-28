@@ -1,18 +1,53 @@
 @import "foundation/functions";
 
+// do not include any auto-generated Foundation classes
+$include-html-classes: false;
+$include-print-styles: false;
+$include-html-form-classes: true;
+$include-html-global-classes: $include-html-classes;
+
+
+// rem base value used for function rem-calc
+$rem-base: 16px;
+
+
 // grid properties
 $total-columns: 12;
 $row-width: 100%;
 
 
-// screen sizes
-$qw-small-range: (0, rem-calc(768));
-$qw-medium-range: (rem-calc(769), rem-calc(1200));
-$qw-large-range: (rem-calc(1201), rem-calc(1440));
-$qw-xlarge-range: (rem-calc(1441), rem-calc(1920));
-$qw-xxlarge-range: (rem-calc(1921));
+// screen sizes and media queries
+$small-range: (0, rem-calc(768));
+$medium-range: (rem-calc(769), rem-calc(1200));
+$large-range: (rem-calc(1201), rem-calc(1440));
+$xlarge-range: (rem-calc(1441), rem-calc(1920));
+$xxlarge-range: (rem-calc(1921));
 
-// foundation colors
+$screen: "only screen" !default;
+$landscape: "#{$screen} and (orientation: landscape)" !default;
+$portrait: "#{$screen} and (orientation: portrait)" !default;
+$small-up: $screen !default;
+$small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})" !default;
+$medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})" !default;
+$medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})" !default;
+$large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})" !default;
+$large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})" !default;
+$xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})" !default;
+$xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})" !default;
+$xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})" !default;
+$xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})" !default;
+
+
+// font settings
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+$base-font-size: 100%;
+$base-line-height: 150%;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
+
+
+// override for Foundation'S default colors
 $primary-color: #236aa2;
 $secondary-color: #ccc;
 $alert-color: maroon;
@@ -21,15 +56,20 @@ $success-color-hover: #61964b;
 $warning-color: #dd6936;
 $info-color: #a0d3e8;
 
+$body-bg: #fff;
+$body-font-color: #222;
+
 
 // colors
-$qw-body-bg: #edeff0;
+$qw-body-bg: $body-bg;
 $qw-content-bg: #fff;
 $qw-info-color: $primary-color;
 $qw-draft-color: $alert-color;
 $qw-edit-color: $warning-color;
 $qw-joined-draft-hover-color: #c44a2b;
 $qw-approved-color: $success-color;
+
+
 // colors: generic interaction elements
 $qw-button1-bg-color: $primary-color;
 $qw-button1-bg-hover-color: #287ab8;
@@ -113,11 +153,6 @@ $qw-split-shadow-color: #164263;
 $qw-content-padding: rem-calc(30);
 
 
-// font defaults
-$qw-body-font-color: #222;
-$qw-font-weight-normal: normal;
-
-
 // default border values borders
 $qw-border-bg: #d9dbdb;
 $qw-border-width: 1px;
@@ -129,29 +164,25 @@ $qw-context-border-color: $secondary-color;
 
 
 // topbar(s)
-$qw-top-one-height: 50px;
-$qw-top-one-bg: $qw-body-bg;
+$qw-top-one-height: 60px;
+$qw-top-one-bg: #e0e0e0;
 $qw-top-one-color: #555;
-$qw-top-one-border-color: #e6e7e8;
-$qw-top-one-border-width: $qw-border-width;
-
-$qw-top-two-height: 55px;
-$qw-top-two-bg: $qw-body-bg;
-
+$qw-top-two-height: 60px;
+$qw-top-two-bg: #f5f5f5;
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
 
 
 // breadcrumbs
-$qw-breadcrumb-bg: #d9dbdb;
-$qw-breadcrumb-color: #65686e;
-$qw-breadcrumb-hover-bg: darken( $qw-top-one-bg, 5% );
-$qw-breadcrumb-border-color: #f2f2f2;
-$qw-breadcrumb-border-color: $qw-body-bg;
+$qw-breadcrumb-bg: #bfbfbf;
+$qw-breadcrumb-color: #fff;
+$qw-breadcrumb-topic-color: #262626;
+$qw-breadcrumb-hover-bg: #ccc;
+$qw-breadcrumb-border-color: $qw-top-one-bg;
 $qw-breadcrumb-border-width: $qw-border-width;
-$qw-breadcrumb-radius: 5px;
-$qw-breadcrumb-height: $qw-top-one-height - 10px;
-$qw-breadcrumb-offset-top: 5px;
-$qw-breadcrumb-border-size: 25px - $qw-breadcrumb-offset-top;
+$qw-breadcrumb-radius: 3px;
+$qw-breadcrumb-height: 40px;
+$qw-breadcrumb-offset-top: 10px;
+$qw-breadcrumb-border-size: 30px - $qw-breadcrumb-offset-top;
 $qw-breadcrumb-spacing: 3px;
 
 
@@ -170,8 +201,8 @@ $qw-tab-radius: rem-calc(3);
 
 
 // attachtable
-$qw-attachtable-link-color: $qw-body-font-color;
-$qw-attachtable-link-hover-color: $qw-body-font-color;
+$qw-attachtable-link-color: body-font-color;
+$qw-attachtable-link-hover-color: body-font-color;
 $qw-attachtable-link-bg-color: darken($qw-body-bg, 10%);
 
 
@@ -184,13 +215,24 @@ $qw-login-header-box-shadow: 1px 0 10px $qw-approved-color;
 
 // offcanvas areas
 // leftbar, rightbar, searchbar
-$qw-leftbar-width: 300px;
-$qw-leftbar-bg: #306a96;
-$qw-leftbar-bg-light: #387cb0;
-$qw-leftbar-bg-dark: #28587d;
-$qw-leftbar-divider: #2d638c;
-$qw-leftbar-border-width: $qw-border-width;
-$qw-leftbar-border-color: $qw-border-bg;
+$qw-leftbar-width: 60px;
+$qw-leftbar-width-expanded: 210px;
+$qw-leftbar-border-bg: #f2f2f2;
+$qw-leftbar-bg: #e0e0e0;
+$qw-leftbar-bg-expanded: #fafafa;
+$qw-leftbar-toggle-bg: $primary-color;
+$qw-leftbar-customer-logo-height: $qw-top-one-height;
+$qw-leftbar-ma-logo-height: 40px;
+
+$qw-leftbar-btn-color: #bfbfbf;
+$qw-leftbar-btn-hover-color: #4d4d4d;
+$qw-leftbar-btn-active-color: #fff;
+
+$qw-leftbar-btn-bg: transparent;
+$qw-leftbar-btn-hover-bg: transparent;
+$qw-leftbar-btn-active-bg: #bfbfbf;
+$qw-leftbar-btn-active-hover-bg: #ebebeb;
+
 
 $qw-searchbar-bg: $qw-content-bg;
 $qw-searchbar-active-bg: $qw-body-bg;
