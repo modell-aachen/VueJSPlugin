@@ -1,0 +1,188 @@
+.qw-tooltips {
+  z-index: 100;
+  width: auto;
+  height: 30px;
+  background: $primary-color;
+  color: white;
+  cursor: pointer;
+  padding: rem-calc(5 15);
+  font-size: 0.8rem;
+  border-top-right-radius: $global-radius;
+  border-bottom-right-radius: $global-radius;
+  box-shadow: none;
+
+  &:before {
+    content: " ";
+    width: 0;
+    height: 30px;
+
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+
+    border-right: 10px solid red;
+    // margin-left: -10px;
+  }
+}
+
+.qw-leftbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  @media #{$small-only} {max-height: $qw-top-one-height;}
+  @media #{$medium-up} {bottom: 0;}
+
+  width: $qw-leftbar-width + $qw-leftbar-width-expanded;
+  background: $qw-leftbar-bg;
+
+  transition: transform 0.3s ease-in-out;
+  transform: translate3d(-1 * $qw-leftbar-width-expanded, 0, 0);
+
+  &.expanded {
+    transform: translate3d(0, 0, 0);
+    > .toggle > i {
+      @extend .icon-arrow-left;
+    }
+  }
+
+  > .toggle {
+    position: absolute;
+    top: 0;
+    left: $qw-leftbar-width-expanded;
+    width: $qw-leftbar-width;
+    height: $qw-top-one-height;
+    background: $qw-leftbar-toggle-bg;
+    cursor: pointer;
+    color: white;
+    font-size: 2rem;
+    
+    > i {
+      padding: rem-calc(20);
+      &:before {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  > .buttons {
+    position: absolute;
+    top: $qw-top-one-height;
+    left: $qw-leftbar-width-expanded;
+    height: calc( 100% - #{$qw-top-one-height} );
+
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    .button {
+      width: $qw-leftbar-width - 10px;
+      height: $qw-leftbar-width - 10px;
+      border-radius: $global-radius;
+      background: $qw-leftbar-btn-bg;
+      color: $qw-leftbar-btn-color;
+      margin-bottom: 10px;
+      font-size: 2.5rem;
+      line-height: 1.1;
+      display: block;
+      cursor: pointer;
+      transition: background 0.15s ease-in-out,
+                  color 0.15s ease-in-out,
+                  opacity 0.05s ease-in-out;
+
+      &:hover {
+        background: $qw-leftbar-btn-hover-bg;
+        color: $qw-leftbar-btn-hover-color;
+      }
+
+      &.active {
+        background: $qw-leftbar-btn-active-bg;
+        color: $qw-leftbar-btn-active-color;
+
+        &:hover {
+          background: $qw-leftbar-btn-active-hover-bg;
+          color: $qw-leftbar-btn-hover-color;
+        }
+      }
+
+      > i {
+        margin-left: 11px;
+      }
+    }
+  }
+
+  > .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: $qw-leftbar-width-expanded;
+    background: $qw-leftbar-bg-expanded;
+
+    > div {
+      position: inherit;
+      left: inherit;
+      width: inherit;
+    }
+
+    > .customer-logo {
+      top: 0;
+      height: $qw-leftbar-customer-logo-height;
+      max-height: $qw-leftbar-customer-logo-height;
+      overflow: hidden;
+      border-bottom: 1px solid $qw-leftbar-border-bg;
+    }
+
+    > .links {
+      top: 120px;
+      padding-left: rem-calc(10);
+      padding-right: rem-calc(10);
+
+      > .button {
+        width: calc(100% - #{4 * rem-calc(10)});
+        padding: rem-calc(10);
+        margin-bottom: rem-calc(3);
+        cursor: pointer;
+        transition: background 0.15s ease-in-out,
+                    color 0.15s ease-in-out,
+                    opacity 0.2s ease-in-out;
+
+        i {
+          font-size: 2rem;
+          margin-right: rem-calc(10);
+        }
+
+        &:hover {
+          background: #f2f5f7;
+          color: #236aa2;
+        }
+      }
+    }
+
+    > .user {}
+
+    > .actions {
+      height: $qw-top-one-height;
+      bottom: 1 + $qw-leftbar-ma-logo-height;
+    }
+
+    > .ma-logo {
+      bottom: 0;
+      border-top: 1px solid $qw-leftbar-border-bg;
+      height: $qw-leftbar-ma-logo-height;
+
+      background-image: url("../assets/logo-blue.png");
+      background-repeat: no-repeat;
+      background-position: 20px center;
+
+      > span {
+        display: block;
+        height: inherit;
+        font-size: 0.8rem;
+        padding-left: 60px;
+        padding-top: 15px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
