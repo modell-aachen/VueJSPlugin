@@ -1,0 +1,20 @@
+.ui-tooltip.flat {
+  background-color: #4d4d4d;
+  border:1px solid #333;
+  color: white;
+  font-size: 12px;
+  height: auto;
+  padding: rem-calc(9 15) !important;
+  border-radius: 3px !important;
+  line-height: 1;
+  vertical-align: middle !important;
+
+  &.position-right .ui-arrow {
+    top: 50%;
+    left: -15px;
+    margin-top: -16px;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-right: 16px solid #4d4d4d;
+  }
+}
