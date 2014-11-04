@@ -1,6 +1,6 @@
 .qw-leftbar {
   position: fixed;
-  top: 0;
+  top: $qw-leftbar-width;
   left: 0;
   z-index: 100;
 
@@ -13,29 +13,14 @@
   transition: transform 0.3s ease-in-out;
   transform: translate3d(-1 * $qw-leftbar-width-expanded, 0, 0);
 
-  &.expanded {
-    transform: translate3d(0, 0, 0);
-    > .toggle > i {
-      @extend .icon-arrow-left;
+  &.offcanvas {
+    &.leftbar {
+      transform: translate3d( 0, 0, 0);
     }
-  }
 
-  > .toggle {
-    position: absolute;
-    top: 0;
-    left: $qw-leftbar-width-expanded;
-    width: $qw-leftbar-width;
-    height: $qw-top-one-height;
-    background: $qw-leftbar-toggle-bg;
-    cursor: pointer;
-    color: white;
-    font-size: 2rem;
-    
-    > i {
-      padding: rem-calc(20);
-      &:before {
-        margin-top: 15px;
-      }
+    &.quicksearch {
+      $offset: -1 * ($qw-leftbar-width-expanded + $qw-leftbar-width);
+      transform: translate3d($offset, 0, 0);
     }
   }
 

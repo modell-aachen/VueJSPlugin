@@ -5,7 +5,7 @@
 
 // import those two first...
 @import "qwiki/qwiki-font";
-@import "qwiki/layout";
+@import "qwiki/common";
 @import "qwiki/context";
 
 @import "qwiki/actionbuttons";
@@ -20,7 +20,8 @@
 @import "qwiki/kvp";
 @import "qwiki/leftbar";
 @import "qwiki/login";
-@import "qwiki/offcanvas";
+@import "qwiki/menutoggle";
 @import "qwiki/quicksearch";
-@import "qwiki/sidebar";
+@import "qwiki/topbar";
+@import "qwiki/topic";
 @import "qwiki/uitooltip";

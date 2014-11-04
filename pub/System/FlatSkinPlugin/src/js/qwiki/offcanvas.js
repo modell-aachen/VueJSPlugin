@@ -28,9 +28,9 @@
       return;
     }
 
-    var cls = ['leftbar', 'rightbar', 'searchbar'];
+    var cls = ['leftbar', 'rightbar', 'quicksearch', 'offcanvas'];
     $('[data-offcanvas]').removeClass( _.without(cls, target).join(' ') );
-    $('[data-offcanvas]').toggleClass( target );
+    $('[data-offcanvas]').toggleClass( 'offcanvas ' + target );
   };
 }(jQuery, window._, window.document, window));
 

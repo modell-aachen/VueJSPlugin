@@ -39,112 +39,70 @@
   %TMPL:P{"JavascriptFiles/foswikiPref"}%
 </head>%TMPL:END%
 
-%TMPL:DEF{"body"}%<!--body-->
-<!--body:start-->%TMPL:P{"body:start"}%<!--/body:start-->
-<!--topbar-->%TMPL:P{"topbar"}%<!--/topbar-->
-<!--body:content-->%TMPL:P{"body:content"}%<!--/body:content-->
-<!--body:end-->%TMPL:P{"body:end"}%<!--/body:end-->
-<!--/body-->%TMPL:END%
-
 %TMPL:DEF{"context"}%approved%TMPL:END%
-%TMPL:DEF{"body:start"}%<!--body:start-->
-<body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, jsonrpc, placeholder, ui::tooltip"}%
-<!--/body:start-->%TMPL:END%
 
-%TMPL:DEF{"body:end"}%<!--body:end-->
-<!--offcanvas:leftbar-->%TMPL:P{"offcanvas:leftbar123"}%<!--/offcanvas:leftbar-->
-<!--offcanvas:rightbar-->%TMPL:P{"offcanvas:rightbar123"}%<!--offcanvas:rightbar-->
-<!--offcanvas:search-->%TMPL:P{"offcanvas:search123"}%<!--/offcanvas:search-->
-<!--offcanvas:rightbar:includes-->%TMPL:P{"offcanvas:rightbar:includes123"}%<!--/offcanvas:rightbar:includes-->
+
+%TMPL:DEF{"body"}%<!--body-->
+%JQREQUIRE{"blockui, cookie, placeholder, ui::tooltip, ui::autocomplete"}%
+<body class="context-%TMPL:P{"context"}%">
+%TMPL:P{"topbar"}%
+%TMPL:P{"menutoggle"}%
 %TMPL:P{"leftbar"}%
+%TMPL:P{"quicksearch"}%
+<div class="qw-page" data-offcanvas>
+  <section class="content"><div>%TMPL:P{"content"}%</div></section>
+</div>
 <script>
 jQuery(function($) {
   $(this).qwiki();
 });
 </script>
-<!--comments-->%TMPL:P{"comments123"}%<!--/comments-->
-<!--/body:end--></body>%TMPL:END%
+</body>
+<!--/body-->%TMPL:END%
 
-
-%TMPL:DEF{"content:head"}%<!--content:head-->
-%TMPL:P{"document:head"}%
-<!--/content:head-->%TMPL:END%
-
-%TMPL:DEF{"body:content"}%
-<div class="qw-page" data-offcanvas>
-  <section class="content">%TMPL:P{"content"}%</section>
-</div>
-%TMPL:END%
 
 %TMPL:DEF{"topbar"}%<!--topbar-->
 <nav class="qw-top" data-offcanvas>
   <div class="one">
-    <div class="content">%TMPL:P{"breadcrumb"}%</div>
+    <div class="breadcrumb"><div>%TMPL:P{"breadcrumb"}%</div></div>
+    <div class="search"><div>%TMPL:P{"topbar:search"}%</div></div>
   </div>
-  <div class="two">%TMPL:P{"topbar:two:temp"}%</div>
+  <div class="two">
+    <div class="actions"><div>&nbsp;</div></div>
+    <div class="toggle"><div>&nbsp;</div></div>
+  </div>
 </nav>
 <!--/topbar-->%TMPL:END%
 
-%TMPL:DEF{"topbar:one:left:old"}%<!--topbar:one:menu-->
-<div class="qw-menu" data-offcanvas-toggle data-target="#qw-offcanvas-leftbar" data-type="leftbar" data-activate="#qw-menu-btn">
-  <a id="qw-menu-btn" href="#" class="qw-menu-btn"><span class="text">&nbsp;%MAKETEXT{"Menu"}%</span></a>
-</div>
-<!--/topbar:one:menu-->%TMPL:END%
 
-%TMPL:DEF{"topbar:one:right:old"}%<!--topbar:one:right-->
-<div class="qw-search">
-  <div class="close">
-    <div class="qw-close-btn" title="%MAKETEXT{"Close"}%" data-offcanvas-toggle data-target="#qw-searchbar" data-type="search" data-right data-close-preview></div>
-  </div>
-  <span><i class="qw-search-icon" data-offcanvas-toggle data-offcanvas-autoclose="0" data-quicksearch-toggle data-target="#qw-searchbar" data-type="search" data-trigger="focus" data-right></i></span>
-  <form action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch" class="qw-search-form">
-    <div class="form-content">
-      <div class="qw-inline-input">%JQREQUIRE{"UI::autocomplete"}%
-        <input name="search"
-               type="text"
-               class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
-               placeholder="%MAKETEXT{"search..."}%"
-               data-offcanvas-toggle
-               data-offcanvas-autoclose="0"
-               data-quicksearch-toggle
-               data-target="#qw-searchbar"
-               data-type="search"
-               data-right
-               required>
-      </div>
-      <div class="qw-inline-submit">
-        <a href="#" class="submit" style="padding: 10px;"><i class="fa fa-lg fa-search"></i></a>
-      </div>
+%TMPL:DEF{"topbar:search"}%<!--topbar:search-->
+<div class="qw-top-search">
+  <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
+    <div class="input">
+      <input name="search"
+             type="text"
+             class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
+             placeholder="%MAKETEXT{"search..."}%"
+             data-offcanvas-toggle="quicksearch">
+    </div>
+    <div class="submit">
+      <a href="#" class="submit"><i class="icon-search"></i></a>
     </div>
   </form>
 </div>
-<!--/topbar:one:right-->%TMPL:END%
+<!--/topbar:search-->%TMPL:END%
 
-%TMPL:DEF{"topbar:two"}%<!--topbar:two-->
-<nav class="qw-top-two">
-  <div class="qw-context">
-    <div class="content">
-      <!--topbar:two:left-->%TMPL:P{"topbar:two:left"}%<!--/topbar:two:left-->
-      <ul class="button-group right visible-for-large-up">
-        <!--topbar:two:right-->%TMPL:P{"topbar:two:right"}%<!--/topbar:two:right-->
-      </ul>
-    </div>
-  </div>
-  <div class="qw-actions">
-    <div class="content">
-      <a href="#" class="button tiny secondary">%MAKETEXT{"ToDo"}%</a>
-      <div><!--qw:actions-->%TMPL:P{"qw::actions"}%<!--/qw:actions--></div>
-    </div>
-  </div>
-</nav>
-<!--/topbar:two-->%TMPL:END%
+%TMPL:DEF{"quicksearch"}%<!--quicksearch-->
+<div class="qw-quicksearch" data-offcanvas>
+  <div></div>
+</div>
+<!--/quicksearch-->%TMPL:END%
+
 
 %TMPL:DEF{"leftbar"}%<!--leftbar-->
-<nav class="qw-leftbar">
-  <span class="toggle" data-offcanvas-toggle="leftbar"><i class="icon-menu"></i></span>
+<nav class="qw-leftbar" data-offcanvas>
   <section class="buttons">%TMPL:P{"leftbar:buttons"}%</section>
   <section class="menu">
-    <div class="customer-logo">%TMPL:P{"logo"}%</div>
     <div class="links">%TMPL:P{"leftbar:links"}%</div>
     <div class="user"></div>
     <div class="actions"></div>
@@ -155,49 +113,13 @@ jQuery(function($) {
 </nav>
 <!--/leftbar-->%TMPL:END%
 
-%TMPL:DEF{"offcanvas:leftbar"}%<!--offcanvas:leftbar-->
-<div id="qw-offcanvas-leftbar" class="qw-offcanvas-leftbar qw-leftbar" data-leftbar>
-  <section class="user">
-    %TMPL:P{"user:table"}%
-  </section>
-  <section class="actions">
-    %TWISTY{id="qw-actions-twisty" link="$percntMAKETEXT{\"personal\"}$percnt" linkclass="qw-leftbar-twisty" start="show" remember="on"}%
-    <div id="foo1">%TMPL:P{"leftbar:actions"}%</div>
-    %ENDTWISTY%
-  </section>
-  <section class="webs">
-    %TWISTY{id="qw-webs-twisty" link="$percntMAKETEXT{\"modules\"}$percnt" linkclass="qw-leftbar-twisty" start="hide" remember="on"}%
-    <div id="foo2">%TMPL:P{"leftbar:webs"}%</div>
-    %ENDTWISTY%
-  </section>
-  <section class="logo">
-  </section>
+%TMPL:DEF{"menutoggle"}%<!--menutoggle-->
+<div class="qw-menutoggle" data-offcanvas>
+  <div class="customer-logo">%TMPL:P{"logo"}%</div>
+  <span class="toggle" data-offcanvas-toggle="leftbar"><i class="icon-menu"></i></span>
 </div>
-<!--/offcanvas:leftbar-->%TMPL:END%
+<!--/menutoggle-->%TMPL:END%
 
-%TMPL:DEF{"user:table"}%<!--user:table-->
-<div class="avatar">
-  <img width="64" height="64" src="%PUBURLPATH%/%SYSTEMWEB%/FlatSkinPlugin/assets/avatar.png" alt="" />
-</div>
-<div class="info">
-  <div class="name">
-    <div>%SPACEOUT{%WIKINAME%}%</div>
-    <div><a class='qw-leftbar-user-btn %TMPL:P{"user:hide_icons"}%' href="%IF{"istopic '%WIKIUSERNAME%'" then="%SCRIPTURLPATH{"view"}%/%WIKIUSERNAME%" else="#"}%"><i class="icon-configuration"></i></a></div>
-  </div>
-  <div class="role">
-    <div>%IF{"$WIKINAME='WikiGuest'" then="$percntTMPL:P{\"user:login\"}$percnt" else="$percntTMPL:P{\"user:mail\"}$percnt"}%</div>
-    <div><a class='qw-leftbar-user-btn %TMPL:P{"user:hide_icons"}%' href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%?logout=1" title="%MAKETEXT{"Logout"}%"><i class="icon-logout"></i></a></div>
-  </div>
-</div>
-<!--/user:table-->%TMPL:END%
-
-%TMPL:DEF{"user:hide_icons"}%%IF{"$WIKINAME='WikiGuest'" then="hidden" else="sdf"}%%TMPL:END%
-%TMPL:DEF{"user:mail"}%<!--user:mail-->
-<noautolink>%USERINFO{format="$emails"}%</noautolink>
-<!--/user:mail-->%TMPL:END%
-%TMPL:DEF{"user:login"}%<!--user:login-->
-[[%LOGINURL%][%MAKETEXT{"Login"}%]]
-<!--/user:login-->%TMPL:END%
 
 %TMPL:DEF{"offcanvas:rightbar"}%<!--offcanvas:rightbar-->
 <div id="qw-offcanvas-rightbar" class="qw-offcanvas-rightbar" data-rightbar>
@@ -271,7 +193,6 @@ jQuery(function($) {
 %TMPL:DEF{"comments"}%<!--comments-->
 %TMPL:P{"comments:adorner"}%
 %TMPL:P{"comments:container"}%
-%TMPL:P{"comments:editbox"}%
 <!--/comments-->%TMPL:END%
 
 %TMPL:DEF{"comments:adorner"}%<!--comments:adorner-->
@@ -282,13 +203,70 @@ jQuery(function($) {
 <div id="qw-comment-container">%FLATCOMMENTS%</div>
 <!--/comments:container-->%TMPL:END%
 
+%TMPL:DEF{"comments:boxes"}%<!--comments:boxes-->
+%TMPL:P{"comments:viewbox"}%
+%TMPL:P{"comments:editbox"}%
+<!--/comments:boxes-->%TMPL:END%
+
+%TMPL:DEF{"comments:viewbox"}%<!--comments:viewbox-->
+<div class="qw-comment-viewbox">
+  <div class="meta">
+    <div class="content">
+      <span class="user"></span>
+    </div>
+    <div class="content">
+      <span class="date"></span>
+    </div>
+  </div>
+  <div class="comment">
+    <div class="content"></div>
+  </div>
+  <div class="more">
+    <div class="content">
+      <a id="qw-comment-more" href="#">%MAKETEXT{"read more"}% <i class="fa fa-chevron-down"></i></a>
+      <a id="qw-comment-less" class="hidden" href="#">%MAKETEXT{"less"}% <i class="fa fa-chevron-up"></i></a>
+    </div>
+  </div>
+</div>
+<!--/comments:viewbox-->%TMPL:END%
+
 %TMPL:DEF{"comments:editbox"}%<!--comments:editbox-->
+<div class="qw-comment-editbox">
+  <div class="options">
+    <div class="content">
+      <input type="radio" name="commentType" value="0" id="qw-cmt-type0"><label for="qw-cmt-type0"><span class="idea left"><i class="fa fa-lightbulb-o fa-lg"></i> %MAKETEXT{"idea"}%</span></label>
+    </div>
+    <div class="content">
+      <input type="radio" name="commentType" value="2" id="qw-cmt-type2"><label for="qw-cmt-type2"><span class="issue right"><i class="fa fa-exclamation fa-lg"></i> %MAKETEXT{"issue"}%</span></label>
+    </div>
+  </div>
+  <div class="text">
+    <div class="content">
+      <form data-abide>
+        <div>
+          <textarea id="qw-comment-textarea" cols="30" rows="5" required pattern="^[^\s]$|.+"></textarea>
+          <small class="error">%MAKETEXT{"required"}%</small>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="content">
+      <a href="#" class="submit">%MAKETEXT{"save"}%</a>
+    </div>
+    <div class="content">
+      <a href="#" class="cancel">%MAKETEXT{"cancel"}%</a>
+    </div>
+  </div>
+</div>
 <!--/comments:editbox-->%TMPL:END%
 
 
-%TMPL:DEF{"logo"}%<div class="patternSimpleLogo"><img src="%WIKILOGOIMG%" border="0" alt="%WIKILOGOALT%"/></div>%TMPL:END%
 
 
+%{
+  Scripts
+}%
 %TMPL:DEF{"LIBJS"}%%ADDTOZONE{
  "script"
  id="%id%"
@@ -316,3 +294,10 @@ JQUERYPLUGIN is not a hard requirement, but it must sort earlier.
 ---------------------------------------------------
 }%%TMPL:DEF{"JavascriptFiles/foswiki_edit"}%%{
 }%%TMPL:P{"JavascriptFiles/foswikiPref"}%%TMPL:P{"LIBJS" id="JavascriptFiles/foswiki_edit" requires="JQUERYPLUGIN::FOSWIKI,JavascriptFiles/foswikiPref"}%%TMPL:END%
+
+
+
+%{
+  LOGO
+}%
+%TMPL:DEF{"logo"}%<div class="patternSimpleLogo"><img src="%WIKILOGOIMG%" border="0" alt="%WIKILOGOALT%"/></div>%TMPL:END%

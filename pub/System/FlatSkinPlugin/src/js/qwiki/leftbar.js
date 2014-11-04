@@ -9,15 +9,8 @@
         $.extend( this, options );
       }
 
-      $('.links .button').addClass('invisible');
-      // $('.qw-leftbar .buttons').tooltip({
-      //   position: {
-      //     my: "left center",
-      //     at: "right+10 center",
-      //     collision: "none"
-      //   },
-      // });
-      this.bind();
+      // $('.links .button').addClass('invisible');
+      // this.bind();
     },
 
     bind: function() {

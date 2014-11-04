@@ -1,0 +1,10 @@
+$qw-page-width: calc(100% - #{$qw-leftbar-width});
+
+html body {
+  background: $body-bg;
+  overflow-x: hidden !important;
+}
+
+[data-offcanvas] {
+  transition: transform 0.3s ease-in-out;
+}

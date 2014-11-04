@@ -183,7 +183,7 @@
     var pos = $this.position();
 
     // pos is relative to the 'left page container'
-    var $page = $('.qw-page > .qw-left');
+    var $page = $('.qw-page > .content');
     var offset = $page.offset();
 
     if ( _.isNumber( $this.data('hascomments') ) ) {
@@ -193,7 +193,7 @@
       var top = offset.top + pos.top + height/2 - 25 - window.pageYOffset;
       $adorner.css('top', top);
 
-      var left = offset.left + pos.left + width;
+      var left = pos.left + width;
       $adorner.css('left', left);
       $adorner.show();
     }
@@ -216,6 +216,22 @@
 
     var $box;
     var $this = $(this);
+
+    $('[data-commentable="1"]').removeClass('active idea issue');
+    $this.addClass('active');
+    var ctype = parseInt( $this.data('hascomments') );
+    switch (ctype) {
+      case 0:
+        $this.addClass('idea');
+        break;
+      case 2:
+        $this.addClass('issue');
+        break;
+      default:
+        $this.addClass('idea');
+        break;
+    }
+
     var self = evt.data;
     var hasComments = _.isNumber( $this.data('hascomments') );
     if ( hasComments ) {
@@ -224,7 +240,8 @@
       $box = $('.qw-comment-editbox');
     }
 
-    $box.css('top', $this.position().top);
+    // 15 = $qw-content-padding/2
+    $box.css('top', $this.position().top - 15);
     $box.data('id', $this.data('p-id'));
 
     if ( hasComments ) {
@@ -264,7 +281,7 @@
 
       $box.find('.comment > .content').text( text );
     } else {
-      $('#qw-cmt-type1').click();
+      $('#qw-cmt-type0').click();
       $('#qw-comment-adorner').hide();
     }
     
