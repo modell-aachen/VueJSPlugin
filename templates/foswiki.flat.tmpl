@@ -48,6 +48,8 @@
 %TMPL:P{"topbar"}%
 %TMPL:P{"menutoggle"}%
 %TMPL:P{"leftbar"}%
+%TMPL:P{"rightbar"}%
+%TMPL:P{"kvpbar"}%
 %TMPL:P{"quicksearch"}%
 <div class="qw-page" data-offcanvas>
   <section class="content"><div>%TMPL:P{"content"}%</div></section>
@@ -76,7 +78,7 @@ jQuery(function($) {
 
 
 %TMPL:DEF{"topbar:search"}%<!--topbar:search-->
-<div class="qw-top-search">
+<div class="qw-quicksearch-form">
   <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
     <div class="input">
       <input name="search"
@@ -93,10 +95,19 @@ jQuery(function($) {
 <!--/topbar:search-->%TMPL:END%
 
 %TMPL:DEF{"quicksearch"}%<!--quicksearch-->
-<div class="qw-quicksearch" data-offcanvas>
-  <div></div>
+<div class="qw-quicksearch" data-offcanvas data-target="quicksearch">
+  <div>
+  </div>
 </div>
 <!--/quicksearch-->%TMPL:END%
+
+
+%TMPL:DEF{"kvpbar"}%<!--kvpbar-->
+<div class="qw-kvpbar" data-offcanvas data-target="kvp">
+  <div class="btn-close-right"></div>
+  <div>%TMPL:P{"kvp"}%</div>
+</div>
+<!--/kvpbar-->%TMPL:END%
 
 
 %TMPL:DEF{"leftbar"}%<!--leftbar-->
