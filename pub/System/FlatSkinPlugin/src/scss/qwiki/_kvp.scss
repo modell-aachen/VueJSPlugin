@@ -17,17 +17,42 @@
     width: 25%;
   }
 
-  .btn-close-right {
-    // display: none;
+  .close {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: $qw-closebtn-bg;
+    color: $qw-closebtn-fg;
+
+    font-size: 1.2rem;
+    width: $qw-top-one-height;
+    height: $qw-top-one-height;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+
+    transition: opacity 0.2s ease-in-out,
+                left 0.5s ease-in-out,
+                background 0.2s ease-in-out;
+
+    &:hover {
+      background: $qw-closebtn-hover-bg;
+    }
+
+    &:active {
+      background: $qw-closebtn-active-bg;
+    }
+
+    > div {
+      padding: rem-calc(18 28);
+    }
   }
 
   &.offcanvas {
     &.kvp {
-      .btn-close-right {
-        // display: block;
+      .close {
         opacity: 1;
+        left: -1 * $qw-top-one-height;
       }
 
       @media #{$medium-only} {
@@ -42,13 +67,4 @@
       }
     }
   }
-}
-
-.btn-close-right {
-  background: $primary-color;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  top: 0;
-  left: -60px;
 }

@@ -19,20 +19,26 @@
     background: $qw-leftbar-toggle-bg;
     cursor: pointer;
     color: white;
-    font-size: 2rem;
+    font-size: 1.2rem;
 
-    > i {
-      padding: rem-calc(20);
-      &:before {
-        margin-top: 15px;
-      }
+    > div {
+      padding: rem-calc(18 22);
     }
+    // > i {
+    //   padding: rem-calc(20);
+    //   &:before {
+    //     margin-top: 15px;
+    //   }
+    // }
   }
 
   &.offcanvas.leftbar {
     transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
-    > .toggle > i {
-      @extend .icon-arrow-left;
+    > .toggle > div { 
+      padding: rem-calc(18 24);
+        > i {
+        @extend .icon-arrow-left;
+      }
     }
   }
 }

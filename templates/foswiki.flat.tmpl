@@ -67,7 +67,12 @@ jQuery(function($) {
 <nav class="qw-top" data-offcanvas>
   <div class="one">
     <div class="breadcrumb"><div>%TMPL:P{"breadcrumb"}%</div></div>
-    <div class="search"><div>%TMPL:P{"topbar:search"}%</div></div>
+    <div class="search">
+      <div class="close" data-offcanvas-toggle="quicksearch">
+        <div><i class="icon-arrow-right"></i></div>
+      </div>
+      <div>%TMPL:P{"topbar:search"}%</div>
+    </div>
   </div>
   <div class="two">
     <div class="actions"><div>&nbsp;</div></div>
@@ -104,14 +109,16 @@ jQuery(function($) {
 
 %TMPL:DEF{"kvpbar"}%<!--kvpbar-->
 <div class="qw-kvpbar" data-offcanvas data-target="kvp">
-  <div class="btn-close-right"></div>
+  <div class="close" data-offcanvas-toggle="kvp">
+    <div><i class="icon-arrow-right"></i></div>
+  </div>
   <div>%TMPL:P{"kvp"}%</div>
 </div>
 <!--/kvpbar-->%TMPL:END%
 
 
 %TMPL:DEF{"leftbar"}%<!--leftbar-->
-<nav class="qw-leftbar" data-offcanvas>
+<nav class="qw-leftbar" data-offcanvas data-target="leftbar">
   <section class="buttons">%TMPL:P{"leftbar:buttons"}%</section>
   <section class="menu">
     <div class="links">%TMPL:P{"leftbar:links"}%</div>
@@ -124,50 +131,33 @@ jQuery(function($) {
 </nav>
 <!--/leftbar-->%TMPL:END%
 
+
+%TMPL:DEF{"rightbar"}%<!--rightbar-->
+<div class="qw-rightbar" data-offcanvas data-target="rightbar">
+  <span>ALLGEMEIN</span>
+  <ul>
+    <li><a href="#">FooBar 01</a></li>
+    <li><a href="#">FooBar 02</a></li>
+    <li><a href="#">FooBar 03</a></li>
+    <li><a href="#">FooBar 04</a></li>
+    <li><a href="#">FooBar 05</a></li>
+    <li><a href="#">FooBar 06</a></li>
+    <li><a href="#">FooBar 07</a></li>
+    <li><a href="#">FooBar 08</a></li>
+    <li><a href="#">FooBar 09</a></li>
+    <li><a href="#">FooBar 10</a></li>
+  </ul>
+  <div style="display: none;">%TMPL:P{"attachments"}%</div>
+</div>
+<!--/rightbar-->%TMPL:END%
+
 %TMPL:DEF{"menutoggle"}%<!--menutoggle-->
 <div class="qw-menutoggle" data-offcanvas>
   <div class="customer-logo">%TMPL:P{"logo"}%</div>
-  <span class="toggle" data-offcanvas-toggle="leftbar"><i class="icon-menu"></i></span>
+  <div class="toggle" data-offcanvas-toggle="leftbar"><div><i class="icon-menu"></i></div></div>
 </div>
 <!--/menutoggle-->%TMPL:END%
 
-
-%TMPL:DEF{"offcanvas:rightbar"}%<!--offcanvas:rightbar-->
-<div id="qw-offcanvas-rightbar" class="qw-offcanvas-rightbar" data-rightbar>
-  <section class="title">
-    <a href="#" class="close" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar">
-      <i class="fa fa-chevron-right"></i>
-    </a>
-    <span>%MAKETEXT{"Further Information"}%</span>
-  </section>
-  <section class="links"><ul></ul></section>
-  <section class="container">
-    <div class="top">
-      <a href="#" class="close"><i class="fa fa-chevron-left"></i> %MAKETEXT{"Back"}%</a>
-      <span class="title"></span>
-    </div>
-    <div class="content">
-    </div>
-  </section>
-</div>
-<!--/offcanvas:rightbar-->%TMPL:END%
-
-%TMPL:DEF{"offcanvas:search"}%<!--offcanvas:search-->
-<section id="qw-searchbar" class="qw-offcanvas-search" data-quicksearch>
-  <div class="filter">
-  </div>
-  <div class="results"></div>
-</section>
-<section id="qw-search-pageoverlay">
-  <div class="overlay-top"></div>
-</section>
-<section id="qw-searchpreview">
-  <div class="close">
-    <div class="qw-close-btn" data-close-preview></div>
-  </div>
-  <div class="content"></div>
-</section>
-<!--/offcanvas:search-->%TMPL:END%
 
 %TMPL:DEF{"breadcrumb"}%<!--breadcrumb-->
 <ul class="qw-breadcrumb" data-breadcrumb>
@@ -185,20 +175,6 @@ jQuery(function($) {
 %TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%TOPIC%'/TopicTitle" then="$percntFORMFIELD{\"TopicTitle\"}$percnt" else="$percntTOPIC$percnt"}%%TMPL:END%
 
 %TMPL:DEF{"attachments"}%%META{"attachments"}%%TMPL:END%
-%TMPL:DEF{"offcanvas:rightbar:includes"}%<!--offcanvas:rightbar:includes-->
-<div data-rightbar-item>
-  <a href="#" data-content="#qw-attachments" data-title="%MAKETEXT{"Attachments"}%">
-    %MAKETEXT{"Attachments"}% <i class="fa fa-chevron-right right"></i>
-  </a>
-  <div id="qw-attachments">%TMPL:P{"attachments"}%</div>
-</div>
-<div data-rightbar-item>
-  <a href="#" data-content="#qw-foobar" data-title="Foobar">
-    Foobar <i class="fa fa-chevron-right right"></i>
-  </a>
-  <div id="qw-foobar">Foobar 2000!</div>
-</div>
-<!--/offcanvas:rightbar:includes-->%TMPL:END%
 
 
 %TMPL:DEF{"comments"}%<!--comments-->

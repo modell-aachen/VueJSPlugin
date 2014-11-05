@@ -1,23 +1,23 @@
 .qw-close-btn {
-  @include button( $radius: true, $bg: $qw-closebtn-bg-color );
+  @include button( $radius: true, $bg: $qw-closebtn-bg );
 
   padding: rem-calc(12);
   font-size: 1rem;
   line-height: 1rem;
   border: 1px solid transparent;
-  color: $qw-closebtn-fg-color;
+  color: $qw-closebtn-fg;
 
   @extend .icon-close;
   font-family:"qwiki-font";
   &:before { font-size: rem-calc(20); }
 
   &:hover {
-    background-color: $qw-closebtn-bg-hover-color;
-    color: $qw-closebtn-fg-color;
+    background-color: $qw-closebtn-hover-bg;
+    color: $qw-closebtn-fg;
   }
   &:active {
-    background-color: $qw-closebtn-bg-active-color;
-    color: $qw-closebtn-fg-active-color;
+    background-color: $qw-closebtn-active-bg;
+    color: $qw-closebtn-fg;
   }
 }
 

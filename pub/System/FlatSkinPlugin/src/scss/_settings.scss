@@ -99,11 +99,10 @@ $qw-link-bg-active-color: $primary-color;
 $qw-link-fg-active-color: white;
 $qw-link-inlay-bg-color: white;
 
-$qw-closebtn-bg-color: $qw-link-bg-color;
-$qw-closebtn-fg-color: $qw-link-fg-color;
-$qw-closebtn-bg-hover-color: $qw-link-bg-hover-color;
-$qw-closebtn-bg-active-color: $qw-link-bg-active-color;
-$qw-closebtn-fg-active-color: $qw-link-fg-active-color;
+$qw-closebtn-fg: #fff;
+$qw-closebtn-bg: #236aa2;
+$qw-closebtn-hover-bg: #2c85c9;
+$qw-closebtn-active-bg: #1b537d;
 
 $qw-input-bg-color: #f0f0f0;
 $qw-input-placeholder-color: #a3a3a3;
@@ -238,10 +237,7 @@ $qw-quicksearch-bg: $qw-content-bg;
 $qw-quicksearch-active-bg: $qw-body-bg;
 $qw-quicksearch-border-width: $qw-border-width;
 $qw-quicksearch-border-color: $qw-border-bg;
-$qw-quicksearch-close-btn-bg: $qw-closebtn-bg-color;
-$qw-quicksearch-close-btn-color: $primary-color;
-$qw-quicksearch-result-bg: $qw-content-bg;
-$qw-quicksearch-result-hover-bg: $qw-closebtn-bg-color;
+
 
 $qw-search-bg: $qw-content-bg;
 $qw-search-border-width: $qw-border-width;
@@ -251,9 +247,6 @@ $qw-search-height: 40px;
 
 
 $qw-rightbar-bg: $qw-content-bg;
-$qw-rightbar-active-bg: $qw-body-bg;
-$qw-rightbar-border-width: $qw-border-width;
-$qw-rightbar-border-color: $qw-border-bg;
 
 
 // document head (DocumentForm in view ctx)
