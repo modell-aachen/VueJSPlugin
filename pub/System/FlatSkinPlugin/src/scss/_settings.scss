@@ -53,7 +53,7 @@ $secondary-color: #ccc;
 $alert-color: maroon;
 $success-color: #70af57;
 $success-color-hover: #61964b;
-$warning-color: #dd6936;
+$warning-color: #fff6a6;
 $info-color: #a0d3e8;
 
 $body-bg: #f5f5f5;
@@ -66,8 +66,7 @@ $qw-content-bg: #fff;
 $qw-info-color: $primary-color;
 $qw-draft-color: $alert-color;
 $qw-edit-color: $warning-color;
-$qw-joined-draft-hover-color: #c44a2b;
-$qw-approved-color: $success-color;
+$qw-approved-color: white;
 
 
 // colors: generic interaction elements
@@ -195,9 +194,21 @@ $qw-weblist-intend: rem-calc(15);
 
 // tabs
 $qw-tab-active-color: white;
-$qw-tab-active-style: bold;
+$qw-tab-active-weight: normal;
+$qw-tab-active-weight: normal;
+$qw-tab-approved-active-color: white;
+$qw-tab-approved-inactive-color: white;
+$qw-tab-deco-border-width: 0.2rem;
+$qw-tab-pseudoborder: 0.5rem;
 $qw-tab-radius: rem-calc(3);
-
+$qw-tab-subtab-color: darken($secondary-color, 5%);
+$qw-tab-text-active-color: black;
+$qw-tab-text-active-hilight-color: lighten($qw-tab-text-active-color, 35%);
+$qw-tab-text-inactive-color: #5f5f5f;
+$qw-tab-text-inactive-hilight-color: darken($qw-tab-text-inactive-color, 10%);
+$qw-tab-transition-time: 0.2s;
+$qw-tab-unapproved-active-color: $qw-edit-color;
+$qw-tab-unapproved-inactive-color: white;
 
 // attachtable
 $qw-attachtable-link-color: body-font-color;
@@ -264,3 +275,6 @@ $qw-tooltip-bg: #4d4d4d;
 
 
 $qw-kvpbar-bg: $qw-content-bg;
+
+
+$qw-stripes:url('../assets/pattern_10x10_digstripes_white.png');

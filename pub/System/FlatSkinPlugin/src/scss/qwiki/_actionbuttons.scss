@@ -1,28 +1,102 @@
+$qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $qw-tab-deco-border-width;
+
 .qw-joinedtab {
+  display: table-cell;
   float: left;
   margin-right: $button-tny;
-  height: 100%;
+  height: calc( #{$qw-top-two-height} - 2 * #{$qw-tab-pseudoborder} );
+  padding-top: $qw-tab-pseudoborder;
+  padding-bottom: $qw-tab-pseudoborder;
 
-  > a {
-    @include button( $padding: $button-sml, $bg: $secondary-color );
-    padding: $button-sml $button-tny;
-    height: inherit;
-    font-size: rem-calc(13);
+  &,
+  & > *{
+    transition: background $qw-tab-transition-time ease-in-out;
+  }
+
+  & > * {
+      border-width: $qw-tab-deco-border-width;
+      border-style: solid;
+      border-color: transparent;
+  }
+  & > *:not(:first-child) {
+      border-left: none;
+  }
+  & > *:not(:last-child) {
+      border-right: none;
+  }
+  & > *:first-child {
     border-top-left-radius: $qw-tab-radius;
-    // border-top-right-radius: $qw-tab-radius;
-
-    &:before {
-      font-family:"qwiki-font";
-      font-size: 1.75rem;
-      line-height: 1rem;
-      vertical-align: text-top;
-      margin-right: $button-tny;
+    border-bottom-left-radius: $qw-tab-radius;
+    &:hover {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  & > *:last-child {
+    border-top-right-radius: $qw-tab-radius;
+    border-bottom-right-radius: $qw-tab-radius;
+    &:hover {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 
-  > *:last-child {
-      border-top-right-radius: $qw-tab-radius;
+  & a {
+    text-decoration: none;
   }
+
+  &:hover.active {
+    &,
+    &:before,
+    & a {
+      color: $qw-tab-text-active-hilight-color;
+    }
+  }
+  &.active {
+    &,
+    &:before,
+    & a {
+      color: $qw-tab-text-active-color;
+      font-weight: $qw-tab-active-weight;
+    }
+  }
+
+  &:hover {
+    &,
+    &:before,
+    & a {
+      color: $qw-tab-text-inactive-hilight-color;
+    }
+  }
+  &,
+  &:before,
+  & a {
+    color: $qw-tab-text-inactive-color;
+  }
+
+  & > a,
+  & >.sub-tab > a {
+    &:before {
+      font-family:"qwiki-font";
+      font-size: 1.75rem;
+      vertical-align: middle;
+      margin-right: $button-tny;
+      transition: margin-right $qw-tab-transition-time linear;
+    }
+  }
+
+
+  > a {
+    display: inline-block;
+    vertical-align: middle;
+    color: inherit;
+    height: $qw-tab-height;
+    line-height: $qw-tab-height;
+    font-size: rem-calc(13);
+    padding-left: $button-tny;
+    padding-right: $button-tny;
+  }
+
 
   &.approved {
     > a {
@@ -31,10 +105,19 @@
       }
     }
 
-    &.active > a,
-    &:not(.active) > a:hover {
-      background: $qw-approved-color;
-      color: white;
+    &.active,
+    &:hover {
+      &,
+      & > * {
+        background: $qw-tab-approved-active-color;
+      }
+    }
+
+    &.inactive:not(:hover) {
+      background: transparent;
+      > a {
+          background: $qw-tab-approved-inactive-color;
+      }
     }
   }
 
@@ -43,68 +126,53 @@
       @extend .icon-page-draft;
     }
 
-    &.active > a,
-    &:not(.active) > a:hover {
-      background: $qw-edit-color;
-      color: white;
+    & > * {
+        background-image: none;
+    }
+
+    &.inactive {
+      & > * {
+          background-color: $qw-tab-unapproved-inactive-color;
+      }
     }
 
     &:hover,
     &.active {
-      > a {
-        background: $qw-edit-color;
-        color: white;
-      }
+      background-image: $qw-stripes;
+      background-color: $qw-tab-unapproved-active-color;
 
-      > .sub-tab {
-        background: $qw-joined-draft-hover-color;
-        border-color: $qw-edit-color;
-        color: white;
-
-        > a:before {
-          color: white !important;
-        }
+      & > * {
+          background-color: $qw-edit-color;
       }
     }
   }
 
   > .sub-tab {
-    transition: background 0.2s ease-in-out,
-                border-color 0.2s ease-in-out;
-    background: darken($secondary-color, 5%);
-    border: 3px solid $secondary-color;
+    display: inline-block;
     float: right;
-    height: inherit;
+    height: $qw-tab-height;
+
 
     > a {
-      display: block;
-      height: inherit;
+      display: inline-block;
+      height: $qw-tab-height;
+      line-height: $qw-tab-height;
+      border: none;
       font-size: rem-calc(13);
-      line-height: normal;
       font-weight: normal;
-      color: white;
 
-      padding-top: $button-tny;
+      background-color: $qw-tab-subtab-color;
+      background-image: none;
+
+      border-radius: $qw-tab-radius;
+      border-color: $qw-tab-subtab-color;
+
       padding-left: $button-tny;
       padding-right: $button-tny;
-
-      &:before {
-        font-family:"qwiki-font";
-        font-size: 1.75rem;
-        line-height: 1rem;
-        vertical-align: text-top;
-        margin-right: $button-tny;
-        transition: margin-right 0.1s linear;
-      }
-
-      &:hover {
-        color: white;
-      }
 
       &:not(:hover) {
         &:before {
           margin-right: 0;
-          color: #333 !important;
         }
 
         .expander {
@@ -114,18 +182,19 @@
 
       .expander {
         display: block;
+        height: $qw-tab-height;
+        line-height: $qw-tab-height;
         width: auto;
         max-width: rem-calc(500);
         overflow-x: hidden;
         float: right;
-        transition: max-width 0.1s ease-in-out;
+        transition: max-width $qw-tab-transition-time ease-in-out;
         white-space: nowrap;
       }
     }
 
     &.edit > a:before {
       @extend .icon-edit;
-      color: white;
     }
   }
 }

@@ -1,4 +1,4 @@
-%TMPL:DEF{"topbar:two:left"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
+%TMPL:DEF{"topbar:topicactions"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard"}%
 <div class="qw-joinedtab approved active">%TMPL:P{"topbar:two:left:standard:view"}%%IF{"$TOPIC allows 'CHANGE'" then="$percentTMPL:P{\"topbar:two:left:standard:edit\"}$percent"}%</div>
