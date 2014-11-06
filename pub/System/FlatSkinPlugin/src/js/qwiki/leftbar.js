@@ -9,18 +9,18 @@
         $.extend( this, options );
       }
 
-      // $('.links .button').addClass('invisible');
-      // this.bind();
+      $('.links .button').addClass('invisible');
+      this.bind();
     },
 
     bind: function() {
       this.unbind();
-      $('.qw-leftbar > .toggle').on('click', toggleLeftbar);
+      $('.qw-menutoggle > .toggle').on('click', toggleLeftbar);
       $('.qw-leftbar > .buttons .button').on('click', handleBtnClick);
     },
 
     unbind: function() {
-      $('.qw-leftbar > .toggle').off('click', toggleLeftbar);
+      $('.qw-menutoggle > .toggle').off('click', toggleLeftbar);
       $('.qw-leftbar > .buttons .button').off('click', handleBtnClick);
     }
   };
