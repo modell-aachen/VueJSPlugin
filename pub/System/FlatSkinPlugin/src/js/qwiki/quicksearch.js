@@ -34,41 +34,91 @@
     },
 
     bind: function() {
+      var self = this;
       this.unbind();
 
-      $('[data-quicksearch-toggle] + label').on( 'click', this, handleClick );
-      $('[data-quicksearch-toggle]').on( 'keydown', this, handleKeydown );
-      $('[data-quicksearch-toggle]').on( 'autocompleteselect', this, handleSelect );
-      $('[data-close-preview]').on( 'click', this, closePreview );
+      var $e = $('[data-quicksearch]');
+      this.searcher = new SolrSearcher({
+        element: $e
+      });
+      this.searcher.addSubmitButton($('.qw-top-search .submit'));
+      var textfield = new SearchDismaxFilter({
+        // XXX this hardcodes the current structure and needs reworking in
+        // case we ever want two quicksearch elements in a page
+        element: $('.qw-top-search input[name="search"]'),
+        parent: this.searcher
+      });
+      var filters = $e.find('[data-quicksearch-filter-type]');
+      filters.each(function() {
+        var $fe = $(this);
+        var $p = $fe.parent().closest('[data-quicksearch-filter-type]');
+        var p = self.searcher;
+        if ($p.length) {
+          p = $.data($p[0], 'quicksearch_filter');
+          if (!p) {
+            return; // Skip this one; broken parent
+          }
+        }
+        var type = $fe.data('quicksearch-filter-type');
+        var filter;
+        if (type === 'group-filter') {
+          var target = $fe.data('quicksearch-filter-tab-target');
+          filter = new SearchBoolFilter({
+            element: $fe,
+            parent: p,
+            filter: $fe.data('quicksearch-filter-query'),
+            tabTarget: target,
+            tabTitle: $fe.data('quicksearch-filter-tab-title')
+          });
+        }
+        else if (type === 'facet') {
+          var vals = $fe.data('quicksearch-filter-values');
+          if (!vals) {
+            vals = [];
+          } else {
+            vals = vals.split(/\s*,\s*/);
+          }
+          filter = new SearchFacet({
+            element: $fe,
+            parent: p,
+            facetField: $fe.data('quicksearch-filter-field'),
+            combineMode: $fe.data('quicksearch-filter-combine'),
+            selectedValues: vals
+          });
+        } else {
+          QWiki.error("Quicksearch: found filter of unknown type '"+ type +"':", this, "  All children will be ignored...");
+        }
+        $.data($fe[0], 'quicksearch_filter', filter);
+      });
+      $('#qw-searchbar-filters').tabs({
+        heightStyle: 'auto'
+      });
+
+      $e.on( 'solrresults.quicksearch', this, renderResults );
+      $('[data-close-preview]').on( 'click.quicksearch', this, closePreview );
+      $e.find('[data-quicksearch-filter-toggle]').on( 'mousedown.quicksearch', function(ev) {
+        if ($e.find('.filter').is('.active')) {
+          $e.find('.filter').removeClass('active');
+          $e.find('.filter-summary').removeClass('active');
+          $e.find('.filter-hide').removeClass('active');
+          $e.find('.filter-show').addClass('active');
+        } else {
+          $e.find('.filter').addClass('active');
+          $e.find('.filter-summary').addClass('active');
+          $e.find('.filter-hide').addClass('active');
+          $e.find('.filter-show').removeClass('active');
+        }
+        ev.preventDefault();
+      });
     },
 
     unbind: function() {
-      $('[data-quicksearch-toggle] + label').off( 'click', handleClick );
-      $('[data-quicksearch-toggle]').off( 'keydown', handleKeydown );
-      $('[data-quicksearch-toggle]').off( 'autocompleteselect', handleSelect );
-      $('[data-close-preview]').off( 'click', closePreview );
+      if (this.searcher) {
+        this.searcher.unbind();
+        this.searcher.$e.off('.quicksearch');
+      }
+      $('[data-close-preview]').off( '.quicksearch' );
     }
-  };
-
-  var handleClick = function( evt ) {
-    evt.preventDefault();
-    var input = $(this).parent().find('input');
-    doSearch( input, evt.data );
-  };
-
-  var handleKeydown = function( evt ) {
-    if ( evt.which !== 13 ) {
-      return;
-    }
-
-    // don't submit form on enter key down
-    evt.preventDefault();
-    doSearch( this, evt.data );
-  };
-
-  var handleSelect = function( evt, ui ) {
-    evt.preventDefault();
-    doSearch( evt.delegateTarget, evt.data );
   };
 
   var closePreview = function( evt ) {
@@ -77,140 +127,88 @@
     $('.qw-search-result.active').removeClass('active');
   };
 
-  var doSearch = function( input, self ) {
-    var selector = $(input).data('target');
-    var target = {};
-    if ( !selector ) {
-      target = $(input).closest('[data-quicksearch]');
+  var renderResults = function( evt, data ) {
+    var self = evt.data;
+
+    var results = self.searcher.$e.find('.results');
+
+    if ( data.response.numFound === 0 ) {
+      var noResults = tmplNoResults();
+      $(noResults()).appendTo( results );
     } else {
-      target = $(selector);
-    }
-    
-    var results = $(target).find('.results');
-    var query = $(input).val();
-    if ( _.isUndefined( query ) || query.trim() === "" ) {
-      return;
-    }
+      var total = tmplFirstRow();
+      var firstRow = total( data.response );
+      $(firstRow).appendTo( results );
 
-    // clear results container, activate spinner (loading animation)
-    results.empty();
-    results.addClass('searching');
-
-    // disable jQuery UI autocomplete
-    toggleAutocomplete( input );
-
-    // call solr
-    var f = self.Q.foswiki;
-    var url = f.SCRIPTURLPATH + '/rest' + f.SCRIPTSUFFIX + '/SolrPlugin/search?rows=50&q=';
-    $.get( url + query, function( data ) {
-      results.removeClass('searching');
-
-      if ( data.response.numFound === 0 ) {
-        var noResults = tmplNoResults();
-        $(noResults()).appendTo( results );
-      } else {
-        var total = tmplFirstRow();
-        var firstRow = total( data.response );
-        $(firstRow).appendTo( results );
-
-        var tmpl = tmplEntry();
-        for( var i = 0; i < data.response.docs.length; ++i ) {
-          // assign icons
-          var doc = data.response.docs[i];
-          doc.previewIcon = 'approved';
-          if ( doc.workflow_controlled_b && !doc.workflow_isapproved) {
-            doc.previewIcon = 'draft';
-          }
-
-          // apply (underscore) template (see below)
-          var entry = tmpl( doc );
-          $(entry).appendTo( results );
+      var tmpl = tmplEntry();
+      for( var i = 0; i < data.response.docs.length; ++i ) {
+        // assign icons
+        var doc = data.response.docs[i];
+        doc.previewIcon = 'approved';
+        if ( doc.workflow_controlled_b && !doc.workflow_isapproved) {
+          doc.previewIcon = 'draft';
         }
 
-        // in case we found some results, allow to show them all by clicking 'show all'
-        // with top row
-        $('.qw-total-results > a').on( 'click', input, function( evt ) {
-          var form = $(evt.data).closest('form');
-          form.submit();
-          evt.preventDefault();
-        });
+        // apply (underscore) template (see below)
+        var entry = tmpl( doc );
+        $(entry).appendTo( results );
+      }
 
-        var $results = $('.qw-search-result');
-        $results.each( function() {
-          var href = [
-            self.Q.foswiki.SCRIPTURL,
-            '/view',
-            self.Q.foswiki.SCRIPTSUFFIX,
-            $(this).data('url')
-          ].join('');
+      // in case we found some results, allow to show them all by clicking 'show all'
+      // with top row
+      $('.qw-total-results > a').on( 'click', function( evt ) {
+        alert('TODO: was soll dieser Link genau machen?');
+      });
 
-          var $link = $(this).find('a');
-          $link.attr('href', href);
-        });
+      var $results = $('.qw-search-result');
+      $results.each( function() {
+        var href = [
+          self.Q.foswiki.SCRIPTURL,
+          '/view',
+          self.Q.foswiki.SCRIPTSUFFIX,
+          $(this).data('url')
+        ].join('');
 
-        $results.on( 'click', function( evt ) {
-          // return if the user clicked the 'open' button
-          if ( evt.target.localName === 'a' ) {
-            return;
+        var $link = $(this).find('a');
+        $link.attr('href', href);
+      });
+
+      $results.on( 'click', function( evt ) {
+        // return if the user clicked the 'open' button
+        if ( evt.target.localName === 'a' ) {
+          return;
+        }
+
+        $('.qw-search-result.active').removeClass('active');
+        $(this).addClass('active');
+
+        var target = [
+          self.Q.foswiki.SCRIPTURL,
+          '/view',
+          self.Q.foswiki.SCRIPTSUFFIX,
+          $(this).data('url')
+        ];
+
+        var uri = target.join('') + ' .qw-page > .qw-left article.content';
+        var $overlay = $('#qw-search-pageoverlay');
+        if ( !$overlay.hasClass('active') ) {
+          $overlay.addClass('active');
+        }
+
+        if ($overlay.find('.spinner').length === 0) {
+          self.spinner.spin( $overlay[0] );
+        }
+
+        var $preview = $('#qw-searchpreview');
+        $('#qw-searchpreview > .content').load( uri, function() {
+          if ( !$preview.hasClass('active') ) {
+            $preview.addClass('active');
+            self.spinner.stop();
           }
+        } );
 
-          $('.qw-search-result.active').removeClass('active');
-          $(this).addClass('active');
-
-          var target = [
-            self.Q.foswiki.SCRIPTURL,
-            '/view',
-            self.Q.foswiki.SCRIPTSUFFIX,
-            $(this).data('url')
-          ];
-
-          var uri = target.join('') + ' .qw-page > .qw-left article.content';
-          var $overlay = $('#qw-search-pageoverlay');
-          if ( !$overlay.hasClass('active') ) {
-            $overlay.addClass('active');
-          }
-
-          if ($overlay.find('.spinner').length === 0) {
-            self.spinner.spin( $overlay[0] );
-          }
-
-          var $preview = $('#qw-searchpreview');
-          $('#qw-searchpreview > .content').load( uri, function() {
-            if ( !$preview.hasClass('active') ) {
-              $preview.addClass('active');
-              self.spinner.stop();
-            }
-          } );
-
-          evt.preventDefault();
-        });
-      }
-
-      // re-enable autocomplete
-      var ctrl = toggleAutocomplete( input );
-      if ( ctrl ) {
-        ctrl.autocomplete( 'close' );
-      }
-    });
-  };
-
-  var toggleAutocomplete = function( input ) {
-    try {
-      var ctrl = $(input).autocomplete('instance');
-      if ( _.isUndefined( ctrl ) ) {
-        return;
-      }
-
-      var $ctrl = $(ctrl);
-      if ( $ctrl.autocomplete( 'option', 'disabled' ) ) {
-        $ctrl.autocomplete( 'enable' );
-      } else {
-        $ctrl.autocomplete( 'disable' );
-      }
-
-      return $ctrl;
-    } catch ( err ) {
-      // ToDo
+        evt.preventDefault();
+      });
     }
   };
 
