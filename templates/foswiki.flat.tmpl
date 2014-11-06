@@ -100,9 +100,43 @@ jQuery(function($) {
 <!--/topbar:search-->%TMPL:END%
 
 %TMPL:DEF{"quicksearch"}%<!--quicksearch-->
-<div class="qw-quicksearch" data-offcanvas data-target="quicksearch">
-  <div>
+<div class="qw-quicksearch" data-offcanvas data-target="quicksearch" data-quicksearch data-solrsearch-widget>
+  <div class="filter-summary">
+    <div class="filter-toggle" data-quicksearch-filter-toggle>
+      <span class="filter-show">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-down"></i></span>
+      <span class="filter-hide">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-up"></i></span>
+    </div>
+    <div class="filter-active-list" data-solrsearch-filterlist>
+    </div>
+    <div class="filter-reset" data-solrsearch-filterreset>%MAKETEXT{"reset"}%
+    </div>
   </div>
+  <div id="qw-searchbar-filters" class="filter">
+    <ul id="qw-searchbar-filter-tabs">
+      <li><a href="#qw-searchbar-filter-webs">%MAKETEXT{"Webs"}%</a></li>
+    </ul>
+    <ul id="qw-searchbar-filter-webs" data-quicksearch-filter-type="facet" data-quicksearch-filter-field="web" data-quicksearch-filter-combine="OR" data-facet-values>
+      <li data-facet-template><a href="#" class="facet-value" data-facet-value-title></a></li>
+    </ul>
+    <div id="qw-searchbar-filter-topics" data-quicksearch-filter-type="group-filter" data-quicksearch-filter-query="type:topic" data-quicksearch-filter-tab-target="#qw-searchbar-filter-tabs" data-quicksearch-filter-tab-title="%MAKETEXT{"Topics"}%">
+      <dl class="facet-list">
+        <dt>%MAKETEXT{"Type"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="field_DocumentType_s" data-quicksearch-filter-combine="OR" data-facet-values>
+          <li data-facet-template><a href="#" class="facet-value" data-facet-value-title></a></li>
+        </ul></dd>
+        <dt>%MAKETEXT{"Status"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="process_state_s" data-quicksearch-filter-combine="OR" data-facet-values>
+          <li data-facet-template><a href="#" class="facet-value" data-facet-value-title></a></li>
+        </ul></dd>
+      </dl>
+    </div>
+    <div id="qw-searchbar-filter-tasks" data-quicksearch-filter-type="group-filter" data-quicksearch-filter-query="type:action" data-quicksearch-filter-tab-target="#qw-searchbar-filter-tabs" data-quicksearch-filter-tab-title="%MAKETEXT{"Tasks"}%">
+      <dl class="facet-list">
+        <dt>%MAKETEXT{"Status"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="action_status_s" data-quicksearch-filter-combine="OR" data-facet-values>
+          <li data-facet-template><a href="#" class="facet-value" data-facet-value-title></a></li>
+        </ul></dd>
+      </dl>
+    </div>
+  </div>
+  <div class="results"></div>
 </div>
 <!--/quicksearch-->%TMPL:END%
 
