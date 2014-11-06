@@ -1,80 +1,25 @@
-%TMPL:DEF{"document:head:de"}%<!--document:head:de-->
-<div class='qw-document-head'>
-  <a href="#" class="qw-prio2-btn right" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar"><i class="fa fa-info-circle fa-lg"></i> %MAKETEXT{"More information"}%</a>
-  <label>
-    Typ
-    <input type="text" value="%QUERY{"DocumentType"}%" disabled>
-  </label>
-  <label>
-    geltend
-    <input type="text" value="%QUERY{"AreaOfApplication"}%" disabled>
-  </label>
-  <label>
-    verantwortlich
-    <input type="text" value="%QUERY{"Responsible"}%" disabled>
-  </label>
-  <label>
-    Stand
-    <input type="text" value="%REVINFO{format="$date"}%" disabled>
-  </label>
-  <label>
-    Letzter Autor
-    <input type="text" value="%REVINFO{format="$wikiusername"}%" disabled>
-  </label>
-  <div class="clearfix"></div>
-</div>
-<!--/document:head:de-->%TMPL:END%
-
-%TMPL:DEF{"document:head:en"}%<!--document:head:en-->
-<div class='qw-document-head'>
-  <a href="#" class="qw-prio2-btn right" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar"><i class="fa fa-info-circle fa-lg"></i> %MAKETEXT{"More information"}%</a>
-  <label>
-    Typ
-    <input type="text" value="%QUERY{"DocumentType"}%" disabled>
-  </label>
-  <label>
-    geltend
-    <input type="text" value="%QUERY{"AreaOfApplication"}%" disabled>
-  </label>
-  <label>
-    verantwortlich
-    <input type="text" value="%QUERY{"Responsible"}%" disabled>
-  </label>
-  <label>
-    Stand
-    <input type="text" value="%REVINFO{format="$date"}%" disabled>
-  </label>
-  <label>
-    Letzter Autor
-    <input type="text" value="%REVINFO{format="$wikiusername"}%" disabled>
-  </label>
-  <div class="clearfix"></div>
-</div>
-<!--/document:head:en-->%TMPL:END%
-
 %TMPL:DEF{"document:head:auto"}%<!--document:head:auto-->
 <div class='qw-document-head'>
-  <a href="#" class="qw-prio2-btn right" data-offcanvas-toggle data-target="#qw-offcanvas-rightbar" data-type="rightbar"><i class="fa fa-info-circle fa-lg"></i> %MAKETEXT{"More information"}%</a>
-  <label>
-    Typ
-    <input type="text" value="%QUERY{"DocumentType"}%" disabled>
-  </label>
-  <label>
-    geltend
-    <input type="text" value="%QUERY{"AreaOfApplication"}%" disabled>
-  </label>
-  <label>
-    verantwortlich
-    <input type="text" value="%QUERY{"Responsible"}%" disabled>
-  </label>
-  <label>
-    Stand
-    <input type="text" value="%REVINFO{format="$date"}%" disabled>
-  </label>
-  <label>
-    Letzter Autor
-    <input type="text" value="%REVINFO{format="$wikiusername"}%" disabled>
-  </label>
+  <div class="entry">
+    <span class="label">%MAKETEXT{"Type"}%</span>
+    <span class="content">%QUERY{"DocumentType"}%</span>
+  </div>
+  <div class="entry">
+    <span class="label">%MAKETEXT{"Applicable"}%</span>
+    <span class="content">%QUERY{"AreaOfApplication"}%</span>
+  </div>
+  <div class="entry">
+    <span class="label">%MAKETEXT{"Responsible"}%</span>
+    <span class="content user"><i class="icon-user"></i> %QUERY{"Responsible"}%</span>
+  </div>
+  <div class="entry">
+    <span class="label">%MAKETEXT{"Status"}%</span>
+    <span class="content">%REVINFO{format="$date"}%</span>
+  </div>
+  <div class="entry">
+    <span class="label">%MAKETEXT{"Last author"}%</span>
+    <span class="content author"><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span>
+  </div>
   <div class="clearfix"></div>
 </div>
 <!--/document:head:auto-->%TMPL:END%

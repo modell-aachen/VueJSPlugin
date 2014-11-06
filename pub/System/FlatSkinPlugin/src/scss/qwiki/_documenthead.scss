@@ -1,0 +1,47 @@
+.qw-document-head {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  display: -ms-flexbox;
+  -ms-flex-direction: row;
+  -ms-flex-wrap: wrap;
+
+  > .entry {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    -ms-flex-direction: column;
+
+    float: left;
+    margin: rem-calc(0 12 12 0);
+
+    > .label {
+      text-transform: uppercase;
+      color: $qw-dochead-label-color;
+      font-size: $qw-dochead-label-font-size;
+      font-weight: $qw-dochead-label-font-weight;
+      min-width: rem-calc(75);
+    }
+
+    > .content {
+      margin-top: rem-calc(3);
+      $pad: rem-calc(6);
+      padding: rem-calc(6);
+      min-height: rem-calc(30) - 2 * $pad;
+      border-radius: $global-radius;
+
+      background: $qw-dochead-default-box-bg;
+      color: $qw-dochead-default-box-color;
+      font-size: $qw-dochead-default-box-font-size;
+
+      &.user, &.author {
+        background: $qw-dochead-user-box-bg;
+        color: $qw-dochead-user-box-color;
+      }
+    }
+  }
+}

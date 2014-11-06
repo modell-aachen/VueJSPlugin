@@ -263,8 +263,15 @@ $qw-rightbar-bg: $qw-content-bg;
 
 
 // document head (DocumentForm in view ctx)
-$qw-document-head-border-width: $qw-border-width;
-$qw-document-head-border-color: $qw-border-bg;
+$qw-dochead-label-color: #bfbfbf;
+$qw-dochead-label-font-size: rem-calc(10);
+$qw-dochead-label-font-weight: bold;
+$qw-dochead-default-box-bg: #f5f5f5;
+$qw-dochead-default-box-color: #999999;
+$qw-dochead-default-box-font-size: rem-calc(14);
+$qw-dochead-user-box-bg: #f2f5f7;
+$qw-dochead-user-box-color: #236aa2;
+$qw-dochead-user-box-font-size: $qw-dochead-default-box-font-size;
 
 
 $qw-comment-idea-color: #ebcc6e;
