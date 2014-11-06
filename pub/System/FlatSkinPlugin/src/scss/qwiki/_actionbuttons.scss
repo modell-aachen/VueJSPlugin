@@ -1,7 +1,6 @@
 $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $qw-tab-deco-border-width;
 
 .qw-joinedtab {
-  display: table-cell;
   float: left;
   margin-right: $button-tny;
   height: calc( #{$qw-top-two-height} - 2 * #{$qw-tab-pseudoborder} );
@@ -14,15 +13,15 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
   }
 
   & > * {
-      border-width: $qw-tab-deco-border-width;
-      border-style: solid;
-      border-color: transparent;
+    border-width: $qw-tab-deco-border-width;
+    border-style: solid;
+    border-color: transparent;
   }
   & > *:not(:first-child) {
-      border-left: none;
+    border-left: none;
   }
   & > *:not(:last-child) {
-      border-right: none;
+    border-right: none;
   }
   & > *:first-child {
     border-top-left-radius: $qw-tab-radius;
@@ -88,8 +87,6 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
 
   > a {
     display: inline-block;
-    vertical-align: middle;
-    color: inherit;
     height: $qw-tab-height;
     line-height: $qw-tab-height;
     font-size: rem-calc(13);
@@ -127,12 +124,12 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
     }
 
     & > * {
-        background-image: none;
+      background-image: none;
     }
 
     &.inactive {
       & > * {
-          background-color: $qw-tab-unapproved-inactive-color;
+        background-color: $qw-tab-unapproved-inactive-color;
       }
     }
 
@@ -142,16 +139,14 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
       background-color: $qw-tab-unapproved-active-color;
 
       & > * {
-          background-color: $qw-edit-color;
+        background-color: $qw-edit-color;
       }
     }
   }
 
   > .sub-tab {
-    display: inline-block;
     float: right;
     height: $qw-tab-height;
-
 
     > a {
       display: inline-block;
@@ -181,7 +176,6 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
       }
 
       .expander {
-        display: block;
         height: $qw-tab-height;
         line-height: $qw-tab-height;
         width: auto;
