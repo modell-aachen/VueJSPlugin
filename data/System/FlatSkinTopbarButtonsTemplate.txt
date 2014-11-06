@@ -14,6 +14,6 @@
 <a href="#" class="qw-action-button"><i class="icon-fav-inactive"></i></a>
 <a href="#" class="qw-action-button"><i class="icon-forward"></i></a>
 <a href="#" class="qw-action-button"><i class="icon-more"></i></a>
-<a href="#" class="qw-action-button right space-left" data-offcanvas-toggle="kvpbar" data-offcanvas-sticky-toggle><i class="icon-kvp"></i></a>
+<a href="#" class="qw-action-button right space-left" data-offcanvas-toggle="kvpoverlay" data-offcanvas-sticky-toggle><i class="icon-kvp"></i></a>
 <a href="#" class="qw-action-button right" data-offcanvas-toggle="infobar" data-offcanvas-sticky-toggle><i class="icon-page-info"></i></a>
 %TMPL:END%

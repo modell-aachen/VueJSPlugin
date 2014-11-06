@@ -1,9 +1,9 @@
-.qw-kvpbar {
+.qw-kvpoverlay {
   position: fixed;
   top: 0;
   right: 0;
   height: 100%;
-  background: $qw-kvpbar-bg;
+  background: $qw-kvpoverlay-bg;
 
   z-index: 101;
   transform: translate3d( 100%, 0, 0 );
@@ -49,7 +49,7 @@
   }
 
   &.offcanvas {
-    &.kvpbar {
+    &.kvpoverlay {
       .close {
         opacity: 1;
         left: -1 * $qw-top-one-height;
