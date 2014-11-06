@@ -216,7 +216,7 @@ jQuery(function($) {
 </ul>
 <!--/breadcrumb-->%TMPL:END%
 
-%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home"><a href="#" data-dropdown="qw-processmap"><i class="icon-app-processes"></i></a></li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home">[[%USERSWEB%/%HOMETOPIC%][<i class="icon-app-processes"></i>]]</li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][TBD. WebHome Text]]</li>"}%%TMPL:END%
