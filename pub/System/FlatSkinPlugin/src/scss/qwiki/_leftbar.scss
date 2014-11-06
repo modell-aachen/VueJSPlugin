@@ -18,7 +18,7 @@
       transform: translate3d( 0, 0, 0);
     }
 
-    &.quicksearch, &.kvp {
+    &.quicksearch, &.kvpbar {
       $offset: -1 * ($qw-leftbar-width-expanded + $qw-leftbar-width);
       transform: translate3d($offset, 0, 0);
     }

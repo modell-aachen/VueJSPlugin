@@ -30,7 +30,7 @@
       }
     }
 
-    &.quicksearch, &.kvp {
+    &.quicksearch, &.kvpbar {
       @media #{$medium-only} {
         transform: translate3d( -1 * $qw-leftbar-width, 0, 0 );
       }

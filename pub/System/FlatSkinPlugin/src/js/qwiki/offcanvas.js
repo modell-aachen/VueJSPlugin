@@ -30,9 +30,8 @@
     }
 
 
-    var cls = ['leftbar', 'infobar', 'quicksearch', 'kvp', 'offcanvas'];
+    var cls = ['leftbar', 'infobar', 'quicksearch', 'kvpbar', 'offcanvas'];
     $('[data-offcanvas]').removeClass( _.without(cls, target).join(' ') );
-    
     $('[data-offcanvas]').toggleClass( 'offcanvas ' + target );
     
     var wasActive = false;
@@ -92,7 +91,7 @@
       return this;
     }
 
-    var cls = ['leftbar', 'infobar', 'quicksearch', 'kvp', 'offcanvas'];
+    var cls = ['leftbar', 'infobar', 'quicksearch', 'kvpbar', 'offcanvas'];
     var $ocvs = $('[data-offcanvas]');
     $ocvs.removeClass( _.without(cls, target).join(' ') );
 

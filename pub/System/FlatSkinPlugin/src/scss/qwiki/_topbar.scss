@@ -212,7 +212,7 @@
       }
     }
 
-    &.kvp {
+    &.kvpbar {
       transform: translate3d( -1 * $qw-leftbar-width, 0, 0 );
       background: $qw-quicksearch-bg;
 
@@ -223,7 +223,7 @@
       }
     }
 
-    &.kvp, &.quicksearch {
+    &.kvpbar, &.quicksearch {
       .two .actions > div {
         @media #{$large-up} {
           $w: $qw-content-padding + rem-calc(2 * $qw-leftbar-width);
