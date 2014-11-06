@@ -23,14 +23,27 @@
   };
 
   var handleClick = function() {
-    var target = $(this).data('offcanvas-toggle');
+    var $this = $(this);
+    var target = $this.data('offcanvas-toggle');
     if ( !target ) {
       return;
     }
 
+
     var cls = ['leftbar', 'infobar', 'quicksearch', 'kvp', 'offcanvas'];
     $('[data-offcanvas]').removeClass( _.without(cls, target).join(' ') );
+    
     $('[data-offcanvas]').toggleClass( 'offcanvas ' + target );
+    
+    var wasActive = false;
+    if ( $this.has('[data-offcanvas-sticky-toggle]') ) {
+      wasActive = $this.hasClass('active');
+    }
+
+    $('[data-offcanvas-sticky-toggle]').removeClass('active');
+    if ( !wasActive ) {
+      $this.addClass('active');
+    }
   };
 
   /*
