@@ -48,7 +48,7 @@
 %TMPL:P{"topbar"}%
 %TMPL:P{"menutoggle"}%
 %TMPL:P{"leftbar"}%
-%TMPL:P{"rightbar"}%
+%TMPL:P{"infobar"}%
 %TMPL:P{"kvpbar"}%
 %TMPL:P{"quicksearch"}%
 <div class="qw-page" data-offcanvas>
@@ -75,7 +75,18 @@ jQuery(function($) {
     </div>
   </div>
   <div class="two">
-    <div class="actions"><div>%TMPL:P{"topbar:topicactions"}%</div></div>
+    <div class="actions">
+      <div>
+        <div>
+          <div class="tabs"><div>Lorem ipsum</div></div>
+        </div>
+        <div>
+          <div class="topicactions">
+            <div>%TMPL:P{"topbar:topicactions"}%</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="toggle"><div>&nbsp;</div></div>
   </div>
 </nav>
@@ -132,8 +143,8 @@ jQuery(function($) {
 <!--/leftbar-->%TMPL:END%
 
 
-%TMPL:DEF{"rightbar"}%<!--rightbar-->
-<div class="qw-rightbar" data-offcanvas data-target="rightbar">
+%TMPL:DEF{"infobar"}%<!--infobar-->
+<div class="qw-infobar" data-offcanvas data-target="infobar">
   <span>ALLGEMEIN</span>
   <ul>
     <li><a href="#">FooBar 01</a></li>
@@ -149,7 +160,7 @@ jQuery(function($) {
   </ul>
   <div style="display: none;">%TMPL:P{"attachments"}%</div>
 </div>
-<!--/rightbar-->%TMPL:END%
+<!--/infobar-->%TMPL:END%
 
 %TMPL:DEF{"menutoggle"}%<!--menutoggle-->
 <div class="qw-menutoggle" data-offcanvas>
