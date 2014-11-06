@@ -1,4 +1,5 @@
-%TMPL:DEF{"topbar:topicactions"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
+%TMPL:DEF{"topbar:tabs"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
+%TMPL:DEF{"topbar:actions"}%%TMPL:P{"topbar:two:right"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard"}%
 <div class="qw-joinedtab approved active">%TMPL:P{"topbar:two:left:standard:view"}%%IF{"$TOPIC allows 'CHANGE'" then="$percentTMPL:P{\"topbar:two:left:standard:edit\"}$percent"}%</div>
@@ -9,18 +10,10 @@
 %TMPL:DEF{"topbar:two:left:standard:edit"}%<div class="sub-tab edit %IF{"context edit" then="active" else="inactive"}%"><a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?t=%GMTIME{"$epoch"}%"><span class="expander">%MAKETEXT{"Edit topic"}%</span></a></div>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right"}%
-<li><a href="#" class="qw-action-button"><i class="fa fa-bookmark-o"></i></a></li>
-<li><a href="#" class="qw-action-button"><i class="fa fa-print"></i></a></li>
-<li><a href="#" class="qw-action-button"><i class="fa fa-cog"></i></a></li>
-<li>
-  <a href="#" data-dropdown="qw-lang-drop" class="qw-action-button dropdown">
-    <i class="fa fa-flag show-for-small-only"></i>
-    <span class="show-for-medium-up">deutsch</span>
-  </a>
-</li>
-<ul id="qw-lang-drop" data-dropdown-content class="f-dropdown">
-  <li><a href="#">lang 1</a></li>
-  <li><a href="#">lang 2</a></li>
-  <li><a href="#">lang 3</a></li>
-</ul>
+<a href="#" class="qw-action-button"><i class="icon-flag"></i></a>
+<a href="#" class="qw-action-button"><i class="icon-fav-inactive"></i></a>
+<a href="#" class="qw-action-button"><i class="icon-forward"></i></a>
+<a href="#" class="qw-action-button"><i class="icon-more"></i></a>
+<a href="#" class="qw-action-button right" data-offcanvas-toggle="kvp"><i class="icon-kvp"></i></a>
+<a href="#" class="qw-action-button right" data-offcanvas-toggle="infobar"><i class="icon-page-info"></i></a>
 %TMPL:END%

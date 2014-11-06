@@ -195,7 +195,8 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
 
 // printing, further topic actions, language selector, etc
 .qw-action-button {
-  @include button( $padding: $button-tny, $bg: $secondary-color );
+  @include button( $padding: $button-tny, $bg: $qw-content-bg );
   margin-bottom: 0px;
   background: transparent;
+  padding: rem-calc(7 10);
 }

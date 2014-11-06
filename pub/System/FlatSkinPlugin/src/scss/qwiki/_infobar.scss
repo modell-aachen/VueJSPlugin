@@ -25,15 +25,15 @@
       opacity: 0;
     }
 
-    &.leftbar {
-      @media #{$small-up} {
-        transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
-      }
+    // &.leftbar {
+    //   @media #{$small-up} {
+    //     transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
+    //   }
 
-      @media #{$large-up} {
-        transform: translate3d( $qw-leftbar-width-expanded - $qw-leftbar-width, 0, 0 );
-      }
-    }
+    //   @media #{$large-up} {
+    //     transform: translate3d( $qw-leftbar-width-expanded - $qw-leftbar-width, 0, 0 );
+    //   }
+    // }
 
     &.infobar {
       transform: translate3d( 0, 0, 0 );

@@ -87,17 +87,14 @@
 
       @media #{$small-only} {
         @include grid-column($columns: 11, $collapse: true);
-        // padding-left: $qw-content-padding;
       }
 
       @media #{$medium-only} {
         @include grid-column($columns: 8, $collapse: true);
-        // padding-left: $qw-content-padding;
       }
 
       @media #{$large-up} {
         @include grid-column($columns: 9, $collapse: true);
-        // padding-left: $qw-content-padding + rem-calc($qw-leftbar-width);
       }
 
       > div {
