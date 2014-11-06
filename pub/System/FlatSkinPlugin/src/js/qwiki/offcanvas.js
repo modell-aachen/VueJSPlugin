@@ -26,7 +26,7 @@
     var $this = $(this);
     var target = $this.data('offcanvas-toggle');
     if ( !target ) {
-      return;
+      return false;
     }
 
 
@@ -43,6 +43,8 @@
     if ( !wasActive ) {
       $this.addClass('active');
     }
+
+    return false;
   };
 
   /*
