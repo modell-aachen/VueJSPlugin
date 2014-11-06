@@ -1,3 +1,37 @@
+.qw-kvpbar {
+  position: fixed;
+  top: $qw-top-height;
+  right: $qw-content-padding;
+  background: $qw-rightbar-bg;
+  height: auto;
+  z-index: 1;
+  opacity: 1;
+
+  transform: translate3d( 150%, 0, 0 );
+  transition: opacity 0.5s ease-in-out,
+              transform 0.3s ease-in-out;
+
+  @media #{$small-only} {}
+  @media #{$medium-only} {
+    width: 25%;
+  }
+
+  @media #{$large-up} {
+    width: calc(25% - 2.5 * #{$qw-content-padding});
+  }
+
+  &.offcanvas {
+    &.quicksearch, &.kvpoverlay {
+      opacity: 0;
+    }
+
+    &.kvpbar {
+      transform: translate3d( 0, 0, 0 );
+    }
+  }
+}
+
+
 .qw-kvpoverlay {
   position: fixed;
   top: 0;

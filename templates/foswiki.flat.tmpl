@@ -49,6 +49,7 @@
 %TMPL:P{"menutoggle"}%
 %TMPL:P{"leftbar"}%
 %TMPL:P{"infobar"}%
+%TMPL:P{"kvpbar"}%
 %TMPL:P{"kvpoverlay"}%
 %TMPL:P{"quicksearch"}%
 <div class="qw-page" data-offcanvas>
@@ -154,6 +155,12 @@ jQuery(function($) {
 </div>
 <!--/quicksearch-->%TMPL:END%
 
+
+%TMPL:DEF{"kvpbar"}%<!--kvpbar-->
+<div class="qw-kvpbar" data-offcanvas data-target="kvpbar">
+  <div></div>
+</div>
+<!--/kvpbar-->%TMPL:END%
 
 %TMPL:DEF{"kvpoverlay"}%<!--kvpoverlay-->
 <div class="qw-kvpoverlay" data-offcanvas data-target="kvpoverlay">
