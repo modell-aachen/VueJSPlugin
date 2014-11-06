@@ -6,7 +6,7 @@
   width: $qw-page-width;
   max-width: $qw-page-width;
 
-  > .content {
+  > .content, .heading {
     background: $qw-content-bg;
     @media #{$small-only} {@include grid-column($columns: $total-columns, $collapse: true);}
     @media #{$medium-only} {@include grid-column($columns: 8, $collapse: true);}
