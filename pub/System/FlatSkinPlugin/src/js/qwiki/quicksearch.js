@@ -41,11 +41,11 @@
       this.searcher = new SolrSearcher({
         element: $e
       });
-      this.searcher.addSubmitButton($('.qw-top-search .submit'));
+      this.searcher.addSubmitButton($('.qw-quicksearch-form .submit'));
       var textfield = new SearchDismaxFilter({
         // XXX this hardcodes the current structure and needs reworking in
         // case we ever want two quicksearch elements in a page
-        element: $('.qw-top-search input[name="search"]'),
+        element: $('.qw-quicksearch-form input[name="search"]'),
         parent: this.searcher
       });
       var filters = $e.find('[data-quicksearch-filter-type]');
