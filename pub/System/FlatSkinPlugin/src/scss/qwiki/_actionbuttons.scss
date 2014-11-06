@@ -195,8 +195,28 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
 
 // printing, further topic actions, language selector, etc
 .qw-action-button {
-  @include button( $padding: $button-tny, $bg: $qw-content-bg );
+  @include button( $padding: $button-tny, $bg: $qw-actionbtn-bg, $radius: $global-radius );
   margin-bottom: 0px;
-  background: transparent;
-  padding: rem-calc(7 10);
+  padding: rem-calc(4 10);
+  margin-top: rem-calc(3);
+  color: $qw-actionbtn-color;
+
+  &:hover {
+    background: $qw-actionbtn-hover-bg;
+    color: $qw-actionbtn-hover-color;
+  }
+
+  &:active {
+    background: $qw-actionbtn-active-bg;
+    color: $qw-actionbtn-hover-color;
+  }
+
+  &.active {
+    background: $qw-actionbtn-active-bg;
+    color: $qw-actionbtn-hover-color;
+
+    &:hover {
+      background: lighten($qw-actionbtn-active-bg, 10%);
+    }
+  }
 }
