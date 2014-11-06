@@ -303,7 +303,7 @@ module.exports = function(grunt) {
         dest: '<%= pkg.pubDir %>/fonts',
         destCss: '<%= pkg.pubDir %>/src/scss/qwiki',
         options: {
-          htmlDemo: false,
+          htmlDemo: true,
           autoHint: true,
           descent: 96,
           stylesheet: 'scss',

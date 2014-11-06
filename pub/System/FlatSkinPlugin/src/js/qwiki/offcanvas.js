@@ -28,7 +28,7 @@
       return;
     }
 
-    var cls = ['leftbar', 'rightbar', 'quicksearch', 'kvp', 'offcanvas'];
+    var cls = ['leftbar', 'infobar', 'quicksearch', 'kvp', 'offcanvas'];
     $('[data-offcanvas]').removeClass( _.without(cls, target).join(' ') );
     $('[data-offcanvas]').toggleClass( 'offcanvas ' + target );
   };
@@ -79,7 +79,7 @@
       return this;
     }
 
-    var cls = ['leftbar', 'rightbar', 'quicksearch', 'kvp', 'offcanvas'];
+    var cls = ['leftbar', 'infobar', 'quicksearch', 'kvp', 'offcanvas'];
     var $ocvs = $('[data-offcanvas]');
     $ocvs.removeClass( _.without(cls, target).join(' ') );
 

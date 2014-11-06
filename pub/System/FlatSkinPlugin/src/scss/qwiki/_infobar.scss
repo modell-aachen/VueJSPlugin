@@ -1,4 +1,4 @@
-.qw-rightbar {
+.qw-infobar {
   position: fixed;
   top: $qw-top-height;
   right: $qw-content-padding;
@@ -7,9 +7,9 @@
   z-index: 1;
   opacity: 1;
 
+  transform: translate3d( 150%, 0, 0 );
   transition: opacity 0.5s ease-in-out,
               transform 0.3s ease-in-out;
-
 
   @media #{$small-only} {}
   @media #{$medium-only} {
@@ -33,6 +33,10 @@
       @media #{$large-up} {
         transform: translate3d( $qw-leftbar-width-expanded - $qw-leftbar-width, 0, 0 );
       }
+    }
+
+    &.infobar {
+      transform: translate3d( 0, 0, 0 );
     }
   }
 }

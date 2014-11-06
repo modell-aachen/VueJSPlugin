@@ -81,14 +81,69 @@
     max-height: $qw-top-two-height;
 
     > .actions {
+      display: table;
+      background: $qw-top-two-bg;
       min-height: $qw-top-two-height;
-      max-height: $qw-top-two-height;
-      @media #{$small-only} {@include grid-column($columns: 11, $collapse: true);}
-      @media #{$medium-up} {@include grid-column($columns: 9, $collapse: true);}
+
+      @media #{$small-only} {
+        @include grid-column($columns: 11, $collapse: true);
+        // padding-left: $qw-content-padding;
+      }
+
+      @media #{$medium-only} {
+        @include grid-column($columns: 8, $collapse: true);
+        // padding-left: $qw-content-padding;
+      }
+
+      @media #{$large-up} {
+        @include grid-column($columns: 9, $collapse: true);
+        // padding-left: $qw-content-padding + rem-calc($qw-leftbar-width);
+      }
 
       > div {
-        @media #{$small-up} {padding-left: $qw-content-padding;}
-        @media #{$large-up} {padding-left: $qw-content-padding + rem-calc($qw-leftbar-width);}
+        width: 100%;
+        height: $qw-top-two-height;
+
+        @media #{$large-up} {
+          $pl: $qw-content-padding + rem-calc($qw-leftbar-width);
+          padding-left: $pl;
+          width: calc( 100% - #{$pl} );
+        }
+
+        display: flex;
+        overflow: hidden;
+
+        > div {
+          height: $qw-top-two-height;
+          overflow: hidden !important;
+
+          &:last-child {
+            flex-grow: 2;
+            padding-left: 10px;
+            padding-top: 10px;
+          }
+
+          .tabs {
+            height: 100%;
+          }
+
+          .topicactions {
+            top: ($qw-top-two-height - 40px)/2;
+            background: $qw-content-bg;
+            border-radius: $global-radius;
+            height: 40px;
+            padding: 0 $qw-content-padding/2;
+
+            i {
+              font-size: 1.5rem;
+              line-height: 1;
+
+              &:last-child {
+                float: right;
+              }
+            }
+          }
+        }
       }
     }
 
@@ -96,7 +151,8 @@
       min-height: $qw-top-two-height;
       max-height: $qw-top-two-height;
       @media #{$small-only} {@include grid-column($columns: 1, $last-column: true, $collapse: true);}
-      @media #{$medium-up} {@include grid-column($columns: 3, $last-column: true, $collapse: true);}
+      @media #{$medium-only} {@include grid-column($columns: 4, $last-column: true, $collapse: true);}
+      @media #{$large-up} {@include grid-column($columns: 3, $last-column: true, $collapse: true);}
     }
   }
 

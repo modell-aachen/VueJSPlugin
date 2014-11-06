@@ -1,3 +1,4 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1411049338" format="1.1" reprev="4" version="4"}%
 ---++ CKEditor Configuration
 ---+++ Main Editor
 %TWISTY{showlink="Show configuration" hidelink="Hide configuration" start="hide"}%
@@ -12,20 +13,21 @@ resize_enabled: false,
 toolbarCanCollapse: false,
 enterMode: CKEDITOR.ENTER_P,
 shiftEnterMode: CKEDITOR.ENTER_BR,
-extraPlugins: 'autogrow,divarea,link,magicline,qwikiautosuggest,qwikitable,qwikitableresize,qwikitabletools,sharedspace',
-removePlugins: 'autosave,elementspath,filebrowser,table,tabletools,tableresize,wordcount',
+extraPlugins: 'autogrow,divarea,link,magicline,qwiki,qwikiautosuggest,qwikitable,qwikitableresize,qwikitabletools,sharedspace,filebrowser,table,tabletools,tableresize',
+removePlugins: 'autosave,elementspath,wordcount',
 removeFormatTags: 'b,big,code,del,dfn,em,font,i,ins,kbd,q,s,samp,small,span,strike,strong,sub,sup,tt,u,var,h1,h2,h3,h4,h5,h6,ol,ul,dl,li,dd,dt,pre,xmp',
 removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign',
 autosave_delay: 10,
 sharedSpaces: {top: 'ckarea'},
 language: '%LANGUAGE%',
 forcePasteAsPlainText: false,
-filebrowserUploadUrl: '%SCRIPTURLPATH{"rest"}%/WysiwygPlugin/upload?noredirect',
+filebrowserUploadUrl: '%SCRIPTURLPATH{"rest"}%/WysiwygPlugin/upload?noredirect&w=%BASEWEB%&t=%BASETOPIC%',
 linkShowAdvancedTab: false,
 linkShowTargetTab: false,
-contentsCss: [ '%PUBURLPATH%/%SYSTEMWEB%/CKEditorPlugin/styles/cke_qwiki.css'],
+/*contentsCss: [ '%PUBURLPATH%/%SYSTEMWEB%/CKEditorPlugin/styles/cke_qwiki.css'],*/
 
 toolbar_MA: [
+    { name: '', items: [ 'Source' ] },
     { name: '', items: [ 'Undo', 'Redo' ] },
     { name: '', items: [ 'Bold','Italic','Underline' ] },
     { name: '', items: [ 'NumberedList','BulletedList'] },
