@@ -130,28 +130,22 @@
   var renderResults = function( evt, data ) {
     var self = evt.data;
 
-    var results = self.searcher.$e.find('.results');
+    var list = self.searcher.$e.find('.results');
+    list.empty();
 
     if ( data.response.numFound === 0 ) {
-      var noResults = tmplNoResults();
-      $(noResults()).appendTo( results );
+      list.qtemplate('add', {_type: 'noresults'});
     } else {
-      var total = tmplFirstRow();
-      var firstRow = total( data.response );
-      $(firstRow).appendTo( results );
-
-      var tmpl = tmplEntry();
+      list.qtemplate('add', {_type: 'total', count: data.response.numFound});
       for( var i = 0; i < data.response.docs.length; ++i ) {
-        // assign icons
         var doc = data.response.docs[i];
-        doc.previewIcon = 'approved';
+        doc.icon = 'qw-ico-approved';
         if ( doc.workflow_controlled_b && !doc.workflow_isapproved) {
-          doc.previewIcon = 'draft';
+          doc.icon = 'qw-ico-draft';
         }
 
-        // apply (underscore) template (see below)
-        var entry = tmpl( doc );
-        $(entry).appendTo( results );
+        doc.snippet = doc.text.substr( 0, 160 ) + (doc.text.length > 160 ? "..." : "");
+        list.qtemplate('add', doc);
       }
 
       // in case we found some results, allow to show them all by clicking 'show all'
@@ -210,46 +204,5 @@
         evt.preventDefault();
       });
     }
-  };
-
-  var tmplFirstRow = function() {
-    var tmpl = [
-      '<div class="qw-total-results">',
-      '<span class="left"><%= numFound %> results</span>',
-      '<a href="#" class="right">alle anzeigen</span>',
-      '</div>'
-    ];
-
-    return _.template( tmpl.join( '\n' ) );
-  };
-
-  var tmplEntry = function() {
-    var tmpl = [
-      '<div class="qw-search-result" data-url="<%= url %>">',
-      '<div class="content">',
-      '<div class="open">',
-      '<a href="#" class="button primary tiny">öffnen</a>',
-      '</div>',
-      '<span class="title"><i class="qw-ico-<%= previewIcon %>"></i><%= title %></span>',
-      '<span class="snippet"><%= text.substr( 0, 160 ) + (text.length > 160 ? "..." : "") %></span>',
-      '</div>',
-      '</div>'
-    ];
-
-    return _.template( tmpl.join( '\n' ) );
-  };
-
-  var tmplLastRow = function() {
-    // ToDo
-  };
-
-  var tmplNoResults = function() {
-    var tmpl = [
-      '<div class="qw-total-results">',
-      '<h3 class="left">TBD. No results...</h3>',
-      '</div>'
-    ];
-
-    return _.template( tmpl.join( '\n' ) );
   };
 }(jQuery, window._, window.document, window));

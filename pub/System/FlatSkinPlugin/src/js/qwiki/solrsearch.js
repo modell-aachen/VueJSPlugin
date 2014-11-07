@@ -262,14 +262,14 @@
       while (ff.length) {
         var title = ff.shift();
         var num = ff.shift();
-        var $v = this.$tmpl.clone();
-        $v.find('[data-facet-value-title]').text(title);
-        $v.find('[data-facet-value-count]').text(num);
-        $v.data('facet-value-id', title);
+        var $v = this.$e.qtemplate('add', {
+          id: title,
+          title: title,
+          count: num
+        });
         if (this.selectedValues[title]) {
           $v.addClass('active');
         }
-        $c.append($v);
       }
     };
 
@@ -296,8 +296,6 @@
         ['facet.field', this.facetField]
       ];
     };
-
-    this.$tmpl = this.$e.find('[data-facet-template]').removeData('facet-template').removeAttr('data-facet-template').attr('data-facet-value', 'data-facet-value').detach();
 
     this.$e.on('click.solrsearch', '[data-facet-value]', function(ev) {
       var $v = $(this);
