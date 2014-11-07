@@ -21,3 +21,11 @@
 .space-left {
   margin-left: rem-calc(6);
 }
+
+.space-top {
+  margin-top: rem-calc(6);
+
+  &.large {
+    margin-top: rem-calc(12);
+  }
+}
