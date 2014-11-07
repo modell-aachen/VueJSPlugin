@@ -100,8 +100,11 @@ $qw-link-inlay-bg-color: white;
 
 $qw-closebtn-fg: #fff;
 $qw-closebtn-bg: #d1d1d1;
+$qw-closebtn-large-bg: #236aa2;
 $qw-closebtn-hover-bg: #cfcfcf;
+$qw-closebtn-hover-large-bg: #2c85c9;
 $qw-closebtn-active-bg: #b0b0b0;
+$qw-closebtn-active-large-bg: #1b537d;
 
 $qw-input-bg-color: #f0f0f0;
 $qw-input-placeholder-color: #a3a3a3;
@@ -230,7 +233,9 @@ $qw-leftbar-width-expanded: 210px;
 $qw-leftbar-border-bg: #f2f2f2;
 $qw-leftbar-bg: #e0e0e0;
 $qw-leftbar-bg-expanded: #fafafa;
-$qw-leftbar-toggle-bg: $primary-color;
+$qw-leftbar-toggle-bg: #236aa2;
+$qw-leftbar-toggle-hover-bg: #2c85c9;
+$qw-leftbar-toggle-active-bg: #1b537d;
 $qw-leftbar-customer-logo-height: $qw-top-one-height;
 $qw-leftbar-ma-logo-height: 40px;
 

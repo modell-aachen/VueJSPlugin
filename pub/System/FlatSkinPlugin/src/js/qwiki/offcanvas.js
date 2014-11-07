@@ -14,7 +14,7 @@
 
     bind: function() {
       this.unbind();
-      $('[data-offcanvas-toggle]').on( 'click', handleClick );
+      $('[data-offcanvas-toggle]').on( 'click', this, handleClick );
     },
 
     unbind: function() {
@@ -22,27 +22,64 @@
     }
   };
 
-  var handleClick = function() {
-    var $this = $(this);
-    var target = $this.data('offcanvas-toggle');
+  var handleClick = function( evt ) {
+    var $self = $(this);
+    var plugin = evt.data;
+
+    // return unless we got a valid offcanvas target area
+    var target = $self.data('offcanvas-toggle');
     if ( !target ) {
       return false;
     }
 
+    // handle sticky toggles (button highlighting)
+    var sticky = $self.attr('data-offcanvas-sticky-toggle');
+    var isSticky = typeof sticky !== typeof undefined && sticky !== false;
+
+    if ( !isSticky ) {
+      var $toggles = $('[data-offcanvas-toggle="' + target + '"');
+      $toggles.each( function() {
+        var $this = $(this);
+        sticky = $this.attr('data-offcanvas-sticky-toggle');
+        if ( typeof sticky !== typeof undefined && sticky !== false ) {
+          $this.toggleClass('active');
+        }
+      });
+    } else {
+      $self.toggleClass('active');
+
+      // remove highlighting for active sticky toggles
+      $('.active[data-offcanvas-sticky-toggle][data-offcanvas-toggle!="' + target + '"]').removeClass('active');
+    }
 
     var cls = ['leftbar', 'infobar', 'quicksearch', 'kvpbar', 'kvpoverlay', 'offcanvas'];
-    $('[data-offcanvas]').removeClass( _.without(cls, target).join(' ') );
-    $('[data-offcanvas]').toggleClass( 'offcanvas ' + target );
-    
-    var wasActive = false;
-    if ( $this.has('[data-offcanvas-sticky-toggle]') ) {
-      wasActive = $this.hasClass('active');
-    }
+    cls = _.without(cls, target);
 
-    $('[data-offcanvas-sticky-toggle]').removeClass('active');
-    if ( !wasActive ) {
-      $this.addClass('active');
-    }
+    // get a collection of currently active stickies
+    var $active = $('.active[data-offcanvas-sticky-toggle]');
+
+    var remove = [target];
+    $active.each( function() {
+      var tgt = $(this).data('offcanvas-toggle');
+      if ( tgt ) {
+        remove.push(tgt);
+      }
+    });
+
+    var toRemove = _.difference(cls, remove);
+
+    // fire closing event for auto-closed offcanvas areas.
+    _.each( _.without( toRemove, 'offcanvas' ), function( e ) {
+      if ( $('[data-offcanvas]').hasClass(e) ) {
+        plugin.Q.raiseEvent( '.qw-' + e, plugin, 'closing' );
+      }
+    });
+
+    $('[data-offcanvas]').removeClass( toRemove.join(' ') );
+    $('[data-offcanvas]').toggleClass( 'offcanvas ' + target );
+
+    // fire opening/closing event for currently selected target
+    plugin.Q.raiseEvent( '.qw-' + target, plugin, $('[data-offcanvas]').hasClass(target) ? 'opening' : 'closing' );
 
     return false;
   };

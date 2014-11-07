@@ -20,6 +20,15 @@
     cursor: pointer;
     color: white;
     font-size: 1.2rem;
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+      background: $qw-leftbar-toggle-hover-bg;
+    }
+
+    &:active {
+      background: $qw-leftbar-toggle-active-bg;
+    }
 
     > div {
       padding: rem-calc(18 22);

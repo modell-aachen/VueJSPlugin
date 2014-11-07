@@ -47,7 +47,7 @@
         margin-left: -1 * $qw-top-one-height;
         float: left;
 
-        background: $qw-closebtn-bg;
+        background: $qw-closebtn-large-bg;
         color: $qw-closebtn-fg;
 
         font-size: 1.2rem;
@@ -60,11 +60,11 @@
                     background 0.2s ease-in-out;
 
         &:hover {
-          background: $qw-closebtn-hover-bg;
+          background: $qw-closebtn-hover-large-bg;
         }
 
         &:active {
-          background: $qw-closebtn-active-bg;
+          background: $qw-closebtn-active-large-bg;
         }
 
         > div {

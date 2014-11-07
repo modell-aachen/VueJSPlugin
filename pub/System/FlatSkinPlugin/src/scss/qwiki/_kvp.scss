@@ -23,6 +23,17 @@
   &.offcanvas {
     &.kvpbar {
       transform: translate3d( 0, 0, 0 );
+
+      &.leftbar {
+        @media #{$medium-only} {
+          transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
+        }
+
+        @media #{$large-up} {
+          $offset: rem-calc($qw-leftbar-width-expanded) - 2 * $qw-content-padding;
+          transform: translate3d( $offset, 0, 0 );
+        }
+      }
     }
   }
 
@@ -81,7 +92,7 @@
     top: 0;
     left: 0;
 
-    background: $qw-closebtn-bg;
+    background: $qw-closebtn-large-bg;
     color: $qw-closebtn-fg;
 
     font-size: 1.2rem;
@@ -95,11 +106,11 @@
                 background 0.2s ease-in-out;
 
     &:hover {
-      background: $qw-closebtn-hover-bg;
+      background: $qw-closebtn-hover-large-bg;
     }
 
     &:active {
-      background: $qw-closebtn-active-bg;
+      background: $qw-closebtn-active-large-bg;
     }
 
     > div {
