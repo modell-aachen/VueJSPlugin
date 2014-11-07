@@ -42,16 +42,20 @@
 %TMPL:DEF{"context"}%approved%TMPL:END%
 
 
-%TMPL:DEF{"body"}%<!--body-->
-%JQREQUIRE{"blockui, cookie, placeholder, ui::tooltip, ui::autocomplete"}%
-<body class="context-%TMPL:P{"context"}%">
-%TMPL:P{"topbar"}%
-%TMPL:P{"menutoggle"}%
+%TMPL:DEF{"offcanvas:bars"}%
 %TMPL:P{"leftbar"}%
 %TMPL:P{"infobar"}%
 %TMPL:P{"kvpbar"}%
 %TMPL:P{"kvpoverlay"}%
 %TMPL:P{"quicksearch"}%
+%TMPL:END%
+
+%TMPL:DEF{"body"}%<!--body-->
+%JQREQUIRE{"blockui, cookie, placeholder, ui::tooltip, ui::autocomplete"}%
+<body class="context-%TMPL:P{"context"}%">
+%TMPL:P{"topbar"}%
+%TMPL:P{"menutoggle"}%
+<!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
 <div class="qw-page" data-offcanvas>
   <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
   <section class="content"><div>%TMPL:P{"content"}%</div></section>
