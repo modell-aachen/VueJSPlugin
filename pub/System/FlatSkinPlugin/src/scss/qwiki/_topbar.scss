@@ -132,6 +132,11 @@
             height: 40px;
             padding: 0 $qw-content-padding/2;
 
+            > div > div.topbar-edit {
+              display: inline-block;
+              float: right;
+            }
+
             i {
               font-size: 1.5rem;
               line-height: 1;
