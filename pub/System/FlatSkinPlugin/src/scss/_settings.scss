@@ -99,9 +99,9 @@ $qw-link-fg-active-color: white;
 $qw-link-inlay-bg-color: white;
 
 $qw-closebtn-fg: #fff;
-$qw-closebtn-bg: #236aa2;
-$qw-closebtn-hover-bg: #2c85c9;
-$qw-closebtn-active-bg: #1b537d;
+$qw-closebtn-bg: #d1d1d1;
+$qw-closebtn-hover-bg: #cfcfcf;
+$qw-closebtn-active-bg: #b0b0b0;
 
 $qw-input-bg-color: #f0f0f0;
 $qw-input-placeholder-color: #a3a3a3;
@@ -274,6 +274,16 @@ $qw-dochead-user-box-color: #236aa2;
 $qw-dochead-user-box-font-size: $qw-dochead-default-box-font-size;
 
 
+$qw-infobar-bg: #ebebeb;
+$qw-infobar-content-bg: $qw-content-bg;
+$qw-infobar-header-color: #4d4d4d;
+$qw-infobar-label-color: #bfbfbf;
+$qw-infobar-label-font-size: rem-calc(12);
+$qw-infobar-label-font-weight: bold;
+$qw-infobar-item-hover-bg: #f2f5f7;
+$qw-infobar-item-hover-color: #236aa2;
+
+
 $qw-comment-idea-color: #ebcc6e;
 $qw-comment-idea-bg: #fff5d9;
 $qw-comment-issue-color: #d99f61;
@@ -284,7 +294,10 @@ $qw-tooltip-bg: #4d4d4d;
 
 
 $qw-kvpoverlay-bg: $qw-content-bg;
-$qw-kvpbar-bg: $qw-content-bg;
+$qw-kvpbar-bg: #ebebeb;
+$qw-kvpbar-content-bg: $qw-content-bg;
+$qw-kvpbar-header-color: #4d4d4d;
+
 
 
 $qw-stripes:url('../assets/pattern_10x10_digstripes_white.png');

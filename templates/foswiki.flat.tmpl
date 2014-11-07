@@ -163,7 +163,11 @@ jQuery(function($) {
 <div class="qw-kvpbar" data-offcanvas data-target="kvpbar">
   <div>
     <div class="header">
-      <div>content here</div>
+      <div>
+        <i class="icon-kvp"></i>
+        <span>%MAKETEXT{"KVP"}%</span>
+        <a href="#" class="qw-close-btn arrow-left" data-offcanvas-toggle="kvpbar"></a>
+      </div>
     </div>
     <div class="content">
       <div>content here</div>
@@ -199,26 +203,33 @@ jQuery(function($) {
 
 %TMPL:DEF{"infobar"}%<!--infobar-->
 <div class="qw-infobar" data-offcanvas data-target="infobar">
-<div>
-  <div class="header"></div>
-  <div class="items"></div>
-</div>
   <div>
-    <span class="label">%MAKETEXT{"General"}%</span>
-    <ul>
-      <li><a href="#">%MAKETEXT{"Attachments"}%</a></li>
-      <li><a href="#">%MAKETEXT{"Version history"}%</a></li>
-      <li><a href="#">%MAKETEXT{"Key figures"}%</a></li>
-      <li><a href="#">%MAKETEXT{"Language comparison"}%</a></li>
-    </ul>
-  </div>
-  <div>
-    <span class="label">%MAKETEXT{"KVP"}%</span>
-    <ul>
-      <li><a href="#">%MAKETEXT{"Tasks"}%</a></li>
-      <li><a href="#">%MAKETEXT{"Actions"}%</a></li>
-      <li><a href="#">%MAKETEXT{"Risks"}%</a></li>
-    </ul>
+    <div class="header">
+      <div>
+        <i class="icon-page-info"></i>
+        <span>%MAKETEXT{"Document information"}%</span>
+        <a href="#" class="qw-close-btn arrow-left" data-offcanvas-toggle="infobar"></a>
+      </div>
+    </div>
+    <div class="content">
+      <div>
+        <span class="label">%MAKETEXT{"General"}%</span>
+        <ul>
+          <li><a href="#">%MAKETEXT{"Attachments"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Version history"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Key figures"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Language comparison"}%</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="label">%MAKETEXT{"KVP"}%</span>
+        <ul>
+          <li><a href="#">%MAKETEXT{"Tasks"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Actions"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Risks"}%</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 <!--/infobar-->%TMPL:END%

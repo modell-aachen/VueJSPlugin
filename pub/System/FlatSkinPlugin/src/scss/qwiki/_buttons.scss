@@ -1,10 +1,9 @@
 .qw-close-btn {
   @include button( $radius: true, $bg: $qw-closebtn-bg );
 
-  padding: rem-calc(12);
+  padding: rem-calc(12 14);
   font-size: 1rem;
   line-height: 1rem;
-  border: 1px solid transparent;
   color: $qw-closebtn-fg;
 
   @extend .icon-close;
@@ -12,12 +11,17 @@
   &:before { font-size: rem-calc(20); }
 
   &:hover {
-    background-color: $qw-closebtn-hover-bg;
-    color: $qw-closebtn-fg;
+    background: $qw-closebtn-hover-bg;
   }
   &:active {
-    background-color: $qw-closebtn-active-bg;
-    color: $qw-closebtn-fg;
+    background: $qw-closebtn-active-bg;
+  }
+
+  &.arrow-left {  @extend .icon-arrow-left; }
+  &.arrow-right { @extend .icon-arrow-right; }
+
+  &.arrow-left, &.arrow-right {
+    padding: rem-calc(12 18);
   }
 }
 
