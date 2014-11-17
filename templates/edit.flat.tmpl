@@ -10,6 +10,11 @@
 %TMPL:P{"formend"}%
 <!--/content-->%TMPL:END%
 
+%{ textareas for WYSIWYG_TEXT }%
+%TMPL:DEF{"textarea"}%%IF{"defined 'EDITOR_MESSAGE'" then="<div class='foswikiAlert'>%EDITOR_MESSAGE%</div>"}%<div class="foswikiEditTextarea">%TMPL:P{context="WYSIWYG_TEXT" then="textarea_wysiwyg" else="textarea_nowysiwyg"}%</div>%TMPL:END%
+%TMPL:DEF{"textarea_nowysiwyg"}%<textarea class="foswikiTextarea foswikiEditboxStyleProportional foswikiWysiwygEdit" id="topic" name="text" rows="%EDITBOXHEIGHT%" cols="%EDITBOXWIDTH%" style='%EDITBOXSTYLE%'>%TEXT%</textarea>%TMPL:END%
+%TMPL:DEF{"textarea_wysiwyg"}%<input type="hidden" name="WYSIWYG_TEXT" value="1" /><textarea class="foswikiTextarea foswikiEditboxStyleProportional foswikiWysiwygEdit WYSIWYG_TEXT WYSIWYG_TEXT_HIDDEN" id="topic" name="text" rows="%EDITBOXHEIGHT%" cols="%EDITBOXWIDTH%" style='%EDITBOXSTYLE%'>%WYSIWYG_TEXT%</textarea>%TMPL:END%
+
 %{ We are showing the form in the rightbar, so be need to remove it from the bottom: }%
 %TMPL:DEF{"formbottom"}%%TMPL:END%
 
