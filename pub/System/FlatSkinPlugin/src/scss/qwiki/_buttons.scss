@@ -326,3 +326,14 @@ ul[data-drop] {
   @media #{$small-only} { display: none; }
   @media #{$medium-only} { display: none; }
 }
+
+.qw-btn-grp {
+  @include button-group-container( $styles: true, $float: false );
+  > li {
+    @include button-group-style( $radius: false, $even: false, $float: left );
+
+    > a {
+      @include button( $padding: rem-calc(10), $bg: $primary-color );
+    }
+  }
+}
