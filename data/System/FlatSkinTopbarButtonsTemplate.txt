@@ -21,4 +21,5 @@
 %TMPL:DEF{"topbar:two:right:edit"}%
 <a href="#" class="qw-action-button" data-offcanvas-toggle="kvpbar" data-offcanvas-sticky-toggle><i class="icon-kvp"></i></a>
 <a href="#" class="qw-action-button" data-offcanvas-toggle="infobar" data-offcanvas-sticky-toggle><i class="icon-page-info"></i></a>
+<a href="#" class="qw-action-button visible-large-up" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-sticky-toggle><i class="icon-maximize"></i></a>
 %TMPL:END%

@@ -6,16 +6,29 @@
   width: $qw-page-width;
   max-width: $qw-page-width;
 
+  > .heading > div {
+    padding-top: $qw-content-padding;
+  }
+
   > .content, .heading {
     background: $qw-content-bg;
-    @media #{$small-only} {@include grid-column($columns: $total-columns, $collapse: true);}
-    @media #{$medium-only} {@include grid-column($columns: 8, $collapse: true);}
-    @media #{$large-up} {@include grid-column($columns: 9, $collapse: true);}
+    transition: width 0.3s ease-in-out;
+
+    @media #{$mobile-up} {@include grid-column($columns: $total-columns, $collapse: true);}
+    @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
+    @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
 
     > div {
-      @media #{$small-up} {padding: $qw-content-padding;}
+      @media #{$mobile-up} {padding: $qw-content-padding;}
       @media #{$large-up} {padding-left: $qw-content-padding + rem-calc($qw-leftbar-width);}
       padding-bottom: $qw-top-height;
+    }
+  }
+
+  &.maximized {
+    > .content, .heading {
+      background: $qw-content-bg;
+      @include grid-column($columns: $total-columns, $collapse: true);
     }
   }
 

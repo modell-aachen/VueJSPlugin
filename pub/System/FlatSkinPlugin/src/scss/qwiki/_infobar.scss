@@ -11,12 +11,19 @@
               transform 0.3s ease-in-out;
 
   $p: percentage(1/12);
-  @media #{$small-only} {}
+  @media #{$mobile-up} {
+    width: 100%;
+  }
+
   @media #{$medium-only} {
+    width: calc(6 * #{$p} - #{$qw-content-padding});
+  }
+
+  @media #{$large-only} {
     width: calc(4 * #{$p} - #{$qw-content-padding} / 1.5);
   }
 
-  @media #{$large-up} {
+  @media #{$extended-up} {
     width: calc(3 * #{$p} - #{$qw-content-padding} / 2);
   }
 

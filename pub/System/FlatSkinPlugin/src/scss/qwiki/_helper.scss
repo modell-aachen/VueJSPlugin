@@ -29,3 +29,8 @@
     margin-top: rem-calc(12);
   }
 }
+
+.visible-large-up {
+  display: none;
+  @media #{$large-up} {display: inline-block;}
+}
