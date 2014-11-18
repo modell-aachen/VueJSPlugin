@@ -73,20 +73,27 @@
           var $n = $(this);
           var spec = $n.attr('qt-bind').split(/\s*,\s*/);
           $.each(spec, function() {
-            var k = this.split(/\s*:\s*/);
-            if (k.length !== 2) {
-              throw "Invalid qt-bind spec: not in key:value format: '"+ this +"'";
+            var bindspec = this,
+              $target = $n,
+              selector = this.match(/^(.*)\s*\/\/\s*(.*)$/);
+            if (selector) {
+              bindspec = selector[2];
+              $target = $n.find(selector[1]);
             }
-            if (!k[1].match(/^\w+(\.\w+)*$/)) {
-              throw "Invalid qt-bind spec: bad value spec for '"+ k[1] +"'";
+            var k = bindspec.match(/^(.*)\s*:\s*(.*)$/);
+            if (!k) {
+              k = [null, '_text', bindspec];
+            }
+            if (!k[2].match(/^\w+(\.\w+)*$/)) {
+              throw "Invalid qt-bind spec: bad value spec for '"+ k[2] +"'";
             }
             /* jshint evil: true */
-            var v = eval("opts."+k[1]);
+            var v = eval("opts."+k[2]);
             /* jshint evil: false */
-            if (k[0] === '_text') {
-              $n.text(v);
+            if (k[1] === '_text') {
+              $target.text(v);
             } else {
-              $n.attr(k[0], v);
+              $target.attr(k[1], v);
             }
             $n.removeAttr('qt-bind');
           });

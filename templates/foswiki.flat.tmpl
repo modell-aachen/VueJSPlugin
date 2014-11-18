@@ -136,29 +136,29 @@ jQuery(function($) {
       <li><a href="#qw-searchbar-filter-webs">%MAKETEXT{"Webs"}%</a></li>
     </ul>
     <ul id="qw-searchbar-filter-webs" data-quicksearch-filter-type="facet" data-quicksearch-filter-field="web" data-quicksearch-filter-combine="OR" data-facet-values>
-      <li data-qtemplate data-facet-value qt-bind="data-facet-value-id:title"><a href="#" class="facet-value" qt-bind="_text:title"></a></li>
+      <li data-qtemplate data-facet-value qt-bind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"></a></li>
     </ul>
     <div id="qw-searchbar-filter-topics" data-quicksearch-filter-type="group-filter" data-quicksearch-filter-query="type:topic" data-quicksearch-filter-tab-target="#qw-searchbar-filter-tabs" data-quicksearch-filter-tab-title="%MAKETEXT{"Topics"}%">
       <dl class="facet-list">
         <dt>%MAKETEXT{"Type"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="field_DocumentType_s" data-quicksearch-filter-combine="OR" data-facet-values>
-          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id:title"><a href="#" class="facet-value" qt-bind="_text:title"></a></li>
+          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"</a></li>
         </ul></dd>
         <dt>%MAKETEXT{"Status"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="process_state_s" data-quicksearch-filter-combine="OR" data-facet-values>
-          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id:title"><a href="#" class="facet-value" qt-bind="_text:title"></a></li>
+          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"></a></li>
         </ul></dd>
       </dl>
     </div>
     <div id="qw-searchbar-filter-tasks" data-quicksearch-filter-type="group-filter" data-quicksearch-filter-query="type:action" data-quicksearch-filter-tab-target="#qw-searchbar-filter-tabs" data-quicksearch-filter-tab-title="%MAKETEXT{"Tasks"}%">
       <dl class="facet-list">
         <dt>%MAKETEXT{"Status"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="action_status_s" data-quicksearch-filter-combine="OR" data-facet-values>
-          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id:title"><a href="#" class="facet-value" qt-bind="_text:title"></a></li>
+          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"></a></li>
         </ul></dd>
       </dl>
     </div>
   </div>
   <div class="results">
     <div class="qw-total-results" data-qtemplate="total">
-      <span class="left"><span qt-bind="_text:count"></span> results</span>
+      <span class="left"><span qt-bind="count"></span> results</span>
       <a href="#" class="right" data-quicksearch-show-all>%MAKETEXT{"show all"}%</span></a>
     </div>
     <div class="qw-no-results" data-qtemplate="noresults"><h3 class="left">%MAKETEXT{"No results"}%</h3></div>
@@ -167,8 +167,8 @@ jQuery(function($) {
         <div class="open">
           <a href="#" class="button primary tiny">%MAKETEXT{"open"}%</a>
         </div>
-        <span class="title"><i qt-bind="class:icon"></i><span qt-bind="_text:title"></span></span>
-        <span class="snippet" qt-bind="_text:snippet"></span>
+        <span class="title" qt-bind="i // class: icon, span // title"><i></i><span></span></span>
+        <span class="snippet" qt-bind="snippet"></span>
       </div>
     </div>
   </div>
