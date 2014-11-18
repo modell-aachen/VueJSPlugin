@@ -23,8 +23,7 @@
       @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
 
       > div {
-        @media #{$mobile-up} {padding-left: $qw-content-padding;}
-        @media #{$large-up} {padding-left: $qw-content-padding + rem-calc($qw-leftbar-width);}
+        padding-left: rem-calc(10); // ToDo. padding muss angepasst werden
       }
     }
 
@@ -101,12 +100,14 @@
       min-height: $qw-top-two-height;
       transition: width 0.3s ease-in-out;
 
-      @media #{$mobile-up} {@include grid-column($columns: $total-columns, $collapse: true);}
-      @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
-      @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
+      padding: 0;
+      $p: percentage(1/$total-columns);
+      @media #{$mobile-up} {width: 100%;}
+      @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-content-padding}/2);}
+      @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-content-padding}/2);}
 
       &.maximized {
-        @include grid-column($columns: $total-columns, $collapse: true);
+        width: calc(100% - #{$qw-content-padding});
 
         .topicactions .icon-maximize {
           @extend .icon-minimize;
@@ -117,12 +118,6 @@
         width: 100%;
         height: $qw-top-two-height;
         transition: width 0.3s ease-in-out;
-
-        @media #{$large-up} {
-          $pl: $qw-content-padding + rem-calc($qw-leftbar-width);
-          padding-left: $pl;
-          width: calc( 100% - #{$pl} );
-        }
 
         display: flex;
         overflow: hidden;
@@ -180,13 +175,7 @@
 
   &.offcanvas {
     &.leftbar {
-      @media #{$small-up} {
-        transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
-      }
-
-      @media #{$large-up} {
-        transform: translate3d( $qw-leftbar-width-expanded - $qw-leftbar-width, 0, 0 );
-      }
+      transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
     }
 
     &.quicksearch {
@@ -209,17 +198,21 @@
         background: $qw-quicksearch-bg;
       }
 
-        .close {
-          opacity: 1;
-          pointer-events: auto;
-          cursor: pointer;
-        }
+      .close {
+        opacity: 1;
+        pointer-events: auto;
+        cursor: pointer;
+      }
 
-        .qw-quicksearch-form {
-          display: block !important;
-        }
+      .qw-quicksearch-form {
+        display: block !important;
 
-        .qw-search-toggle {
+        > .form > .input input {
+          width: 100%;
+        }
+      }
+
+      .qw-search-toggle {
           display: none !important;
         }
       }
@@ -232,15 +225,6 @@
       .one .breadcrumb > div {
         @media #{$medium-only} {
           padding-left: rem-calc($qw-leftbar-width) + $qw-content-padding;
-        }
-      }
-    }
-
-    &.kvpoverlay, &.quicksearch {
-      .two .actions > div {
-        @media #{$large-up} {
-          $w: $qw-content-padding + rem-calc(2 * $qw-leftbar-width);
-          width: calc( 100% - #{$w} );
         }
       }
     }

@@ -105,6 +105,14 @@
         border: none !important;
         box-shadow: none !important;
         height: $qw-search-height;
+
+        width: 50%;
+        transition: width 0.3s ease-in-out;
+        float: right;
+
+        &:focus {
+          width: 100%;
+        }
       }
     }
 

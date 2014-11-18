@@ -35,12 +35,19 @@
     }
   }
 
-  &.offcanvas.leftbar {
-    transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
-    > .toggle > div { 
-      padding: rem-calc(18 24);
-        > i {
-        @extend .icon-arrow-left;
+  &.offcanvas {
+    &.quicksearch {
+      @media #{$mobile-only} {display: none;}
+      @media #{$small-only} {display: none;}
+    }
+
+    &.leftbar {
+      transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
+      > .toggle > div { 
+        padding: rem-calc(18 24);
+          > i {
+          @extend .icon-arrow-left;
+        }
       }
     }
   }
