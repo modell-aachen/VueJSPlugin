@@ -87,6 +87,12 @@
             if (!k[2].match(/^\w+(\.\w+)*$/)) {
               throw "Invalid qt-bind spec: bad value spec for '"+ k[2] +"'";
             }
+            if (k[1].match(/^on/)) {
+              throw "Refusing to qt-bind to an on* attribute ('"+ k[1] +"')";
+            }
+            if ($target.is('script')) {
+              throw "Refusing to qt-bind into a script tag";
+            }
             /* jshint evil: true */
             var v = eval("opts."+k[2]);
             /* jshint evil: false */
