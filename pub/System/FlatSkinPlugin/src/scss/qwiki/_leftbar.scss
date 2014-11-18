@@ -26,7 +26,8 @@
 
   > .buttons {
     position: absolute;
-    top: $qw-top-one-height;
+    top: 0;
+    // top: $qw-top-one-height;
     left: $qw-leftbar-width-expanded;
     height: calc( 100% - #{$qw-top-one-height} );
 
@@ -93,7 +94,8 @@
     }
 
     > .links {
-      top: 120px;
+      top: 0;
+      // top: 120px;
       padding-left: rem-calc(10);
       padding-right: rem-calc(10);
 
