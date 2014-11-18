@@ -37,7 +37,7 @@
     var isSticky = typeof sticky !== typeof undefined && sticky !== false;
 
     if ( !isSticky ) {
-      var $toggles = $('[data-offcanvas-toggle="' + target + '"');
+      var $toggles = $('[data-offcanvas-toggle="' + target + '"]');
       $toggles.each( function() {
         var $this = $(this);
         sticky = $this.attr('data-offcanvas-sticky-toggle');
