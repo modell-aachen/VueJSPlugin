@@ -93,6 +93,54 @@
       }
     },
 
+    persistData: function( key, value, opts ) {
+      if ( typeof $.cookie !== 'function' ) {
+        this.error( 'Missing dependency $.cookie' );
+        return;
+      }
+
+      if ( !key ) {
+        this.error( 'Invalid key!' );
+        return false;
+      }
+
+      if ( _.isUndefined( opts ) ) {
+        opts = {};
+      }
+
+      opts = _.extend( opts, {expires: 7, path: '/'});
+      var name = [this.global.namespace, 'cookie', key].join('.');
+      $.cookie( name, value, opts );
+    },
+
+    deleteData: function( key ) {
+      if ( typeof $.removeCookie !== 'function' ) {
+        this.error( 'Missing dependency $.removeCookie' );
+        return;
+      }
+
+      if ( !key ) {
+        this.error( 'Invalid key!' );
+        return false;
+      }
+
+      return $.removeCookie([this.global.namespace, 'cookie', key].join('.'));
+    },
+
+    restoreData: function( key ) {
+      if ( typeof $.cookie !== 'function' ) {
+        this.error( 'Missing dependency $.cookie' );
+        return;
+      }
+
+      if ( !key ) {
+        this.error( 'Invalid key!' );
+        return false;
+      }
+
+      return $.cookie([this.global.namespace, 'cookie', key].join('.'));
+    },
+
     raiseEvent: function( callee, caller, evt, params ) {
       var type = [
         caller.namespace ? caller.namespace : this.global.namespace,

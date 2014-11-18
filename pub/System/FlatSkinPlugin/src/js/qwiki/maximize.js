@@ -10,6 +10,7 @@
       }
 
       this.bind();
+      restore( this );
     },
 
     bind: function() {
@@ -23,6 +24,15 @@
     }
   };
 
+  var restore = function( self ) {
+    var data = self.Q.restoreData( self.name );
+    if ( data && typeof data === 'string' ) {
+      _.each( data.split(','), function(elem) {
+        $(elem).toggleClass('maximized');
+      });
+    }
+  };
+
   var toggleMaximize = function( evt ) {
     var self = evt.data;
     var targets = $(this).data('maximize-toggle');
@@ -31,11 +41,15 @@
       return;
     }
 
+    var maximized = [];
     _.each( targets.split(','), function(elem) {
-      $(elem).toggleClass('maximized');
+      var $elem = $(elem);
+      $elem.toggleClass('maximized');
+      if ( $elem.hasClass('maximized') ) {
+        maximized.push( elem );
+      }
     });
 
-    // ToDo: close (opened) offcanvas areas
-    // ToDo: persist state
+    self.Q.persistData( self.name, maximized.join(',') );
   };
 }(jQuery, window._, window.document, window));
