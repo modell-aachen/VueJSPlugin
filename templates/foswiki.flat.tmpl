@@ -48,6 +48,7 @@
 %TMPL:P{"kvpbar"}%
 %TMPL:P{"kvpoverlay"}%
 %TMPL:P{"quicksearch"}%
+%TMPL:P{"attachments"}%
 %TMPL:END%
 
 %TMPL:DEF{"body"}%<!--body-->
@@ -183,7 +184,7 @@ jQuery(function($) {
       <div>
         <i class="icon-kvp"></i>
         <span>%MAKETEXT{"KVP"}%</span>
-        <a href="#" class="qw-close-btn arrow-left" data-offcanvas-toggle="kvpbar"></a>
+        <a href="#" class="qw-back-btn" data-offcanvas-toggle="kvpbar"></a>
       </div>
     </div>
     <div class="content">
@@ -225,7 +226,7 @@ jQuery(function($) {
       <div>
         <i class="icon-page-info"></i>
         <span>%MAKETEXT{"Document information"}%</span>
-        <a href="#" class="qw-close-btn arrow-left" data-offcanvas-toggle="infobar"></a>
+        <a href="#" class="qw-back-btn" data-offcanvas-toggle="infobar"></a>
       </div>
     </div>
     <div class="content">
