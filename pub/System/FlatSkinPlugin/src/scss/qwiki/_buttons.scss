@@ -125,6 +125,25 @@
   }
 }
 
+.qw-add-btn {
+  @include button( $radius: true, $bg: $qw-add-bg-color );
+
+  padding: rem-calc(6 3 0 3);
+  width: 34px;
+  height: 34px;
+  font-size: 2rem;
+  color: #333;
+
+  color: $qw-add-color;
+  background: $qw-add-bg-color;
+
+  font-family: 'qwiki-font';
+  @extend .icon-add;
+
+  &:hover {background-color: $qw-add-bg-hover-color;}
+  &:active {background-color: $qw-add-bg-active-color;}
+}
+
 input[type="text"].qw-input {
   background: $qw-input-bg-color;
   color: $qw-input-fg-color;
