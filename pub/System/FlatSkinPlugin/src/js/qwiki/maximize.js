@@ -30,7 +30,6 @@
       _.each( data.split(','), function(elem) {
         var $elem = $(elem);
         $elem.addClass('no-transition maximized');
-        // $elem.addClass('maximized');
 
         setTimeout( function() {
           $elem.removeClass('no-transition');
