@@ -1,11 +1,204 @@
-.qw-attachtable {
-  @include side-nav(
-    $link-color: $qw-attachtable-link-color,
-    $link-color-hover: $qw-attachtable-link-hover-color,
-    $link-bg-hover: $qw-attachtable-link-bg-color
-  );
+.qw-attachments-container {
+  position: fixed;
+  top: $qw-top-height;
+  right: $qw-content-padding;
+  height: calc(99% - #{$qw-top-height});
+  background: $qw-infobar-content-bg;
+  z-index: 100;
+  overflow: hidden !important;
+  transition: transform 0.3s ease-in-out;
+  transform: translate3d(125%, 0, 0);
 
-  .fa {
-    margin-top: rem-calc(5);
+  $p: percentage(1/12);
+  @media #{$mobile-up} {width: 100%;}
+  @media #{$medium-only} {width: calc(6 * #{$p} - 3 * #{$qw-content-padding});}
+  @media #{$large-only} {width: calc(4 * #{$p} - 2.66 * #{$qw-content-padding});}
+  @media #{$extended-up} {width: calc(3 * #{$p} - 2.5 * #{$qw-content-padding});}
+
+  &.active {
+    transform: translate3d(0, 0, 0);
+  }
+
+  > .list, .details {
+    position: absolute;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  > div.list {
+    transform: translate3d( 0, 0, 0 );
+    transition: transform 0.3s ease-in-out;
+
+    &.deactive {
+      transform: translate3d( -100%, 0, 0 );
+    }
+
+    > div {
+      padding: rem-calc(6);
+      border-bottom: 1px solid $qw-border-bg;
+
+      > .heading {
+        @include grid-row();
+        max-height: rem-calc(40);
+
+        > .back {
+          @include grid-column($columns: 2, $collapse: true);
+        }
+
+        > .title {
+          @include grid-column($columns: 8, $collapse: true);
+          padding-top: rem-calc(10);
+          font-size: 1.2rem;
+          margin-left: rem-calc(-10);
+          margin-right: rem-calc(10);
+        }
+
+        > .upload {
+          @include grid-column($columns: 2, $collapse: true);
+          > * {float: right;}
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin: 0;
+          padding: rem-calc(12 6);
+          border-radius: $global-radius;
+          cursor: pointer;
+          font-size: 0.9rem;
+
+          &:nth-child(odd) {
+            background: $qw-attachtable-odd-row-bg;
+          }
+
+          &:hover {
+            background: $qw-infobar-item-hover-bg;
+            color: $qw-infobar-item-hover-color;
+
+            &:after {
+              font-family: 'qwiki-font';
+              float: right;
+              content:"\f10c";
+              margin-top: -15px;
+              margin-right: -3px;
+            }
+          }
+        }
+      }
+
+      .attachment {
+        @include grid-row($behavior: collapse);
+        > div {
+          .title {
+            @include grid-column($columns: 8, $collapse: true);
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .date {
+            @include grid-column($columns: 4, $collapse: true);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .raw {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+
+  > div.details {
+    transform: translate3d( 100%, 0, 0 );
+    transition: transform 0.3s ease-in-out;
+
+    &.active {
+      transform: translate3d( 0, 0, 0 );
+    }
+
+    > div > div {
+      padding: rem-calc(6);
+      &:first-child {
+        border-bottom: 1px solid $qw-border-bg;
+      }
+    }
+
+    .heading {
+      @include grid-row($behavior: collapse);
+      max-height: 40px;
+
+      > .back {
+        @include grid-column($columns: 2, $collapse: true);
+      }
+
+      > .title {
+        @include grid-column($columns: 10, $collapse: true);
+        padding-top: rem-calc(10);
+        font-size: 1.2rem;
+        margin-left: rem-calc(-10);
+        margin-right: rem-calc(10);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .comment {
+      @include grid-row($behavior: collapse);
+      > .text {
+        @include grid-column($columns: $total-columns, $collapse: true);
+        > div {
+          padding: rem-calc(6 24 6 6);
+          font-size: rem-calc(13);
+          line-height: 1.2;
+          text-align: justify;
+        }
+      }
+    }
+
+    .meta {
+      @include grid-row($behavior: collapse);
+      > .content {
+        @include grid-column($columns: $total-columns, $collapse: true);
+        > div {padding: rem-calc(0 6);}
+      }
+    }
+
+    .actions {
+      @include grid-row($behavior: collapse);
+      > .buttons {
+        @include grid-column($columns: $total-columns, $collapse: true);
+        > div {padding: rem-calc(0 6);}
+
+        .qw-prio1-btn, .qw-prio2-btn {
+          margin-right: rem-calc(6);
+          vertical-align: top;
+        }
+
+        .qw-prio1-btn {
+          padding: rem-calc(7 30);
+          min-width: rem-calc(32);
+          > i:before {
+            margin-right: rem-calc(6);
+            font-size: 1.5rem;
+          }
+        }
+
+        .qw-prio2-btn {
+          font-size: 1.5rem;
+          padding: rem-calc(6 14);
+          min-width: rem-calc(22);
+        }
+      }
+    }
   }
 }

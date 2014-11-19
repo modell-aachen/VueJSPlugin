@@ -1,0 +1,27 @@
+@mixin qw-meta() {
+  background: $qw-dochead-default-box-bg;
+  border-radius: $global-radius;
+  color: $qw-dochead-default-box-color;
+  display: inline-block;
+  font-size: rem-calc(12);
+  margin-right: rem-calc(12);
+  padding: rem-calc(3 6);
+}
+
+.qw-meta-author {
+  @include qw-meta();
+  @extend .icon-user-author;
+
+  background: $qw-dochead-user-box-bg;
+  color: $qw-dochead-user-box-color;
+
+  &:before {
+    font-family: 'qwiki-font';
+    font-size: rem-calc(14);
+    margin-right: rem-calc(3);
+  }
+}
+
+.qw-meta-date {
+  @include qw-meta();
+}

@@ -166,7 +166,7 @@ $qw-content-padding: rem-calc(30);
 
 
 // default border values borders
-$qw-border-bg: #d9dbdb;
+$qw-border-bg: #f5f5f5;
 $qw-border-width: 1px;
 
 
@@ -225,9 +225,10 @@ $qw-tab-unapproved-active-color: $qw-edit-color;
 $qw-tab-unapproved-inactive-color: white;
 
 // attachtable
-$qw-attachtable-link-color: body-font-color;
-$qw-attachtable-link-hover-color: body-font-color;
-$qw-attachtable-link-bg-color: darken($qw-body-bg, 10%);
+$qw-attachtable-odd-row-bg: #f5f5f5;
+$qw-attachtable-hover-color: #236aa2;
+$qw-attachtable-hover-bg: #dae4eb;
+$qw-attachtable-active-bg: #c3d3de;
 
 
 // login

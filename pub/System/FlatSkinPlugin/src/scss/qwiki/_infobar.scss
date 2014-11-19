@@ -6,6 +6,7 @@
   height: calc( 100% - #{$qw-top-one-height});
   z-index: 100;
 
+  overflow-x: hidden;
   transform: translate3d( 100%, 0, 0 );
   transition: opacity 0.5s ease-in-out,
               transform 0.3s ease-in-out;
@@ -70,6 +71,11 @@
     > .content {
       background: $qw-infobar-content-bg;
       padding: rem-calc(12 3);
+      transition: transform 0.3s ease-in-out;
+
+      &.offcanvas {
+        transform: translate3d(-125%, 0, 0);
+      }
 
       .label {
         color: $qw-infobar-label-color;
@@ -89,8 +95,8 @@
           cursor: pointer;
 
           &:hover {
-            background: $qw-infobar-item-hover-bg;
-            color: $qw-infobar-item-hover-color;
+            background: $qw-attachtable-hover-bg;
+            color: $qw-attachtable-hover-color;
 
             &:after {
               font-family: 'qwiki-font';
@@ -99,6 +105,10 @@
               margin-top: -24px;
               margin-right: 10px;
             }
+          }
+
+          &:active {
+            background: $qw-attachtable-active-bg;
           }
 
           a {

@@ -28,11 +28,10 @@
 .qw-prio1-btn {
   @include button( $radius: true, $bg: $qw-button1-bg-color );
 
-  padding: rem-calc(14);
+  padding: rem-calc(12 14);
   font-size: rem-calc(14);
-  line-height: 1rem;
+  line-height: 1;
   border: 1px solid transparent;
-  
 
   &:hover {
     background-color: $qw-button1-bg-hover-color;
@@ -46,9 +45,9 @@
 .qw-prio2-btn {
   @include button( $radius: true, $bg: $qw-button2-bg-color );
 
-  padding: rem-calc(14);
+  padding: rem-calc(12 14);
   font-size: rem-calc(14);
-  line-height: 1rem;
+  line-height: 1;
   color: #333;
   border: 1px solid $qw-button2-bg-hover-color;
 

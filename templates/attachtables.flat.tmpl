@@ -1,20 +1,121 @@
-%TMPL:DEF{"ATTACH:files:header"}%<div class="qw-attachments-container">%TMPL:END%
+%TMPL:DEF{"ATTACH:files:header"}%<!--ATTACH:files:header-->
+<div class="qw-attachments-container">
+  <div class="list">
+    <div>
+      <div class="heading">
+        <div class="back">
+          <a class="qw-back-btn blue" href="#"></a>
+        </div>
+        <div class="title">
+          <span>%MAKETEXT{"Attachments"}%</span>
+        </div>
+        <div class="upload">
+          <a class="qw-add-btn" href="#"></a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul>
+<!--/ATTACH:files:header-->%TMPL:END%
 
 %TMPL:DEF{"ATTACH:files:row"}%<!--ATTACH:files:row-->
-<div>
-  <span class="icon">%A_ICON%</span>
-  <span class="ext">%A_EXT%</span>
-  <span class="url">%ATTACHURLPATH%/%ENCODE{%A_FILE%}%</span>
-  <span class="name"><noautolink>%A_FILE%</noautolink></span>
-  <span class="size">%A_SIZE%</span>
-  <span class="date">%A_DATE%</span>
-  <span class="user">%A_USER%</span>
-  <span class="comment">%A_COMMENT%</span>
-</div>
+<li>
+  <div class="attachment">
+    <div>
+      <div class="title"><noautolink>%A_FILE%</noautolink></div>
+      <div class="date">%A_DATE%</div>
+      <div class="raw">
+        {
+          "icon": "%ENCODE{"%A_ICON%" type="quote"}%",
+          "extension": "%ENCODE{"%A_EXT%" type="quote"}%",
+          "url": "%ENCODE{"%ATTACHURLPATH%/%ENCODE{%A_FILE%}%" type="quote"}%",
+          "name": "%ENCODE{"%A_FILE%" type="quote"}%",
+          "size": "%ENCODE{"%A_SIZE%" type="quote"}%",
+          "date": "%ENCODE{"%A_DATE%" type="quote"}%",
+          "user": "%ENCODE{"%A_USER%" type="quote"}%",
+          "comment": "%ENCODE{"%A_COMMENT%" type="quote"}%"
+        }
+      </div>
+    </div>
+  </div>
+</li>
 <!--/ATTACH:files:row-->%TMPL:END%
 
-%TMPL:DEF{"ATTACH:files:footer"}%</div>%TMPL:END%
+
+%TMPL:DEF{"ATTACH:files:footer"}%<!--ATTACH:files:footer-->
+      </ul>
+    </div>
+  </div>
+  <div class="details">
+    <div data-qtemplate="qw.attachment.details">
+      <div>
+        <div class="heading">
+          <div class="back">
+            <a class="qw-back-btn blue" href="#"></a>
+          </div>
+          <div class="title">
+            <span qt-bind="name"></span>
+          </div>
+        </div>
+      </div>
+      <div class="comment">
+        <div class="text">
+          <div qt-bind="comment"></div>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="content">
+          <div>
+            <div class="qw-meta-author" qt-bind="user"></div>
+            <div class="qw-meta-date" qt-bind="date"></div>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="buttons">
+          <div>
+            <a class="qw-prio1-btn" qt-bind="href: url"><i class="icon-download"></i><span qt-bind="size"></span></a>
+            <a href="" class="qw-prio2-btn"><i class="icon-edit"></i></a>
+            <a href="" class="qw-prio2-btn"><i class="icon-replace"></i></a>
+            <a href="" class="qw-prio2-btn"><i class="icon-more"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/ATTACH:files:footer-->%TMPL:END%
+
 
 %TMPL:DEF{"ATTACH:versions:footer"}%%TMPL:END%
 %TMPL:DEF{"ATTACH:versions:header"}%%TMPL:END%
 %TMPL:DEF{"ATTACH:versions:row"}%%TMPL:END%
+
+
+
+
+
+
+
+%TMPL:DEF{"ATTACH:files:row::old"}%<!--ATTACH:files:row-->
+<div>
+  <span class="size"></span>
+  <span class="date"></span>
+  <span class="user"></span>
+  <span class="comment"></span>
+</div>
+<!--/ATTACH:files:row-->%TMPL:END%
+
+
+$('parent').on('click.qw', 'div', function() {
+  this
+})
+$('*').off('.qw')
+
+
+<div parent>
+  <div 1></div>
+  <div 2></div>
+  <div 3></div>
+  <div 4></div>
+</div>
