@@ -100,25 +100,28 @@
 .qw-back-btn {
   @include button( $radius: true, $bg: $qw-backbtn-bg-color );
 
-  padding: rem-calc(14);
-  font-size: rem-calc(14);
-  line-height: 1rem;
+  padding: rem-calc(13 14 13 12);
+  width: 14px;
+  height: 14px;
+  font-size: 1rem;
+  line-height: 1;
   color: #333;
-  border: 1px solid transparent;
 
-  &:before { 
-    @include fa-icon();
-    content: $fa-var-chevron-left;
-    margin-left: rem-calc(-5);
-    margin-right: rem-calc(10);
-  }
+  color: $qw-backbtn-color;
+  background: $qw-backbtn-bg-color;
 
-  &:hover {
-    background-color: $qw-backbtn-bg-hover-color;
-    border-bottom: 1px solid $qw-backbtn-shadow-color;
-  }
-  &:active {
-    background-color: $qw-backbtn-bg-active-color;
+  font-family: 'qwiki-font';
+  @extend .icon-arrow-left;
+
+  &:hover {background-color: $qw-backbtn-bg-hover-color;}
+  &:active {background-color: $qw-backbtn-bg-active-color;}
+
+  &.blue {
+    color: $qw-backbtn-blue-color;
+    background: $qw-backbtn-blue-bg-color;
+
+    &:hover {background-color: $qw-backbtn-blue-bg-hover-color;}
+    &:active {background-color: $qw-backbtn-blue-bg-active-color;}
   }
 }
 
