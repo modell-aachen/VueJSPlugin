@@ -28,7 +28,13 @@
     var data = self.Q.restoreData( self.name );
     if ( data && typeof data === 'string' ) {
       _.each( data.split(','), function(elem) {
-        $(elem).toggleClass('maximized');
+        var $elem = $(elem);
+        $elem.addClass('no-transition maximized');
+        // $elem.addClass('maximized');
+
+        setTimeout( function() {
+          $elem.removeClass('no-transition');
+        }, 500 );
       });
     }
   };

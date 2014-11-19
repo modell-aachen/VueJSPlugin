@@ -12,11 +12,7 @@
 
   > .content, .heading {
     background: $qw-content-bg;
-    transition: width 0.3s ease-in-out;
 
-    // @media #{$mobile-up} {@include grid-column($columns: $total-columns, $collapse: true);}
-    // @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
-    // @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
     $p: percentage(1/$total-columns);
     @media #{$mobile-up} {width: 100%;}
     @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-content-padding}/2);}
@@ -41,6 +37,12 @@
       @media #{$mobile-up} {
         transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
       }
+    }
+  }
+
+  &:not(.no-transition) {
+    > .content, .heading {
+      transition: width 0.3s ease-in-out;
     }
   }
 }
