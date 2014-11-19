@@ -75,9 +75,9 @@
         <div class="buttons">
           <div>
             <a class="qw-prio1-btn" qt-bind="href: url"><i class="icon-download"></i><span qt-bind="size"></span></a>
-            <a href="" class="qw-prio2-btn"><i class="icon-edit"></i></a>
-            <a href="" class="qw-prio2-btn"><i class="icon-replace"></i></a>
-            <a href="" class="qw-prio2-btn"><i class="icon-more"></i></a>
+            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-edit"></i></a>
+            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-replace"></i></a>
+            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-more"></i></a>
           </div>
         </div>
       </div>
@@ -90,18 +90,3 @@
 %TMPL:DEF{"ATTACH:versions:footer"}%%TMPL:END%
 %TMPL:DEF{"ATTACH:versions:header"}%%TMPL:END%
 %TMPL:DEF{"ATTACH:versions:row"}%%TMPL:END%
-
-
-
-
-
-
-
-%TMPL:DEF{"ATTACH:files:row::old"}%<!--ATTACH:files:row-->
-<div>
-  <span class="size"></span>
-  <span class="date"></span>
-  <span class="user"></span>
-  <span class="comment"></span>
-</div>
-<!--/ATTACH:files:row-->%TMPL:END%

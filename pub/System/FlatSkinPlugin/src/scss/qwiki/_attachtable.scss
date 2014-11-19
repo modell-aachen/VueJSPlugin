@@ -10,7 +10,7 @@
   transform: translate3d(125%, 0, 0);
 
   $p: percentage(1/12);
-  @media #{$mobile-up} {width: 100%;}
+  @media #{$mobile-up} {width: calc(100% - 2 * #{$qw-content-padding});}
   @media #{$medium-only} {width: calc(6 * #{$p} - 3 * #{$qw-content-padding});}
   @media #{$large-only} {width: calc(4 * #{$p} - 2.66 * #{$qw-content-padding});}
   @media #{$extended-up} {width: calc(3 * #{$p} - 2.5 * #{$qw-content-padding});}

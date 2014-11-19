@@ -35,6 +35,10 @@
   @media #{$large-up} {display: inline-block;}
 }
 
+.hidden-mobile {
+  @media #{$mobile-only} {display: none !important;}
+}
+
 .no-transition {
   transition: none !important;
 }
