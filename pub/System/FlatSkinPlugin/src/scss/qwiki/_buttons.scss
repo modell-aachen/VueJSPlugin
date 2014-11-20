@@ -354,9 +354,5 @@ ul[data-drop] {
   @include button-group-container( $styles: true, $float: false );
   > li {
     @include button-group-style( $radius: false, $even: false, $float: left );
-
-    > a:not(.qw-prio1-btn, .qw-prio2-btn) {
-      @include button( $padding: rem-calc(10), $bg: $primary-color );
-    }
   }
 }
