@@ -41,12 +41,14 @@
 </div>
 <!--/topbar:one:right-->%TMPL:END%
 
-%TMPL:DEF{"offcanvas:rightbar:includes"}%<!--offcanvas:rightbar:includes-->
-%TMPL:PREV%
-<div data-rightbar-item>
-  <a href="#" data-content="#qw-documentform" data-title="%MAKETEXT{"Document control"}%">
-    %MAKETEXT{"Document control"}% <i class="fa fa-chevron-right right"></i>
-  </a>
-  <div id="qw-documentform">%TMPL:P{"form"}%</div>
-</div>
-<!--/offcanvas:rightbar:includes-->%TMPL:END%
+%TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%
+<div class="qw-documentcontrol qw-littleoffcanvas" data-offcanvas data-target="documentcontrol"><div>
+  <div class="header">
+    <span>%MAKETEXT{"Document control"}%</span>
+    <a href="#" class="qw-back-btn right"  data-offcanvas-toggle="documentcontrol"></a>
+  </div>
+  <div class="content">
+    <div id="qw-documentform">%TMPL:P{"form"}%</div>
+  </div>
+</div></div>
+%TMPL:END%
