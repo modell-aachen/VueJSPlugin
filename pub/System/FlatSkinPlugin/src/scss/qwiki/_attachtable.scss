@@ -25,6 +25,19 @@
 
   &.active {
     transform: translate3d(0, 0, 0);
+
+    &.offcanvas {
+      &.leftbar {
+        @media #{$mobile-up} {
+          transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
+        }
+
+        @media #{$large-up} {
+          $offset: rem-calc($qw-leftbar-width-expanded) - 2 * $qw-content-padding;
+          transform: translate3d( $offset, 0, 0 );
+        }
+      }
+    }
   }
 
   > .list, .details {

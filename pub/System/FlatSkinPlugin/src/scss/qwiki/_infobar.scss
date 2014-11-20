@@ -4,7 +4,6 @@
   background: $qw-infobar-bg;
   height: calc( 100% - #{$qw-top-one-height});
   z-index: 100;
-
   overflow-x: hidden;
   transform: translate3d( 100%, 0, 0 );
   transition: opacity 0.5s ease-in-out,
@@ -35,7 +34,7 @@
       transform: translate3d( 0, 0, 0 );
 
       &.leftbar {
-        @media #{$medium-only} {
+        @media #{$mobile-up} {
           transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
         }
 
