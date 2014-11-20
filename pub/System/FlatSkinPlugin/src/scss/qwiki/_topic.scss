@@ -1,10 +1,21 @@
 .qw-page {
   position: absolute;
-  top: $qw-top-height;
-  left: $qw-leftbar-width;
   padding: 0;
-  width: $qw-page-width;
-  max-width: $qw-page-width;
+
+  @media #{$mobile-only} {top: $qw-top-height-mobile;}
+  @media #{$small-up} {top: $qw-top-height;}
+
+  @media #{$mobile-up} {
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  @media #{$medium-up} {
+    left: $qw-leftbar-width;
+    width: $qw-page-width;
+    max-width: $qw-page-width;
+  }
 
   > .heading > div {
     padding-top: $qw-content-padding;
@@ -20,7 +31,8 @@
 
     > div {
       @media #{$mobile-up} {padding: $qw-content-padding;}
-      padding-bottom: $qw-top-height;
+      @media #{$mobile-only} {padding-bottom: $qw-top-height-mobile;}
+      @media #{$small-up} {padding-bottom: $qw-top-height;}
     }
   }
 
@@ -28,7 +40,10 @@
     > .content, .heading {
       background: $qw-content-bg;
       @include grid-column($columns: $total-columns, $collapse: true);
-      width: calc(100% - #{$qw-content-padding});
+      width: 100%;
+      @media #{$medium-up} {
+        width: calc(100% - #{$qw-content-padding});
+      }
     }
   }
 

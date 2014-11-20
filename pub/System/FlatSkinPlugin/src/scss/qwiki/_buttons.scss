@@ -333,8 +333,10 @@ ul[data-drop] {
       margin-top: rem-calc(-6);
       padding: rem-calc(9);
       border-radius: $global-radius;
-      height: $qw-top-one-height - 12px;
       background: $qw-menu-open-inlay-bg-color;
+
+      @media #{$mobile-only} {height: $qw-top-one-height-mobile - 12px;}
+      @media #{$small-up} {height: $qw-top-one-height - 12px;}
     }
 
     &:hover:after {
@@ -353,7 +355,7 @@ ul[data-drop] {
   > li {
     @include button-group-style( $radius: false, $even: false, $float: left );
 
-    > a {
+    > a:not(.qw-prio1-btn, .qw-prio2-btn) {
       @include button( $padding: rem-calc(10), $bg: $primary-color );
     }
   }

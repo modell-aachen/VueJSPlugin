@@ -1,11 +1,13 @@
-$qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $qw-tab-deco-border-width;
+$qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width);
 
 .qw-joinedtab {
   float: left;
   margin-right: $button-tny;
-  height: calc( #{$qw-top-two-height} - 2 * #{$qw-tab-pseudoborder} );
   padding-top: $qw-tab-pseudoborder;
   padding-bottom: $qw-tab-pseudoborder;
+
+  @media #{$mobile-only} {height: calc(#{$qw-top-two-height-mobile} - 2 * #{$qw-tab-pseudoborder});}
+  @media #{$small-up} {height: calc(#{$qw-top-two-height} - 2 * #{$qw-tab-pseudoborder});}
 
   &,
   & > *{
@@ -87,8 +89,17 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
 
   > a {
     display: inline-block;
-    height: $qw-tab-height;
-    line-height: $qw-tab-height;
+
+    @media #{$mobile-only} {
+      height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
+      line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
+    }
+
+    @media #{$small-up} {
+      height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
+      line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
+    }
+
     font-size: rem-calc(13);
     padding-left: $button-tny;
     padding-right: $button-tny;
@@ -146,24 +157,30 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
 
   > .sub-tab {
     float: right;
-    height: $qw-tab-height;
+    @media #{$mobile-only} {height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;}
+    @media #{$small-up} {height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;}
 
     > a {
       display: inline-block;
-      height: $qw-tab-height;
-      line-height: $qw-tab-height;
       border: none;
       font-size: rem-calc(13);
       font-weight: normal;
-
       background-color: $qw-tab-subtab-color;
       background-image: none;
-
       border-radius: $qw-tab-radius;
       border-color: $qw-tab-subtab-color;
-
       padding-left: $button-tny;
       padding-right: $button-tny;
+
+      @media #{$mobile-only} {
+        height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
+        line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
+      }
+
+      @media #{$small-up} {
+        height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
+        line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
+      }
 
       &:not(:hover) {
         &:before {
@@ -176,14 +193,22 @@ $qw-tab-height: rem-calc($qw-top-two-height) - 2 * $qw-tab-pseudoborder - 2 * $q
       }
 
       .expander {
-        height: $qw-tab-height;
-        line-height: $qw-tab-height;
         width: auto;
         max-width: rem-calc(500);
         overflow-x: hidden;
         float: right;
         transition: max-width $qw-tab-transition-time ease-in-out;
         white-space: nowrap;
+
+        @media #{$mobile-only} {
+          height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
+          line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
+        }
+
+        @media #{$small-up} {
+          height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
+          line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
+        }
       }
     }
 

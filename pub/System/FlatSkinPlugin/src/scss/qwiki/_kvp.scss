@@ -1,14 +1,24 @@
 .qw-kvpbar {
   position: fixed;
-  top: $qw-top-one-height;
+  
   right: 0;
   background: $qw-kvpbar-bg;
-  height: calc( 100% - #{$qw-top-one-height});
+  
   z-index: 100;
 
   transform: translate3d( 100%, 0, 0 );
   transition: opacity 0.5s ease-in-out,
               transform 0.3s ease-in-out;
+
+  @media #{$mobile-only} {
+    top: $qw-top-one-height-mobile;
+    height: calc( 100% - #{$qw-top-one-height-mobile});
+  }
+
+  @media #{$small-up} {
+    top: $qw-top-one-height;
+    height: calc( 100% - #{$qw-top-one-height});
+  }
 
   $p: percentage(1/12);
   @media #{$mobile-up} {
@@ -98,19 +108,24 @@
     position: absolute;
     top: 0;
     left: 0;
-
     background: $qw-closebtn-large-bg;
     color: $qw-closebtn-fg;
-
     font-size: 1.2rem;
-    width: $qw-top-one-height;
-    height: $qw-top-one-height;
     opacity: 0;
     cursor: pointer;
-
     transition: opacity 0.2s ease-in-out,
                 left 0.5s ease-in-out,
                 background 0.2s ease-in-out;
+
+    @media #{$mobile-only} {
+      width: $qw-top-one-height-mobile;
+      height: $qw-top-one-height-mobile;
+    }
+
+    @media #{$small-up} {
+      width: $qw-top-one-height;
+      height: $qw-top-one-height;
+    }
 
     &:hover {
       background: $qw-closebtn-hover-large-bg;
@@ -129,7 +144,9 @@
     &.kvpoverlay {
       .close {
         opacity: 1;
-        left: -1 * $qw-top-one-height;
+
+        @media #{$mobile-only} {left: -1 * $qw-top-one-height-mobile;}
+        @media #{$small-up} {left: -1 * $qw-top-one-height;}
       }
 
       @media #{$medium-only} {

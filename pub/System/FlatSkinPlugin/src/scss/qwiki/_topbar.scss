@@ -1,12 +1,21 @@
 .qw-top {
   position: fixed;
   top: 0;
-  left: $qw-leftbar-width;
   padding: 0;
   min-width: $qw-page-width;
-  width: $qw-page-width;
-  height: $qw-top-height;
   z-index: 99;
+
+  @media #{$mobile-up} {
+    min-width: 100%;
+    width: 100%;
+    left: 0;
+  }
+
+  @media #{$medium-up} {
+    width: $qw-page-width;
+    height: $qw-top-height;
+    left: $qw-leftbar-width;
+  }
 
   > .one {
     @include grid-row($behavior: collapse);
@@ -14,11 +23,40 @@
     height: $qw-top-one-height;
     max-height: $qw-top-one-height;
 
+    @media #{$mobile-only} {
+      height: $qw-top-one-height-mobile;
+      max-height: $qw-top-one-height-mobile;
+    }
+
+    @media #{$small-up} {
+      height: $qw-top-one-height;
+      max-height: $qw-top-one-height;
+    }
+
+    @media #{$mobile-up} {
+      position: relative;
+      left: $qw-leftbar-width;
+    }
+
+    @media #{$medium-up} {
+      position: static;
+      left: 0;
+    }
+
     > .breadcrumb {
       background: $qw-top-one-bg;
-      min-height: $qw-top-one-height;
-      max-height: $qw-top-one-height;
-      @media #{$mobile-up} {@include grid-column($columns: 11, $collapse: true);}
+
+      @media #{$mobile-only} {
+        min-height: $qw-top-one-height-mobile;
+        max-height: $qw-top-one-height-mobile;
+      }
+
+      @media #{$small-up} {
+        min-height: $qw-top-one-height;
+        max-height: $qw-top-one-height;
+      }
+
+      @media #{$mobile-up} {@include grid-column($columns: 10, $collapse: true);}
       @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
       @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
 
@@ -28,17 +66,37 @@
     }
 
     > .search {
-      min-height: $qw-top-one-height;
-      max-height: $qw-top-one-height;
       transition: background 0.15s ease-in-out;
 
-      @media #{$mobile-up} {@include grid-column($columns: 1, $last-column: true, $collapse: true);}
+      @media #{$mobile-only} {
+        min-height: $qw-top-one-height-mobile;
+        max-height: $qw-top-one-height-mobile;
+      }
+
+      @media #{$small-up} {
+        min-height: $qw-top-one-height;
+        max-height: $qw-top-one-height;
+      }
+
+      @media #{$mobile-up} {
+        @include grid-column($columns: 2, $last-column: true, $collapse: true);
+        margin-left: -1 * $qw-leftbar-width;
+      }
+
+      @media #{$medium-only} {margin-left: 0;}
       @media #{$large-only} {@include grid-column($columns: 4, $last-column: true, $collapse: true);}
       @media #{$extended-up} {@include grid-column($columns: 3, $last-column: true, $collapse: true);}
 
       > div:not(.close) {
-        $ptb: ($qw-top-one-height - $qw-search-height)/2;
-        padding: $ptb $qw-content-padding;
+        @media #{$mobile-only} {
+          $ptb: ($qw-top-one-height-mobile - $qw-search-height)/2;
+          padding: $ptb $qw-content-padding;
+        }
+
+        @media #{$small-up} {
+          $ptb: ($qw-top-one-height - $qw-search-height)/2;
+          padding: $ptb $qw-content-padding;
+        }
 
         .qw-quicksearch-form {
           @media #{$mobile-up} {display: none;}
@@ -58,20 +116,26 @@
 
       .close {
         position: relative;
-        margin-left: -1 * $qw-top-one-height;
         float: left;
-
         background: $qw-closebtn-large-bg;
         color: $qw-closebtn-fg;
-
         font-size: 1.2rem;
-        width: $qw-top-one-height;
-        height: $qw-top-one-height;
         opacity: 0;
         pointer-events: none;
-
         transition: opacity 0.2s ease-in-out,
                     background 0.2s ease-in-out;
+
+        @media #{$mobile-only} {
+          margin-left: -1 * $qw-top-one-height-mobile;
+          width: $qw-top-one-height-mobile;
+          height: $qw-top-one-height-mobile;
+        }
+
+        @media #{$small-up} {
+          margin-left: -1 * $qw-top-one-height;
+          width: $qw-top-one-height;
+          height: $qw-top-one-height;
+        }
 
         &:hover {
           background: $qw-closebtn-hover-large-bg;
@@ -91,14 +155,24 @@
   > .two {
     @include grid-row($behavior: collapse);
     background: $qw-top-two-bg;
-    height: $qw-top-two-height;
-    max-height: $qw-top-two-height;
+
+    @media #{$mobile-only} {
+      height: $qw-top-two-height-mobile;
+      max-height: $qw-top-two-height-mobile;
+    }
+
+    @media #{$small-up} {
+      height: $qw-top-two-height;
+      max-height: $qw-top-two-height;
+    }
 
     > .actions {
       display: table;
       background: $qw-top-two-bg;
-      min-height: $qw-top-two-height;
       transition: width 0.3s ease-in-out;
+
+      @media #{$mobile-only} {min-height: $qw-top-two-height-mobile;}
+      @media #{$small-up} {min-height: $qw-top-two-height;}
 
       padding: 0;
       $p: percentage(1/$total-columns);
@@ -107,7 +181,10 @@
       @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-content-padding}/2);}
 
       &.maximized {
-        width: calc(100% - #{$qw-content-padding});
+        width: 100%;
+        @media #{$medium-only} {width: calc(100% - #{$qw-content-padding}/2 - 5px);}
+        @media #{$large-only} {width: calc(100% - #{$qw-content-padding} - 10px);}
+        @media #{$extended-up} {width: calc(100% - #{$qw-content-padding} - 5px);}
 
         .topicactions .icon-maximize {
           @extend .icon-minimize;
@@ -115,20 +192,28 @@
       }
 
       > div {
-        width: 100%;
-        height: $qw-top-two-height;
         transition: width 0.3s ease-in-out;
-
         display: flex;
         overflow: hidden;
 
+        @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
+        @media #{$small-up} {height: $qw-top-two-height;}
+        @media #{$mobile-up} {width: 100%;}
+        @media #{$medium-only} {width: calc(100% - #{$qw-leftbar-width});}
+        @media #{$large-only} {width: calc(100% - #{$qw-leftbar-width}/2 - #{$qw-content-padding}/3);}
+        @media #{$extended-up} {width: calc(100% - 1.5 * #{$qw-content-padding});}
+
         > div {
-          height: $qw-top-two-height;
           overflow: hidden !important;
+
+          @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
+          @media #{$small-up} {height: $qw-top-two-height;}
 
           &:last-child {
             flex-grow: 2;
-            padding: rem-calc(10 10 0 0);
+
+            @media #{$mobile-only} {padding: rem-calc(0 10 0 0);}
+            @media #{$small-up} {padding: rem-calc(10 10 0 0);}
           }
 
           .tabs {
@@ -136,11 +221,13 @@
           }
 
           .topicactions {
-            top: ($qw-top-two-height - 40px)/2;
             background: $qw-content-bg;
             border-radius: $global-radius;
             height: 40px;
             padding: 0 $qw-content-padding/2;
+
+            @media #{$mobile-only} {top: ($qw-top-two-height-mobile - 40px)/2;}
+            @media #{$small-up} {top: ($qw-top-two-height - 40px)/2;}
 
             > div > div.topbar-edit {
               display: inline-block;

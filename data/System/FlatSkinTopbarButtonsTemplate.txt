@@ -12,9 +12,9 @@
 %TMPL:DEF{"topbar:two:right"}%%TMPL:P{"topbar:two:right:misc"}%<div class="topbar-edit">%TMPL:P{"topbar:two:right:edit"}%</div>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:misc"}%
-<a href="#" class="qw-action-button"><i class="icon-flag"></i></a>
-<a href="#" class="qw-action-button"><i class="icon-fav-inactive"></i></a>
-<a href="#" class="qw-action-button"><i class="icon-forward"></i></a>
+<a href="#" class="qw-action-button hidden-mobile"><i class="icon-flag"></i></a>
+<a href="#" class="qw-action-button hidden-mobile"><i class="icon-fav-inactive"></i></a>
+<a href="#" class="qw-action-button hidden-mobile"><i class="icon-forward"></i></a>
 <a href="#" class="qw-action-button"><i class="icon-more"></i></a>
 %TMPL:END%
 

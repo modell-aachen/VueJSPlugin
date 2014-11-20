@@ -1,13 +1,21 @@
 .qw-attachments-container {
   position: fixed;
-  top: $qw-top-height;
   right: $qw-content-padding;
-  height: calc(99% - #{$qw-top-height});
   background: $qw-infobar-content-bg;
   z-index: 100;
   overflow: hidden !important;
   transition: transform 0.3s ease-in-out;
   transform: translate3d(125%, 0, 0);
+
+  @media #{$mobile-only} {
+    top: $qw-top-height-mobile;
+    height: calc(99% - #{$qw-top-height-mobile});
+  }
+
+  @media #{$small-up} {
+    top: $qw-top-height;
+    height: calc(99% - #{$qw-top-height});
+  }
 
   $p: percentage(1/12);
   @media #{$mobile-up} {width: calc(100% - 2 * #{$qw-content-padding});}

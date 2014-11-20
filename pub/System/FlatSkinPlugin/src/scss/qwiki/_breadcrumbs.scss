@@ -1,9 +1,12 @@
 ul.qw-breadcrumb {
   list-style: none;
-  margin-top: $qw-breadcrumb-offset-top;
+  // margin-top: $qw-breadcrumb-offset-top;
   max-height: $qw-breadcrumb-height;
   white-space: nowrap;
   padding-left: 0;
+
+  @media #{$mobile-only} {margin-top: 0;}
+  @media #{$small-up} {margin-top: $qw-breadcrumb-offset-top;}
 
   > li {
     float: left;

@@ -3,9 +3,11 @@
   top: 0;
   left: -1 * $qw-leftbar-width-expanded;
   width: $qw-leftbar-width-expanded + $qw-leftbar-width;
-  height: $qw-top-one-height;
   z-index: 101;
   float: left;
+
+  @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+  @media #{$small-up} {height: $qw-top-one-height;}
 
   .customer-logo {
     display: inline-block;
@@ -15,12 +17,14 @@
     display: inline-block;
     float: right;
     width: $qw-leftbar-width;
-    height: $qw-top-one-height;
     background: $qw-leftbar-toggle-bg;
     cursor: pointer;
     color: white;
     font-size: 1.2rem;
     transition: background 0.1s ease-in-out;
+
+    @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+    @media #{$small-up} {height: $qw-top-one-height;}
 
     &:hover {
       background: $qw-leftbar-toggle-hover-bg;
@@ -31,7 +35,8 @@
     }
 
     > div {
-      padding: rem-calc(18 22);
+      @media #{$mobile-only} {padding: rem-calc(9 22);}
+      @media #{$small-up} {padding: rem-calc(18 22);}
     }
   }
 
@@ -44,7 +49,8 @@
     &.leftbar {
       transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
       > .toggle > div { 
-        padding: rem-calc(18 24);
+        @media #{$mobile-only} {padding: rem-calc(9 24);}
+        @media #{$small-up} {padding: rem-calc(18 24);}
           > i {
           @extend .icon-arrow-left;
         }

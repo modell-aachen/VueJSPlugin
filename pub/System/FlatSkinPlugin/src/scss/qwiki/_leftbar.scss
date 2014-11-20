@@ -4,6 +4,7 @@
   left: 0;
   z-index: 100;
 
+  @media #{$mobile-only} {max-height: $qw-top-one-height-mobile;}
   @media #{$small-only} {max-height: $qw-top-one-height;}
   @media #{$medium-up} {bottom: 0;}
 
@@ -22,13 +23,15 @@
   > .buttons {
     position: absolute;
     top: 0;
-    // top: $qw-top-one-height;
     left: $qw-leftbar-width-expanded;
-    height: calc( 100% - #{$qw-top-one-height} );
 
     padding-top: 5px;
     padding-left: 5px;
     padding-right: 5px;
+
+    @media #{$mobile-only} {display: none;}
+    @media #{$small-only} {display: none;}
+    @media #{$medium-up} {height: calc( 100% - #{$qw-top-one-height} );}
 
     .button {
       width: $qw-leftbar-width - 10px;
@@ -118,7 +121,9 @@
     > .user {}
 
     > .actions {
-      height: $qw-top-one-height;
+      
+      @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+      @media #{$small-up} {height: $qw-top-one-height;}
       bottom: 1 + $qw-leftbar-ma-logo-height;
     }
 
