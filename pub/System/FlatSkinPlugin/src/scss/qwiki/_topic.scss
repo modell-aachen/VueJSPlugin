@@ -30,9 +30,7 @@
     @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-content-padding}/2);}
 
     > div {
-      @media #{$mobile-up} {padding: $qw-content-padding;}
-      @media #{$mobile-only} {padding-bottom: $qw-top-height-mobile;}
-      @media #{$small-up} {padding-bottom: $qw-top-height;}
+      padding: $qw-content-padding;
     }
   }
 
