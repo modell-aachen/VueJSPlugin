@@ -243,7 +243,8 @@ sub _handleComment {
     $response->{status} = 204;
   }
 
-  $meta->save(dontlog => 1, minor => 1) if $changed;
+  my %opts = (dontlog => 1, minor => 1);
+  $meta->saveAs($web, $topic, %opts) if $changed;
 }
 
 sub _uniqueID {
