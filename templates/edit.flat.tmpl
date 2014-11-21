@@ -25,22 +25,6 @@
 <!--/body:content-->%TMPL:END%
 
 
-%TMPL:DEF{"topbar:one:mid"}%<!--topbar:one:mid-->
-<div class="qw-edit-title">
-  <h5 class="content">
-    <span class="edit-color">%MAKETEXT{"Draft"}%:</span>
-    <span>%IF{"'%TOPIC%'/TopicTitle" then="TopicTitle" else="%TOPIC%"}%</span>
-    <span class="edit-color">[%MAKETEXT{"Version"}% %CALC{"$INT(%REVINFO{format="$rev"}% + 1)"}%]</span>
-  </h5>
-</div>
-<!--/topbar:one:mid-->%TMPL:END%
-
-%TMPL:DEF{"topbar:one:right"}%<!--topbar:one:right-->
-<div class="qw-cancel-edit">
-  <a href="/%WEB%/%TOPIC%" class="button tiny secondary"><i class="fa fa-times"></i> %MAKETEXT{"Cancel"}%</a>
-</div>
-<!--/topbar:one:right-->%TMPL:END%
-
 %TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%
 <div class="qw-documentcontrol qw-littleoffcanvas" data-offcanvas data-target="documentcontrol"><div>
   <div class="header">
