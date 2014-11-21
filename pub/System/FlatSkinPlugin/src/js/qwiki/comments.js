@@ -4,7 +4,7 @@
   QWiki.plugins.comments = {
     name: 'comments',
     comments: [],
-    types: ['idea', 'neutral', 'issue'],
+    types: ['idea', 'issue'],
 
     init: function( options ) {
       if ( typeof options === 'object' ) {
@@ -134,7 +134,7 @@
     var pid = $('.qw-comment-editbox').data('id');
     var sel = '[data-p-id="' + pid + '"]';
 
-    $('[data-commentable="1"].active').removeClass('active issue neutral idea');
+    $('[data-commentable="1"].active').removeClass('active issue idea');
     $(sel).addClass('active ' + type);
   };
 
@@ -190,10 +190,11 @@
       return;
     } else {
       var $adorner = $('#qw-comment-adorner');
-      var top = offset.top + pos.top + height/2 - 25 - window.pageYOffset;
+      var padding = 30;
+      var top = offset.top/2 + pos.top + height/2 - padding/2 - window.pageYOffset;
       $adorner.css('top', top);
 
-      var left = pos.left + width;
+      var left = pos.left + width + padding;
       $adorner.css('left', left);
       $adorner.show();
     }
