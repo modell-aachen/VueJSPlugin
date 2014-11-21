@@ -45,8 +45,6 @@
 %TMPL:DEF{"offcanvas:bars"}%
 %TMPL:P{"leftbar"}%
 %TMPL:P{"infobar"}%
-%TMPL:P{"kvpbar"}%
-%TMPL:P{"kvpoverlay"}%
 %TMPL:P{"quicksearch"}%
 %TMPL:P{"attachments"}%
 %TMPL:P{"comments"}%
@@ -179,33 +177,6 @@ jQuery(function($) {
 <!--/quicksearch-->%TMPL:END%
 
 
-%TMPL:DEF{"kvpbar"}%<!--kvpbar-->
-<div class="qw-kvpbar" data-offcanvas data-target="kvpbar">
-  <div>
-    <div class="header">
-      <div>
-        <i class="icon-kvp"></i>
-        <span>%MAKETEXT{"KVP"}%</span>
-        <a href="#" class="qw-back-btn" data-offcanvas-toggle="kvpbar"></a>
-      </div>
-    </div>
-    <div class="content">
-      <div>content here</div>
-    </div>
-  </div>
-</div>
-<!--/kvpbar-->%TMPL:END%
-
-%TMPL:DEF{"kvpoverlay"}%<!--kvpoverlay-->
-<div class="qw-kvpoverlay" data-offcanvas data-target="kvpoverlay">
-  <div class="close" data-offcanvas-toggle="kvpoverlay">
-    <div><i class="icon-arrow-right"></i></div>
-  </div>
-  <div>%TMPL:P{"kvp"}%</div>
-</div>
-<!--/kvpoverlay-->%TMPL:END%
-
-
 %TMPL:DEF{"leftbar"}%<!--leftbar-->
 <nav class="qw-leftbar" data-offcanvas data-target="leftbar">
   <section class="buttons">%TMPL:P{"leftbar:buttons"}%</section>
@@ -236,6 +207,7 @@ jQuery(function($) {
         <span class="label">%MAKETEXT{"General"}%</span>
         <ul>
           <li><a href="#" data-attachtable-toggle>%MAKETEXT{"Attachments"}%</a></li>
+          <li><a href="#" data-offcanvas-toggle="documentcontrol">%MAKETEXT{"Document control"}%</a></li>
           <li><a href="#">%MAKETEXT{"Version history"}%</a></li>
           <li><a href="#">%MAKETEXT{"Key figures"}%</a></li>
           <li><a href="#">%MAKETEXT{"Language comparison"}%</a></li>

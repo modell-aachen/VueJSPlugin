@@ -10,6 +10,11 @@
 %TMPL:P{"formend"}%
 <!--/content-->%TMPL:END%
 
+%{ textareas for WYSIWYG_TEXT }%
+%TMPL:DEF{"textarea"}%%IF{"defined 'EDITOR_MESSAGE'" then="<div class='foswikiAlert'>%EDITOR_MESSAGE%</div>"}%<div class="foswikiEditTextarea">%TMPL:P{context="WYSIWYG_TEXT" then="textarea_wysiwyg" else="textarea_nowysiwyg"}%</div>%TMPL:END%
+%TMPL:DEF{"textarea_nowysiwyg"}%<textarea class="foswikiTextarea foswikiEditboxStyleProportional foswikiWysiwygEdit" id="topic" name="text" rows="%EDITBOXHEIGHT%" cols="%EDITBOXWIDTH%" style='%EDITBOXSTYLE%'>%TEXT%</textarea>%TMPL:END%
+%TMPL:DEF{"textarea_wysiwyg"}%<input type="hidden" name="WYSIWYG_TEXT" value="1" /><textarea class="foswikiTextarea foswikiEditboxStyleProportional foswikiWysiwygEdit WYSIWYG_TEXT WYSIWYG_TEXT_HIDDEN" id="topic" name="text" rows="%EDITBOXHEIGHT%" cols="%EDITBOXWIDTH%" style='%EDITBOXSTYLE%'>%WYSIWYG_TEXT%</textarea>%TMPL:END%
+
 %{ We are showing the form in the rightbar, so be need to remove it from the bottom: }%
 %TMPL:DEF{"formbottom"}%%TMPL:END%
 
@@ -20,28 +25,14 @@
 <!--/body:content-->%TMPL:END%
 
 
-%TMPL:DEF{"topbar:one:mid"}%<!--topbar:one:mid-->
-<div class="qw-edit-title">
-  <h5 class="content">
-    <span class="edit-color">%MAKETEXT{"Draft"}%:</span>
-    <span>%IF{"'%TOPIC%'/TopicTitle" then="TopicTitle" else="%TOPIC%"}%</span>
-    <span class="edit-color">[%MAKETEXT{"Version"}% %CALC{"$INT(%REVINFO{format="$rev"}% + 1)"}%]</span>
-  </h5>
-</div>
-<!--/topbar:one:mid-->%TMPL:END%
-
-%TMPL:DEF{"topbar:one:right"}%<!--topbar:one:right-->
-<div class="qw-cancel-edit">
-  <a href="/%WEB%/%TOPIC%" class="button tiny secondary"><i class="fa fa-times"></i> %MAKETEXT{"Cancel"}%</a>
-</div>
-<!--/topbar:one:right-->%TMPL:END%
-
-%TMPL:DEF{"offcanvas:rightbar:includes"}%<!--offcanvas:rightbar:includes-->
-%TMPL:PREV%
-<div data-rightbar-item>
-  <a href="#" data-content="#qw-documentform" data-title="%MAKETEXT{"Document control"}%">
-    %MAKETEXT{"Document control"}% <i class="fa fa-chevron-right right"></i>
-  </a>
-  <div id="qw-documentform">%TMPL:P{"form"}%</div>
-</div>
-<!--/offcanvas:rightbar:includes-->%TMPL:END%
+%TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%
+<div class="qw-documentcontrol qw-littleoffcanvas" data-offcanvas data-target="documentcontrol"><div>
+  <div class="header">
+    <span>%MAKETEXT{"Document control"}%</span>
+    <a href="#" class="qw-back-btn right"  data-offcanvas-toggle="documentcontrol"></a>
+  </div>
+  <div class="content">
+    <div id="qw-documentform">%TMPL:P{"form"}%</div>
+  </div>
+</div></div>
+%TMPL:END%

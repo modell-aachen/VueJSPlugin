@@ -41,7 +41,7 @@
     // Sets up the #main form with the document control data and binds the
     // rightbar, so it updates #main when data changes.
     $(function($){
-        $('#qw-documentform').on('qw.sidebar.closing', updateForm);
+        $('.qw-documentcontrol').on('qw.offcanvas.closing', updateForm);
         cloneForm();
         var $changeForm = $('<form></form>').submit(function(){
             cloneForm();

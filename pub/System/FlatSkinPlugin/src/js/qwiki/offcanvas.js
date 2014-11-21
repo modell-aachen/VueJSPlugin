@@ -22,6 +22,87 @@
     }
   };
 
+
+  var toggleCanvas = function( element, action, sticky ) {
+    var sender = QWiki.plugins.offcanvas;
+    var bar;
+    var button;
+    var target;
+
+    target = element.attr('data-offcanvas-toggle');
+    if(target) {
+        button = element;
+        bar = $('[data-offcanvas][data-target="'+target+'"]');
+        if(!bar.length) {
+            if(window.console) {
+                console.log("Bar not found: " + bar.selector);
+            }
+            return;
+        }
+    } else {
+        if(element.attr('data-offcanvas') !== undefined) {
+            bar = element;
+        } else {
+            bar = element.closest('[data-offcanvas]');
+        }
+        target = bar.attr('data-target');
+    }
+
+    // close other bars
+    // Questionably this is also done if we close a bar.
+    $('.offcanvas').each(function(){
+        var $this = $(this);
+        var thistarget = $this.attr('data-target');
+        if(thistarget === target) {
+            return;
+        }
+
+        // check stickies:
+        if($('.active[data-offcanvas-toggle="' + thistarget + '"][data-offcanvas-sticky-toggle]').length) {
+            return;
+        }
+
+        // close the bar
+        $this.removeClass('offcanvas ' + thistarget);
+        $('[data-offcanvas-toggle="' + thistarget + '"]').removeClass('active');
+        QWiki.raiseEvent( $this, sender, 'closing' );
+    });
+
+    var open;
+    if(action === 'open') {
+        open = true;
+    } else if (action === 'close' ) {
+        open = false;
+    } else {
+        // toggle
+        if(bar.hasClass('offcanvas')) {
+            open = false;
+        } else {
+            open = true;
+        }
+    }
+
+    if(open) {
+        if(bar.hasClass('offcanvas')) {
+            return;
+        }
+        bar.addClass( 'offcanvas ' + target );
+        if(button) {
+            button.addClass('active');
+        }
+        QWiki.raiseEvent( bar, sender, 'opening' );
+    } else {
+        if(!bar.hasClass('offcanvas')) {
+            return;
+        }
+        bar.removeClass( 'offcanvas ' + target );
+        if(button) {
+            button.removeClass('active');
+        }
+        QWiki.raiseEvent( bar, sender, 'closing' );
+    }
+  };
+
   var handleClick = function( evt ) {
     var $self = $(this);
     var plugin = evt.data;
@@ -36,50 +117,10 @@
     var sticky = $self.attr('data-offcanvas-sticky-toggle');
     var isSticky = typeof sticky !== typeof undefined && sticky !== false;
 
-    if ( !isSticky ) {
-      var $toggles = $('[data-offcanvas-toggle="' + target + '"]');
-      $toggles.each( function() {
-        var $this = $(this);
-        sticky = $this.attr('data-offcanvas-sticky-toggle');
-        if ( typeof sticky !== typeof undefined && sticky !== false ) {
-          $this.toggleClass('active');
-        }
-      });
-    } else {
-      $self.toggleClass('active');
+    var activate = !$self.hasClass('active');
 
-      // remove highlighting for active sticky toggles
-      $('.active[data-offcanvas-sticky-toggle][data-offcanvas-toggle!="' + target + '"]').removeClass('active');
-    }
+    toggleCanvas($self);
 
-    var cls = ['leftbar', 'infobar', 'quicksearch', 'kvpbar', 'kvpoverlay', 'offcanvas'];
-    cls = _.without(cls, target);
-
-    // get a collection of currently active stickies
-    var $active = $('.active[data-offcanvas-sticky-toggle]');
-
-    var remove = [target];
-    $active.each( function() {
-      var tgt = $(this).data('offcanvas-toggle');
-      if ( tgt ) {
-        remove.push(tgt);
-      }
-    });
-
-    var toRemove = _.difference(cls, remove);
-
-    // fire closing event for auto-closed offcanvas areas.
-    _.each( _.without( toRemove, 'offcanvas' ), function( e ) {
-      if ( $('[data-offcanvas]').hasClass(e) ) {
-        plugin.Q.raiseEvent( '.qw-' + e, plugin, 'closing' );
-      }
-    });
-
-    $('[data-offcanvas]').removeClass( toRemove.join(' ') );
-    $('[data-offcanvas]').toggleClass( 'offcanvas ' + target );
-
-    // fire opening/closing event for currently selected target
-    plugin.Q.raiseEvent( '.qw-' + target, plugin, $('[data-offcanvas]').hasClass(target) ? 'opening' : 'closing' );
 
     return false;
   };
@@ -130,31 +171,7 @@
       return this;
     }
 
-    var cls = ['leftbar', 'infobar', 'quicksearch', 'kvpbar', 'kvpoverlay', 'offcanvas'];
-    var $ocvs = $('[data-offcanvas]');
-    $ocvs.removeClass( _.without(cls, target).join(' ') );
-
-    var etype;
-    switch (action) {
-      case 'open':
-        $ocvs.addClass( 'offcanvas ' + target );
-        this.addClass('active');
-        etype = 'opening';
-        break;
-      case 'close':
-        $ocvs.removeClass( 'offcanvas ' + target );
-        this.removeClass('active');
-        etype = 'closing';
-        break;
-      default:
-        $ocvs.toggleClass( 'offcanvas ' + target );
-        this.toggleClass('active');
-        etype = this.hasClass('active') ? 'opening' : 'closing';
-        break;
-    }
-
-    var sender = QWiki.plugins.offcanvas;
-    QWiki.raiseEvent( this, sender, etype );
+    toggleCanvas(this, action);
 
     return this;
   };

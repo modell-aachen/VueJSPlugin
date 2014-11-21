@@ -305,15 +305,5 @@
       }
     }
 
-    &.kvpoverlay {
-      transform: translate3d( -1 * $qw-leftbar-width, 0, 0 );
-      background: $qw-quicksearch-bg;
-
-      .one .breadcrumb > div {
-        @media #{$medium-only} {
-          padding-left: rem-calc($qw-leftbar-width) + $qw-content-padding;
-        }
-      }
-    }
   }
 }

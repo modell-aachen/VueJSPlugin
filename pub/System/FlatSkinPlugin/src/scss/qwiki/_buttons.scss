@@ -247,12 +247,13 @@ input[type="text"].qw-input {
 
 .qw-person {
   @include label(
-    $padding: rem-calc(14),
+    $padding: rem-calc(12 14),
     $text-size: rem-calc(14),
     $bg:$qw-button2-bg-color,
     $radius:4px
   );
-  line-height: 1rem;
+  font-size: rem-calc(14);
+  line-height: 1;
   color: #333;
   border: 1px solid $qw-button2-bg-hover-color;
 
@@ -354,9 +355,5 @@ ul[data-drop] {
   @include button-group-container( $styles: true, $float: false );
   > li {
     @include button-group-style( $radius: false, $even: false, $float: left );
-
-    > a:not(.qw-prio1-btn, .qw-prio2-btn) {
-      @include button( $padding: rem-calc(10), $bg: $primary-color );
-    }
   }
 }
