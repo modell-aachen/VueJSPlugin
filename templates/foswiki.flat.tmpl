@@ -47,8 +47,8 @@
 %TMPL:P{"infobar"}%
 %TMPL:P{"quicksearch"}%
 %TMPL:P{"attachments"}%
+%TMPL:P{"commentbar"}%
 %TMPL:P{"comments"}%
-%TMPL:P{"comments:boxes"}%
 %TMPL:END%
 
 %TMPL:DEF{"body"}%<!--body-->
@@ -176,6 +176,36 @@ jQuery(function($) {
 </div>
 <!--/quicksearch-->%TMPL:END%
 
+%TMPL:DEF{"commentbar"}%<!--commentbar-->
+<div class="qw-commentbar" data-offcanvas data-target="commentbar">
+  <div>
+    <div class="header">
+      <div class="default">
+        <span>%MAKETEXT{"Comments"}%</span>
+        <a href="#" class="close" data-offcanvas-toggle="commentbar"></a>
+      </div>
+      <div class="idea">
+        <i class="icon-comment-idea"></i>
+        <span>%MAKETEXT{"Idea"}%</span>
+        <a href="#" class="close right" data-offcanvas-toggle="commentbar"></a>
+      </div>
+      <div class="issue">
+        <i class="icon-exclamation"></i>
+        <span>%MAKETEXT{"Issue"}%</span>
+        <a href="#" class="close right" data-offcanvas-toggle="commentbar"></a>
+      </div>
+    </div>
+    <div class="content">
+      <div data-scrollcontainer>
+        <div class="editbox">%TMPL:P{"comments:editbox"}%</div>
+        <div class="viewbox">%TMPL:P{"comments:viewbox"}%</div>
+        <div class="replybox">%TMPL:P{"comments:replybox"}%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/commentbar-->%TMPL:END%
+
 
 %TMPL:DEF{"leftbar"}%<!--leftbar-->
 <nav class="qw-leftbar" data-offcanvas data-target="leftbar">
@@ -265,48 +295,77 @@ jQuery(function($) {
 <div id="qw-comment-container">%FLATCOMMENTS%</div>
 <!--/comments:container-->%TMPL:END%
 
-%TMPL:DEF{"comments:boxes"}%<!--comments:boxes-->
-%TMPL:P{"comments:viewbox"}%
-%TMPL:P{"comments:editbox"}%
-<!--/comments:boxes-->%TMPL:END%
-
 %TMPL:DEF{"comments:viewbox"}%<!--comments:viewbox-->
 <div class="qw-comment-viewbox">
-  <div class="meta">
-    <div class="content">
-      <span class="user"></span>
-    </div>
-    <div class="content">
-      <span class="date"></span>
-    </div>
-  </div>
-  <div class="comment">
-    <div class="content"></div>
-  </div>
-  <div class="more">
-    <div class="content">
-      <a id="qw-comment-more" href="#">%MAKETEXT{"read more"}% <i class="fa fa-chevron-down"></i></a>
-      <a id="qw-comment-less" class="hidden" href="#">%MAKETEXT{"less"}% <i class="fa fa-chevron-up"></i></a>
+  <div>
+    <div class="entry" data-qtemplate="qw.comments">
+      <div>
+        <div class="comment">
+          <div class="content">
+            <div qt-bind="text"></div>
+          </div>
+        </div>
+        <div class="meta">
+          <div class="content">
+            <div>
+              <span class="qw-meta-author" qt-bind="author"></span>
+            </div>
+          </div>
+          <div class="content">
+            <div>
+              <span class="qw-meta-date right" qt-bind="dateString"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <!--/comments:viewbox-->%TMPL:END%
 
+%TMPL:DEF{"comments:replybox"}%<!--comments:replybox-->
+<div class="qw-comment-reply">
+  <div class="btn">
+    <a class="qw-prio1-btn reply-btn" href="#">%MAKETEXT{"comment"}%</a>
+  </div>
+  <div class="editor">
+    <div class="text">
+      <div class="content">
+        <form data-abide>
+          <div>
+            <textarea id="qw-reply-textarea" cols="30" rows="10" required pattern="^[^\s]$|.+"></textarea>
+            <small class="error">%MAKETEXT{"required"}%</small>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="content">
+        <div><a href="#" class="qw-prio1-btn stretch submit">%MAKETEXT{"save"}%</a></div>
+      </div>
+      <div class="content">
+        <div><a href="#" class="qw-prio2-btn stretch cancel">%MAKETEXT{"cancel"}%</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/comments:replybox-->%TMPL:END%
+
 %TMPL:DEF{"comments:editbox"}%<!--comments:editbox-->
 <div class="qw-comment-editbox">
   <div class="options">
     <div class="content">
-      <input type="radio" name="commentType" value="0" id="qw-cmt-type0"><label for="qw-cmt-type0"><span class="idea left"><i class="fa fa-lightbulb-o fa-lg"></i> %MAKETEXT{"idea"}%</span></label>
+      <input type="radio" name="commentType" value="0" id="qw-cmt-type-idea"><label for="qw-cmt-type-idea"><span class="idea"><i class="icon-comment-idea"></i> %MAKETEXT{"idea"}%</span></label>
     </div>
     <div class="content">
-      <input type="radio" name="commentType" value="2" id="qw-cmt-type2"><label for="qw-cmt-type2"><span class="issue right"><i class="fa fa-exclamation fa-lg"></i> %MAKETEXT{"issue"}%</span></label>
+      <input type="radio" name="commentType" value="1" id="qw-cmt-type-issue"><label for="qw-cmt-type-issue"><span class="issue"><i class="icon-exclamation"></i> %MAKETEXT{"issue"}%</span></label>
     </div>
   </div>
   <div class="text">
     <div class="content">
       <form data-abide>
         <div>
-          <textarea id="qw-comment-textarea" cols="30" rows="5" required pattern="^[^\s]$|.+"></textarea>
+          <textarea id="qw-comment-textarea" cols="30" rows="10" required pattern="^[^\s]$|.+"></textarea>
           <small class="error">%MAKETEXT{"required"}%</small>
         </div>
       </form>
@@ -314,10 +373,10 @@ jQuery(function($) {
   </div>
   <div class="actions">
     <div class="content">
-      <a href="#" class="submit">%MAKETEXT{"save"}%</a>
+      <div><a href="#" class="qw-prio1-btn stretch submit">%MAKETEXT{"save"}%</a></div>
     </div>
     <div class="content">
-      <a href="#" class="cancel">%MAKETEXT{"cancel"}%</a>
+      <div><a href="#" class="qw-prio2-btn stretch cancel">%MAKETEXT{"cancel"}%</a></div>
     </div>
   </div>
 </div>

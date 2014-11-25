@@ -26,9 +26,11 @@
       $('.qw-comment-editbox .cancel').on( 'click', this, onCancel );
       $('.qw-comment-editbox .submit').on( 'click', this, onSave );
       $('input[name="commentType"]').on( 'change', this, onCommentTypeChanged );
+      $('.qw-comment-reply .reply-btn').on( 'click', this, showReplyBox );
+      $('.qw-comment-reply .editor .cancel').on( 'click', this, resetReplyBox );
+      $('.qw-comment-reply .editor .submit').on( 'click', this, sendReply );
 
-      $('#qw-comment-more').on( 'click', this, onShowMore );
-      $('#qw-comment-less').on( 'click', this, onShowLess );
+      $('.qw-commentbar').on( this.namespace + '.offcanvas.closing', this, onCommentBarClosing );
     },
 
     unbind: function() {
@@ -40,9 +42,11 @@
       $('.qw-comment-editbox .cancel').off( 'click', onCancel );
       $('.qw-comment-editbox .submit').off( 'click', onSave );
       $('input[name="commentType"]').off( 'change', onCommentTypeChanged );
+      $('.qw-comment-reply .reply-btn').off( 'click', showReplyBox );
+      $('.qw-comment-reply .editor .cancel').off( 'click', resetReplyBox );
+      $('.qw-comment-reply .editor .submit').off( 'click', sendReply );
 
-      $('#qw-comment-more').off( 'click', onShowMore );
-      $('#qw-comment-less').off( 'click', onShowLess );
+      $('.qw-commentbar').on( this.namespace + '.offcanvas.closing', onCommentBarClosing );
     },
 
     post: function( cmt ) {
@@ -69,11 +73,16 @@
           var selector = '[data-p-id="' + cmt.pid + '"]';
           $(selector).attr( 'data-hascomments', cmt.type );
           $('.qw-comment-editbox .cancel').click();
+          $('.qw-comment-reply .cancel').click();
 
           cmt.author = foswiki.preferences.WIKINAME;
           cmt.date = (new Date()).getTime();
           self.comments.push( cmt );
           $.unblockUI();
+
+          $('.qw-commentbar [data-scrollcontainer]').slimScroll({ scrollTo: '50000px' });
+
+          $(selector).click();
         },
         error: function( xhr, status, err ) {
           $.unblockUI();
@@ -98,32 +107,69 @@
     }
   };
 
-  var onShowMore = function( evt ) {
-    var self = evt.data;
-    var $this = $(this);
-    var $less = $('#qw-comment-less');
+  var showReplyBox = function( evt ) {
+    var $reply = $('.qw-comment-reply');
+    var height = $reply.height();
+    $reply.data('height', height);
 
-    var $box = $('.qw-comment-viewbox');
-    $box.find('.comment > .content').text( $box.data('text') );
+    $('.qw-comment-reply .btn').css('display', 'none');
+    $reply.css('height', '280px');
+  };
 
-    $this.addClass('hidden');
-    $less.removeClass('hidden');
+  var resetReplyBox = function( evt ) {
+    var $tb = $('#qw-reply-textarea');
+    $tb.val('');
+    $tb.parent().removeClass('error');
+
+    var $reply = $('.qw-comment-reply');
+    var height = $reply.data('height');
+    $('.qw-comment-reply .btn').css('display', 'block');
+    $reply.css('height', height);
 
     return false;
   };
 
-  var onShowLess = function( evt ) {
+  var sendReply = function( evt ) {
+    var $tb = $('#qw-reply-textarea');
+    
+    var text = $tb.val() || '';
+    if ( text.trim() === '' ) {
+      $tb.parent().addClass('error');
+      return false;
+    }
+
     var self = evt.data;
-    var $this = $(this);
-    var $more = $('#qw-comment-more');
+    var id = $('.qw-comment-reply').data('p-id');
+    if ( !id ) {
+      self.Q.error( 'Invalid comment ID!' );
+      return false;
+    }
 
-    var $box = $('.qw-comment-viewbox');
-    $box.find('.comment > .content').text( $box.data('abbr') );
+    var cmts = _.where( self.comments, {pid: id});
+    if ( cmts.length === 0 ) {
+      self.Q.error( 'Unable to determine comment type!' );
+      return false;
+    }
 
-    $this.addClass('hidden');
-    $more.removeClass('hidden');
+    var cmt = {
+      type: cmts[0].type,
+      text: $tb.val(),
+      pid: id
+    };
 
+    self.post( cmt );
     return false;
+  };
+
+  var onCommentBarClosing = function( evt ) {
+    var self = evt.data;
+    $('.qw-comment-editbox').data('id', '');
+    $('[data-commentable="1"]').removeClass('active idea issue');
+    $('.qw-commentbar').removeClass('idea issue');
+    $('.qw-commentbar .header .default').css('display', 'block');
+    $('.qw-commentbar .header .idea').css('display', 'none');
+    $('.qw-commentbar .header .issue').css('display', 'none');
+    $('.qw-comment-reply').data('p-id', '');
   };
 
   var onCommentTypeChanged = function( evt ) {
@@ -132,10 +178,10 @@
     var type = self.types[index];
 
     var pid = $('.qw-comment-editbox').data('id');
-    var sel = '[data-p-id="' + pid + '"]';
+    var selector = '[data-p-id="' + pid + '"]';
 
     $('[data-commentable="1"].active').removeClass('active issue idea');
-    $(sel).addClass('active ' + type);
+    $(selector).addClass('active ' + type);
   };
 
   var onSave = function( evt ) {
@@ -164,7 +210,8 @@
     $box.removeClass('active');
     $box.data('id', '');
     $('#qw-comment-textarea').val('');
-    $('[data-commentable="1"].active').removeClass('active issue neutral idea');
+    $('[data-commentable="1"].active').removeClass('active issue idea');
+    $('.qw-commentbar').offcanvas({action: 'close'});
     return false;
   };
 
@@ -204,28 +251,82 @@
     $('#qw-comment-adorner').hide();
   };
 
+  var setHeader = function( header ) {
+    var $bar = $('.qw-commentbar .header');
+    var $idea = $bar.find('.idea');
+    var $issue = $bar.find('.issue');
+    var $default = $bar.find('.default');
+
+    switch (header) {
+      case 'idea':
+        $idea.css('display', 'block');
+        $issue.css('display', 'none');
+        $default.css('display', 'none');
+        break;
+
+      case 'issue':
+        $idea.css('display', 'none');
+        $issue.css('display', 'block');
+        $default.css('display', 'none');
+        break;
+
+      default:
+        $idea.css('display', 'none');
+        $issue.css('display', 'none');
+        $default.css('display', 'block');
+    }
+  };
+
   var onClick = function( evt ) {
-    $('.qw-comment-viewbox.active').removeClass('active');
-    if ( $('.qw-comment-editbox.active').length > 0 ) {
-      var content = $('#qw-comment-textarea').val();
-      if ( content.trim() !== '' ) {
-        return;
-      } else {
-        onCancel();
-      }
+    var self = evt.data;
+
+    var $this = $(this);
+    var $cmtbar = $('.qw-commentbar');
+    $cmtbar.offcanvas({action: 'open'});
+
+    var $edit = $('.qw-comment-editbox');
+    var $view = $('.qw-comment-viewbox');
+    var $reply = $('.qw-comment-reply');
+    var hasComment = _.isNumber( $this.data('hascomments') );
+    if ( hasComment ) {
+      var cmts = _.where( self.comments, {pid: $this.data('p-id')});
+      $('.qw-comment-reply').data('p-id', $this.data('p-id') );
+      var $cnt = $('.qw-comment-viewbox > div:not(.reply)').empty();
+
+      var header = parseInt( $this.data('hascomments') ) === 0 ? 'idea' : 'issue';
+      $cmtbar.removeClass('idea issue').addClass(header);
+      setHeader( header );
+
+      _.each( cmts, function(cmt) {
+        var d = new Date();
+        d.setTime( cmt.date );
+        cmt.dateString = d.toLocaleString();
+        $cnt.qtemplate('add', $.extend({_type: 'qw.comments'}, cmt ));
+      });
+
+      $edit.css('display', 'none');
+      $view.css('display', 'block');
+      $reply.css('display', 'block');
+    } else {
+      $edit.css('display', 'block');
+      $view.css('display', 'none');
+      $reply.css('display', 'none');
+
+      setHeader('default');
+      $cmtbar.removeClass('idea issue');
     }
 
-    var $box;
-    var $this = $(this);
+    if ( !$this.hasClass('active') ) {
+      $('[data-commentable="1"]').removeClass('active idea issue');
+      $this.addClass('active');
+    }
 
-    $('[data-commentable="1"]').removeClass('active idea issue');
-    $this.addClass('active');
     var ctype = parseInt( $this.data('hascomments') );
     switch (ctype) {
       case 0:
         $this.addClass('idea');
         break;
-      case 2:
+      case 1:
         $this.addClass('issue');
         break;
       default:
@@ -233,60 +334,14 @@
         break;
     }
 
-    var self = evt.data;
-    var hasComments = _.isNumber( $this.data('hascomments') );
-    if ( hasComments ) {
-      $box = $('.qw-comment-viewbox');
-    } else {
-      $box = $('.qw-comment-editbox');
+    var pid = $this.data('p-id');
+    if ( pid !== $edit.data('id') ) {
+      $edit.data('id', pid);
+      if ( !hasComment ) {
+        $('#qw-cmt-type-idea').click();
+      }
     }
 
-    // 15 = $qw-content-padding/2
-    $box.css('top', $this.position().top - 15);
-    $box.data('id', $this.data('p-id'));
-
-    if ( hasComments ) {
-      var pid = $(this).data('p-id');
-      var arr = _.where(self.comments, {pid: pid});
-      var comments = _.sortBy(arr, function( cmt ) { return Math.min( parseInt(cmt.date) ); });
-      if ( !comments || comments.length === 0 ) {
-        return false;
-      }
-
-      var first = comments[0];
-      var d = new Date(0);
-      d.setUTCSeconds( first.date );
-      var date = [
-        d.toLocaleTimeString(),
-        '|',
-        d.toLocaleDateString()
-      ];
-      $box.find('.user').text( first.author );
-      $box.find('.date').text( date.join(' ') );
-
-      // trim text
-      var text = first.text;
-      $box.data('text', text);
-      if ( text.length > 200 ) {
-        for ( var i = 160; i < text.length; ++i ) {
-          if ( text.charAt( i ) === ' ' ) {
-            text = text.substr(0, i) + '...';
-          }
-        }
-
-        $box.data('abbr', text);
-        $box.find('.more').removeClass('hidden');
-      } else {
-        $box.find('.more').addClass('hidden');
-      }
-
-      $box.find('.comment > .content').text( text );
-    } else {
-      $('#qw-cmt-type0').click();
-      $('#qw-comment-adorner').hide();
-    }
-    
-    $box.addClass('active');
     return false;
   };
 }(jQuery, window._, window.document, window));
