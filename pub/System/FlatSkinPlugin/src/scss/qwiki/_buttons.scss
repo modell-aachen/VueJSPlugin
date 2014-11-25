@@ -59,6 +59,12 @@
   }
 }
 
+.qw-prio1-btn, .qw-prio2-btn {
+  &.stretch {
+    min-width: 100%;
+  }
+}
+
 .qw-login-btn {
   @include button( $radius: true, $bg: $qw-button1-bg-color, $full-width: true );
 
