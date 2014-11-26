@@ -17,11 +17,16 @@
       this.unbind();
       $('.qw-menutoggle > .toggle').on('click', toggleLeftbar);
       $('.qw-leftbar > .buttons .button').on('click', handleBtnClick);
+
+      $('.qw-leftbar').on('qw.offcanvas.closing', this, onOffcanvasToggled);
+      $('.qw-leftbar').on('qw.offcanvas.opening', this, onOffcanvasToggled);
     },
 
     unbind: function() {
       $('.qw-menutoggle > .toggle').off('click', toggleLeftbar);
       $('.qw-leftbar > .buttons .button').off('click', handleBtnClick);
+      $('.qw-leftbar').off('qw.offcanvas.closing', onOffcanvasToggled);
+      $('.qw-leftbar').off('qw.offcanvas.opening', onOffcanvasToggled);
     }
   };
 
@@ -32,9 +37,14 @@
 
   var toggleLeftbar = function() {
     var $leftbar = $('.qw-leftbar');
+    $leftbar.toggleClass('expanded');
+  };
+
+  var onOffcanvasToggled = function(evt) {
+    var $leftbar = $('.qw-leftbar');
     var $btns = $('.buttons .button');
     var $links = $('.links .button');
-    
+
     if ( !$leftbar.hasClass('expanded') ) {
       for( var i = $btns.length - 1; i >= 0; --i ) {
         var $btn = $($btns[i]);
@@ -54,7 +64,5 @@
         _.delay( _.bind( $link.toggleClass, $link ), ($links.length - j) * 50, 'invisible' );
       }
     }
-
-    $('.qw-leftbar').toggleClass('expanded');
   };
 }(jQuery, window._, window.document, window));

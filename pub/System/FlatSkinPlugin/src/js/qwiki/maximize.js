@@ -52,6 +52,10 @@
       $elem.toggleClass('maximized');
       if ( $elem.hasClass('maximized') ) {
         maximized.push( elem );
+
+        $('.offcanvas').each( function() {
+          $(this).offcanvas({action: 'close'});
+        });
       }
     });
 
