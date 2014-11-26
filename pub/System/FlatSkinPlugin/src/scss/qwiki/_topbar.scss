@@ -65,6 +65,72 @@
       }
     }
 
+    > .editor {
+      background: $qw-top-one-cke-bg;
+      min-height: $qw-top-one-height;
+      padding: 0;
+      float: left;
+
+      $p: percentage(1/$total-columns);
+      @media #{$mobile-only} {display: none !important;}
+      @media #{$small-up} {width: calc(10 * #{$p} - #{$qw-leftbar-width});}
+      @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-leftbar-width});}
+      @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-leftbar-width});}
+    }
+
+    > .buttons {
+      background: $qw-top-one-cke-bg;
+      min-height: $qw-top-one-height;
+      padding: 0;
+      float: left;
+
+      $p: percentage(1/$total-columns);
+      @media #{$mobile-only} {display: none !important;}
+      @media #{$small-up} {width: calc(2 * #{$p});}
+      @media #{$large-only} {width: calc(4 * #{$p});}
+      @media #{$extended-up} {width: calc(3 * #{$p});}
+
+      > div {
+        // background: red;
+
+        @include grid-row($behavior: collapse);
+        $pt: 10px;
+        padding-top: $pt;
+
+        > .save {
+          @include grid-column($columns: 8, $collapse: true);
+          max-height: $qw-top-one-height - 2 * $pt;
+
+          > div {
+            $pl: $qw-content-padding/2;
+            padding-left: $pl;
+
+            a {
+              display: inline-block;
+              vertical-align: middle;
+              min-width: calc( 100% - 3 * #{$pl});
+            }
+          }
+        }
+
+        > .cancel {
+          @include grid-column($columns: 4, $collapse: true);
+          max-height: $qw-top-one-height - 2 * $pt;
+
+          > div {
+            $pr: $qw-content-padding/2;
+            padding-right: $pr;
+
+            a {
+              display: inline-block;
+              vertical-align: middle;
+              min-width: calc( 100% - 2 * #{$pr});
+            }
+          }
+        }
+      }
+    }
+
     > .search {
       transition: background 0.15s ease-in-out;
 

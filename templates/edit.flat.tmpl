@@ -25,14 +25,60 @@
 <!--/body:content-->%TMPL:END%
 
 
-%TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%
-<div class="qw-documentcontrol qw-littleoffcanvas" data-offcanvas data-target="documentcontrol"><div>
-  <div class="header">
-    <span>%MAKETEXT{"Document control"}%</span>
-    <a href="#" class="qw-back-btn right"  data-offcanvas-toggle="documentcontrol"></a>
+%TMPL:DEF{"offcanvas:bars"}%
+<div class="qw-documentcontrol qw-littleoffcanvas" data-offcanvas data-target="documentcontrol">
+  <div>
+    <div class="header">
+      <span>%MAKETEXT{"Document control"}%</span>
+      <a href="#" class="qw-back-btn right"  data-offcanvas-toggle="documentcontrol"></a>
+    </div>
+    <div class="content">
+      <div id="qw-documentform">%TMPL:P{"form"}%</div>
+    </div>
   </div>
-  <div class="content">
-    <div id="qw-documentform">%TMPL:P{"form"}%</div>
-  </div>
-</div></div>
+</div>
 %TMPL:END%
+
+%TMPL:DEF{"topbar"}%<!--topbar-->
+<nav class="qw-top" data-offcanvas>
+  <div class="one">
+    <div id="cke-toolbar-container" class="editor"></div>
+    <div class="buttons">
+      <div>
+        <div class="save">
+          <div>
+            <a href="#" class="qw-prio1-btn save stretch" data-submit-form="#main">%MAKETEXT{"save"}%</a>
+          </div>
+        </div>
+        <div class="cancel">
+          <div>
+            <a href="%SCRIPTURL{"view"}%/%WEB%/%TOPIC%" class="qw-prio2-btn cancel stretch">%MAKETEXT{"cancel"}%</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="actions">
+      <div>
+        <div>
+          <div class="tabs">
+            <div>%TMPL:P{"topbar:tabs"}%</div>
+          </div>
+        </div>
+        <div>
+          <div class="topicactions">
+            <div>%TMPL:P{"topbar:actions"}%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--/topbar-->%TMPL:END%
+
+%TMPL:DEF{"menutoggle"}%<!--menutoggle-->
+<div class="qw-menutoggle edit">
+  <div><i class="icon-edit"></i></div>
+</div>
+<!--/menutoggle-->%TMPL:END%

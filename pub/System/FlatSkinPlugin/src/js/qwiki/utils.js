@@ -13,11 +13,34 @@
     },
 
     bind: function() {
+      this.unbind();
+
       $('[data-split-string]').each( function() {
         splitString( this, $(this).data('pattern') );
       });
+
       $('[data-qtemplate]').qtemplate('compile');
+
+      $('[data-submit-form]').on('click', this, submitForm );
+    },
+
+    unbind: function() {
+      $('[data-submit-form]').off('click', submitForm );
     }
+  };
+
+  var submitForm = function( evt ) {
+    var self = evt.data;
+    var $sender = $(this);
+
+    var target = $sender.data('submit-form');
+    if ( !target ) {
+      return false;
+    }
+
+    $.blockUI();
+    $('form' + target).submit();
+    return false;
   };
 
   var splitString = function( elem, pattern ) {

@@ -57,4 +57,16 @@
       }
     }
   }
+
+  &.edit {
+    left: 0;
+    background: $qw-leftbar-toggle-edit-bg;
+    width: $qw-leftbar-width;
+
+    > div {
+      color: white;
+      font-size: 2rem;
+      padding: rem-calc(9 12 9 18);
+    }
+  }
 }

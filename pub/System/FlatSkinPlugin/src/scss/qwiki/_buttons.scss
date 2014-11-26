@@ -35,10 +35,24 @@
 
   &:hover {
     background-color: $qw-button1-bg-hover-color;
-    border-bottom: 1px solid $qw-button1-shadow-color;
   }
   &:active {
     background-color: $qw-button1-bg-active-color
+  }
+
+  &.save {
+    background: $qw-save-btn-bg;
+    color: $qw-save-btn-color;
+
+    &:hover {
+      background: $qw-save-btn-hover-bg;
+      color: $qw-save-btn-hover-color;
+    }
+
+    &:active {
+      background: $qw-save-btn-active-bg;
+      color: $qw-save-btn-active-color;
+    }
   }
 }
 
@@ -56,6 +70,22 @@
   }
   &:active {
     background-color: $qw-button2-bg-active-color;
+  }
+
+  &.cancel {
+    background: $qw-cancel-btn-bg;
+    color: $qw-cancel-btn-color;
+    border: 1px solid $qw-save-btn-color;
+
+    &:hover {
+      background: $qw-cancel-btn-hover-bg;
+      color: $qw-cancel-btn-hover-color;
+    }
+
+    &:active {
+      background: $qw-cancel-btn-active-bg;
+      color: $qw-cancel-btn-active-color;
+    }
   }
 }
 

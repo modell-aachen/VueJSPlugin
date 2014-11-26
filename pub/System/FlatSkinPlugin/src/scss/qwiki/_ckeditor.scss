@@ -17,3 +17,43 @@ div#cke_topic.cke_chrome {
 }
 
 .context-edit .qw-page > .qw-left > .meta { padding-top: rem-calc(60); }
+
+nav.qw-top > .one {
+  #cke-toolbar-container .cke_inner .cke_top {
+    border: none;
+    padding: 8px 8px 2px 10px;
+    background: $qw-top-one-cke-bg;
+    background-image: none;
+  }
+
+  #cke-toolbar-container .cke_top span.cke_toolgroup {
+    border: none;
+  }
+
+  #cke-toolbar-container .cke_top a.cke_button {
+    padding: 0.75rem;
+    background: $qw-cke-button-bg;
+    
+    background-image: none;
+    transition: background 0.15s linear,
+                color 0.15s linear;
+
+    &:hover {
+      background: $qw-cke-button-hover-bg;
+    }
+
+    &:active {
+      background: $qw-cke-button-active-bg;
+      color: $qw-cke-button-active-color;
+    }
+
+    &.cke_button_on {
+      box-shadow: none;
+      background: $qw-cke-button-active-bg;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}

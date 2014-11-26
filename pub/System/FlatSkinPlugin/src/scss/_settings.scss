@@ -81,6 +81,21 @@ $qw-button2-bg-active-color: #bbbcbd;
 $qw-button2-shadow-color: $qw-button2-bg-hover-color;
 
 
+$qw-save-btn-color: #666666;
+$qw-save-btn-hover-color: #262626;
+$qw-save-btn-active-color: #262626;
+$qw-save-btn-bg: #e0e0e0;
+$qw-save-btn-hover-bg: #f5f5f5;
+$qw-save-btn-active-bg: #c7c7c7;
+
+$qw-cancel-btn-color: #bfbfbf;
+$qw-cancel-btn-hover-color: #d9d9d9;
+$qw-cancel-btn-active-color: #d9d9d9;
+$qw-cancel-btn-bg: #4d4d4d;
+$qw-cancel-btn-hover-bg: #666666;
+$qw-cancel-btn-active-bg: #575757;
+
+
 $qw-add-color: #fff;
 $qw-add-bg-color: #236aa2;
 $qw-add-bg-hover-color: #2c85c9;
@@ -186,6 +201,13 @@ $qw-top-two-bg: #f5f5f5;
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
 $qw-top-height-mobile: $qw-top-one-height-mobile + $qw-top-two-height-mobile;
 
+$qw-top-one-cke-bg: #4d4d4d;
+$qw-cke-button-bg: #666666;
+$qw-cke-button-hover-bg: #8c8c8c;
+$qw-cke-button-active-bg: #e0e0e0;
+$qw-cke-button-active-color: #666666;
+$qw-cke-button-color: #ffffff;
+
 
 // breadcrumbs
 $qw-breadcrumb-bg: #bfbfbf;
@@ -251,6 +273,7 @@ $qw-leftbar-bg-expanded: #fafafa;
 $qw-leftbar-toggle-bg: #236aa2;
 $qw-leftbar-toggle-hover-bg: #2c85c9;
 $qw-leftbar-toggle-active-bg: #1b537d;
+$qw-leftbar-toggle-edit-bg: #e92727;
 $qw-leftbar-customer-logo-height: $qw-top-one-height;
 $qw-leftbar-ma-logo-height: 40px;
 
