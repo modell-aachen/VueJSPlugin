@@ -26,12 +26,10 @@
   var toggleCanvas = function( element, action, sticky ) {
     var sender = QWiki.plugins.offcanvas;
     var bar;
-    var button;
     var target;
 
     target = element.attr('data-offcanvas-toggle');
     if(target) {
-        button = element;
         bar = $('[data-offcanvas][data-target="'+target+'"]');
         if(!bar.length) {
             if(window.console) {
@@ -87,18 +85,14 @@
             return;
         }
         bar.addClass( 'offcanvas ' + target );
-        if(button) {
-            button.addClass('active');
-        }
+        $('[data-offcanvas-toggle="' + target + '"]').addClass('active');
         QWiki.raiseEvent( bar, sender, 'opening' );
     } else {
         if(!bar.hasClass('offcanvas')) {
             return;
         }
         bar.removeClass( 'offcanvas ' + target );
-        if(button) {
-            button.removeClass('active');
-        }
+        $('[data-offcanvas-toggle="' + target + '"]').removeClass('active');
         QWiki.raiseEvent( bar, sender, 'closing' );
     }
   };
