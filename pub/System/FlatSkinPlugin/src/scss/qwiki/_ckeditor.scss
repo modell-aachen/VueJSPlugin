@@ -33,8 +33,8 @@ nav.qw-top > .one {
   #cke-toolbar-container .cke_top a.cke_button {
     padding: 0.75rem;
     background: $qw-cke-button-bg;
-    
     background-image: none;
+    cursor: pointer;
     transition: background 0.15s linear,
                 color 0.15s linear;
 
@@ -54,6 +54,29 @@ nav.qw-top > .one {
       &:hover {
         box-shadow: none;
       }
+    }
+
+    &.cke_button_disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  #cke-toolbar-container .cke_top a.cke_combo_button {
+    background: $qw-cke-button-bg;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: background 0.15s linear,
+                color 0.15s linear;
+
+    &:hover {
+      background: $qw-cke-button-hover-bg;
+    }
+
+    &:active {
+      background: $qw-cke-button-active-bg;
     }
   }
 }
