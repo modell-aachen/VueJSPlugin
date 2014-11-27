@@ -17,6 +17,11 @@
   &.offcanvas {
     &.leftbar {
       transform: translate3d( 0, 0, 0);
+
+      > .buttons .button {
+        pointer-events: none;
+        cursor: default;
+      }
     }
   }
 
