@@ -10,7 +10,7 @@
       if ( typeof options === 'object' ) {
         $.extend( this, options );
       }
-
+// if(true){return;}
       this.load();
       this.bind();
     },
@@ -18,10 +18,13 @@
     bind: function() {
       this.unbind();
 
-      var $tgt = $('[data-commentable="1"]');
-      $tgt.on( 'mouseenter', this, onMouseEnter );
-      $tgt.on( 'mouseleave', this, onMouseLeave );
-      $tgt.on( 'click', this, onClick );
+      var self = this;
+      $('[data-commentable="1"]').livequery( function() {
+        var $this = $(this);
+        $this.on( 'mouseenter', self, onMouseEnter );
+        $this.on( 'mouseleave', self, onMouseLeave );
+        $this.on( 'click', self, onClick );
+      });
 
       $('.qw-comment-editbox .cancel').on( 'click', this, onCancel );
       $('.qw-comment-editbox .submit').on( 'click', this, onSave );
@@ -34,10 +37,12 @@
     },
 
     unbind: function() {
-      var $tgt = $('[data-commentable="1"]');
-      $tgt.off( 'mouseenter', onMouseEnter );
-      $tgt.off( 'mouseleave', onMouseLeave );
-      $tgt.off( 'click', onClick );
+      $('[data-commentable="1"]').expire( function() {
+        var $this = $(this);
+        $this.off( 'mouseenter', onMouseEnter );
+        $this.off( 'mouseleave', onMouseLeave );
+        $this.off( 'click', onClick );
+      });
 
       $('.qw-comment-editbox .cancel').off( 'click', onCancel );
       $('.qw-comment-editbox .submit').off( 'click', onSave );
@@ -99,10 +104,9 @@
       $.each( cmts, function( i, cmt ) {
         self.comments.push( cmt );
         var selector = '[data-p-id="' + cmt.pid + '"]';
-        var commentable = $(selector);
-        if ( commentable.length > 0 ) {
-          commentable.attr( 'data-hascomments', cmt.type );
-        }
+        $(selector).livequery( function() {
+          $(this).attr( 'data-hascomments', cmt.type );
+        });
       });
     }
   };

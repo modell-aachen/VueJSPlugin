@@ -185,10 +185,6 @@
   margin: -1rem;
   border-radius: $global-radius;
 
-  &:hover {
-    cursor: pointer;
-  }
-
   &.active {
     &.idea { background: $qw-comment-idea-bg; }
     &.issue { background: $qw-comment-issue-bg; }
