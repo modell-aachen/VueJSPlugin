@@ -30,7 +30,7 @@
     @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-content-padding}/2);}
 
     > div {
-      padding: $qw-content-padding;
+      padding: 0.5rem $qw-content-padding;
     }
   }
 

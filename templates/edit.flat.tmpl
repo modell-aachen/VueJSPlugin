@@ -20,12 +20,13 @@
 
 %TMPL:DEF{"body:content"}%<!--body:content-->
 %TMPL:PREV%
-<div id="ckarea" class="follows-canvas"></div>
-<a href="#" class="button" onclick="$('#main').append('<input type=&quot;hidden&quot; name=&quot;action_save&quot; value=&quot;Save&quot;>').submit();">Default Button</a>
+<div id="ckarea" data-offcanvas></div>
 <!--/body:content-->%TMPL:END%
 
 
-%TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%
+%TMPL:DEF{"offcanvas:bars"}%
+%TMPL:P{"commentbar"}%
+%TMPL:P{"comments"}%
 <div class="qw-documentcontrol qw-littleoffcanvas" data-offcanvas data-target="documentcontrol">
   <div>
     <div class="header">
@@ -44,18 +45,7 @@
   <div class="one">
     <div id="cke-toolbar-container" class="editor"></div>
     <div class="buttons">
-      <div>
-        <div class="save">
-          <div>
-            <a href="#" class="qw-prio1-btn save stretch" data-submit-form="#main">%MAKETEXT{"save"}%</a>
-          </div>
-        </div>
-        <div class="cancel">
-          <div>
-            <a href="%SCRIPTURL{"view"}%/%WEB%/%TOPIC%" class="qw-prio2-btn cancel stretch">%MAKETEXT{"cancel"}%</a>
-          </div>
-        </div>
-      </div>
+      <div>%TMPL:P{"topbar:buttons"}%</div>
     </div>
   </div>
   <div class="two">
@@ -82,3 +72,16 @@
   <div><i class="icon-edit"></i></div>
 </div>
 <!--/menutoggle-->%TMPL:END%
+
+%TMPL:DEF{"topbar:buttons"}%<!--topbar:buttons-->
+<div class="save">
+  <div>
+    <a href="#" class="qw-prio1-btn save stretch" data-submit-form="#main">%MAKETEXT{"save"}%</a>
+  </div>
+</div>
+<div class="cancel">
+  <div>
+    <a href="%SCRIPTURL{"view"}%/%WEB%/%TOPIC%" class="qw-prio2-btn cancel stretch">%MAKETEXT{"cancel"}%</a>
+  </div>
+</div>
+<!--/topbar:buttons-->%TMPL:END%
