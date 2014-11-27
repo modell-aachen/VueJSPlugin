@@ -118,6 +118,8 @@
 
     $('.qw-comment-reply .btn').css('display', 'none');
     $reply.css('height', '280px');
+
+    return false;
   };
 
   var resetReplyBox = function( evt ) {
