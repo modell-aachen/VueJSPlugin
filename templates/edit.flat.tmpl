@@ -24,9 +24,7 @@
 <!--/body:content-->%TMPL:END%
 
 
-%TMPL:DEF{"offcanvas:bars"}%
-%TMPL:P{"commentbar"}%
-%TMPL:P{"comments"}%
+%TMPL:DEF{"documentcontrol:bar"}%<!--documentcontrol:bar-->
 <div class="qw-documentcontrol qw-littleoffcanvas" data-offcanvas data-target="documentcontrol">
   <div>
     <div class="header">
@@ -38,7 +36,12 @@
     </div>
   </div>
 </div>
-%TMPL:END%
+<!--/documentcontrol:bar-->%TMPL:END%
+
+%TMPL:DEF{"offcanvas:bars"}%<!--offcanvas:bars-->
+%TMPL:PREV%
+%TMPL:P{"documentcontrol:bar"}%
+<!--/offcanvas:bars-->%TMPL:END%
 
 %TMPL:DEF{"topbar"}%<!--topbar-->
 <nav class="qw-top" data-offcanvas>

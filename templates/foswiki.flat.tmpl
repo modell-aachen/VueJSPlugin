@@ -41,15 +41,10 @@
 
 %TMPL:DEF{"context"}%approved%TMPL:END%
 
-
-%TMPL:DEF{"offcanvas:bars"}%
-%TMPL:P{"leftbar"}%
-%TMPL:P{"infobar"}%
-%TMPL:P{"quicksearch"}%
-%TMPL:P{"attachments"}%
+%TMPL:DEF{"offcanvas:bars"}%<!--offcanvas:bars-->
 %TMPL:P{"commentbar"}%
 %TMPL:P{"comments"}%
-%TMPL:END%
+<!--/offcanvas:bars-->%TMPL:END%
 
 %TMPL:DEF{"body"}%<!--body-->
 <body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, placeholder, ui::tooltip, ui::autocomplete"}%
