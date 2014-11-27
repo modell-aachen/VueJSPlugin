@@ -35,7 +35,7 @@
     width: calc(3 * #{$p} - #{$qw-content-padding} / 2);
   }
 
-  &.offcanvas {
+  &.offcanvas.offcanvas-active {
     transform: translate3d( 0, 0, 0 );
 
     &.leftbar {
@@ -161,7 +161,7 @@
     }
   }
 
-  &.offcanvas {
+  &.offcanvas.offcanvas-active {
     .close {
       opacity: 1;
       @media #{$mobile-only} {left: -1 * $qw-top-one-height-mobile;}
