@@ -46,25 +46,36 @@
         target = bar.attr('data-target');
     }
 
-    // close other bars
+    // close other bars unless we are of the friendly kind
     // Questionably this is also done if we close a bar.
-    $('.offcanvas').each(function(){
-        var $this = $(this);
-        var thistarget = $this.attr('data-target');
-        if(thistarget === target) {
-            return;
-        }
+    if(typeof(bar.attr('data-friendly')) === 'undefined') {
+        $('.offcanvas-active').each(function(){
+            var $this = $(this);
 
-        // check stickies:
-        if($('.active[data-offcanvas-toggle="' + thistarget + '"][data-offcanvas-sticky-toggle]').length) {
-            return;
-        }
+            // don't close our friends
+            if(typeof($this.attr('data-friendly')) !== 'undefined') {
+                return;
+            }
 
-        // close the bar
-        $this.removeClass('offcanvas ' + thistarget);
-        $('[data-offcanvas-toggle="' + thistarget + '"]').removeClass('active');
-        QWiki.raiseEvent( $this, sender, 'closing' );
-    });
+            // don't close ourself, we'll eventually do that later
+            // don't do anything if this is not an offcanvas bar
+            var thistarget = $this.attr('data-target');
+            if(typeof(thistarget) === 'undefined' || thistarget === target) {
+                return;
+            }
+
+            // check stickies:
+            if($('.active[data-offcanvas-toggle="' + thistarget + '"][data-offcanvas-sticky-toggle]').length) {
+                return;
+            }
+
+            // close the bar
+            $('[data-offcanvas]').removeClass(thistarget);
+            $('[data-target=' + thistarget + ']').removeClass('offcanvas-active');
+            $('[data-offcanvas-toggle="' + thistarget + '"]').removeClass('active');
+            QWiki.raiseEvent( $this, sender, 'closing' );
+        });
+    }
 
     var open;
     if(action === 'open') {
@@ -73,7 +84,7 @@
         open = false;
     } else {
         // toggle
-        if(bar.hasClass('offcanvas')) {
+        if(bar.hasClass(target)) {
             open = false;
         } else {
             open = true;
@@ -81,19 +92,23 @@
     }
 
     if(open) {
-        if(bar.hasClass('offcanvas')) {
-            return;
-        }
-        bar.addClass( 'offcanvas ' + target );
+        $('[data-offcanvas]').addClass( target + ' offcanvas' );
         $('[data-offcanvas-toggle="' + target + '"]').addClass('active');
-        QWiki.raiseEvent( bar, sender, 'opening' );
-    } else {
-        if(!bar.hasClass('offcanvas')) {
-            return;
+        if(!bar.hasClass('offcanvas-active')) {
+            bar.addClass('offcanvas-active');
+            QWiki.raiseEvent( bar, sender, 'opening' );
         }
-        bar.removeClass( 'offcanvas ' + target );
+    } else {
+        $('[data-offcanvas]').removeClass( target );
+        var wasactive = bar.hasClass('offcanvas-active');
+        bar.removeClass( 'offcanvas-active' );
+        if(!$('.offcanvas-active').length) {
+            $('[data-offcanvas]').removeClass('offcanvas');
+        }
         $('[data-offcanvas-toggle="' + target + '"]').removeClass('active');
-        QWiki.raiseEvent( bar, sender, 'closing' );
+        if(wasactive) {
+            QWiki.raiseEvent( bar, sender, 'closing' );
+        }
     }
   };
 
@@ -144,7 +159,7 @@
 
   $.fn.offcanvas = function( opts ) {
     var target = null;
-    var action = this.hasClass('offcanvas') ? 'close' : 'toggle';
+    var action;
 
     if ( _.isObject( opts ) ) {
       if ( opts.target && typeof opts.target === 'string' ) {
