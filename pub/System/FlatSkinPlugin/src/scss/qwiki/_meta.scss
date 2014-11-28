@@ -22,6 +22,20 @@
   }
 }
 
+.qw-meta-user {
+  @include qw-meta();
+  @extend .icon-user;
+
+  background: $qw-dochead-user-box-bg;
+  color: $qw-dochead-user-box-color;
+
+  &:before {
+    font-family: 'qwiki-font';
+    font-size: rem-calc(14);
+    margin-right: rem-calc(3);
+  }
+}
+
 .qw-meta-date {
   @include qw-meta();
 }
