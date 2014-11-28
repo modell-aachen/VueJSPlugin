@@ -1,17 +1,6 @@
-%TMPL:DEF{"leftbar:buttons"}%<!--leftbar:buttons-->
-<div title="Dashboard" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-home"></i></div>
-<div title="Cockpit" class="jqUITooltip button active" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-cockpit"></i></div>
-<div title="Audit" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-audit"></i></div>
-<div title="Protocols" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-protocol"></i></div>
-<div title="Projects" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-projects"></i></div>
-<div title="Processes" class="jqUITooltip button" data-position="right" data-arrow="true" data-delay="0" data-theme="flat"><i class="icon-app-processes"></i></div>
-<!--/leftbar:buttons-->%TMPL:END%
+%TMPL:DEF{"leftbar:buttons"}%%FORMATLIST{"%TMPL:P{"leftbar:webs"}%" pattern="\s*([^:]*):([^:]*):([^:\s]*)" format="$percentIF{\"'$1' allows 'view'\" then=\"<a href='%SCRIPTURLPATH{view}%/$1/%HOMETOPIC%' title='$2' class='jqUITooltip button $percentIF{\"'%BASEWEB%'='$1' or '%BASEWEB%'~'$1/*'\" then=\"active\"}$percent\' data-position='right' data-arrow='true' data-delay='0' data-theme='flat'><i class='$3'></i></a>\"}$percent" separator="$n"}%%TMPL:END%
 
-%TMPL:DEF{"leftbar:links"}%<!--leftbar:links-->
-<div class="button"><i class="icon-home"></i> Dashboard</div>
-<div class="button active"><i class="icon-app-cockpit"></i> Cockpit</div>
-<div class="button"><i class="icon-app-audit"></i> Audits</div>
-<div class="button"><i class="icon-app-protocol"></i> Protocols</div>
-<div class="button"><i class="icon-app-projects"></i> Projects</div>
-<div class="button"><i class="icon-app-processes"></i> Processes</div>
-<!--/leftbar:links-->%TMPL:END%
+%TMPL:DEF{"leftbar:links"}%%FORMATLIST{"%TMPL:P{"leftbar:webs"}%" pattern="\s*([^:]*):([^:]*):([^:\s]*)" format="$percentIF{\"'$1' allows 'view'\" then=\"<a href='%SCRIPTURLPATH{view}%/$1/%HOMETOPIC%' class='button $percentIF{\"'%BASEWEB%'='$1' or '%BASEWEB%'~'$1/*'\" then=\"active\"}$percent\'><i class='$3'></i>$2</a>\"}$percent" separator="$n"}%%TMPL:END%
+
+%{ Comma separated list of webs. Each entry has the format WebName:Web description:icon }%
+%TMPL:DEF{"leftbar:webs"}%Main:%MAKETEXT{"Dashboard"}%:icon-home,Cockpit:%MAKETEXT{"Cockpit"}%:icon-app-cockpit,Audit:%MAKETEXT{"Audits"}%:icon-app-audit,Minutes:%MAKETEXT{"Minutes"}%:icon-app-protocol,Projects:%MAKETEXT{"Projects"}%:icon-app-projects,Processes:%MAKETEXT{"Processes"}%:icon-app-processes%TMPL:END%

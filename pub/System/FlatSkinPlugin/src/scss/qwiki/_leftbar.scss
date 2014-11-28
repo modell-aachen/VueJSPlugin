@@ -107,6 +107,9 @@
         padding: rem-calc(10);
         margin-bottom: rem-calc(3);
         cursor: pointer;
+        border-radius: $global-radius;
+        color: $qw-leftbar-color-expanded;
+        display: block;
         transition: background 0.15s ease-in-out,
                     color 0.15s ease-in-out,
                     opacity 0.2s ease-in-out;
@@ -117,8 +120,17 @@
         }
 
         &:hover {
-          background: #f2f5f7;
-          color: #236aa2;
+          background: $qw-leftbar-hover-bg-expanded;
+          color: $qw-leftbar-hover-color-expanded;
+        }
+        &.active {
+          background: $qw-leftbar-active-bg-expanded;
+          color: $qw-leftbar-active-color-expanded;
+
+          &:hover {
+            background: $qw-leftbar-active-hover-bg-expanded;
+            color: $qw-leftbar-active-hover-color-expanded;
+          }
         }
       }
     }
