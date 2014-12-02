@@ -42,6 +42,12 @@
     // rightbar, so it updates #main when data changes.
     $(function($){
         $('.qw-documentcontrol').on('qw.offcanvas.closing', updateForm);
+        $('#main').submit(function() {
+            // apply changes when document control is open and document is being saved.
+            if($('.offcanvas-active.documentcontrol').length) {
+                cloneForm();
+            }
+        });
         cloneForm();
         var $changeForm = $('<form></form>').submit(function(){
             cloneForm();
