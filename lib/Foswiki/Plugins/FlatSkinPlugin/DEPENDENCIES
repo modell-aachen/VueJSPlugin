@@ -1,2 +1,3 @@
 # Dependencies for ModacSkin
 # TBD.
+Foswiki::Contrib::QgularContrib,>=0,perl,Required.
