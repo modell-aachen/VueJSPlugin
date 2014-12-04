@@ -148,6 +148,10 @@
   font-family: 'qwiki-font';
   @extend .icon-arrow-left;
 
+  &.forward {
+    @extend .icon-arrow-right;
+  }
+
   &:hover {background-color: $qw-backbtn-bg-hover-color;}
   &:active {background-color: $qw-backbtn-bg-active-color;}
 
@@ -157,6 +161,14 @@
 
     &:hover {background-color: $qw-backbtn-blue-bg-hover-color;}
     &:active {background-color: $qw-backbtn-blue-bg-active-color;}
+  }
+
+  &.primary {
+    color: white;
+    background: $qw-button1-bg-color;
+
+    &:hover {background-color: $qw-button1-bg-hover-color;}
+    &:active {background-color: $qw-button1-bg-active-color;}
   }
 }
 
