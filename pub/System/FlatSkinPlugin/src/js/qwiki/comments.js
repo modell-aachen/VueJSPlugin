@@ -61,6 +61,7 @@
       }
 
       var p = foswiki.preferences;
+      var topic = foswiki.getPreference('WEB') + '.' + foswiki.getPreference('TOPIC');
       var url = [
         p.SCRIPTURLPATH,
         '/rest',
@@ -73,7 +74,7 @@
       $.ajax({
         url: url.join(''),
         type: 'POST',
-        data: {comment: JSON.stringify( cmt )},
+        data: {comment: JSON.stringify( cmt ), topic: topic},
         success: function() {
           var selector = '[data-p-id="' + cmt.pid + '"]';
           $(selector).attr( 'data-hascomments', cmt.type );
