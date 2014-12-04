@@ -10,7 +10,7 @@
       if ( typeof options === 'object' ) {
         $.extend( this, options );
       }
-// if(true){return;}
+
       this.load();
       this.bind();
     },
