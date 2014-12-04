@@ -293,15 +293,16 @@ $qw-leftbar-btn-hover-bg: transparent;
 $qw-leftbar-btn-active-bg: #bfbfbf;
 $qw-leftbar-btn-active-hover-bg: #ebebeb;
 
-$qw-quicksearch-filters-border-color: $qw-border-bg;
+$qw-quicksearch-filters-inactive-border-color: #f5f5f5;
+$qw-quicksearch-filters-border-color: #e0e0e0;
 $qw-quicksearch-filters-border-width: $qw-border-width;
 
 $qw-quicksearch-bg: $qw-content-bg;
-$qw-quicksearch-result-hover-bg: #f2f5f7;
-$qw-quicksearch-result-active-bg: $qw-quicksearch-result-hover-bg;
+$qw-quicksearch-result-hover-bg: #dae4eb;
+$qw-quicksearch-result-active-bg: #b3b3b3;
 $qw-quicksearch-active-bg: $qw-body-bg;
 $qw-quicksearch-border-width: $qw-border-width;
-$qw-quicksearch-border-color: $qw-border-bg;
+$qw-quicksearch-border-color: #f5f5f5;
 
 
 $qw-search-bg: $qw-content-bg;

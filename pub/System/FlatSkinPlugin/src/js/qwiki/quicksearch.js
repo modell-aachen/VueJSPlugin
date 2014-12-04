@@ -33,26 +33,48 @@
       this.bind();
     },
 
-    bind: function() {
+    bind: function($e) {
       var self = this;
-      this.unbind();
 
-      var $e = $('[data-quicksearch]');
-      this.searcher = new SolrSearcher({
+      if (!$e) {
+        $('[data-quicksearch]').each(function() {
+          self.bind($(this));
+        });
+        return;
+      }
+      this.unbind($e);
+
+      var searcher = new SolrSearcher({
         element: $e
       });
-      this.searcher.addSubmitButton($('.qw-quicksearch-form .submit'));
-      var textfield = new SearchDismaxFilter({
-        // XXX this hardcodes the current structure and needs reworking in
-        // case we ever want two quicksearch elements in a page
-        element: $('.qw-quicksearch-form input[name="search"]'),
-        parent: this.searcher
-      });
+      $.data($e[0], 'quicksearch_searcher', searcher);
+      var submit = $e.data('quicksearch-submit'),
+        dismaxMain = $e.data('quicksearch-dismax-main'),
+        filterToggle = $e.find('[data-quicksearch-filter-toggle]');
+      if (submit) {
+        submit = $(submit);
+        searcher.addSubmitButton(submit);
+      }
+      if (dismaxMain) {
+        dismaxMain = new SearchDismaxFilter({
+          element: $(dismaxMain),
+          parent: searcher
+        });
+      }
+      if (filterToggle) {
+        var toggle = $(filterToggle.data('quicksearch-filter-toggle'));
+        toggle.on('click.quicksearch', function() {
+          var $t = $(this);
+          $t.toggleClass('active');
+          filterToggle.toggleClass('active');
+          $e.toggleClass('filter-active');
+        });
+      }
       var filters = $e.find('[data-quicksearch-filter-type]');
       filters.each(function() {
         var $fe = $(this);
         var $p = $fe.parent().closest('[data-quicksearch-filter-type]');
-        var p = self.searcher;
+        var p = searcher;
         if ($p.length) {
           p = $.data($p[0], 'quicksearch_filter');
           if (!p) {
@@ -61,14 +83,11 @@
         }
         var type = $fe.data('quicksearch-filter-type');
         var filter;
-        if (type === 'group-filter') {
-          var target = $fe.data('quicksearch-filter-tab-target');
+        if (type === 'bool-filter') {
           filter = new SearchBoolFilter({
             element: $fe,
             parent: p,
-            filter: $fe.data('quicksearch-filter-query'),
-            tabTarget: target,
-            tabTitle: $fe.data('quicksearch-filter-tab-title')
+            filter: $fe.data('quicksearch-filter-query')
           });
         }
         else if (type === 'facet') {
@@ -78,41 +97,36 @@
           } else {
             vals = vals.split(/\s*,\s*/);
           }
+          var vmap = $fe.data('quicksearch-filter-map');
+          if (!vmap) {
+            vmap = {};
+          } else {
+            var mapspec = vmap.split(/\s*\|\s*/);
+            vmap = {};
+            for (var ms in mapspec) {
+              var m = mapspec[ms].split(/\s*=\s*/, 2);
+              vmap[m[0]] = m[1].split(/\s*;\s*/);
+            }
+          }
           filter = new SearchFacet({
             element: $fe,
             parent: p,
             facetField: $fe.data('quicksearch-filter-field'),
             combineMode: $fe.data('quicksearch-filter-combine'),
-            selectedValues: vals
+            selectedValues: vals,
+            valueMap: vmap
           });
         } else {
           QWiki.error("Quicksearch: found filter of unknown type '"+ type +"':", this, "  All children will be ignored...");
         }
         $.data($fe[0], 'quicksearch_filter', filter);
       });
-      $('#qw-searchbar-filters').tabs({
-        heightStyle: 'auto'
-      });
 
-      $e.on( 'solrresults.quicksearch', this, renderResults );
-      $('[data-close-preview]').on( 'click.quicksearch', this, closePreview );
-      $e.find('[data-quicksearch-filter-toggle]').on( 'mousedown.quicksearch', function(ev) {
-        if ($e.find('.filter').is('.active')) {
-          $e.find('.filter').removeClass('active');
-          $e.find('.filter-summary').removeClass('active');
-          $e.find('.filter-hide').removeClass('active');
-          $e.find('.filter-show').addClass('active');
-        } else {
-          $e.find('.filter').addClass('active');
-          $e.find('.filter-summary').addClass('active');
-          $e.find('.filter-hide').addClass('active');
-          $e.find('.filter-show').removeClass('active');
-        }
-        ev.preventDefault();
-      });
+      $e.on( 'solrresults.quicksearch', [this, searcher], renderResults );
+      $('[data-close-preview]').on( 'click.quicksearch', searcher, closePreview );
     },
 
-    unbind: function() {
+    unbind: function($e) {
       if (this.searcher) {
         this.searcher.unbind();
         this.searcher.$e.off('.quicksearch');
@@ -125,12 +139,17 @@
     $('#qw-search-pageoverlay').removeClass('active');
     $('#qw-searchpreview').removeClass('active');
     $('.qw-search-result.active').removeClass('active');
+    $('.qw-search-result .preview a').each(function() {
+      if (!$(this).data('orig-text')) { return; }
+      $(this).text($(this).data('orig-text'));
+      $(this).removeClass('close');
+    });
   };
 
   var renderResults = function( evt, data ) {
-    var self = evt.data;
+    var self = evt.data[0], searcher = evt.data[1];
 
-    var list = self.searcher.$e.find('.results');
+    var list = searcher.$e.find('.results');
     list.empty();
 
     if ( data.response.numFound === 0 ) {
@@ -140,8 +159,10 @@
       for( var i = 0; i < data.response.docs.length; ++i ) {
         var doc = data.response.docs[i];
         doc.icon = 'qw-ico-approved';
+        doc.draft = '';
         if ( doc.workflow_controlled_b && !doc.workflow_isapproved) {
           doc.icon = 'qw-ico-draft';
+          doc.draft = 'draft';
         }
 
         doc.snippet = doc.text.substr( 0, 160 ) + (doc.text.length > 160 ? "..." : "");
@@ -168,22 +189,27 @@
       });
 
       $results.on( 'click', function( evt ) {
-        // return if the user clicked the 'open' button
-        if ( evt.target.localName === 'a' ) {
+        // only react on the "preview" button
+        var $p = $(this);
+        if ( !$(evt.target).is('[data-open-preview]') ) {
+          location.assign(location.protocol +'//'+ location.host + $p.data('url'));
           return;
         }
 
+        var $b = $(evt.target);
+        if (!$b.is('a')) { $b = $b.find('a'); }
+
+        if ($b.is('.close')) {
+          closePreview();
+          return;
+        }
+
+        closePreview();
+
         $('.qw-search-result.active').removeClass('active');
-        $(this).addClass('active');
+        $p.addClass('active');
 
-        var target = [
-          self.Q.foswiki.SCRIPTURL,
-          '/view',
-          self.Q.foswiki.SCRIPTSUFFIX,
-          $(this).data('url')
-        ];
-
-        var uri = target.join('') + ' .qw-page > .qw-left article.content';
+        var uri = $p.data('url') + ' .qw-page';
         var $overlay = $('#qw-search-pageoverlay');
         if ( !$overlay.hasClass('active') ) {
           $overlay.addClass('active');
@@ -199,6 +225,16 @@
             $preview.addClass('active');
             self.spinner.stop();
           }
+          $b.data('orig-text', $b.text());
+          $b.text($b.data('close-text')); // TODO L10n
+          $b.addClass('close');
+
+          $preview.find('> .heading').remove();
+          $preview.find('> .title .heading').text($p.find('.title span').text());
+          $preview.find('> .title .icon').attr('class', $p.find('.title i').attr('class'));
+          var $head = $(this).find('> .qw-page .heading').detach();
+          var $content = $(this).find('> .qw-page .content').detach();
+          $(this).parent().append($head).append($content).end().detach();
         } );
 
         evt.preventDefault();

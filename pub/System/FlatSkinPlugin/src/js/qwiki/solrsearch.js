@@ -105,6 +105,7 @@
     this.parent.addFilter(this);
 
     this.getQueryParts = function() {
+      if (!this.query) { return []; }
       return [
         ['q', '{!dismax}'+ this.query]
       ];
@@ -208,16 +209,11 @@
       return res;
     };
 
-    if (this.tabTarget) {
-      var id = this.$e.attr('id') || 'solrsearch-bool-tab-'+ tabId++;
-      this.$e.attr('id', id);
-      this.$tab = $('<li><input type="checkbox" class="solrsearch-bool-checkbox"><a href="#'+ id +'">'+ this.tabTitle +'</a></li>').appendTo(this.tabTarget);
-      var $cb = this.$tab.find('input');
-      $cb.change(function() {
-        this.enabled = $cb.is(':checked');
-        this.update();
-      });
-    }
+    var $cb = this.$e.find(this.$e.data('check-target'));
+    $cb.change(function() {
+      self.enabled = $cb.is(':checked');
+      self.update();
+    });
   };
 
   window.SearchFacet = function(params) {
@@ -226,6 +222,13 @@
     this.facetField = params.facetField;
     this.$e = params.element;
     this.selectedValues = params.selectedValues || [];
+    this.valueMap = params.valueMap || {};
+    /* valueMap example:
+     * {
+     *   "Word documents": ["doc", "docx"],
+     *   "Excel documents": ["xls", "xlsx"]
+     * }
+     */
     this.parent = params.parent;
     this.parent.addFilter(this);
 
@@ -259,15 +262,27 @@
       if (!ff || !ff.length) { return; }
       $c.empty();
       this.$e.show();
+      var facetElems = {};
       while (ff.length) {
         var title = ff.shift();
         var num = ff.shift();
+        for (var synFacet in this.valueMap) {
+          if (this.valueMap[synFacet].indexOf(title) !== -1) {
+            title = synFacet;
+          }
+        }
+        if (typeof facetElems[title] !== 'undefined') {
+          facetElems[title] = 0;
+        }
+        facetElems[title] += num;
+      }
+      for (var fe in facetElems) {
         var $v = this.$e.qtemplate('add', {
-          id: title,
-          title: title,
-          count: num
+          id: fe,
+          title: fe,
+          count: facetElems[fe]
         });
-        if (this.selectedValues[title]) {
+        if (this.selectedValues[fe]) {
           $v.addClass('active');
         }
       }
@@ -276,7 +291,11 @@
     this.getQueryParts = function() {
       var filters = [];
       for (var k in this.selectedValues) {
-        filters.push(escapeQuotedFilter(k));
+        if (k in this.valueMap) {
+          filters.push('('+ this.valueMap[k].map(escapeQuotedFilter).join(' OR ') +')');
+        } else {
+          filters.push(escapeQuotedFilter(k));
+        }
       }
       if (!filters.length) {
         return [];

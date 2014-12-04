@@ -99,6 +99,12 @@ jQuery(function($) {
 %TMPL:DEF{"topbar:search"}%<!--topbar:search-->
 <div class="qw-quicksearch-form">
   <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
+    <div class="toggle">
+      <div id="qw-quicksearch-filter-toggle" class="filter-toggle">
+        <span class="filter-show">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-down"></i></span>
+        <span class="filter-hide">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-up"></i></span>
+      </div>
+    </div>
     <div class="input">
       <input name="search"
              type="text"
@@ -117,59 +123,77 @@ jQuery(function($) {
 <!--/topbar:search-->%TMPL:END%
 
 %TMPL:DEF{"quicksearch"}%<!--quicksearch-->
-<div class="qw-quicksearch" data-offcanvas data-target="quicksearch" data-quicksearch data-solrsearch-widget>
-  <div class="filter-summary">
-    <div class="filter-toggle" data-quicksearch-filter-toggle>
-      <span class="filter-show">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-down"></i></span>
-      <span class="filter-hide">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-up"></i></span>
-    </div>
-    <div class="filter-active-list" data-solrsearch-filterlist>
-    </div>
-    <div class="filter-reset" data-solrsearch-filterreset>%MAKETEXT{"reset"}%
-    </div>
-  </div>
-  <div id="qw-searchbar-filters" class="filter">
-    <ul id="qw-searchbar-filter-tabs">
-      <li><a href="#qw-searchbar-filter-webs">%MAKETEXT{"Webs"}%</a></li>
-    </ul>
-    <ul id="qw-searchbar-filter-webs" data-quicksearch-filter-type="facet" data-quicksearch-filter-field="web" data-quicksearch-filter-combine="OR" data-facet-values>
-      <li data-qtemplate data-facet-value qt-bind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"></a></li>
-    </ul>
-    <div id="qw-searchbar-filter-topics" data-quicksearch-filter-type="group-filter" data-quicksearch-filter-query="type:topic" data-quicksearch-filter-tab-target="#qw-searchbar-filter-tabs" data-quicksearch-filter-tab-title="%MAKETEXT{"Topics"}%">
-      <dl class="facet-list">
-        <dt>%MAKETEXT{"Type"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="field_DocumentType_s" data-quicksearch-filter-combine="OR" data-facet-values>
-          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"</a></li>
-        </ul></dd>
-        <dt>%MAKETEXT{"Status"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="process_state_s" data-quicksearch-filter-combine="OR" data-facet-values>
-          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"></a></li>
-        </ul></dd>
-      </dl>
-    </div>
-    <div id="qw-searchbar-filter-tasks" data-quicksearch-filter-type="group-filter" data-quicksearch-filter-query="type:action" data-quicksearch-filter-tab-target="#qw-searchbar-filter-tabs" data-quicksearch-filter-tab-title="%MAKETEXT{"Tasks"}%">
-      <dl class="facet-list">
-        <dt>%MAKETEXT{"Status"}%</dt><dd><ul data-quicksearch-filter-type="facet" data-quicksearch-filter-field="action_status_s" data-quicksearch-filter-combine="OR" data-facet-values>
-          <li data-qtemplate data-facet-value qt-bind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"></a></li>
-        </ul></dd>
-      </dl>
-    </div>
-  </div>
-  <div class="results">
-    <div class="qw-total-results" data-qtemplate="total">
-      <span class="left"><span qt-bind="count"></span> results</span>
-      <a href="#" class="right" data-quicksearch-show-all>%MAKETEXT{"show all"}%</span></a>
-    </div>
-    <div class="qw-no-results" data-qtemplate="noresults"><h3 class="left">%MAKETEXT{"No results"}%</h3></div>
-    <div class="qw-search-result" data-qtemplate qt-bind="data-url:url">
-      <div class="content">
-        <div class="open">
-          <a href="#" class="button primary tiny">%MAKETEXT{"open"}%</a>
-        </div>
-        <span class="title" qt-bind="i // class: icon, span // title"><i></i><span></span></span>
-        <span class="snippet" qt-bind="snippet"></span>
+<div class="qw-quicksearch" data-offcanvas data-target="quicksearch" data-quicksearch data-solrsearch-widget data-quicksearch-dismax-main=".qw-quicksearch-form input" data-quicksearch-submit=".qw-quicksearch-form .submit">
+  <div id="qw-searchbar-filters" class="filter" data-quicksearch-filter-toggle="#qw-quicksearch-filter-toggle">
+    <div class="filter-summary">
+      <div class="filter-active-list" data-solrsearch-filterlist>
+      </div>
+      <div class="filter-reset" data-solrsearch-filterreset>%MAKETEXT{"reset"}%
       </div>
     </div>
+    <div class="filter-dropdown-container">
+      <div class="filter-dropdown-main">
+        <div class="filter-label">%MAKETEXT{"Search where?"}%</div>
+        <div class="filter-values"><ul>
+          <li><label>%MAKETEXT{"all applications"}% <input type="radio" name="quicksearch_filter_app_radio"></label></li>
+          %FORMATLIST{"%APPLICATIONMAP{default="%MAKETEXT{"Processes"}%=Processes"}%" pattern="(.*)=(.*)" separator="$n"
+            format="<li data-quicksearch-filter-type=\"bool-filter\" data-quicksearch-filter-query=\"web:$2\" data-check-target=\"input\"><label>$1 <input type=\"radio\" name=\"quicksearch_filter_app_radio\"></label></li>"
+          }%
+        </ul></div>
+      </div>
+      <div class="filter-dropdown-popup">
+      </div>
+    </div>
+    <div class="filter-dropdown-container">
+      <div class="filter-dropdown-main">
+        <div class="filter-label">%MAKETEXT{"Search what?"}%</div>
+        <div class="filter-values"><ul>
+          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="-type:(topic OR comment OR action OR task)" data-check-target="input"><label>%MAKETEXT{"Attachments"}% <input type="checkbox"></label></li>
+          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:(task OR action)" data-check-target="input"><label>%MAKETEXT{"Tasks"}% <input type="checkbox"></label></li>
+          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:topic web:Main form:*UserForm" data-check-target="input"><label>%MAKETEXT{"Users"}% <input type="checkbox"></label></li>
+          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:topic -web:(Main OR System OR Custom OR Sandbox)" data-check-target="input"><label>%MAKETEXT{"Topics"}% <input type="checkbox"></label></li>
+        </ul></div>
+      </div>
+      <div class="filter-dropdown-popup">
+      </div>
+    </div>
+<!--
+    <ul id="qw-searchbar-filter-webs" data-quicksearch-filter-type="facet" data-quicksearch-filter-field="web" data-quicksearch-filter-combine="OR" data-facet-values>
+      <li data-qtemplate data-facet-value qbind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"></a></li>
+    </ul>
+-->
+  </div>
+  <div class="results" data-scrollcontainer>
+      <div class="qw-total-results" data-qtemplate="total">
+        <span class="left"><span qbind="count"></span> results</span>
+        <a href="#" class="right" data-quicksearch-show-all>%MAKETEXT{"show all"}%</a>
+        <span class="clearfix"></span>
+      </div>
+      <div class="qw-no-results" data-qtemplate="noresults"><h3 class="left">%MAKETEXT{"No results"}%</h3></div>
+      <div class="qw-search-result" data-qtemplate qbind="data-url:url">
+        <div class="content">
+          <div class="preview" data-open-preview>
+            <a href="#" class="button qw-prio1-btn" data-close-text="%MAKETEXT{"close"}%" data-open-preview>%MAKETEXT{"Preview"}%</a>
+          </div>
+          <div class="title" qbind="data-draft: draft, i // class: icon, span // title"><i></i><span></span></div>
+          <div class="snippet" qbind="snippet"></div>
+        </div>
+      </div>
   </div>
 </div>
+<section id="qw-search-pageoverlay" data-offcanvas>
+  <div class="overlay-top"></div>
+</section>
+<section id="qw-searchpreview">
+  <div class="title">
+    <div class="close">
+      <div class="qw-prio1-btn" data-close-preview><i class="icon-arrow-right"></i></div>
+    </div>
+    <div class="heading">
+    </div>
+  </div>
+  <div class="content"></div>
+</section>
 <!--/quicksearch-->%TMPL:END%
 
 %TMPL:DEF{"commentbar"}%<!--commentbar-->

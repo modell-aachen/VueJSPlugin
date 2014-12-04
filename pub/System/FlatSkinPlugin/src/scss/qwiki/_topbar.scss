@@ -156,12 +156,12 @@
       > div:not(.close) {
         @media #{$mobile-only} {
           $ptb: ($qw-top-one-height-mobile - $qw-search-height)/2;
-          padding: $ptb $qw-content-padding;
+          padding: $ptb #{$qw-content-padding/2};
         }
 
         @media #{$small-up} {
           $ptb: ($qw-top-one-height - $qw-search-height)/2;
-          padding: $ptb $qw-content-padding;
+          padding: $ptb #{$qw-content-padding/2};
         }
 
         .qw-quicksearch-form {
