@@ -3,6 +3,7 @@
 
   QWiki.plugins.offcanvas = {
     name: 'offcanvas',
+    priority: QWiki.plugins.maximize.priority - 1,
 
     init: function( options ) {
       if ( typeof options === 'object' ) {
@@ -10,18 +11,30 @@
       }
 
       this.bind();
+      autoOpenKVP();
     },
 
     bind: function() {
       this.unbind();
       $('[data-offcanvas-toggle]').on( 'click', this, handleClick );
+      $(document).on('qw.offcanvas.closing', this, autoOpenKVP );
     },
 
     unbind: function() {
       $('[data-offcanvas-toggle]').off( 'click', handleClick );
+      $(document).off('qw.offcanvas.closing', autoOpenKVP );
     }
   };
 
+  var autoOpenKVP = function( evt ) {
+    if ( $('.qw-page.maximized').length !== 0 ) {
+        return;
+    }
+
+    if ( $('.offcanvas-active').length === 0 ) {
+        $('.qw-kvpbar').offcanvas({action: 'open'});
+    }
+  };
 
   var toggleCanvas = function( element, action, sticky ) {
     var sender = QWiki.plugins.offcanvas;

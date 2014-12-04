@@ -3,6 +3,7 @@
 
   QWiki.plugins.maximize = {
     name: 'maximize',
+    priority: 100,
 
     init: function( options ) {
       if ( typeof options === 'object' ) {
@@ -56,6 +57,8 @@
         $('.offcanvas').each( function() {
           $(this).offcanvas({action: 'close'});
         });
+      } else if ( $('.offcanvas-active').length === 0 ) {
+        $('.qw-kvpbar').offcanvas({action: 'open'});
       }
     });
 
