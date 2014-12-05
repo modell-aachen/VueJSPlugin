@@ -57,10 +57,14 @@
         $('.offcanvas').each( function() {
           $(this).offcanvas({action: 'close'});
         });
-      } else if ( $('.offcanvas-active').length === 0 ) {
-        $('.qw-kvpbar').offcanvas({action: 'open'});
       }
     });
+
+    if(maximized.length) {
+      QWiki.raiseEvent( document, QWiki.plugins.maximize, 'maximizing' );
+    } else {
+      QWiki.raiseEvent( document, QWiki.plugins.maximize, 'unmaximizing' );
+    }
 
     self.Q.persistData( self.name, maximized.join(',') );
   };
