@@ -3,6 +3,9 @@ $qw-page-width: calc(100% - #{$qw-leftbar-width});
 html body {
   background: $body-bg;
   overflow-x: hidden !important;
+  font-family: $body-font-family;
+  font-size: $base-font-size;
+  font-weight: $font-weight-normal;
 }
 
 [data-offcanvas] {
