@@ -11,41 +11,18 @@
       }
 
       this.bind();
-      autoOpenKVP();  // ToDo. move to KVPPlugin
     },
 
     bind: function() {
       this.unbind();
       $('[data-offcanvas-toggle]').on( 'click', this, handleClick );
-      $(document).on('qw.offcanvas.closing', this, autoOpenKVP ); // ToDo. move to KVPPlugin
-      $(document).on('qw.offcanvas.opening', this, autoCloseKVP );  // ToDo. move to KVPPlugin
     },
 
     unbind: function() {
       $('[data-offcanvas-toggle]').off( 'click', handleClick );
-      $(document).off('qw.offcanvas.closing', autoOpenKVP );  // ToDo. move to KVPPlugin
-      $(document).off('qw.offcanvas.opening', autoCloseKVP );  // ToDo. move to KVPPlugin
     }
   };
 
-   // ToDo. move to KVPPlugin
-  var autoOpenKVP = function( evt ) {
-    if ( $('.qw-page.maximized').length !== 0 ) {
-      return;
-    }
-
-    if ( _.isUndefined( evt ) || !($(evt.target).hasClass('qw-kvpbar') || $(evt.target).hasClass('qw-kvpoverlay')) ) {
-      $('.kvpbar-toggle').click();
-    }
-  };
-
-   // ToDo. move to KVPPlugin
-  var autoCloseKVP = function( evt ) {
-    if ( $(evt.target).hasClass('commentbar') ) {
-      // $('qw-kvpbar').offcanvas({action: 'close'});
-      $('.kvpbar-toggle').click();
-    }
-  };
 
   var toggleCanvas = function( element, action, sticky ) {
     var sender = QWiki.plugins.offcanvas;
