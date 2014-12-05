@@ -36,6 +36,20 @@
     bind: function($e) {
       var self = this;
 
+      $('.qw-quicksearch').on('qw.offcanvas.opening', function() {
+        $('#qw-search-pageoverlay').css('display', 'block');
+        setTimeout( function() {
+          $('#qw-search-pageoverlay').addClass('active');
+        }, 150);
+      });
+
+      $('.qw-quicksearch').on('qw.offcanvas.closing', function() {
+        $('#qw-search-pageoverlay').removeClass('active');
+        setTimeout( function() {
+          $('#qw-search-pageoverlay').css('display', 'none');
+        }, 150);
+      });
+
       if (!$e) {
         $('[data-quicksearch]').each(function() {
           self.bind($(this));
