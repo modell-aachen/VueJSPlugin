@@ -89,7 +89,23 @@
   }
 }
 
-.qw-prio1-btn, .qw-prio2-btn {
+.qw-prio3-btn {
+  @include button( $radius: true, $bg: $qw-button3-bg-color );
+
+  padding: rem-calc(6 14);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: $qw-button3-fg-color;
+
+  &:hover {
+    background-color: $qw-button3-bg-hover-color;
+  }
+  &:active {
+    background-color: $qw-button3-bg-active-color;
+  }
+}
+
+.qw-prio1-btn, .qw-prio2-btn, .qw-prio3-btn {
   &.stretch {
     min-width: 100%;
   }

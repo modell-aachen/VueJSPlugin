@@ -47,7 +47,7 @@
 <!--/offcanvas:bars-->%TMPL:END%
 
 %TMPL:DEF{"body"}%<!--body-->
-<body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, placeholder, ui::tooltip, ui::autocomplete"}%
+<body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, placeholder, ui::autocomplete"}%
 %TMPL:P{"topbar"}%
 %TMPL:P{"menutoggle"}%
 <!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
@@ -232,8 +232,16 @@ jQuery(function($) {
   <section class="buttons">%TMPL:P{"leftbar:buttons"}%</section>
   <section class="menu">
     <div class="links">%TMPL:P{"leftbar:links"}%</div>
-    <div class="user"></div>
-    <div class="actions"></div>
+    <div class="user">
+      <span>sdfsdf</span>
+    </div>
+    <div class="actions">
+      <div>
+        <a href="#" class="qw-prio3-btn"><i class="icon-questionmark-circle"></i></a>
+        <a href="#" class="qw-prio3-btn"><i class="icon-login"></i></a>
+        <a href="#" class="qw-prio3-btn"><i class="icon-config"></i></a>
+      </div>
+    </div>
     <div class="ma-logo">
       <span>Modell Aachen GmbH</span>
     </div>

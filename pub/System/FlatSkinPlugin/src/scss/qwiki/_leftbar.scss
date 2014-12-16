@@ -135,10 +135,17 @@
       }
     }
 
-    > .user {}
+    > .user {
+    }
 
     > .actions {
-      
+      > div {
+        margin: 0 auto;
+        padding: rem-calc(12 24);
+
+        > * {margin-right: rem-calc(8);}
+      }
+
       @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
       @media #{$small-up} {height: $qw-top-one-height;}
       bottom: 1 + $qw-leftbar-ma-logo-height;
