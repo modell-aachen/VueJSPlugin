@@ -233,13 +233,18 @@ jQuery(function($) {
   <section class="menu">
     <div class="links">%TMPL:P{"leftbar:links"}%</div>
     <div class="user">
-      <span>sdfsdf</span>
+      <div>
+        <span>%MAKETEXT{"Logged in as:"}%</span>
+        <span>%WIKINAME%</span>
+      </div>
     </div>
     <div class="actions">
       <div>
-        <a href="#" class="qw-prio3-btn"><i class="icon-questionmark-circle"></i></a>
-        <a href="#" class="qw-prio3-btn"><i class="icon-login"></i></a>
-        <a href="#" class="qw-prio3-btn"><i class="icon-config"></i></a>
+        <a href="%SCRIPTURLPATH{"view"}%/Manuals" class="qw-prio3-btn"><i class="icon-questionmark-circle"></i></a>
+        <a href="%IF{"$ USERNAME != 'guest'" then='%SCRIPTURLPATH{"view"}%?logout=1' else='%SCRIPTURLPATH{"login"}%'}%" class="qw-prio3-btn" title="%IF{"$ USERNAME != 'guest'" then='%MAKETEXT{"Logout"}%' else='%MAKETEXT{"Login"}%'}%">
+        <i class="icon-%IF{"$ USERNAME != 'guest'" then='logout' else='login'}%"></i>
+        </a>
+        <a href="%SCRIPTURLPATH{"view"}%/%WEB%/WebPreferences" class="qw-prio3-btn"><i class="icon-config"></i></a>
       </div>
     </div>
     <div class="ma-logo">

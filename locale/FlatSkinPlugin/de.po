@@ -29,3 +29,7 @@ msgstr "Passwort vergessen?"
 #: data/System/FlatSkinTopbarButtonsTemplate.txt
 msgid "Version %1"
 msgstr "Version %1"
+
+#: foswiki.flat.tmpl
+msgid "Logged in as"
+msgstr "Angemeldet als"

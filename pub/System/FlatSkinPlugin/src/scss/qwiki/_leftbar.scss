@@ -98,13 +98,12 @@
 
     > .links {
       top: 0;
-      // top: 120px;
       padding-left: rem-calc(10);
       padding-right: rem-calc(10);
 
       > .button {
         width: calc(100% - #{4 * rem-calc(10)});
-        padding: rem-calc(10);
+        padding: rem-calc(6);
         margin-bottom: rem-calc(3);
         cursor: pointer;
         border-radius: $global-radius;
@@ -136,19 +135,42 @@
     }
 
     > .user {
+      height: auto;
+      bottom: 1 + $qw-leftbar-ma-logo-height + 60px;
+
+      > div {
+        padding: 0 $qw-content-padding/2;
+
+        > span {
+          display: block;
+
+          &:first-child {
+            color: $primary-color;
+            font-size: 0.6rem;
+            margin-bottom: rem-calc(6);
+          }
+
+          &:last-child {
+            color: $body-font-color;
+            font-size: 0.8rem;
+            font-weight: bold;
+          }
+        }
+      }
     }
 
     > .actions {
+      @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+      @media #{$small-up} {height: $qw-top-one-height;}
+      bottom: 1 + $qw-leftbar-ma-logo-height;
+      border-top: 1px solid $qw-leftbar-border-bg;
+
       > div {
         margin: 0 auto;
         padding: rem-calc(12 24);
 
-        > * {margin-right: rem-calc(8);}
+        > * {margin-right: rem-calc(6);}
       }
-
-      @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
-      @media #{$small-up} {height: $qw-top-one-height;}
-      bottom: 1 + $qw-leftbar-ma-logo-height;
     }
 
     > .ma-logo {
