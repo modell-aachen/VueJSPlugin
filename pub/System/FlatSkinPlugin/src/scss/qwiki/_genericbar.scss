@@ -77,7 +77,8 @@
     }
     > .content {
       background: $qw-genericbar-content-bg;
-      padding: rem-calc(12 3);
+      padding: rem-calc(12) $qw-content-padding/2;
+      font-size: rem-calc(12);
     }
   }
 }

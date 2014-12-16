@@ -22,7 +22,7 @@
   }
 }
 
-.qw-meta-user {
+.qw-person, .qw-meta-user {
   @include qw-meta();
   @extend .icon-user;
 
