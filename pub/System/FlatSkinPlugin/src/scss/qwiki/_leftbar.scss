@@ -97,7 +97,7 @@
     }
 
     > .links {
-      top: 0;
+      top: 50px;
       padding-left: rem-calc(10);
       padding-right: rem-calc(10);
 
@@ -112,6 +112,8 @@
         transition: background 0.15s ease-in-out,
                     color 0.15s ease-in-out,
                     opacity 0.2s ease-in-out;
+        text-decoration: none;
+        padding-left: rem-calc(15);
 
         i {
           font-size: 2rem;
@@ -163,7 +165,6 @@
       @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
       @media #{$small-up} {height: $qw-top-one-height;}
       bottom: 1 + $qw-leftbar-ma-logo-height;
-      border-top: 1px solid $qw-leftbar-border-bg;
 
       > div {
         margin: 0 auto;
