@@ -57,7 +57,7 @@
     > .header {
       padding: rem-calc(6 0 6 6);
       min-height: $qw-top-two-height - 12px;
-      font-size: 2rem;
+      font-size: 1rem;
 
       i {
         font-size: 2rem;
@@ -66,7 +66,6 @@
 
       span {
         margin-left: rem-calc(6);
-        vertical-align: middle;
         color: $qw-genericbar-header-color;
       }
 
