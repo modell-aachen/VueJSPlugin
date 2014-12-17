@@ -189,6 +189,10 @@
     &.idea { background: $qw-comment-idea-bg; }
     &.issue { background: $qw-comment-issue-bg; }
   }
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
 }
 
 [data-hascomments] {
