@@ -99,12 +99,15 @@ jQuery(function($) {
 %TMPL:DEF{"topbar:search"}%<!--topbar:search-->
 <div class="qw-quicksearch-form">
   <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
+<!--
+TODO
     <div class="toggle">
       <div id="qw-quicksearch-filter-toggle" class="filter-toggle">
         <span class="filter-show">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-down"></i></span>
         <span class="filter-hide">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-up"></i></span>
       </div>
     </div>
+-->
     <div class="input">
       <input name="search"
              type="text"
@@ -124,6 +127,8 @@ jQuery(function($) {
 
 %TMPL:DEF{"quicksearch"}%<!--quicksearch-->
 <div class="qw-quicksearch" data-offcanvas data-target="quicksearch" data-quicksearch data-solrsearch-widget data-quicksearch-dismax-main=".qw-quicksearch-form input" data-quicksearch-submit=".qw-quicksearch-form .submit">
+<!--
+TODO
   <div id="qw-searchbar-filters" class="filter" data-quicksearch-filter-toggle="#qw-quicksearch-filter-toggle">
     <div class="filter-summary">
       <div class="filter-active-list" data-solrsearch-filterlist>
@@ -157,12 +162,8 @@ jQuery(function($) {
       <div class="filter-dropdown-popup">
       </div>
     </div>
-<!--
-    <ul id="qw-searchbar-filter-webs" data-quicksearch-filter-type="facet" data-quicksearch-filter-field="web" data-quicksearch-filter-combine="OR" data-facet-values>
-      <li data-qtemplate data-facet-value qbind="data-facet-value-id: title, a // title"><a href="#" class="facet-value"></a></li>
-    </ul>
--->
   </div>
+-->
   <div class="results" data-scrollcontainer>
       <div class="qw-total-results" data-qtemplate="total">
         <span class="left"><span qbind="count"></span> results</span>
