@@ -234,22 +234,21 @@
 
     var height = $this.height();
     var width = $this.width();
-    var pos = $this.position();
-
-    // pos is relative to the 'left page container'
-    var $page = $('.qw-page > .content');
-    var offset = $page.offset();
+    var offset = $this.offset();
+    var position = $this.position();
 
     if ( _.isNumber( $this.data('hascomments') ) ) {
       return;
     } else {
       var $adorner = $('#qw-comment-adorner');
       var padding = 30;
-      var top = offset.top/2 + pos.top + height/2 - padding/2 - window.pageYOffset;
+
+      var top = offset.top - window.pageYOffset + height/2 - padding/4;
       $adorner.css('top', top);
 
-      var left = pos.left + width + padding;
+      var left = position.left + width + padding;
       $adorner.css('left', left);
+
       $adorner.show();
     }
   };

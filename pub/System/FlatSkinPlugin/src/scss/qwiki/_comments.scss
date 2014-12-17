@@ -200,8 +200,23 @@
   background-position: top right;
 }
 
-[data-hascomments="0"] { background-image: url('../assets/cmt-idea.png'); }
-[data-hascomments="1"] { background-image: url('../assets/cmt-issue.png'); }
+p[data-hascomments="0"] { background-image: url('../assets/cmt-idea.png'); }
+p[data-hascomments="1"] { background-image: url('../assets/cmt-issue.png'); }
+
+tr[data-hascomments="0"] { 
+  td:last-child {
+    background-image: url('../assets/cmt-idea.png');
+    background-repeat: no-repeat !important;
+    background-position: top right !important;
+  }
+}
+tr[data-hascomments="1"] { 
+  td:last-child {
+    background-image: url('../assets/cmt-issue.png');
+    background-repeat: no-repeat !important;
+    background-position: top right !important;
+  }
+}
 
 #qw-comment-container {
   display: none !important;
@@ -213,31 +228,18 @@
   z-index: 150;
   width: auto;
   height: auto;
-  background: $primary-color;
-  color: white;
+  background: #fff;
   cursor: pointer;
-  padding: rem-calc(6 15);
-  font-size: 0.8rem;
-  border-top-right-radius: $global-radius;
-  border-bottom-right-radius: $global-radius;
+  padding: rem-calc(3 12);
+  border-radius: $global-radius;
+  border: 1px solid #dae4eb;
 
   line-height: 1;
   vertical-align: middle !important;
 
-  &:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: " ";
-    width: 0;
-    height: 10%;
-
-    border-top: 11px solid transparent;
-    border-bottom: 11px solid transparent;
-
-    border-right: 10px solid $primary-color;
-    margin-left: -10px;
+  i {
+    font-size: 2rem;
+    color: $primary-color;
   }
 }
 
