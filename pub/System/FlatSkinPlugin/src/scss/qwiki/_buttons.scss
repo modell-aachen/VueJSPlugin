@@ -111,6 +111,36 @@
   }
 }
 
+.qw-kvp-compare-btn {
+  border-top: 1px solid $qw-border-bg;
+  padding-top: $qw-content-padding/2;
+  min-width: 100%;
+
+  > a {
+    display: block;
+    background: #fff;
+    transition: background 0.3s ease-in-out;
+    border: 1px solid $qw-border-bg;
+    padding: rem-calc(0 6 6 6);
+    color: $body-font-color;
+    text-decoration: none;
+    vertical-align: middle;
+
+    i {
+      font-size: 2rem;
+      margin-right: rem-calc(6);
+    }
+
+    &:hover {
+      background: $qw-border-bg;
+    }
+
+    &:active {
+      background: darken($qw-border-bg, 10%);
+    }
+  }
+}
+
 .qw-login-btn {
   @include button( $radius: true, $bg: $qw-button1-bg-color, $full-width: true );
 

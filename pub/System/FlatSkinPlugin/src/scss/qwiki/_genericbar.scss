@@ -74,6 +74,36 @@
         margin-top: rem-calc(3);
       }
     }
+
+    > .caption {
+      background-color: $qw-edit-color;
+      background-image: url(../assets/pattern_10x10_digstripes_white.png);
+      padding: rem-calc(6) 0;
+      min-height: rem-calc(28);
+
+      > div {
+        min-height: rem-calc(28);
+        background-color: $qw-edit-color;
+        padding-left: $qw-content-padding/2;
+
+        i {
+          font-family: 'qwiki-font';
+          font-size: 1.5rem;
+
+          &:before {
+            margin-top: 3px;
+            vertical-align: top;
+          }
+        }
+
+        span {
+          font-size: 0.8rem;
+          vertical-align: middle;
+          line-height: 1;
+        }
+      }
+    }
+
     > .content {
       background: $qw-genericbar-content-bg;
       padding: rem-calc(12) $qw-content-padding/2;
