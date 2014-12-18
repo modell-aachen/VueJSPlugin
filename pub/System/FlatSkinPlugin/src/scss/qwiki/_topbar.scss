@@ -161,12 +161,13 @@
 
         @media #{$small-up} {
           $ptb: ($qw-top-one-height - $qw-search-height)/2;
-          padding: $ptb #{$qw-content-padding/2};
+          padding: $ptb #{$qw-content-padding};
         }
 
         .qw-quicksearch-form {
           @media #{$mobile-up} {display: none;}
           @media #{$large-up} {display: block;}
+          border-radius: $global-radius;
         }
 
         .qw-search-toggle {
