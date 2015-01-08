@@ -18,7 +18,7 @@
   }
 
   > .heading > div {
-    padding-top: $qw-content-padding;
+    padding: 0.6rem 0.6rem;
   }
 
   > .content, .heading {
@@ -28,11 +28,12 @@
     @media #{$mobile-up} {width: 100%;}
     @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-content-padding}/2);}
     @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-content-padding}/2);}
+  }
 
-    > div {
+    .content > div {
       padding: 0.5rem $qw-content-padding;
     }
-  }
+
 
   &.maximized {
     > .content, .heading {

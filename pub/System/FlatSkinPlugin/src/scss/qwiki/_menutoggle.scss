@@ -20,7 +20,7 @@
     background: $qw-leftbar-toggle-bg;
     cursor: pointer;
     color: white;
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     transition: background 0.1s ease-in-out;
 
     @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
@@ -36,7 +36,7 @@
 
     > div {
       @media #{$mobile-only} {padding: rem-calc(9 22);}
-      @media #{$small-up} {padding: rem-calc(18 22);}
+      @media #{$small-up} {padding: rem-calc(7 16);}
     }
   }
 
@@ -50,7 +50,7 @@
       transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
       > .toggle > div { 
         @media #{$mobile-only} {padding: rem-calc(9 24);}
-        @media #{$small-up} {padding: rem-calc(18 24);}
+        @media #{$small-up} {padding: rem-calc(6 23);}
           > i {
           @extend .icon-arrow-left;
         }

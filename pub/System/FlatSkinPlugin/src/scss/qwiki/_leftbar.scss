@@ -141,7 +141,7 @@
       bottom: 1 + $qw-leftbar-ma-logo-height + 60px;
 
       > div {
-        padding: 0 $qw-content-padding/2;
+        padding: rem-calc(24);;
 
         > span {
           display: block;
@@ -168,7 +168,7 @@
 
       > div {
         margin: 0 auto;
-        padding: rem-calc(12 24);
+        padding: rem-calc(0 24);
 
         > * {margin-right: rem-calc(6);}
       }
