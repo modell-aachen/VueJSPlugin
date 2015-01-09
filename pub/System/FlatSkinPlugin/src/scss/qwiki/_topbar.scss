@@ -291,7 +291,7 @@
             background: $qw-content-bg;
             border-radius: $global-radius;
             height: 40px;
-            padding: 0 $qw-content-padding/2;
+            padding: 0 $qw-content-padding/4;
 
             @media #{$mobile-only} {top: ($qw-top-two-height-mobile - 40px)/2;}
             @media #{$small-up} {top: ($qw-top-two-height - 40px)/2;}

@@ -39,15 +39,8 @@
     transform: translate3d( 0, 0, 0 );
 
     &.leftbar {
-      @media #{$medium-only} {
+      @media #{$medium-up} {
         transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
-        right: -55px;
-      }
-
-      @media #{$large-up} {
-        $offset: rem-calc($qw-leftbar-width-expanded) - 2 * $qw-content-padding;
-        transform: translate3d( $offset, 0, 0 );
-        right: -55px;
       }
     }
   }
