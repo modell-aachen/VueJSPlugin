@@ -47,6 +47,7 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
 
 
+
 // override for Foundation'S default colors
 $primary-color: #236aa2;
 $secondary-color: #ccc;
@@ -369,3 +370,20 @@ $qw-actionbtn-hover-bg: #4191ce;
 $qw-actionbtn-active-bg: #1c547e;
 $qw-actionbtn-color: #bfbfbf;
 $qw-actionbtn-hover-color: #fff;
+
+//font settings of  ckeditor 
+
+$kc-font-family: "Open Sans Regular";
+$kc-h1-font-size : rem-calc(36);
+$kc-h1-font-color : #262626;
+$kc-h1-line-height: rem-calc(42);
+$kc-font-weight: normal;
+
+$kc-h2-font-size : rem-calc(24);
+$kc-h2-line-height: rem-calc(32);
+
+
+
+$kc-p-font-size: rem-calc(13);
+$kc-p-font-color: #4d4d4d;
+$kc-p-line-height: rem-calc(28);
