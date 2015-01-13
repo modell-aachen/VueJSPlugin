@@ -66,8 +66,22 @@
 
   }
   .table {
+    margin: 0 0;
     display: none;
-    flex-flow: row wrap;
+    position: fixed;
+    border-radius: $global-radius;
+    $p: percentage(1/$total-columns);
+    @media #{$mobile-up} {width: 100%;}
+    @media #{$large-only} {width: calc(5.99 * #{$p} - #{$qw-content-padding}/2);}
+    @media #{$extended-up} {width: calc(6.99 * #{$p} - #{$qw-content-padding}/2);}
+    > classic-table {
+      background-color: $qw-dochead-default-bg;
+
+
+
+
+    }
+    
   }
 }
 
