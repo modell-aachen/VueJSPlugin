@@ -1,7 +1,7 @@
 %TMPL:DEF{"document:head:auto"}%<!--document:head:auto-->
 <div class='qw-document-head'>
   <div class="classic">
-   <span>%MAKETEXT{"Classic View"}%</span>
+   <span id="classic-label">%MAKETEXT{"Classic View"}%</span>
   </div>
   <div class="flex-box">
     <div class="entry">
@@ -27,51 +27,21 @@
     <div class="clearfix"></div>
   </div>
   <div class="table">
-    <table class="classic-table">
+    <table class="classic-table" border="1">
       <thead>
         <tr>
           <th>Header Cell 01</th>
           <th>Header Cell 02</th>
           <th>Header Cell 03</th>
           <th>Header Cell 04</th>
+          <th>Header Cell 01</th>
+          <th>Header Cell 02</th>
         </tr>
       </thead>
-      <tfoot>
-        <tr>
-          <th>Footer Cell 01</th>
-          <th>Footer Cell 02</th>
-          <th>Footer Cell 03</th>
-          <th>Footer Cell 04</th>
-        </tr>
-      </tfoot>
-      <tbody>
-        <tr>
-          <td class="cell-1">Data Cell 01</td>
-          <td class="cell-2">Data Cell 02</td>
-          <td class="cell-3">Data Cell 03</td>
-          <td class="cell-4">Data Cell 04</td>
-        </tr>
-        <tr>
-          <td class="cell-1">Data Cell 01</td>
-          <td class="cell-2">Data Cell 02</td>
-          <td class="cell-3">Data Cell 03</td>
-          <td class="cell-4">Data Cell 04</td>
-        </tr>
-        <tr>
-          <td class="cell-1">Data Cell 01</td>
-          <td class="cell-2">Data Cell 02</td>
-          <td class="cell-3">Data Cell 03</td>
-          <td class="cell-4">Data Cell 04</td>
-        </tr>
-        <tr>
-          <td class="cell-1">Data Cell 01</td>
-          <td class="cell-2">Data Cell 02</td>
-          <td class="cell-3">Data Cell 03</td>
-          <td class="cell-4">Data Cell 04</td>
-        </tr>
-      </tbody>
+      
     </table>
   </div>
+
 </div>
 <!--/document:head:auto-->%TMPL:END%
 
