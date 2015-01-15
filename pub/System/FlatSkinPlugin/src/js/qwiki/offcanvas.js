@@ -11,6 +11,7 @@
       }
 
       this.bind();
+      restorePersitedData( this );
     },
 
     bind: function() {
@@ -24,18 +25,15 @@
   };
 
 
-  var toggleCanvas = function( element, action, sticky ) {
+  var toggleCanvas = function( element, action, target ) {
     var sender = QWiki.plugins.offcanvas;
     var bar;
-    var target;
 
-    target = element.attr('data-offcanvas-toggle');
+    target = target || element.attr('data-offcanvas-toggle');
     if(target) {
         bar = $('[data-offcanvas][data-target="'+target+'"]');
         if(!bar.length) {
-            if(window.console) {
-                console.log("Bar not found: " + bar.selector);
-            }
+            QWiki.log( "Bar not found: " + bar.selector );
             return;
         }
     } else {
@@ -79,17 +77,10 @@
     }
 
     var open;
-    if(action === 'open') {
-        open = true;
-    } else if (action === 'close' ) {
-        open = false;
+    if ( action ) {
+        open = action === 'open';
     } else {
-        // toggle
-        if(bar.hasClass(target)) {
-            open = false;
-        } else {
-            open = true;
-        }
+        open = !bar.hasClass( target );
     }
 
     if(open) {
@@ -111,6 +102,31 @@
             QWiki.raiseEvent( bar, sender, 'closing' );
         }
     }
+
+    var $t = $('.qw-' + target);
+    if ( $t.length > 0 ) {
+        var persist = $t.data('offcanvas-persist-state');
+        var isPersist = !_.isUndefined( persist );
+        if ( isPersist ) {
+            var data = '.qw-' + target + ',' + (open ? 1 : 0);
+            QWiki.persistData( QWiki.plugins.offcanvas.name, data );
+        }
+    }
+  };
+
+  var restorePersitedData = function( self ) {
+    var data = self.Q.restoreData( self.name );
+    if ( data ) {
+        var arr = data.split(',');
+        if ( arr.length === 2 && arr[1] === '1' ) {
+            var $target = $(arr[0]);
+            $target.addClass('no-transition');
+            $target.offcanvas({action: 'open'});
+            setTimeout( function() {
+                $target.removeClass('no-transition');
+            }, 500 );
+        }
+    }
   };
 
   var handleClick = function( evt ) {
@@ -128,9 +144,16 @@
     var isSticky = typeof sticky !== typeof undefined && sticky !== false;
 
     var activate = !$self.hasClass('active');
+    toggleCanvas($self, undefined, target );
 
-    toggleCanvas($self);
-
+    var hasPluginMaximize = typeof QWiki.plugins.maximize === 'object';
+    if ( hasPluginMaximize ) {
+        var maximizer = QWiki.plugins.maximize;
+        var selector = '.' + maximizer.cssClass;
+        if ( $(selector).length > 0 ) {
+            maximizer.minimizeOnce();
+        }
+    }
 
     return false;
   };
@@ -146,7 +169,6 @@
     $('#foo').offcanvas()
      -> toggles 'quicksearch' animation on ALL [data-offcanvas] elements and
         appends/removes class 'active' on element '#foo'.
-
 
     (2)
     $('#foo').offcanvas({action: 'open', target: 'leftbar'})
@@ -181,8 +203,7 @@
       return this;
     }
 
-    toggleCanvas(this, action);
-
+    toggleCanvas(this, action, target);
     return this;
   };
 }(jQuery, window._, window.document, window));

@@ -19,5 +19,5 @@
 %TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:edit"}%
-<a href="#" class="qw-action-button visible-large-up" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-toggle><i class="icon-maximize"></i></a>
+<a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button visible-large-up" data-behavior="radio" data-group="qw-action-buttons" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-toggle><i class="icon-maximize"></i></a>
 %TMPL:END%

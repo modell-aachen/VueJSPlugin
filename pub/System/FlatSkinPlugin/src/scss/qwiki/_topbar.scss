@@ -252,10 +252,6 @@
         @media #{$medium-only} {width: calc(100% - #{$qw-content-padding}/2 - 5px);}
         @media #{$large-only} {width: calc(100% - #{$qw-content-padding} - 10px);}
         @media #{$extended-up} {width: calc(100% - #{$qw-content-padding} - 5px);}
-
-        .topicactions .icon-maximize {
-          @extend .icon-minimize;
-        }
       }
 
       > div {

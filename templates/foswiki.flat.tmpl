@@ -257,13 +257,13 @@ TODO
 
 
 %TMPL:DEF{"infobar"}%<!--infobar-->
-<div class="qw-infobar" data-offcanvas data-target="infobar">
+<div class="qw-infobar" data-offcanvas data-offcanvas-persist-state data-target="infobar">
   <div>
     <div class="header">
       <div>
         <i class="icon-page-info"></i>
         <span>%MAKETEXT{"Document information"}%</span>
-        <a href="#" class="qw-back-btn" data-offcanvas-toggle="infobar"></a>
+        <a href="#" class="qw-close-btn" data-maximize-toggle=".qw-page, .qw-top .two .actions"></a>
       </div>
     </div>
     <div class="content">
