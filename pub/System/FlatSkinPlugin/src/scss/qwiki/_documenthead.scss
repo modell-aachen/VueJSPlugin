@@ -1,24 +1,56 @@
 .qw-document-head {
-  background-color: $qw-dochead-default-bg;
-  height: rem-calc(60);
-  border-radius: $global-radius;
+  //transition: transform 0.3s ease-in-out;
+  min-height: 100px;
   display: -ms-flexbox;
   -ms-flex-direction: row;
   -ms-flex-wrap: wrap;
-  .flex-box {
+  overflow: hidden;
+
+  > .flex-table {
+    opacity: 0;
+  }
+
+  > .flex-box {
+    opacity: 1;
+  }
+
+  &.move {
+    transform: translate3d(0, -59px, 0 );
+
+
+    > .classic {
+      transform: translate3d(0, 56px, 0 );
+      right: 2px;
+      top:3px;
+    }
+
+    > .flex-table {
+      opacity: 1;
+       background-color: white;
+    }
+
+    > .flex-box {
+      opacity: 0;
+    }
+  }
+
+  
+
+  .flex-box , .flex-table {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    background-color: $qw-dochead-default-bg;
+    border-radius: $global-radius;
+    transition: opacity 0.3s ease-in-out;
     
     > .entry {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
-
       display: -ms-flexbox;
       -ms-flex-wrap: wrap;
       -ms-flex-direction: column;
-
       float: left;
       margin: rem-calc(10 0 10 10);
 
@@ -35,7 +67,6 @@
         padding: rem-calc(3 7);
         min-height: rem-calc(30) - 2 * $pad;
         border-radius: $global-radius;
-
         background: $qw-dochead-default-box-bg;
         color: $qw-dochead-default-box-color;
         font-size: $qw-dochead-default-box-font-size;
@@ -48,40 +79,105 @@
     }
   }
   .classic {
-        background-color: $qw-dochead-classic-box-bg;
-        border-radius: $global-radius;  
-        position: relative;
-        right: 0;
-        top: 0;
-        z-index: 1;  
-        font-size: $qw-dochead-classic-box-font-size;
-        color: $qw-dochead-classic-box-font-color;
-        padding: rem-calc(6 12);
-        cursor: pointer;
-        float: right;
-        a {
-          color:inherit;
-          text-decoration: none;
-        }
-
-  }
-  .table {
-    margin: 0 0;
-    display: none;
-    position: fixed;
-    border-radius: $global-radius;
+    background-color: $qw-dochead-classic-box-bg;
+    border-radius: $global-radius;  
+    position: absolute;
     $p: percentage(1/$total-columns);
-    @media #{$mobile-up} {width: 100%;}
-    @media #{$large-only} {width: calc(5.99 * #{$p} - #{$qw-content-padding}/2);}
-    @media #{$extended-up} {width: calc(6.99 * #{$p} - #{$qw-content-padding}/2);}
-    > classic-table {
-      background-color: $qw-dochead-default-bg;
-
-
-
-
+    @media #{$mobile-up} {right: 0%;}
+    @media #{$large-only} {right: calc(100% - 8 * #{$p} + #{$qw-content-padding}/2 + 0.6rem);}
+    @media #{$extended-up} {right: calc(100% - 9 * #{$p} + #{$qw-content-padding}/2 + 0.6rem);}
+    top: 0.6rem; 
+    z-index: 1;  
+    font-size: $qw-dochead-classic-box-font-size;
+    color: $qw-dochead-classic-box-font-color;
+    padding: rem-calc(6 12);
+    cursor: pointer;
+    a {
+      color:inherit;
+      text-decoration: none;
     }
-    
+  }
+
+  .flex-table {
+
+    > .item {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        display: -ms-flexbox;
+        -ms-flex-wrap: wrap;
+        -ms-flex-direction: column;
+        -webkit-flex-flow: column wrap;
+        float: left;
+        background: $qw-dochead-default-bg;
+        border-radius: $global-radius; 
+        height: $qw-dochead-classic-height;
+        margin: $qw-dochead-classic-margin;
+        color: $qw-dochead-label-color;
+        
+      
+      > .label {
+        text-transform: uppercase;
+        color: $qw-dochead-label-color;
+        font-size: $qw-dochead-label-font-size;
+        font-weight: $qw-dochead-label-font-weight;
+        min-width: $qw-dochead-classic-label-min-width;
+        padding-left: $qw-dochead-classic-padding;
+        padding-top: $qw-dochead-classic-padding; 
+        }
+      > .tcontent {
+        margin-top: rem-calc(3);
+        margin-left: $qw-dochead-classic-padding;
+        width: $qw-dochead-classic-tcontent-width;
+        $pad: rem-calc(6);
+        padding: rem-calc(3 7);
+        min-height: rem-calc(30) - 2 * $pad;
+        border-radius: $global-radius;
+        background: $qw-dochead-default-box-bg;
+        color: $qw-dochead-default-box-color;
+        font-size: $qw-dochead-default-box-font-size;
+
+        &.user, &.author {
+          background: $qw-dochead-user-box-bg;
+          color: $qw-dochead-user-box-color;
+        }
+      }
+    }
+
+      #item1 {
+        width: 49.8%;
+        -webkit-flex-flow: row wrap;
+        > .tcontent{
+          margin-top: rem-calc(15);
+          min-width: rem-calc(50);
+          height: rem-calc(15);
+
+          }
+          .label {
+              padding-top:rem-calc(18);
+              text-transform: none;
+              font-size: 1rem;
+              font-weight: normal;
+              color: #999;
+           }
+      }
+      #item2 { 
+        width: 49.8%;
+        >.label{
+        padding-top: 1.4375rem;
+          .label {
+            text-transform: none;
+          }
+        }
+      }
+      #item3, #item4, #item5 {
+        width: 18%;  
+      }
+      #item6 { 
+        width: 37%; 
+      }
+      #item7 {
+        width: 8.1%;
+      }
   }
 }
-

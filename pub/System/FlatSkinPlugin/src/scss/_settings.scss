@@ -331,11 +331,16 @@ $qw-dochead-default-box-font-size: rem-calc(13);
 $qw-dochead-user-box-bg: #ffffff;
 $qw-dochead-user-box-color: #236aa2;
 $qw-dochead-user-box-font-size: $qw-dochead-default-box-font-size;
+
+// document classic head 
+$qw-dochead-classic-height: rem-calc(55);
+$qw-dochead-classic-margin: rem-calc(1);
 $qw-dochead-classic-box-font-size: rem-calc(10);
 $qw-dochead-classic-box-font-color: #ffffff;
 $qw-dochead-classic-box-bg: #CACACA;
-
-
+$qw-dochead-classic-label-min-width: rem-calc(75);
+$qw-dochead-classic-padding: rem-calc(7);
+$qw-dochead-classic-tcontent-width: rem-calc(120);
 
 $qw-infobar-bg: #ebebeb;
 $qw-infobar-content-bg: $qw-content-bg;
