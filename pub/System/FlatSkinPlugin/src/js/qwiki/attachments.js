@@ -102,6 +102,8 @@
   var showAttachments = function( evt ) {
     $('.qw-infobar > div > .content').addClass('offcanvas');
     $('.qw-attachments-container').addClass('active');
+
+    return false;
   };
 
   var showUpload = function( evt ) {
@@ -123,11 +125,15 @@
 
     $('.qw-attachments-container > .list').addClass('deactive');
     $('.qw-attachments-container > .details').addClass('active');
+
+    return false;
   };
 
   var closeAttachments = function( evt ) {
     $('.qw-infobar > div > .content').removeClass('offcanvas');
     $('.qw-attachments-container').removeClass('active');
+
+    return false;
   };
 
   var closeDetails = function( evt ) {
@@ -150,6 +156,8 @@
     $('.qw-attachments-container > .details').removeClass('active');
     $('.qw-infobar > div > .content').removeClass('offcanvas');
     $('.qw-attachments-container').removeClass('active');
+
+    return false;
   };
 
   // uploading...
