@@ -13,7 +13,7 @@
 
 %TMPL:DEF{"topbar:two:right:misc"}%
 <a href="#" class="qw-action-button hidden-mobile"><i class="icon-flag"></i></a>
-<a href="#" class="qw-action-button hidden-mobile"><i class="icon-fav-inactive"></i></a>
+%IF{"$FAVORITES='1'" then='<a href="#" class="qw-action-button hidden-mobile" data-favoritesbutton>%TMPL:P{"favorites:button"}%</a>'}%
 <a href="#" class="qw-action-button hidden-mobile"><i class="icon-forward"></i></a>
 <ul class="qw-more-menu qw-action-button hidden-mobile">
     <li><a href="#"><i class="icon-more"></i></a>
