@@ -15,7 +15,16 @@
 <a href="#" class="qw-action-button hidden-mobile"><i class="icon-flag"></i></a>
 %IF{"$FAVORITES='1'" then='<a href="#" class="qw-action-button hidden-mobile" data-favoritesbutton>%TMPL:P{"favorites:button"}%</a>'}%
 <a href="#" class="qw-action-button hidden-mobile"><i class="icon-forward"></i></a>
-<a href="#" class="qw-action-button"><i class="icon-more"></i></a>
+<ul class="qw-more-menu">
+    <li><a href="#" class="qw-action-button hidden-mobile"><i class="icon-more"></i></a>
+    	<ul>
+        	<li><a href="#">sub menu 1</a></li>
+         <li><a href="#">sub menu 2</a></li>
+         <li><a href="#">sub menu 3</a></li>
+         <li><a href="#">sub menu 4</a></li>
+      </ul>
+    </li>
+</ul>
 %TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:edit"}%

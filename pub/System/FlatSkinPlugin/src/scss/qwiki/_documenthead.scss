@@ -1,5 +1,5 @@
 .qw-document-head {
-  //transition: transform 0.3s ease-in-out;
+  //transition: transform 0.0000001s step-end;
   min-height: 100px;
   display: -ms-flexbox;
   -ms-flex-direction: row;
@@ -19,6 +19,7 @@
 
 
     > .classic {
+     
       transform: translate3d(0, 56px, 0 );
       right: 2px;
       top:3px;
@@ -33,7 +34,6 @@
       opacity: 0;
     }
   }
-
   
 
   .flex-box , .flex-table {
@@ -79,6 +79,7 @@
     }
   }
   .classic {
+    
     background-color: $qw-dochead-classic-box-bg;
     border-radius: $global-radius;  
     position: absolute;
