@@ -27,32 +27,35 @@
     <div class="clearfix"></div>
   </div>
   <div class="flex-table">
-      <div class="item" id="item1" >
-        <span class="tcontent">%QUERY{"Dokumententyp"}%</span>
-        <span class="label">%TOPICTITLE%</span>
+    <div class="row">
+        <div class="item" id="item1" >
+          <span class="label">%TOPICTITLE%</span>
+          <span class="tcontent">%QUERY{"Dokumententyp"}%</span>
+        </div>
+        <div class="item" id="item2" >
+          <span class="label">%MAKETEXT{"Area of Application"}%: <span class="label"> %QUERY{"Geltungsbereich"}%</span></span>
+        </div>
       </div>
-      <div class="item" id="item2" >
-        <span class="label">%MAKETEXT{"Area of Application"}%: <span class="label"> %QUERY{"Geltungsbereich"}%</span></span>
-      </div>
-      <div class="item" id="item3" >
-        <span class="label">%MAKETEXT{"Last author"}%</span>
-        <span class="tcontent author"><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span>
-      </div>
-      <div class="item" id="item4" >
-        <span class="label">%MAKETEXT{"Responsible"}%</span>
-        <span class="tcontent user"><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
-      <div class="item" id="item5" >
-        <span class="label">%MAKETEXT{"Applicable"}%</span>
-        <span class="tcontent">%QUERY{"AreaOfApplication"}%</span>
-      </div>
-      <div class="item" id="item6" >    
-        <span class="label">%MAKETEXT{"Status"}%</span>
-        <span class="tcontent">%REVINFO{format="$date"}%</span>
-      </div>
-      <div class="item" id="item7" >
-      <span class="label">%MAKETEXT{"Version"}% : </span>
-      <span class="label">%WORKFLOWMETA{"Revision"}%</span>
-        
+      <div class="row">
+        <div class="item" id="item3" >
+          <span class="label">%MAKETEXT{"Last author"}%</span>
+          <span class="tcontent author"><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span>
+        </div>
+        <div class="item" id="item4" >
+          <span class="label">%MAKETEXT{"Responsible"}%</span>
+          <span class="tcontent user"><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
+        <div class="item" id="item5" >
+          <span class="label">%MAKETEXT{"Applicable"}%</span>
+          <span class="tcontent">%QUERY{"AreaOfApplication"}%</span>
+        </div>
+        <div class="item" id="item6" >    
+          <span class="label">%MAKETEXT{"Status"}%</span>
+          <span class="tcontent">%REVINFO{format="$date"}%</span>
+        </div>
+        <div class="item" id="item7" >
+        <span class="label">%MAKETEXT{"Version"}% : </span>
+        <span class="label">%WORKFLOWMETA{"Revision"}%</span>
+        </div>
       </div>
   </div>
 </div>

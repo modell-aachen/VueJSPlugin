@@ -99,85 +99,70 @@
   }
 
   .flex-table {
-
-    > .item {
-        display: flex;
-        flex-wrap: wrap;
+    > .row {
+      width: 100%;
+      display: flex;
+      display: -ms-flexbox;
+      flex-direction: row;
+      -ms-flex-direction: row;
+      flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      
+      > .item {
         flex-direction: column;
-        display: -ms-flexbox;
-        -ms-flex-wrap: wrap;
         -ms-flex-direction: column;
-        -webkit-flex-flow: column wrap;
-        float: left;
+        flex-grow: 2;
+
         background: $qw-dochead-default-bg;
         border-radius: $global-radius; 
         height: $qw-dochead-classic-height;
         margin: $qw-dochead-classic-margin;
         color: $qw-dochead-label-color;
-        
-      
-      > .label {
-        text-transform: uppercase;
-        color: $qw-dochead-label-color;
-        font-size: $qw-dochead-label-font-size;
-        font-weight: $qw-dochead-label-font-weight;
-        min-width: $qw-dochead-classic-label-min-width;
-        padding-left: $qw-dochead-classic-padding;
-        padding-top: $qw-dochead-classic-padding; 
-        }
-      > .tcontent {
-        margin-top: rem-calc(3);
-        margin-left: $qw-dochead-classic-padding;
-        width: $qw-dochead-classic-tcontent-width;
-        $pad: rem-calc(6);
-        padding: rem-calc(3 7);
-        min-height: rem-calc(30) - 2 * $pad;
-        border-radius: $global-radius;
-        background: $qw-dochead-default-box-bg;
-        color: $qw-dochead-default-box-color;
-        font-size: $qw-dochead-default-box-font-size;
 
-        &.user, &.author {
-          background: $qw-dochead-user-box-bg;
-          color: $qw-dochead-user-box-color;
+        > .label {
+          text-transform: uppercase;
+          color: $qw-dochead-label-color;
+          font-size: $qw-dochead-label-font-size;
+          font-weight: $qw-dochead-label-font-weight;
+          min-width: $qw-dochead-classic-label-min-width;
+          padding-left: $qw-dochead-classic-padding;
+          padding-top: $qw-dochead-classic-padding; 
+        }
+
+        > .tcontent {
+          margin-top: rem-calc(3);
+          margin-left: $qw-dochead-classic-padding;
+          width: $qw-dochead-classic-tcontent-width;
+          $pad: rem-calc(6);
+          padding: rem-calc(3 7);
+          min-height: rem-calc(30) - 2 * $pad;
+          border-radius: $global-radius;
+          background: $qw-dochead-default-box-bg;
+          color: $qw-dochead-default-box-color;
+          font-size: $qw-dochead-default-box-font-size;
+        }
+      }
+  
+      &:first-child {
+        > .item {
+          flex-grow: 1;
+          > span {
+            padding-top: 1.4375rem;
+          }
+        }
+      }
+
+      &:last-child {
+        > .item {
+          > span {
+            display: block;
+          }
+
+          &:last-child {
+            flex-grow: 0;
+          }
         }
       }
     }
-
-      #item1 {
-        width: 49.8%;
-        -webkit-flex-flow: row wrap;
-        > .tcontent{
-          margin-top: rem-calc(15);
-          min-width: rem-calc(50);
-          height: rem-calc(15);
-
-          }
-          .label {
-              padding-top:rem-calc(18);
-              text-transform: none;
-              font-size: 1rem;
-              font-weight: normal;
-              color: #999;
-           }
-      }
-      #item2 { 
-        width: 49.8%;
-        >.label{
-        padding-top: 1.4375rem;
-          .label {
-            text-transform: none;
-          }
-        }
-      }
-      #item3, #item4, #item5 {
-        width: 18%;  
-      }
-      #item6 { 
-        width: 37%; 
-      }
-      #item7 {
-        width: 8.1%;
-      }
   }
 }
