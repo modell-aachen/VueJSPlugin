@@ -29,8 +29,8 @@
   <div class="flex-table">
     <div class="row">
         <div class="item" id="item1" >
+        <span class="tcontent">%QUERY{"Dokumententyp"}%</span>
           <span class="label">%TOPICTITLE%</span>
-          <span class="tcontent">%QUERY{"Dokumententyp"}%</span>
         </div>
         <div class="item" id="item2" >
           <span class="label">%MAKETEXT{"Area of Application"}%: <span class="label"> %QUERY{"Geltungsbereich"}%</span></span>
