@@ -1,0 +1,59 @@
+// Codemirror Flat Theme
+
+#cke-toolbar-container {
+  > .CodeMirror-toolbar {
+    height: $qw-top-two-height;
+    background: $qw-top-one-cke-bg;
+    border: none;
+
+    .cm-btn {
+      &.btn-base {
+        $pad: 7px;
+        $mar: 9px;
+        display: inline-block;
+        width: $qw-top-two-height - 2*$pad - 2*$mar !important;
+        height: $qw-top-two-height - 2*$pad - 2*$mar !important;
+        cursor: pointer;
+        margin: $mar 3px;
+        padding: $pad;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: #666666;
+        border-radius: $global-radius;
+
+        &:first-child {
+          margin-left: 30px;
+        }
+
+        &:hover {
+          background-color: #8c8c8c;
+        }
+  
+        &:active {
+          background-color: #e0e0e0;
+        }
+
+        &.btn-undo {
+          background-image: url(../assets/undo.png);
+        }
+
+        &.btn-redo {
+          background-image: url(../assets/redo.png);
+        }
+
+        &.btn-find {
+          background-image: url(../assets/find.png);
+        }
+
+        &.btn-replace {
+          background-image: url(../assets/replace.png);
+        }
+
+        &.btn-help {
+          background-image: url(../assets/help.png);
+          float: right;
+        }
+      }
+    }
+  }
+}

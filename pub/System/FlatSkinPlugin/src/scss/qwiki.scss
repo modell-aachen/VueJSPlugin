@@ -34,3 +34,8 @@
 @import "qwiki/typography/tables";
 @import "qwiki/typography/headings";
 @import "qwiki/typography/paragraphs";
+@import "qwiki/typography/pre";
+@import "qwiki/typography/code";
+
+// additional files, overrides, etc.
+@import "qwiki/codemirror-theme";
