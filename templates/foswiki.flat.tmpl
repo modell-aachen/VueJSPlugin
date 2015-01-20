@@ -416,7 +416,15 @@ TODO
 </div>
 <!--/comments:editbox-->%TMPL:END%
 
-
+%TMPL:DEF{"favorites:button"}%%FAVORITEBUTTON{
+  default=""
+  cond="'%TOPIC%'='%WORKFLOWORIGIN%' AND $FAVORITES='1'"
+  inactive_suffix="inactive"
+  active_suffix="active"
+  active_label="%MAKETEXT{"Remove bookmark"}%"
+  inactive_label="%MAKETEXT{"Bookmark this page"}%"
+  format="<i class=\"icon-fav-$suffix\"></i>"
+}%%TMPL:END%
 
 
 %{
