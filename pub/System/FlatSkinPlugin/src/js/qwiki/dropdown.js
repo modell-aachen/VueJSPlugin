@@ -15,7 +15,7 @@
     bind: function() {
       this.unbind();
 
-      $('[data-dropdown]').each( function() {
+      $('[data-splitbutton]').each( function() {
         var $self = $(this);
         var selector = $self.data('target');
 
@@ -23,14 +23,14 @@
         if ( target.length > 0 ) {
           var adorner = $self.find('[data-adorner]');
           if ( adorner.length > 0 ) {
-            adorner.on( 'click', this, handleClick );
+            adorner.on( 'click', this, handleSplitbtnClick );
           }
         }
       });
     },
 
     unbind: function() {
-      $('[data-dropdown]').each( function() {
+      $('[data-splitbutton]').each( function() {
         var $self = $(this);
         var selector = $self.data('target');
 
@@ -38,14 +38,14 @@
         if ( target.length > 0 ) {
           var adorner = $self.find('[data-adorner]');
           if ( adorner.length > 0 ) {
-            adorner.off( 'click', handleClick );
+            adorner.off( 'click', handleSplitbtnClick );
           }
         }
       });
     }
   };
 
-  var handleClick = function( evt ) {
+  var handleSplitbtnClick = function( evt ) {
     var $self = $(evt.data);
     $self.toggleClass( 'active' );
 
