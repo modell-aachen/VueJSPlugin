@@ -1,5 +1,11 @@
 // Codemirror Flat Theme
 
+body.context-edit {
+  .CodeMirror-gutters {
+    background-color: $qw-content-bg;
+  }
+}
+
 #cke-toolbar-container {
   > .CodeMirror-toolbar {
     height: $qw-top-two-height;
@@ -14,7 +20,7 @@
         width: $qw-top-two-height - 2*$pad - 2*$mar !important;
         height: $qw-top-two-height - 2*$pad - 2*$mar !important;
         cursor: pointer;
-        margin: $mar 3px;
+        margin: $mar 0;
         padding: $pad;
         background-repeat: no-repeat;
         background-position: center center;
@@ -22,7 +28,7 @@
         border-radius: $global-radius;
 
         &:first-child {
-          margin-left: 30px;
+          margin-left: 10px;
         }
 
         &:hover {
@@ -34,24 +40,34 @@
         }
 
         &.btn-undo {
-          background-image: url(../assets/undo.png);
+          background-image: url(../assets/icons/cm_undo.png);
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
         }
 
         &.btn-redo {
-          background-image: url(../assets/redo.png);
+          background-image: url(../assets/icons/cm_redo.png);
+          margin-right: 5px;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
         }
 
         &.btn-find {
-          background-image: url(../assets/find.png);
+          background-image: url(../assets/icons/cm_search.png);
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
         }
 
         &.btn-replace {
-          background-image: url(../assets/replace.png);
+          background-image: url(../assets/icons/cm_replace.png);
+          margin-right: 5px;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
         }
 
         &.btn-help {
-          background-image: url(../assets/help.png);
-          float: right;
+          background-image: url(../assets/icons/cm_help.png);
+          float: none;
         }
       }
     }
