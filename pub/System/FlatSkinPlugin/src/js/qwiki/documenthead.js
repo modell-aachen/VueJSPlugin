@@ -16,11 +16,11 @@
     bind: function() {
       this.unbind();
 
-      $('[data-documenthead-toggle').on('click', this, handleClick);
+      $('[data-documenthead-toggle]').on('click', this, handleClick);
     },
 
     unbind: function() {
-      $('[data-documenthead-toggle').off('click', handleClick);
+      $('[data-documenthead-toggle]').off('click', handleClick);
     }
   };
 
