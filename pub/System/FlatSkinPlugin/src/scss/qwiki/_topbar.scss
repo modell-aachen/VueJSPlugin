@@ -292,9 +292,12 @@
             @media #{$mobile-only} {top: ($qw-top-two-height-mobile - 40px)/2;}
             @media #{$small-up} {top: ($qw-top-two-height - 40px)/2;}
 
-            > div > div.topbar-edit {
+            > div {
               display: inline-block;
-              float: right;
+
+              &.topbar-edit {
+                float: right;
+              }
             }
 
             i {

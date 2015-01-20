@@ -395,6 +395,13 @@ $kc-p-font-size: rem-calc(13);
 $kc-p-font-color: #4d4d4d;
 $kc-p-line-height: rem-calc(28);
 
+// dropdown
+$qw-dropdown-light-color: #222;
+$qw-dropdown-light-hover-color: #236aa2;
+$qw-dropdown-light-active-color: #fff;
+$qw-dropdown-light-hover-bg: #dae4eb;
+$qw-dropdown-light-active-bg: #adbfcc;
+
 
 // typography
 $qw-code-background: #f3f3f3;
@@ -405,3 +412,4 @@ $qw-code-radius: 3px;
 $qw-pre-background: #f3f3f3;
 $qw-pre-padding: $qw-content-padding/2;
 $qw-pre-radius: 3px;
+

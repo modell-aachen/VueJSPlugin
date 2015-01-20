@@ -27,6 +27,30 @@
           }
         }
       });
+
+      $(document).on( 'click', this, handleAnyClick );
+      $('[data-dropdown]').each( function() {
+        var $this = $(this);
+        $this.on( 'click', function() {return false;} );
+
+        var target = $this.data('dropdown');
+        if ( !target ) {
+          return;
+        }
+
+        $this.on( 'mouseenter', this, handleDropdownMouseEnter );
+        var $target = $(target);
+        if ( $target.length === 0 ) {
+          return;
+        }
+
+        if ( !$target.hasClass( 'qw-dropdown' ) ) {
+          $target.addClass( 'qw-dropdown' );
+        }
+
+        $target.on( 'mouseleave', this, handleDropdownMouseLeave );
+        $target.detach().appendTo('body');
+      });
     },
 
     unbind: function() {
@@ -42,6 +66,26 @@
           }
         }
       });
+
+      $(document).off( 'click', handleAnyClick );
+      $('[data-dropdown]').each( function() {
+        var $this = $(this);
+
+        var target = $this.data('dropdown');
+        if ( !target ) {
+          return;
+        }
+
+        $this.off( 'mouseenter', handleDropdownMouseEnter );
+        var $target = $(target);
+        if ( $target.length === 0 ) {
+          return;
+        }
+
+        $target.off( 'mouseleave', handleDropdownMouseLeave );
+      });
+
+      $('[data-dropdown]').off( 'mouseleave', handleDropdownMouseLeave );
     }
   };
 
@@ -67,6 +111,59 @@
       target.css('left', '');
       target.css('width', '');
     }
+
+    return false;
+  };
+
+  var handleDropdownMouseEnter = function( evt ) {
+    var self = evt.data;
+    var $this = $(this);
+    var target = $this.data('dropdown');
+
+    if ( !target ) {
+      return;
+    }
+
+    var $target = $(target);
+    if ( $target.length === 0 ) {
+      return;
+    }
+
+    $this.addClass('active');
+
+    var pos = $this.offset();
+    var top = pos.top + $this.height();
+    $target.css('top', top);
+    $target.css('left', pos.left);
+    $target.css('display', 'block');
+  };
+
+  var handleDropdownMouseLeave = function( evt ) {
+    $(this).attr('style', '');
+    $('.active[data-dropdown]').removeClass('active');
+  };
+
+  var handleAnyClick = function() {
+    var $active = $('.active[data-dropdown]');
+    if ( $active.length === 0 ) {
+      return false;
+    }
+
+    $active.each(function() {
+      var $this = $(this);
+      $this.removeClass('active');
+      var target = $this.data('dropdown');
+      if ( !target ) {
+        return;
+      }
+
+      var $target = $(target);
+      if ( $target.length === 0 ) {
+        return;
+      }
+
+      $target.attr('style', '');
+    });
 
     return false;
   };

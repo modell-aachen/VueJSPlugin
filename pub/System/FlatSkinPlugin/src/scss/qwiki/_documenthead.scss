@@ -1,6 +1,6 @@
 .qw-document-head {
   position: relative;
-  height: 2 * $qw-content-padding;
+  height: rem-calc(60);
   transition: height 0.3s ease-in-out;
 
   > .flex-table {
@@ -143,7 +143,7 @@
   }
 
   &.toggled {
-    height: 3 * $qw-content-padding;
+    height: rem-calc(115);
 
     > .toggle {
       > .reduced { display: block; }
