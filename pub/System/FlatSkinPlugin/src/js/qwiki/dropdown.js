@@ -28,7 +28,6 @@
         }
       });
 
-      $(document).on( 'click', this, handleAnyClick );
       $('[data-dropdown]').each( function() {
         var $this = $(this);
         $this.on( 'click', function() {return false;} );
@@ -67,7 +66,6 @@
         }
       });
 
-      $(document).off( 'click', handleAnyClick );
       $('[data-dropdown]').each( function() {
         var $this = $(this);
 
@@ -141,30 +139,5 @@
   var handleDropdownMouseLeave = function( evt ) {
     $(this).attr('style', '');
     $('.active[data-dropdown]').removeClass('active');
-  };
-
-  var handleAnyClick = function() {
-    var $active = $('.active[data-dropdown]');
-    if ( $active.length === 0 ) {
-      return false;
-    }
-
-    $active.each(function() {
-      var $this = $(this);
-      $this.removeClass('active');
-      var target = $this.data('dropdown');
-      if ( !target ) {
-        return;
-      }
-
-      var $target = $(target);
-      if ( $target.length === 0 ) {
-        return;
-      }
-
-      $target.attr('style', '');
-    });
-
-    return false;
   };
 }(jQuery, window._, window.document, window));
