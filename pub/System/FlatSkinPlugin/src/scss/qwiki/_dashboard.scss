@@ -1,0 +1,88 @@
+.qw-taskcontainter {
+	> .task {
+		display:block;
+		margin:$qw-dashboard-task-margin;
+		border-radius: $global-radius;	
+		background-color: $qw-dashboard-task-bg;
+
+		> .input {
+			display: inline-block;
+			border-right: 3px solid transparent;
+			border-radius: rem-calc( $global-radius 0 0 $global-radius); 
+			padding: $qw-dashboard-task-input-padding;
+			> label {
+				font-weight: bold;
+				font-size: $qw-dashboard-task-label-font-size;
+				padding: 0;
+				margin: 0;
+				vertical-align: middle;
+				position: relative;
+				top: 5px;
+			}
+
+			span {
+				display: none;
+			}
+		}
+
+		> span.title {
+			padding: 0;
+			margin: 0;
+			vertical-align: middle;
+			position: relative;
+			top: 5px;
+			display: inline-block;
+			font-size: $qw-dashboard-task-title-font-size;
+			color: $qw-dashboard-task-title-color;
+			
+		}
+
+		> span.badge {
+			@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-today-badge-bg, $radius:$global-radius);
+			float: right;
+			text-transform: uppercase;
+			margin: $qw-dashboard-task-badge-margin;
+		}
+
+		&.new {
+			> .input {
+				background-color: $qw-dashboard-task-new-bg;
+				border-color: white;
+				padding: $qw-dashboard-task-new-padding;
+				span {
+					display: inline-block;
+				}
+			> span.title {
+				padding: $qw-dashboard-task-new-title-padding;
+				}
+			}
+		}
+
+		&:hover {
+			background-color :$qw-dashboard-task-hover-bg;
+			> span.title {
+				color: $qw-dashboard-task-hover-title-color;	
+			}		
+		}
+
+		&:active {
+		background-color : $qw-dashboard-task-active-bg;
+			> span.title {
+				color:$qw-dashboard-task-active-title-color;	
+			}		
+		}
+
+		&.tomorrow {
+			> span.badge {
+				@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-tomorrow-badge-bg, $radius:$global-radius);	
+			}
+		}
+
+		&.future {
+			> span.badge {
+				@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-future-badge-bg, $radius:$global-radius);	
+				color:$qw-dashboard-task-future-color;
+			}
+		}
+	}
+} 

@@ -1,0 +1,96 @@
+%META:TOPICINFO{author="JanKrueger" comment="reprev" date="1363102083" format="1.1" reprev="6" version="8"}%
+%TMPL:INCLUDE{"view"}%
+%TMPL:INCLUDE{"SystemTabs"}%
+
+%TMPL:DEF{"modacMore"}%<div class="foswikiRequiresChangePermission requireModacChangePermission %IF{"context edit" then="modacActionButtonACTIVE"}%"><a href='%SCRIPTURL{"edit"}%/%BASEWEB%/%BASETOPIC%?template=UserFormEdit;t=%GMTIME{"$epoch"}%%TMPL:P{"url_param_editaction"}%%IF{"context CKEditorPluginEnabled" then="" else=";nowysiwyg=1"}%' class='modacChanging' rel='nofollow' %MAKETEXT{"title='Edit users data' accesskey='e'>&Edit users data"}%</a></div>%TMPL:END%
+
+
+%TMPL:DEF{"top"}%%TMPL:END%
+
+%TMPL:DEF{"perspage:scripts"}%
+%ADDTOZONE{"script" requires="JQUERYPLUGIN" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/System/ActionTrackerPlugin/atp.js\"></script>"}%
+%ADDTOZONE{"head" text="<link rel=\"stylesheet\" type=\"text/css\" href=\"%PUBURLPATH%/System/ActionTrackerPlugin/styles_src.css\" /><style type=\"text/css\">
+  .atpSearch { width: 100%; border: none; border-collapse: collapse; }
+  .atpSearch th { border: none; background: white; color: #999; padding-bottom: 8px; text-align: left; }
+  .atpSearch tr:first-child + tr td { border-top: none; }
+  .atpSearch td { border: solid white; border-width: 8px 1px; padding: 8px; background: #f8fcff; color: #333; }
+  .atpSearch td.secondary { color: #666; }
+  .atpSearch .ui-icon { background-image: url('%PUBURLPATH%/System/JQueryPlugin/themes/foswiki/images/ui-icons-famfamfam.png') <nop>!important; }
+  .modacBookmarksSplit { width: 100%; }
+  .modacBookmarksSplit .splittitle { width: 100%; border-bottom: solid 1px #003c89; color: #003c89; font-weight: bold; margin-bottom: 10px; }
+  .modacBookmarksSplit td.splitright { border-left: solid 1px #ccc; padding-left: 10px; vertical-align: top; width: 50%; }
+  .modacBookmarksSplit td.splitleft { padding-right: 10px; vertical-align: top; }
+  hr.splith { border:solid 1px #ccc; }
+  .modacBookmarks { list-style: none; margin: 0; padding: 0; }
+  .modacBookmarks li { list-style: none; border-top: solid 1px #eee; margin: 5px 0 0 0; padding: 5px 0 0 0; line-height: 100%; }
+  .modacBookmarks li:first-child { border-top: none; }
+  .modacBookmarks form { float: right; }
+  .modacBookmarks div.date { float: right; text-align: right; color: #666; font-size: 75%; }
+  .perspageBlock { border: solid 1px #6494c9; padding: 10px; margin-bottom: 2em; }
+  .perspageBlockTitle { background-color: #6494c9; color: white; padding: 5px; font-size: 150%; font-weight: bold; }
+  .bmsubinfo { font-size: 75%; }
+  .disinterest { opacity: 0.5; }
+  .tasktitle { font-weight: bold; font-size: 110%; }
+  .taskdate { white-space: nowrap; }
+  .hackelem { display: none; }
+</style>"}%
+%JQREQUIRE{"textboxlist"}%
+%ADDTOZONE{"script" id="JavascriptFiles/strikeone" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/JavascriptFiles/strikeone.js\"></script>"}%
+%TMPL:END%
+
+%TMPL:DEF{"perspage:bookmarks"}%
+<div>
+%SOLRSEARCH{"type:topic webtopic:(%FAVORITELIST{format="\\"$swebtopic\\"" separator=" OR " default="NOT *"}%)"
+  rows="999999" sort="webtopic"
+  format="<li>$percntFAVORITEBUTTON{web=\"$web\" topic=\"$topic\" redirectto=\"%WEB%.%TOPIC%\" format=\"$formstart$linkstart<img src=\\"%PUBURLPATH%/%SYSTEMWEB%/FamFamFamSilkCompanion1Icons/decline.png\\" alt=\\"%MAKETEXT{"Remove bookmark"}%\\" title=\\"%MAKETEXT{"Remove bookmark"}%\\" />$linkend$formend\"}$percnt <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$web.$topic\"><strong>$title</strong></a>&nbsp; $percntIF{\"istopic '$web.$topic$percntDUMMY{default=\"\"}$percntTALK'\" then=\"&nbsp;&nbsp;|&nbsp;&nbsp;<a href='$percntSCRIPTURL{view}$percnt/$web/$topic$percntDUMMY{default=\"\"}$percntTALK'><span class=\\"bmsubinfo\\">$dollarpercntICON{comments}$dollarpercnt&nbsp;$percntMAKETEXT{\"Discussion available\"}$percnt</span></a>\"}$percnt%BR%<span class=\"bmsubinfo\">[[$web.WebHome][$web]]</span></li>"
+}%
+</div>
+%TMPL:END%
+
+%TMPL:DEF{"dashboard:row"}%
+<div class="qw-taskcontainter">
+  <div class="task">
+    <div class="input">
+      <label>
+        <input type="checkbox">
+        <span>NEU</span>
+      </label>
+    </div>
+    <span class="title">Beschreibung der Aufgabe</span>
+    <span class="badge"><i class="icon-history"></i> Heute</span>
+  </div>
+  <div class="task tomorrow">
+    <div class="input">
+      <label>
+        <input type="checkbox">
+        <span>NEU</span>
+      </label>
+    </div>
+    <span class="title">Seite "Material beschaffen" bearbeiten</span>
+    <span class="badge"><i class="icon-history"></i> Morgen</span>
+  </div>
+  <div class="task new future">
+    <div class="input">
+      <label>
+        <input type="checkbox">
+        <span>NEU</span>
+      </label>
+    </div>
+    <span class="title">Nachste Gesellschaftersitzung</span>
+    <span class="badge"><i class="icon-history"></i> 21.10</span>
+  </div>
+</div>
+%TMPL:END%
+
+
+%TMPL:DEF{"content"}%
+%TMPL:P{"perspage:scripts"}%
+%IF{"$WIKINAME = $TOPIC"
+ then="$percentTMPL:P{perspage:bookmarks}$percent
+$percentTMPL:P{dashboard:row}$percent
+<div>"
+}%
+</div>
+%TMPL:END%
+
+%{</verbatim>}%
