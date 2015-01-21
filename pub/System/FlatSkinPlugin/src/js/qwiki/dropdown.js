@@ -30,14 +30,13 @@
 
       $('[data-dropdown]').each( function() {
         var $this = $(this);
-        $this.on( 'click', function() {return false;} );
 
         var target = $this.data('dropdown');
         if ( !target ) {
           return;
         }
 
-        $this.on( 'mouseenter', this, handleDropdownMouseEnter );
+        $this.on( 'click', this, handleDropdownClick );
         var $target = $(target);
         if ( $target.length === 0 ) {
           return;
@@ -47,6 +46,7 @@
           $target.addClass( 'qw-dropdown' );
         }
 
+        $target.on( 'mouseenter', this, handleDropdownMouseEnter );
         $target.on( 'mouseleave', this, handleDropdownMouseLeave );
         $target.detach().appendTo('body');
       });
@@ -74,16 +74,15 @@
           return;
         }
 
-        $this.off( 'mouseenter', handleDropdownMouseEnter );
+        $this.off( 'mouseenter', handleDropdownClick );
         var $target = $(target);
         if ( $target.length === 0 ) {
           return;
         }
 
+        $target.off( 'mouseleave', handleDropdownMouseEnter );
         $target.off( 'mouseleave', handleDropdownMouseLeave );
       });
-
-      $('[data-dropdown]').off( 'mouseleave', handleDropdownMouseLeave );
     }
   };
 
@@ -113,7 +112,7 @@
     return false;
   };
 
-  var handleDropdownMouseEnter = function( evt ) {
+  var handleDropdownClick = function( evt ) {
     var self = evt.data;
     var $this = $(this);
     var target = $this.data('dropdown');
@@ -127,8 +126,13 @@
       return;
     }
 
-    $this.addClass('active');
+    if ( $this.hasClass('active') ) {
+      $this.removeClass('active');
+      $target.attr('style', '');
+      return;
+    }
 
+    $this.addClass('active');
     var pos = $this.offset();
     var top = pos.top + $this.height();
     $target.css('top', top);
@@ -136,8 +140,22 @@
     $target.css('display', 'block');
   };
 
+  var timeouts = [];
+
+  var handleDropdownMouseEnter = function( evt ) {
+    var timeout = timeouts.pop();
+    if ( !_.isUndefined( timeout ) ) {
+      clearTimeout( timeout );
+    }
+  };
+
   var handleDropdownMouseLeave = function( evt ) {
-    $(this).attr('style', '');
-    $('.active[data-dropdown]').removeClass('active');
+    var $this = $(this);
+    var timeout = setTimeout( function() {
+      $this.attr('style', '');
+      $('.active[data-dropdown]').removeClass('active');
+    }, 750 );
+
+    timeouts.push( timeout );
   };
 }(jQuery, window._, window.document, window));
