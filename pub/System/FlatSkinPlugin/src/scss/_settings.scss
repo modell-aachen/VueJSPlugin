@@ -361,6 +361,22 @@ $qw-comment-issue-color: #d99f61;
 $qw-comment-issue-bg: #ffedd9;
 $qw-comment-replybox-height: 60px;
 
+$qw-comment-adorner-bg: #fff;
+$qw-comment-adorner-hover-bg: #dae4eb;
+$qw-comment-adorner-active-bg: #c3d3de;
+$qw-comment-adorner-color: $primary-color;
+
+$qw-comment-adorner-idea-color: #fff;
+$qw-comment-adorner-idea-bg: $qw-comment-idea-color;
+$qw-comment-adorner-idea-hover-bg: #ffdd78;
+$qw-comment-adorner-idea-active-bg: #d6ba65;
+
+$qw-comment-adorner-issue-color: #fff;
+$qw-comment-adorner-issue-bg: $qw-comment-issue-color;
+$qw-comment-adorner-issue-hover-bg: #edae6b;
+$qw-comment-adorner-issue-active-bg: #c28e57;
+
+
 $qw-tooltip-color: #fff;
 $qw-tooltip-bg: #4d4d4d;
 
