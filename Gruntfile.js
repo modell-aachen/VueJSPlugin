@@ -244,6 +244,7 @@ module.exports = function(grunt) {
           ],
           '<%= pkg.pubDir %>/js/qwiki.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
+            '<%= pkg.bower %>/momentjs/min/moment-with-locales.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
             '<%= pkg.pubDir %>/src/js/qwiki/core.js',
             '<%= pkg.pubDir %>/src/js/qwiki/!(core).js',
@@ -268,6 +269,7 @@ module.exports = function(grunt) {
           ],
           '<%= pkg.pubDir %>/js/qwiki.min.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
+            '<%= pkg.bower %>/momentjs/min/moment-with-locales.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
             '<%= pkg.pubDir %>/src/js/qwiki/core.js',
             '<%= pkg.pubDir %>/src/js/qwiki/!(core).js',
