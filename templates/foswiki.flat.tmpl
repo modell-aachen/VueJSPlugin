@@ -53,7 +53,10 @@
 <!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
 <div class="qw-page" data-offcanvas>
   <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
-  <section class="content"><div>%TMPL:P{"content"}%</div></section>
+  <section class="content">
+    <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%">%TMPL:P{"content"}%</div>
+    <div class="adorner adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></div>
+  </section>
 </div>
 <script src="%PUBURLPATH%/%SYSTEMWEB%/QgularContrib/qgular.js"></script>
 <script>
@@ -305,7 +308,7 @@ TODO
 <!--/breadcrumb-->%TMPL:END%
 
 %TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home">[[%USERSWEB%/%HOMETOPIC%][<i class="icon-app-processes"></i>]]</li>%TMPL:END%
-%TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
+%TMPL:DEF{"breadcrumb:parentwebs"}%%QWWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][TBD. WebHome Text]]</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%TOPIC%'/TopicTitle" then="$percntFORMFIELD{\"TopicTitle\"}$percnt" else="$percntTOPIC$percnt"}%%TMPL:END%
@@ -314,16 +317,12 @@ TODO
 
 
 %TMPL:DEF{"comments"}%<!--comments-->
-%TMPL:P{"comments:adorner"}%
 %TMPL:P{"comments:container"}%
 <!--/comments-->%TMPL:END%
 
-%TMPL:DEF{"comments:adorner"}%<!--comments:adorner-->
-<div id="qw-comment-adorner"><i class="icon-add"></i></div>
-<!--/comments:adorner-->%TMPL:END%
 
 %TMPL:DEF{"comments:container"}%<!--comments:container-->
-<div id="qw-comment-container">%FLATCOMMENTS%</div>
+<div id="qw-comment-container">%FLATCOMMENTSLIST%</div>
 <!--/comments:container-->%TMPL:END%
 
 %TMPL:DEF{"comments:viewbox"}%<!--comments:viewbox-->
