@@ -110,6 +110,16 @@
         success: function() {
           var selector = '[data-p-id="' + cmt.pid + '"]';
           $(selector).attr( 'data-hascomments', cmt.type );
+
+          var id = $(selector).data('cmtbl');
+          var cls = self.types[parseInt(cmt.type)];
+          $('.qw-comment-adorner').each( function() {
+            var $adorner = $(this);
+            if ( $adorner.data('cmtbl') === id ) {
+              $adorner.addClass( cls );
+            }
+          });
+
           $('.qw-comment-editbox .cancel').click();
           $('.qw-comment-reply .cancel').click();
 
