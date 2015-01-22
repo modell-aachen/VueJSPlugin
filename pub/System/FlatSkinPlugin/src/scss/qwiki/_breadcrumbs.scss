@@ -12,6 +12,9 @@ ul.qw-breadcrumb {
     float: left;
     margin-left: $qw-breadcrumb-spacing;
 
+background: green !important;
+height: 40px !important;
+
     &:first-child {
       border-left: none;
       margin-left: 0;
@@ -49,7 +52,6 @@ ul.qw-breadcrumb {
       color: $qw-breadcrumb-color;
       font-size: rem-calc(12);
       font-family: $body-font-family;
-      max-height: $qw-breadcrumb-height;
       background: $qw-breadcrumb-bg;
       text-decoration: none;
       padding: 12.5px 10px 13px 25px;

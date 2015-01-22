@@ -7,7 +7,7 @@
   color: $qw-closebtn-fg;
 
   @extend .icon-close;
-  font-family:"qwiki-font";
+  font-family:"QWikiSymbol";
   &:before { font-size: rem-calc(20); }
 
   &:hover {
@@ -191,7 +191,7 @@
   color: $qw-backbtn-color;
   background: $qw-backbtn-bg-color;
 
-  font-family: 'qwiki-font';
+  font-family: 'QWikiSymbol';
   @extend .icon-arrow-left;
 
   &.forward {
@@ -230,7 +230,7 @@
   color: $qw-add-color;
   background: $qw-add-bg-color;
 
-  font-family: 'qwiki-font';
+  font-family: 'QWikiSymbol';
   @extend .icon-add;
 
   &:hover {background-color: $qw-add-bg-hover-color;}
@@ -273,6 +273,7 @@ input[type="text"].qw-input {
 
 .qw-split-btn {
   @include button( $radius: true, $bg: $qw-split-bg-color );
+  @extend .icon-checkmark-circle;
 
   padding: rem-calc(11);
   font-size: rem-calc(14);
@@ -286,8 +287,6 @@ input[type="text"].qw-input {
   }
 
   &:before {
-    @include fa-icon();
-    content: $fa-var-check-circle;
     font-size: rem-calc(20);
     margin-left: rem-calc(-5);
     margin-right: rem-calc(10);
@@ -303,11 +302,10 @@ input[type="text"].qw-input {
   }
 
   > [data-adorner] {
-    @include fa-icon();
+    @extend .icon-arrow-down;
     &:before {
       font-size: 1.2rem;
       line-height: 1.5rem;
-      content: $fa-var-angle-down;
     }
 
     border-left: 1px solid white;
@@ -335,9 +333,7 @@ input[type="text"].qw-input {
     border-bottom: 1px solid white;
 
     > [data-adorner] {
-      &:before {
-        content: $fa-var-angle-up;
-      }
+      @extend .icon-arrow-up;
     }
   }
 }
@@ -349,14 +345,14 @@ input[type="text"].qw-input {
     $bg:$qw-button2-bg-color,
     $radius:4px
   );
+  
+  @extend .icon-user;
   font-size: rem-calc(14);
   line-height: 1;
   color: #333;
   border: 1px solid $qw-button2-bg-hover-color;
 
   &:before {
-    @include fa-icon();
-    content: $fa-var-user;
     margin-left: rem-calc(-5);
     margin-right: rem-calc(10);
   }
@@ -386,66 +382,6 @@ ul[data-drop] {
     min-width: 100%;
     color: white;
   }
-}
-
-.qw-menu-btn {
-  @include button( $bg: $qw-top-one-bg, $radius: false, $full-width: true );
-  background: transparent;
-  color: $qw-menu-closed-fg-color;
-  transition: background 0.3s ease-in-out;
-  text-align: left;
-  padding: rem-calc(12 10);
-
-  &:active {
-    background: transparent;
-    color: $qw-menu-closed-fg-active-color;
-  }
-
-  font-family:"qwiki-font";
-  @extend .icon-menu;
-  &:before {
-    font-size: 1.2rem;
-    line-height: 1.5rem;
-  }
-
-  &:hover {
-    background: transparent;
-    color: $qw-menu-closed-fg-hover-color;
-  }
-
-  &.active {
-    background: $qw-menu-open-bg-color;
-    color: $qw-menu-open-fg-color;
-
-    &:active {
-      background: $qw-menu-open-active-bg-color;
-    }
-
-    &:after {
-      @include fa-icon();
-      font-size: 1.2rem;
-      line-height: 1.5rem;
-      content: $fa-var-times-circle;
-      float: right;
-
-      margin-top: rem-calc(-6);
-      padding: rem-calc(9);
-      border-radius: $global-radius;
-      background: $qw-menu-open-inlay-bg-color;
-
-      @media #{$mobile-only} {height: $qw-top-one-height-mobile - 12px;}
-      @media #{$small-up} {height: $qw-top-one-height - 12px;}
-    }
-
-    &:hover:after {
-      background: $qw-menu-open-inlay-bg-hover-color;
-    }
-  }
-}
-
-.qw-menu-btn .text {
-  @media #{$small-only} { display: none; }
-  @media #{$medium-only} { display: none; }
 }
 
 .qw-btn-grp {

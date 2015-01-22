@@ -78,7 +78,7 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width);
   & > a,
   & >.sub-tab > a {
     &:before {
-      font-family:"qwiki-font";
+      font-family:"QWikiSymbol";
       font-size: 1.75rem;
       vertical-align: middle;
       margin-right: $button-tny;

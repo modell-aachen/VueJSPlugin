@@ -1,18 +1,17 @@
 {
   "name": "FlatSkinPlugin",
   "dependencies": {
-    "offline": "~0.7.10",
     "foundation": ">=5.3.1",
-    "font-awesome": ">=4.2.0",
-    "underscore": ">=1.6.0",
+    "momentjs": "~2.9.0",
+    "underscore": "~1.7.0",
     "slimScroll": "~1.3.3",
     "spin.js": "~2.0.1"
   },
   "version": "1.0.0",
   "authors": [
-    "Sven Meyer <meyer@modell-aachen.de>"
+    "Modell Aachen GmbH"
   ],
-  "description": "Q.Wiki Skin",
+  "description": "Q.Wiki FlatSkin",
   "moduleType": [
     "node"
   ],
@@ -26,7 +25,4 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "momentjs": "~2.9.0"
-  }
 }
