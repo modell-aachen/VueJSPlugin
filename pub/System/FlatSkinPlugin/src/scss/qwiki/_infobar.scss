@@ -22,11 +22,11 @@
   }
 
   @media #{$large-only} {
-    width: calc(4 * #{$p} - #{$qw-content-padding} / 1.5);
+    width: calc(4 * #{$p});
   }
 
   @media #{$extended-up} {
-    width: calc(3 * #{$p} - #{$qw-content-padding} / 2);
+    width: calc(3 * #{$p});
   }
 
   &.offcanvas {
