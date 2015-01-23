@@ -61,12 +61,35 @@
 <script src="%PUBURLPATH%/%SYSTEMWEB%/QgularContrib/qgular.js"></script>
 <script>
 jQuery(function($) {
-  $(this).qwiki();
+  $(this).qwiki({
+    kvp: {
+      hasDiscussion: %IF{"context KVPHasDiscussion" then="1" else="0"}%
+    }
+  });
 });
 </script>
+<div class="qw-modal-container">%TMPL:P{"modals"}%</div>
 </body>
 <!--/body-->%TMPL:END%
 
+%TMPL:DEF{"modals"}%<!--modals-->
+<div class="qw-modal deny-comment">
+  <div>
+    <div class="caption">
+      <span>%MAKETEXT{"Commenting not possible"}%</span>
+    </div>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos veniam iste dolor, qui. Excepturi nostrum veniam dolorem impedit deleniti consequuntur doloremque cum eaque explicabo quos nulla est dolores dolorum facilis rerum, eius harum animi modi ratione adipisci nam illum, quibusdam eligendi iste. Odio inventore vitae, voluptates minima ab quo soluta. Tempore corporis et nam iste sit magni placeat tempora cum, ipsam labore, modi earum in commodi soluta nesciunt facere error vel nostrum. Officiis soluta cupiditate quae a nulla, doloremque est, temporibus animi quis eveniet fugiat, cum nisi enim eligendi. Nisi, corrupti quidem, eligendi eaque quas culpa ad reiciendis deserunt quasi.</p>
+    </div>
+    <div class="buttons">
+      <div>
+        <a class="qw-prio1-btn" href="#">OK</a>
+        <a class="qw-prio2-btn" href="#">NOT SO OK</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/modals-->%TMPL:END%
 
 %TMPL:DEF{"topbar"}%<!--topbar-->
 <nav class="qw-top" data-offcanvas>
