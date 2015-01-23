@@ -294,9 +294,19 @@
 
             > div {
               display: inline-block;
+              max-height: 34px;
+              margin-top: 3px;
 
               &.topbar-edit {
                 float: right;
+                max-height: 32px;
+                border: 1px solid #f2f5f7;
+                border-radius: 4px;
+
+                > .qw-action-button {
+                  float: left;
+                  padding: rem-calc(2 7 3 7);
+                }
               }
             }
 
