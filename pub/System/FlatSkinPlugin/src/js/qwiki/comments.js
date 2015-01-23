@@ -350,9 +350,6 @@
   var onAdornerClick = function( evt ) {
     var self = evt.data;
 
-    var $cmtbar = $('.qw-commentbar');
-    $cmtbar.offcanvas({action: 'open'});
-
     var $edit = $('.qw-comment-editbox');
     var $view = $('.qw-comment-viewbox');
     var $reply = $('.qw-comment-reply');
@@ -367,6 +364,14 @@
     });
 
     var hasComment = _.isNumber( $this.data('hascomments') );
+    if ( self.Q.options.kvp.hasDiscussion && !hasComment ) {
+      $('.qw-modal.deny-comment').modal({show:1});
+      return false;
+    }
+
+    var $cmtbar = $('.qw-commentbar');
+    $cmtbar.offcanvas({action: 'open'});
+
     if ( hasComment ) {
       var cmts = _.where( self.comments, {pid: $this.data('p-id')});
       $('.qw-comment-reply').data('p-id', $this.data('p-id') );
