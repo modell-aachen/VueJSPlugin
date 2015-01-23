@@ -45,10 +45,10 @@
       position: relative;
       display: inline-block;
       vertical-align: top;
-      // padding: 0 $qw-content-padding;
-      padding: 0 0 0 $qw-content-padding/2;
+      padding: 0 $qw-content-padding/2;
 
       &.adorner-visible {
+        padding: 0 0 0 $qw-content-padding/2;
         @media #{$large-up} {width: calc(100% - #{$qw-content-padding} - #{$adorner-width}*1.2);}
       }
     }
