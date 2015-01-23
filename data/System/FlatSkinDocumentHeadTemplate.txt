@@ -23,7 +23,7 @@
     </div>
     <div class="entry">
       <span class="label">%MAKETEXT{"Last author"}%</span>
-      <span class="content author"><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span>
+      <span class="content user"><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span>
     </div>
     <div class="clearfix"></div>
   </div>
@@ -34,7 +34,7 @@
         <span class="tcontent">%QUERY{"Dokumententyp"}%</span>
       </div>
       <div class="item">
-        <span class="label">%MAKETEXT{"Area of Application"}%: <span class="label"> %QUERY{"Geltungsbereich"}%</span></span>
+        <span class="label">%MAKETEXT{"Area of Application"}%: <span class="label"> %QUERY{"AreaOfApplication"}%</span></span>
       </div>
     </div>
     <div class="row">
