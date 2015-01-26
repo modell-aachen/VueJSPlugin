@@ -40,7 +40,7 @@
     background-color: $qw-button1-bg-active-color
   }
 
-  &.save {
+  &.topbar-save {
     background: $qw-save-btn-bg;
     color: $qw-save-btn-color;
 
@@ -72,7 +72,7 @@
     background-color: $qw-button2-bg-active-color;
   }
 
-  &.cancel {
+  &.topbar-cancel {
     background: $qw-cancel-btn-bg;
     color: $qw-cancel-btn-color;
     border: 1px solid $qw-save-btn-color;
@@ -219,6 +219,16 @@
 }
 
 .qw-add-btn {
+  @extend .qw-symbol-btn;
+  @extend .add;
+}
+
+.qw-edit-btn {
+  @extend .qw-symbol-btn;
+  @extend .edit;
+}
+
+.qw-symbol-btn {
   @include button( $radius: true, $bg: $qw-add-bg-color );
 
   padding: rem-calc(6 3 0 3);
@@ -231,10 +241,23 @@
   background: $qw-add-bg-color;
 
   font-family: 'QWikiSymbol';
-  @extend .icon-add;
 
   &:hover {background-color: $qw-add-bg-hover-color;}
   &:active {background-color: $qw-add-bg-active-color;}
+
+  &.add {
+    @extend .icon-add;
+  }
+
+  &.edit {
+    @extend .icon-edit;
+  }
+
+  &.small {
+    width: 24px;
+    height: 24px;
+    font-size: 1.25rem;
+  }
 }
 
 input[type="text"].qw-input {
@@ -386,9 +409,9 @@ ul[data-drop] {
   }
 }
 
-.qw-btn-grp {
-  @include button-group-container( $styles: true, $float: false );
-  > li {
-    @include button-group-style( $radius: false, $even: false, $float: left );
-  }
-}
+// .qw-btn-grp {
+//   @include button-group-container( $styles: true, $float: false );
+//   > li {
+//     @include button-group-style( $radius: false, $even: false, $float: left );
+//   }
+// }
