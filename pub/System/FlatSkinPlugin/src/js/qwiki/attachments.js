@@ -71,11 +71,13 @@
       return false;
     }
 
-    var $src = $(evt.srcElement);
+    var $src = $(evt.target);
     if ( $src.hasClass('qw-back-btn') ) {
       $('.qw-attachments-container > .list').removeClass('deactive');
       $('.qw-attachments-container > .details').removeClass('active');
     }
+
+    return false;
   };
 
   var closeAll = function() {
