@@ -53,17 +53,43 @@
 <!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
 <div class="qw-page" data-offcanvas>
   <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
-  <section class="content"><div>%TMPL:P{"content"}%</div></section>
+  <section class="content">
+    <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%">%TMPL:P{"content"}%</div>
+    <div class="adorner adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></div>
+  </section>
 </div>
 <script src="%PUBURLPATH%/%SYSTEMWEB%/QgularContrib/qgular.js"></script>
 <script>
 jQuery(function($) {
-  $(this).qwiki();
+  $(this).qwiki({
+    kvp: {
+      hasDiscussion: %IF{"context KVPHasDiscussion" then="1" else="0"}%
+    }
+  });
 });
 </script>
+<div class="qw-modal-container">%TMPL:P{"modals"}%</div>
 </body>
 <!--/body-->%TMPL:END%
 
+%TMPL:DEF{"modals"}%<!--modals-->
+<div class="qw-modal deny-comment">
+  <div>
+    <div class="caption">
+      <span>%MAKETEXT{"Commenting not possible"}%</span>
+    </div>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos veniam iste dolor, qui. Excepturi nostrum veniam dolorem impedit deleniti consequuntur doloremque cum eaque explicabo quos nulla est dolores dolorum facilis rerum, eius harum animi modi ratione adipisci nam illum, quibusdam eligendi iste. Odio inventore vitae, voluptates minima ab quo soluta. Tempore corporis et nam iste sit magni placeat tempora cum, ipsam labore, modi earum in commodi soluta nesciunt facere error vel nostrum. Officiis soluta cupiditate quae a nulla, doloremque est, temporibus animi quis eveniet fugiat, cum nisi enim eligendi. Nisi, corrupti quidem, eligendi eaque quas culpa ad reiciendis deserunt quasi.</p>
+    </div>
+    <div class="buttons">
+      <div>
+        <a class="qw-prio1-btn" href="#">OK</a>
+        <a class="qw-prio2-btn" href="#">NOT SO OK</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/modals-->%TMPL:END%
 
 %TMPL:DEF{"topbar"}%<!--topbar-->
 <nav class="qw-top" data-offcanvas>
@@ -305,7 +331,7 @@ TODO
 <!--/breadcrumb-->%TMPL:END%
 
 %TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home">[[%USERSWEB%/%HOMETOPIC%][<i class="icon-app-processes"></i>]]</li>%TMPL:END%
-%TMPL:DEF{"breadcrumb:parentwebs"}%%MAWEBLIST%%TMPL:END%
+%TMPL:DEF{"breadcrumb:parentwebs"}%%QWWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][TBD. WebHome Text]]</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%TOPIC%'/TopicTitle" then="$percntFORMFIELD{\"TopicTitle\"}$percnt" else="$percntTOPIC$percnt"}%%TMPL:END%
@@ -314,16 +340,12 @@ TODO
 
 
 %TMPL:DEF{"comments"}%<!--comments-->
-%TMPL:P{"comments:adorner"}%
 %TMPL:P{"comments:container"}%
 <!--/comments-->%TMPL:END%
 
-%TMPL:DEF{"comments:adorner"}%<!--comments:adorner-->
-<div id="qw-comment-adorner"><i class="icon-add"></i></div>
-<!--/comments:adorner-->%TMPL:END%
 
 %TMPL:DEF{"comments:container"}%<!--comments:container-->
-<div id="qw-comment-container">%FLATCOMMENTS%</div>
+<div id="qw-comment-container">%FLATCOMMENTSLIST%</div>
 <!--/comments:container-->%TMPL:END%
 
 %TMPL:DEF{"comments:viewbox"}%<!--comments:viewbox-->
@@ -358,6 +380,7 @@ TODO
 <div class="qw-comment-reply">
   <div class="btn">
     <a class="qw-prio1-btn reply-btn" href="#">%MAKETEXT{"comment"}%</a>
+    <a class="qw-prio2-btn resolve-btn" href="#">%MAKETEXT{"resolve"}%</a>
   </div>
   <div class="editor">
     <div class="text">

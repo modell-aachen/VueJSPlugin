@@ -118,18 +118,18 @@
     var target = $this.data('dropdown');
 
     if ( !target ) {
-      return;
+      return false;
     }
 
     var $target = $(target);
     if ( $target.length === 0 ) {
-      return;
+      return false;
     }
 
     if ( $this.hasClass('active') ) {
       $this.removeClass('active');
       $target.attr('style', '');
-      return;
+      return false;
     }
 
     $this.addClass('active');
@@ -138,6 +138,8 @@
     $target.css('top', top);
     $target.css('left', pos.left);
     $target.css('display', 'block');
+
+    return false;
   };
 
   var timeouts = [];

@@ -55,6 +55,10 @@
         background: $qw-dochead-default-box-bg;
         color: $qw-dochead-default-box-color;
         font-size: $qw-dochead-default-box-font-size;
+
+        &.user {
+          color: $qw-dochead-user-box-color;
+        }
       }
     }
   }

@@ -287,16 +287,26 @@
             background: $qw-content-bg;
             border-radius: $global-radius;
             height: 40px;
-            padding: 0 $qw-content-padding/4;
+            padding: 0  3px 0 $qw-content-padding/4;
 
             @media #{$mobile-only} {top: ($qw-top-two-height-mobile - 40px)/2;}
             @media #{$small-up} {top: ($qw-top-two-height - 40px)/2;}
 
             > div {
               display: inline-block;
+              max-height: 34px;
+              margin-top: 3px;
 
               &.topbar-edit {
                 float: right;
+                max-height: 32px;
+                border: 1px solid #f2f5f7;
+                border-radius: 4px;
+
+                > .qw-action-button {
+                  float: left;
+                  padding: rem-calc(2 7 3 7);
+                }
               }
             }
 

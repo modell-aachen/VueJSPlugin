@@ -45,9 +45,8 @@ sub initPlugin {
   );
 
   # TBD. werden die beiden MA... macros überhaupt noch gebraucht?
-  Foswiki::Func::registerTagHandler( 'MAREGISTER', \&_handleREGISTER );
-  Foswiki::Func::registerTagHandler( 'MAWEBLIST', \&_handleWEBLIST );
-  Foswiki::Func::registerTagHandler( 'FLATCOMMENTS', \&_handleFLATCOMMENTS );
+  Foswiki::Func::registerTagHandler( 'QWWEBLIST', \&_handleWEBLIST );
+  Foswiki::Func::registerTagHandler( 'FLATCOMMENTSLIST', \&_handleFLATCOMMENTS );
 
   Foswiki::Func::registerRESTHandler( 'rendermulti', \&_handleRenderMulti,
     authenticate => 0,
@@ -57,7 +56,7 @@ sub initPlugin {
 
   Foswiki::Func::registerRESTHandler( 'comment', \&_handleComment,
     authenticate => 1,
-    http_allow => 'DELETE,POST',
+    http_allow => 'POST,PUT',
     validate => 0
   );
 
@@ -108,9 +107,6 @@ sub _zoneConfig {
 <link rel="stylesheet" href="$path/css/qwiki$suffix.css$VERSIONQUERY" />
 STYLES
 
-# <script src="$path/js/modernizr$suffix.js$VERSIONQUERY"></script>
-# <script src="$path/js/foundation$suffix.js$VERSIONQUERY"></script>
-# <script src="$path/js/fastclick$suffix.js$VERSIONQUERY"></script>
   my $scripts = <<"SCRIPTS";
 <script src="$path/js/qwiki$suffix.js$VERSIONQUERY"></script>
 SCRIPTS
@@ -121,32 +117,6 @@ EDITSCRIPTS
 
   Foswiki::Func::addToZone( 'head', 'FLATSKIN::STYLES', $styles );
   Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS', $scripts, 'JQUERYPLUGIN::FOSWIKI' );
-}
-
-# Handles macro %MAREGISTER%
-# Req. params: offline|pace
-# Used to inject one or both script(s) as soon as possible into the DOM.
-sub _handleREGISTER {
-  my( $session, $params, $topic, $web, $topicObject ) = @_;
-
-  my $cmpt = $params->{_DEFAULT};
-  return '' unless $cmpt && $cmpt =~ m/pace|offline/i;
-
-  my $min = _suffix;
-  my $path = "%PUBURLPATH%/%SYSTEMWEB%/$plugin";
-
-  # connectivity checks
-  if ( $cmpt =~ m/offline/i ) {
-    my $disabled = $Foswiki::cfg{Plugins}{$plugin}{DisableOffline} || 0;
-    return '' if $disabled;
-
-    my $theme = $Foswiki::cfg{Plugins}{$plugin}{CustomOffline} || '';
-    $theme = "$path/css/offline$min.css$VERSIONQUERY" unless $theme;
-    return <<"OFFLINE";
-<link rel="stylesheet" href="$theme" />
-<script src="$path/js/offline$min.js$VERSIONQUERY"></script>
-OFFLINE
-  }
 }
 
 sub _handleWEBLIST {
@@ -174,7 +144,7 @@ sub _handleWEBLIST {
 sub _handleFLATCOMMENTS {
   my( $session, $params, $topic, $web, $topicObject ) = @_;
   my ($w, $t) = Foswiki::Func::normalizeWebTopicName($web, $topic);
-  my ($meta, $text) = Foswiki::Func::readTopic($web, $topic);
+  my ($meta) = Foswiki::Func::readTopic($w, $t);
 
   my @cmts = $meta->find('FLATCOMMENT');
   my $json = encode_json( \@cmts );
@@ -230,17 +200,16 @@ sub _handleComment {
      } else {
       $response->{status} = 400;
      }
-  } elsif ($method =~ m/^delete$/i) {
-
-### TODO!!
-
-    my $id = $q->param('id');
-
-    my $foo = $meta->get( 'FLATCOMMENT', $id );
-    Foswiki::Func::writeWarning( $foo->{name} );
-    $meta->remove('FLATCOMMENT', $id) if ($id);
+  } elsif ($method =~ m/^put$/i) {
+    # update existing comment
+    my $cmt = decode_json($q->param('comment'));
+    $cmt->{author} = Foswiki::Func::getWikiName($session->{user});
+    $cmt->{date} = time;
+    $meta->putKeyed('FLATCOMMENT', $cmt);
     $changed = 1;
     $response->{status} = 204;
+  } else {
+    $response->{status} = 405;
   }
 
   my %opts = (dontlog => 1, minor => 1);

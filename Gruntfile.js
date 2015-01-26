@@ -77,25 +77,11 @@ module.exports = function(grunt) {
 
     clean: {
       css: ["<%= pkg.pubDir %>/css/*.css"],
-      fonts: ["<%= pkg.pubDir %>/fonts/*"],
       js: ["<%= pkg.pubDir %>/js/*.js", "<%= pkg.pubDir %>/js/addons/*.js"],
       manifest: ["manifest.tmp"]
     },
 
     copy: {
-      'font-awesome': {
-        files: [
-          {
-            expand: true,
-            cwd: pkg.bower + '/font-awesome/fonts/',
-            src: '**',
-            dest: '<%= pkg.pubDir %>/fonts/',
-            flatten: true,
-            filter: 'isFile',
-            mode: 0644
-          }
-        ]
-      },
       manifest: {
         files: [
           {
@@ -236,14 +222,12 @@ module.exports = function(grunt) {
           preserveComments: 'all'
         },
         files: {
-          // '<%= pkg.pubDir %>/js/fastclick.js': ['<%= pkg.bower %>/fastclick/lib/fastclick.js'],
-          // '<%= pkg.pubDir %>/js/modernizr.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
-          // '<%= pkg.pubDir %>/js/foundation.js': (fdnScriptFiles()),
           '<%= pkg.pubDir %>/js/qwiki-edit.js': [
             '<%= pkg.pubDir %>/src/js/qwiki-edit/*.js'
           ],
           '<%= pkg.pubDir %>/js/qwiki.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
+            '<%= pkg.bower %>/momentjs/min/moment-with-locales.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
             '<%= pkg.pubDir %>/src/js/qwiki/core.js',
             '<%= pkg.pubDir %>/src/js/qwiki/!(core).js',
@@ -260,14 +244,12 @@ module.exports = function(grunt) {
           preserveComments: false
         },
         files: [{
-          // '<%= pkg.pubDir %>/js/fastclick.min.js': ['<%= pkg.bower %>/fastclick/lib/fastclick.js'],
-          // '<%= pkg.pubDir %>/js/modernizr.min.js': ['<%= pkg.bower %>/modernizr/modernizr.js'],
-          // '<%= pkg.pubDir %>/js/foundation.min.js': (fdnScriptFiles()),
           '<%= pkg.pubDir %>/js/qwiki-edit.min.js': [
             '<%= pkg.pubDir %>/src/js/qwiki-edit/*.js'
           ],
           '<%= pkg.pubDir %>/js/qwiki.min.js': [
             '<%= pkg.bower %>/underscore/underscore.js',
+            '<%= pkg.bower %>/momentjs/min/moment-with-locales.js',
             '<%= pkg.pubDir %>/src/js/qwiki.js',
             '<%= pkg.pubDir %>/src/js/qwiki/core.js',
             '<%= pkg.pubDir %>/src/js/qwiki/!(core).js',
@@ -298,18 +280,18 @@ module.exports = function(grunt) {
     },
 
     webfont: {
-      'qwiki-font': {
+      'QWikiSymbol': {
         src: '<%= pkg.pubDir %>/src/fonts/icons/*.svg',
         dest: '<%= pkg.pubDir %>/fonts',
         destCss: '<%= pkg.pubDir %>/src/scss/qwiki',
         options: {
-          htmlDemo: true,
-          autoHint: true,
+          autoHint: false,
           descent: 96,
-          stylesheet: 'scss',
-          hashes: false,
+          font: 'QWikiSymbol',
+          hashes: true,
+          htmlDemo: false,
           relativeFontPath: '../fonts',
-          font: 'qwiki-font',
+          stylesheet: 'scss',
           syntax: 'bootstrap',
           templateOptions: {
             baseClass: 'icon',
@@ -337,11 +319,5 @@ module.exports = function(grunt) {
   grunt.registerTask('prepare-manifest', ['file-creator:create-manifest-tmp']);
   grunt.registerTask('manifest', ['prepare-manifest', 'copy:manifest', 'clean:manifest']);
   grunt.registerTask('pseudo-install', ['exec:install']);
-  grunt.registerTask('build', [
-    'copy:font-awesome',
-    'webfont',
-    'sass:' + target,
-    'jshint',
-    'uglify:' + target
-  ]);
+  grunt.registerTask('build', ['webfont', 'sass:' + target, 'jshint', 'uglify:' + target ]);
 }

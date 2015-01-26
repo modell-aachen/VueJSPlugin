@@ -1,7 +1,5 @@
 ul.qw-breadcrumb {
   list-style: none;
-  // margin-top: $qw-breadcrumb-offset-top;
-  max-height: $qw-breadcrumb-height;
   white-space: nowrap;
   padding-left: 0;
 
@@ -11,6 +9,7 @@ ul.qw-breadcrumb {
   > li {
     float: left;
     margin-left: $qw-breadcrumb-spacing;
+    max-height: $qw-breadcrumb-height;
 
     &:first-child {
       border-left: none;
@@ -19,9 +18,7 @@ ul.qw-breadcrumb {
       a {
         border-top-left-radius: $qw-breadcrumb-radius;
         border-bottom-left-radius: $qw-breadcrumb-radius;
-
         font-size: 1rem;
-        padding: 11px 5px 11px 15px !important;
       }
     }
 
@@ -33,6 +30,7 @@ ul.qw-breadcrumb {
         border-top-right-radius: $qw-breadcrumb-radius;
         border-bottom-right-radius: $qw-breadcrumb-radius;
         background: transparent;
+        line-height: 1rem;
 
         &:after {
           border-left: none;
@@ -49,10 +47,9 @@ ul.qw-breadcrumb {
       color: $qw-breadcrumb-color;
       font-size: rem-calc(12);
       font-family: $body-font-family;
-      max-height: $qw-breadcrumb-height;
       background: $qw-breadcrumb-bg;
       text-decoration: none;
-      padding: 12.5px 10px 13px 25px;
+      padding: rem-calc(12 10 12 25);
       position: relative;
       display: inline-block;
 
@@ -149,7 +146,7 @@ ul.qw-breadcrumb {
 
   > li.qw-breadcrumb-home > a {
     font-size: 2rem;
-    line-height: 1;
-    padding: rem-calc(2 5 3 15) !important;
+    line-height: 1rem;
+    padding: rem-calc( 4 5 4 15 ) !important;
   }
 }

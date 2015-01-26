@@ -4,6 +4,7 @@
   QWiki.plugins.comments = {
     name: 'comments',
     comments: [],
+    solvedComments: [],
     types: ['idea', 'issue'],
 
     init: function( options ) {
@@ -21,27 +22,59 @@
       var self = this;
       $('[data-commentable="1"]').livequery( function() {
         var $this = $(this);
-        $this.on( 'mouseenter', self, onMouseEnter );
-        $this.on( 'mouseleave', self, onMouseLeave );
-        $this.on( 'click', self, onClick );
+        var id = _.uniqueId( 'cmtbl-' );
+        $this.data( 'cmtbl', id );
+
+        $this.on( 'mouseenter', self, onCommentableMouseEnter );
+        $this.on( 'mouseleave', self, onCommentableMouseLeave );
+
+        // create comment adorner to add a new comment
+        var $adorner = $('.content > .adorner');
+        if ( $adorner.length === 0 ) {
+          return;
+        }
+
+        var $container = $('<div></div>');
+        $container.appendTo( $adorner );
+        $container.on( 'click', self, onAdornerClick );
+        $container.on( 'mouseenter', self, onAdornerMouseEnter );
+        $container.on( 'mouseleave', self, onAdornerMouseLeave );
+
+        var $btn = $('<div class="qw-comment-adorner"><i class="icon-add"></i></div>');
+        $btn.appendTo( $container );
+        $btn.data( 'cmtbl', id );
+
+        var pos = $this.position();
+        var th = $this.outerHeight();
+        var dh = $btn.outerHeight();
+        var mt = parseInt( $this.css('margin-top').replace('px', '') );
+        var top = pos.top + mt + th/2 - dh/2;
+        $container.css('top', top);
+
+        var hasComments = $this.data('hascomments');
+        if ( !_.isUndefined( hasComments ) ) {
+          var index = parseInt( hasComments );
+          $btn.addClass( self.types[index] );
+        }
       });
 
       $('.qw-comment-editbox .cancel').on( 'click', this, onCancel );
       $('.qw-comment-editbox .submit').on( 'click', this, onSave );
       $('input[name="commentType"]').on( 'change', this, onCommentTypeChanged );
       $('.qw-comment-reply .reply-btn').on( 'click', this, showReplyBox );
+      $('.qw-comment-reply .resolve-btn').on( 'click', this, resolveComment );
       $('.qw-comment-reply .editor .cancel').on( 'click', this, resetReplyBox );
       $('.qw-comment-reply .editor .submit').on( 'click', this, sendReply );
-
       $('.qw-commentbar').on( this.namespace + '.offcanvas.closing', this, onCommentBarClosing );
     },
 
     unbind: function() {
+      $('.content > .adorner').empty();
+
       $('[data-commentable="1"]').expire( function() {
         var $this = $(this);
-        $this.off( 'mouseenter', onMouseEnter );
-        $this.off( 'mouseleave', onMouseLeave );
-        $this.off( 'click', onClick );
+        $this.off( 'mouseenter', onCommentableMouseEnter );
+        $this.off( 'mouseleave', onCommentableMouseLeave );
       });
 
       $('.qw-comment-editbox .cancel').off( 'click', onCancel );
@@ -50,7 +83,6 @@
       $('.qw-comment-reply .reply-btn').off( 'click', showReplyBox );
       $('.qw-comment-reply .editor .cancel').off( 'click', resetReplyBox );
       $('.qw-comment-reply .editor .submit').off( 'click', sendReply );
-
       $('.qw-commentbar').on( this.namespace + '.offcanvas.closing', onCommentBarClosing );
     },
 
@@ -69,15 +101,36 @@
         '/FlatSkinPlugin/comment'
       ];
 
+      var type = cmt.solved === true ? 'PUT' : 'POST';
       var self = this;
       $.blockUI();
       $.ajax({
         url: url.join(''),
-        type: 'POST',
+        type: type,
         data: {comment: JSON.stringify( cmt ), topic: topic},
         success: function() {
           var selector = '[data-p-id="' + cmt.pid + '"]';
-          $(selector).attr( 'data-hascomments', cmt.type );
+          var $selector = $(selector);
+          if ( cmt.solved ) {
+            $selector.data( 'hascomments', '' );
+            $selector.removeAttr( 'data-hascomments' );
+          } else {
+            $selector.attr( 'data-hascomments', cmt.type );
+          }
+
+          var id = $selector.data('cmtbl');
+          var cls = self.types[parseInt(cmt.type)];
+          $('.qw-comment-adorner').each( function() {
+            var $adorner = $(this);
+            if ( $adorner.data('cmtbl') === id ) {
+              if ( cmt.solved ) {
+                $adorner.removeClass( self.types.join(' ') );
+              } else {
+                $adorner.addClass( cls );
+              }
+            }
+          });
+
           $('.qw-comment-editbox .cancel').click();
           $('.qw-comment-reply .cancel').click();
 
@@ -87,8 +140,7 @@
           $.unblockUI();
 
           $('.qw-commentbar [data-scrollcontainer]').slimScroll({ scrollTo: '50000px' });
-
-          $(selector).click();
+          $selector.click();
         },
         error: function( xhr, status, err ) {
           $.unblockUI();
@@ -101,13 +153,17 @@
       var self = this;
       var txt = $('#qw-comment-container').text() || '[]';
       var cmts = $.parseJSON( txt );
-      this.comments = [];
       $.each( cmts, function( i, cmt ) {
-        self.comments.push( cmt );
-        var selector = '[data-p-id="' + cmt.pid + '"]';
-        $(selector).livequery( function() {
-          $(this).attr( 'data-hascomments', cmt.type );
-        });
+        if ( cmt.solved === true || /^true$/i.test( cmt.solved ) ) {
+          self.solvedComments.push( cmt );
+          // TBD. what shall happen with already solved comments???
+        } else {
+          self.comments.push( cmt );
+          var selector = '[data-p-id="' + cmt.pid + '"]';
+          $(selector).livequery( function() {
+            $(this).attr( 'data-hascomments', cmt.type );
+          });
+        }
       });
     }
   };
@@ -168,6 +224,33 @@
     return false;
   };
 
+  var resolveComment = function( evt ) {
+    var self = evt.data;
+
+    if ( self.Q.options.kvp.hasDiscussion ) {
+      $('.qw-modal.deny-comment').modal({show:1});
+      return false;
+    }
+
+    var id = $('.qw-comment-reply').data('p-id');
+    if ( !id ) {
+      self.Q.error( 'Invalid comment ID!' );
+      return false;
+    }
+
+    var cmts = _.where( self.comments, {pid: id});
+    if ( cmts.length === 0 ) {
+      self.Q.error( 'Unable to determine comment type!' );
+      return false;
+    }
+
+    var cmt = cmts[0];
+    cmt.solved = true;
+
+    self.post( cmt );
+    return false;
+  };
+
   var onCommentBarClosing = function( evt ) {
     var self = evt.data;
     $('.qw-comment-editbox').data('id', '');
@@ -207,6 +290,7 @@
       pid: $('.qw-comment-editbox').data('id')
     };
 
+    cmt.solved = $(this).hasClass('solve');
     self.post( cmt );
     return false;
   };
@@ -222,7 +306,7 @@
     return false;
   };
 
-  var onMouseEnter = function( evt ) {
+  var onCommentableMouseEnter = function( evt ) {
     var $this = $(this);
 
     if ( $('.qw-comment-editbox.active').length > 0 ) {
@@ -232,6 +316,8 @@
       }
     }
 
+    $('[data-commentable="1"]').removeClass('highlight');
+
     var height = $this.height();
     var width = $this.width();
     var offset = $this.offset();
@@ -240,60 +326,94 @@
     if ( _.isNumber( $this.data('hascomments') ) ) {
       return;
     } else {
-      var $adorner = $('#qw-comment-adorner');
-      var padding = 30;
+      // hide already visible comment adorner
+      if ( timeout ) {
+        clearTimeout( timeout );
+      }
 
-      var top = offset.top - window.pageYOffset + height/2 - padding/4;
-      $adorner.css('top', top);
+      var id = $this.data('cmtbl');
+      $('.qw-comment-adorner').each( function() {
+        var $a = $(this);
 
-      var left = position.left + width + padding;
-      $adorner.css('left', left);
+        $a.css('display','none');
+        $a.css('opacity',0);
 
-      $adorner.show();
+        if ( $a.data('cmtbl') === id ) {
+          $a.css('display','block');
+          $a.css('opacity',1);
+        }
+      });
     }
   };
 
-  var onMouseLeave = function( evt ) {
-    $('#qw-comment-adorner').hide();
+  var timeout;
+  var onCommentableMouseLeave = function( evt ) {
+    var $self = $(this);
+    var id = $self.data('cmtbl');
+    timeout = setTimeout( function() {
+      $('.qw-comment-adorner').each( function() {
+        var $item = $(this);
+        if ( $item.data('cmtbl') === id ) {
+          $item.css('display','none');
+          $item.css('opacity',0);
+        }
+      });
+    }, 750);
   };
 
-  var setHeader = function( header ) {
-    var $bar = $('.qw-commentbar .header');
-    var $idea = $bar.find('.idea');
-    var $issue = $bar.find('.issue');
-    var $default = $bar.find('.default');
-
-    switch (header) {
-      case 'idea':
-        $idea.css('display', 'block');
-        $issue.css('display', 'none');
-        $default.css('display', 'none');
-        break;
-
-      case 'issue':
-        $idea.css('display', 'none');
-        $issue.css('display', 'block');
-        $default.css('display', 'none');
-        break;
-
-      default:
-        $idea.css('display', 'none');
-        $issue.css('display', 'none');
-        $default.css('display', 'block');
-    }
+  var onAdornerMouseLeave = function( evt ) {
+    var $a = $(this).find('.qw-comment-adorner');
+    timeout = setTimeout( function() {
+      $a.css('display','none');
+      $a.css('opacity',0);
+      $('[data-commentable="1"]').removeClass('highlight');
+    }, 750 );
   };
 
-  var onClick = function( evt ) {
-    var self = evt.data;
-
+  var onAdornerMouseEnter = function( evt ) {
     var $this = $(this);
-    var $cmtbar = $('.qw-commentbar');
-    $cmtbar.offcanvas({action: 'open'});
+    var $child = $this.find('.qw-comment-adorner');
+
+    var isIssueOrIdea = $child.hasClass('issue') || $child.hasClass('idea');
+    if ( timeout && !isIssueOrIdea ) {
+      clearTimeout( timeout );
+    }
+
+    var id = $child.data('cmtbl');
+    $('[data-commentable="1"]').removeClass('highlight');
+    $('[data-commentable="1"]').each( function() {
+      var $item = $(this);
+      if ( $item.data('cmtbl') === id ) {
+        $item.addClass( 'highlight' );
+      }
+    });
+  };
+
+  var onAdornerClick = function( evt ) {
+    var self = evt.data;
 
     var $edit = $('.qw-comment-editbox');
     var $view = $('.qw-comment-viewbox');
     var $reply = $('.qw-comment-reply');
+
+    var $this = $(this);
+    var id = $this.find('.qw-comment-adorner').data('cmtbl');
+    $('[data-commentable="1"]').each( function() {
+      var $cmtbl = $(this);
+      if ( $cmtbl.data('cmtbl') === id ) {
+        $this = $cmtbl;
+      }
+    });
+
     var hasComment = _.isNumber( $this.data('hascomments') );
+    if ( self.Q.options.kvp.hasDiscussion && !hasComment ) {
+      $('.qw-modal.deny-comment').modal({show:1});
+      return false;
+    }
+
+    var $cmtbar = $('.qw-commentbar');
+    $cmtbar.offcanvas({action: 'open'});
+
     if ( hasComment ) {
       var cmts = _.where( self.comments, {pid: $this.data('p-id')});
       $('.qw-comment-reply').data('p-id', $this.data('p-id') );
@@ -349,5 +469,31 @@
     }
 
     return false;
+  };
+
+  var setHeader = function( header ) {
+    var $bar = $('.qw-commentbar .header');
+    var $idea = $bar.find('.idea');
+    var $issue = $bar.find('.issue');
+    var $default = $bar.find('.default');
+
+    switch (header) {
+      case 'idea':
+        $idea.css('display', 'block');
+        $issue.css('display', 'none');
+        $default.css('display', 'none');
+        break;
+
+      case 'issue':
+        $idea.css('display', 'none');
+        $issue.css('display', 'block');
+        $default.css('display', 'none');
+        break;
+
+      default:
+        $idea.css('display', 'none');
+        $issue.css('display', 'none');
+        $default.css('display', 'block');
+    }
   };
 }(jQuery, window._, window.document, window));

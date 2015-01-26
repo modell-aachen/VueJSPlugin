@@ -27,11 +27,11 @@
   }
 
   @media #{$large-only} {
-    width: calc(4 * #{$p} - #{$qw-content-padding} / 1.5);
+    width: calc(4 * #{$p});
   }
 
   @media #{$extended-up} {
-    width: calc(3 * #{$p} - #{$qw-content-padding} / 2);
+    width: calc(3 * #{$p});
   }
 
   .viewbox {
@@ -101,7 +101,7 @@
       }
 
       .close {
-        @extend .qw-back-btn;
+        @extend .qw-close-btn;
         position: absolute;
         $top: 3px;
         $pt: 20px;
@@ -176,40 +176,22 @@
 }
 
 [data-commentable="1"] {
-  padding: 1rem;
-  margin: -1rem;
   border-radius: $global-radius;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  transition: background-color 0.3s ease-in-out;
 
   &.active {
-    &.idea { background: $qw-comment-idea-bg; }
-    &.issue { background: $qw-comment-issue-bg; }
+    &.idea { background-color: $qw-comment-idea-bg; }
+    &.issue { background-color: $qw-comment-issue-bg; }
   }
 
-  &:hover {
-    background-color: #f3f3f3;
-  }
-}
-
-[data-hascomments] {
-  background-repeat: no-repeat;
-  background-position: top right;
-}
-
-p[data-hascomments="0"] { background-image: url('../assets/cmt-idea.png'); }
-p[data-hascomments="1"] { background-image: url('../assets/cmt-issue.png'); }
-
-tr[data-hascomments="0"] { 
-  td:last-child {
-    background-image: url('../assets/cmt-idea.png');
-    background-repeat: no-repeat !important;
-    background-position: top right !important;
-  }
-}
-tr[data-hascomments="1"] { 
-  td:last-child {
-    background-image: url('../assets/cmt-issue.png');
-    background-repeat: no-repeat !important;
-    background-position: top right !important;
+  &.highlight {
+    background-color: $qw-comment-adorner-hover-bg;
+    &[data-hascomments="0"] {background-color: $qw-comment-idea-bg;}
+    &[data-hascomments="1"] {background-color: $qw-comment-issue-bg;}
   }
 }
 
@@ -217,24 +199,62 @@ tr[data-hascomments="1"] {
   display: none !important;
 }
 
-#qw-comment-adorner {
-  position: fixed;
-  display: none;
-  z-index: 150;
-  width: auto;
-  height: auto;
-  background: #fff;
+.qw-comment-adorner {
+  width: 30px;
+  height: 30px;
+  background: $qw-comment-adorner-bg;
   cursor: pointer;
-  padding: rem-calc(3 12);
   border-radius: $global-radius;
-  border: 1px solid #dae4eb;
-
+  border: 1px solid $qw-comment-adorner-hover-bg;
   line-height: 1;
   vertical-align: middle !important;
 
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out,
+              background 0.3s ease-in-out;
+
   i {
     font-size: 2rem;
-    color: $primary-color;
+    color: $qw-comment-adorner-color;
+    &:before {margin: 0 0 6px 6px;}
+  }
+
+  &:hover {background: $qw-comment-adorner-hover-bg;}
+  &:active {background: $qw-comment-adorner-active-bg;}
+
+  &.idea {
+    background: $qw-comment-adorner-idea-bg;
+    border: 1px solid $qw-comment-adorner-idea-bg;
+    display: block !important;
+    opacity: 1 !important;
+
+    i {
+      @extend .icon-comment-idea;
+      font-size: 1.5rem;
+      color: $qw-comment-adorner-idea-color;
+      &:before {margin: 0 0 0 9px;}
+    }
+
+    &:hover {background: $qw-comment-adorner-idea-hover-bg;}
+    &:active {background: $qw-comment-adorner-idea-active-bg;}
+  }
+
+  &.issue {
+    background: $qw-comment-adorner-issue-bg;
+    border: 1px solid $qw-comment-adorner-issue-bg;
+    display: block !important;
+    opacity: 1 !important;
+
+    i {
+      @extend .icon-exclamation;
+      font-size: 1.5rem;
+      color: $qw-comment-adorner-issue-color;
+      &:before {margin: 0 0 0 12px;}
+    }
+
+    &:hover {background: $qw-comment-adorner-issue-hover-bg;}
+    &:active {background: $qw-comment-adorner-issue-active-bg;}
   }
 }
 
@@ -323,7 +343,16 @@ input[type="radio"][name="commentType"] {
     padding: $pt $pl;
 
     > .qw-prio1-btn {
-      width: calc(100% - #{$pl});
+      width: calc(60% - #{$pl});
+    }
+
+    > .qw-prio2-btn {
+      width: calc(35% - #{$pl});
+    }
+
+    > .reply-btn, .resolve-btn {
+      padding-top: rem-calc(8);
+      padding-bottom: rem-calc(8);
     }
   }
 
