@@ -75,6 +75,14 @@
           parent: searcher
         });
       }
+// XXX temporary
+      var topicsOnly = new SearchBoolFilter({
+        element: $(),
+        parent: searcher,
+        filter: 'type:topic'
+      });
+      topicsOnly.enabled = true;
+//
       if (filterToggle) {
         var toggle = $(filterToggle.data('quicksearch-filter-toggle'));
         toggle.on('click.quicksearch', function() {
