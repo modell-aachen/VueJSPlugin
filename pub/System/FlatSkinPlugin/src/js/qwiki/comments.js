@@ -227,6 +227,11 @@
   var resolveComment = function( evt ) {
     var self = evt.data;
 
+    if ( self.Q.options.kvp.hasDiscussion ) {
+      $('.qw-modal.deny-comment').modal({show:1});
+      return false;
+    }
+
     var id = $('.qw-comment-reply').data('p-id');
     if ( !id ) {
       self.Q.error( 'Invalid comment ID!' );
