@@ -1,0 +1,105 @@
+.qw-expander {
+  border: 1px solid #f3f3f3;
+  border-radius: 3px;
+
+  > .caption {
+    background-color: #fff;
+    color: #ccc;
+    transition: background-color 0.3s ease-in-out,
+                color 0.3s ease-in-out;
+    padding: rem-calc(6);
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:after {
+      font-family: 'QWikiSymbol';
+      float: right;
+      font-size: 1rem;
+      line-height: 1rem;
+      content:"\f10a";
+      margin-right: rem-calc(3);
+      margin-top: rem-calc(3);
+    }
+
+    &:hover {
+      background-color: #dae4eb;
+      color: $primary-color;
+    }
+    &:active {
+      background-color: #adbfcc;
+      color: #fff;
+    }
+  }
+
+  > .content {
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  &:focus {
+    > .caption {
+      color: $primary-color;
+    }
+  }
+
+  &.expanded {
+    > .caption {
+      border-bottom: 1px solid #f3f3f3;
+      color: #000;
+
+      &:after {content:"\f10d";}
+
+      &:hover {color: $primary-color;}
+      &:active {color: #fff;}
+    }
+
+    > .content {
+      max-height: 500px;
+
+      > div {
+        position: relative;
+        // margin-left: 2%;
+        height: auto;
+      }
+    }
+  }
+}
+
+.qw-expander ul {
+  list-style: none;
+
+  li {
+    padding: rem-calc(3 6);
+    margin-bottom: rem-calc(2);
+    border-radius: $global-radius;
+    background-color: #f2f5f7;
+    transition: background-color 0.2s ease-in-out;
+    color: $primary-color;
+    font-size: 0.8rem;
+    clear: both;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #dae4eb;
+    }
+
+    &:active {
+      background-color: #adbfcc;
+      color: #fff;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 0.8rem;
+      float: right;
+    }
+
+    input {
+      margin-left: rem-calc(6);
+    }
+  }
+} 
