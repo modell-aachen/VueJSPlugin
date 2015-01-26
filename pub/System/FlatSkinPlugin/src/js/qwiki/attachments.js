@@ -3,6 +3,7 @@
 
   QWiki.plugins.attachments = {
     name: 'attachments',
+    origAttachmentsLabel: '',
 
     init: function( options ) {
       if ( typeof options === 'object' ) {
@@ -19,6 +20,17 @@
       $('.qw-attachments-container .list .qw-back-btn').on( 'click', this, closeAttachments );
       $('[data-attachtable-toggle]').on( 'click', this, showAttachments );
       $('.qw-infobar').on( this.namespace + '.offcanvas.closing', this, closeAll );
+
+      var text;
+      var numAttachments = $('.qw-attachments-container .list ul li').length;
+      if ( this.origAttachmentsLabel ) {
+        text = this.origAttachmentsLabel + ' (' + numAttachments + ')';
+      } else {
+        this.origAttachmentsLabel = $('[data-attachtable-toggle]').text();
+        text = this.origAttachmentsLabel + ' (' + numAttachments + ')';
+      }
+
+      $('[data-attachtable-toggle]').text( text );
     },
 
     unbind: function() {

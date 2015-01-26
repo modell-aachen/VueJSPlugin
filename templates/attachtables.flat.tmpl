@@ -1,23 +1,3 @@
-%TMPL:DEF{"ATTACH:files:header"}%<!--ATTACH:files:header-->
-<div class="qw-attachments-container" data-offcanvas>
-  <div class="list">
-    <div>
-      <div class="heading">
-        <div class="back">
-          <a class="qw-back-btn blue" href="#"></a>
-        </div>
-        <div class="title">
-          <span>%MAKETEXT{"Attachments"}%</span>
-        </div>
-        <div class="upload">
-          <a class="qw-add-btn" href="#"></a>
-        </div>
-      </div>
-    </div>
-    <div data-scrollcontainer>
-      <ul>
-<!--/ATTACH:files:header-->%TMPL:END%
-
 %TMPL:DEF{"ATTACH:files:row"}%<!--ATTACH:files:row-->
 <li>
   <div class="attachment">
@@ -41,52 +21,8 @@
 </li>
 <!--/ATTACH:files:row-->%TMPL:END%
 
-
-%TMPL:DEF{"ATTACH:files:footer"}%<!--ATTACH:files:footer-->
-      </ul>
-    </div>
-  </div>
-  <div class="details">
-    <div data-qtemplate="qw.attachment.details">
-      <div>
-        <div class="heading">
-          <div class="back">
-            <a class="qw-back-btn blue" href="#"></a>
-          </div>
-          <div class="title">
-            <span qt-bind="name"></span>
-          </div>
-        </div>
-      </div>
-      <div class="comment">
-        <div class="text">
-          <div qt-bind="comment"></div>
-        </div>
-      </div>
-      <div class="meta">
-        <div class="content">
-          <div>
-            <div class="qw-meta-author" qt-bind="user"></div>
-            <div class="qw-meta-date" qt-bind="date"></div>
-          </div>
-        </div>
-      </div>
-      <div class="actions">
-        <div class="buttons">
-          <div>
-            <a class="qw-prio1-btn" qt-bind="href: url"><i class="icon-download"></i><span qt-bind="size"></span></a>
-            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-edit"></i></a>
-            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-replace"></i></a>
-            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-more"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--/ATTACH:files:footer-->%TMPL:END%
-
-
+%TMPL:DEF{"ATTACH:files:header"}%%TMPL:END%
+%TMPL:DEF{"ATTACH:files:footer"}%%TMPL:END%
 %TMPL:DEF{"ATTACH:versions:footer"}%%TMPL:END%
 %TMPL:DEF{"ATTACH:versions:header"}%%TMPL:END%
 %TMPL:DEF{"ATTACH:versions:row"}%%TMPL:END%

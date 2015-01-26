@@ -336,8 +336,71 @@ TODO
 %TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][TBD. WebHome Text]]</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%TOPIC%'/TopicTitle" then="$percntFORMFIELD{\"TopicTitle\"}$percnt" else="$percntTOPIC$percnt"}%%TMPL:END%
 
-%TMPL:DEF{"attachments"}%%META{"attachments"}%%TMPL:END%
+%TMPL:DEF{"attachments"}%%TMPL:P{"attachments:header"}%%META{"attachments"}%%TMPL:P{"attachments:footer"}%%TMPL:END%
 
+%TMPL:DEF{"attachments:header"}%<!--attachments:header-->
+<div class="qw-attachments-container" data-offcanvas>
+  <div class="list">
+    <div>
+      <div class="heading">
+        <div class="back">
+          <a class="qw-back-btn blue" href="#"></a>
+        </div>
+        <div class="title">
+          <span>%MAKETEXT{"Attachments"}%</span>
+        </div>
+        <div class="upload">
+          <a class="qw-add-btn" href="#"></a>
+        </div>
+      </div>
+    </div>
+    <div data-scrollcontainer>
+      <ul>
+<!--/attachments:header-->%TMPL:END%
+
+%TMPL:DEF{"attachments:footer"}%<!--attachments:footer-->
+</ul>
+    </div>
+  </div>
+  <div class="details">
+    <div data-qtemplate="qw.attachment.details">
+      <div>
+        <div class="heading">
+          <div class="back">
+            <a class="qw-back-btn blue" href="#"></a>
+          </div>
+          <div class="title">
+            <span qt-bind="name"></span>
+          </div>
+        </div>
+      </div>
+      <div class="comment">
+        <div class="text">
+          <div qt-bind="comment"></div>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="content">
+          <div>
+            <div class="qw-meta-author" qt-bind="user"></div>
+            <div class="qw-meta-date" qt-bind="date"></div>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="buttons">
+          <div>
+            <a class="qw-prio1-btn" qt-bind="href: url"><i class="icon-download"></i><span qt-bind="size"></span></a>
+            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-edit"></i></a>
+            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-replace"></i></a>
+            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-more"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/attachments:footer-->%TMPL:END%
 
 %TMPL:DEF{"comments"}%<!--comments-->
 %TMPL:P{"comments:container"}%
