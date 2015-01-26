@@ -4,6 +4,7 @@
   QWiki.plugins.comments = {
     name: 'comments',
     comments: [],
+    solvedComments: [],
     types: ['idea', 'issue'],
 
     init: function( options ) {
@@ -61,9 +62,9 @@
       $('.qw-comment-editbox .submit').on( 'click', this, onSave );
       $('input[name="commentType"]').on( 'change', this, onCommentTypeChanged );
       $('.qw-comment-reply .reply-btn').on( 'click', this, showReplyBox );
+      $('.qw-comment-reply .resolve-btn').on( 'click', this, resolveComment );
       $('.qw-comment-reply .editor .cancel').on( 'click', this, resetReplyBox );
       $('.qw-comment-reply .editor .submit').on( 'click', this, sendReply );
-
       $('.qw-commentbar').on( this.namespace + '.offcanvas.closing', this, onCommentBarClosing );
     },
 
@@ -82,7 +83,6 @@
       $('.qw-comment-reply .reply-btn').off( 'click', showReplyBox );
       $('.qw-comment-reply .editor .cancel').off( 'click', resetReplyBox );
       $('.qw-comment-reply .editor .submit').off( 'click', sendReply );
-
       $('.qw-commentbar').on( this.namespace + '.offcanvas.closing', onCommentBarClosing );
     },
 
@@ -101,22 +101,33 @@
         '/FlatSkinPlugin/comment'
       ];
 
+      var type = cmt.solved === true ? 'PUT' : 'POST';
       var self = this;
       $.blockUI();
       $.ajax({
         url: url.join(''),
-        type: 'POST',
+        type: type,
         data: {comment: JSON.stringify( cmt ), topic: topic},
         success: function() {
           var selector = '[data-p-id="' + cmt.pid + '"]';
-          $(selector).attr( 'data-hascomments', cmt.type );
+          var $selector = $(selector);
+          if ( cmt.solved ) {
+            $selector.data( 'hascomments', '' );
+            $selector.removeAttr( 'data-hascomments' );
+          } else {
+            $selector.attr( 'data-hascomments', cmt.type );
+          }
 
-          var id = $(selector).data('cmtbl');
+          var id = $selector.data('cmtbl');
           var cls = self.types[parseInt(cmt.type)];
           $('.qw-comment-adorner').each( function() {
             var $adorner = $(this);
             if ( $adorner.data('cmtbl') === id ) {
-              $adorner.addClass( cls );
+              if ( cmt.solved ) {
+                $adorner.removeClass( self.types.join(' ') );
+              } else {
+                $adorner.addClass( cls );
+              }
             }
           });
 
@@ -129,8 +140,7 @@
           $.unblockUI();
 
           $('.qw-commentbar [data-scrollcontainer]').slimScroll({ scrollTo: '50000px' });
-
-          $(selector).click();
+          $selector.click();
         },
         error: function( xhr, status, err ) {
           $.unblockUI();
@@ -143,13 +153,17 @@
       var self = this;
       var txt = $('#qw-comment-container').text() || '[]';
       var cmts = $.parseJSON( txt );
-      this.comments = [];
       $.each( cmts, function( i, cmt ) {
-        self.comments.push( cmt );
-        var selector = '[data-p-id="' + cmt.pid + '"]';
-        $(selector).livequery( function() {
-          $(this).attr( 'data-hascomments', cmt.type );
-        });
+        if ( cmt.solved === true || /^true$/i.test( cmt.solved ) ) {
+          self.solvedComments.push( cmt );
+          // TBD. what shall happen with already solved comments???
+        } else {
+          self.comments.push( cmt );
+          var selector = '[data-p-id="' + cmt.pid + '"]';
+          $(selector).livequery( function() {
+            $(this).attr( 'data-hascomments', cmt.type );
+          });
+        }
       });
     }
   };
@@ -210,6 +224,28 @@
     return false;
   };
 
+  var resolveComment = function( evt ) {
+    var self = evt.data;
+
+    var id = $('.qw-comment-reply').data('p-id');
+    if ( !id ) {
+      self.Q.error( 'Invalid comment ID!' );
+      return false;
+    }
+
+    var cmts = _.where( self.comments, {pid: id});
+    if ( cmts.length === 0 ) {
+      self.Q.error( 'Unable to determine comment type!' );
+      return false;
+    }
+
+    var cmt = cmts[0];
+    cmt.solved = true;
+
+    self.post( cmt );
+    return false;
+  };
+
   var onCommentBarClosing = function( evt ) {
     var self = evt.data;
     $('.qw-comment-editbox').data('id', '');
@@ -249,6 +285,7 @@
       pid: $('.qw-comment-editbox').data('id')
     };
 
+    cmt.solved = $(this).hasClass('solve');
     self.post( cmt );
     return false;
   };

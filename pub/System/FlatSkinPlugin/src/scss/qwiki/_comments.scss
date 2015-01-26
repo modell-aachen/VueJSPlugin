@@ -343,7 +343,16 @@ input[type="radio"][name="commentType"] {
     padding: $pt $pl;
 
     > .qw-prio1-btn {
-      width: calc(100% - #{$pl});
+      width: calc(60% - #{$pl});
+    }
+
+    > .qw-prio2-btn {
+      width: calc(35% - #{$pl});
+    }
+
+    > .reply-btn, .resolve-btn {
+      padding-top: rem-calc(8);
+      padding-bottom: rem-calc(8);
     }
   }
 

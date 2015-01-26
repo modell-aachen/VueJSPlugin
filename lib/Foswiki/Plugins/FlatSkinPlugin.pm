@@ -56,7 +56,7 @@ sub initPlugin {
 
   Foswiki::Func::registerRESTHandler( 'comment', \&_handleComment,
     authenticate => 1,
-    http_allow => 'DELETE,POST',
+    http_allow => 'POST,PUT',
     validate => 0
   );
 
@@ -200,17 +200,16 @@ sub _handleComment {
      } else {
       $response->{status} = 400;
      }
-  } elsif ($method =~ m/^delete$/i) {
-
-### TODO!!
-
-    my $id = $q->param('id');
-
-    my $foo = $meta->get( 'FLATCOMMENT', $id );
-    Foswiki::Func::writeWarning( $foo->{name} );
-    $meta->remove('FLATCOMMENT', $id) if ($id);
+  } elsif ($method =~ m/^put$/i) {
+    # update existing comment
+    my $cmt = decode_json($q->param('comment'));
+    $cmt->{author} = Foswiki::Func::getWikiName($session->{user});
+    $cmt->{date} = time;
+    $meta->putKeyed('FLATCOMMENT', $cmt);
     $changed = 1;
     $response->{status} = 204;
+  } else {
+    $response->{status} = 405;
   }
 
   my %opts = (dontlog => 1, minor => 1);
