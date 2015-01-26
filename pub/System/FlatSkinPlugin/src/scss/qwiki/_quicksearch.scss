@@ -348,6 +348,8 @@
   background: $qw-content-bg;
   border-right: 5px solid $qw-quicksearch-result-active-bg;
 
+  overflow-y: auto;
+
   > .title {
     border-bottom: solid $qw-quicksearch-border-width $qw-quicksearch-border-color;
     padding: $qw-content-padding/2;
