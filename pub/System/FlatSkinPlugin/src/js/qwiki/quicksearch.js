@@ -254,6 +254,15 @@
           $preview.find('> .heading').remove();
           $preview.find('> .title .heading').text($p.find('.title span').text());
           $preview.find('> .title .icon').attr('class', $p.find('.title i').attr('class'));
+
+          // Click handling for previews
+          $(this).find('a').click(function(ev) { ev.preventDefault(); return false; });
+          $(this).find('.qw-page .content, .qw-page .heading').dblclick(function(ev) {
+            location.assign(location.protocol +'//'+ location.host + $p.data('url'));
+            ev.preventDefault();
+            return false;
+          });
+
           var $head = $(this).find('> .qw-page .heading').detach();
           var $content = $(this).find('> .qw-page .content').detach();
           $(this).parent().append($head).append($content).end().detach();
