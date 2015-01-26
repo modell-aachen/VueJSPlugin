@@ -1,7 +1,13 @@
 .qw-dashboard-container {
 	display: none;
-	opacity: 0;
+	opacity: 0.5;
 	transition: opacity 0.5s linear;
+
+/* position: absolute;
+top: 0;
+left: 0;
+width: 100%; */
+
 	&.active {
 		display: block;
 		opacity: 1;
@@ -166,7 +172,69 @@
 	}
 }
 
-.qw-dashboard-toptwo {
-	background: red;
+.qw-dashboard-tasks-toptwo {
+	height:rem-calc(50);
+	
+	> .content {
+		line-height: 45px;
+		> a {
+			text-decoration: none;
+			color: #236AA2;
+		}
+
+		> i {
+			margin-left: 10px;
+		}
+	}
+
+	> a {
+		margin: 5px;
+		float: right;
+		font-style: italic;
+		font-size: rem-calc(13);
+		text-decoration: none;
+		color: #236AA2;
+		> i { 
+		padding-right: 5px;
+
+		}
+	}
+}
+
+.qw-dashboard-knowledge-toptwo {
+	height:rem-calc(50);
+	
+	> .content {
+		line-height: 45px;
+		display: inline-block;
+	}
+
+	> a {
+		margin: 5px;
+		float: right;
+		font-style: italic;
+		font-size: rem-calc(13);
+		text-decoration: none;
+		color: #236AA2;
+		> i { 
+		padding-right: 5px;
+		
+		}
+	}
+	> .view {
+		float: right;
+		display: inline-block;
+		border: 1px solid #E1E2E3;
+		margin:5px;
+		height: 38px;
+		border-radius: $global-radius;
+		> .qw-action-button {
+			width: 30px;
+			height: 31px;
+			> i {
+				font-size: 30px;
+			}
+		}
+	} 
 }
 

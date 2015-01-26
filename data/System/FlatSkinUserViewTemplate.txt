@@ -110,14 +110,26 @@
 </div> 
 <div class="qw-notecontainer"> 
 </div>
+<div class="qw-dashboard-tasks-toptwo">
+  <span class="content">Tasks, <a href="#"> Current</a><i class="icon-arrow-down" data-dropdown="#qw-more-menu"></i><i class="icon-arrow-up"></i></span>
+  <a class="qw-prio2-btn" href="#"><i class="icon-add"></i>Creating a task</a>
+</div>
+<p></p>
+<p></p>
+<div class="qw-dashboard-knowledge-toptwo">
+  <span class="content">Knowledges</span>
+    <a class="qw-prio2-btn" href="#"><i class="icon-add"></i>Invest</a>
+    <a class="qw-prio2-btn" href="#"><i class="icon-sort"></i>Letzte Verwendung</a>
+    <div class="view">
+      <a href="#" class="row qw-action-button"><i class="icon-list-bullets"></i></a>
+      <a href="#" class="grid qw-action-button"><i class="icon-table"></i></a>
+  </div>
+</div>
 %TMPL:END%
 
 %TMPL:DEF{"document:head"}%%TMPL:END%
 %TMPL:DEF{"topbar:tabs"}%
-<div class="dashboard-toptwo">
-  <span class="content">Tasks, <a href="#"> Curent</a><i class="arrow-down"></i></span>
-  <span class="create"> <i class="add"></i> Creating a task</span>
-</div>
+
 %TMPL:END%
 %TMPL:DEF{"content"}%
 %TMPL:P{"perspage:scripts"}%
