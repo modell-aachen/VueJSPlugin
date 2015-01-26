@@ -1,9 +1,17 @@
-.qw-taskcontainter {
+.qw-dashboard-container {
+	display: none;
+	opacity: 0;
+	transition: opacity 0.5s linear;
+	&.active {
+		display: block;
+		opacity: 1;
+	}
+
 	> .task {
-		display:block;
 		margin:$qw-dashboard-task-margin;
 		border-radius: $global-radius;	
 		background-color: $qw-dashboard-task-bg;
+		cursor: pointer;
 
 		> .input {
 			display: inline-block;
@@ -34,7 +42,6 @@
 			display: inline-block;
 			font-size: $qw-dashboard-task-title-font-size;
 			color: $qw-dashboard-task-title-color;
-			
 		}
 
 		> span.badge {
@@ -42,6 +49,13 @@
 			float: right;
 			text-transform: uppercase;
 			margin: $qw-dashboard-task-badge-margin;
+		}
+		> a.meetings {
+			float: right;
+			text-decoration: none;
+			font-size: rem-calc(12.5);
+			padding: rem-calc(12 100 5 0);
+			color: $qw-dashboard-task-title-color;
 		}
 
 		&.new {
@@ -84,5 +98,75 @@
 				color:$qw-dashboard-task-future-color;
 			}
 		}
+
+	 	&.priority {
+			> .input {
+				border-left: 3px solid #E92727;
+			}
+		}
+
+		&:nth-child(even) {
+			background-color:#FFF;
+			&:hover {
+				background-color: $qw-dashboard-task-hover-bg;
+			}
+			&:active {
+			background-color : $qw-dashboard-task-active-bg;
+			}
+		}
+	}
+	&.knowledge {
+		> .task {
+			height: rem-calc(40);
+			> span.title {
+				top: 8px;
+				left: 10px;
+			}
+			> span.keywords {
+				float: right;
+				font-size: rem-calc(12.5);
+				padding: rem-calc(12 100 5 0);
+				color: #999;
+			}
+		}
+		
 	}
 } 
+
+.qw-dashboard-topbar {
+		
+	height: rem-calc(40);
+	background: #E0E0E0;
+	> span {	
+		float: left;
+		font-size: rem-calc(22);
+		color:#4D4D4D;
+		padding: rem-calc(5 10 0 5);
+		> i {
+			line-height: 30px;
+		}
+	}
+
+	.dashboard-list {
+		 @include inline-list;
+
+		> li {
+			min-width: rem-calc(40);
+			font-size: rem-calc(22);
+			margin-left: rem-calc(10);
+			color: #999;
+			padding: rem-calc(7 10);
+			&:hover {
+				/* transition: all 10s ease-in-out; */
+				background : #BFBFBF;
+				border-radius: $global-radius;
+				color: #FFF;
+			}
+		}
+	}
+}
+
+.qw-dashboard-toptwo {
+	background: red;
+}
+

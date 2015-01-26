@@ -97,6 +97,13 @@
         height: $qw-dochead-classic-height;
         margin: $qw-dochead-classic-margin;
         color: $qw-dochead-label-color;
+        > p {
+            display: block;
+            -webkit-margin-before: 0.5em;
+            -webkit-margin-after: 0.5em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+        }
 
         > .label {
           text-transform: uppercase;

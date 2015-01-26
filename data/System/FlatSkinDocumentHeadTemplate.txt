@@ -30,8 +30,11 @@
   <div class="flex-table">
     <div class="row">
       <div class="item">
-        <span class="label">%TOPICTITLE%</span>
-        <span class="tcontent">%QUERY{"Dokumententyp"}%</span>
+      <span class="label">%MAKETEXT{"Type"}%</span>
+      <span class="tcontent">%QUERY{"DocumentType"}%</span>
+      <p></p>
+      <span class="label">%MAKETEXT{"Title"}%</span>
+      <span class="tcontent">%TOPICTITLE%</span>
       </div>
       <div class="item">
         <span class="label">%MAKETEXT{"Area of Application"}%: <span class="label"> %QUERY{"Geltungsbereich"}%</span></span>
@@ -56,7 +59,7 @@
       </div>
       <div class="item">
         <span class="label">%MAKETEXT{"Version"}% : </span>
-        <span class="label">%WORKFLOWMETA{"Revision"}%</span>
+        <span class="tcontent">%WORKFLOWMETA{"Revision"}%</span>
       </div>
     </div>
   </div>

@@ -38,7 +38,7 @@
 %ADDTOZONE{"script" id="JavascriptFiles/strikeone" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/JavascriptFiles/strikeone.js\"></script>"}%
 %TMPL:END%
 
-%TMPL:DEF{"perspage:bookmarks"}%
+%TMPL:DEF{"perspage:bookmarks:backup"}%
 <div>
 %SOLRSEARCH{"type:topic webtopic:(%FAVORITELIST{format="\\"$swebtopic\\"" separator=" OR " default="NOT *"}%)"
   rows="999999" sort="webtopic"
@@ -46,43 +46,79 @@
 }%
 </div>
 %TMPL:END%
-
-%TMPL:DEF{"dashboard:row"}%
-<div class="qw-taskcontainter">
-  <div class="task">
+%TMPL:DEF{"breadcrumb"}%
+<div class="qw-dashboard-topbar">
+  <span><i class="icon-home"></i> Dashboard</span>
+  <ul class="dashboard-list" data-inline-list>
+    <li data-target="tasks"><span href="#" >Aufgaben</span></li>
+    <li data-target="knowledge"><span href="#">Wissen</span></li>
+    <li data-target="black"><span href="#">Lesezeichen</span></li>
+    <li data-target="blue"><span href="#">Einstellungen</span></li>
+  </ul>
+</div>
+%TMPL:END%
+%TMPL:DEF{"perspage:bookmarks"}%
+<div class="qw-dashboard-container tasks">
+  <div class="task priority">
     <div class="input">
       <label>
-        <input type="checkbox">
+        <input class="checkbox" type="checkbox">
         <span>NEU</span>
       </label>
     </div>
     <span class="title">Beschreibung der Aufgabe</span>
-    <span class="badge"><i class="icon-history"></i> Heute</span>
+    <span class="badge"><i class="icon-clock-inv"></i> Heute</span>
+    <a class="meetings"><i class="icon-app-meetings"></i>GESELLSCHAFTERSITZUNG</a>
   </div>
-  <div class="task tomorrow">
-    <div class="input">
-      <label>
-        <input type="checkbox">
-        <span>NEU</span>
-      </label>
+    <div class="task tomorrow">
+      <div class="input">
+        <label>
+          <input class="checkbox" type="checkbox">
+          <span>NEU</span>
+        </label>
+      </div>
+      <span class="title">Beschreibung der Aufgabe</span>
+      <span class="badge"><i class="icon-clock-inv"></i> Morgen</span>
     </div>
-    <span class="title">Seite "Material beschaffen" bearbeiten</span>
-    <span class="badge"><i class="icon-history"></i> Morgen</span>
+  <div class="task future new priority">
+      <div class="input">
+        <label>
+          <input class="checkbox" type="checkbox">
+          <span>NEU</span>
+        </label>
+      </div>
+      <span class="title">Beschreibung der Aufgabe</span>
+      <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
   </div>
-  <div class="task new future">
-    <div class="input">
-      <label>
-        <input type="checkbox">
-        <span>NEU</span>
-      </label>
-    </div>
-    <span class="title">Nachste Gesellschaftersitzung</span>
-    <span class="badge"><i class="icon-history"></i> 21.10</span>
+</div>  
+<div class="qw-dashboard-container knowledge"> 
+  <div class="task priority future">
+    <span class="title">Beschreibung der Aufgabe</span>
+    <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
+    <span class="keywords">Tag</span>
   </div>
+  <div class="task priority future">
+    <span class="title">Beschreibung der Aufgabe</span>
+    <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
+    <span class="keywords">Tag</span>
+  </div>
+  <div class="task priority future">
+    <span class="title">Beschreibung der Aufgabe</span>
+    <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
+    <span class="keywords">Tag</span>
+  </div>
+</div> 
+<div class="qw-notecontainer"> 
 </div>
 %TMPL:END%
 
-
+%TMPL:DEF{"document:head"}%%TMPL:END%
+%TMPL:DEF{"topbar:tabs"}%
+<div class="dashboard-toptwo">
+  <span class="content">Tasks, <a href="#"> Curent</a><i class="arrow-down"></i></span>
+  <span class="create"> <i class="add"></i> Creating a task</span>
+</div>
+%TMPL:END%
 %TMPL:DEF{"content"}%
 %TMPL:P{"perspage:scripts"}%
 %IF{"$WIKINAME = $TOPIC"
@@ -90,7 +126,6 @@
 $percentTMPL:P{dashboard:row}$percent
 <div>"
 }%
-</div>
 %TMPL:END%
 
 %{</verbatim>}%
