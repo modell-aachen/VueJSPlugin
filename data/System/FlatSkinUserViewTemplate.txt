@@ -108,6 +108,14 @@
     <span class="keywords">Tag</span>
   </div>
 </div> 
+
+<div class="switch radius">
+  <input id="kvpswitch" type="checkbox">
+  <label for="kvpswitch"></label>
+  <span><i class="icon-checkmark"></i></span>
+</div>
+
+
 %TMPL:END%
 %TMPL:DEF{"dashboard:actions"}%
 <div class="qw-dashboard-toptwo tasks active">
