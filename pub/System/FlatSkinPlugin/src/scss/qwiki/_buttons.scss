@@ -228,6 +228,11 @@
   @extend .edit;
 }
 
+.qw-remove-btn {
+  @extend .qw-symbol-btn;
+  @extend .remove;
+}
+
 .qw-symbol-btn {
   @include button( $radius: true, $bg: $qw-add-bg-color );
 
@@ -253,10 +258,20 @@
     @extend .icon-edit;
   }
 
+  &.remove {
+    @extend .icon-remove;
+  }
+
   &.small {
     width: 24px;
     height: 24px;
     font-size: 1.25rem;
+  }
+
+  &.tiny {
+    width: 14px;
+    height: 14px;
+    font-size: 1rem;
   }
 }
 

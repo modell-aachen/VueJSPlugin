@@ -1,3 +1,72 @@
+#qw-file-uploader {
+  border-radius: $global-radius;
+  min-height: 200px;
+  height: auto;
+  // background-color: $qw-upload-dnd-bg;
+  border: $qw-border-width solid $qw-border-bg;
+  // transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    // background-color: $qw-upload-dnd-hover-bg;
+  }
+
+  &.drag {
+    // background-color: $qw-upload-dnd-hover-bg;
+  }
+
+  > div {
+    padding: $global-radius;
+  }
+
+  .icon-upload {
+    color: $primary-color;
+    font-size: 1.5rem;
+  }
+
+  .upload {
+    position: relative;
+    $pad: rem-calc(3);
+    padding: $pad;
+    width: calc(100% - 2 * #{$pad});
+    min-width: calc(100% - 2 * #{$pad});
+    height: 40px;
+
+    background: #f5f5f5;
+    overflow: hidden !important;
+    border-radius: $global-radius;
+
+    &:not(:last-child) {
+      margin-bottom: $global-radius;
+    }
+
+    div.progress {
+      width: 0;
+      height: 100%;
+      background: #e0e0e0;
+      border-radius: $global-radius;
+    }
+
+    .filename {
+      font-size: 0.9rem;
+    }
+
+    span {
+      position: absolute;
+      left: rem-calc(6);
+      font-size: 0.7rem;
+
+      &.filename {
+        top: rem-calc(5);
+      }
+
+      &.progress {
+        top: rem-calc(25);
+      }
+    }
+  }
+}
+
 .qw-attachments-container {
   position: fixed;
   right: $qw-content-padding;
@@ -40,7 +109,7 @@
     }
   }
 
-  > .list, .details {
+  > .list, .details, .attach {
     position: absolute;
     top: 0;
     min-width: 100%;
@@ -133,6 +202,41 @@
           .raw {
             display: none !important;
           }
+        }
+      }
+    }
+  }
+
+  > div.attach {
+    transform: translate3d( 100%, 0, 0 );
+    transition: transform 0.3s ease-in-out;
+
+    &.active {
+      transform: translate3d( 0, 0, 0 );
+    }
+
+    > div {
+      padding: rem-calc(6);
+      border-bottom: 1px solid $qw-border-bg;
+
+      &.slimScrollDiv {
+        width: calc( 100% - 14px) !important; // 100% - 2*padding + 2*border-width;
+      }
+
+      > .heading {
+        @include grid-row();
+        max-height: rem-calc(40);
+
+        > .back {
+          @include grid-column($columns: 2, $collapse: true);
+        }
+
+        > .title {
+          @include grid-column($columns: 8, $collapse: true);
+          padding-top: rem-calc(10);
+          font-size: 1.2rem;
+          margin-left: rem-calc(-10);
+          margin-right: rem-calc(10);
         }
       }
     }

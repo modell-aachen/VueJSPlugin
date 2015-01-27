@@ -60,6 +60,12 @@ sub initPlugin {
     validate => 0
   );
 
+  Foswiki::Func::registerRESTHandler( 'validation', \&_handleValidation,
+    authenticate => 1,
+    http_allow => 'GET',
+    validate => 0
+  );
+
   # inject scripts and styles
   _zoneConfig();
   return 1;
@@ -169,6 +175,18 @@ sub _handleRenderMulti {
   );
   $session->{response}->print($res);
   return undef;
+}
+
+sub _handleValidation {
+  my ( $session, $subject, $verb, $response ) = @_;
+
+  my $q = $session->{request};
+  my ($web, $topic) = Foswiki::Func::normalizeWebTopicName(undef, $q->param('topic'));
+  my $cgis = $session->getCGISession();
+
+  require Foswiki::Validation;
+  my $key = Foswiki::Validation::generateValidationKey( $cgis, "$web.$topic" );
+  return $key;
 }
 
 sub _handleComment {
