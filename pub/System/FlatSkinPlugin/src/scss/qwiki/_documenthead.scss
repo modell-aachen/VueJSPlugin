@@ -143,6 +143,7 @@
         > .item {
           > span {
             display: block;
+            > * { display: inline; } // e.g. put icon and label on the same line
           }
 
           &:last-child {
