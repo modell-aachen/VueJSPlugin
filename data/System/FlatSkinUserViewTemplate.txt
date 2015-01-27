@@ -46,7 +46,7 @@
 }%
 </div>
 %TMPL:END%
-%TMPL:DEF{"breadcrumb"}%
+%TMPL:DEF{"dashboard:menu"}%
 <div class="qw-dashboard-topbar">
   <span><i class="icon-home"></i> Dashboard</span>
   <ul class="dashboard-list" data-inline-list>
@@ -58,7 +58,7 @@
 </div>
 %TMPL:END%
 %TMPL:DEF{"perspage:bookmarks"}%
-<div class="qw-dashboard-container tasks">
+<div class="qw-dashboard-container tasks active">
   <div class="task priority">
     <div class="input">
       <label>
@@ -108,15 +108,20 @@
     <span class="keywords">Tag</span>
   </div>
 </div> 
-<div class="qw-notecontainer"> 
-</div>
-<div class="qw-dashboard-tasks-toptwo">
-  <span class="content">Tasks, <a href="#"> Current</a><i class="icon-arrow-down" data-dropdown="#qw-more-menu"></i><i class="icon-arrow-up"></i></span>
+%TMPL:END%
+%TMPL:DEF{"dashboard:actions"}%
+<div class="qw-dashboard-toptwo tasks active">
+  <span class="content">Tasks, <a href="#"> Current</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>
+    <ul id="qw-more-menu" class="qw-dropdown-light">
+      <li><a href="#">sub menu 1</a></li>
+      <li><a href="#">sub menu 2</a></li>
+      <li><a href="#">sub menu 3</a></li>
+      <li><a href="#">sub menu 4</a></li>
+    </ul>
+  </span>
   <a class="qw-prio2-btn" href="#"><i class="icon-add"></i>Creating a task</a>
 </div>
-<p></p>
-<p></p>
-<div class="qw-dashboard-knowledge-toptwo">
+<div class="qw-dashboard-toptwo knowledge">
   <span class="content">Knowledges</span>
     <a class="qw-prio2-btn" href="#"><i class="icon-add"></i>Invest</a>
     <a class="qw-prio2-btn" href="#"><i class="icon-sort"></i>Letzte Verwendung</a>
@@ -126,6 +131,24 @@
   </div>
 </div>
 %TMPL:END%
+%TMPL:DEF{"topbar"}%<!--topbar-->
+<nav class="qw-top" data-offcanvas>
+  <div class="one">
+    <div class="dashboardmenu">%TMPL:P{"dashboard:menu"}%</div>
+    <div class="search">
+      <div class="close" data-offcanvas-toggle="quicksearch">
+        <div><i class="icon-arrow-right"></i></div>
+      </div>
+      <div>%TMPL:P{"topbar:search"}%</div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="dashboardactions">
+      <div>%TMPL:P{"dashboard:actions"}%</div>
+    </div>
+  </div>
+</nav>
+<!--/topbar-->%TMPL:END%
 
 %TMPL:DEF{"document:head"}%%TMPL:END%
 %TMPL:DEF{"topbar:tabs"}%

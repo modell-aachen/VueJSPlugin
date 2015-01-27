@@ -65,6 +65,14 @@
       }
     }
 
+    > .dashboardmenu {
+      margin: rem-calc(5 0 10 20);
+      //divides topbar to grids
+      @media #{$mobile-up} {@include grid-column($columns: 10, $collapse: true);}
+      @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
+      @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
+    }
+
     > .editor {
       background: $qw-top-one-cke-bg;
       min-height: $qw-top-one-height;
@@ -320,6 +328,34 @@
             }
           }
         }
+      }
+    }
+
+    > .dashboardactions {
+      display: table;
+      background: #FFF;
+      transition: width 0.3s ease-in-out;
+      border-bottom: 1px solid #F5F5F5;
+
+
+      @media #{$mobile-only} {min-height: $qw-top-two-height-mobile;}
+      @media #{$small-up} {min-height: $qw-top-two-height;}
+
+      /* padding: rem-calc(0 10 0 25);
+      margin: rem-calc(0 10 0 0); */
+      $p: percentage(1/$total-columns);
+      @media #{$mobile-up} {width: 100%;}
+      @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-leftbar-width});}
+      @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-leftbar-width});}
+      
+
+      > div {
+        padding: rem-calc(0 10 0 25);
+      }
+
+      &.maximized {
+        width: 100%;
+        @media #{$medium-up} {width: calc(100% - #{$qw-content-padding}/2 - #{$qw-leftbar-width});}
       }
     }
   }
