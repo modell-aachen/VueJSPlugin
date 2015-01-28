@@ -191,10 +191,10 @@
         list.qtemplate('add', doc);
       }
 
-      // in case we found some results, allow to show them all by clicking 'show all'
-      // with top row
       $('.qw-total-results > a').on( 'click', function( evt ) {
-        alert('TODO: was soll dieser Link genau machen?');
+        var term = data.responseHeader.params.q || '';
+        location.assign(location.protocol +'//'+ location.host + foswiki.preferences.SCRIPTURLPATH +'/view'+ foswiki.preferences.SCRIPTSUFFIX +'/'+ foswiki.preferences.WEB +'/WebSearch#q='+ term.replace(/^\{.+?\}/, ''));
+        return false;
       });
 
       var $results = $('.qw-search-result');
