@@ -319,5 +319,5 @@ module.exports = function(grunt) {
   grunt.registerTask('prepare-manifest', ['file-creator:create-manifest-tmp']);
   grunt.registerTask('manifest', ['prepare-manifest', 'copy:manifest', 'clean:manifest']);
   grunt.registerTask('pseudo-install', ['exec:install']);
-  grunt.registerTask('build', ['webfont', 'sass:' + target, 'jshint', 'uglify:' + target ]);
+  grunt.registerTask('build', ['webfont', 'sass', 'jshint', 'uglify' ]);
 }
