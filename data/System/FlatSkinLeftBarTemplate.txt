@@ -2,5 +2,5 @@
 
 %TMPL:DEF{"leftbar:links"}%%FORMATLIST{"%TMPL:P{"leftbar:webs"}%" pattern="\s*([^:]*):([^:]*):([^:\s]*)(?::([^:\s]+))?" format="$percentIF{\"'$1$4' allows 'view'\" then=\"<a href='%SCRIPTURLPATH{view}%/$1$percentIF{\"'$4'!=''\" then=\"$4\" else=\"/%HOMETOPIC%\"}$percent' class='button $percentIF{\"'%BASEWEB%'='$1' or '%BASEWEB%'~'$1/*'\" then=\"active\"}$percent\'><i class='$3'></i>$2</a>\"}$percent" separator="$n"}%%TMPL:END%
 
-%TMPL:DEF{"leftbar:webs"}%Main:%MAKETEXT{"Dashboard"}%:icon-home,Cockpit:%MAKETEXT{"Cockpit"}%:icon-app-cockpit,Audit:%MAKETEXT{"Audits"}%:icon-app-audit,Minutes:%MAKETEXT{"Minutes"}%:icon-app-protocol,Projects:%MAKETEXT{"Projects"}%:icon-app-projects,Processes:%MAKETEXT{"Processes"}%:icon-app-processes%TMPL:END%
+%TMPL:DEF{"leftbar:webs"}%Main:%MAKETEXT{"Dashboard"}%:icon-home:/%WIKINAME%,Cockpit:%MAKETEXT{"Cockpit"}%:icon-app-cockpit,Audit:%MAKETEXT{"Audits"}%:icon-app-audit,Minutes:%MAKETEXT{"Minutes"}%:icon-app-protocol,Projects:%MAKETEXT{"Projects"}%:icon-app-projects,Processes:%MAKETEXT{"Processes"}%:icon-app-processes%TMPL:END%
 %{ Comma separated list of webs. Each entry has the format WebName:Web description:icon:/TopicName where :/TopicName is optional and defaults to the home topic }%
