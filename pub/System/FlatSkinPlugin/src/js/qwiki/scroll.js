@@ -8,8 +8,15 @@
       if ( typeof options === 'object' ) {
         $.extend( this, options );
       }
-
-      $('[data-scrollcontainer]').slimScroll({height: 'auto'});
+      $('[data-scrollcontainer]').each( function() {
+        var $this = $(this);
+        var data = $this.data('scrollcontainer');
+        if ( data === 'parent' ) {
+          $this.slimScroll({height: $this.parent().height()});
+        } else {
+          $this.slimScroll({height: 'auto'});
+        }
+      });
     }
   };
 }(jQuery, window._, window.document, window));
