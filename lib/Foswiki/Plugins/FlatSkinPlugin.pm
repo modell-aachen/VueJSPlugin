@@ -45,10 +45,10 @@ sub initPlugin {
   );
 
   Foswiki::Func::registerTagHandler( 'DEFAULTDATEFORMAT', \&_handleDATEFORMAT );
+  Foswiki::Func::registerTagHandler( 'FLATCOMMENTSLIST', \&_handleFLATCOMMENTS );
 
   # TBD. werden die beiden MA... macros überhaupt noch gebraucht?
   Foswiki::Func::registerTagHandler( 'QWWEBLIST', \&_handleWEBLIST );
-  Foswiki::Func::registerTagHandler( 'FLATCOMMENTSLIST', \&_handleFLATCOMMENTS );
 
   Foswiki::Func::registerRESTHandler( 'rendermulti', \&_handleRenderMulti,
     authenticate => 0,
@@ -56,17 +56,28 @@ sub initPlugin {
     http_allow => 'GET,POST',
   );
 
-  Foswiki::Func::registerRESTHandler( 'comment', \&_handleComment,
+  Foswiki::Func::registerRESTHandler( 'comment', \&_restComment,
     authenticate => 1,
     http_allow => 'POST,PUT',
     validate => 0
   );
 
-  Foswiki::Func::registerRESTHandler( 'validation', \&_handleValidation,
+  Foswiki::Func::registerRESTHandler( 'validation', \&_restValidation,
     authenticate => 1,
     http_allow => 'GET',
     validate => 0
   );
+
+  my $useDAV = $Foswiki::cfg{Plugins}{FlatSkinPlugin}{WebDAVIntegration} || 0;
+  if ( $useDAV ) {
+    Foswiki::Func::registerRESTHandler( 'webdavtoken', \&_restWebDAVToken,
+      authenticate => 1,
+      http_allow => 'GET',
+      validate => 0
+    );
+
+    _injectWebDAVPreferences();
+  }
 
   # inject scripts and styles
   _zoneConfig();
@@ -125,6 +136,68 @@ EDITSCRIPTS
 
   Foswiki::Func::addToZone( 'head', 'FLATSKIN::STYLES', $styles );
   Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS', $scripts, 'JQUERYPLUGIN::FOSWIKI' );
+}
+
+sub _injectWebDAVPreferences {
+  my ( $web, $topic ) = @_;
+
+  my ( $kvpEnabled, $kvpCanEdit, $kvpCanMove ) = ( 0, 0, 0 );
+  if ( $Foswiki::cfg{Plugins}{KVPPlugin}{Enabled} ) {
+    my $talkSuffix = $Foswiki::cfg{Extensions}{KVPPlugin}{suffix} || "TALK";
+    if ( $topic =~ /^(.+)$talkSuffix$/) {
+      $kvpEnabled = 1;
+      $kvpCanEdit = 1;
+      $kvpCanMove = 1;
+    } else {
+      require Foswiki::Plugins::KVPPlugin;
+      my $kvp = Foswiki::Plugins::KVPPlugin::_initTOPIC( $web, $topic );
+      if ( defined $kvp ) {
+        $kvpEnabled = 1;
+        $kvpCanEdit = $kvp->canEdit;
+        $kvpCanMove = $kvp->canMove;
+      }
+    }
+  }
+
+  my $session = $Foswiki::Plugins::SESSION;
+  my $server = $session->{urlHost};
+  my $location = $Foswiki::cfg{Plugins}{FlatSkinPlugin}{WebDAVLocation} || '/bin/dav';
+  $location = Foswiki::urlEncode( $server . $location );
+
+  my %kvpOpts = (
+    enabled => $kvpEnabled,
+    canEdit => $kvpCanEdit,
+    canMove => $kvpCanMove
+  );
+
+  my %defaultApps = (
+    'Access.Databases' => 'accdb|accdc|accde|accdr|accdt|accdu|accdw|accft|ade|adn|adp|mad|maf|mag|mam|maq|mar|mas|mat|mau|mav|maw|mdb|mde|mdn|mdt|mdw',
+    'Word.Documents' => 'doc|docx|docm|dot|dotm|dotx|rtf',
+    'PowerPoint.Presentations' => 'ppt|pptx|pptm|pot|potx|potm|pps|ppsx|ppsm|sldx|sldm|thm|thmx',
+    'Excel.Workbooks' => 'xls|xlsx|xlsm|xlt|xltx|xltm|xlsb|csv|xld|xlm|xlshtml|xlw|xlxml|xlthtml',
+    'Visio.Documents' => 'vdw|vdx|vsd|vsdm|vsdx|vss|vssm|vst|vstm|vstx|vsu|vsw|vsx|vtx',
+    'Publisher.Documents' => 'pub',
+    'Project.Ignored' => 'mpd|mpp|mpt|mpw|mpx'
+  );
+
+  my %davOpts = (
+    location => $location,
+    apps => $Foswiki::cfg{Plugins}{FlatSkinPlugin}{WebDAVApps} || \%defaultApps,
+    kvp => \%kvpOpts
+  );
+
+  my $json = encode_json( \%davOpts );
+  my $script = <<SCRIPT;
+<script type='text/javascript'>
+(function(\$) {
+  \$(document).ready( function() {
+    \$.extend( QWiki.plugins.webdav, {"settings": $json });
+  });
+})(jQuery);
+</script>
+SCRIPT
+
+  Foswiki::Func::addToZone( "script", "MODACCONTEXTMENUPLUGIN", $script, "JQUERYPLUGIN::FOSWIKI::PREFERENCES" );
 }
 
 sub _handleDATEFORMAT {
@@ -191,7 +264,37 @@ sub _handleRenderMulti {
   return undef;
 }
 
-sub _handleValidation {
+sub _restWebDAVToken {
+  my ( $session, $subject, $verb, $response ) = @_;
+  my $query = $session->{request};
+
+  my $web = $query->{param}->{w}[0];
+  my $topic = $query->{param}->{t}[0];
+  my $attachment = $query->{param}->{a}[0];
+
+  my $wikiName = Foswiki::Func::getWikiName( $session->{user} );
+  my $guest = $Foswiki::cfg{DefaultUserWikiName} || 'WikiGuest';
+  if ( $wikiName ne $guest ) {
+    my ($w, $t) = Foswiki::Func::normalizeWebTopicName( $web, $topic );
+    my $path = "$w/$t";
+    my %opts = (validateLogin => 0);
+
+    require Filesys::Virtual::Foswiki;
+    my $fs = Filesys::Virtual::Foswiki->new(\%opts);
+    my $db = $fs->_locks();
+    my %data = (user => $wikiName, path => $path, file => $attachment);
+    my $token = Digest::SHA::sha1_hex( encode_json( \%data ) . rand(1_000_000) );
+    if ( $db->setAuthToken( $token, \%data ) )
+    {
+      $response->pushHeader( 'X-MA-TOKEN', $token );
+    }
+  }
+
+  $response->status(200);
+  return '';
+}
+
+sub _restValidation {
   my ( $session, $subject, $verb, $response ) = @_;
 
   my $q = $session->{request};
@@ -203,7 +306,7 @@ sub _handleValidation {
   return $key;
 }
 
-sub _handleComment {
+sub _restComment {
   my ($session, $subject, $verb, $response) = @_;
   my $q = $session->{request};
   my ($web, $topic) = Foswiki::Func::normalizeWebTopicName(undef, $q->param('topic'));
