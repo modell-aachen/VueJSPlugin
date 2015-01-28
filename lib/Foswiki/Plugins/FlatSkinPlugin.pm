@@ -44,6 +44,8 @@ sub initPlugin {
     require => ['author', 'date', 'pid', 'text', 'type']
   );
 
+  Foswiki::Func::registerTagHandler( 'DEFAULTDATEFORMAT', \&_handleDATEFORMAT );
+
   # TBD. werden die beiden MA... macros überhaupt noch gebraucht?
   Foswiki::Func::registerTagHandler( 'QWWEBLIST', \&_handleWEBLIST );
   Foswiki::Func::registerTagHandler( 'FLATCOMMENTSLIST', \&_handleFLATCOMMENTS );
@@ -123,6 +125,18 @@ EDITSCRIPTS
 
   Foswiki::Func::addToZone( 'head', 'FLATSKIN::STYLES', $styles );
   Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS', $scripts, 'JQUERYPLUGIN::FOSWIKI' );
+}
+
+sub _handleDATEFORMAT {
+  my( $session, $params, $topic, $web, $topicObject ) = @_;
+
+  my $default = $Foswiki::cfg{DefaultDateFormat} || '$day $month $year';
+  $default =~ s/\$day/DD/;
+  $default =~ s/\$month/MMM/;
+  $default =~ s/\$mon/MM/;
+  $default =~ s/\$year/YYYY/;
+
+  return $default . ' - HH:mm';
 }
 
 sub _handleWEBLIST {
