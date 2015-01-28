@@ -14,7 +14,7 @@
 
     bind: function() {
       this.unbind();
-      $('[data-webdav-link]').livequery( attachDAVHAndler );
+      $('[data-webdav-link]').livequery( attachDAVHandler );
     },
 
     unbind: function() {
@@ -23,7 +23,7 @@
     }
   };
 
-  var attachDAVHAndler = function( i, link ) {
+  var attachDAVHandler = function( i, link ) {
     var $link = $(this);
     var href = $link.attr('href');
 
