@@ -92,22 +92,16 @@
       -ms-flex-wrap: wrap;
       
       > .item {
+        display: flex;
         flex-direction: column;
         -ms-flex-direction: column;
         flex-grow: 2;
-
         background: $qw-dochead-default-bg;
         border-radius: $global-radius; 
         height: $qw-dochead-classic-height;
         margin: $qw-dochead-classic-margin;
         color: $qw-dochead-label-color;
-        > p {
-            display: block;
-            -webkit-margin-before: 0.5em;
-            -webkit-margin-after: 0.5em;
-            -webkit-margin-start: 0px;
-            -webkit-margin-end: 0px;
-        }
+        padding-right: 50px;
 
         > .label {
           text-transform: uppercase;
@@ -122,7 +116,7 @@
         > .tcontent {
           margin-top: rem-calc(3);
           margin-left: $qw-dochead-classic-padding;
-          width: $qw-dochead-classic-tcontent-width;
+          min-width: $qw-dochead-classic-tcontent-min-width;
           $pad: rem-calc(6);
           padding: rem-calc(3 7);
           min-height: rem-calc(30) - 2 * $pad;
@@ -131,11 +125,32 @@
           color: $qw-dochead-default-box-color;
           font-size: $qw-dochead-default-box-font-size;
         }
+
+        &:nth-child(4) {
+          > .tcontent {
+          width: 100px;
+          }
+        }
       }
   
       &:first-child {
         > .item {
           flex-grow: 1;
+          flex-direction: row;
+          -ms-flex-direction: row;
+          
+          > .tcontent {
+            $pad: rem-calc(6);
+            height: rem-calc(30) - 2 * $pad;
+            margin-top: 5px;
+            margin-right: 50px;
+            
+          }
+          > .label {
+            min-width:0;
+            margin-top: 5px;
+          }
+
         }
       }
 
