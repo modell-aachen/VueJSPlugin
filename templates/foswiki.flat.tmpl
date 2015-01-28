@@ -30,6 +30,7 @@
   <meta name="TEXT_NUM_TOPICS" content="%MAKETEXT{"Number of topics:"}%">
   <meta name="TEXT_MODIFY_SEARCH" content="%MAKETEXT{"Modify search"}%">
   <meta name="robots" content="noindex">
+  <meta name="DATEFORMAT" content="%DEFAULTDATEFORMAT%">
   <link rel="icon" href="%FAVICON%" type="image/x-icon" />
   <link rel="shortcut icon" href="%FAVICON%" type="image/x-icon" />
   <link rel="alternate" href="%SCRIPTURL{edit}%/%BASEWEB%/%BASETOPIC%?t=%GMTIME{"$epoch"}%" type="application/x-wiki" title="edit %BASETOPIC%" />
@@ -359,7 +360,7 @@ TODO
 <!--/attachments:header-->%TMPL:END%
 
 %TMPL:DEF{"attachments:footer"}%<!--attachments:footer-->
-</ul>
+      </ul>
     </div>
   </div>
   <div class="details">
@@ -390,8 +391,8 @@ TODO
       <div class="actions">
         <div class="buttons">
           <div>
-            <a class="qw-prio1-btn" qt-bind="href: url"><i class="icon-download"></i><span qt-bind="size"></span></a>
-            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-edit"></i></a>
+            <a qt-bind="href: url" class="qw-prio1-btn" target="_blank"><i class="icon-download"></i><span qt-bind="size"></span></a>
+            <a qt-bind="href: url" class="qw-prio2-btn hidden-mobile" data-webdav-link><i class="icon-edit"></i></a>
             <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-replace"></i></a>
             <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-more"></i></a>
           </div>
@@ -406,13 +407,19 @@ TODO
           <a class="qw-back-btn blue" href="#"></a>
         </div>
         <div class="title">
-          <span>%MAKETEXT{"Upload attachments"}%</span>
+          <span>%MAKETEXT{"Upload"}%</span>
         </div>
       </div>
     </div>
-    <div data-scrollcontainer>
+    <div>
       <div id="qw-file-uploader">
-        <div></div>
+        <div class="container" data-scrollcontainer="parent"></div>
+        <span style="top:65px">
+          <i class="icon-upload"></i>
+        </span>
+        <span style="top:65px">
+          %MAKETEXT{"Klicken oder Drag & Drop"}%
+        </span>
       </div>
     </div>
   </div>
