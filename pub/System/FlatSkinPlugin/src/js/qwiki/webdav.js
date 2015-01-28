@@ -96,8 +96,9 @@
         return;
       }
 
+      var topic = p.TOPIC;
       var newTopic = topic + '_files'; // hard corded in FilesysVirtual
-      var davHref = href.replace( topic, newTopic ).replace( pubPath, opts.location + '/' + token );
+      var davHref = href.replace( topic, newTopic ).replace( p.PUBURLPATH, opts.location + '/' + token );
       davHref = decodeURI( davHref );
 
       var isChrome = /Chrome/.test(navigator.userAgent);
@@ -126,10 +127,8 @@
         a.click();
       }
     }).fail( function( xhr, status, err ) {
-      if (window.console && window.console.error) {
-        QWiki.error( 'Acquiring token failed!' );
-        QWiki.error( err );
-      }
+      QWiki.error( 'Acquiring token failed!' );
+      QWiki.error( err );
     }).always( function() {
       $('#qw-webdav-container').remove();
     });
