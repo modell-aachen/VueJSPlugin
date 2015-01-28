@@ -257,9 +257,8 @@
 
           // Click handling for previews
           $(this).find('a').click(function(ev) { ev.preventDefault(); return false; });
-          $(this).find('.qw-page .content, .qw-page .heading').dblclick(function(ev) {
+          $(this).parent().off('dblclick').dblclick(function(ev) {
             location.assign(location.protocol +'//'+ location.host + $p.data('url'));
-            ev.preventDefault();
             return false;
           });
 
