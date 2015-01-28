@@ -76,7 +76,7 @@ sub initPlugin {
       validate => 0
     );
 
-    _injectWebDAVPreferences();
+    _injectWebDAVPreferences( $web, $topic );
   }
 
   # inject scripts and styles
