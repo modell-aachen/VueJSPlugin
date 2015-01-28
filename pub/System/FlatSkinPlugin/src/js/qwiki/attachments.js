@@ -146,9 +146,9 @@
       $('.qw-attachments-container > .list').removeClass('deactive');
       $('.qw-attachments-container > .details').removeClass('active');
       $('.qw-attachments-container > .attach').removeClass('active');
-    }
 
-    return false;
+      return false;
+    }
   };
 
   var closeAll = function() {
@@ -168,10 +168,12 @@
   var enqueue = function( file ) {
     pendingFiles.push( file );
 
-    var $container = $('#qw-file-uploader > div');
+    var $container = $('#qw-file-uploader .container');
     if ( $container.length === 0 ) {
       return;
     }
+
+    $('#qw-file-uploader').children('span').css('top', '').css('bottom', '10px');
 
     var $tmpl = $(QWiki.plugins.attachments.uploadContainerTemplate);
     $tmpl.find('span.filename').text( file.name );

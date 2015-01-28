@@ -1,18 +1,29 @@
 #qw-file-uploader {
   border-radius: $global-radius;
-  min-height: 200px;
   height: auto;
-  // background-color: $qw-upload-dnd-bg;
-  border: $qw-border-width solid $qw-border-bg;
-  // transition: background-color 0.3s ease-in-out;
+
+  position: absolute;
+  top: 60px;
+  bottom: 10px;
+  left: rem-calc(6);
+  right: rem-calc(6);
 
   &:hover {
     cursor: pointer;
-    // background-color: $qw-upload-dnd-hover-bg;
   }
 
-  &.drag {
-    // background-color: $qw-upload-dnd-hover-bg;
+  &.drag {}
+
+  > span {
+    display: block;
+    text-align: center;
+    position: relative;
+    color: $primary-color;
+    font-size: 0.8rem;
+
+    i:before {
+      font-size: 2rem;
+    }
   }
 
   > div {
@@ -55,9 +66,13 @@
       position: absolute;
       left: rem-calc(6);
       font-size: 0.7rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &.filename {
         top: rem-calc(5);
+        width: calc(100% - 12px);
       }
 
       &.progress {
@@ -90,7 +105,8 @@
   @media #{$mobile-up} {width: calc(100% - 2 * #{$qw-content-padding});}
   @media #{$medium-only} {width: calc(6 * #{$p} - 3 * #{$qw-content-padding});}
   @media #{$large-only} {width: calc(4 * #{$p} - 2.66 * #{$qw-content-padding});}
-  @media #{$extended-up} {width: calc(3 * #{$p} - 2.5 * #{$qw-content-padding});}
+  // @media #{$extended-up} {width: calc(3 * #{$p} - 2.5 * #{$qw-content-padding});}
+  @media #{$extended-up} {width: calc(3 * #{$p} - 2 * #{$qw-content-padding});}
 
   &.active {
     transform: translate3d(0, 0, 0);
@@ -184,8 +200,9 @@
       .attachment {
         @include grid-row($behavior: collapse);
         > div {
+          font-size: 0.8rem;
           .title {
-            @include grid-column($columns: 8, $collapse: true);
+            @include grid-column($columns: 9, $collapse: true);
 
             white-space: nowrap;
             overflow: hidden;
@@ -193,10 +210,11 @@
           }
 
           .date {
-            @include grid-column($columns: 4, $collapse: true);
+            @include grid-column($columns: 3, $collapse: true);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: #999;
           }
 
           .raw {
@@ -208,6 +226,7 @@
   }
 
   > div.attach {
+    position: relative;
     transform: translate3d( 100%, 0, 0 );
     transition: transform 0.3s ease-in-out;
 
@@ -217,7 +236,10 @@
 
     > div {
       padding: rem-calc(6);
-      border-bottom: 1px solid $qw-border-bg;
+
+      &:first-child {
+        border-bottom: 1px solid $qw-border-bg;
+      }
 
       &.slimScrollDiv {
         width: calc( 100% - 14px) !important; // 100% - 2*padding + 2*border-width;
