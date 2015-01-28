@@ -162,7 +162,7 @@
 
         > .upload {
           @include grid-column($columns: 2, $collapse: true);
-          > * {float: right;}
+          > * {float: right; padding-top: rem-calc(4);}
         }
       }
 
