@@ -52,8 +52,8 @@
   <ul class="dashboard-list" data-inline-list>
     <li data-target="tasks"><span href="#" >Aufgaben</span></li>
     <li data-target="knowledge"><span href="#">Wissen</span></li>
-    <li data-target="black"><span href="#">Lesezeichen</span></li>
-    <li data-target="blue"><span href="#">Einstellungen</span></li>
+    <li data-target="favorites"><span href="#">Lesezeichen</span></li>
+    <li data-target="userdata"><span href="#">Einstellungen</span></li>
   </ul>
 </div>
 %TMPL:END%
@@ -107,6 +107,18 @@
     <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
     <span class="keywords">Tag</span>
   </div>
+</div> 
+
+<div class="qw-dashboard-container favorites"> 
+  
+  Here we have to render the Favorites
+  
+</div> 
+
+<div class="qw-dashboard-container userdata"> 
+  
+  Here we have to render the UserForm
+  
 </div> 
 
 <div class="switch radius">
