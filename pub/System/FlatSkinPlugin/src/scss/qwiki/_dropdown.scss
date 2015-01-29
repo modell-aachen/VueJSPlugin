@@ -28,7 +28,7 @@
       color: $qw-dropdown-light-hover-color;
       background: $qw-dropdown-light-hover-bg;
 
-      > a {
+      a {
         color: inherit;
       }
     }
@@ -37,12 +37,12 @@
       color: $qw-dropdown-light-active-color;
       background: $qw-dropdown-light-active-bg;
 
-      > a {
+      a {
         color: inherit;
       }
     }
 
-    > a {
+    a {
       color: inherit;
       display: block;
       padding: rem-calc(10 4);
@@ -51,6 +51,10 @@
       &:visited, &:link {
         color: inherit;
       }
+    }
+
+    ul {
+      list-style: none;
     }
   }
 }

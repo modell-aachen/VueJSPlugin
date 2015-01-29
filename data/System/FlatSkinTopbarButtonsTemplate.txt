@@ -1,3 +1,4 @@
+%TMPL:INCLUDE{"TopicMenu"}%
 %TMPL:DEF{"topbar:tabs"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
 %TMPL:DEF{"topbar:actions"}%%TMPL:P{"topbar:two:right"}%%TMPL:END%
 
@@ -16,13 +17,7 @@
 }%%IF{"$FAVORITES='1' AND $'GETWORKFLOWROW{approved}'" then="<a href=\"#\" class=\"qw-action-button hidden-mobile\" data-favoritesbutton>$percntTMPL:P{favorites:button}$percnt</a>"}%%{
 }%<a href="#" class="qw-action-button hidden-mobile"><i class="icon-forward"></i></a>
 <a href="#" class="qw-action-button hidden-mobile" data-dropdown="#qw-more-menu"><i class="icon-more"></i></a>
-<ul id="qw-more-menu" class="qw-dropdown-light">
-  	<li><a href="%SCRIPTURL{"edit"}%/%WEB%/%TOPIC%?nowysiwyg=1;t=%GMTIME{"$epoch"}%">%MAKETEXT{"Wikitext bearbeiten"}%</a></li>
-   <li><a href="#">sub menu 2</a></li>
-   <li><a href="#">sub menu 3</a></li>
-   <li><a href="#">sub menu 4</a></li>
-</ul>
-%TMPL:END%
+%TMPL:P{"menu:more"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:edit"}%<!--name-->
 <a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button visible-large-up" data-behavior="radio" data-group="qw-action-buttons" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-toggle><i class="icon-maximize"></i></a>

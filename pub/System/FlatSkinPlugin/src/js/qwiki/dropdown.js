@@ -132,6 +132,19 @@
       return false;
     }
 
+    // todo...
+    // $target.find('li').each( function() {
+    //   var $li = $(this);
+    //   var $ul = $li.find('ul');
+    //   if ( $ul.length === 0 ) {
+    //     return;
+    //   }
+
+    //   $ul = $($ul[0]);
+    //   console.log( $li.find('a') );
+    //   console.log( $li );
+    // });
+
     $this.addClass('active');
     var pos = $this.offset();
     var top = pos.top + $this.height();
