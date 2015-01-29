@@ -1,0 +1,11 @@
+*.js text
+*.scss text
+*.sass text
+*.spec text
+*.json text
+/.* text
+/README.md text
+/data text
+/lib text
+/locale text
+/templates text
