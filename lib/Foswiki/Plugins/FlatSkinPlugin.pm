@@ -340,6 +340,8 @@ sub _restComment {
     my $cmt = decode_json($q->param('comment'));
     $cmt->{author} = Foswiki::Func::getWikiName($session->{user});
     $cmt->{date} = time;
+    $cmt->{name} = _uniqueID();
+
     $meta->putKeyed('FLATCOMMENT', $cmt);
     $changed = 1;
     $response->{status} = 204;

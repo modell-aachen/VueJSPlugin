@@ -189,6 +189,14 @@
     $('.qw-comment-reply .btn').css('display', 'block');
     $reply.css('height', height);
 
+    var id = $reply.data('p-id');
+    if ( id ) {
+      var cmts = _.where( self.comments, {pid: id});
+      if ( cmts.length > 0 ) {
+        cmts[0].solved = false;
+      }
+    }
+
     return false;
   };
 
@@ -217,7 +225,8 @@
     var cmt = {
       type: cmts[0].type,
       text: $tb.val(),
-      pid: id
+      pid: id,
+      solved: cmts[0].solved || false
     };
 
     self.post( cmt );
@@ -247,7 +256,7 @@
     var cmt = cmts[0];
     cmt.solved = true;
 
-    self.post( cmt );
+    $('.qw-comment-reply .reply-btn').click();
     return false;
   };
 
