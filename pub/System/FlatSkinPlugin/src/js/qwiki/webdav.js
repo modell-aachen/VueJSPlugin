@@ -116,8 +116,11 @@
           return;
         }
 
-        var $cnt = $('<div id="qw-webdav-container" class="hidden"></div>');
-        $cnt.appendTo('body');
+        var $cnt = $('#qw-webdav-container');
+        if ( $cnt.length === 0 ) {
+          $cnt = $('<div id="qw-webdav-container" class="hidden"></div>');
+          $cnt.appendTo('body');
+        }
 
         var a = document.createElement('a');
         a.setAttribute('href', davHref);
