@@ -4,7 +4,6 @@ jQuery(function($){
 	// $(".switch input").on("load", function() {}
 
 	$(".switch input").on("change", function() {
-		console.log("change");
 		$(this).parent().children("span").toggleClass("checkmark");
 	});
 });
