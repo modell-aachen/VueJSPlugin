@@ -17,7 +17,7 @@
 }%<a href="#" class="qw-action-button hidden-mobile"><i class="icon-forward"></i></a>
 <a href="#" class="qw-action-button hidden-mobile" data-dropdown="#qw-more-menu"><i class="icon-more"></i></a>
 <ul id="qw-more-menu" class="qw-dropdown-light">
-  	<li><a href="#">sub menu 1</a></li>
+  	<li><a href="%SCRIPTURL{"edit"}%/%WEB%/%TOPIC%?nowysiwyg=1">%MAKETEXT{"Wikitext bearbeiten"}%</a></li>
    <li><a href="#">sub menu 2</a></li>
    <li><a href="#">sub menu 3</a></li>
    <li><a href="#">sub menu 4</a></li>
