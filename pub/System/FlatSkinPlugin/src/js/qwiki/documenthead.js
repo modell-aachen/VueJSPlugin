@@ -27,6 +27,13 @@
   var handleClick = function( evt ) {
     var self = evt.data;
     var sel = '.' + self.class;
-    $(sel).toggleClass('toggled');
+    var $el = $(sel);
+    $el.toggleClass('toggled');
+
+    if ( $el.hasClass( 'toggled' ) ) {
+      $el.height( $('.flex-table').height() );
+    } else {
+      $el.height( $('.flex-box').height() );
+    }
   };
 }(jQuery, window._, window.document, window));

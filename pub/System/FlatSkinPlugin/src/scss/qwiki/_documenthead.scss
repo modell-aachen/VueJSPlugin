@@ -170,8 +170,6 @@
   }
 
   &.toggled {
-    height: rem-calc(115);
-
     > .toggle {
       > .reduced { display: block; }
       > .classic { display: none; }
