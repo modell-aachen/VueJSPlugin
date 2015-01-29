@@ -7,6 +7,7 @@ use Foswiki::Func ();
 use Foswiki::Plugins ();
 use Foswiki::Plugins::JQueryPlugin ();
 
+use Digest::MD5;
 use JSON;
 
 use version;
@@ -296,9 +297,15 @@ sub _restValidation {
   my $q = $session->{request};
   my ($web, $topic) = Foswiki::Func::normalizeWebTopicName(undef, $q->param('topic'));
   my $cgis = $session->getCGISession();
+  my $context = "$web.$topic";
 
-  require Foswiki::Validation;
-  my $key = Foswiki::Validation::generateValidationKey( $cgis, "$web.$topic" );
+  my $actions = $cgis->param('VALID_ACTIONS') || {};
+  my $key = Digest::MD5::md5_hex( $context, $cgis->id() );
+  my $action = $key;
+  my $timeout = time() + $Foswiki::cfg{Validation}{ValidForTime};
+  $actions->{$action} = $timeout;
+  $cgis->param( 'VALID_ACTIONS', $actions );
+
   return $key;
 }
 
