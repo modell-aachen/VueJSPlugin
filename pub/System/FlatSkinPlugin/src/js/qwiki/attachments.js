@@ -44,31 +44,33 @@
 
       $('[data-attachtable-toggle]').text( text );
 
-      // dnd upload handler
-      var self = this;
-      var upload = document.getElementById('qw-file-uploader');
-      if ( _.isUndefined( upload ) ) {
-        return;
+      // dnd upload handler only visible in view mode
+      if ( $('body.context-edit').length === 0 ) {
+        var self = this;
+        var upload = document.getElementById('qw-file-uploader');
+        if ( _.isUndefined( upload ) ) {
+          return;
+        }
+
+        upload.ondragover = function() {
+          $(upload).addClass('drag');
+          return false;
+        };
+
+        upload.ondragleave = function() {
+          $(upload).removeClass('drag');
+          return false;
+        };
+
+        upload.ondrop = function( evt ) {
+          $(upload).removeClass('drag');
+          evt.preventDefault();
+          var files = evt.dataTransfer.files;
+          _.each( files, function( file ) {
+            self.upload( file );
+          });
+        };
       }
-
-      upload.ondragover = function() {
-        $(upload).addClass('drag');
-        return false;
-      };
-
-      upload.ondragleave = function() {
-        $(upload).removeClass('drag');
-        return false;
-      };
-
-      upload.ondrop = function( evt ) {
-        $(upload).removeClass('drag');
-        evt.preventDefault();
-        var files = evt.dataTransfer.files;
-        _.each( files, function( file ) {
-          self.upload( file );
-        });
-      };
     },
 
     unbind: function() {
