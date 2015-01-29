@@ -110,11 +110,12 @@
       }
 
       if ( isFirefox || isChrome ) {
-        if ( isFirefox && !foswiki.hasFFAddon ) {
-          // createFirefoxAddonDialog();
-          // ToDo.
-          return;
-        }
+        // seems as if FF isn't able anymore to locate its own resources...
+        // if ( isFirefox && !foswiki.hasFFAddon ) {
+        //   // createFirefoxAddonDialog();
+        //   // ToDo.
+        //   return;
+        // }
 
         var $cnt = $('#qw-webdav-container');
         if ( $cnt.length === 0 ) {
