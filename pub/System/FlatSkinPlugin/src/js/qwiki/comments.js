@@ -169,6 +169,12 @@
   };
 
   var showReplyBox = function( evt ) {
+    var self = evt.data;
+    if ( self.Q.options.kvp.hasDiscussion ) {
+      $('.qw-modal.deny-comment').modal({show:1});
+      return false;
+    }
+
     var $reply = $('.qw-comment-reply');
     var height = $reply.height();
     $reply.data('height', height);
