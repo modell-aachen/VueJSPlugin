@@ -341,7 +341,7 @@ TODO
 
 %TMPL:DEF{"attachments:header"}%<!--attachments:header-->
 <div class="qw-attachments-container" data-offcanvas>
-  <div class="list">
+  <section class="list">
     <div>
       <div class="heading">
         <div class="back">
@@ -355,15 +355,17 @@ TODO
         </div>
       </div>
     </div>
-    <div data-scrollcontainer>
-      <ul>
+    <div>
+      <div data-scrollcontainer=".qw-attachments-container">
+        <ul>
 <!--/attachments:header-->%TMPL:END%
 
 %TMPL:DEF{"attachments:footer"}%<!--attachments:footer-->
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="details">
+  </section>
+  <section class="details">
     <div data-qtemplate="qw.attachment.details">
       <div>
         <div class="heading">
@@ -399,8 +401,8 @@ TODO
         </div>
       </div>
     </div>
-  </div>
-  <div class="attach">
+  </section>
+  <section class="attach">
     <div>
       <div class="heading">
         <div class="back">
@@ -414,15 +416,13 @@ TODO
     <div>
       <div id="qw-file-uploader">
         <div class="container" data-scrollcontainer="parent"></div>
-        <span style="top:65px">
-          <i class="icon-upload"></i>
-        </span>
-        <span style="top:65px">
-          %MAKETEXT{"Klicken oder Drag & Drop"}%
-        </span>
+      </div>
+      <div class="hint">
+        <span><i class="icon-upload"></i></span>
+        <span>%MAKETEXT{"Klicken oder Drag & Drop"}%</span>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 <!--/attachments:footer-->%TMPL:END%
 
