@@ -130,10 +130,6 @@ STYLES
 <script src="$path/js/qwiki$suffix.js$VERSIONQUERY"></script>
 SCRIPTS
 
-  $scripts .= <<"EDITSCRIPTS" if Foswiki::Func::getContext()->{edit};
-<script src="$path/js/qwiki-edit$suffix.js$VERSIONQUERY"></script>
-EDITSCRIPTS
-
   Foswiki::Func::addToZone( 'head', 'FLATSKIN::STYLES', $styles );
   Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS', $scripts, 'JQUERYPLUGIN::FOSWIKI' );
 }
