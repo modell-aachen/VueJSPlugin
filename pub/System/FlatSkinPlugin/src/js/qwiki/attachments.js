@@ -45,10 +45,10 @@
       $('[data-attachtable-toggle]').text( text );
 
       // dnd upload handler only visible in view mode
-      if ( $('body.context-edit').length === 0 ) {
+      if ( $('body.context-edit').length !== 0 ) {
         var self = this;
         var upload = document.getElementById('qw-file-uploader');
-        if ( _.isUndefined( upload ) ) {
+        if ( _.isUndefined( upload ) || uoload === null ) {
           return;
         }
 
