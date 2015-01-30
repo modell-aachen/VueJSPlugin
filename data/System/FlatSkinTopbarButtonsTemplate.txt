@@ -13,12 +13,12 @@
 %TMPL:DEF{"topbar:two:right"}%<div>%TMPL:P{"topbar:two:right:misc"}%</div><div class="topbar-edit">%TMPL:P{"topbar:two:right:edit"}%</div>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:misc"}%
-<a href="#" class="qw-action-button hidden-mobile"><i class="icon-flag"></i></a>%{
-}%%IF{"$FAVORITES='1' AND $'GETWORKFLOWROW{approved}'" then="<a href=\"#\" class=\"qw-action-button hidden-mobile\" data-favoritesbutton>$percntTMPL:P{favorites:button}$percnt</a>"}%%{
-}%<a href="#" class="qw-action-button hidden-mobile"><i class="icon-forward"></i></a>
-<a href="#" class="qw-action-button hidden-mobile" data-dropdown="#qw-more-menu"><i class="icon-more"></i></a>
+<a href="#" class="qw-action-button hidden-mobile" title="%MAKETEXT{"Choose language"}%" data-tooltip="top"><i class="icon-flag"></i></a>%{
+}%%IF{"$FAVORITES='1' AND $'GETWORKFLOWROW{approved}'" then="$percntTMPL:P{favorites:button}$percnt"}%%{
+}%<a href="#" class="qw-action-button hidden-mobile" title="%MAKETEXT{"Recommend topic"}%" data-tooltip="top"><i class="icon-forward"></i></a>
+<a href="#" class="qw-action-button hidden-mobile" data-dropdown="#qw-more-menu" title="%MAKETEXT{"More"}%" data-tooltip="top"><i class="icon-more"></i></a>
 %TMPL:P{"menu:more"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:edit"}%<!--name-->
-<a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button visible-large-up" data-behavior="radio" data-group="qw-action-buttons" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-toggle><i class="icon-maximize"></i></a>
+<a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button visible-large-up" data-behavior="radio" data-group="qw-action-buttons" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-toggle data-tooltip="top"><i class="icon-maximize"></i></a>
 <!--/name-->%TMPL:END%

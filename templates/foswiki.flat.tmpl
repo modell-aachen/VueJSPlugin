@@ -229,17 +229,17 @@ TODO
     <div class="header">
       <div class="default">
         <span>%MAKETEXT{"Comments"}%</span>
-        <a href="#" class="close" data-offcanvas-toggle="commentbar"></a>
+        <a href="#" class="close" data-offcanvas-toggle="commentbar" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
       </div>
       <div class="idea">
         <i class="icon-comment-idea"></i>
         <span>%MAKETEXT{"Idea"}%</span>
-        <a href="#" class="close right" data-offcanvas-toggle="commentbar"></a>
+        <a href="#" class="close right" data-offcanvas-toggle="commentbar" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
       </div>
       <div class="issue">
         <i class="icon-exclamation"></i>
         <span>%MAKETEXT{"Issue"}%</span>
-        <a href="#" class="close right" data-offcanvas-toggle="commentbar"></a>
+        <a href="#" class="close right" data-offcanvas-toggle="commentbar" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
       </div>
     </div>
     <div class="content">
@@ -267,11 +267,11 @@ TODO
     </div>
     <div class="actions">
       <div>
-        <a href="%SCRIPTURLPATH{"view"}%/Manuals" class="qw-prio3-btn"><i class="icon-questionmark-circle"></i></a>
-        <a href="%IF{"$ USERNAME != 'guest'" then='%SCRIPTURLPATH{"view"}%?logout=1' else='%SCRIPTURLPATH{"login"}%'}%" class="qw-prio3-btn" title="%IF{"$ USERNAME != 'guest'" then='%MAKETEXT{"Logout"}%' else='%MAKETEXT{"Login"}%'}%">
+        <a href="%SCRIPTURLPATH{"view"}%/Manuals" title="%MAKETEXT{"Help"}%" class="qw-prio3-btn" data-tooltip="top"><i class="icon-questionmark-circle"></i></a>
+        <a href="%IF{"$ USERNAME != 'guest'" then='%SCRIPTURLPATH{"view"}%?logout=1' else='%SCRIPTURLPATH{"login"}%'}%" class="qw-prio3-btn" title="%IF{"$ USERNAME != 'guest'" then='%MAKETEXT{"Logout"}%' else='%MAKETEXT{"Login"}%'}%" data-tooltip="top">
         <i class="icon-%IF{"$ USERNAME != 'guest'" then='logout' else='login'}%"></i>
         </a>
-        <a href="%SCRIPTURLPATH{"view"}%/%WEB%/WebPreferences" class="qw-prio3-btn"><i class="icon-config"></i></a>
+        <a href="%SCRIPTURLPATH{"view"}%/%WEB%/WebPreferences" class="qw-prio3-btn" title="%MAKETEXT{"Settings"}%" data-tooltip="top"><i class="icon-config"></i></a>
       </div>
     </div>
     <div class="ma-logo">
@@ -289,7 +289,7 @@ TODO
       <div>
         <i class="icon-page-info"></i>
         <span>%MAKETEXT{"Document information"}%</span>
-        <a href="#" class="qw-close-btn" data-maximize-toggle=".qw-page, .qw-top .two .actions"></a>
+        <a href="#" class="qw-close-btn" data-maximize-toggle=".qw-page, .qw-top .two .actions" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
       </div>
     </div>
     <div class="content">
@@ -318,7 +318,7 @@ TODO
 %TMPL:DEF{"menutoggle"}%<!--menutoggle-->
 <div class="qw-menutoggle" data-offcanvas>
   <div class="customer-logo">%TMPL:P{"logo"}%</div>
-  <div class="toggle" data-offcanvas-toggle="leftbar"><div><i class="icon-menu"></i></div></div>
+  <div class="toggle" data-offcanvas-toggle="leftbar" title="%MAKETEXT{"Menu"}%" data-tooltip="right"><div><i class="icon-menu"></i></div></div>
 </div>
 <!--/menutoggle-->%TMPL:END%
 
@@ -346,13 +346,13 @@ TODO
     <div>
       <div class="heading">
         <div class="back">
-          <a class="qw-back-btn blue" href="#"></a>
+          <a class="qw-back-btn blue" href="#" title="%MAKETEXT{"Back"}%" data-tooltip="right"></a>
         </div>
         <div class="title">
           <span>%MAKETEXT{"Attachments"}%</span>
         </div>
         <div class="upload">
-          <a class="qw-add-btn" href="#"></a>
+          <a class="qw-add-btn" href="#" title="%MAKETEXT{"Upload attachment"}%" data-tooltip="left"></a>
         </div>
       </div>
     </div>
@@ -371,7 +371,7 @@ TODO
       <div>
         <div class="heading">
           <div class="back">
-            <a class="qw-back-btn blue" href="#"></a>
+            <a class="qw-back-btn blue" href="#" title="%MAKETEXT{"Back"}%" data-tooltip="right"></a>
           </div>
           <div class="title">
             <span qt-bind="name"></span>
@@ -394,10 +394,10 @@ TODO
       <div class="actions">
         <div class="buttons">
           <div>
-            <a qt-bind="href: url" class="qw-prio1-btn" target="_blank"><i class="icon-download"></i><span qt-bind="size"></span></a>
-            <a qt-bind="href: url" class="qw-prio2-btn hidden-mobile" data-webdav-link><i class="icon-edit"></i></a>
-            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-replace"></i></a>
-            <a href="" class="qw-prio2-btn hidden-mobile"><i class="icon-more"></i></a>
+            <a qt-bind="href: url" class="qw-prio1-btn" target="_blank" title="%MAKETEXT{"Download"}%" data-tooltip="top"><i class="icon-download"></i><span qt-bind="size"></span></a>
+            <a qt-bind="href: url" class="qw-prio2-btn hidden-mobile" title="%MAKETEXT{"Edit"}%" data-tooltip="top" data-webdav-link><i class="icon-edit"></i></a>
+            <a href="" class="qw-prio2-btn hidden-mobile" title="%MAKETEXT{"Replace"}%" data-tooltip="top"><i class="icon-replace"></i></a>
+            <a href="" class="qw-prio2-btn hidden-mobile" title="%MAKETEXT{"More"}%" data-tooltip="top"><i class="icon-more"></i></a>
           </div>
         </div>
       </div>
@@ -407,7 +407,7 @@ TODO
     <div>
       <div class="heading">
         <div class="back">
-          <a class="qw-back-btn blue" href="#"></a>
+          <a class="qw-back-btn blue" href="#" title="%MAKETEXT{"Back"}%" data-tooltip="right"></a>
         </div>
         <div class="title">
           <span>%MAKETEXT{"Upload"}%</span>
@@ -532,6 +532,7 @@ TODO
   active_label="%MAKETEXT{"Remove bookmark"}%"
   inactive_label="%MAKETEXT{"Bookmark this page"}%"
   format="<i class=\"icon-fav-$suffix\"></i>"
+  format="<a href=\"#\" class=\"qw-action-button hidden-mobile\" title=\"$label\" data-favoritesbutton data-tooltip=\"top\"><i class=\"icon-fav-$suffix\"></i></a>"
 }%%TMPL:END%
 
 
