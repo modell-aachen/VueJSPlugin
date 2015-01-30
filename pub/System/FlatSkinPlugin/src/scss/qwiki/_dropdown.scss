@@ -42,6 +42,11 @@
       }
     }
 
+    &.warning {
+      pointer-events: none;
+      color: $alert-color;
+    }
+
     a {
       color: inherit;
       display: block;

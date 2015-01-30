@@ -18,6 +18,10 @@
   clear: both;
 }
 
+.ignore-input {
+  pointer-events: none;
+}
+
 .space-left {
   margin-left: rem-calc(6);
 }
