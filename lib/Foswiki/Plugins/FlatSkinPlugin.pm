@@ -133,6 +133,14 @@ SCRIPTS
 
   Foswiki::Func::addToZone( 'head', 'FLATSKIN::STYLES', $styles );
   Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS', $scripts, 'JQUERYPLUGIN::FOSWIKI' );
+
+  my $session = $Foswiki::Plugins::SESSION;
+  my $lang = $session->i18n->language();
+
+  $scripts = <<"SCRIPTS";
+<script src="$path/js/i18n/qwiki.i18n.$lang.js$VERSIONQUERY"></script>
+SCRIPTS
+  Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS::I18N', $scripts, 'jsi18nCore' );
 }
 
 sub _injectWebDAVPreferences {

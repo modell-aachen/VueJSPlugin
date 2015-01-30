@@ -3,6 +3,7 @@
 
   QWiki.plugins.comments = {
     name: 'comments',
+    priority: 2,
     comments: [],
     solvedComments: [],
     types: ['idea', 'issue'],
@@ -40,7 +41,7 @@
         $container.on( 'mouseenter', self, onAdornerMouseEnter );
         $container.on( 'mouseleave', self, onAdornerMouseLeave );
 
-        var $btn = $('<div class="qw-comment-adorner" title="Add comment (todo: i18n)" data-tooltip="left"><i class="icon-add"></i></div>');
+        var $btn = $('<div class="qw-comment-adorner" title="Add comment" data-i18n-title="Add comment" data-i18n-ns="comments" data-tooltip="left"><i class="icon-add"></i></div>');
         $btn.appendTo( $container );
         $btn.data( 'cmtbl', id );
 
@@ -55,7 +56,8 @@
         if ( !_.isUndefined( hasComments ) ) {
           var index = parseInt( hasComments );
           $btn.addClass( self.types[index] );
-          $btn.attr('title', 'View comment (todo: i18n)');
+          $btn.attr('data-i18n-title', 'View comment');
+          $btn.attr('title', 'View comment');
         }
       });
 

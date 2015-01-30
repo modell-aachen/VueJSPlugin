@@ -256,6 +256,20 @@ module.exports = function(grunt) {
             '<%= pkg.pubDir %>/src/js/qwiki/!(core).js'
           ],
         }]
+      },
+      js18n: {
+        options: {
+          compress: false,
+          mangle: false,
+          preserveComments: false,
+          beautify: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= pkg.pubDir %>/src/js/i18n',
+          src: '**/*.js',
+          dest: '<%= pkg.pubDir %>/js/i18n'
+        }]
       }
     },
 
@@ -265,15 +279,15 @@ module.exports = function(grunt) {
       },
       grunt: {
         files: ['Gruntfile.js'],
-        tasks: ['build:' +  target]
+        tasks: ['build']
       },
       sass: {
         files: ['<%= pkg.pubDir %>/src/scss/**/*.scss'],
-        tasks: ['sass:' +  target]
+        tasks: ['sass']
       },
       uglify: {
         files: ['<%= pkg.pubDir %>/src/js/**/*.js'],
-        tasks: ['jshint','uglify:' + target]
+        tasks: ['jshint','uglify']
       }
     },
 
