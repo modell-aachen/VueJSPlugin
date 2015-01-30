@@ -48,7 +48,7 @@
       if ( $('body.context-edit').length !== 0 ) {
         var self = this;
         var upload = document.getElementById('qw-file-uploader');
-        if ( _.isUndefined( upload ) || uoload === null ) {
+        if ( _.isUndefined( upload ) || upload === null ) {
           return;
         }
 
