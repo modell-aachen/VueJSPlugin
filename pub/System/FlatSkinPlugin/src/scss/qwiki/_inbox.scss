@@ -1,0 +1,214 @@
+.qw-inboxbar {
+	> div {
+		padding: rem-calc(0 30);
+	    padding-top: 0;
+
+	    > .header {
+			padding: rem-calc(6 0 6 15);
+			background: white;
+			border-bottom: 1px solid #F5F5F5; 
+
+			@media #{$mobile-only} {min-height: $qw-top-two-height-mobile - 12px;}
+			@media #{$small-up} {min-height: $qw-top-two-height - 12px;}
+
+			i {
+			font-size: 2rem;
+			color: $qw-infobar-header-color;
+	    	}
+
+			span {
+				margin-left: rem-calc(6);
+				color: $qw-infobar-header-color;
+				> a {
+					text-decoration: none;
+					color: #236AA2;
+				}
+				> i {
+					font-size: 0.95rem;
+					color: #236AA2;
+				}
+			}
+	    }
+
+	    > .content {
+			background: $qw-infobar-content-bg;
+
+			> div {
+
+				> .label {
+
+						font-size: 0.6rem;
+						color: white;
+						font-weight: bold;
+						text-transform: uppercase;
+						background: #B3B3B3;
+						padding: rem-calc(5);
+						border-radius: 5px;
+						margin-bottom: 8px;	
+						margin-top: 8px;	
+				}
+
+				> .inbox-container {
+
+					> .inbox {
+						position: relative;
+						background-color: $qw-dashboard-task-bg;
+						border-radius: $global-radius;
+						margin-bottom: 2px;
+
+						> .inbox-left {
+							position: absolute;
+							top: 0; left: 0; bottom: 0;
+							border:1px;
+							width: 30px;
+							height: 100%;
+							border-radius: ($global-radius 0 0 $global-radius );
+							
+							> label {
+								padding:(10px 0 0 10px);
+							}
+						}
+
+						> .inbox-right {
+							margin-left: 30px;
+							cursor: pointer;
+							border:0;
+							padding:(10px);
+
+							> .caption {
+								margin:0;
+								height: 50px;
+								width: 100%;
+								border:0;
+
+								> .header {
+								display: block;
+								font-size: 0.85rem;
+								color:black;
+								}
+
+								> .date {
+								display: block;
+								font-size: 0.8rem;
+								color: #999;
+								}
+							}
+
+							> .content {
+								margin:0;
+								border:0;
+								
+								> span {
+									display: block;
+									font-size: 0.75rem;
+									color: #838383;
+								}
+							}
+
+							> .author {
+
+								> span {
+									border-radius: 5px;
+									background: white;
+									padding: rem-calc(3px);
+									margin: rem-calc(10px 30px 10px 0);
+									font-size: 0.75rem;
+									&.responsible {
+										color: #236AA2;
+									}
+
+									&.meetings {
+										font-size: 0.65rem;
+										color: #838383;
+									}
+								}
+							}
+						}
+
+						> .tools {
+							transition: opacity 0.15s ease-in-out;
+							opacity: 0;
+							height: 40px;
+							border: solid 5px $qw-button2-bg-color;
+							border-top: 0; 
+							border-right: 0;
+							border-top-right-radius:$global-radius;
+							border-bottom-left-radius: 3px;
+	/* 						margin-right: rem-calc(-5);
+							margin-top: rem-calc(-6);
+							padding-bottom: 7px; */					
+							display: none;
+							width: 120px;
+							position: absolute;
+							top: 0;
+							right: 0;
+							> ul {
+								margin:0;
+								padding:0;
+								background:red;
+								list-style: none;
+
+								> li {
+									font-size: 1.3rem;
+									display: block;
+									position: relative;
+									float: left;
+									padding-top:3px;
+									width:40px;
+									height:37px;
+									color: white;
+									background: #236AA2;
+
+									i {
+										margin: 15px;
+									}
+
+									&.inbox-add {
+										border-radius: ($global-radius 0 0 $global-radius);
+									}
+
+									&.inbox-check {
+										border-radius: (0 $global-radius $global-radius 0);
+									}
+
+									&:hover {
+										background: #2C85C9;
+									}
+								}
+							}
+						}
+
+						&:hover {
+							background : #DAE4EB;
+							> .tools {
+								opacity: 1;
+								display: inline-block;
+							}
+						}
+
+						&.priority {
+
+							> .inbox-left {
+							border-left: 3px solid red;
+							}
+
+							> .inbox-right {
+
+								> .caption {
+
+									> .header {
+									font-weight: Bold;
+									}
+								}	
+							}						
+						}			
+					}
+
+					&:nth-child(even) {
+						background-color:white;
+					}
+				}
+			}
+	    }
+	}
+}
