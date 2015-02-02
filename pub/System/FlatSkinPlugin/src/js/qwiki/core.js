@@ -4,7 +4,26 @@
   window.QWiki = {
     name: 'qwiki',
     plugins: {},
-    options: {},
+    options: {
+      spinner: {
+        lines: 15,
+        length: 40,
+        width: 20,
+        radius: 60,
+        corners: 1,
+        rotate: 0,
+        direction: 1,
+        color: '#fff',
+        speed: 1.4,
+        trail: 70,
+        shadow: false,
+        hwaccel: true,
+        className: 'spinner',
+        zIndex: 2e9,
+        top: '50%',
+        left: '50%'
+      }
+    },
     version: '1.0.0', // ToDo. replace by git?
     global: {
       debug: 0,
@@ -54,6 +73,26 @@
 
       // delegate back to caller
       return scope;
+    },
+
+    block: function() {
+        var opts = this.options.spinner;
+        if(!opts || !$.blockUI) {
+            return;
+        }
+
+        var spinner = new Spinner( opts ).spin().el;
+        var size = (opts.radius + opts.length + 20) * 2;
+        var $spinner = $('<div></div>').css('height', size).css('width', size);
+        $spinner.append(spinner);
+
+        $.blockUI({message: $spinner});
+    },
+
+    unblock: function() {
+        if($.unblockUI) {
+           $.unblockUI();
+        }
     },
 
     debug: function() {

@@ -10,24 +10,7 @@
         $.extend( this, options );
       }
 
-      var opts = {
-        lines: 15,
-        length: 40,
-        width: 20,
-        radius: 60,
-        corners: 1,
-        rotate: 0,
-        direction: 1,
-        color: '#fff',
-        speed: 1.4,
-        trail: 70,
-        shadow: false,
-        hwaccel: true,
-        className: 'spinner',
-        zIndex: 2e9,
-        top: '50%',
-        left: '50%'
-      };
+      var opts = window.QWiki.options.spinner;
 
       this.spinner = new Spinner( opts );
       this.bind();
