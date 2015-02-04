@@ -22,12 +22,15 @@
   .modacBookmarksSplit td.splitleft { padding-right: 10px; vertical-align: top; }
   hr.splith { border:solid 1px #ccc; }
   .modacBookmarks { list-style: none; margin: 0; padding: 0; }
-  .modacBookmarks li { list-style: none; border-top: solid 1px #eee; margin: 5px 0 0 0; padding: 5px 0 0 0; line-height: 100%; }
+  .modacBookmarks li { list-style: none; border-top: solid 1px #eee; margin: 5px 0 0 0; padding: 5px 0 0 0; line-height: 100%; font-size: 90%;}
+  .modacBookmarks li a { text-decoration:none; color: black;}
+  .modacBookmarks li a span { margin-top:4px;}
+  .modacBookmarks li a:visited {color: black;}
   .modacBookmarks li:first-child { border-top: none; }
   .modacBookmarks form { float: right; }
   .modacBookmarks div.date { float: right; text-align: right; color: #666; font-size: 75%; }
-  .perspageBlock { border: solid 1px #6494c9; padding: 10px; margin-bottom: 2em; }
-  .perspageBlockTitle { background-color: #6494c9; color: white; padding: 5px; font-size: 150%; font-weight: bold; }
+  .perspageBlock { padding: 10px; margin-bottom: 2em;}
+  .perspageBlockTitle { background-color: #AAA; color: white; padding: 5px; font-size: 100%; font-weight: bold; border-radius: 3px;}
   .bmsubinfo { font-size: 75%; }
   .disinterest { opacity: 0.5; }
   .tasktitle { font-weight: bold; font-size: 110%; }
