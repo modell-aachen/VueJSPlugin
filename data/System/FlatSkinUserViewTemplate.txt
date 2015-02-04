@@ -43,17 +43,16 @@
 
 %TMPL:DEF{"dashboard:menu"}%
 <div class="qw-dashboard-topbar">
-  <span><i class="icon-home"></i> Dashboard</span>
+  <span><i class="icon-home"></i> %MAKETEXT{"Dashboard"}%</span>
   <ul class="dashboard-list" data-inline-list>
-    <li data-target="tasks"><span href="#" >Aufgaben</span></li>
-    <li data-target="knowledge"><span href="#">Wissen</span></li>
-    <li data-target="bookmarks"><span href="#">Lesezeichen</span></li>
-    <li data-target="userdata"><span href="#">Einstellungen</span></li>
+    <li data-target="tasks"><span href="#" >%MAKETEXT{"Aufgaben"}%</span></li>
+    <li data-target="knowledge"><span href="#">%MAKETEXT{"Wissen"}%</span></li>
+    <li data-target="bookmarks"><span href="#">%MAKETEXT{"Lesezeichen"}%</span></li>
+    <li data-target="userdata"><span href="#">%MAKETEXT{"Einstellungen"}%</span></li>
   </ul>
 </div>
 %TMPL:END%
 %TMPL:DEF{"perspage:bookmarks"}%
-
 <div class="qw-dashboard-container tasks active">
   <div class="task priority">
     <div class="input">
@@ -87,14 +86,11 @@
       <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
   </div>
 </div>  
-
 <div class="qw-dashboard-container knowledge">
-
     <div class="perspageBlockTitle">%MAKETEXT{"My notes"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserNotesEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
     <div class="perspageBlock">
         %TEXT%
     </div>
-
 New stuff:
   <div class="task priority future">
     <span class="title">Beschreibung der Aufgabe</span>
@@ -112,8 +108,7 @@ New stuff:
     <span class="keywords">Tag</span>
   </div>
 </div> 
-
-<div class="qw-dashboard-container favorites"> 
+<div class="qw-dashboard-container bookmarks">
     <div class="perspageBlockTitle">%MAKETEXT{"Bookmarks"}%</div>
     <div class="perspageBlock">
         %SOLRSEARCH{"type:topic webtopic:(%FAVORITELIST{format="\\"$swebtopic\\"" separator=" OR " default="NOT *"}%)"
@@ -122,9 +117,6 @@ New stuff:
         }%
     </div>
 </div>
-  
-</div> 
-
 <div class="qw-dashboard-container userdata"> 
     <div class="perspageBlockTitle">%MAKETEXT{"User data"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserDataEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
     <div class="perspageBlock">
