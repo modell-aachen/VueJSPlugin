@@ -1,6 +1,6 @@
 %TMPL:INCLUDE{"viewtopicactionbuttons"}%
 %TMPL:DEF{"menu:more:view"}%<ul id="qw-more-menu" class="qw-dropdown-light">
-%IF{"context MAPrinceModPluginEnabled" then="<li><span class='moremenue-print'>$percentTMPL:P{pdfexport}$percent</span></li>"}%
+<!-- PDF Export -->%IF{"context MAPrinceModPluginEnabled" then="<li><span class='moremenue-print'>$percentTMPL:P{pdfexport}$percent</span></li>"}%
 <li class='requireModacChangePermission'><span class='moremenue-wikitext'>%TMPL:P{"raw_edit_link"}%</span></li>
 <li class="ignore-input"><hr class="divider"><li>
 <!-- TOPIC PREFERENCES --><li class='requireModacChangePermission'><span class='modacDialogable morelink-settings'><a href='%SCRIPTURLPATH{"view"}%/%BASEWEB%/%BASETOPIC%?template=more' class='modacChanging'>%MAKETEXT{"Topic preferences"}%</a></span></li>
@@ -11,11 +11,11 @@
 <!-- DELETE --><li class='requireModacMovePermission'><span class='modacDialogable morelink-delete'><a href='%SCRIPTURLPATH{"view"}%/%BASEWEB%/%BASETOPIC%?template=more'>%MAKETEXT{"Delete topic"}%</a></span></li>
 </ul>%TMPL:END%
 
-%TMPL:DEF{"menu:more:edit"}%
-<ul id="qw-more-menu" class="qw-dropdown-light">
+%TMPL:DEF{"menu:more:edit"}%%{
+}%<ul id="qw-more-menu" class="qw-dropdown-light">
  <li class="warning">%MAKETEXT{"These actions are not available while editing."}%</li>
-</ul>
-%TMPL:END%
+</ul>%{
+}%%TMPL:END%
 
 %TMPL:DEF{"menu:more"}%%TMPL:P{context="edit" then="menu:more:edit" else="menu:more:view"}%%TMPL:END%
 %{</verbatim>}%
