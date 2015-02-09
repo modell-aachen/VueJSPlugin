@@ -55,6 +55,9 @@ width: 100%; */
 			float: right;
 			text-transform: uppercase;
 			margin: $qw-dashboard-task-badge-margin;
+			> i {
+				font-size: 0.875rem;
+			}
 		}
 		> a.meetings {
 			float: right;
@@ -62,6 +65,9 @@ width: 100%; */
 			font-size: $qw-dashboard-task-keyword-font-size;
 			padding: $qw-dashboard-task-keyword-padding;
 			color: $qw-dashboard-task-title-color;
+			> i {
+				font-size: 0.975rem;
+			}
 		}
 
 		&.new {
@@ -89,6 +95,12 @@ width: 100%; */
 		background-color : $qw-dashboard-task-active-bg;
 			> span.title {
 				color:$qw-dashboard-task-active-title-color;	
+			}
+			&.future {
+				> span.badge {
+					color: #FFF;
+				}
+
 			}		
 		}
 
@@ -161,6 +173,7 @@ width: 100%; */
 			margin-left: $qw-dashboard-list-margin-left;
 			color: $qw-dashboard-list-font-color;
 			padding: $qw-dashboard-list-padding;
+			cursor: pointer;
 			&:hover {
 				/* transition: all 10s ease-in-out; */
 				background : $qw-dashboard-list-hover-bg;

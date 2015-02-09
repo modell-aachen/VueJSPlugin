@@ -65,8 +65,8 @@
       </label>
     </div>
     <span class="title">Beschreibung der Aufgabe</span>
-    <span class="badge"><i class="icon-clock-inv"></i> Heute</span>
-    <a class="meetings"><i class="icon-app-meetings"></i>GESELLSCHAFTERSITZUNG</a>
+    <span class="badge"><i class="icon-clock-inv"> </i> Heute</span>
+    <a class="meetings"><i class="icon-app-meetings"></i> GESELLSCHAFTERSITZUNG</a>
   </div>
     <div class="task tomorrow">
       <div class="input">
@@ -76,7 +76,7 @@
         </label>
       </div>
       <span class="title">Beschreibung der Aufgabe</span>
-      <span class="badge"><i class="icon-clock-inv"></i> Morgen</span>
+      <span class="badge"><i class="icon-clock-inv"> </i> Morgen</span>
     </div>
   <div class="task future new priority">
       <div class="input">
@@ -86,8 +86,9 @@
         </label>
       </div>
       <span class="title">Beschreibung der Aufgabe</span>
-      <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
+      <span class="badge"><i class="icon-clock-inv"> </i> 12.20.</span>
   </div>
+    %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future priority\"><div class=\"input\"><label><input class=\"checkbox\" type=\"checkbox\"><span>%MAKETEXT{"New"}%</span></label></div><span class=\"title\"> $action_text_s</span><span class=\"badge\"><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span></div>"rows="1000" sort="createdate" reverse="on"}%
 </div>  
 <div class="qw-dashboard-container knowledge">
     <div class="perspageBlockTitle">%MAKETEXT{"My notes"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserNotesEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
@@ -104,8 +105,8 @@ New stuff:
     <span class="title">Beschreibung der Aufgabe</span>
     <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
     <span class="keywords">Tag</span>
-  </div>
-  <div class="task priority future">
+  </div
+>  <div class="task priority future">
     <span class="title">Beschreibung der Aufgabe</span>
     <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
     <span class="keywords">Tag</span>
