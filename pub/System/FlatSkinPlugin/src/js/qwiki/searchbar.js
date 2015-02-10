@@ -9,34 +9,23 @@
         $.extend( this, options );
       }
 
-      // this.bind();
+      this.bind();
     },
 
     bind: function() {
       this.unbind();
 
-      var $search = $('.qw-search input[name="search"]');
-      $search.on('click', this, onClick);
-      // $search.on('focus', this, onFocus);
-      // $search.on('blur', this, onBlur);
+      var $search = $('.qw-quicksearch-form input[name="search"]');
+      $search.on('click.qw-searchbar', this, onShowOffCanvas);
     },
 
     unbind: function() {
-      var $search = $('.qw-search input[name="search"]');
-      // $search.off('focus', onFocus);
-      // $search.off('blur', onBlur);
+      var $search = $('.qw-quicksearch-form input[name="search"]');
+      $search.off('.qw-searchbar');
     }
   };
 
-  var onFocus = function() {
-    $('.qw-searchbar').addClass('active');
-  };
-
-  var onBlur = function() {
-    $('.qw-searchbar').removeClass('active');
-  };
-
-  var onClick = function() {
-    $('.qw-searchbar').toggleClass('active');
+  var onShowOffCanvas = function() {
+    $('.qw-quicksearch').offcanvas({action: 'open'});
   };
 }(jQuery, window._, window.document, window));
