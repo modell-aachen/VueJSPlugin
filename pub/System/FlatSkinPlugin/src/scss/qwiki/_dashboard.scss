@@ -15,14 +15,14 @@ width: 100%; */
 
 	> .task {
 		margin:$qw-dashboard-task-margin;
-		border-radius: $global-radius;	
+		border-radius: $global-radius;
 		background-color: $qw-dashboard-task-bg;
 		cursor: pointer;
 
 		> .input {
 			display: inline-block;
 			border-right: 3px solid transparent;
-			border-radius: rem-calc( $global-radius 0 0 $global-radius); 
+			border-radius: rem-calc( $global-radius 0 0 $global-radius);
 			padding: $qw-dashboard-task-input-padding;
 			> label {
 				font-weight: bold;
@@ -87,37 +87,37 @@ width: 100%; */
 		&:hover {
 			background-color :$qw-dashboard-task-hover-bg;
 			> span.title {
-				color: $qw-dashboard-task-hover-title-color;	
-			}		
+				color: $qw-dashboard-task-hover-title-color;
+			}
 		}
 
 		&:active {
 		background-color : $qw-dashboard-task-active-bg;
 			> span.title {
-				color:$qw-dashboard-task-active-title-color;	
+				color:$qw-dashboard-task-active-title-color;
 			}
 			&.future {
 				> span.badge {
 					color: #FFF;
 				}
 
-			}		
+			}
 		}
 
 		&.tomorrow {
 			> span.badge {
-				@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-tomorrow-badge-bg, $radius:$global-radius);	
+				@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-tomorrow-badge-bg, $radius:$global-radius);
 			}
 		}
 
 		&.future {
 			> span.badge {
-				@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-future-badge-bg, $radius:$global-radius);	
+				@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-future-badge-bg, $radius:$global-radius);
 				color:$qw-dashboard-task-future-color;
 			}
 		}
 
-	 	&.priority {
+		&.priority {
 			> .input {
 				border-left: $qw-dashboard-task-priority-border-left;
 			}
@@ -146,15 +146,15 @@ width: 100%; */
 				padding: $qw-dashboard-task-keyword-padding;
 				color: $qw-dashboard-task-keyword-font-color;
 			}
-		}	
+		}
 	}
-} 
+}
 
 .qw-dashboard-topbar {
-		
+
 	height: $qw-dashboard-topbar-height;
 	background: $qw-dashboard-topbar-bg-color;
-	> span {	
+	> span {
 		float: left;
 		font-size: $qw-dashboard-topbar-span-font-size;
 		color:$qw-dashboard-topbar-span-font-color;
@@ -213,7 +213,7 @@ width: 100%; */
 			font-size: $qw-dashboard-toptwo-a-font-color-font-size;
 			text-decoration: none;
 			color: $qw-dashboard-toptwo-a-font-color;
-			> i { 
+			> i {
 			padding-right: $qw-dashboard-toptwo-a-margin;
 
 			}
@@ -239,7 +239,7 @@ width: 100%; */
 			font-size: $qw-dashboard-toptwo-a-font-color-font-size;
 			text-decoration: none;
 			color: $qw-dashboard-toptwo-a-font-color;
-			> i { 
+			> i {
 			padding-right: $qw-dashboard-toptwo-a-margin;
 			}
 		}
@@ -257,7 +257,7 @@ width: 100%; */
 					font-size: $qw-dashboard-toptwo-view-action-button-font-size;
 				}
 			}
-		} 
+		}
 	}
 }
 

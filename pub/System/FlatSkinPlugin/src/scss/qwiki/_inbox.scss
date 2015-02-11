@@ -1,20 +1,20 @@
 .qw-inboxbar {
 	> div {
 		padding: rem-calc(0 30);
-	    padding-top: 0;
+		padding-top: 0;
 
-	    > .header {
+		> .header {
 			padding: rem-calc(6 0 6 15);
 			background: white;
-			border-bottom: 1px solid #F5F5F5; 
+			border-bottom: 1px solid #F5F5F5;
 
 			@media #{$mobile-only} {min-height: $qw-top-two-height-mobile - 12px;}
 			@media #{$small-up} {min-height: $qw-top-two-height - 12px;}
 
 			i {
-			font-size: 2rem;
-			color: $qw-infobar-header-color;
-	    	}
+				font-size: 2rem;
+				color: $qw-infobar-header-color;
+			}
 
 			span {
 				margin-left: rem-calc(6);
@@ -28,9 +28,9 @@
 					color: #236AA2;
 				}
 			}
-	    }
+		}
 
-	    > .content {
+		> .content {
 			background: $qw-infobar-content-bg;
 
 			> div {
@@ -44,8 +44,8 @@
 						background: #B3B3B3;
 						padding: rem-calc(5);
 						border-radius: 5px;
-						margin-bottom: 8px;	
-						margin-top: 8px;	
+						margin-bottom: 8px;
+						margin-top: 8px;
 				}
 
 				> .inbox-container {
@@ -63,7 +63,7 @@
 							width: 30px;
 							height: 100%;
 							border-radius: ($global-radius 0 0 $global-radius );
-							
+
 							> label {
 								padding:(10px 0 0 10px);
 							}
@@ -97,7 +97,7 @@
 							> .content {
 								margin:0;
 								border:0;
-								
+
 								> span {
 									display: block;
 									font-size: 0.75rem;
@@ -130,13 +130,13 @@
 							opacity: 0;
 							height: 40px;
 							border: solid 5px $qw-button2-bg-color;
-							border-top: 0; 
+							border-top: 0;
 							border-right: 0;
 							border-top-right-radius:$global-radius;
 							border-bottom-left-radius: 3px;
 	/* 						margin-right: rem-calc(-5);
 							margin-top: rem-calc(-6);
-							padding-bottom: 7px; */					
+							padding-bottom: 7px; */
 							display: none;
 							width: 120px;
 							position: absolute;
@@ -199,9 +199,9 @@
 									> .header {
 									font-weight: Bold;
 									}
-								}	
-							}						
-						}			
+								}
+							}
+						}
 					}
 
 					&:nth-child(even) {
@@ -209,6 +209,6 @@
 					}
 				}
 			}
-	    }
+		}
 	}
 }
