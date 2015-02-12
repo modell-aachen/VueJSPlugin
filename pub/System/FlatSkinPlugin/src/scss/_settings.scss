@@ -430,7 +430,7 @@ $qw-dropdown-light-active-color: #fff;
 $qw-dropdown-light-hover-bg: #dae4eb;
 $qw-dropdown-light-active-bg: #adbfcc;
 
-//Dashboard taskd 
+//Dashboard tasks
 
 $qw-dashboard-task-margin: rem-calc(2);
 $qw-dashboard-task-bg: #F5F5F5;
@@ -501,6 +501,74 @@ $qw-dashboard-toptwo-view-height: rem-calc(38);
 $qw-dashboard-toptwo-view-action-button-width: rem-calc(30);
 $qw-dashboard-toptwo-view-action-button-height: rem-calc(31);
 $qw-dashboard-toptwo-view-action-button-font-size: rem-calc(30);
+
+
+
+// inbox panel 
+$qw-inboxbar-padding: rem-calc(0 30);
+$qw-inboxbar-header-padding: rem-calc(6 0 6 15);
+$qw-inboxbar-header-bg-color: #FFF;
+$qw-inboxbar-header-border-bottom: 1px solid #F5F5F5;
+$qw-inboxbar-header-icon-font-size: rem-calc(32);
+$qw-inboxbar-header-span-left-margin: rem-calc(6);
+$qw-inboxbar-header-span-font-color: #236AA2;
+$qw-inboxbar-content-bg-color: $qw-content-bg;
+$qw-inboxbar-content-label-font-size: rem-calc(9);
+$qw-inboxbar-content-label-font-color: #FFF;
+$qw-inboxbar-content-label-font-weight: bold;
+$qw-inboxbar-content-label-text-transform: uppercase;
+$qw-inboxbar-content-label-bg-color: #B3B3B3;
+$qw-inboxbar-content-label-padding: rem-calc(5);
+$qw-inboxbar-content-label-border-radiuse: rem-calc(5);
+$qw-inboxbar-content-label-margin-bottom: rem-calc(8);
+$qw-inboxbar-content-label-margin-top: rem-calc(8);
+$qw-inboxbar-inbox-margin-bottom: rem-calc(2);
+$qw-inboxbar-inbox-left-border: rem-calc(1);
+$qw-inboxbar-inbox-left-width: rem-calc(30);
+$qw-inboxbar-inbox-left-height: 100%;
+$qw-inboxbar-inbox-left-label-padding: rem-calc(10 0 0 10);
+$qw-inboxbar-inbox-right-margin-left: rem-calc(30);
+$qw-inboxbar-inbox-right-padding: rem-calc(10);
+$qw-inboxbar-inbox-right-caption-margin: 0;
+$qw-inboxbar-inbox-right-caption-height: rem-calc(50);
+$qw-inboxbar-inbox-right-caption-width: 100%;
+$qw-inboxbar-inbox-right-caption-header-font-size: rem-calc(13);
+$qw-inboxbar-inbox-right-caption-header-font-color: #000;
+$qw-inboxbar-inbox-right-caption-date-font-size: rem-calc(12);
+$qw-inboxbar-inbox-right-caption-date-font-color: #999;
+$qw-inboxbar-inbox-right-caption-content-font-size: rem-calc(12);
+$qw-inboxbar-inbox-right-caption-content-font-color: #838383;
+$qw-inboxbar-inbox-right-caption-author-border-radius: rem-calc(5);
+$qw-inboxbar-inbox-right-caption-author-bg-color: #FFF;
+$qw-inboxbar-inbox-right-caption-author-margin: rem-calc(10 30 10 0);
+$qw-inboxbar-inbox-right-caption-author-padding: rem-calc(3);
+$qw-inboxbar-inbox-right-caption-author-font-size: rem-calc(12);
+$qw-inboxbar-inbox-right-caption-author-responsible-font-color: #236AA2;
+$qw-inboxbar-inbox-right-caption-author-meetings-font-size: rem-calc(10);
+$qw-inboxbar-inbox-right-caption-author-meetings-font-color: #838383;
+$qw-inboxbar-inbox-tools-height: rem-calc(40);
+$qw-inboxbar-inbox-tools-width: rem-calc(120);
+$qw-inboxbar-inbox-tools-border-bottom-left-radius: rem-calc(3);
+$qw-inboxbar-inbox-tools-li-font-size: rem-calc(20);
+$qw-inboxbar-inbox-tools-li-padding-top: rem-calc(3);
+$qw-inboxbar-inbox-tools-li-width: rem-calc(40);
+$qw-inboxbar-inbox-tools-li-height: rem-calc(37);
+$qw-inboxbar-inbox-tools-li-font-color: #FFF;
+$qw-inboxbar-inbox-tools-li-bg-color: #236AA2;
+$qw-inboxbar-inbox-tools-li-icon-margin: rem-calc(15);
+$qw-inboxbar-inbox-tools-li-hover-bg-color: #2C85C9;
+$qw-inboxbar-inbox-tools-hover: #DAE4EB;
+$qw-inboxbar-inbox-even-child-bg-color: #FFF;
+
+
+
+
+
+
+
+
+
+
 
 
 // typography

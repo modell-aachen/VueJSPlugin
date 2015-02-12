@@ -46,52 +46,52 @@
 		}
 	}
 	> div {
-		padding: rem-calc(0 30);
+		padding: $qw-inboxbar-padding;
 		padding-top: 0;
 
 		> .header {
-			padding: rem-calc(6 0 6 15);
-			background: white;
-			border-bottom: 1px solid #F5F5F5;
+			padding: $qw-inboxbar-header-padding;
+			background: $qw-inboxbar-header-bg-color;
+			border-bottom: $qw-inboxbar-header-border-bottom;
 
 			@media #{$mobile-only} {min-height: $qw-top-two-height-mobile - 12px;}
 			@media #{$small-up} {min-height: $qw-top-two-height - 12px;}
 
 			i {
-				font-size: 2rem;
+				font-size: $qw-inboxbar-header-icon-font-size;
 				color: $qw-infobar-header-color;
 			}
 
 			span {
-				margin-left: rem-calc(6);
+				margin-left: $qw-inboxbar-header-span-left-margin;
 				color: $qw-infobar-header-color;
 				> a {
 					text-decoration: none;
-					color: #236AA2;
+					color: $qw-inboxbar-header-span-font-color;
 				}
 				> i {
 					font-size: 0.95rem;
-					color: #236AA2;
+					color: $qw-inboxbar-header-span-font-color;
 				}
 			}
 		}
 
 		> .content {
-			background: $qw-infobar-content-bg;
+			background: $qw-inboxbar-content-bg-color;
 
 			> div {
 
 				> .label {
 
-						font-size: 0.6rem;
-						color: white;
-						font-weight: bold;
-						text-transform: uppercase;
-						background: #B3B3B3;
-						padding: rem-calc(5);
-						border-radius: 5px;
-						margin-bottom: 8px;
-						margin-top: 8px;
+						font-size: $qw-inboxbar-content-label-font-size;
+						color: $qw-inboxbar-content-label-font-color;
+						font-weight: $qw-inboxbar-content-label-font-weight;
+						text-transform: $qw-inboxbar-content-label-text-transform;
+						background: $qw-inboxbar-content-label-bg-color;
+						padding: $qw-inboxbar-content-label-padding;
+						border-radius: $qw-inboxbar-content-label-border-radiuse;
+						margin-bottom: $qw-inboxbar-content-label-margin-bottom;
+						margin-top: $qw-inboxbar-content-label-margin-top;
 				}
 
 				> .inbox-container {
@@ -100,43 +100,43 @@
 						position: relative;
 						background-color: $qw-dashboard-task-bg;
 						border-radius: $global-radius;
-						margin-bottom: 2px;
+						margin-bottom: $qw-inboxbar-inbox-margin-bottom;
 
 						> .inbox-left {
 							position: absolute;
 							top: 0; left: 0; bottom: 0;
-							border:1px;
-							width: 30px;
-							height: 100%;
+							border:$qw-inboxbar-inbox-left-border;
+							width: $qw-inboxbar-inbox-left-width;
+							height: $qw-inboxbar-inbox-left-height;
 							border-radius: ($global-radius 0 0 $global-radius );
 
 							> label {
-								padding:(10px 0 0 10px);
+								padding:$qw-inboxbar-inbox-left-label-padding;
 							}
 						}
 
 						> .inbox-right {
-							margin-left: 30px;
+							margin-left: $qw-inboxbar-inbox-right-margin-left;
 							cursor: pointer;
 							border:0;
-							padding:(10px);
+							padding: $qw-inboxbar-inbox-right-padding;
 
 							> .caption {
-								margin:0;
-								height: 50px;
-								width: 100%;
+								margin: $qw-inboxbar-inbox-right-caption-margin;
+								height: $qw-inboxbar-inbox-right-caption-height;
+								width: $qw-inboxbar-inbox-right-caption-width;
 								border:0;
 
 								> .header {
 								display: block;
-								font-size: 0.85rem;
-								color:black;
+								font-size: $qw-inboxbar-inbox-right-caption-header-font-size;
+								color: $qw-inboxbar-inbox-right-caption-header-font-color;
 								}
 
 								> .date {
 								display: block;
-								font-size: 0.8rem;
-								color: #999;
+								font-size: $qw-inboxbar-inbox-right-caption-date-font-size;
+								color: $qw-inboxbar-inbox-right-caption-date-font-color;
 								}
 							}
 
@@ -146,26 +146,26 @@
 
 								> span {
 									display: block;
-									font-size: 0.75rem;
-									color: #838383;
+									font-size: $qw-inboxbar-inbox-right-caption-content-font-size;
+									color: $qw-inboxbar-inbox-right-caption-content-font-color;
 								}
 							}
 
 							> .author {
 
 								> span {
-									border-radius: 5px;
-									background: white;
-									padding: rem-calc(3px);
-									margin: rem-calc(10px 30px 10px 0);
-									font-size: 0.75rem;
+									border-radius: $qw-inboxbar-inbox-right-caption-author-border-radius;
+									background: $qw-inboxbar-inbox-right-caption-author-bg-color;
+									padding: $qw-inboxbar-inbox-right-caption-author-padding;
+									margin: $qw-inboxbar-inbox-right-caption-author-margin; 
+									font-size: $qw-inboxbar-inbox-right-caption-author-font-size;
 									&.responsible {
-										color: #236AA2;
+										color: $qw-inboxbar-inbox-right-caption-author-responsible-font-color;
 									}
 
 									&.meetings {
-										font-size: 0.65rem;
-										color: #838383;
+										font-size: $qw-inboxbar-inbox-right-caption-author-meetings-font-size;
+										color: $qw-inboxbar-inbox-right-caption-author-meetings-font-color;
 									}
 								}
 							}
@@ -174,36 +174,32 @@
 						> .tools {
 							transition: opacity 0.15s ease-in-out;
 							opacity: 0;
-							height: 40px;
+							height: $qw-inboxbar-inbox-tools-height;
 							border: solid 5px $qw-button2-bg-color;
 							border-top: 0;
 							border-right: 0;
 							border-top-right-radius:$global-radius;
-							border-bottom-left-radius: 3px;
-	/* 						margin-right: rem-calc(-5);
-							margin-top: rem-calc(-6);
-							padding-bottom: 7px; */
+							border-bottom-left-radius: $qw-inboxbar-inbox-tools-border-bottom-left-radius;
 							display: none;
-							width: 120px;
+							width: $qw-inboxbar-inbox-tools-width;
 							position: absolute;
 							top: 0;
 							right: 0;
 							> ul {
-								margin:0;
-								padding:0;
-								background:red;
+								margin: 0;
+								padding: 0;
 								list-style: none;
 
 								> li {
-									font-size: 1.3rem;
+									font-size: $qw-inboxbar-inbox-tools-li-font-size;
 									display: block;
 									position: relative;
 									float: left;
 									padding-top:3px;
-									width:40px;
-									height:37px;
-									color: white;
-									background: #236AA2;
+									width:$qw-inboxbar-inbox-tools-li-width;
+									height:$qw-inboxbar-inbox-tools-li-height;
+									color: $qw-inboxbar-inbox-tools-li-font-color;
+									background: $qw-inboxbar-inbox-tools-li-bg-color;
 
 									i {
 										margin: 15px;
@@ -218,14 +214,14 @@
 									}
 
 									&:hover {
-										background: #2C85C9;
+										background: $qw-inboxbar-inbox-tools-li-hover-bg-color;
 									}
 								}
 							}
 						}
 
 						&:hover {
-							background : #DAE4EB;
+							background : $qw-inboxbar-inbox-tools-hover;
 							> .tools {
 								opacity: 1;
 								display: inline-block;
@@ -251,7 +247,7 @@
 					}
 
 					&:nth-child(even) {
-						background-color:white;
+						background-color: $qw-inboxbar-inbox-even-child-bg-color;
 					}
 				}
 			}
