@@ -7,9 +7,9 @@
 
 %TMPL:DEF{"top"}%%TMPL:END%
 
-%TMPL:DEF{"perspage:scripts"}%%TMPL:PREV%
-%ADDTOZONE{"script" requires="JQUERYPLUGIN" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/System/ActionTrackerPlugin/atp.js\"></script>"}%
-%ADDTOZONE{"head" text="<link rel=\"stylesheet\" type=\"text/css\" href=\"%PUBURLPATH%/System/ActionTrackerPlugin/styles_src.css\" /><style type=\"text/css\">
+%TMPL:DEF{"perspage:scripts"}%%TMPL:PREV%%ADDTOZONE{
+  "script" requires="JQUERYPLUGIN" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/System/ActionTrackerPlugin/atp.js\"></script>"
+}%%ADDTOZONE{"head" text="<link rel=\"stylesheet\" type=\"text/css\" href=\"%PUBURLPATH%/System/ActionTrackerPlugin/styles_src.css\" /><style type=\"text/css\">
   .atpSearch { width: 100%; border: none; border-collapse: collapse; }
   .atpSearch th { border: none; background: white; color: #999; padding-bottom: 8px; text-align: left; }
   .atpSearch tr:first-child + tr td { border-top: none; }
@@ -36,27 +36,97 @@
   .tasktitle { font-weight: bold; font-size: 110%; }
   .taskdate { white-space: nowrap; }
   .hackelem { display: none; }
-</style>"}%
-%JQREQUIRE{"textboxlist"}%
-%ADDTOZONE{"script" id="JavascriptFiles/strikeone" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/JavascriptFiles/strikeone.js\"></script>"}%
-%TMPL:END%
+</style>"
+}%%JQREQUIRE{"textboxlist"}%%ADDTOZONE{
+"script" id="JavascriptFiles/strikeone" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/JavascriptFiles/strikeone.js\"></script>"
+}%%TMPL:END%
 
-%TMPL:DEF{"perspage:bookmarks:backup"}%
-%TMPL:END%
+%TMPL:DEF{"perspage:bookmarks:backup"
+}%%TMPL:END%
 
-%TMPL:DEF{"dashboard:menu"}%
-<div class="qw-dashboard-topbar">
+%TMPL:DEF{"dashboard:menu"
+}%<div class="qw-dashboard-topbar" data-offcanvas>
   <span><i class="icon-home"></i> %MAKETEXT{"Dashboard"}%</span>
   <ul class="dashboard-list" data-inline-list>
     <li data-target="tasks"><span href="#" >%MAKETEXT{"Aufgaben"}%</span></li>
     <li data-target="knowledge"><span href="#">%MAKETEXT{"Wissen"}%</span></li>
     <li data-target="bookmarks"><span href="#">%MAKETEXT{"Lesezeichen"}%</span></li>
     <li data-target="userdata"><span href="#">%MAKETEXT{"Einstellungen"}%</span></li>
+    <li data-target="sessions"><span href="#">%MAKETEXT{"Sitzungen"}%</span></li>
+    <li data-target="departmenthead"><span href="#">%MAKETEXT{"Abteilungsleiter"}%</span></li>
   </ul>
+</div>%TMPL:END%
+
+%TMPL:DEF{"dashboard:actions"}%
+<div class="qw-dashboard-toptwo tasks  active" data-offcanvas>
+  <span class="content">%MAKETEXT{Tasks}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>
+    <ul id="qw-more-menu" class="qw-dropdown-light">
+      <li><a href="#">sub menu 1</a></li>
+      <li><a href="#">sub menu 2</a></li>
+      <li><a href="#">sub menu 3</a></li>
+      <li><a href="#">sub menu 4</a></li>
+    </ul>
+  </span>
+  <span class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-maximize"></i></span>
+  <span class="qw-prio2-btn maximize" data-offcanvas-toggle="inboxbar" ><i class="icon-inbox"></i></span>
+  <span class="qw-prio2-btn add"><i class="icon-add"></i>%MAKETEXT{Creating a task}%</span>
 </div>
-%TMPL:END%
-%TMPL:DEF{"perspage:bookmarks"}%
-<div class="qw-dashboard-container tasks active">
+<div class="qw-dashboard-toptwo knowledge" data-offcanvas>
+  <span class="content">%MAKETEXT{Knowledge}%</span>
+    <a class="qw-prio2-btn" href="#"><i class="icon-add"></i>%MAKETEXT{Invest}%</a>
+    <a class="qw-prio2-btn" href="#"><i class="icon-sort"></i>%MAKETEXT{Letzte Verwendung}%</a>
+    <div class="view">
+      <a href="#" class="row qw-action-button"><i class="icon-list-bullets"></i></a>
+      <a href="#" class="grid qw-action-button"><i class="icon-table"></i></a>
+  </div>
+</div>
+<div class="qw-session-toptwo sessions" data-offcanvas> <!-- all session names belongs to minutes plugin  -->
+  <span class="content">%MAKETEXT{Sessions}%, <a href="#"> %MAKETEXT{All}%</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>
+    <ul id="qw-more-menu" class="qw-dropdown-light">
+      <li><a href="#">sub menu 1</a></li>
+      <li><a href="#">sub menu 2</a></li>
+      <li><a href="#">sub menu 3</a></li>
+      <li><a href="#">sub menu 4</a></li>
+    </ul>
+  </span>
+  <span class="qw-prio2-btn maximize"><i class="icon-maximize"></i></span>
+  <span class="qw-prio2-btn add"><i class="icon-add"></i>%MAKETEXT{Creating a session}%</span>
+</div>
+<div class="qw-session-toptwo departmenthead" data-offcanvas>
+  <span class="content">%MAKETEXT{Agenda}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>
+    <ul id="qw-more-menu" class="qw-dropdown-light">
+      <li><a href="#">sub menu 1</a></li>
+      <li><a href="#">sub menu 2</a></li>
+      <li><a href="#">sub menu 3</a></li>
+      <li><a href="#">sub menu 4</a></li>
+    </ul>
+  </span>
+  <span class="qw-prio2-btn maximize"><i class="icon-maximize"></i></span>
+  <span class="qw-prio2-btn add"><i class="icon-add"></i>%MAKETEXT{Creating an agenda point}%</span>
+</div>%TMPL:END%
+
+%TMPL:DEF{"topbar"
+}%<!--topbar--><nav class="qw-top" data-offcanvas>
+  <div class="one">
+    <div class="dashboardmenu">%TMPL:P{"dashboard:menu"}%</div>
+    <div class="search">
+      <div class="close" data-offcanvas-toggle="quicksearch">
+        <div><i class="icon-arrow-right"></i></div>
+      </div>
+      <div>%TMPL:P{"topbar:search"}%</div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="dashboardactions" data-offcanvas>
+      <div>%TMPL:P{"dashboard:actions"}%</div>
+    </div>
+  </div>
+</nav>
+<!--/topbar-->%TMPL:END%
+
+
+%TMPL:DEF{"perspage:bookmarks"
+}%<div class="qw-dashboard-container tasks active" data-offcanvas>
   <div class="task priority">
     <div class="input">
       <label>
@@ -90,7 +160,7 @@
   </div>
     %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future priority\"><div class=\"input\"><label><input class=\"checkbox\" type=\"checkbox\"><span>%MAKETEXT{"New"}%</span></label></div><span class=\"title\"> $action_text_s</span><span class=\"badge\"><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span></div>"rows="1000" sort="createdate" reverse="on"}%
 </div>  
-<div class="qw-dashboard-container knowledge">
+<div class="qw-dashboard-container knowledge" data-offcanvas>
     <div class="perspageBlockTitle">%MAKETEXT{"My notes"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserNotesEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
     <div class="perspageBlock">
         %TEXT%
@@ -105,24 +175,24 @@ New stuff:
     <span class="title">Beschreibung der Aufgabe</span>
     <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
     <span class="keywords">Tag</span>
-  </div
->  <div class="task priority future">
+  </div>
+  <div class="task priority future">
     <span class="title">Beschreibung der Aufgabe</span>
     <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
     <span class="keywords">Tag</span>
   </div>
 </div> 
-<div class="qw-dashboard-container bookmarks">
+<div class="qw-dashboard-container bookmarks" data-offcanvas>
     <div class="perspageBlockTitle">%MAKETEXT{"Bookmarks"}%</div>
     <div class="perspageBlock modacBookmarks">
       <div class="splittitle">%ICON{viewtopic}% %MAKETEXT{Topics}%</div>
           %SOLRSEARCH{"type:topic webtopic:(%FAVORITELIST{format="\\"$swebtopic\\"" separator=" OR " default="NOT *"}%)"
             rows="999999" sort="webtopic"
             format="<li>$percntFAVORITEBUTTON{web=\"$web\" topic=\"$topic\" redirectto=\"%WEB%.%TOPIC%\" format=\"$formstart$linkstart<img src=\\"%PUBURLPATH%/%SYSTEMWEB%/FamFamFamSilkCompanion1Icons/decline.png\\" alt=\\"%MAKETEXT{"Remove bookmark"}%\\" title=\\"%MAKETEXT{"Remove bookmark"}%\\" />$linkend$formend\"}$percnt <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$web.$topic\"><strong>$title</strong></a>&nbsp; $percntIF{\"istopic '$web.$topic$percntDUMMY{default=\"\"}$percntTALK'\" then=\"&nbsp;&nbsp;|&nbsp;&nbsp;<a href='$percntSCRIPTURL{view}$percnt/$web/$topic$percntDUMMY{default=\"\"}$percntTALK'><span class=\\"bmsubinfo\\">$dollarpercntICON{comments}$dollarpercnt&nbsp;$percntMAKETEXT{\"Discussion available\"}$percnt</span></a>\"}$percnt%BR%<span class=\"bmsubinfo\">[[$web.WebHome][$web]]</span></li>"
-          }%
+            }%
     </div>
 </div>
-<div class="qw-dashboard-container userdata"> 
+<div class="qw-dashboard-container userdata" data-offcanvas> 
     <div class="perspageBlockTitle">%MAKETEXT{"User data"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserDataEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
     <div class="perspageBlock">
         <table class="metaDataHead">
@@ -137,61 +207,103 @@ New stuff:
         </table>
     </div>
 </div> 
-
-%TMPL:END%
-
-%TMPL:DEF{"dashboard:actions"}%
-<div class="qw-dashboard-toptwo tasks active">
-  <span class="content">Tasks, <a href="#"> Current</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>
-    <ul id="qw-more-menu" class="qw-dropdown-light">
-      <li><a href="#">sub menu 1</a></li>
-      <li><a href="#">sub menu 2</a></li>
-      <li><a href="#">sub menu 3</a></li>
-      <li><a href="#">sub menu 4</a></li>
-    </ul>
-  </span>
-  <a class="qw-prio2-btn" href="#"><i class="icon-add"></i>Creating a task</a>
-</div>
-<div class="qw-dashboard-toptwo knowledge">
-  <span class="content">Knowledge</span>
-    <a class="qw-prio2-btn" href="#"><i class="icon-add"></i>Invest</a>
-    <a class="qw-prio2-btn" href="#"><i class="icon-sort"></i>Letzte Verwendung</a>
-    <div class="view">
-      <a href="#" class="row qw-action-button"><i class="icon-list-bullets"></i></a>
-      <a href="#" class="grid qw-action-button"><i class="icon-table"></i></a>
+<div class="qw-session-container sessions" data-offcanvas> <!-- all session names belongs to minutes plugin --> 
+  <div class="session-title">
+    <span class="session-title-name">%MAKETEXT{Name}%</span>
+    <span class="session-title-termin">%MAKETEXT{Appointment}%</span>
+    <span class="session-title-tag">%MAKETEXT{Day, Time}%</span>
+    <span class="session-title-turnus">%MAKETEXT{Rota}%</span>
+    <span class="session-title-ort">%MAKETEXT{Place}%</span>
+    <span class="session-title-num">%MAKETEXT{}%</span>
   </div>
-</div>
-%TMPL:END%
-%TMPL:DEF{"topbar"}%<!--topbar-->
-<nav class="qw-top" data-offcanvas>
-  <div class="one">
-    <div class="dashboardmenu">%TMPL:P{"dashboard:menu"}%</div>
-    <div class="search">
-      <div class="close" data-offcanvas-toggle="quicksearch">
-        <div><i class="icon-arrow-right"></i></div>
-      </div>
-      <div>%TMPL:P{"topbar:search"}%</div>
+  <div class="session-container">
+    <div class="session-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
+    <div class="session-tag">%MAKETEXT{ Freitag, 10:00h}%</div>
+    <div class="session-turnus">%MAKETEXT{ Wochentlich}%</div>
+    <div class="session-ort">
+      <span><i class="icon-location"> </i> %MAKETEXT{Geb, 5, Raum 115}%</span>
     </div>
+    <div class="session-num">16</div>
   </div>
-  <div class="two">
-    <div class="dashboardactions">
-      <div>%TMPL:P{"dashboard:actions"}%</div>
+  <div class="session-container future">
+    <div class="session-name"><i class="icon-blanko-frame"></i>%MAKETEXT{QM-Runde}%</div>
+    <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ 03.11.}%</span></div>
+    <div class="session-tag">%MAKETEXT{ Montag, 10:30h-12:30h}%</div>
+    <div class="session-turnus">%MAKETEXT{ Alle zwei Wochen}%</div>
+    <div class="session-ort">
+      <span><i class="icon-location"> </i> %MAKETEXT{Konfi}%</span>
     </div>
+    <div class="session-num">87</div>
   </div>
-</nav>
-<!--/topbar-->%TMPL:END%
+  <div class="session-container">
+    <div class="session-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
+    <div class="session-tag">%MAKETEXT{ Freitag, 10:00h}%</div>
+    <div class="session-turnus">%MAKETEXT{ Wochentlich}%</div>
+    <div class="session-ort">
+      <span><i class="icon-location"> </i> %MAKETEXT{Geb, 5, Raum 115}%</span>
+    </div>
+    <div class="session-num">16</div>
+  </div>
+</div> 
+<div class="qw-session-container departmenthead" data-offcanvas>
+  <div class="agenda-title">
+        <span class="agenda-title-name">%MAKETEXT{Description}%</span>
+        <span class="agenda-title-due">%MAKETEXT{Due on}%</span>
+        <span class="agenda-title-responsible">%MAKETEXT{Responsible}%</span>
+        <span class="agenda-title-author">%MAKETEXT{Author}%</span>
+        <span class="agenda-title-date">%MAKETEXT{Date}%</span>
+  </div>
+  <div class="agenda-container">
+    <div class="agenda-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
+    <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
+    <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
+    <div class="agenda-date">%MAKETEXT{ Freitag, 10:00h}%</div> 
+    <div class="agenda-tools">
+      <ul>
+        <li class="agenda-add"><i class="icon-checkmark"></i></li>
+        <li class="agenda-download"><i class="icon-arrowlong-down"></i></li>
+        <li class="agenda-check"><i class="icon-remove"></i></li>
+      </ul>
+    </div> 
+  </div>
+  <div class="agenda-container future">
+    <div class="agenda-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ 21.10.}%</span></div>
+    <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
+    <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
+    <div class="agenda-date">%MAKETEXT{ Freitag, 10:00h}%</div>
+    <div class="agenda-tools">
+      <ul>
+        <li class="agenda-add"><i class="icon-checkmark"></i></li>
+        <li class="agenda-download"><i class="icon-arrowlong-down"></i></li>
+        <li class="agenda-check"><i class="icon-remove"></i></li>
+      </ul>
+    </div> 
+  </div>
+  <div class="agenda-container tomorrow">
+    <div class="agenda-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ tomorrow}%</span></div>
+    <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
+    <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
+    <div class="agenda-date">%MAKETEXT{ Freitag, 10:00h}%</div>
+    <div class="agenda-tools">
+      <ul>
+        <li class="agenda-add"><i class="icon-checkmark"></i></li>
+        <li class="agenda-download"><i class="icon-arrowlong-down"></i></li>
+        <li class="agenda-check"><i class="icon-remove"></i></li>
+      </ul>
+    </div>  
+  </div>
+</div>%TMPL:END%
 
 %TMPL:DEF{"document:head"}%%TMPL:END%
-%TMPL:DEF{"topbar:tabs"}%
-
-%TMPL:END%
-%TMPL:DEF{"content"}%
-%TMPL:P{"perspage:scripts"}%
-%IF{"$WIKINAME = $TOPIC"
+%TMPL:DEF{"topbar:tabs"}%%TMPL:END%
+%TMPL:DEF{"content"}%%TMPL:P{"perspage:scripts"}%%IF{"$WIKINAME = $TOPIC"
  then="$percentTMPL:P{perspage:bookmarks}$percent
-$percentTMPL:P{dashboard:row}$percent
-<div>"
-}%
-%TMPL:END%
+$percentTMPL:P{dashboard:row}$percent </div>"
+}%%TMPL:END%
 
 %{</verbatim>}%

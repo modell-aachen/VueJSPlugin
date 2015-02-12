@@ -3,11 +3,6 @@
 	opacity: 0.5;
 	transition: opacity 0.5s linear;
 
-/* position: absolute;
-top: 0;
-left: 0;
-width: 100%; */
-
 	&.active {
 		display: block;
 		opacity: 1;
@@ -206,15 +201,29 @@ width: 100%; */
 			}
 		}
 
-		> a {
+		> .add {
+			
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;
 			font-style: italic;
 			font-size: $qw-dashboard-toptwo-a-font-color-font-size;
-			text-decoration: none;
 			color: $qw-dashboard-toptwo-a-font-color;
-			> i {
+			> i { 
 			padding-right: $qw-dashboard-toptwo-a-margin;
+			font-size: 1rem;
+
+			}
+		}
+
+		> .maximize {
+			padding: 7px;
+			margin: $qw-dashboard-toptwo-a-margin;
+			float: right;
+			font-style: italic;
+			color: #BFBFBF;
+			> i { 
+			font-size: 1.5rem;
+			padding: 0px 5px;
 
 			}
 		}
