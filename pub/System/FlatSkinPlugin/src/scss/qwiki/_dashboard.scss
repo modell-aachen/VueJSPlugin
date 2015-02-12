@@ -29,23 +29,23 @@
 				top: 5px;
 
 				> i {
-					font-size: 1.2rem;
+					font-size: $qw-dashboard-task-label-icon-font-size;
 					vertical-align: top;
 				}
 			}
 
 			span {
 				display: none;
-				padding-left: 10px;
-				font-weight: bold;
+				padding-left: $qw-dashboard-task-input-span-padding-left;
+				font-weight: $qw-dashboard-task-input-span-font-weight;
 			}
 		}
 
 		> span.title {
-			padding-left: 10px;
+			padding-left: $qw-dashboard-task-title-left-padding;
 			margin: 0;
 			position: relative;
-			top: 5px;
+			top: $qw-dashboard-task-title-top;
 			display: inline-block;
 			font-size: $qw-dashboard-task-title-font-size;
 			color: $qw-dashboard-task-title-color;
@@ -58,24 +58,24 @@
 			vertical-align: middle;
 			margin: $qw-dashboard-task-badge-margin;
 			> i {
-				font-size: 0.875rem;
+				font-size: $qw-dashboard-task-badge-icon-font-size;
 			}
 		}
 		> a.meetings {
 			float: right;
 			text-decoration: none;
-			font-size: 12px;
+			font-size: $qw-dashboard-task-meetings-font-size;
 			padding: $qw-dashboard-task-keyword-padding;
-			color: #777;
+			color: $qw-dashboard-task-meetings-font-color;
 			> i {
-				font-size: 1.2rem;
+				font-size: $qw-dashboard-task-meetings-icon-font-size;
 			}
 		}
 
 		&.new {
 			> .input {
 				background-color: $qw-dashboard-task-new-bg;
-				border-color: white;
+				border-color: $qw-dashboard-task-new-border-color;
 				padding: $qw-dashboard-task-new-padding;
 				span {
 					display: inline-block;
@@ -100,7 +100,7 @@
 			}
 			&.future {
 				> span.badge {
-					color: #FFF;
+					color: $qw-dashboard-task-active-badge-font-color;
 				}
 
 			}
@@ -217,20 +217,20 @@
 			color: $qw-dashboard-toptwo-a-font-color;
 			> i { 
 			padding-right: $qw-dashboard-toptwo-a-margin;
-			font-size: 1rem;
+			font-size: $qw-dashboard-toptwo-a-icon-font-size;
 
 			}
 		}
 
 		> .maximize {
-			padding: 7px;
+			padding: $qw-dashboard-toptwo-maximize-padding;
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;
-			font-style: italic;
-			color: #BFBFBF;
+			font-style: $qw-dashboard-toptwo-maximize-font-style;
+			color: $qw-dashboard-toptwo-maximize-font-color;
 			> i { 
-			font-size: 1.5rem;
-			padding: 0px 5px;
+			font-size: $qw-dashboard-toptwo-maximize-icon-font-size;
+			padding: $qw-dashboard-toptwo-maximize-icon-padding;
 
 			}
 		}
