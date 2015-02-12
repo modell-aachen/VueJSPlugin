@@ -20,10 +20,12 @@
       });
 
       $('[data-submit-form]').on('click', this, submitForm );
+      $('[data-cancel-form]').on('click', this, cancelForm );
     },
 
     unbind: function() {
       $('[data-submit-form]').off('click', submitForm );
+      $('[data-cancel-form]').off('click', cancelForm );
     }
   };
 
@@ -38,6 +40,32 @@
 
     $.blockUI();
     $('form' + target).submit();
+    return false;
+  };
+
+  var cancelForm = function( evt ) {
+    var self = evt.data;
+    var $sender = $(this);
+
+    var target = $sender.data('cancel-form');
+    if ( !target ) {
+      return false;
+    }
+    var $originalForm = $('form' + target);
+
+    // building a new form, so we do not have to modify the original one and
+    // do not submit all the text/data
+    var $form = $('<form method="post"></form>');
+    $form.attr('action', $originalForm.attr('action'));
+    $form.append('<input type="hidden" name="action_cancel" value="cancel" />');
+    $.each(["redirectto", "topicparent", "newtopic"], function(idx, item) {
+      var $item = $originalForm.find("input[name='" + item + "']");
+      if($item.length) {
+        $form.append($item.clone());
+      }
+    });
+    $('body').append($form);
+    $form.submit();
     return false;
   };
 
