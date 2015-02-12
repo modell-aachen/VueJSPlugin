@@ -27,17 +27,23 @@
 				vertical-align: middle;
 				position: relative;
 				top: 5px;
+
+				> i {
+					font-size: 1.2rem;
+					vertical-align: top;
+				}
 			}
 
 			span {
 				display: none;
+				padding-left: 10px;
+				font-weight: bold;
 			}
 		}
 
 		> span.title {
-			padding: 0;
+			padding-left: 10px;
 			margin: 0;
-			vertical-align: middle;
 			position: relative;
 			top: 5px;
 			display: inline-block;
@@ -49,6 +55,7 @@
 			@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-today-badge-bg, $radius:$global-radius);
 			float: right;
 			text-transform: uppercase;
+			vertical-align: middle;
 			margin: $qw-dashboard-task-badge-margin;
 			> i {
 				font-size: 0.875rem;
@@ -57,11 +64,11 @@
 		> a.meetings {
 			float: right;
 			text-decoration: none;
-			font-size: $qw-dashboard-task-keyword-font-size;
+			font-size: 12px;
 			padding: $qw-dashboard-task-keyword-padding;
-			color: $qw-dashboard-task-title-color;
+			color: #777;
 			> i {
-				font-size: 0.975rem;
+				font-size: 1.2rem;
 			}
 		}
 
