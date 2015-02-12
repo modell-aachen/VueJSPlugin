@@ -565,6 +565,10 @@ JQUERYPLUGIN is not a hard requirement, but it must sort earlier.
 }%%TMPL:DEF{"JavascriptFiles/foswiki_edit"}%%{
 }%%TMPL:P{"JavascriptFiles/foswikiPref"}%%TMPL:P{"LIBJS" id="JavascriptFiles/foswiki_edit" requires="JQUERYPLUGIN::FOSWIKI,JavascriptFiles/foswikiPref"}%%TMPL:END%
 
+%{
+Keep this, it will load the JSI18N scripts:
+}%
+%TMPL:DEF{"script"}%<!-- JSI18N id: %JSI18NID% -->%TMPL:END%
 
 
 %{
