@@ -7,47 +7,47 @@
 	> .session-title {
 
 		position: relative;
-		padding-left: rem-calc(10);
-		margin: rem-calc(2);
-		line-height: rem-calc(25);
+		padding-left: $qw-session-title-padding-left;
+		margin: $qw-session-title-margin;
+		line-height: $qw-session-title-line-height;
 		display: -webkit-box;
 		display: -moz-box;
 		display: -ms-flexbox;
 		display: -webkit-flex;
 		display: flex;
 		-webkit-flex-flow: row wrap;
-		border-radius: 3px;
+		border-radius: $global-radius;
 		cursor: pointer;
-		color: #BFBFBF;
-		font-size: rem-calc(10);
-		font-weight: bold;
+		color: $qw-session-title-font-color;
+		font-size: $qw-session-title-font-size;
+		font-weight: $qw-session-title-font-weight;
 		float: left;
-		width: 100%;
-		text-transform: uppercase;
+		width: $qw-session-title-width;
+		text-transform: $qw-session-title-text-transform;
 
 		> .session-title-name {
-			min-width: 450px;
+			min-width: $qw-session-title-name-min-width;
 		}
 
 		> .session-title-termin {
-			min-width: 120px;
+			min-width: $qw-session-title-termin-min-width;
 		}
 
 		> .session-title-tag {
-			min-width: 250px;
-			padding-left: 30px;
+			min-width: $qw-session-title-tag-min-width;
+			padding-left: $qw-session-title-tag-padding-left;
 		}
 
 		> .session-title-turnus {
-			min-width: 150px;
+			min-width: $qw-session-title-turnus-min-width;
 		}
 
 		> .session-title-ort {
-			min-width: 250px;
+			min-width: $qw-session-title-ort-min-width;
 		}
 
 		> .session-title-num {
-			min-width: 30px;
+			min-width: $qw-session-title-num-min-width;
 			text-align: right;
 
 		}
@@ -55,88 +55,88 @@
 
 	> .session-container {
 
-			padding-left: rem-calc(10);
-			margin: rem-calc(2);
-			line-height: rem-calc(40);
+			padding-left: $qw-session-container-padding-left;
+			margin: $qw-session-container-margin;
+			line-height: $qw-session-container-line-height;
 			display: -webkit-box;
 			display: -moz-box;
 			display: -ms-flexbox;
 			display: -webkit-flex;
 			display: flex;
 			-webkit-flex-flow: row wrap;
-			border-radius: 3px;
-			background: #F5F5F5;
+			border-radius: $global-radius;
+			background: $qw-session-container-bg-color;
 			cursor: pointer;
-			color: #999;
-			font-size: rem-calc(12);
+			color: $qw-session-container-font-color;
+			font-size: $qw-session-container-font-size;
 			float: left;
-			width: 100%;
+			width: $qw-session-container-width;
 
 		> .session-name {
-			min-width: 450px;
-			font-weight: bold;
-			margin-right:1px;
-			color: #4D4D4D;
+			min-width: $qw-session-container-name-min-width;
+			font-weight: $qw-session-container-name-font-weight;
+			margin-right: $qw-session-container-name-margin-right;
+			color: $qw-session-container-name-font-color;
 			i {
-				font-size: 1.2rem;
-				color: #999;
-				padding-right: 10px;
+				font-size: $qw-session-container-name-icon-font-size;
+				color: $qw-session-container-name-icon-font-color;
+				padding-right: $qw-session-container-name-icon-padding-right;
 				
 			}
 		}
 
 		> .session-termin {
-			min-width: 120px;
+			min-width: $qw-session-container-termin-min-width;
 			> span {
 				@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-today-badge-bg, $radius:$global-radius);
 				text-transform: uppercase;
-				margin: rem-calc(7 5 7 5);
+				margin: $qw-session-container-termin-span-margin;
 				> i {
-					font-size: 0.875rem;
+					font-size: $qw-session-container-termin-span-icon-font-size;
 				}				
 			}
 		}
 
 		> .session-tag {
-			min-width: 250px;
+			min-width: $qw-session-container-tag-min-width;
 			
-			padding-left: 30px;
+			padding-left: $qw-session-container-tag-padding-left;
 		}
 
 		> .session-turnus {
-			min-width: 150px;
+			min-width: $qw-session-container-turnus-min-width;
 			
 		}
 		> .session-ort {
-			min-width: 250px;
+			min-width: $qw-session-container-ort-min-width;
 			
 			> span {
-				background: white;
+				background: $qw-session-container-ort-span-bg-color;
 				border-radius: $global-radius;
-				color: #236AA2;
-				padding: rem-calc(5);
+				color: $qw-session-container-ort-span-font-color;
+				padding: $qw-session-container-ort-span-padding;
 
 				> i {
-				font-size: 0.875rem;
+				font-size: $qw-session-container-ort-span-icon-font-size;
 				}
 			}
 		}
 		> .session-num {
 			
-			min-width: 30px;
-			color: #4D4D4D;
-			font-size: rem-calc(10);
-			font-weight: bold;
+			min-width: $qw-session-container-num-min-width;
+			color: $qw-session-container-num-font-color;
+			font-size: $qw-session-container-num-font-size;
+			font-weight: $qw-session-container-num-font-weight;
 			text-align: right;
 		}
 		
 		&:hover {
-			background: #DAE4EB;
+			background: $qw-session-container-hover-bg-color;
 		}
 
 		&:active {
-			background: #BFBFBF;
-			color: #FFF;
+			background: $qw-session-container-active-bg-color;
+			color: $qw-session-container-active-font-color;
 		}
 
 		&.future {
@@ -157,21 +157,21 @@
 		}
 
 		&:nth-child(odd) {
-			background: white;
+			background: $qw-session-nth-child-bg-color;
 			
 			> .session-ort {
 				> span {
-					background: #F2F5F7;
+					background: $qw-session-nth-session-ort-bg-color;
 				}
 			}
 
 			&:hover {
-				background: #DAE4EB;
+				background: $qw-session-nth-hover-bg-color;
 			}
 
 			&:active {
-				background: #BFBFBF;
-				color: #FFF;
+				background: $qw-session-nth-active-bg-color;
+				color: $qw-session-nth-active-font-color;
 			}
 		}
 	}
@@ -179,9 +179,9 @@
 	> .agenda-title {
 
 		position: relative;
-		padding-left: rem-calc(10);
-		margin: rem-calc(2);
-		line-height: rem-calc(25);
+		padding-left: $qw-agenda-title-padding-left;
+		margin: $qw-agenda-title-margin;
+		line-height: $qw-agenda-title-line-height;
 		display: -webkit-box;
 		display: -moz-box;
 		display: -ms-flexbox;
@@ -190,32 +190,32 @@
 		-webkit-flex-flow: row wrap;
 		border-radius: 3px;
 		cursor: pointer;
-		color: #BFBFBF;
-		font-size: rem-calc(10);
-		font-weight: bold;
+		color: $qw-agenda-title-font-color;
+		font-size: $qw-agenda-title-font-size;
+		font-weight: $qw-agenda-title-font-weight;
 		float: left;
-		width: 100%;
-		text-transform: uppercase;
+		width: $qw-agenda-title-width;
+		text-transform: $qw-agenda-title-text-transform;
 
 		> .agenda-title-name {
-			min-width: 450px;
+			min-width: $qw-agenda-title-name-min-width;
 		}
 
 		> .agenda-title-due {
-			min-width: 120px;
+			min-width: $qw-agenda-title-due-min-width;
 		}
 
 		> .agenda-title-responsible {
-			min-width: 250px;
-			padding-left: 30px;
+			min-width: $qw-agenda-title-responsible-min-width;
+			padding-left: $qw-agenda-title-responsible-padding-left;
 		}
 
 		> .agenda-title-author {
-			min-width: 300px;
+			min-width: $qw-agenda-title-author-min-width;
 		}
 
 		> .agenda-title-date {
-			min-width: 150px;
+			min-width: $qw-agenda-title-date-min-width;
 			text-align: right;
 		}
 	}
@@ -223,9 +223,9 @@
 	> .agenda-container {
 
 		position: relative;
-		padding-left: rem-calc(10);
-		margin: rem-calc(2);
-		line-height: rem-calc(40);
+		padding-left: $qw-agenda-container-padding-left;
+		margin: $qw-agenda-container-margin;
+		line-height: $qw-agenda-container-line-height;
 		display: -webkit-box;
 		display: -moz-box;
 		display: -ms-flexbox;
@@ -233,106 +233,105 @@
 		display: flex;
 		-webkit-flex-flow: row wrap;
 		border-radius: 3px;
-		background: #F5F5F5;
+		background: $qw-agenda-container-bg-color;
 		cursor: pointer;
-		color: #999;
-		font-size: rem-calc(12);
+		color: $qw-agenda-container-font-color;
+		font-size: $qw-agenda-container-font-size;
 		float: left;
-		width: 100%;
+		width: $qw-agenda-container-width;
 
 		> .agenda-name {
-			min-width: 450px;
-			font-weight: bold;
-			margin-right:1px;
-			color: #4D4D4D;
+			min-width: $qw-agenda-container-name-min-width;
+			font-weight: $qw-agenda-container-name-font-weight;
+			margin-right: $qw-agenda-container-name-margin-right;
+			color: $qw-agenda-container-name-font-color;
 
 			i {
-				font-size: 1.3rem;
-				color: #999;
-				padding-right: 10px;
+				font-size: $qw-agenda-container-name-icon-font-size;
+				color: qw-agenda-container-name-icon-font-color;
+				padding-right: $qw-agenda-container-name-icon-padding-right;
 				
 			}
 		}
 
 		> .agenda-due {
-			min-width: 120px;
+			min-width: $qw-agenda-container-due-min-width;
 
 			> span {
 				@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-today-badge-bg, $radius:$global-radius);
 				text-transform: uppercase;
-				margin: rem-calc(7 5 7 5);
+				margin: $qw-agenda-container-due-span-margin;
 				> i {
-					font-size: 0.875rem;
+					font-size: $qw-agenda-container-due-span-icon-font-size;
 				}				
 			}
 		}
 
 		> .agenda-responsible {
-			min-width: 250px;
+			min-width: $qw-agenda-container-responsible-min-width;
 			> span {
-				background: white;
+				background: $qw-agenda-container-responsible-span-bg-color;
 				border-radius: $global-radius;
-				color: #236AA2;
-				padding: rem-calc(5);
+				color: $qw-agenda-container-responsible-span-font-color;
+				padding: $qw-agenda-container-responsible-span-padding;
 
 				> i {
-				font-size: 0.875rem;
+				font-size: $qw-agenda-container-responsible-span-icon-font-size;
 				}
 			}
 			
-			padding-left: 30px;
+			padding-left: $qw-agenda-container-responsible-padding-left;
 		}
 		> .agenda-author {
-			min-width: 300px;
+			min-width: $qw-agenda-container-author-min-width;
 
 			> span {
-				background: white;
+				background: $qw-agenda-container-author-span-bg-color;
 				border-radius: $global-radius;
-				color: #236AA2;
-				padding: rem-calc(5);
+				color: $qw-agenda-container-author-span-font-color;
+				padding: $qw-agenda-container-author-span-padding;
 
 				> i {
-				font-size: 0.875rem;
+				font-size: $qw-agenda-container-author-span-icon-font-size;
 				}
 			}	
 		}
 
 		> .agenda-date {
 			text-align: right;
-			min-width: 150px;	
+			min-width: $qw-agenda-container-date-min-width;	
 		}
 
 		> .agenda-tools {
 			transition: opacity 0.15s ease-in-out;
 			opacity: 0;
-			height: 40px;
+			height: $qw-agenda-container-tools-height;
 			border: solid 5px $qw-button2-bg-color;
 			border-top: 0; 
 			border-right: 0;
 			border-top-right-radius:$global-radius;
-			border-bottom-left-radius: 3px;				
+			border-bottom-left-radius: $global-radius;				
 			display: none;
-			width: 120px;
+			width: $qw-agenda-container-tools-width;
 			position: absolute;
 			top: 0;
 			right: 0;
 			> ul {
 				margin:0;
 				padding:0;
-				background:red;
 				list-style: none;
 
 				> li {
-					font-size: 1.3rem;
+					font-size: $qw-agenda-container-tools-li-font-size;
 					display: block;
 					position: relative;
 					float: left;
-					width:40px;
-					color: white;
-					background: #236AA2;
+					width: $qw-agenda-container-tools-li-width;
+					color: $qw-agenda-container-tools-li-font-color;
+					background: $qw-agenda-container-tools-li-bg-color;
 
 					i {
-						margin: 15px;
+						margin: $qw-agenda-container-tools-li-icon-margin;
 					}
 
 					&.agenda-add {
@@ -344,14 +343,14 @@
 					}
 
 					&:hover {
-						background: #2C85C9;
+						background: $qw-agenda-container-tools-li-hover-bg-color;
 					}
 				}
 			}
 		}
 		
 		&:hover {
-			background: #DAE4EB;
+			background: $qw-agenda-container-hover-bg-color;
 			> .agenda-tools {
 				opacity: 1;
 				display: inline-block;
@@ -359,8 +358,8 @@
 		}
 
 		&:active {
-			background: #BFBFBF;
-			color: #FFF;
+			background: $qw-agenda-container-active-bg-color;
+			color: $qw-agenda-container-active-font-color;
 		}
 
 		&.future {
@@ -368,7 +367,7 @@
 
 				> span {
 					@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:#91AB32, $radius:$global-radius);	
-					color:white;
+					color:  $qw-agenda-container-future-agenda-due-span-font-color;
 					margin-bottom: auto;					
 				}
 			}
@@ -384,27 +383,27 @@
 		}
 
 		&:nth-child(odd) {
-			background: white;
+			background: $qw-agenda-nth-child-bg-color;
 			
 			> .agenda-responsible {
 				> span {
-					background: #F2F5F7;
+					background: $qw-agenda-nth-agenda-respobsible-bg-color;
 				}
 			}
 
 			> .agenda-author {
 				> span {
-					background: #F2F5F7;
+					background: $qw-agenda-nth-agenda-author-bg-color;
 				}
 			}
 
 			&:hover {
-				background: #DAE4EB;
+				background: $qw-agenda-nth-hover-bg-color;
 			}
 
 			&:active {
-				background: #BFBFBF;
-				color: #FFF;
+				background: $qw-agenda-nth-active-bg-color;
+				color: $qw-agenda-nth-active-font-color;
 			}
 		}
 	}	
@@ -442,20 +441,20 @@
 			color: $qw-dashboard-toptwo-a-font-color;
 			> i { 
 			padding-right: $qw-dashboard-toptwo-a-margin;
-			font-size: 1rem;
+			font-size: $qw-session-toptwo-session-add-icon-font-size;
 
 			}
 		}
 
 		> .maximize {
-			padding: 7px;
+			padding: $qw-session-toptwo-session-maximize-padding;
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;
 			font-style: italic;
-			color: #BFBFBF;
+			color: $qw-session-toptwo-session-maximize-font-color;
 			> i { 
-			font-size: 1.5rem;
-			padding: 0px 5px;
+			font-size: $qw-session-toptwo-session-maximize-icon-font-size;
+			padding: $qw-session-toptwo-session-maximize-icon-padding;
 
 			}
 		}
@@ -485,6 +484,7 @@
 			
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;
+
 			font-style: italic;
 			font-size: $qw-dashboard-toptwo-a-font-color-font-size;
 			color: $qw-dashboard-toptwo-a-font-color;
@@ -496,14 +496,14 @@
 		}
 
 		> .maximize {
-			padding: 7px;
+			padding: $qw-session-toptwo-departmenthead-maximize-padding;
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;
 			font-style: italic;
-			color: #BFBFBF;
+			color: $qw-session-toptwo-departmenthead-maximize-font-color;
 			> i { 
-			font-size: 1.5rem;
-			padding: 0px 5px;
+			font-size: $qw-session-toptwo-departmenthead-maximize-icon-font-size;
+			padding: $qw-session-toptwo-departmenthead-maximize-icon-padding;
 
 			}
 		}

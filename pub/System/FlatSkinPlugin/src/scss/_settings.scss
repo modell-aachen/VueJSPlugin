@@ -561,14 +561,130 @@ $qw-inboxbar-inbox-tools-hover: #DAE4EB;
 $qw-inboxbar-inbox-even-child-bg-color: #FFF;
 
 
+// minutes plugin: session part 
+$qw-session-title-padding-left: rem-calc(10);
+$qw-session-title-margin: rem-calc(2);
+$qw-session-title-line-height: rem-calc(25);
+$qw-session-title-font-color: #BFBFBF;
+$qw-session-title-font-size: rem-calc(10);
+$qw-session-title-font-weight: bold;
+$qw-session-title-width: 100%;
+$qw-session-title-text-transform: uppercase;
+$qw-session-title-name-min-width: rem-calc(450);
+$qw-session-title-termin-min-width: rem-calc(120);
+$qw-session-title-tag-min-width: rem-calc(250);
+$qw-session-title-tag-padding-left: rem-calc(30);
+$qw-session-title-turnus-min-width: rem-calc(150);
+$qw-session-title-ort-min-width: rem-calc(250);
+$qw-session-title-num-min-width: rem-calc(30);
+$qw-session-container-padding-left: rem-calc(10);
+$qw-session-container-margin: rem-calc(2);
+$qw-session-container-line-height: rem-calc(40);
+$qw-session-container-bg-color: #f5f5f5;
+$qw-session-container-font-color: #999;
+$qw-session-container-font-size: rem-calc(12);
+$qw-session-container-width: 100%;
+$qw-session-container-name-min-width: rem-calc(450);
+$qw-session-container-name-font-weight: bold;
+$qw-session-container-name-margin-right: rem-calc(1);
+$qw-session-container-name-font-color: #4D4D4D;
+$qw-session-container-name-icon-font-size: rem-calc(19);
+$qw-session-container-name-icon-font-color: #999;
+$qw-session-container-name-icon-padding-right: rem-calc(10);
+$qw-session-container-termin-min-width: rem-calc(120);
+$qw-session-container-termin-span-margin: rem-calc(7 5 7 5);
+$qw-session-container-termin-span-icon-font-size: rem-calc(14);
+$qw-session-container-tag-min-width: rem-calc(250);
+$qw-session-container-tag-padding-left: rem-calc(30);
+$qw-session-container-turnus-min-width: rem-calc(150);
+$qw-session-container-ort-min-width: rem-calc(250);
+$qw-session-container-ort-span-bg-color: #FFF;
+$qw-session-container-ort-span-font-color: #236AA2;
+$qw-session-container-ort-span-padding: rem-calc(5);
+$qw-session-container-ort-span-icon-font-size: rem-calc(14);
+$qw-session-container-num-min-width: rem-calc(30);
+$qw-session-container-num-font-color: #4D4D4D;
+$qw-session-container-num-font-size: rem-calc(10);
+$qw-session-container-num-font-weight: bold;
+$qw-session-container-hover-bg-color: #DAE4EB;
+$qw-session-container-active-bg-color: #BFBFBF;
+$qw-session-container-active-font-color: #FFF;
+$qw-session-nth-child-bg-color: #FFF;
+$qw-session-nth-session-ort-bg-color: #f2f5f7;
+$qw-session-nth-hover-bg-color: #DAE4EB;
+$qw-session-nth-active-bg-color: #BFBFBF;
+$qw-session-nth-active-font-color: #FFF;
 
-
-
-
-
-
-
-
+$qw-agenda-title-padding-left: rem-calc(10);
+$qw-agenda-title-margin: rem-calc(2);
+$qw-agenda-title-line-height: rem-calc(25);
+$qw-agenda-title-font-color: #BFBFBF;
+$qw-agenda-title-font-size: rem-calc(10);
+$qw-agenda-title-font-weight: bold;
+$qw-agenda-title-width: 100%;
+$qw-agenda-title-text-transform: uppercase;
+$qw-agenda-title-name-min-width: rem-calc(450);
+$qw-agenda-title-due-min-width: rem-calc(120);
+$qw-agenda-title-responsible-min-width: rem-calc(250);
+$qw-agenda-title-responsible-padding-left: rem-calc(30);
+$qw-agenda-title-author-min-width: rem-calc(300);
+$qw-agenda-title-date-min-width: rem-calc(150);
+$qw-agenda-container-padding-left: rem-calc(10);
+$qw-agenda-container-margin: rem-calc(2);
+$qw-agenda-container-line-height: rem-calc(40);
+$qw-agenda-container-bg-color: #f5f5f5;
+$qw-agenda-container-font-color: #999;
+$qw-agenda-container-font-size: rem-calc(12);
+$qw-agenda-container-width: 100%;
+$qw-agenda-container-name-min-width: rem-calc(450);
+$qw-agenda-container-name-font-weight: bold;
+$qw-agenda-container-name-margin-right: rem-calc(1);
+$qw-agenda-container-name-font-color: #4D4D4D;
+$qw-agenda-container-name-icon-font-size: rem-calc(20);
+$qw-agenda-container-name-icon-font-color: #999;
+$qw-agenda-container-name-icon-padding-right: rem-calc(10);
+$qw-agenda-container-due-min-width: rem-calc(120);
+$qw-agenda-container-due-span-margin: rem-calc(7 5 7 5);
+$qw-agenda-container-due-span-icon-font-size: rem-calc(14);
+$qw-agenda-container-responsible-min-width: rem-calc(250);
+$qw-agenda-container-responsible-padding-left: rem-calc(30);
+$qw-agenda-container-responsible-span-bg-color: #FFF;
+$qw-agenda-container-responsible-span-font-color: #236AA2;
+$qw-agenda-container-responsible-span-padding: rem-calc(5);
+$qw-agenda-container-responsible-span-icon-font-size: rem-calc(14);
+$qw-agenda-container-author-min-width: rem-calc(300);
+$qw-agenda-container-author-span-bg-color: #FFF;
+$qw-agenda-container-author-span-font-color: #236AA2;
+$qw-agenda-container-author-span-padding: rem-calc(5);
+$qw-agenda-container-author-span-icon-font-size: rem-calc(14);
+$qw-agenda-container-date-min-width: rem-calc(150);
+$qw-agenda-container-tools-height: rem-calc(40);
+$qw-agenda-container-tools-width: rem-calc(120);
+$qw-agenda-container-tools-li-font-size: rem-calc(20);
+$qw-agenda-container-tools-li-width: rem-calc(40);
+$qw-agenda-container-tools-li-font-color: #FFF;
+$qw-agenda-container-tools-li-bg-color: #236AA2;
+$qw-agenda-container-tools-li-icon-margin: rem-calc(15);
+$qw-agenda-container-tools-li-hover-bg-color: #2C85C9;
+$qw-agenda-container-hover-bg-color: #DAE4EB;
+$qw-agenda-container-active-bg-color: #BFBFBF;
+$qw-agenda-container-active-font-color: #FFF;
+$qw-agenda-container-future-agenda-due-span-font-color: #FFF;
+$qw-agenda-nth-child-bg-color: #FFF;
+$qw-agenda-nth-agenda-respobsible-bg-color: #f2f5f7;
+$qw-agenda-nth-agenda-author-bg-color: #f2f5f7;
+$qw-agenda-nth-hover-bg-color: #DAE4EB;
+$qw-agenda-nth-active-bg-color: #BFBFBF;
+$qw-agenda-nth-active-font-color: #FFF;
+$qw-session-toptwo-session-add-icon-font-size: rem-calc(16);
+$qw-session-toptwo-session-maximize-padding: rem-calc(7);
+$qw-session-toptwo-session-maximize-font-color: #BFBFBF;
+$qw-session-toptwo-session-maximize-icon-font-size: rem-calc(24);
+$qw-session-toptwo-session-maximize-icon-padding: rem-calc(0 5);
+$qw-session-toptwo-departmenthead-maximize-padding: rem-calc(7);
+$qw-session-toptwo-departmenthead-maximize-font-color: #BFBFBF;
+$qw-session-toptwo-departmenthead-maximize-icon-font-size: rem-calc(24);
+$qw-session-toptwo-departmenthead-maximize-icon-padding: rem-calc(0 5);
 
 
 // typography
