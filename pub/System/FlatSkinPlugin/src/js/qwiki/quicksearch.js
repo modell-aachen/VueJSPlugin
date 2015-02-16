@@ -27,6 +27,7 @@
       });
 
       $('.qw-quicksearch').on('qw.offcanvas.closing', function() {
+        closePreview();
         $('#qw-search-pageoverlay').removeClass('active');
         setTimeout( function() {
           $('#qw-search-pageoverlay').css('display', 'none');
