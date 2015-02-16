@@ -128,28 +128,28 @@
 
 %TMPL:DEF{"perspage:bookmarks"
 }%<div class="qw-dashboard-container tasks active" data-offcanvas>
-    %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future new priority\"><div class=\"input\"><label><i class=\"icon-blanko-frame\"></i><span>%MAKETEXT{"New"}%</span></label></div><span class=\"title\">$action_text_s</span><span class=\"badge\"><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span><a class=\"meetings\"><i class=\"icon-app-meetings\"></i> GESELLSCHAFTERSITZUNG</a></div>"rows="1000" sort="createdate" reverse="on"}%
+    %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future new priority\"><div class=\"task-input\"><label><i class=\"icon-blanko-frame\"></i><span>%MAKETEXT{"New"}%</label></span></div><div class=\"task-title\"><span>$action_text_s</span></div><div class=\"task-meetings\"><i class=\"icon-app-meetings\"> </i> GESELLSCHAFTERSITZUNG</div><div class=\"task-responsible\"><span><i class=\"icon-user\"></i> %QUERY{"Responsible"}%</span></div><div class=\"task-badge\"><span><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span></div></div>"rows="1000" sort="createdate" reverse="on"}%
 </div>  
 <div class="qw-dashboard-container knowledge" data-offcanvas>
     <div class="perspageBlockTitle">%MAKETEXT{"My notes"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserNotesEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
     <div class="perspageBlock">
         %TEXT%
     </div>
-New stuff:
-  <div class="task priority future">
-    <span class="title">Beschreibung der Aufgabe</span>
-    <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
-    <span class="keywords">Tag</span>
+  New stuff:
+  <div class="knowledge priority future">
+    <div class="knowledge-title">Beschreibung der Aufgabe</div>
+    <div class="knowledge-keywords">Tag</div>
+    <div class="knowledge-badge"><span><i class="icon-clock-inv"></i> 12.20.</span></div>
   </div>
-  <div class="task priority future">
-    <span class="title">Beschreibung der Aufgabe</span>
-    <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
-    <span class="keywords">Tag</span>
+  <div class="knowledge">
+    <div class="knowledge-title">Beschreibung der Aufgabe</div>
+    <div class="knowledge-keywords">Tag</div>
+    <div class="knowledge-badge"><span><i class="icon-clock-inv"></i> 12.20.</span></div>
   </div>
-  <div class="task priority future">
-    <span class="title">Beschreibung der Aufgabe</span>
-    <span class="badge"><i class="icon-clock-inv"></i> 12.20.</span>
-    <span class="keywords">Tag</span>
+  <div class="knowledge priority tomorrow">
+    <div class="knowledge-title">Beschreibung der Aufgabe</div>
+    <div class="knowledge-keywords">Tag</div>
+    <div class="knowledge-badge"><span><i class="icon-clock-inv"></i> 12.20.</span></div>
   </div>
 </div> 
 <div class="qw-dashboard-container bookmarks" data-offcanvas>
