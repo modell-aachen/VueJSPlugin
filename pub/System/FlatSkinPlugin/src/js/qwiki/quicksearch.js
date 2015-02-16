@@ -27,6 +27,7 @@
       });
 
       $('.qw-quicksearch').on('qw.offcanvas.closing', function() {
+        closePreview();
         $('#qw-search-pageoverlay').removeClass('active');
         setTimeout( function() {
           $('#qw-search-pageoverlay').css('display', 'none');
@@ -165,7 +166,7 @@
         var doc = data.response.docs[i];
         doc.icon = 'qw-ico-approved';
         doc.draft = '';
-        if ( doc.workflow_controlled_b && !doc.workflow_isapproved) {
+        if ( doc.workflow_controlled_b && !doc.workflow_isapproved_b) {
           doc.icon = 'qw-ico-draft';
           doc.draft = 'draft';
         }
