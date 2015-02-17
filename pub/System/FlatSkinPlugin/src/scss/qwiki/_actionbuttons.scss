@@ -1,17 +1,21 @@
-$qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width);
+$qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $qw-tab-outerborder;
 
 .qw-joinedtab {
   float: left;
   margin-right: $button-tny;
   padding-top: $qw-tab-pseudoborder;
   padding-bottom: $qw-tab-pseudoborder;
+  border-top: $qw-tab-outerborder solid transparent;
+  border-left: $qw-tab-outerborder solid transparent;
+  border-right: $qw-tab-outerborder solid transparent;
 
   @media #{$mobile-only} {height: calc(#{$qw-top-two-height-mobile} - 2 * #{$qw-tab-pseudoborder});}
   @media #{$small-up} {height: calc(#{$qw-top-two-height} - 2 * #{$qw-tab-pseudoborder});}
 
   &,
   & > *{
-    transition: background $qw-tab-transition-time ease-in-out;
+    transition: background $qw-tab-transition-time ease-in-out,
+                border $qw-tab-transition-time ease-in-out;
   }
 
   & > * {
@@ -47,6 +51,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width);
   }
 
   &:hover.active {
+    border-color: $qw-content-bg;
+
     &,
     &:before,
     & a {
@@ -54,6 +60,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width);
     }
   }
   &.active {
+    border-color: $qw-content-bg;
+
     &,
     &:before,
     & a {
@@ -63,6 +71,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width);
   }
 
   &:hover {
+    border-color: $qw-content-bg;
+
     &,
     &:before,
     & a {
@@ -115,6 +125,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width);
 
     &.active,
     &:hover {
+      border-color: $qw-content-bg;
+
       &,
       & > * {
         background: $qw-tab-approved-active-color;
