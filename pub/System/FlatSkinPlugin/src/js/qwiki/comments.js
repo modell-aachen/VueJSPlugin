@@ -141,7 +141,7 @@
   var resizeTimer;
   var onWindowResized = function() {
     clearTimeout( resizeTimer );
-    resizeTimer = setTimeout( realignAdorner, 300 );
+    resizeTimer = setTimeout( realignAdorner, 500 );
   };
 
   var realignAdorner = function() {
