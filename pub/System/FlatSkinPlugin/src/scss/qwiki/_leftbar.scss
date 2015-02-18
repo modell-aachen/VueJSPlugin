@@ -230,7 +230,7 @@
     > .actions {
       @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
       @media #{$small-up} {height: $qw-top-one-height;}
-      bottom: 1 + $qw-leftbar-ma-logo-height;
+      bottom: 10px + $qw-leftbar-ma-logo-height;
 
       > div {
         margin: 0 auto;
