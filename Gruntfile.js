@@ -103,6 +103,23 @@ module.exports = function(grunt) {
 
           return cmd.join( '&&' );
         }
+      },
+      webfont: {
+        cmd: function() {
+          var fontcfg = {
+            autoHint: true,
+            fontBaseName: 'QWikiSymbol',
+            inputDir: pkg.pubDir +'/src/fonts/icons',
+            dest: pkg.pubDir +'/fonts',
+            scssTemplate: pkg.pubDir +'/src/scss/font_tmpl.scss',
+            scssDest: pkg.pubDir +'/src/scss/_qwiki-font.scss',
+            cssBasePath: '../fonts/',
+            cssBaseName: 'icon',
+            descent: 0,
+            fontHeight: 28.35
+          };
+          return 'python mkfont.py \''+JSON.stringify(fontcfg).replace(/'/g, '\'\\\'\'')+'\'';
+        }
       }
     },
 
@@ -288,29 +305,10 @@ module.exports = function(grunt) {
       uglify: {
         files: ['<%= pkg.pubDir %>/src/js/**/*.js'],
         tasks: ['jshint','uglify']
-      }
-    },
-
-    webfont: {
-      'QWikiSymbol': {
-        src: '<%= pkg.pubDir %>/src/fonts/icons/*.svg',
-        dest: '<%= pkg.pubDir %>/fonts',
-        destCss: '<%= pkg.pubDir %>/src/scss/qwiki',
-        options: {
-          autoHint: false,
-          descent: 96,
-          font: 'QWikiSymbol',
-          hashes: true,
-          htmlDemo: false,
-          relativeFontPath: '../fonts',
-          stylesheet: 'scss',
-          syntax: 'bootstrap',
-          templateOptions: {
-            baseClass: 'icon',
-            classPrefix: 'icon-',
-            mixinPrefix: 'icon-'
-          }
-        }
+      },
+      webfont: {
+        files: ['<%= pkg.pubDir %>/src/fonts/icons/*.svg', '<%= pkg.pubDir %>/src/scss/font_tmpl.scss'],
+        tasks: ['exec:webfont']
       }
     }
   });
@@ -331,5 +329,5 @@ module.exports = function(grunt) {
   grunt.registerTask('prepare-manifest', ['file-creator:create-manifest-tmp']);
   grunt.registerTask('manifest', ['prepare-manifest', 'copy:manifest', 'clean:manifest']);
   grunt.registerTask('pseudo-install', ['exec:install']);
-  grunt.registerTask('build', ['webfont', 'sass', 'jshint', 'uglify' ]);
+  grunt.registerTask('build', ['exec:webfont', 'sass', 'jshint', 'uglify' ]);
 }
