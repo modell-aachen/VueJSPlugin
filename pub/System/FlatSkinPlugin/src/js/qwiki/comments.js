@@ -46,10 +46,8 @@
         $btn.data( 'cmtbl', id );
 
         var pos = $this.position();
-        var th = $this.outerHeight();
-        var dh = $btn.outerHeight();
         var mt = parseInt( $this.css('margin-top').replace('px', '') );
-        var top = pos.top + mt + th/2 - dh/2;
+        var top = pos.top + mt;
         $container.css('top', top);
 
         var hasComments = $this.data('hascomments');
