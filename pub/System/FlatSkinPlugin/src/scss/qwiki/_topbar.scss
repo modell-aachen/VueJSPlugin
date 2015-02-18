@@ -266,6 +266,7 @@
         transition: width 0.3s ease-in-out;
         display: flex;
         overflow: hidden;
+        border-bottom: 5px solid $qw-content-bg;
 
         @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
         @media #{$small-up} {height: $qw-top-two-height;}
