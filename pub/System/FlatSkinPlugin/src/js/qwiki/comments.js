@@ -472,7 +472,7 @@
 
       _.each( cmts, function(cmt) {
         var d = new Date();
-        d.setTime( cmt.date );
+        d.setTime( cmt.date * 1000 );
         cmt.dateString = d.toLocaleString();
         $cnt.qtemplate('add', $.extend({_type: 'qw.comments'}, cmt ));
       });

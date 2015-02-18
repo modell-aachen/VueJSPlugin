@@ -353,9 +353,19 @@ sub _restComment {
     $cmt->{date} = time;
     $cmt->{name} = _uniqueID();
 
+    # update subordinates
+    my @cmts = $meta->find('FLATCOMMENT');
+    foreach(@cmts) {
+      my $sub = $_;
+      if ( $sub->{pid} eq $cmt->{pid} ) {
+        $sub->{solved} = 'true';
+        $meta->putKeyed('FLATCOMMENT', $sub);
+      }
+    }
+
     $meta->putKeyed('FLATCOMMENT', $cmt);
-    $changed = 1;
     $response->{status} = 204;
+    $changed = 1;
   } else {
     $response->{status} = 405;
   }
