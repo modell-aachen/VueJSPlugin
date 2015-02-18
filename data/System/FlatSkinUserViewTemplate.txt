@@ -75,7 +75,8 @@
         <div class="priority">
           <label class="prioritylabel" for="taskpriority">%MAKETEXT{"Prioritization"}%</label>
           <div class="taskpriority">
-            <div class="switch radius">
+            <div class="switch radius"> 
+              <span class="checkbox">%MAKETEXT{"no priority"}%</span>
               <input id="priorityswitch" type="checkbox" name="testGroup">
               <label for="priorityswitch"></label>
             </div> 
