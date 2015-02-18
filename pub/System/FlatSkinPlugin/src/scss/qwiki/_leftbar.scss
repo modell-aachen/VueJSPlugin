@@ -36,7 +36,7 @@
 
     @media #{$mobile-only} {display: none;}
     @media #{$small-only} {display: none;}
-    @media #{$medium-up} {height: calc( 100% - #{$qw-top-one-height} );}
+    @media #{$medium-up} {height: 100%;}
 
     .button {
       width: $qw-leftbar-width - 10px;
@@ -70,6 +70,72 @@
 
       > i {
         margin-left: 11px;
+      }
+    }
+
+    .bottom {
+      position: inherit;
+      bottom: 0;
+      left: 0;
+      height: 2 * $qw-leftbar-width;
+      width: $qw-leftbar-width;
+
+      > .login {
+        position: inherit;
+        bottom: $qw-leftbar-width + 5px;
+        left: 0;
+        width: $qw-leftbar-width;
+
+        a {
+          display: block;
+          text-align: center;
+          font-size: 2rem;
+
+          > i {
+            color: $qw-leftbar-avatar-login-color;
+            transition: color 0.3s ease-in-out;
+          }
+
+          &:hover {
+            > i {
+              color: $qw-leftbar-avatar-login-hover-color;
+            }
+          }
+        }
+      }
+
+      > .avatar {
+        position: inherit;
+        bottom: 0;
+        left: 0;
+        width: $qw-leftbar-width;
+        height: $qw-leftbar-width;
+        border-radius: $global-radius;
+        background-color: $qw-leftbar-avatar-bg;
+        background-image: url('../assets/avatar.png');
+        background-position: center 5px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+
+        > .role {
+          position: inherit;
+          left: rem-calc(4);
+          right: rem-calc(4);
+          bottom: rem-calc(8);
+          height: rem-calc(15);
+          background: $qw-leftbar-avatar-role-bg;
+          color: $qw-leftbar-avatar-role-color;
+          border-radius: $global-radius;
+
+          font-size: rem-calc(10);
+          font-weight: bold;
+          text-align: center;
+
+          span {
+            position: relative;
+            top: rem-calc(2);
+          }
+        }
       }
     }
   }
