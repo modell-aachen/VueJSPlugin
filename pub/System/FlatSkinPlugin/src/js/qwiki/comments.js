@@ -21,43 +21,9 @@
       this.unbind();
 
       var self = this;
-      $('[data-commentable="1"]').livequery( function() {
-        var $this = $(this);
-        var id = _.uniqueId( 'cmtbl-' );
-        $this.data( 'cmtbl', id );
-
-        $this.on( 'mouseenter', self, onCommentableMouseEnter );
-        $this.on( 'mouseleave', self, onCommentableMouseLeave );
-
-        // create comment adorner to add a new comment
-        var $adorner = $('.content > .adorner');
-        if ( $adorner.length === 0 ) {
-          return;
-        }
-
-        var $container = $('<div></div>');
-        $container.appendTo( $adorner );
-        $container.on( 'click', self, onAdornerClick );
-        $container.on( 'mouseenter', self, onAdornerMouseEnter );
-        $container.on( 'mouseleave', self, onAdornerMouseLeave );
-
-        var $btn = $('<div class="qw-comment-adorner" title="Add comment" data-i18n-title="Add comment" data-i18n-ns="comments" data-tooltip="left"><i class="icon-add"></i></div>');
-        $btn.appendTo( $container );
-        $btn.data( 'cmtbl', id );
-
-        var pos = $this.position();
-        var mt = parseInt( $this.css('margin-top').replace('px', '') );
-        var top = pos.top + mt;
-        $container.css('top', top);
-
-        var hasComments = $this.data('hascomments');
-        if ( !_.isUndefined( hasComments ) ) {
-          var index = parseInt( hasComments );
-          $btn.addClass( self.types[index] );
-          $btn.attr('data-i18n-title', 'View comment');
-          $btn.attr('title', 'View comment');
-        }
-      });
+      $('[data-commentable="1"]').livequery( appendAdorner );
+      $(window).on( 'resize', onWindowResized );
+      $('.qw-page').observe({attributes: true, attributeFilter: ['class']}, onWindowResized );
 
       $('.qw-comment-editbox .cancel').on( 'click', this, onCancel );
       $('.qw-comment-editbox .submit').on( 'click', this, onSave );
@@ -71,6 +37,9 @@
 
     unbind: function() {
       $('.content > .adorner').empty();
+
+      $(window).off( 'resize', onWindowResized );
+      $('.qw-page').disconnect({attributes: true, attributeFilter: ['class']}, onWindowResized );
 
       $('[data-commentable="1"]').expire( function() {
         var $this = $(this);
@@ -166,6 +135,68 @@
           });
         }
       });
+    }
+  };
+
+  var resizeTimer;
+  var onWindowResized = function() {
+    clearTimeout( resizeTimer );
+    resizeTimer = setTimeout( realignAdorner, 300 );
+  };
+
+  var realignAdorner = function() {
+    $('.qw-comment-adorner').each(function() {
+      var $adorner = $(this);
+      var $container = $adorner.parent();
+
+      var id = $adorner.data( 'p-id' );
+      var $cmtbl = $('[data-p-id="' + id + '"][data-commentable="1"]');
+      var pos = $cmtbl.position();
+      var mt = parseInt( $cmtbl.css('margin-top').replace('px', '') );
+      var top = pos.top + mt;
+      $container.css('top', top);
+    });
+  };
+
+  var appendAdorner = function() {
+    var self = QWiki.plugins.comments;
+    var $this = $(this);
+
+    var id = _.uniqueId( 'cmtbl-' );
+    var pid = $this.data( 'p-id' );
+    $this.data( 'cmtbl', id );
+
+    $this.on( 'mouseenter', self, onCommentableMouseEnter );
+    $this.on( 'mouseleave', self, onCommentableMouseLeave );
+
+    // create comment adorner to add a new comment
+    var $adorner = $('.content > .adorner');
+    if ( $adorner.length === 0 ) {
+      return;
+    }
+
+    var $container = $('<div></div>');
+    $container.appendTo( $adorner );
+    $container.on( 'click', self, onAdornerClick );
+    $container.on( 'mouseenter', self, onAdornerMouseEnter );
+    $container.on( 'mouseleave', self, onAdornerMouseLeave );
+
+    var $btn = $('<div class="qw-comment-adorner" title="Add comment" data-i18n-title="Add comment" data-i18n-ns="comments" data-tooltip="left"><i class="icon-add"></i></div>');
+    $btn.appendTo( $container );
+    $btn.data( 'cmtbl', id );
+    $btn.data( 'p-id', pid );
+
+    var pos = $this.position();
+    var mt = parseInt( $this.css('margin-top').replace('px', '') );
+    var top = pos.top + mt;
+    $container.css('top', top);
+
+    var hasComments = $this.data('hascomments');
+    if ( !_.isUndefined( hasComments ) ) {
+      var index = parseInt( hasComments );
+      $btn.addClass( self.types[index] );
+      $btn.attr('data-i18n-title', 'View comment');
+      $btn.attr('title', 'View comment');
     }
   };
 
