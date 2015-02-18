@@ -138,7 +138,7 @@
 
     > .user {
       height: auto;
-      bottom: 1 + $qw-leftbar-ma-logo-height + 60px;
+      bottom: 1px + $qw-leftbar-ma-logo-height + 60px;
 
       > div {
         padding: rem-calc(24);;
@@ -175,7 +175,7 @@
     }
 
     > .ma-logo {
-      bottom: 0;
+      bottom: 15px;
       border-top: 1px solid $qw-leftbar-border-bg;
       height: $qw-leftbar-ma-logo-height;
 
