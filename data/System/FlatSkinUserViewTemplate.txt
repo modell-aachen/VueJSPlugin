@@ -45,6 +45,70 @@
 %TMPL:DEF{"perspage:bookmarks:backup"
 }%%TMPL:END%
 
+%TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"addtask"}%%TMPL:END%
+
+%TMPL:DEF{"addtask"}%
+<div class="qw-addtask qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="addtask">
+  <div class="close" data-offcanvas-toggle="addtask">
+    <div><i class="icon-arrow-right"></i></div>
+  </div>
+  <div class="addtask-header">
+    <div>
+      <span>%MAKETEXT{"Create a new task"}%</span>
+    </div>
+  </div>
+  <div class="addtask-content">
+    <div>
+      <div class="entry">
+        <label for="content">%MAKETEXT{"Responsible"}%</label>
+        <div class="content">
+          <div class="user"><i class="icon-user"></i>%QUERY{"Responsible"}%</div>
+          <div class="useradd"><i class="icon-edit"></i></div>
+        </div>
+      </div>      
+      <div class="entry">
+        <div class="taskcalendar">
+          <label for="duecalendar">%MAKETEXT{"Due on"}%</label>
+          %INCLUDE{"%SYSTEMWEB%.JSCalendarContribInline"
+          }%<div id="duecalendar" class="duecalendar"><i class="icon-clock" \ onclick="return showCalendar('cal_val_here','%e %B %Y')"></i><input type="text" id="cal_val_here" /></div> 
+        </div>
+        <div class="priority">
+          <label class="prioritylabel" for="taskpriority">%MAKETEXT{"Prioritization"}%</label>
+          <div class="taskpriority">
+            <div class="switch radius">
+              <input id="priorityswitch" type="checkbox" name="testGroup">
+              <label for="priorityswitch"></label>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <div class="entry">
+        <label>%MAKETEXT{"note"}%
+          <div class="tasknote">
+            <textarea name="tasknote"rows="5"></textarea>
+            <i class="icon-maximize"></i>
+          </div>
+        </label>
+      </div>
+      <div class="entry">
+        <label>%MAKETEXT{"Attach a file"}%
+          <div class="attachment">
+            <i class="icon-upload"></i>
+            %MAKETEXT{"Click or drag and drop"}%
+          </div>
+        </label>
+      </div>
+      <div class="entry">
+        <div class="buttons">
+          <div class="finish qw-prio1-btn">%MAKETEXT{"finish"}%</div>
+          <div class="cancel qw-prio2-btn">%MAKETEXT{"cancel"}%</div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+%TMPL:END%
+
 %TMPL:DEF{"dashboard:menu"
 }%<div class="qw-dashboard-topbar" data-offcanvas>
   <span><i class="icon-home"></i> %MAKETEXT{"Dashboard"}%</span>
@@ -70,7 +134,7 @@
   </span>
   <span class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-maximize"></i></span>
   <span class="qw-prio2-btn maximize" data-offcanvas-toggle="inboxbar" ><i class="icon-inbox"></i></span>
-  <span class="qw-prio2-btn add"><i class="icon-add"></i>%MAKETEXT{Creating a task}%</span>
+  <span class="qw-prio2-btn add" data-offcanvas-toggle="addtask"><i class="icon-add"></i>%MAKETEXT{Creating a task}%</span>
 </div>
 <div class="qw-dashboard-toptwo knowledge" data-offcanvas>
   <span class="content">%MAKETEXT{Knowledge}%</span>
