@@ -140,11 +140,11 @@
 </div>
 <div class="qw-dashboard-toptwo knowledge" data-offcanvas>
   <span class="content">%MAKETEXT{Knowledge}%</span>
-    <a class="qw-prio2-btn" href="#"><i class="icon-add"></i>%MAKETEXT{Invest}%</a>
+    <a class="qw-prio2-btn" href="#"><i class="icon-add-task"></i>%MAKETEXT{Invest}%</a>
     <a class="qw-prio2-btn" href="#"><i class="icon-sort"></i>%MAKETEXT{Letzte Verwendung}%</a>
     <div class="view">
       <a href="#" class="row qw-action-button"><i class="icon-list-bullets"></i></a>
-      <a href="#" class="grid qw-action-button"><i class="icon-table"></i></a>
+      <a href="#" class="grid qw-action-button"><i class="icon-grid-view"></i></a>
   </div>
 </div>
 <div class="qw-session-toptwo sessions" data-offcanvas> <!-- all session names belongs to minutes plugin  -->
@@ -194,7 +194,7 @@
 
 %TMPL:DEF{"perspage:bookmarks"
 }%<div class="qw-dashboard-container tasks active" data-offcanvas>
-    %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future new priority\"><div class=\"task-input\"><label><i class=\"icon-blanko-frame\"></i><span>%MAKETEXT{"New"}%</label></span></div><div class=\"task-title\"><span>$action_text_s</span></div><div class=\"task-meetings\"><i class=\"icon-app-meetings\"> </i> GESELLSCHAFTERSITZUNG</div><div class=\"task-responsible\"><span><i class=\"icon-user\"></i> %QUERY{"Responsible"}%</span></div><div class=\"task-badge\"><span><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span></div></div>"rows="1000" sort="createdate" reverse="on"}%</div> 
+    %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future new priority\"><div class=\"task-input\"><label><i class=\"icon-task-open\"></i><span>%MAKETEXT{"New"}%</label></span></div><div class=\"task-title\"><span>$action_text_s</span></div><div class=\"task-meetings\"><i class=\"icon-app-meetings\"> </i> GESELLSCHAFTERSITZUNG</div><div class=\"task-responsible\"><span><i class=\"icon-user\"></i> %QUERY{"Responsible"}%</span></div><div class=\"task-badge\"><span><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span></div></div>"rows="1000" sort="createdate" reverse="on"}%</div> 
 <div class="qw-dashboard-container knowledge" data-offcanvas>
     <div class="perspageBlockTitle">%MAKETEXT{"My notes"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserNotesEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
     <div class="perspageBlock">
@@ -252,7 +252,7 @@
     <span class="session-title-num">%MAKETEXT{}%</span>
   </div>
   <div class="session-container">
-    <div class="session-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="session-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
     <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
     <div class="session-tag">%MAKETEXT{ Freitag, 10:00h}%</div>
     <div class="session-turnus">%MAKETEXT{ Wochentlich}%</div>
@@ -262,7 +262,7 @@
     <div class="session-num">16</div>
   </div>
   <div class="session-container future">
-    <div class="session-name"><i class="icon-blanko-frame"></i>%MAKETEXT{QM-Runde}%</div>
+    <div class="session-name"><i class="icon-task-open"></i>%MAKETEXT{QM-Runde}%</div>
     <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ 03.11.}%</span></div>
     <div class="session-tag">%MAKETEXT{ Montag, 10:30h-12:30h}%</div>
     <div class="session-turnus">%MAKETEXT{ Alle zwei Wochen}%</div>
@@ -272,7 +272,7 @@
     <div class="session-num">87</div>
   </div>
   <div class="session-container">
-    <div class="session-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="session-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
     <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
     <div class="session-tag">%MAKETEXT{ Freitag, 10:00h}%</div>
     <div class="session-turnus">%MAKETEXT{ Wochentlich}%</div>
@@ -291,7 +291,7 @@
         <span class="agenda-title-date">%MAKETEXT{Date}%</span>
   </div>
   <div class="agenda-container">
-    <div class="agenda-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="agenda-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
     <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
     <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
     <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
@@ -305,7 +305,7 @@
     </div> 
   </div>
   <div class="agenda-container future">
-    <div class="agenda-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="agenda-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
     <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ 21.10.}%</span></div>
     <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
     <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
@@ -319,7 +319,7 @@
     </div> 
   </div>
   <div class="agenda-container tomorrow">
-    <div class="agenda-name"><i class="icon-blanko-frame"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
+    <div class="agenda-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
     <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ tomorrow}%</span></div>
     <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
     <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
