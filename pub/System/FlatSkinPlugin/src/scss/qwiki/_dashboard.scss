@@ -31,37 +31,35 @@
 				display: inline-block;
 				border-right: 3px solid transparent;
 				border-radius: rem-calc( $global-radius 0 0 $global-radius);
-				padding: $qw-dashboard-task-input-padding;
+				padding: 0.125rem 0 0 0.3rem;
 
 				> label {
 					font-weight: bold;
 					font-size: $qw-dashboard-task-label-font-size;
-					padding: 0;
 					margin: 0;
-					vertical-align: middle;
-					position: relative;
-					top: 5px;
 
 					> i {
-						font-size: $qw-dashboard-task-label-icon-font-size;
+						font-size: 1.6rem;
 						vertical-align: top;
+						position: relative;
+						top: 5px;
 					}
 				}
 
 				span {
 					display: none;
-					padding-left: $qw-dashboard-task-input-span-padding-left;
+					padding-right: $qw-dashboard-task-input-span-padding-left;
 					font-weight: $qw-dashboard-task-input-span-font-weight;
+					vertical-align: middle;
 				}
 			}
 
 			> .task-title {
-				flex-grow: 4;
-				padding: 0.3125rem 0.25rem 0.3125rem 0.3125rem;
-				margin: 0;
-				position: relative;
-				top: $qw-dashboard-task-title-top;
 				display: inline-block;
+				flex-grow: 4;
+				padding: 0.625rem 0.25rem 0.3125rem 0.3125rem;
+				margin: 0;
+				top: $qw-dashboard-task-title-top;
 				font-size: $qw-dashboard-task-title-font-size;
 				color: $qw-dashboard-task-title-color;
 			}
@@ -111,14 +109,14 @@
 				> .task-input {
 					background-color: $qw-dashboard-task-new-bg;
 					border-color: $qw-dashboard-task-new-border-color;
-					padding: $qw-dashboard-task-new-padding;
+					padding: 0.125rem 0 0 0.3rem;
 
 					span {
 						display: inline-block;
 					}
 
 				> .task-title {
-					padding: $qw-dashboard-task-new-title-padding;
+					padding: 0.125rem 0 0 0.3rem;
 					}
 				}
 			}
