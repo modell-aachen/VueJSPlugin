@@ -136,7 +136,6 @@
     </ul>
   </span>
   <span class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-maximize"></i></span>
-  <span class="qw-prio2-btn maximize" data-offcanvas-toggle="inboxbar" ><i class="icon-inbox"></i></span>
   <span class="qw-prio2-btn add" data-offcanvas-toggle="addtask"><i class="icon-add"></i>%MAKETEXT{Creating a task}%</span>
 </div>
 <div class="qw-dashboard-toptwo knowledge" data-offcanvas>
