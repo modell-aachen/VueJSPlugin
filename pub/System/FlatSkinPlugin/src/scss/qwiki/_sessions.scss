@@ -81,6 +81,9 @@
 				font-size: $qw-session-container-name-icon-font-size;
 				color: $qw-session-container-name-icon-font-color;
 				padding-right: $qw-session-container-name-icon-padding-right;
+				position: relative;
+				vertical-align: top;
+				top: 2px;
 				
 			}
 		}
@@ -248,8 +251,11 @@
 
 			i {
 				font-size: $qw-agenda-container-name-icon-font-size;
-				color: qw-agenda-container-name-icon-font-color;
+				color: $qw-agenda-container-name-icon-font-color;
 				padding-right: $qw-agenda-container-name-icon-padding-right;
+				position: relative;
+				vertical-align: top;
+				top: 2px;
 				
 			}
 		}
@@ -311,7 +317,7 @@
 			border-right: 0;
 			border-top-right-radius:$global-radius;
 			border-bottom-left-radius: $global-radius;				
-			display: none;
+			display: inline-block;
 			width: $qw-agenda-container-tools-width;
 			position: absolute;
 			top: 0;
