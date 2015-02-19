@@ -60,11 +60,12 @@
   <div class="addtask-content">
     <div>
       <div class="entry">
-        <label for="content">%MAKETEXT{"Responsible"}%</label>
-        <div class="content">
-          <div class="user"><i class="icon-user"></i>%QUERY{"Responsible"}%</div>
-          <div class="useradd"><i class="icon-edit"></i></div>
-        </div>
+        <label>%MAKETEXT{"Responsible"}%
+          <div>
+            <div class="user"><i class="icon-user"></i>%QUERY{"Responsible"}%<i class="icon-close"></i></div>
+            <div class="useradd"><i class="icon-edit"></i></div>
+          </div>
+        </label>
       </div>      
       <div class="entry">
         <div class="taskcalendar">
@@ -73,14 +74,15 @@
           }%<div id="duecalendar" class="duecalendar"><i class="icon-clock" \ onclick="return showCalendar('cal_val_here','%e %B %Y')"></i><input type="text" id="cal_val_here" /></div> 
         </div>
         <div class="priority">
-          <label class="prioritylabel" for="taskpriority">%MAKETEXT{"Prioritization"}%</label>
-          <div class="taskpriority">
-            <div class="switch radius"> 
-              <span class="checkbox">%MAKETEXT{"no priority"}%</span>
-              <input id="priorityswitch" type="checkbox" name="testGroup">
-              <label for="priorityswitch"></label>
-            </div> 
-          </div>
+          <label class="prioritylabel">%MAKETEXT{"Prioritization"}%
+            <div class="taskpriority">
+              <div class="switch radius"> 
+                <span class="checkbox">%MAKETEXT{"no priority"}%</span>
+                <input id="priorityswitch" type="checkbox" name="testGroup">
+                <label for="priorityswitch"></label>
+              </div> 
+            </div>
+          </label>
         </div>
       </div>
       <div class="entry">
