@@ -569,13 +569,13 @@
 		padding: $qw-inboxbar-padding;
 		padding-top: 15px;
 
-		> .header {
+		> .session-header {
 			padding: $qw-inboxbar-header-padding;
 			background: $qw-inboxbar-header-bg-color;
 			border-bottom: $qw-inboxbar-header-border-bottom;
 
-			@media #{$mobile-only} {min-height: $qw-top-two-height-mobile - 12px;}
-			@media #{$small-up} {min-height: $qw-top-two-height - 12px;}
+			@media #{$mobile-only} {min-height: $qw-top-two-height-mobile - 25px;}
+			@media #{$small-up} {min-height: $qw-top-two-height - 25px;}
 
 			> div {
 
@@ -588,11 +588,12 @@
 				> .session-data-max {
 					float: right;
 					color: #BFBFBF;
-					padding: 5px 10px;
+					padding: 1px 1px 3px 5px;
 					margin: 0px 7px;
 
 					> i {
-						font-size: $qw-session-toptwo-session-maximize-icon-font-size;;
+						font-size: $qw-session-toptwo-session-maximize-icon-font-size;
+						color: #BFBFBF;
 
 					}
 				}
@@ -600,7 +601,7 @@
 			}
 		}
 
-		> .content {
+		> .session-content {
 			background: $qw-inboxbar-content-bg-color;
 
 			.session-data-container {
@@ -654,6 +655,144 @@
 						&.location {
 							background: #f2f5f7;
 							color: #236AA2;
+						}
+					}
+				}
+			}
+		}
+
+		> .history-header {
+			margin-top: 15px;
+			padding: $qw-inboxbar-header-padding;
+			background: $qw-inboxbar-header-bg-color;
+			border-bottom: $qw-inboxbar-header-border-bottom;
+
+			@media #{$mobile-only} {min-height: $qw-top-two-height-mobile - 25px;}
+			@media #{$small-up} {min-height: $qw-top-two-height - 25px;}
+
+			> div {
+
+				> span {
+					margin-left: $qw-inboxbar-header-span-left-margin;
+					color: $qw-infobar-header-color;
+					vertical-align: middle;
+				}
+
+				> .history-data-max {
+					float: right;
+					color: #BFBFBF;
+					padding: 1px 1px 3px 5px;
+					margin: 0px 7px;
+
+					> i {
+						font-size: $qw-session-toptwo-session-maximize-icon-font-size;
+						color: #BFBFBF;
+
+					}
+				}
+			}
+		}
+
+		> .history-content {
+			background: white;
+
+			> div {
+
+				> .history-container {
+
+					> .history {
+						position: relative;
+						background-color: white;
+						border-radius: $global-radius;
+						margin-bottom: $qw-inboxbar-inbox-margin-bottom;
+
+						> .history-left {
+							position: absolute;
+							top: 0; left: 0; bottom: 0;
+							border:$qw-inboxbar-inbox-left-border;
+							width: $qw-inboxbar-inbox-left-width;
+							height: $qw-inboxbar-inbox-left-height;
+							border-radius: ($global-radius 0 0 $global-radius );
+
+							> label {
+								padding:$qw-inboxbar-inbox-left-label-padding;
+							}
+						}
+
+						> .history-right {
+							margin-left: $qw-inboxbar-inbox-right-margin-left;
+							cursor: pointer;
+							border:0;
+							padding: $qw-inboxbar-inbox-right-padding;
+							border-bottom: 1px solid #F5F5F5;
+
+							> .caption {
+								margin: $qw-inboxbar-inbox-right-caption-margin;
+								min-height: 1.8rem;
+								width: $qw-inboxbar-inbox-right-caption-width;
+								border:0;
+
+								> .header {
+								display: block;
+								font-size: $qw-inboxbar-inbox-right-caption-header-font-size;
+								color: $qw-inboxbar-inbox-right-caption-header-font-color;
+								}
+							}
+
+							> .content {
+								margin:0;
+								border:0;
+
+								> span {
+									display: block;
+									font-size: $qw-inboxbar-inbox-right-caption-content-font-size;
+									color: $qw-inboxbar-inbox-right-caption-content-font-color;
+								}
+							}
+
+							> .author {
+								margin-top: 10px;
+
+								span {
+									font-size: $qw-inboxbar-inbox-right-caption-author-font-size;
+									padding-right: 10px;
+									color: #B7B7B7;
+								}
+
+								> .responsible {
+									border-radius: $global-radius;
+									background: #f2f5f7;
+									padding: 0.1875rem 0.5rem 0.1875rem 0.1875rem;
+									margin: $qw-inboxbar-inbox-right-caption-author-margin; 
+									font-size: $qw-inboxbar-inbox-right-caption-author-font-size;
+									&.responsible {
+										color: $qw-inboxbar-inbox-right-caption-author-responsible-font-color;
+									}
+
+									&.meetings {
+										font-size: $qw-inboxbar-inbox-right-caption-author-meetings-font-size;
+										color: $qw-inboxbar-inbox-right-caption-author-meetings-font-color;
+									}
+								}
+
+								> .date {
+									font-size: $qw-inboxbar-inbox-right-caption-date-font-size;
+									color: $qw-inboxbar-inbox-right-caption-date-font-color;
+									border-radius: $global-radius;
+								}		
+							}
+						}
+
+						&:hover {
+							background : $qw-inboxbar-inbox-tools-hover;
+						}
+					}
+
+					&:nth-child(even) {
+						
+						> .date {
+							background: #F5F5F5;
+							color: #BFBFBF;
 						}
 					}
 				}

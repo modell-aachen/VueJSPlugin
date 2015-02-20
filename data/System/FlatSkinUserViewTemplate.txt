@@ -157,7 +157,7 @@
     </ul>
   </span>
   <span class="qw-prio2-btn maximize"><i class="icon-maximize"></i></span>
-  <span class="qw-prio2-btn add"><i class="icon-add"></i>%MAKETEXT{Creating a session}%</span>
+  <span class="qw-prio2-btn add" data-offcanvas-toggle="sessionbar" ><i class="icon-add"></i>%MAKETEXT{Creating a session}%</span>
 </div>
 <div class="qw-session-toptwo departmenthead" data-offcanvas>
   <span class="content">%MAKETEXT{Agenda}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>

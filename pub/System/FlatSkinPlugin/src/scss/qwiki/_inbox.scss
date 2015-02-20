@@ -123,7 +123,7 @@
 
 							> .caption {
 								margin: $qw-inboxbar-inbox-right-caption-margin;
-								height: $qw-inboxbar-inbox-right-caption-height;
+								min-height: $qw-inboxbar-inbox-right-caption-height;
 								width: $qw-inboxbar-inbox-right-caption-width;
 								border:0;
 
