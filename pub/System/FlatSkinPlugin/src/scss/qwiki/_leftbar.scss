@@ -45,8 +45,9 @@
       background: $qw-leftbar-btn-bg;
       color: $qw-leftbar-btn-color;
       margin-bottom: 10px;
-      font-size: 2.5rem;
-      line-height: 1.1;
+      font-size: 2.0rem;
+      line-height: $qw-leftbar-width - 10px;
+      text-align: center;
       display: block;
       cursor: pointer;
       transition: background 0.15s ease-in-out,
@@ -66,10 +67,6 @@
           background: $qw-leftbar-btn-active-hover-bg;
           color: $qw-leftbar-btn-hover-color;
         }
-      }
-
-      > i {
-        margin-left: 11px;
       }
     }
 
