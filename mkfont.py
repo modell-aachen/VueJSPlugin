@@ -11,19 +11,11 @@ args = json.loads(sys.argv[1])
 f = fontforge.font()
 f.encoding = 'UnicodeFull'
 f.copyright = 'Modell Aachen GmbH'
-f.design_size = 16
-f.em = int(args['fontHeight'] + 0.98) #eww
-f.descent = args['descent']
-f.ascent = f.em - args['descent']
+f.design_size = 160
 
-KERNING = 15
-
-
-def create_empty_char(f, c):
-	pen = f.createChar(ord(c), c).glyphPen()
-	pen.moveTo((0, 0))
-	pen = None
-
+f.descent = 0
+f.ascent = 1000
+f.em = int(args['fontHeight']*10)
 
 scssTemplate = args['scssTemplate']
 scsstf = open(scssTemplate, 'r')
@@ -58,24 +50,22 @@ for dirname, dirnames, filenames in os.walk(args['inputDir']):
 			vbox = (0, 0, 0, 0)
 			if dims:
 				vbox = (
-					float(dims.group(1)),
-					float(dims.group(2)),
-					float(dims.group(3)),
-					float(dims.group(4))
+					float(dims.group(1))*10.0,
+					float(dims.group(2))*10.0,
+					float(dims.group(3))*10.0,
+					float(dims.group(4))*10.0
 				)
 
 			glyph = f.createChar(cp)
 			glyph.importOutlines(filePath)
+			glyph.correctDirection()
+			glyph.round(10e2)
 
-			bbox = glyph.boundingBox();
+			bbox = glyph.boundingBox()
 			glyph.left_side_bearing = bbox[0] - vbox[0]
-			glyph.right_side_bearing = bbox[2] - vbox[2]
+			glyph.right_side_bearing = vbox[2] - bbox[2]
 			glyph.width = vbox[2] - vbox[0]
 			glyph.vwidth = vbox[3] - vbox[1]
-
-			glyph.canonicalContours()
-			glyph.correctDirection()
-			glyph.round(10e12)
 
 			glyphInfo.append({'name': name, 'cp': cp, 'bbox': bbox, 'vbox': vbox})
 			cp += 1
