@@ -47,6 +47,10 @@
   transition: none !important;
 }
 
+.no-pointer-events {
+  pointer-events: none;
+}
+
 .fluid-image {
   max-width: 100%;
 }
