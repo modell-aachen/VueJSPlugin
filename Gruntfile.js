@@ -255,7 +255,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          compress: true,
+          compress: {},
           mangle: true,
           preserveComments: false
         },
