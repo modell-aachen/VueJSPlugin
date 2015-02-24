@@ -513,6 +513,78 @@ $qw-dashboard-toptwo-view-action-button-height: rem-calc(31);
 $qw-dashboard-toptwo-view-action-button-font-size: rem-calc(30);
 
 
+// add task panel
+$qw-add-task-header-padding: rem-calc(10 20);
+$qw-add-task-header-border-bottom: 1px solid #f5f5f5;
+$qw-add-task-header-font-size: rem-calc(27);
+$qw-add-task-header-font-color: #BFBFBF;
+$qw-add-task-content-padding: rem-calc(0 20);
+$qw-add-task-content-margin-top: rem-calc(20);
+$qw-add-task-content-label-font-color: #262626;
+$qw-add-task-content-label-font-size: rem-calc(12);
+$qw-add-task-content-label-margin-bottom: rem-calc(5);
+$qw-add-task-content-label-margin-top: rem-calc(5);
+$qw-add-task-content-label-border: 1px solid #f5f5f5;
+$qw-add-task-content-label-min-height: rem-calc(32);
+$qw-add-task-content-label-padding: rem-calc(5);
+$qw-add-task-content-user-padding: rem-calc(8 5);
+$qw-add-task-content-user-bg-color: #f2f5f7;
+$qw-add-task-content-user-font-color: #236AA2;
+$qw-add-task-content-user-icon-close-font-color: #236AA2;
+$qw-add-task-content-user-icon-close-font-size: rem-calc(12);
+$qw-add-task-content-user-add-padding: rem-calc(8);
+$qw-add-task-content-user-add-margin-left: rem-calc(20);
+$qw-add-task-content-user-add-bg-color: #236AA2;
+$qw-add-task-content-user-add-font-color: #FFF;
+$qw-add-task-content-taskcalendar-label-font-color: #262626;
+$qw-add-task-content-taskcalendar-label-font-size: rem-calc(12);
+$qw-add-task-content-taskcalendar-label-margin-bottom: rem-calc(5);
+$qw-add-task-content-taskcalendar-label-margin-top: rem-calc(10);
+$qw-add-task-content-duecalendar-border: 1px solid #F5F5F5;
+$qw-add-task-content-duecalendar-height: rem-calc(40);
+$qw-add-task-content-duecalendar-width: rem-calc(180);
+$qw-add-task-content-duecalendar-bg-color: #f0f0f0;
+$qw-add-task-content-duecalendar-padding: rem-calc(5 5 5 0);
+$qw-add-task-content-duecalendar-input-width: 80%;
+$qw-add-task-content-duecalendar-input-bg-color: #f0f0f0;
+$qw-add-task-content-duecalendar-input-border: rem-calc(0);
+$qw-add-task-content-duecalendar-input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0);
+$qw-add-task-content-duecalendar-icon-font-color: #236AA2;
+$qw-add-task-content-duecalendar-icon-font-size: rem-calc(24);
+$qw-add-task-content-duecalendar-icon-padding: rem-calc(0 2 5 0);
+$qw-add-task-content-priority-padding-left: rem-calc(30);
+$qw-add-task-content-priority-padding-width: rem-calc(150);
+$qw-add-task-content-priority-label-font-color: #262626;
+$qw-add-task-content-priority-label-font-size: rem-calc(12);
+$qw-add-task-content-priority-label-margin-top: rem-calc(10);
+$qw-add-task-content-taskpriority-margin-top: rem-calc(5);
+$qw-add-task-content-taskpriority-width: 100%;
+$qw-add-task-content-taskpriority-switch-margin-top: rem-calc(5);
+$qw-add-task-content-taskpriority-switch-transition-speed: 0.3s;
+$qw-add-task-content-taskpriority-switch-height: rem-calc(27);
+$qw-add-task-content-taskpriority-switch-bg-color: #999;
+$qw-add-task-content-taskpriority-switch-font-color: #999;
+$qw-add-task-content-taskpriority-switch-font-size: rem-calc(14);
+$qw-add-task-content-tasknote-margin-top: rem-calc(5);
+$qw-add-task-content-tasknote-min-height: rem-calc(100);
+$qw-add-task-content-tasknote-bg-color: #f0f0f0;
+$qw-add-task-content-tasknote-textarea-bg-color: #f0f0f0;
+$qw-add-task-content-tasknote-textarea-max-font-size: rem-calc(20);
+$qw-add-task-content-tasknote-textarea-max-font-color: #236AA2;
+$qw-add-task-content-tasknote-textarea-max-padding: rem-calc(5);
+$qw-add-task-content-tasknote-textarea-max-bg-color: #FFF;
+$qw-add-task-content-tasknote-textarea-max-margin: rem-calc(5);
+$qw-add-task-content-attachment-height: rem-calc(100);
+$qw-add-task-content-attachment-bg-color: #f2f5f7;
+$qw-add-task-content-attachment-font-color: #236AA2;
+$qw-add-task-content-attachment-margin-top: rem-calc(5);
+$qw-add-task-content-attachment-icon-font-size: rem-calc(32);
+$qw-add-task-content-buttons-margin-top: rem-calc(40);
+$qw-add-task-content-buttons-height: rem-calc(32);
+$qw-add-task-content-buttons-finish-width: rem-calc(250);
+$qw-add-task-content-buttons-cancel-width: rem-calc(100);
+
+
 
 // inbox panel 
 $qw-inboxbar-padding: rem-calc(0 30);

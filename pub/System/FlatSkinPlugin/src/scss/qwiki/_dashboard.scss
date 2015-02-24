@@ -331,11 +331,11 @@
 		padding-bottom: 0 !important;
 
 		> div {
-			padding: 10px 20px 10px 20px;
-			border-bottom: 1px solid #f5f5f5;
+			padding: $qw-add-task-header-padding;
+			border-bottom: $qw-add-task-header-border-bottom;
 			> span {
-				font-size: 1.7rem;
-				color: #bfbfbf;
+				font-size: $qw-add-task-header-font-size;
+				color: $qw-add-task-header-font-color;
 			}
 		}
 	}
@@ -343,23 +343,23 @@
 	> .addtask-content {
 
 		> div {
-			padding: 0 20px;
+			padding: $qw-add-task-content-padding;
 			
 			> .entry { 
-				margin-top: 20px;
+				margin-top: $qw-add-task-content-margin-top;
 
 				> label {
-					color: #262626;
-					font-size: 0.8rem;
+					color: $qw-add-task-content-label-font-color;
+					font-size: $qw-add-task-content-label-font-size;
 					font-weight: bold;
-					margin-bottom: 5px; 
+					margin-bottom: $qw-add-task-content-label-margin-bottom; 
 
 					> div {
-						margin-top: 5px;
+						margin-top: $qw-add-task-content-label-margin-top;
 						border-radius: $global-radius;
-						border: 1px solid #f5f5f5;
-						min-height: 2rem;
-						padding: 5px; 
+						border: $qw-add-task-content-label-border;
+						min-height: $qw-add-task-content-label-min-height;
+						padding: $qw-add-task-content-label-padding; 
 
 						> .user , .useradd {
 							border-radius: $global-radius;
@@ -368,24 +368,24 @@
 						}
 
 						> .user {
-							padding: 8px 5px 8px 5px;
+							padding: $qw-add-task-content-user-padding;
 							float: left;
-							background: #f2f5f7;
-							color: #236AA2;
+							background: $qw-add-task-content-user-bg-color;
+							color: $qw-add-task-content-user-font-color;
 
 							> .icon-close {
 								float: right;
-								color: #236AA2;
-								font-size: 0.8rem;
+								color: $qw-add-task-content-user-icon-close-font-color;
+								font-size: $qw-add-task-content-user-icon-close-font-size;
 							}	
 						}
 
 						> .useradd {
-							padding: 8px 8px;
-							margin-left: 20px;
+							padding: $qw-add-task-content-user-add-padding;
+							margin-left: $qw-add-task-content-user-add-margin-left;
 							float: right;
-							background: #236AA2;
-							color: white;
+							background: $qw-add-task-content-user-add-bg-color;
+							color: $qw-add-task-content-user-add-font-color;
 							cursor: pointer;
 						}
 					}
@@ -396,36 +396,36 @@
 					float: left;
 
 					> label {
-					color: #262626;
-					font-size: 0.8rem;
+					color: $qw-add-task-content-taskcalendar-label-font-color;
+					font-size: $qw-add-task-content-taskcalendar-label-font-size;
 					font-weight: bold;
-					margin-bottom: 5px; 
-					margin-top: 10px;
+					margin-bottom: $qw-add-task-content-taskcalendar-label-margin-bottom; 
+					margin-top: $qw-add-task-content-taskcalendar-label-margin-top;
 					}
 
 					> .duecalendar {
 						display: inline-block;
-						border: 1px solid #f5f5f5;
-						height: 2.5rem;
-						width: 180px;
+						border: $qw-add-task-content-duecalendar-border;
+						height: $qw-add-task-content-duecalendar-height;
+						width: $qw-add-task-content-duecalendar-width;
 						border-radius:$global-radius;
-						background: #f0f0f0;
-						padding: 5px 5px 5px 0;
+						background: $qw-add-task-content-duecalendar-bg-color;
+						padding: $qw-add-task-content-duecalendar-padding;
 						
 						> input {
-							width: 80%;
-							background: #f0f0f0;
-							border: 0;
-							box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0);
+							width: $qw-add-task-content-duecalendar-input-width;
+							background: $qw-add-task-content-duecalendar-input-bg-color;
+							border: $qw-add-task-content-duecalendar-input-border;
+							box-shadow: $qw-add-task-content-duecalendar-input-box-shadow;
 						}
 
 						> i {
 
-							color: #236AA2;
-							font-size: 1.5rem;
+							color: $qw-add-task-content-duecalendar-icon-font-color;
+							font-size: $qw-add-task-content-duecalendar-icon-font-size;
 							float: right;
 							display: inline-block;
-							padding: 0 2px 5px 0;
+							padding: $qw-add-task-content-duecalendar-icon-padding;
 							cursor: pointer;
 						}
 					}
@@ -433,36 +433,36 @@
 
 				> .priority {
 					display: inline-block;
-					padding-left: 30px;
-					width: 150px;
+					padding-left: $qw-add-task-content-priority-padding-left;
+					width: $qw-add-task-content-priority-padding-width;
 
 					> label {
-					color: #262626;
-					font-size: 0.8rem;
+					color: $qw-add-task-content-priority-label-font-color;
+					font-size: $qw-add-task-content-priority-label-font-size;
 					font-weight: bold;
-					margin-top: 10px;
+					margin-top: $qw-add-task-content-priority-label-margin-top;
 					
 						> .taskpriority {
-							margin-top: 5px;
+							margin-top: $qw-add-task-content-taskpriority-margin-top;
 							display: inline-block;
-							width: 100%;
+							width: $qw-add-task-content-taskpriority-width;
 							
 							> .switch {
-								@include switch($transition-speed: 0.3s , $transition-ease: ease-out, $height: 1.7rem, $radius: $global-radius, $base-style: true);
-								margin-top: 5px;
+								@include switch($transition-speed: $qw-add-task-content-taskpriority-switch-transition-speed , $transition-ease: ease-out, $height: $qw-add-task-content-taskpriority-switch-height, $radius: $global-radius, $base-style: true);
+								margin-top: $qw-add-task-content-taskpriority-switch-margin-top;
 								
 								  // background color on unchecked position
 								input[type="checkbox"]:not(:checked) + label {
-								background-color: #999;
+								background-color: $qw-add-task-content-taskpriority-switch-bg-color;
 								}
 								span {
 								display: inline-block;
 								position: absolute;
-								top: 0px;
-								right: 0px;
-								color: #999;
+								top: 0;
+								right: 0;
+								color: $qw-add-task-content-taskpriority-switch-font-color;
 								pointer-events: none; 
-								font-size: 0.9rem;
+								font-size: $qw-add-task-content-taskpriority-switch-font-size;
 								font-style: italic;
 								}
 
@@ -478,13 +478,13 @@
 				> label {
 
 					.tasknote {
-						margin-top: 5px;
+						margin-top: $qw-add-task-content-tasknote-margin-top;
 						position: relative;
-						min-height: 100px;
-						background: #f0f0f0;
+						min-height: $qw-add-task-content-tasknote-min-height;
+						background: $qw-add-task-content-tasknote-bg-color;
 
 						textarea {
-							background: #f0f0f0;
+							background: $qw-add-task-content-tasknote-textarea-bg-color;
 							border: 0;
 							border-radius: $global-radius;
 						} 
@@ -493,13 +493,13 @@
 							position: absolute;
 							top: 0;
 							right: 0;
-							font-size: 1.3rem;
-							color: #236AA2;
-							padding: 5px;
+							font-size: $qw-add-task-content-tasknote-textarea-max-font-size;
+							color: $qw-add-task-content-tasknote-textarea-max-font-color;
+							padding: $qw-add-task-content-tasknote-textarea-max-padding;
 							cursor: pointer;
-							background: white;
+							background: $qw-add-task-content-tasknote-textarea-max-bg-color;
 							border-radius: $global-radius;
-							margin: 5px; 
+							margin: $qw-add-task-content-tasknote-textarea-max-margin; 
 
 						}
 					}
@@ -509,17 +509,17 @@
 
 					.attachment {
 
-						height: 100px;
-						background: #f2f5f7;
-						color: #236AA2;
+						height: $qw-add-task-content-attachment-height;
+						background: $qw-add-task-content-attachment-bg-color;
+						color: $qw-add-task-content-attachment-font-color;
 						vertical-align: middle;
 						text-align: center;
 						border-radius: $global-radius;
 						font-style: italic;
-						margin-top: 5px;
+						margin-top: $qw-add-task-content-attachment-margin-top;
 
 						i {
-							font-size: 2rem;
+							font-size: $qw-add-task-content-attachment-icon-font-size;
 							display: block;
 
 						}
@@ -528,16 +528,16 @@
 				}
 
 				> .buttons {
-					margin-top: 40px;
-					height: 2rem;
+					margin-top: $qw-add-task-content-buttons-margin-top;
+					height: $qw-add-task-content-buttons-height;
 					font-style: italic;
 					> .finish {
 						float: left;
-						width: 250px;
+						width: $qw-add-task-content-buttons-finish-width;
 					}
 
 					> .cancel {
-						width: 100px;
+						width: $qw-add-task-content-buttons-cancel-width;
 						float: right;
 					}
 				}
