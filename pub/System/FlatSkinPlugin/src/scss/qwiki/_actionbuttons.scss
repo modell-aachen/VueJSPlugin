@@ -2,102 +2,93 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
 .qw-joinedtab {
   float: left;
-  margin-right: $button-tny;
-  padding-top: $qw-tab-pseudoborder;
-  padding-bottom: $qw-tab-pseudoborder;
   border-top: $qw-tab-outerborder solid transparent;
   border-left: $qw-tab-outerborder solid transparent;
   border-right: $qw-tab-outerborder solid transparent;
 
-  @media #{$mobile-only} {height: calc(#{$qw-top-two-height-mobile} - 2 * #{$qw-tab-pseudoborder});}
-  @media #{$small-up} {height: calc(#{$qw-top-two-height} - 2 * #{$qw-tab-pseudoborder});}
+  @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
+  @media #{$small-up} {height: $qw-top-two-height;}
+
+  margin-right: $button-tny - $qw-tab-deco-border-width;
+  &:last-child {
+      margin-right: $button-tny;
+  }
+
+  &.approved:first-child > * {
+      margin-left: $button-tny - $qw-tab-deco-border-width;
+  }
+
+  & div.active a,
+  &:hover div.active:not(:hover) a,
+  &.active a {
+    color: $qw-tab-text-active-color;
+  }
+  & div.inactive a,
+  &:hover div.inactive:not(:hover) a,
+  &.inactive a {
+    color: $qw-tab-text-inactive-color;
+  }
+  & div.active:hover a,
+  &.active:hover a {
+    color: $qw-tab-text-active-hover-color;
+  }
+  & div.inactive:hover a,
+  &.inactive:hover a {
+    color: $qw-tab-text-inactive-hover-color;
+  }
 
   &,
-  & > *{
+  & > *,
+  & > div.pseudoborder > * {
     transition: background $qw-tab-transition-time ease-in-out,
-                border $qw-tab-transition-time ease-in-out;
+                color $qw-tab-transition-time ease-in-out;
+  }
+
+  &.inactive a {
+    border-radius: $qw-tab-radius;
   }
 
   & > * {
-    border-width: $qw-tab-deco-border-width;
+  }
+  & > div.pseudoborder {
+    & > * {
+      background-image: none;
+      background-color: inherit;
+    }
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: $qw-tab-pseudoborder;
+    padding-bottom: $qw-tab-pseudoborder;
+  }
+  & > * {
+    border-width: $qw-tab-deco-border-width 0 $qw-tab-deco-border-width 0;
     border-style: solid;
     border-color: transparent;
-  }
-  & > *:not(:first-child) {
-    border-left: none;
-  }
-  & > *:not(:last-child) {
-    border-right: none;
-  }
-  & > *:first-child {
-    border-top-left-radius: $qw-tab-radius;
-    border-bottom-left-radius: $qw-tab-radius;
-    &:hover {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-  }
-  & > *:last-child {
-    border-top-right-radius: $qw-tab-radius;
-    border-bottom-right-radius: $qw-tab-radius;
-    &:hover {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
   }
 
   & a {
     text-decoration: none;
   }
 
-  &:hover.active {
-    border-color: $qw-content-bg;
-
-    &,
-    &:before,
-    & a {
-      color: $qw-tab-text-active-hilight-color;
-    }
-  }
   &.active {
     border-color: $qw-content-bg;
-
-    &,
-    &:before,
-    & a {
-      color: $qw-tab-text-active-color;
-      font-weight: $qw-tab-active-weight;
-    }
-  }
-
-  &:hover {
-    border-color: $qw-content-bg;
-
-    &,
-    &:before,
-    & a {
-      color: $qw-tab-text-inactive-hilight-color;
-    }
-  }
-  &,
-  &:before,
-  & a {
-    color: $qw-tab-text-inactive-color;
+    background-color: $qw-content-bg;
   }
 
   & > a,
+  & > div.pseudoborder > a,
   & >.sub-tab > a {
     &:before {
       font-family:"QWikiSymbol";
       font-size: 1.75rem;
       vertical-align: middle;
-      margin-right: $button-tny;
       transition: margin-right $qw-tab-transition-time linear;
     }
   }
 
 
-  > a {
+  & > div.pseudoborder > a, & > a {
     display: inline-block;
 
     @media #{$mobile-only} {
@@ -117,14 +108,13 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
 
   &.approved {
-    > a {
+    & > div.pseudoborder > a, & > a {
       &:before {
         @extend .icon-page-free;
       }
     }
 
-    &.active,
-    &:hover {
+    &.active {
       border-color: $qw-content-bg;
 
       &,
@@ -133,16 +123,16 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
       }
     }
 
-    &.inactive:not(:hover) {
-      background: transparent;
-      > a {
+    &.inactive {
+      & > div.pseudoborder > a,
+      & > a {
           background: $qw-tab-approved-inactive-color;
       }
     }
   }
 
   &.unapproved {
-    > a:before {
+    > div.pseudoborder > a:before, > a:before {
       @extend .icon-page-draft;
     }
 
@@ -150,28 +140,73 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
       background-image: none;
     }
 
-    &.inactive {
-      & > * {
-        background-color: $qw-tab-unapproved-inactive-color;
-      }
-    }
-
-    &:hover,
     &.active {
-      background-image: $qw-stripes;
-      background-color: $qw-tab-unapproved-active-color;
+      & > div.pseudoborder {
+          background-image: $qw-stripes;
+          background-color: $qw-tab-unapproved-active-color;
+      }
 
       & > * {
         background-color: $qw-edit-color;
       }
     }
+    &.inactive {
+      & > div.pseudoborder > a,
+      & > a {
+          background: $qw-tab-approved-inactive-color;
+      }
+    }
   }
+
+  & > .sub-tab > div.pseudoborder {
+      background-color: transparent;
+
+      & a {
+          background-color: $qw-tab-subtab-color;
+      }
+  }
+  &.active > .sub-tab > div.pseudoborder {
+      &,
+      & a {
+          background-color: $qw-tab-subtab-color;
+      }
+  }
+  & > .sub-tab.inactive:hover > div.pseudoborder {
+      & a {
+          background-color: $qw-tab-subtab-inactive-hover-color;
+      }
+  }
+  &.active > .sub-tab:hover > div.pseudoborder,
+  & > .sub-tab.active:hover > div.pseudoborder {
+      &,
+      & a {
+          background-color: $qw-tab-subtab-active-hover-color;
+      }
+  }
+
 
   > .sub-tab {
     float: right;
+    background-color: transparent;
+    border: none;
+    margin-left: $qw-tab-deco-border-width;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    & > div.pseudoborder {
+        padding-top: $qw-tab-pseudoborder;
+        border-top: $qw-tab-deco-border-width solid transparent;
+        padding-bottom: $qw-tab-pseudoborder;
+        border-bottom: $qw-tab-deco-border-width solid transparent;
+    }
+
+
     @media #{$mobile-only} {height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;}
     @media #{$small-up} {height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;}
 
+    > div.pseudoborder > a,
     > a {
       display: inline-block;
       border: none;
@@ -179,7 +214,6 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
       font-weight: normal;
       background-color: $qw-tab-subtab-color;
       background-image: none;
-      border-radius: $qw-tab-radius;
       border-color: $qw-tab-subtab-color;
       padding-left: $button-tny;
       padding-right: $button-tny;
