@@ -165,12 +165,9 @@
 
     > .links {
       top: 50px;
-      padding-left: rem-calc(10);
-      padding-right: rem-calc(10);
 
       > .button {
-        width: calc(100% - #{4 * rem-calc(10)});
-        margin-bottom: rem-calc(3);
+        margin: 0 rem-calc(8) rem-calc(3) rem-calc(8);
         cursor: pointer;
         border-radius: $global-radius;
         color: $qw-leftbar-color-expanded;
