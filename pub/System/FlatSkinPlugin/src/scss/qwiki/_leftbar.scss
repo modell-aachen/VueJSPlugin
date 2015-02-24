@@ -167,7 +167,7 @@
       top: 50px;
 
       > .button {
-        margin: 0 rem-calc(8) rem-calc(3) rem-calc(8);
+        margin: rem-calc(0 5 3 5);
         cursor: pointer;
         border-radius: $global-radius;
         color: $qw-leftbar-color-expanded;
@@ -175,13 +175,17 @@
         transition: background 0.15s ease-in-out,
                     color 0.15s ease-in-out,
                     opacity 0.2s ease-in-out;
+
         text-decoration: none;
-        padding: 0 rem-calc(15);
-        line-height: 2.5rem;
+        padding: rem-calc(0 15 0 10);
+        line-height: rem-calc(36);
+
+        font-family: 'OpenSans';
+        font-size: rem-calc(14);
 
         i {
-          font-size: 1.8rem;
-          margin-right: rem-calc(8);
+          font-size: 1.5rem;
+          margin-right: rem-calc(5);
         }
 
         &:hover {
