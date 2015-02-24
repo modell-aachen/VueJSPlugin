@@ -50,6 +50,7 @@ sub initPlugin {
 
   # TBD. werden die beiden MA... macros überhaupt noch gebraucht?
   Foswiki::Func::registerTagHandler( 'QWWEBLIST', \&_handleWEBLIST );
+  Foswiki::Func::registerTagHandler( 'QWAPPICON', \&_handleAPPICON );
 
   Foswiki::Func::registerRESTHandler( 'rendermulti', \&_handleRenderMulti,
     authenticate => 0,
@@ -244,6 +245,27 @@ sub _handleWEBLIST {
   }
 
   return join( '', @retval );
+}
+
+sub _handleAPPICON {
+  my( $session, $params, $topic, $web, $topicObject ) = @_;
+
+  ($web, $topic) = Foswiki::Func::normalizeWebTopicName( $web, $topic );
+  my $requested = $params->{_DEFAULT};
+  return 'app-processes' unless $requested;
+
+  my $prefix = Foswiki::Func::getPreferencesValue( "APPICON_PREFIX" ) || 'app-';
+  my $icon = Foswiki::Func::getPreferencesValue( "APPICON_$requested" );
+  return $icon if $icon;
+
+  $web = lc($web);
+  return $prefix . "processes" if ( $web =~ /^(prozesse|processes)$/ );
+  return $prefix . "projects" if ( $web =~ /^(projekte|projects)$/ );
+  return $prefix . "meetings" if ( $web =~ /^(minutes|protokolle)$/ );
+  return $prefix . "cockpit" if ( $web =~ /^(cockpit|kpi|nominal)$/ );
+  return $prefix . "audits" if ( $web =~ /^audits?$/ );
+
+  return 'app-processes';
 }
 
 sub _handleFLATCOMMENTS {

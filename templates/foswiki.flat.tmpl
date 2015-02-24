@@ -342,7 +342,7 @@ TODO
 </ul>
 <!--/breadcrumb-->%TMPL:END%
 
-%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home %IF{"$TOPIC = 'WebHome'" then="no-pointer-events"}%"><a href="%SCRIPTURLPATH{view}%/%USERSWEB%/%HOMETOPIC%"><i class="icon-app-processes"></i></a></li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home %IF{"$TOPIC = 'WebHome'" then="no-pointer-events"}%"><a href="%SCRIPTURLPATH{view}%/%USERSWEB%/%HOMETOPIC%"><i class="icon-%QWAPPICON{%WEB%}%"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%QWWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" format="<a href=\"%SCRIPTURLPATH{view}%/$web/$topic\">$percntTMPL:P{\"breadcrumb:topic:title\" web=\"$web\" topic=\"$topic\"}$percnt</a>" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic"}%<li class="qw-breadcrumb-topic"><a href="%SCRIPTURLPATH{view}%/%WEB%/%TOPIC%">%IF{"$TOPIC != 'WebHome'" then="$percntTMPL:P{\"breadcrumb:topic:title\" web=\"%WEB%\" topic=\"%TOPIC%\"}$percnt"}%</a></li>%TMPL:END%

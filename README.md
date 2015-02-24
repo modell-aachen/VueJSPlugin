@@ -95,6 +95,12 @@ Registrieren über script-Tag in HEAD oder über `QWiki.registerPlugin( plugin, 
 Jedes Plugin bekommt eine Referenz auf [JQuery](http://api.jquery.com/) ($) und [Underscore](http://underscorejs.org/) (_). Über `this.Q` wird der Zugriff auf die Q.Wiki Lib. ermöglicht. Globals werden von QWiki "vererbt". Jedem Plugin wird garantiert, dass das DOM vollständig geladen wurde, bevor die plugin-eigene *init* Methode aufgerufen wird.
 
 
+### appicons
+in den webpreferences/sitepreferences
+   * Set APPICON_PREFIX = app-
+   * Set APPICON_Projects = projects
+...
+
 
 ### accordion
 ```html
