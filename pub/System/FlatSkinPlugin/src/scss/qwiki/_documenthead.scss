@@ -21,21 +21,10 @@
     transition: opacity 0.3s ease-in-out;
     min-width: 100%;
 
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-
-    display: -ms-flexbox;
-    -ms-flex-direction: row;
-    -ms-flex-wrap: wrap;
+    @include flex-container($wrap:wrap);
 
     > .entry {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      display: -ms-flexbox;
-      -ms-flex-wrap: wrap;
-      -ms-flex-direction: column;
+      @include flex-container($direction:column, $wrap:wrap);
       float: left;
       margin: rem-calc(10 0 10 10);
 
@@ -84,18 +73,11 @@
   .flex-table {
     > .row {
       width: 100%;
-      display: flex;
-      display: -ms-flexbox;
-      flex-direction: row;
-      -ms-flex-direction: row;
-      flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-      
+      @include flex-container($wrap:wrap);
+
       > .item {
-        display: flex;
-        flex-direction: column;
-        -ms-flex-direction: column;
-        flex-grow: 2;
+        @include flex-container($direction:column, $wrap:wrap);
+        @include flex($grow:2);
         background: $qw-dochead-default-bg;
         border-radius: $global-radius; 
         height: $qw-dochead-classic-height;
@@ -135,16 +117,14 @@
   
       &:first-child {
         > .item {
-          flex-grow: 1;
-          flex-direction: row;
-          -ms-flex-direction: row;
-          
+          @include flex($grow: 1);
+
           > .tcontent {
             $pad: rem-calc(6);
             height: rem-calc(30) - 2 * $pad;
             margin-top: 5px;
             margin-right: 50px;
-            
+
           }
           > .label {
             min-width:0;
@@ -162,7 +142,7 @@
           }
 
           &:last-child {
-            flex-grow: 0;
+            @include flex($grow: 0);
           }
         }
       }

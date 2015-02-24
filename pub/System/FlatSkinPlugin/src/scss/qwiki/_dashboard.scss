@@ -12,12 +12,7 @@
 
 		> .task, .knowledge {
 			position: relative;
-			display: -webkit-box;
-			display: -moz-box;
-			display: -ms-flexbox;
-			display: -webkit-flex;
-			display: flex;
-			-webkit-flex-flow: row wrap;
+			@include flex-container($wrap: wrap);
 			color: $qw-agenda-container-font-color;
 			font-size: $qw-agenda-container-font-size;
 			float: left;
@@ -56,7 +51,7 @@
 
 			> .task-title {
 				display: inline-block;
-				flex-grow: 4;
+				@include flex($grow: 4);
 				padding: 0.625rem 0.25rem 0.3125rem 0.3125rem;
 				margin: 0;
 				top: $qw-dashboard-task-title-top;
@@ -186,7 +181,7 @@
 
 			> .knowledge-title {
 				padding-top: 8px;
-				flex-grow: 3;
+				@include flex($grow: 3);
 			}
 			
 			> .knowledge-keywords {

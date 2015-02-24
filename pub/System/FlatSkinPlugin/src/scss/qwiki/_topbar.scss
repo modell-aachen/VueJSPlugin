@@ -263,7 +263,7 @@
 
       > div {
         transition: width 0.3s ease-in-out;
-        display: flex;
+        @include flex-container;
         overflow: hidden;
         border-bottom: 5px solid $qw-content-bg;
 
@@ -281,7 +281,7 @@
           @media #{$small-up} {height: $qw-top-two-height;}
 
           &.topicactions-container {
-            flex-grow: 2;
+            @include flex($grow:2);
 
             @media #{$mobile-only} {padding: rem-calc(0 10 0 0);}
             @media #{$small-up} {padding: rem-calc(10 10 0 0);}

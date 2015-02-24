@@ -70,8 +70,7 @@
   @include grid-row($behavior: collapse);
 
   > .form {
-    display: -ms-flexbox;
-    display: flex;
+    @include flex-container;
 
     > .toggle {
       > .filter-toggle {
@@ -87,8 +86,7 @@
     }
 
     > .input {
-      -ms-flex: auto;
-      flex: auto;
+      @include flex($grow: 1);
 
       > input {
         border: none !important;
@@ -107,6 +105,7 @@
     }
 
     > .submit {
+      @include flex($grow: 0);
       > a {
         @include button(
           $bg: $qw-quicksearch-bg

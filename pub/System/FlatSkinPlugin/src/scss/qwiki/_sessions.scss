@@ -11,11 +11,7 @@
 		margin: $qw-session-title-margin;
 		line-height: $qw-session-title-line-height;
 		display: -webkit-box;
-		display: -moz-box;
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-flex-flow: row wrap;
+		@include flex-container($wrap:wrap);
 		border-radius: $global-radius;
 		cursor: pointer;
 		color: $qw-session-title-font-color;
@@ -58,12 +54,7 @@
 			padding-left: $qw-session-container-padding-left;
 			margin: $qw-session-container-margin;
 			line-height: $qw-session-container-line-height;
-			display: -webkit-box;
-			display: -moz-box;
-			display: -ms-flexbox;
-			display: -webkit-flex;
-			display: flex;
-			-webkit-flex-flow: row wrap;
+			@include flex-container($wrap:wrap);
 			border-radius: $global-radius;
 			background: $qw-session-container-bg-color;
 			cursor: pointer;
@@ -185,12 +176,7 @@
 		padding-left: $qw-agenda-title-padding-left;
 		margin: $qw-agenda-title-margin;
 		line-height: $qw-agenda-title-line-height;
-		display: -webkit-box;
-		display: -moz-box;
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-flex-flow: row wrap;
+		@include flex-container($wrap:wrap);
 		border-radius: 3px;
 		cursor: pointer;
 		color: $qw-agenda-title-font-color;
@@ -229,12 +215,7 @@
 		padding-left: $qw-agenda-container-padding-left;
 		margin: $qw-agenda-container-margin;
 		line-height: $qw-agenda-container-line-height;
-		display: -webkit-box;
-		display: -moz-box;
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-flex-flow: row wrap;
+		@include flex-container($wrap:wrap);
 		border-radius: 3px;
 		background: $qw-agenda-container-bg-color;
 		cursor: pointer;
@@ -613,21 +594,10 @@
 				transition: opacity 0.3s ease-in-out;
 				min-width: 100%;
 
-				display: flex;
-				flex-wrap: wrap;
-				flex-direction: row;
-
-				display: -ms-flexbox;
-				-ms-flex-direction: row;
-				-ms-flex-wrap: wrap;
+				@include flex-container($wrap:wrap);
 
 				> .entry {
-					display: flex;
-					flex-wrap: wrap;
-					flex-direction: column;
-					display: -ms-flexbox;
-					-ms-flex-wrap: wrap;
-					-ms-flex-direction: column;
+					@include flex-container($direction:column, $wrap:wrap);
 					float: left;
 					margin: rem-calc(10 0 10 10);
 

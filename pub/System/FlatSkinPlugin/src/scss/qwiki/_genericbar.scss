@@ -207,14 +207,14 @@
   padding: 0 $qw-content-padding;
 
   .buttons {
-    display: flex;
+    @include flex-container;
     margin-top: $qw-content-padding;
 
     a {
-      flex-grow: 1;
+      @include flex($grow:1);
 
       &:first-child {
-        flex-grow: 2;
+        @include flex($grow:2);
       }
 
       &:not(:last-child) {
@@ -236,21 +236,10 @@
 
     > .meta {
       border-left: 3px solid red;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-
-      display: -ms-flexbox;
-      -ms-flex-direction: row;
-      -ms-flex-wrap: wrap;
+      @include flex-container($wrap:wrap);
 
       > .entry {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        display: -ms-flexbox;
-        -ms-flex-wrap: wrap;
-        -ms-flex-direction: column;
+        @include flex-container($direction:column, $wrap:wrap);
         float: left;
         margin: rem-calc(10 0 10 10);
 
