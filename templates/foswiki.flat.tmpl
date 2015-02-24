@@ -189,11 +189,9 @@ TODO
     </div>
   </div>
 -->
-  <div class="results" data-scrollcontainer>
+  <div class="results">
       <div class="qw-total-results" data-qtemplate="total">
-        <span class="left"><span qbind="count"></span> results</span>
-        <a href="#" class="right" data-quicksearch-show-all>%MAKETEXT{"show all"}%</a>
-        <span class="clearfix"></span>
+        <span qbind="count"></span> results
       </div>
       <div class="qw-no-results" data-qtemplate="noresults"><h3 class="left">%MAKETEXT{"No results"}%</h3></div>
       <div class="qw-search-result" data-qtemplate qbind="data-url:url">
@@ -205,6 +203,9 @@ TODO
           <div class="snippet" qbind="snippet"></div>
         </div>
       </div>
+  </div>
+  <div class="qw-search-expert">
+    <a href="#" data-quicksearch-show-all>%MAKETEXT{"Expert search"}%</a>
   </div>
 </div>
 <section id="qw-search-pageoverlay" data-offcanvas>
