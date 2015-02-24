@@ -92,6 +92,39 @@ ul.qw-breadcrumb {
     }
   }
 
+  li.no-pointer-events, li.no-pointer-events ~ .qw-breadcrumb-web {
+    background: transparent;
+
+    > a {
+      background-color: transparent;
+      color: $qw-breadcrumb-title-color;
+      font-size: rem-calc(22);
+      padding: 0.35rem 0;
+
+      &:after {
+        border-left-width: 0;
+      }
+
+      &:before {
+        border-left-width: 0;
+      }
+    }
+
+    // & ~ .qw-breadcrumb-web {
+    //   background: transparent;
+
+    //   > a {
+    //     background: transparent;
+    //     color: $qw-breadcrumb-title-color;
+    //     font-size: rem-calc(22);
+
+    //     &:after {
+    //       border-left-color: transparent;
+    //     }
+    //   }
+    // }
+  }
+
   > li.qw-breadcrumb-ellipsis {
     position: relative;
   }

@@ -222,7 +222,14 @@ sub _handleWEBLIST {
 
   my @webs = split( '/', $web );
   my @retval = ();
-  my $format = $params->{format} || '<li class="qw-breadcrumb-web"><a href="$link">$title</a></li>';
+
+  my $webhome = $Foswiki::cfg{HomeTopicName} || 'WebHome';
+  my $noevents = '';
+  if ( $topic eq $webhome ) {
+    $noevents = 'no-pointer-events';
+  }
+
+  my $format = $params->{format} || "<li class=\"qw-breadcrumb-web\"><a class=\"$noevents\" href=\"\$link\">\$title</a></li>";
   foreach (@webs) {
     my $parent = $_;
     my $pos = index( $web, "/$_" );

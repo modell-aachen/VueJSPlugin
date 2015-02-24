@@ -345,7 +345,7 @@ TODO
 %TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home %IF{"$TOPIC = 'WebHome'" then="no-pointer-events"}%"><a href="%SCRIPTURLPATH{view}%/%USERSWEB%/%HOMETOPIC%"><i class="icon-app-processes"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%QWWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
-%TMPL:DEF{"breadcrumb:topic"}%<li class="qw-breadcrumb-topic"><a href="%SCRIPTURLPATH{view}%/%WEB%/%TOPIC%">%IF{"$TOPIC != 'WebHome'" then="$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt" else="TBD. WebHome Text"}%</a></li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic"}%<li class="qw-breadcrumb-topic"><a href="%SCRIPTURLPATH{view}%/%WEB%/%TOPIC%">%IF{"$TOPIC != 'WebHome'" then="$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt"}%</a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%TOPIC%'/TopicTitle" then="$percntFORMFIELD{\"TopicTitle\"}$percnt" else="$percntTOPIC$percnt"}%%TMPL:END%
 
 %TMPL:DEF{"attachments"}%%TMPL:P{"attachments:header"}%%META{"attachments"}%%TMPL:P{"attachments:footer"}%%TMPL:END%
