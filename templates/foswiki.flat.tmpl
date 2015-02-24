@@ -48,7 +48,7 @@
 <!--/offcanvas:bars-->%TMPL:END%
 
 %TMPL:DEF{"body"}%<!--body-->
-<body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, placeholder, ui::autocomplete, wikiword"}%
+<body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui,cookie,placeholder,ui::autocomplete,wikiword,jqp::underscore,jqp::moment,jqp::spin,jqp::observe,jqp::tooltipster"}%
 <literal>%TMPL:P{"topbar"}%
 %TMPL:P{"menutoggle"}%
 <!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
@@ -342,7 +342,7 @@ TODO
 </ul>
 <!--/breadcrumb-->%TMPL:END%
 
-%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home"><a href="%SCRIPTURLPATH{view}%/%USERSWEB%/%HOMETOPIC%"><i class="icon-app-processes"></i></a></li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home %IF{"$TOPIC = 'WebHome'" then="no-pointer-events"}%"><a href="%SCRIPTURLPATH{view}%/%USERSWEB%/%HOMETOPIC%"><i class="icon-app-processes"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%QWWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic"}%<li class="qw-breadcrumb-topic"><a href="%SCRIPTURLPATH{view}%/%WEB%/%TOPIC%">%IF{"$TOPIC != 'WebHome'" then="$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt" else="TBD. WebHome Text"}%</a></li>%TMPL:END%
