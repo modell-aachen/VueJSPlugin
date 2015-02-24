@@ -1,14 +1,18 @@
 .qw-close-btn {
   @include button( $radius: true, $bg: $qw-closebtn-bg );
 
-  padding: rem-calc(12 14);
+  padding: rem-calc(11 10);
   font-size: 1rem;
   line-height: 1rem;
   color: $qw-closebtn-fg;
 
-  @extend .icon-close;
   font-family:"QWikiSymbol";
-  &:before { font-size: rem-calc(20); }
+  &:before {
+    content: $icon-close;
+    font-size: rem-calc(20);
+    margin-left: rem-calc(1);
+    margin-right: rem-calc(-1);
+  }
 
   &:hover {
     background: $qw-closebtn-hover-bg;
