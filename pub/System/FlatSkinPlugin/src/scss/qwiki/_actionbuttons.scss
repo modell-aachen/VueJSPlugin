@@ -258,7 +258,13 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
         }
       }
     }
+  }
 
+  /* XXX this is a quick workaround to disable the active tabs, that does not require re-doing all the templates and is also quick to undo */
+  &.active > a,
+  &.active > div.pseudoborder > a,
+  &.active > div.psuedoborder *:not(.inactive) a {
+      pointer-events:none;
   }
 }
 
