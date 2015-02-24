@@ -189,15 +189,8 @@
 
       var $results = $('.qw-search-result');
       $results.each( function() {
-        var href = [
-          self.Q.foswiki.SCRIPTURL,
-          '/view',
-          self.Q.foswiki.SCRIPTSUFFIX,
-          $(this).data('url')
-        ].join('');
-
         var $link = $(this).find('a');
-        $link.attr('href', href);
+        $link.attr('href', $(this).data('url'));
       });
 
       $results.on( 'click', function( evt ) {
