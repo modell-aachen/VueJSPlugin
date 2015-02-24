@@ -46,6 +46,7 @@
       color: $qw-leftbar-btn-color;
       margin-bottom: 10px;
       font-size: 2.0rem;
+      text-decoration: none;
       text-align: center;
       display: block;
       cursor: pointer;
@@ -89,6 +90,7 @@
           display: block;
           text-align: center;
           font-size: 2rem;
+          text-decoration: none;
 
           > i {
             color: $qw-leftbar-avatar-login-color;
