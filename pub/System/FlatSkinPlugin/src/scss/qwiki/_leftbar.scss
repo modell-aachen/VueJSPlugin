@@ -46,7 +46,6 @@
       color: $qw-leftbar-btn-color;
       margin-bottom: 10px;
       font-size: 2.0rem;
-      line-height: $qw-leftbar-width - 10px;
       text-align: center;
       display: block;
       cursor: pointer;
@@ -67,6 +66,9 @@
           background: $qw-leftbar-btn-active-hover-bg;
           color: $qw-leftbar-btn-hover-color;
         }
+      }
+      > i:before {
+        line-height: $qw-leftbar-width - 10px;
       }
     }
 
