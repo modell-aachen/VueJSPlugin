@@ -8,7 +8,7 @@
 
 %TMPL:DEF{"topbar:two:left:standard:view"}%<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%">%MAKETEXT{"Version [_1]" args="%REVINFO{format=" $rev"}%"}%</a>%TMPL:END%
 
-%TMPL:DEF{"topbar:two:left:standard:edit"}%<div class="sub-tab edit %IF{"context edit" then="active" else="inactive"}%"><div class="pseudoborder"><a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?t=%GMTIME{"$epoch"}%"><span class="expander">%MAKETEXT{"Edit topic"}%</span></a></div></div>%TMPL:END%
+%TMPL:DEF{"topbar:two:left:standard:edit"}%<div class="sub-tab edit %IF{"context edit" then="active" else="inactive"}%"><div class="pseudoborder"><a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?t=%GMTIME{"$epoch"}%"><i class="icon-edit"></i><span class="expander">%MAKETEXT{"Edit topic"}%</span></a></div></div>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right"}%<div>%TMPL:P{"topbar:two:right:misc"}%</div><div class="topbar-edit">%TMPL:P{"topbar:two:right:edit"}%</div>%TMPL:END%
 

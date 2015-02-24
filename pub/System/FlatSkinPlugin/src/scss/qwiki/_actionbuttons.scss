@@ -78,7 +78,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
   & > a,
   & > div.pseudoborder > a,
-  & >.sub-tab > a {
+  & >.sub-tab > a,
+  & i {
     &:before {
       font-family:"QWikiSymbol";
       font-size: 1.75rem;
@@ -258,9 +259,6 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
       }
     }
 
-    &.edit > a:before {
-      @extend .icon-edit;
-    }
   }
 }
 
