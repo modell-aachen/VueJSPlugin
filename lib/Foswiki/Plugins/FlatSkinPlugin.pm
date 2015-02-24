@@ -263,7 +263,7 @@ sub _handleAPPICON {
   return $prefix . "cockpit" if ( $web =~ /^(cockpit|kpi|nominal)$/ );
   return $prefix . "audits" if ( $web =~ /^audits?$/ );
 
-  return 'app-processes';
+  return 'home';
 }
 
 sub _handleFLATCOMMENTS {
