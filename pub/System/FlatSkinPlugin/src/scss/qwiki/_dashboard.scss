@@ -368,7 +368,7 @@
 						}
 
 						> .user {
-							padding: 5px 0 5px 7px;
+							padding: 8px 5px 8px 5px;
 							float: left;
 							background: #f2f5f7;
 							color: #236AA2;
@@ -381,7 +381,7 @@
 						}
 
 						> .useradd {
-							padding: 5px 7px;
+							padding: 8px 8px;
 							margin-left: 20px;
 							float: right;
 							background: #236AA2;
@@ -410,7 +410,7 @@
 						width: 180px;
 						border-radius:$global-radius;
 						background: #f0f0f0;
-						padding: 2px 0 0 2px;
+						padding: 5px 5px 5px 0;
 						
 						> input {
 							width: 80%;
@@ -448,7 +448,7 @@
 							width: 100%;
 							
 							> .switch {
-								@include switch($transition-speed: 0.3s , $transition-ease: ease-out, $height: 1.7rem, $active-color: #000, $radius: $global-radius, $base-style: true);
+								@include switch($transition-speed: 0.3s , $transition-ease: ease-out, $height: 1.7rem, $radius: $global-radius, $base-style: true);
 								margin-top: 5px;
 								
 								  // background color on unchecked position
@@ -495,7 +495,7 @@
 							right: 0;
 							font-size: 1.3rem;
 							color: #236AA2;
-							padding: 0 5px 5px 10px;
+							padding: 5px;
 							cursor: pointer;
 							background: white;
 							border-radius: $global-radius;
