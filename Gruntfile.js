@@ -300,11 +300,11 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['<%= pkg.pubDir %>/src/scss/**/*.scss'],
-        tasks: ['sass']
+        tasks: ['sass:dev']
       },
       uglify: {
         files: ['<%= pkg.pubDir %>/src/js/**/*.js'],
-        tasks: ['jshint','uglify']
+        tasks: ['jshint','uglify:dev']
       },
       webfont: {
         files: ['<%= pkg.pubDir %>/src/fonts/icons/*.svg', '<%= pkg.pubDir %>/src/scss/font_tmpl.scss'],
