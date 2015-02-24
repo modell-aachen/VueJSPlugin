@@ -270,9 +270,9 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
 // printing, further topic actions, language selector, etc
 .qw-action-button {
-  @include button( $padding: $button-tny, $bg: $qw-actionbtn-bg, $radius: $global-radius );
+  @include button( $padding: $button-tny, $bg: $qw-actionbtn-bg, $radius: 0 );
   margin: 0;
-  padding: rem-calc(3 7 4 7);
+  padding: rem-calc(2 9 3 5);
   font-size: 1rem;
   line-height: 1rem;
   color: $qw-actionbtn-color;
