@@ -12,6 +12,14 @@
     width: $qw-leftbar-width-expanded;
     float: left;
     display: inline-block;
+    background-color: $qw-leftbar-bg-expanded;
+    border-bottom: 1px solid $qw-leftbar-border-bg;
+
+    padding: 0;
+    margin: 0;
+
+    @media #{$mobile-only} {height: $qw-top-one-height-mobile - 1px;}
+    @media #{$small-up} {height: $qw-top-one-height - 1px;}
   }
 
   > .toggle {
