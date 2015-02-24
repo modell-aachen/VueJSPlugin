@@ -49,13 +49,13 @@
 
 %TMPL:DEF{"body"}%<!--body-->
 <body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui, cookie, placeholder, ui::autocomplete, wikiword"}%
-%TMPL:P{"topbar"}%
+<literal>%TMPL:P{"topbar"}%
 %TMPL:P{"menutoggle"}%
 <!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
 <div class="qw-page" data-offcanvas>
   <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
   <section class="content">
-    <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%">%TMPL:P{"content"}%</div>
+    <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></literal>%TMPL:P{"content"}%<literal></div>
     <div class="adorner adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></div>
   </section>
 </div>
@@ -70,7 +70,7 @@ jQuery(function($) {
 });
 </script>
 <div class="qw-modal-container">%TMPL:P{"modals"}%</div>
-<form style="display: none;" method="POST"></form>
+<form style="display: none;" method="POST"></form></literal>
 </body>
 <!--/body-->%TMPL:END%
 
@@ -342,10 +342,10 @@ TODO
 </ul>
 <!--/breadcrumb-->%TMPL:END%
 
-%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home">[[%USERSWEB%/%HOMETOPIC%][<i class="icon-app-processes"></i>]]</li>%TMPL:END%
+%TMPL:DEF{"breadcrumb:home"}%<li class="qw-breadcrumb-home"><a href="%SCRIPTURLPATH{view}%/%USERSWEB%/%HOMETOPIC%"><i class="icon-app-processes"></i></a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:parentwebs"}%%QWWEBLIST%%TMPL:END%
 %TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" prefix="<li class=\"qw-breadcrumb-parent\">" separator="</li><li class=\"qw-breadcrumb-parent\">" suffix="</li>"}%%TMPL:END%
-%TMPL:DEF{"breadcrumb:topic"}%%IF{"'%TOPIC%' != 'WebHome'" then="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt]]</li>" else="<li class=\"qw-breadcrumb-topic\">[[%TOPIC%][TBD. WebHome Text]]</li>"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic"}%<li class="qw-breadcrumb-topic"><a href="%SCRIPTURLPATH{view}%/%WEB%/%TOPIC%">%IF{"$TOPIC != 'WebHome'" then="$percntTMPL:P{\"breadcrumb:topic:title\"}$percnt" else="TBD. WebHome Text"}%</a></li>%TMPL:END%
 %TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%TOPIC%'/TopicTitle" then="$percntFORMFIELD{\"TopicTitle\"}$percnt" else="$percntTOPIC$percnt"}%%TMPL:END%
 
 %TMPL:DEF{"attachments"}%%TMPL:P{"attachments:header"}%%META{"attachments"}%%TMPL:P{"attachments:footer"}%%TMPL:END%
