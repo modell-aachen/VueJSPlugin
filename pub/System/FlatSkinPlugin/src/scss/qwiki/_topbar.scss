@@ -280,7 +280,7 @@
           @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
           @media #{$small-up} {height: $qw-top-two-height;}
 
-          &:last-child {
+          &.topicactions-container {
             flex-grow: 2;
 
             @media #{$mobile-only} {padding: rem-calc(0 10 0 0);}
