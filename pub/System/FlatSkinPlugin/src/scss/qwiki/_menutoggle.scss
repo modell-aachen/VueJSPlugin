@@ -4,23 +4,23 @@
   left: -1 * $qw-leftbar-width-expanded;
   width: $qw-leftbar-width-expanded + $qw-leftbar-width;
   z-index: 101;
-  float: left;
 
   @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
   @media #{$small-up} {height: $qw-top-one-height;}
 
-  .customer-logo {
+  > .customer-logo {
+    width: $qw-leftbar-width-expanded;
+    float: left;
     display: inline-block;
   }
 
   > .toggle {
     display: inline-block;
-    float: right;
+    float: left;
     width: $qw-leftbar-width;
     background: $qw-leftbar-toggle-bg;
     cursor: pointer;
     color: white;
-    font-size: 2.2rem;
     transition: background 0.1s ease-in-out;
 
     @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
@@ -34,9 +34,13 @@
       background: $qw-leftbar-toggle-active-bg;
     }
 
-    > div {
-      @media #{$mobile-only} {padding: rem-calc(9 22);}
-      @media #{$small-up} {padding: rem-calc(7 16);}
+    > i {
+      display: inline-block;
+      width: $qw-leftbar-width;
+      font-size: 1.8rem;
+      text-align: center;
+      @media #{$mobile-only} {line-height: $qw-top-one-height-mobile;}
+      @media #{$small-up} {line-height: $qw-top-one-height;}
     }
   }
 
@@ -48,11 +52,10 @@
 
     &.leftbar {
       transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
-      > .toggle > div { 
-        @media #{$mobile-only} {padding: rem-calc(9 24);}
-        @media #{$small-up} {padding: rem-calc(6 23);}
-          > i {
-          @extend .icon-arrow-left;
+      > .toggle > i {
+        font-size: 1rem;
+        &:before {
+          content: $icon-arrow-left;
         }
       }
     }
