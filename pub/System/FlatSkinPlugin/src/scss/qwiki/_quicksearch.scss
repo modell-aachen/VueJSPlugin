@@ -112,15 +112,21 @@
           $bg: $qw-quicksearch-bg
         );
 
-        font-size: 1.5rem;
-        color: #999999;
-        line-height: 1;
-        padding: 8px #{$qw-content-padding/2};
-        padding-bottom: 6px;
-        vertical-align: bottom;
+        display: inline-block;
+        width: rem-calc(50);
+        padding: 0; margin: 0;
+        font-size: 1.8rem;
+        color: $qw-topbtn-fg-color;
+
         border: none !important;
         box-shadow: none !important;
         border-radius: 0 $global-radius $global-radius 0;
+
+        > i {
+          display: block;
+          height: $qw-search-height;
+          &:before { line-height: $qw-search-height; }
+        }
       }
     }
   }
@@ -372,12 +378,11 @@
 
   .close {
     float: right;
-    margin-right: -5px;
-    margin-top: -7px;
+    line-height: 2rem;
 
     .qw-close-btn {
       padding: rem-calc(10 0 10 10);
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
   }
 }
