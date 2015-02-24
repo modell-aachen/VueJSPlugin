@@ -109,20 +109,6 @@ ul.qw-breadcrumb {
         border-left-width: 0;
       }
     }
-
-    // & ~ .qw-breadcrumb-web {
-    //   background: transparent;
-
-    //   > a {
-    //     background: transparent;
-    //     color: $qw-breadcrumb-title-color;
-    //     font-size: rem-calc(22);
-
-    //     &:after {
-    //       border-left-color: transparent;
-    //     }
-    //   }
-    // }
   }
 
   > li.qw-breadcrumb-ellipsis {

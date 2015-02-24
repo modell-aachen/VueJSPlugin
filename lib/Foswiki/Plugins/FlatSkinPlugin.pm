@@ -47,8 +47,6 @@ sub initPlugin {
 
   Foswiki::Func::registerTagHandler( 'DEFAULTDATEFORMAT', \&_handleDATEFORMAT );
   Foswiki::Func::registerTagHandler( 'FLATCOMMENTSLIST', \&_handleFLATCOMMENTS );
-
-  # TBD. werden die beiden MA... macros überhaupt noch gebraucht?
   Foswiki::Func::registerTagHandler( 'QWWEBLIST', \&_handleWEBLIST );
   Foswiki::Func::registerTagHandler( 'QWAPPICON', \&_handleAPPICON );
 
