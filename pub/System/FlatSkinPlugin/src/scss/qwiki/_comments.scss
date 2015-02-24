@@ -217,7 +217,9 @@
   i {
     font-size: 2rem;
     color: $qw-comment-adorner-color;
-    &:before {margin: 0 0 6px 6px;}
+    &:before {
+      margin: rem-calc(0 0 6 -1);
+    }
   }
 
   &:hover {background: $qw-comment-adorner-hover-bg;}
@@ -233,7 +235,7 @@
       @extend .icon-comment-idea;
       font-size: 1.5rem;
       color: $qw-comment-adorner-idea-color;
-      &:before {margin: 0 0 0 9px;}
+      &:before {margin: 0 0 0 3px;}
     }
 
     &:hover {background: $qw-comment-adorner-idea-hover-bg;}
@@ -250,7 +252,7 @@
       @extend .icon-exclamation;
       font-size: 1.5rem;
       color: $qw-comment-adorner-issue-color;
-      &:before {margin: 0 0 0 12px;}
+      &:before {margin: 0 0 0 3px;}
     }
 
     &:hover {background: $qw-comment-adorner-issue-hover-bg;}
