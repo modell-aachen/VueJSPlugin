@@ -132,7 +132,7 @@ STYLES
 SCRIPTS
 
   Foswiki::Func::addToZone( 'head', 'FLATSKIN::STYLES', $styles );
-  Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS', $scripts, 'JQUERYPLUGIN::FOSWIKI' );
+  Foswiki::Func::addToZone( 'script', 'FLATSKIN::SCRIPTS', $scripts, 'JQUERYPLUGIN::FOSWIKI,JQUERYPLUGIN::JQP::UNDERSCORE,JQUERYPLUGIN::JQP::MOMENT,JQUERYPLUGIN::JQP::TOOLTIPSTER,JQUERYPLUGIN::JQP::OBSERVE,JQUERYPLUGIN::JQP::SPIN' );
 
   my $session = $Foswiki::Plugins::SESSION;
   my $lang = $session->i18n->language();
