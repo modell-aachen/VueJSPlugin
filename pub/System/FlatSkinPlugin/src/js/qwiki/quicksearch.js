@@ -130,6 +130,11 @@
 
       $e.on( 'solrresults.quicksearch', [this, searcher], renderResults );
       $('[data-close-preview]').on( 'click.quicksearch', searcher, closePreview );
+
+      $('.qw-search-expert > a').on( 'click', function( evt ) {
+        location.assign(location.protocol +'//'+ location.host + foswiki.preferences.SCRIPTURLPATH +'/view'+ foswiki.preferences.SCRIPTSUFFIX +'/'+ foswiki.preferences.WEB +'/WebSearch');
+        return false;
+      });
     },
 
     unbind: function($e) {
@@ -175,7 +180,8 @@
         list.qtemplate('add', doc);
       }
 
-      $('.qw-total-results > a').on( 'click', function( evt ) {
+      $('.qw-search.expert > a').off( 'click' );
+      $('.qw-search-expert > a').on( 'click', function( evt ) {
         var term = data.responseHeader.params.q || '';
         location.assign(location.protocol +'//'+ location.host + foswiki.preferences.SCRIPTURLPATH +'/view'+ foswiki.preferences.SCRIPTSUFFIX +'/'+ foswiki.preferences.WEB +'/WebSearch#q='+ term.replace(/^\{.+?\}/, ''));
         return false;
