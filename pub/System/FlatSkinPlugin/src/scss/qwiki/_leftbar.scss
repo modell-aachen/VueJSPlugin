@@ -168,7 +168,6 @@
 
       > .button {
         width: calc(100% - #{4 * rem-calc(10)});
-        padding: rem-calc(6);
         margin-bottom: rem-calc(3);
         cursor: pointer;
         border-radius: $global-radius;
@@ -178,11 +177,12 @@
                     color 0.15s ease-in-out,
                     opacity 0.2s ease-in-out;
         text-decoration: none;
-        padding-left: rem-calc(15);
+        padding: 0 rem-calc(15);
+        line-height: 2.5rem;
 
         i {
-          font-size: 2rem;
-          margin-right: rem-calc(10);
+          font-size: 1.8rem;
+          margin-right: rem-calc(8);
         }
 
         &:hover {
