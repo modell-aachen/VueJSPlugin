@@ -5,6 +5,9 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   border-top: $qw-tab-outerborder solid transparent;
   border-left: $qw-tab-outerborder solid transparent;
   border-right: $qw-tab-outerborder solid transparent;
+  &.inactive:last-child {
+      border-right: none;
+  }
 
   @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
   @media #{$small-up} {height: $qw-top-two-height;}
@@ -44,8 +47,23 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
                 color $qw-tab-transition-time ease-in-out;
   }
 
+  &.inactive > *:first-child a {
+      border-top-left-radius: $qw-tab-radius;
+      border-bottom-left-radius: $qw-tab-radius;
+      border-left-width: $qw-tab-deco-border-width;
+  }
+  &.inactive > *:last-child a {
+      border-top-right-radius: $qw-tab-radius;
+      border-bottom-right-radius: $qw-tab-radius;
+  }
   &.inactive a {
-    border-radius: $qw-tab-radius;
+    border-color: $qw-content-bg;
+    border-right-width: $qw-tab-deco-border-width;
+  }
+  & a {
+    border-style: solid;
+    border-color: transparent;
+    border-width: $qw-tab-deco-border-width 0 $qw-tab-deco-border-width 0;
   }
 
   & > * {
@@ -60,11 +78,6 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     margin-bottom: 0px;
     padding-top: $qw-tab-pseudoborder;
     padding-bottom: $qw-tab-pseudoborder;
-  }
-  & > * {
-    border-width: $qw-tab-deco-border-width 0 $qw-tab-deco-border-width 0;
-    border-style: solid;
-    border-color: transparent;
   }
 
   & a {
@@ -89,7 +102,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   }
 
 
-  & > div.pseudoborder > a, & > a {
+  & > div.pseudoborder > a,
+  & > a {
     display: inline-block;
 
     @media #{$mobile-only} {
@@ -106,7 +120,11 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     padding-left: $button-tny;
     padding-right: $button-tny;
   }
-
+  &.inactive > div.pseudoborder > a,
+  &.inactive > a {
+    padding-left: $button-tny - $qw-tab-deco-border-width;
+    padding-right: $button-tny - $qw-tab-deco-border-width;
+  }
 
   &.approved {
     & > div.pseudoborder > a, & > a {
@@ -166,7 +184,12 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
           background-color: $qw-tab-subtab-color;
       }
   }
+  &.inactive > .sub-tab a {
+      border-left: $qw-tab-deco-border-width solid $qw-content-bg;
+  }
   &.active > .sub-tab > div.pseudoborder {
+      border-left: $qw-tab-deco-border-width solid $qw-content-bg;
+
       &,
       & a {
           background-color: $qw-tab-subtab-color;
@@ -189,8 +212,6 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   > .sub-tab {
     float: right;
     background-color: transparent;
-    border: none;
-    margin-left: $qw-tab-deco-border-width;
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 0px;
@@ -198,11 +219,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
     & > div.pseudoborder {
         padding-top: $qw-tab-pseudoborder;
-        border-top: $qw-tab-deco-border-width solid transparent;
         padding-bottom: $qw-tab-pseudoborder;
-        border-bottom: $qw-tab-deco-border-width solid transparent;
     }
-
 
     @media #{$mobile-only} {height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;}
     @media #{$small-up} {height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;}
@@ -210,12 +228,10 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     > div.pseudoborder > a,
     > a {
       display: inline-block;
-      border: none;
       font-size: rem-calc(13);
       font-weight: normal;
       background-color: $qw-tab-subtab-color;
       background-image: none;
-      border-color: $qw-tab-subtab-color;
       padding-left: $button-tny;
       padding-right: $button-tny;
 
