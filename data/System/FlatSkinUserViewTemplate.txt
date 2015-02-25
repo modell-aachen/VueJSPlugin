@@ -47,6 +47,57 @@
 
 %TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"addtask"}%%TMPL:END%
 
+%TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"taskdetail"}%%TMPL:END%
+
+%TMPL:DEF{"taskdetail"}%
+<div class="qw-taskdetail qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="taskdetail">
+  <div class="close" data-offcanvas-toggle="taskdetail">
+    <div><i class="icon-arrow-right"></i></div>
+  </div>
+  <div class="taskdetail-header">
+    <div>
+      <span class="content">%MAKETEXT{"Nächste gesellschaftersitzung planen zur Veranschaulichung mit einer längeren Healine"}%</span>
+      <span class="edit"><i class="icon-edit"></i></span>
+    </div>
+  </div>
+  <div class="taskdetail-content">
+    <div>
+      <div class="firstdetail">
+        <label>%MAKETEXT{"Responsible"}%
+          <div class="responsible"><i class="icon-user"></i>%QUERY{"Responsible"}%</div>
+        </label>
+        <label>%MAKETEXT{"Due on"}%
+          <div class="due"><i class="icon-clock"></i>%MAKETEXT{"21.11"}%</div>
+        </label>
+        <div class="remain">
+          <span>%MAKETEXT{"7days left"}%</span>
+        </div>
+      </div>      
+    </div>
+    <div>
+      <div class="seconddetail">
+        <div class="second-header">%MAKETEXT{"12.10.2014 - 10:20h"}%</div>
+        <div class="second-content">%MAKETEXT{"sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text "}%</div>
+        <div class="second-footer">
+          <span class="author"><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span>
+          <span class="meeting"><i class="icon-app-meetings"></i>%MAKETEXT{"GESELLSCHAFTERSITZUNG"}%</span>
+        </div>
+      </div> 
+    </div>
+    <div>
+      <div class="thirddetail">
+        <div>
+          <div class="comment qw-prio2-btn">%MAKETEXT{"Comment on"}%</div>
+        </div>
+        <div class="done qw-prio1-btn"><i class="icon-task-done"></i>%MAKETEXT{"done"}%</div>
+        <div class="read qw-prio2-btn">%MAKETEXT{"Mark all as read"}%</div>
+        <div class="forward qw-prio2-btn"><i class="icon-forward"></i></div>
+      </div>
+    </div>
+  </div>
+</div>
+%TMPL:END%
+
 %TMPL:DEF{"addtask"}%
 <div class="qw-addtask qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="addtask">
   <div class="close" data-offcanvas-toggle="addtask">
@@ -194,7 +245,7 @@
 
 %TMPL:DEF{"perspage:bookmarks"
 }%<div class="qw-dashboard-container tasks active" data-offcanvas>
-    %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future new priority\"><div class=\"task-input\"><label><i class=\"icon-task-open\"></i><span>%MAKETEXT{"New"}%</label></span></div><div class=\"task-title\"><span>$action_text_s</span></div><div class=\"task-meetings\"><i class=\"icon-app-meetings\"> </i> GESELLSCHAFTERSITZUNG</div><div class=\"task-responsible\"><span><i class=\"icon-user\"></i> %QUERY{"Responsible"}%</span></div><div class=\"task-badge\"><span><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span></div></div>"rows="1000" sort="createdate" reverse="on"}%</div> 
+    %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future new priority \" data-offcanvas-toggle=\"taskdetail\"><div class=\"task-input\"><label><i class=\"icon-task-open\"></i><span>%MAKETEXT{"New"}%</label></span></div><div class=\"task-title\"><span>$action_text_s</span></div><div class=\"task-meetings\"><i class=\"icon-app-meetings\"> </i> GESELLSCHAFTERSITZUNG</div><div class=\"task-responsible\"><span><i class=\"icon-user\"></i> %QUERY{"Responsible"}%</span></div><div class=\"task-badge\"><span><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span></div></div>"rows="1000" sort="createdate" reverse="on"}%</div> 
 <div class="qw-dashboard-container knowledge" data-offcanvas>
     <div class="perspageBlockTitle">%MAKETEXT{"My notes"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserNotesEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
     <div class="perspageBlock">

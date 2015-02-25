@@ -325,6 +325,162 @@
 	}
 }
 
+.qw-taskdetail {
+	padding: 3px;
+
+	> .taskdetail-header {
+		padding: 0 !important;
+
+		> div {
+			padding: 5px;
+			
+			position: relative;
+
+			> .content {
+				font-size: 24px;
+				color: #236AA2;
+				display: inline-block;
+				width: 90%;
+				padding: 10px;
+
+			}
+
+			> .edit {
+				color: #4D4D4D;
+				padding: 5px 8px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				border-radius: $global-radius;
+				border: 1px solid #E2E2E2;
+				margin: 10px 10px 10px 20px;
+
+				> i {
+					font-size: 1.3rem;
+				}
+			}
+		}
+	}
+
+	> .taskdetail-content {
+		> div {
+			border-top: $qw-add-task-header-border-bottom;
+
+			> .firstdetail {
+				@include flex-container($wrap: wrap, $direction: row);
+				border-radius: $global-radius;
+				padding: 5px 15px 10px  15px;
+				height: auto; 
+
+				> label {
+					color: #999;
+					margin-right: 10px;
+
+					> .responsible {
+						background: #F2F5F7;
+						color: #236AA2;
+						padding: 0.3125rem;
+
+						> i { 
+							font-size: 0.875rem;	
+						}
+					}
+
+					> .due {
+						
+						color: #999;
+						background: #F5F5F5;
+						
+
+						i {
+							@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-future-badge-bg, $radius:$global-radius);
+							font-size: 1rem;
+						}
+					}					
+				}
+
+				> .remain {
+					height: auto;
+					padding: 15px;
+	
+					> span {
+						vertical-align: middle;
+						color: #DC3E56;
+					}
+				}
+			}
+
+			> .seconddetail {
+				padding: 15px;  
+
+				> .second-header {
+					color: #999;
+					font-size: 0.8rem;
+				}
+
+				> .second-content {
+					font-size: 0.9rem;
+					color: #606060;
+				}
+
+				> .second-footer {
+
+					font-size: 0.8rem;
+					margin-top: 15px;
+
+					> .author, .meeting {
+						background: #F2F5F7;
+						color: #236AA2;
+						border-radius: $global-radius;
+						padding: 5px;
+						margin-right: 10px;
+						> i {
+							font-size: 1rem;
+						}
+					}
+
+					> .meeting {
+						background: #F5F5F5;
+						color: #999;
+
+					}
+				}
+			}
+
+			> .thirddetail {
+				padding: 15px; 
+				font-style: italic;
+
+				> div {
+					margin-bottom: 50px;
+				}
+
+				> .done, .forward, .read {
+					margin-right: 10px;
+				} 
+
+				> .done {
+					text-align: left !important;
+					width: 150px;
+					padding: 0 0 8px 5px;
+					i {
+						font-size: 1.7rem;
+					}
+
+				}
+
+				> .forward {
+					padding: 3px 8px 8px 8px;
+
+					i {
+						font-size: 1.5rem;
+					}
+				}
+			}
+		}
+	}
+}
+
 .qw-addtask {
 	
 	> .addtask-header {
@@ -545,3 +701,5 @@
 		}
 	}
 }
+
+
