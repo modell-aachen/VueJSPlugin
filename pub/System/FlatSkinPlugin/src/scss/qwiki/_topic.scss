@@ -16,6 +16,14 @@
     width: $qw-page-width;
     max-width: $qw-page-width;
   }
+  $p: percentage(1/$total-columns);
+  @media #{$large-only} {width: calc(8 * #{$p} - 2.01*#{$qw-content-padding});}
+  @media #{$extended-up} {width: calc(9 * #{$p} - 2.01*#{$qw-content-padding});}
+  background: $qw-content-bg;
+
+  bottom: 0;
+  overflow-y: auto;
+  @include flex-container($direction:column);
 
   > .heading > div {
     padding: 0.6rem 0.6rem;
@@ -23,40 +31,34 @@
 
   > .heading {
     background: $qw-content-bg;
-
-    $p: percentage(1/$total-columns);
-    @media #{$mobile-up} {width: 100%;}
-    @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-content-padding}/2);}
-    @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-content-padding}/2);}
+    width: 100%;
+    @include flex($grow:0,$shrink:0);
   }
 
   > .content {
-    background: $qw-content-bg;
+    @include flex-container($align:stretch);
+    @include flex($grow:1);
+    width: 100%;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 
     $adorner-width: 30px;
-    $p: percentage(1/$total-columns);
-    @media #{$mobile-up} {width: 100%;}
-    @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-content-padding}/2);}
-    @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-content-padding}/2);}
 
     > .topic {
       position: relative;
-      display: inline-block;
+      @include flex($grow:1);
       vertical-align: top;
-      padding: 0 $qw-content-padding/2;
+      padding: 0 $qw-content-padding;
 
       &.adorner-visible {
-        padding: 0 0 0 $qw-content-padding/2;
-        @media #{$large-up} {width: calc(100% - #{$qw-content-padding} - #{$adorner-width}*1.2);}
+        padding-right: $qw-content-padding/4;
       }
     }
 
     > .adorner {
       position: relative;
+      @include flex($grow:0,$shrink:0);
       vertical-align: top;
-      display: inline-block;
 
       &.adorner-hidden {
         display: none;
@@ -64,21 +66,19 @@
 
       &.adorner-visible {
         width: $adorner-width;
+        padding-right: $qw-content-padding/4;
 
         > div {
           position: absolute;
-          left: 6px;
         }
       }
     }
   }
 
   &.maximized {
-    > .content, .heading {
-      background: $qw-content-bg;
-      @include grid-column($columns: $total-columns, $collapse: true);
-      width: 100%;
-    }
+    background: $qw-content-bg;
+    @include grid-column($columns: $total-columns, $collapse: true);
+    width: 100%;
   }
 
   &.offcanvas {
@@ -90,8 +90,6 @@
   }
 
   &:not(.no-transition) {
-    > .content, .heading {
-      transition: width 0.3s ease-in-out;
-    }
+    transition: width 0.3s ease-in-out;
   }
 }

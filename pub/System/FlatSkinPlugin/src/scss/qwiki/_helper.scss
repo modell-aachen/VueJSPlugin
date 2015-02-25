@@ -55,7 +55,7 @@
   max-width: 100%;
 }
 
-@mixin flex-container($direction:row, $align:flex-start, $justify:flex-start, $wrap: none) {
+@mixin flex-container($direction:row, $align:flex-start, $justify:flex-start, $wrap:nowrap) {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: $direction;
