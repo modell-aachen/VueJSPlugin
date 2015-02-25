@@ -29,11 +29,15 @@
   </div>
   <div class="flex-table">
     <div class="row">
-      <div class="item">
-      <span class="label">%MAKETEXT{"Type"}%</span>
-      <span class="tcontent">%QUERY{"DocumentType"}%</span>
-      <span class="label">%MAKETEXT{"Title"}%</span>
-      <span class="tcontent">%TOPICTITLE%</span>
+      <div class="item item-multi">
+        <div class="item-sub">
+          <span class="label">%MAKETEXT{"Type"}%</span>
+          <span class="tcontent">%QUERY{"DocumentType"}%</span>
+        </div>
+        <div class="item-sub">
+          <span class="label">%MAKETEXT{"Title"}%</span>
+          <span class="tcontent">%TOPICTITLE%</span>
+        </div>
       </div>
       <div class="item">
         <span class="label">%MAKETEXT{"Area of Application"}%: <span class="label"> %QUERY{"AreaOfApplication"}%</span></span>

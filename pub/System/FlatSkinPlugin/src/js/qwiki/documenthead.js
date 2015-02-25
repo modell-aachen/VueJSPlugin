@@ -17,6 +17,7 @@
       this.unbind();
 
       $('[data-documenthead-toggle]').on('click', this, handleClick);
+      $('.'+this.class).height( $('.flex-box').outerHeight() );
     },
 
     unbind: function() {
@@ -31,9 +32,9 @@
     $el.toggleClass('toggled');
 
     if ( $el.hasClass( 'toggled' ) ) {
-      $el.height( $('.flex-table').height() );
+      $el.height( $('.flex-table').outerHeight() );
     } else {
-      $el.height( $('.flex-box').height() );
+      $el.height( $('.flex-box').outerHeight() );
     }
   };
 }(jQuery, window._, window.document, window));

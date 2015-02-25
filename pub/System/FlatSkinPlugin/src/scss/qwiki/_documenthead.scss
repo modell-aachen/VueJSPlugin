@@ -1,10 +1,8 @@
 .qw-document-head {
   position: relative;
-  height: rem-calc(60);
   transition: height 0.3s ease-in-out;
 
   > .flex-table {
-    background-color: #fff;
     opacity: 0;
   }
 
@@ -16,19 +14,19 @@
     position: absolute;
     top: 0;
     left: 0;
+    min-width: 100%;
 
     border-radius: $global-radius;
     transition: opacity 0.3s ease-in-out;
-    min-width: 100%;
 
     @include flex-container($wrap:wrap);
 
     > .entry {
-      @include flex-container($direction:column, $wrap:wrap);
       float: left;
       margin: rem-calc(10 0 10 10);
 
       > .label {
+        display: block;
         text-transform: uppercase;
         color: $qw-dochead-label-color;
         font-size: $qw-dochead-label-font-size;
@@ -72,11 +70,10 @@
 
   .flex-table {
     > .row {
-      width: 100%;
       @include flex-container($wrap:wrap);
+      width: 100%;
 
       > .item {
-        @include flex-container($direction:column, $wrap:wrap);
         @include flex($grow:2);
         background: $qw-dochead-default-bg;
         border-radius: $global-radius; 
@@ -85,7 +82,8 @@
         color: $qw-dochead-label-color;
         padding-right: 50px;
 
-        > .label {
+        .label {
+          display: block;
           text-transform: uppercase;
           color: $qw-dochead-label-color;
           font-size: $qw-dochead-label-font-size;
@@ -95,7 +93,7 @@
           padding-top: $qw-dochead-classic-padding; 
         }
 
-        > .tcontent {
+        .tcontent {
           margin-top: rem-calc(3);
           margin-left: $qw-dochead-classic-padding;
           min-width: $qw-dochead-classic-tcontent-min-width;
@@ -107,26 +105,27 @@
           color: $qw-dochead-default-box-color;
           font-size: $qw-dochead-default-box-font-size;
         }
+      }
 
-        &:nth-child(4) {
-          > .tcontent {
-          width: 100px;
-          }
+      > .item-multi {
+        @include flex-container;
+        > .item-sub {
+          @include flex-container($direction:column);
         }
       }
-  
+
       &:first-child {
         > .item {
-          @include flex($grow: 1);
+          @include flex($grow:1);
 
-          > .tcontent {
+          .tcontent {
             $pad: rem-calc(6);
             height: rem-calc(30) - 2 * $pad;
             margin-top: 5px;
             margin-right: 50px;
 
           }
-          > .label {
+          .label {
             min-width:0;
             margin-top: 5px;
           }
@@ -156,7 +155,6 @@
     }
 
     > .flex-table {
-      background-color: white;
       opacity: 1;
     }
 
