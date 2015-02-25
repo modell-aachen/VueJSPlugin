@@ -19,6 +19,10 @@
 
   > .one {
     @include grid-row($behavior: collapse);
+
+    width: $qw-page-width;
+    max-width: $qw-page-width;
+
     background: $qw-top-one-bg;
     height: $qw-top-one-height;
     max-height: $qw-top-one-height;
@@ -229,6 +233,11 @@
   > .two {
     @include grid-row($behavior: collapse);
     background: $qw-top-two-bg;
+    
+    @media #{$medium-up} {
+      width: $qw-page-width;
+      max-width: $qw-page-width;
+    }
 
     @media #{$mobile-only} {
       height: $qw-top-two-height-mobile;
@@ -256,9 +265,6 @@
 
       &.maximized {
         width: 100%;
-        @media #{$medium-only} {width: calc(100% - #{$qw-content-padding}/2 - 5px);}
-        @media #{$large-only} {width: calc(100% - #{$qw-content-padding} - 10px);}
-        @media #{$extended-up} {width: calc(100% - #{$qw-content-padding} - 5px);}
       }
 
       > div {
@@ -270,9 +276,6 @@
         @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
         @media #{$small-up} {height: $qw-top-two-height;}
         @media #{$mobile-up} {width: 100%;}
-        @media #{$medium-only} {width: calc(100% - #{$qw-leftbar-width});}
-        @media #{$large-only} {width: calc(100% - #{$qw-leftbar-width}/2 - #{$qw-content-padding}/3);}
-        @media #{$extended-up} {width: calc(100% - 1.5 * #{$qw-content-padding});}
 
         > div {
           overflow: hidden !important;

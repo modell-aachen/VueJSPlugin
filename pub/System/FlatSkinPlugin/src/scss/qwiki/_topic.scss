@@ -78,9 +78,6 @@
       background: $qw-content-bg;
       @include grid-column($columns: $total-columns, $collapse: true);
       width: 100%;
-      @media #{$medium-up} {
-        width: calc(100% - #{$qw-content-padding});
-      }
     }
   }
 

@@ -70,7 +70,6 @@ $info-color: #a0d3e8;
 $body-bg: #f5f5f5;
 $body-font-color: #222;
 
-
 // colors
 $qw-body-bg: $body-bg;
 $qw-content-bg: #fff;
@@ -319,6 +318,8 @@ $qw-leftbar-btn-bg: transparent;
 $qw-leftbar-btn-hover-bg: transparent;
 $qw-leftbar-btn-active-bg: #bfbfbf;
 $qw-leftbar-btn-active-hover-bg: #ebebeb;
+
+$qw-page-width: calc(100% - #{$qw-leftbar-width});
 
 $qw-quicksearch-filters-inactive-border-color: #f5f5f5;
 $qw-quicksearch-filters-border-color: #e0e0e0;
