@@ -127,13 +127,13 @@
 
 %TMPL:DEF{"dashboard:actions"}%
 <div class="qw-dashboard-toptwo tasks  active" data-offcanvas>
-  <span class="content">%MAKETEXT{Tasks}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>
-    <ul id="qw-more-menu" class="qw-dropdown-light">
-      <li><a href="#">sub menu 1</a></li>
-      <li><a href="#">sub menu 2</a></li>
-      <li><a href="#">sub menu 3</a></li>
-      <li><a href="#">sub menu 4</a></li>
-    </ul>
+  <span class="content">%MAKETEXT{Tasks}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-task-more-menu"></i>
+<ul id="qw-task-more-menu" class="qw-dropdown-light">
+  <li><a href="#">sub menu 1</a></li>
+  <li><a href="#">sub menu 2</a></li>
+  <li><a href="#">sub menu 3</a></li>
+  <li><a href="#">sub menu 4</a></li>
+</ul>
   </span>
   <span class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-maximize"></i></span>
   <span class="qw-prio2-btn add" data-offcanvas-toggle="addtask"><i class="icon-add"></i>%MAKETEXT{Creating a task}%</span>
@@ -148,25 +148,25 @@
   </div>
 </div>
 <div class="qw-session-toptwo sessions" data-offcanvas> <!-- all session names belongs to minutes plugin  -->
-  <span class="content">%MAKETEXT{Sessions}%, <a href="#"> %MAKETEXT{All}%</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>
-    <ul id="qw-more-menu" class="qw-dropdown-light">
-      <li><a href="#">sub menu 1</a></li>
-      <li><a href="#">sub menu 2</a></li>
-      <li><a href="#">sub menu 3</a></li>
-      <li><a href="#">sub menu 4</a></li>
-    </ul>
+  <span class="content">%MAKETEXT{Sessions}%, <a href="#"> %MAKETEXT{All}%</a><i class="icon-arrow-down"  data-dropdown="#qw-session-more-menu"></i>
+<ul id="qw-session-more-menu" class="qw-dropdown-light">
+  <li><a href="#">sub menu 1</a></li>
+  <li><a href="#">sub menu 2</a></li>
+  <li><a href="#">sub menu 3</a></li>
+  <li><a href="#">sub menu 4</a></li>
+</ul>
   </span>
   <span class="qw-prio2-btn maximize"><i class="icon-maximize"></i></span>
   <span class="qw-prio2-btn add" data-offcanvas-toggle="sessionbar" ><i class="icon-add"></i>%MAKETEXT{Creating a session}%</span>
 </div>
 <div class="qw-session-toptwo departmenthead" data-offcanvas>
-  <span class="content">%MAKETEXT{Agenda}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-more-menu"></i>
-    <ul id="qw-more-menu" class="qw-dropdown-light">
-      <li><a href="#">sub menu 1</a></li>
-      <li><a href="#">sub menu 2</a></li>
-      <li><a href="#">sub menu 3</a></li>
-      <li><a href="#">sub menu 4</a></li>
-    </ul>
+  <span class="content">%MAKETEXT{Agenda}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-agenda-more-menu"></i>
+<ul id="qw-agenda-more-menu" class="qw-dropdown-light">
+  <li><a href="#">sub menu 1</a></li>
+  <li><a href="#">sub menu 2</a></li>
+  <li><a href="#">sub menu 3</a></li>
+  <li><a href="#">sub menu 4</a></li>
+</ul>
   </span>
   <span class="qw-prio2-btn maximize"><i class="icon-maximize"></i></span>
   <span class="qw-prio2-btn add"><i class="icon-add"></i>%MAKETEXT{Creating an agenda point}%</span>
