@@ -20,9 +20,6 @@
   > .one {
     @include grid-row($behavior: collapse);
 
-    width: $qw-page-width;
-    max-width: $qw-page-width;
-
     background: $qw-top-one-bg;
     height: $qw-top-one-height;
     max-height: $qw-top-one-height;
