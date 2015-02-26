@@ -20,6 +20,7 @@
       var self = this;
 
       $('.qw-quicksearch').on('qw.offcanvas.opening', function() {
+        $('.qw-leftbar').offcanvas({action: 'close'});
         $('#qw-search-pageoverlay').css('display', 'block');
         setTimeout( function() {
           $('#qw-search-pageoverlay').addClass('active');
