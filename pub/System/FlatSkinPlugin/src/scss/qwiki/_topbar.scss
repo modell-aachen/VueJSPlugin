@@ -162,15 +162,21 @@
       @media #{$large-only} {@include grid-column($columns: 4, $last-column: true, $collapse: true);}
       @media #{$extended-up} {@include grid-column($columns: 3, $last-column: true, $collapse: true);}
 
+      @include flex-container;
+
       > div:not(.close) {
+        @include flex($grow:1);
         @media #{$mobile-only} {
           $ptb: ($qw-top-one-height-mobile - $qw-search-height)/2;
-          padding: $ptb #{$qw-content-padding/2};
+          padding: $ptb #{$qw-content-padding/3};
+          max-height: $qw-search-height;
+          max-width: 100%;
         }
 
         @media #{$small-up} {
           $ptb: ($qw-top-one-height - $qw-search-height)/2;
-          padding: $ptb #{$qw-content-padding/2};
+          padding: $ptb #{$qw-content-padding/3};
+          max-height: $qw-search-height;
         }
 
         .qw-quicksearch-form {
@@ -186,13 +192,13 @@
           a {
             color: $qw-top-one-color;
             font-size: 2rem;
+            text-decoration: none;
           }
         }
       }
 
       .close {
-        position: relative;
-        float: left;
+        @include flex($shrink:0);
         background: $qw-closebtn-large-bg;
         color: $qw-closebtn-fg;
         font-size: 1rem;
@@ -202,18 +208,29 @@
         transition: opacity 0.2s ease-in-out,
                     background 0.2s ease-in-out;
 
-        @media #{$mobile-only} {
-          margin-left: -1 * $qw-top-one-height-mobile;
-          width: $qw-top-one-height-mobile;
-          height: $qw-top-one-height-mobile;
-          line-height: $qw-top-one-height-mobile;
+        @media #{$mobile-up} {
+          display: inline-block;
+          width: $qw-search-height;
+          height: $qw-search-height;
+          margin-top: ($qw-top-one-height-mobile - $qw-search-height)/2;
+          margin-left: $qw-content-padding/3;
+          line-height: $qw-search-height;
+          border-radius:$qw-border-radius;
         }
 
         @media #{$small-up} {
+          margin-top: ($qw-top-one-height - $qw-search-height)/2;
+        }
+
+        @media #{$medium-up} {
+          position: relative;
+          float: left;
+          margin-top: 0;
           margin-left: -1 * $qw-top-one-height;
           width: $qw-top-one-height;
           height: $qw-top-one-height;
           line-height: $qw-top-one-height;
+          border-radius: 0;
         }
 
         &:hover {

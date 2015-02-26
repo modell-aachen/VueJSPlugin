@@ -324,7 +324,7 @@
     transition: opacity 0.15s ease-in-out;
 
     @media #{$medium-only} { 
-      width: calc(6 * (#{$p} + #{$qw-content-padding}*2) - #{$qw-search-close-btn-width});
+      width: calc(6 * #{$p} + #{$qw-content-padding}*2 - #{$qw-search-close-btn-width});
     }
     @media #{$large-only} { 
       width: calc(8 * #{$p} - #{$qw-search-close-btn-width});
