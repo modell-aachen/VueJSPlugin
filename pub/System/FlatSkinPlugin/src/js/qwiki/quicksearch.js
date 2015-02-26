@@ -147,7 +147,6 @@
   };
 
   var closePreview = function( evt ) {
-    $('#qw-search-pageoverlay').removeClass('active');
     $('#qw-searchpreview').removeClass('active');
     $('.qw-search-result.active').removeClass('active');
     $('.qw-search-result .preview a').each(function() {
