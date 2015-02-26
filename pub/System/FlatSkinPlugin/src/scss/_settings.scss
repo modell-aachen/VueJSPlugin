@@ -78,6 +78,8 @@ $qw-draft-color: $alert-color;
 $qw-edit-color: $warning-color;
 $qw-approved-color: white;
 
+// global defaults
+$qw-border-radius: rem-calc(3);
 
 // colors: generic interaction elements
 $qw-button1-bg-color: $primary-color;
@@ -233,7 +235,7 @@ $qw-breadcrumb-topic-color: #262626;
 $qw-breadcrumb-hover-bg: #ccc;
 $qw-breadcrumb-border-color: $qw-top-one-bg;
 $qw-breadcrumb-border-width: $qw-border-width;
-$qw-breadcrumb-radius: 3px;
+$qw-breadcrumb-radius: $qw-border-radius;
 $qw-breadcrumb-height: 40px;
 $qw-breadcrumb-offset-top: 10px;
 $qw-breadcrumb-border-size: 30px - $qw-breadcrumb-offset-top;
@@ -257,7 +259,7 @@ $qw-tab-approved-inactive-color: white;
 $qw-tab-deco-border-width: 0.2rem;
 $qw-tab-pseudoborder: 0.5rem;
 $qw-tab-outerborder: 0.2rem;
-$qw-tab-radius: rem-calc(3);
+$qw-tab-radius: $qw-border-radius;
 $qw-tab-subtab-color: #f2f5f7;
 $qw-tab-subtab-active-hover-color: #dae4eb;
 $qw-tab-subtab-inactive-hover-color: #dae4eb;
@@ -774,10 +776,10 @@ $qw-session-toptwo-departmenthead-maximize-icon-padding: rem-calc(0 5);
 $qw-code-background: #f3f3f3;
 $qw-code-color: #cd0cab;
 $qw-code-padding: rem-calc(0 4);
-$qw-code-radius: 3px;
+$qw-code-radius: $qw-border-radius;
 
 $qw-pre-background: #f3f3f3;
 $qw-pre-padding: $qw-content-padding/2;
-$qw-pre-radius: 3px;
+$qw-pre-radius: $qw-border-radius;
 $qw-pre-white-space: pre-wrap;
 
