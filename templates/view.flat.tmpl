@@ -14,7 +14,7 @@
    Prints the document.
    Note: The usage of the content template is mandatory.
 }%
-%TMPL:DEF{"content"}%%TEXT%#TopicEnd%TMPL:END%
+%TMPL:DEF{"content"}%%IF{"TopicTitle!=''" then="<h1>$percntQUERY{TopicTitle}$percnt</h1>"}%%TEXT%#TopicEnd%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:edit"}%<a href="#" title="%MAKETEXT{"Document information"}%" class="qw-action-button" data-offcanvas-toggle="infobar" data-behavior="radio" data-group="qw-action-buttons" data-tooltip="top"><i class="icon-page-info"></i></a>
 %TMPL:PREV% %TMPL:END%
