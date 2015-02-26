@@ -65,18 +65,13 @@
 
 		> .session-name {
 			min-width: $qw-session-container-name-min-width;
-			font-weight: $qw-session-container-name-font-weight;
 			margin-right: $qw-session-container-name-margin-right;
-			color: $qw-session-container-name-font-color;
-			i {
-				font-size: $qw-session-container-name-icon-font-size;
-				color: $qw-session-container-name-icon-font-color;
-				padding-right: $qw-session-container-name-icon-padding-right;
-				position: relative;
-				vertical-align: top;
-				top: 2px;
-				
+			> a {
+				color: $qw-session-container-name-font-color;
+				font-weight: $qw-session-container-name-font-weight;
+				text-decoration: none;	
 			}
+
 		}
 
 		> .session-termin {
