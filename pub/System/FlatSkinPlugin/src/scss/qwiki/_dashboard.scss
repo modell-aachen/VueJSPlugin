@@ -303,7 +303,8 @@
 			text-decoration: none;
 			color: $qw-dashboard-toptwo-a-font-color;
 			> i {
-			padding-right: $qw-dashboard-toptwo-a-margin;
+				padding-right: $qw-dashboard-toptwo-a-margin;
+				font-size: $qw-dashboard-toptwo-a-icon-font-size;
 			}
 		}
 		> .view {
@@ -312,6 +313,7 @@
 			border: $qw-dashboard-toptwo-view-border;
 			margin:$qw-dashboard-toptwo-view-margin;
 			height: $qw-dashboard-toptwo-view-height;
+			padding-top: 3px;
 			border-radius: $global-radius;
 			> .qw-action-button {
 				width: $qw-dashboard-toptwo-view-action-button-width;
@@ -320,6 +322,19 @@
 				> i {
 					font-size: $qw-dashboard-toptwo-view-action-button-font-size;
 				}
+			}
+		}
+
+		> .maximize {
+			padding: $qw-dashboard-toptwo-maximize-padding;
+			margin: $qw-dashboard-toptwo-a-margin;
+			float: right;
+			font-style: $qw-dashboard-toptwo-maximize-font-style;
+			color: $qw-dashboard-toptwo-maximize-font-color;
+			> i { 
+			font-size: $qw-dashboard-toptwo-maximize-icon-font-size;
+			padding: $qw-dashboard-toptwo-maximize-icon-padding;
+
 			}
 		}
 	}
@@ -593,10 +608,10 @@
 					width: $qw-add-task-content-priority-padding-width;
 
 					> label {
-					color: $qw-add-task-content-priority-label-font-color;
-					font-size: $qw-add-task-content-priority-label-font-size;
-					font-weight: bold;
-					margin-top: $qw-add-task-content-priority-label-margin-top;
+						color: $qw-add-task-content-priority-label-font-color;
+						font-size: $qw-add-task-content-priority-label-font-size;
+						font-weight: bold;
+						margin-top: $qw-add-task-content-priority-label-margin-top;
 					
 						> .taskpriority {
 							margin-top: $qw-add-task-content-taskpriority-margin-top;
@@ -702,4 +717,128 @@
 	}
 }
 
+.qw-addknowledge {
+	> .addknowledge-header {
+		padding: 0 !important;
 
+		> div {
+			padding: 5px;
+			position: relative;
+
+			> .content {
+				font-size: 22px;
+				color: #236AA2;
+				display: inline-block;
+				width: 80%;
+				padding: 10px;
+
+			}
+
+			> .question {
+				color: #236AA2;
+				float: right;
+				padding-right: 5px;
+
+				> i {
+					font-size: 2rem;
+				}
+			}
+		}
+	}
+	> .addknowledge-content {
+		border-top: 1px solid #F5F5F5;
+
+		> div {
+			padding: 15px;
+			> .entry {
+				> .priority {
+				
+					width: $qw-add-task-content-priority-padding-width;
+					display: inline-block;
+
+					> label {
+						color: #5C5C5C;
+						font-size: $qw-add-task-content-priority-label-font-size;
+						font-weight: bold;
+						margin-top: $qw-add-task-content-priority-label-margin-top;
+					
+						> .knowledgepriority {
+							margin-top: $qw-add-task-content-taskpriority-margin-top;
+							display: inline-block;
+							width: 100%;
+							
+							> .switch {
+								@include switch($transition-speed: $qw-add-task-content-taskpriority-switch-transition-speed , $transition-ease: ease-out, $height: $qw-add-task-content-taskpriority-switch-height, $radius: $global-radius, $base-style: true);
+								margin-top: $qw-add-task-content-taskpriority-switch-margin-top;
+								
+								  // background color on unchecked position
+								input[type="checkbox"]:not(:checked) + label {
+								background-color: $qw-add-task-content-taskpriority-switch-bg-color;
+								}
+								span {
+								display: inline-block;
+								position: absolute;
+								top: 0;
+								right: 0;
+								color: $qw-add-task-content-taskpriority-switch-font-color;
+								pointer-events: none; 
+								font-size: $qw-add-task-content-taskpriority-switch-font-size;
+								font-style: italic;
+								}
+
+								span.checkmark {
+									transition: display 0.3 ease-out;
+									display: none;
+								}
+							}
+						}
+					}
+				}
+
+				> label {
+					color: #5C5C5C;
+					.knowledgenote {
+						margin-top: $qw-add-task-content-tasknote-margin-top;
+						position: relative;
+						min-height: $qw-add-task-content-tasknote-min-height;
+						background: $qw-add-task-content-tasknote-bg-color;
+
+						textarea {
+							background: $qw-add-task-content-tasknote-textarea-bg-color;
+							border: 0;
+							border-radius: $global-radius;
+						} 
+
+						i {
+							position: absolute;
+							top: 0;
+							right: 0;
+							font-size: $qw-add-task-content-tasknote-textarea-max-font-size;
+							color: $qw-add-task-content-tasknote-textarea-max-font-color;
+							padding: $qw-add-task-content-tasknote-textarea-max-padding;
+							cursor: pointer;
+							background: $qw-add-task-content-tasknote-textarea-max-bg-color;
+							border-radius: $global-radius;
+							margin: $qw-add-task-content-tasknote-textarea-max-margin; 
+
+						}
+					}
+				}
+				> .buttons {
+					margin-top: $qw-add-task-content-buttons-margin-top;
+					height: $qw-add-task-content-buttons-height;
+					font-style: italic;
+					> .finish {
+						float: left;
+						width: $qw-add-task-content-buttons-finish-width;
+					}
+
+					> .cancel {
+						width: $qw-add-task-content-buttons-cancel-width;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+}

@@ -46,6 +46,7 @@
 }%%TMPL:END%
 
 %TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"addtask"}%%TMPL:END%
+%TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"addknowledge"}%%TMPL:END%
 
 %TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"taskdetail"}%%TMPL:END%
 
@@ -163,6 +164,53 @@
 </div>
 %TMPL:END%
 
+%TMPL:DEF{"addknowledge"}%
+<div class="qw-addknowledge qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="addknowledge">
+  <div class="close" data-offcanvas-toggle="addknowledge">
+    <div><i class="icon-arrow-right"></i></div>
+  </div>
+  <div class="addknowledge-header">
+    <div>
+      <span class="content">%MAKETEXT{"Create knowledge notebook"}%</span>
+      <span class="question"><i class="icon-questionmark-circle"></i></span>
+    </div>
+  </div>
+  <div class="addknowledge-content">
+    <div>
+      <div class="entry">
+        <label>%MAKETEXT{"note"}%
+          <div class="knowledgenote">
+            <textarea name="knowledgenote"rows="5"></textarea>
+            <i class="icon-maximize"></i>
+          </div>
+        </label>
+      </div>
+      <div class="entry">
+        <div class="priority">
+          <label>%MAKETEXT{"Prioritization"}%
+            <div class="knowledgepriority">
+              <div class="switch radius"> 
+                <span class="checkbox">%MAKETEXT{"no priority"}%</span>
+                <input id="priorityswitch" type="checkbox" name="testGroup">
+                <label for="priorityswitch"></label>
+              </div> 
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="buttons">
+          <div class="finish qw-prio1-btn">%MAKETEXT{"finish"}%</div>
+          <div class="cancel qw-prio2-btn">%MAKETEXT{"cancel"}%</div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+%TMPL:END%
+
 %TMPL:DEF{"dashboard:menu"
 }%<div class="qw-dashboard-topbar" data-offcanvas>
   <span><i class="icon-home"></i> %MAKETEXT{"Dashboard"}%</span>
@@ -191,7 +239,8 @@
 </div>
 <div class="qw-dashboard-toptwo knowledge" data-offcanvas>
   <span class="content">%MAKETEXT{Knowledge}%</span>
-    <a class="qw-prio2-btn" href="#"><i class="icon-add-task"></i>%MAKETEXT{Invest}%</a>
+    <a class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-maximize"></i></a>
+    <a class="qw-prio2-btn knowledge" data-offcanvas-toggle="addknowledge"><i class="icon-add"></i>%MAKETEXT{Invest}%</a>
     <a class="qw-prio2-btn" href="#"><i class="icon-sort"></i>%MAKETEXT{Letzte Verwendung}%</a>
     <div class="view">
       <a href="#" class="row qw-action-button"><i class="icon-list-bullets"></i></a>
