@@ -106,6 +106,26 @@
         $pt: 10px;
         padding-top: $pt;
 
+        &.extra > .save {
+          @include grid-column($columns: 3, $collapse: true);
+        }
+        &.extra > .cancel {
+          @include grid-column($columns: 3, $collapse: true);
+        }
+        &.extra > .extra {
+          @include grid-column($columns: 6, $collapse: true);
+          max-height: $qw-top-one-height - 2 * $pt;
+          > div {
+            $pl: $qw-content-padding/2;
+            padding-right: $pl;
+
+            a {
+              display: inline-block;
+              vertical-align: middle;
+              min-width: calc( 100% - 2 * #{$pl});
+            }
+          }
+        }
         > .save {
           @include grid-column($columns: 8, $collapse: true);
           max-height: $qw-top-one-height - 2 * $pt;

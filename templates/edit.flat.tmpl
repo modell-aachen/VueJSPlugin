@@ -42,7 +42,7 @@
   <div class="one">
     <div id="cke-toolbar-container" class="editor"></div>
     <div class="buttons">
-      <div>%TMPL:P{"topbar:buttons"}%</div>
+      <div class="%TMPL:P{"topbar:buttons:class"}%">%TMPL:P{"topbar:buttons"}%</div>
     </div>
   </div>
   <div class="two">
@@ -74,6 +74,7 @@
     <a href="#" class="qw-prio1-btn topbar-save stretch" data-submit-form='[name="main"]'>%MAKETEXT{"save"}%</a>
   </div>
 </div>
+<!-- topbar:buttons:extra -->%TMPL:P{"topbar:buttons:extra"}%<!-- /topbar:buttons:extra -->
 <div class="cancel">
   <div>
     <a href="#" class="qw-prio2-btn topbar-cancel stretch" data-cancel-form='[name="main"]'>%MAKETEXT{"cancel"}%</a>
