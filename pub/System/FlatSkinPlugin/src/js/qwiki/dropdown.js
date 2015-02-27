@@ -15,8 +15,9 @@
     bind: function() {
       this.unbind();
 
-      $('[data-splitbutton]').each( function() {
+      $('[data-splitbutton]:not(.inited)').each( function() {
         var $self = $(this);
+        $self.addClass('inited');
         var selector = $self.data('target');
 
         var target = $(selector);
@@ -24,89 +25,119 @@
           var adorner = $self.find('[data-adorner]');
           if ( adorner.length > 0 ) {
             adorner.on( 'click', this, handleSplitbtnClick );
+          } else {
+            if(window.console) {
+              console.log('Splitbutton could not find adorner');
+            }
+          }
+
+          target.mouseenter(this, handleDropdownMouseEnter);
+          target.mouseleave(this, handleDropdownMouseLeave);
+          $self.mouseenter(this, handleDropdownMouseEnter);
+          $self.mouseleave(this, handleDropdownMouseLeave);
+
+          $self.click( $self, handleLinkClick );
+          target.find('a').click( $self, handleLinkClick );
+        } else {
+          if(window.console) {
+            console.log('Splitbutton could not find target: ' + selector);
           }
         }
-      });
-
-      $('[data-dropdown]').each( function() {
-        var $this = $(this);
-
-        var target = $this.data('dropdown');
-        if ( !target ) {
-          return;
-        }
-
-        $this.on( 'click', this, handleDropdownClick );
-        var $target = $(target);
-        if ( $target.length === 0 ) {
-          return;
-        }
-
-        if ( !$target.hasClass( 'qw-dropdown' ) ) {
-          $target.addClass( 'qw-dropdown' );
-        }
-
-        $target.on( 'mouseenter', this, handleDropdownMouseEnter );
-        $target.on( 'mouseleave', this, handleDropdownMouseLeave );
-        $target.detach().appendTo('body');
       });
     },
 
     unbind: function() {
       $('[data-splitbutton]').each( function() {
         var $self = $(this);
+        $self.removeClass('inited');
         var selector = $self.data('target');
-
         var target = $(selector);
         if ( target.length > 0 ) {
           var adorner = $self.find('[data-adorner]');
           if ( adorner.length > 0 ) {
             adorner.off( 'click', handleSplitbtnClick );
           }
+
+        $self.off('click', handleLinkClick );
+        target.find('a').off('click', handleLinkClick );
+
+        target.off( 'mouseleave', handleDropdownMouseLeave );
+        target.off( 'mouseenter', handleDropdownMouseEnter );
+        $self.off( 'mouseleave', handleDropdownMouseLeave );
+        $self.off( 'mouseenter', handleDropdownMouseEnter );
         }
-      });
-
-      $('[data-dropdown]').each( function() {
-        var $this = $(this);
-
-        var target = $this.data('dropdown');
-        if ( !target ) {
-          return;
-        }
-
-        $this.off( 'mouseenter', handleDropdownClick );
-        var $target = $(target);
-        if ( $target.length === 0 ) {
-          return;
-        }
-
-        $target.off( 'mouseleave', handleDropdownMouseEnter );
-        $target.off( 'mouseleave', handleDropdownMouseLeave );
       });
     }
+  };
+
+  var handleLinkClick = function(evt) {
+    var $this = $(this);
+    if(!evt && evt.data) {
+      if(window.console) {
+        console.log('Splitbutton: Missing data for click-event');
+      }
+      return;
+    }
+    var $self = $(evt.data);
+    $self.removeClass('active');
+    hideMenue($self);
+    $this.trigger('clickDone');
+    return false;
+  };
+
+  var showMenue = function($self) {
+    var height = $self.outerHeight();
+    var width = $self.outerWidth();
+
+    var target = getTarget($self);
+
+    if ( !target.hasClass( 'inited' ) ) {
+      target.addClass( 'inited' );
+      if ( $self.hasClass( 'attachToBody' ) ) {
+        target.css( 'z-index', 500 );
+        target.css( 'position', 'fixed' );
+        target.appendTo( 'body' );
+      } else {
+        target.css( 'position', 'absolute' );
+      }
+    }
+
+    var top, left;
+    if( $self.hasClass( 'attachToBody' ) ) {
+      // this gets the correct position, regardless of scroll/zoom
+      var rect = $self[0].getBoundingClientRect();
+      top = rect.y;
+      left = rect.x;
+    } else {
+      var pos = $self.position();
+      top = pos.top;
+      left = pos.left;
+    }
+    top += height;
+
+    target.css( 'top', top );
+    target.css( 'left', left );
+    target.css( 'width', width );
+    target.show();
+  };
+
+  var hideMenue = function($self) {
+    getTarget($self).hide();
+  };
+
+  var getTarget = function($self) {
+    var selector = $self.data('target');
+    return $(selector);
   };
 
   var handleSplitbtnClick = function( evt ) {
     var $self = $(evt.data);
     $self.toggleClass( 'active' );
 
-    var selector = $self.data('target');
-    var target = $(selector);
-
     if ( $self.hasClass( 'active' ) ) {
-      var height = $self.outerHeight();
-      var width = $self.outerWidth();
-
-      var pos = $self.position();
-      var top = pos.top + height;
-
-      target.css( 'top', top );
-      target.css( 'left', pos.left );
-      target.css( 'width', width );
+      showMenue($self);
     } else {
-      target.css('top', '');
-      target.css('left', '');
-      target.css('width', '');
+      hideMenue($self);
     }
 
     return false;
@@ -129,6 +160,12 @@
     if ( $this.hasClass('active') ) {
       $this.removeClass('active');
       $target.attr('style', '');
+
+      var selector = $this.data('target');
+      alert(selector);
+      var $menue = $(selector);
+      $menue.hide();
+
       return false;
     }
 
@@ -154,10 +191,14 @@
   };
 
   var handleDropdownMouseLeave = function( evt ) {
-    var $this = $(this);
+    if(!evt && evt.data) {
+        return;
+    }
+    var $this = $(evt.data);
+
     var timeout = setTimeout( function() {
-      $this.attr('style', '');
-      $('.active[data-dropdown]').removeClass('active');
+        $this.removeClass('active');
+        hideMenue($this);
     }, 750 );
 
     timeouts.push( timeout );

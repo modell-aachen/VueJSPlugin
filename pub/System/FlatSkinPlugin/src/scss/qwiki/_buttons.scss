@@ -366,10 +366,6 @@ input[type="text"].qw-input {
     }
   }
 
-  + ul {
-      z-index: 999;
-  }
-
   &.active {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -380,6 +376,12 @@ input[type="text"].qw-input {
     }
   }
 }
+
+.qw-split-btn-drop {
+    padding-left: 0;
+    z-index: 500;
+}
+
 
 .qw-person {
   @include label(
