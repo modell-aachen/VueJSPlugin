@@ -225,7 +225,7 @@
 %TMPL:DEF{"dashboard:actions"}%
 <div class="qw-dashboard-toptwo tasks  active" data-offcanvas>
   <span class="content">%MAKETEXT{Tasks}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-task-more-menu"></i>
-<ul id="qw-task-more-menu" class="qw-dropdown-light">
+<ul id="qw-task-more-menu" class="qw-dropdown-light" style="display:none;">
   <li><a href="#">sub menu 1</a></li>
   <li><a href="#">sub menu 2</a></li>
   <li><a href="#">sub menu 3</a></li>
