@@ -219,8 +219,6 @@
     <li data-target="knowledge"><span href="#">%MAKETEXT{"Wissen"}%</span></li>
     <li data-target="bookmarks"><span href="#">%MAKETEXT{"Lesezeichen"}%</span></li>
     <li data-target="userdata"><span href="#">%MAKETEXT{"Einstellungen"}%</span></li>
-    <li data-target="sessions"><span href="#">%MAKETEXT{"Sitzungen"}%</span></li>
-    <li data-target="departmenthead"><span href="#">%MAKETEXT{"Abteilungsleiter"}%</span></li>
   </ul>
 </div>%TMPL:END%
 
