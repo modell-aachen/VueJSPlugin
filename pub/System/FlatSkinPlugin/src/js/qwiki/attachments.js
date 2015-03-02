@@ -22,6 +22,35 @@
 
     bind: function() {
       this.unbind();
+
+      // Temporary code for rendering attachment links
+      $('section.content > .topic a[href*="/pub/"]').each(function() {
+        var $a = $(this);
+        var href = $a.attr('href');
+        var extMap = {
+          pdf: 'file-pdf',
+          ppt: 'file-presentation',
+          pptx: 'file-presentation',
+          doc: 'file-text',
+          docx: 'file-text',
+          xls: 'file-table',
+          xlsx: 'file-table',
+          DEFAULT: 'file'
+        };
+        var ext = 'DEFAULT';
+        $.each(extMap, function(k, v) {
+          var r = new RegExp('\\.'+ k +'$');
+          if (r.exec(href)) {
+            ext = k;
+            return false;
+          }
+        });
+        var icon = $('<i></i>');
+        icon.attr('class', 'icon icon-'+ extMap[ext]);
+        $a.prepend(icon);
+        $a.addClass('qw-attach-link');
+      });
+
       $('.qw-attachments-container li').on( 'click', this, showDetails );
       $('.qw-attachments-container').on( 'click.qw', this, closeDetails );
       $('.qw-attachments-container .list .qw-back-btn').on( 'click', this, closeAttachments );

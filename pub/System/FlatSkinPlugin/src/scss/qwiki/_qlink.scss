@@ -47,3 +47,21 @@ section.content a span.qlink {
         }
     }
 }
+
+section.content > .topic a.qw-attach-link {
+  display: inline-block;
+  border: 0.2rem solid #f2f5f7;
+  border-radius: 0.3rem;
+  background-color: #f2f5f7;
+  font-size: 90%;
+
+  > i {
+    background-color: white;
+    border-radius: 0.3rem;
+    border: 0.2rem solid white;
+    padding:0 0.3rem;
+    margin-right: 0.3rem;
+    color: #444;
+    font-size: 1.5rem; // XXX h1 etc.
+  }
+}
