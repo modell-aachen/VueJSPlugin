@@ -26,7 +26,7 @@
           if ( adorner.length > 0 ) {
             adorner.on( 'click', this, handleSplitbtnClick );
           } else {
-            if(window.console) {
+            if(target.length !== 1 && window.console) {
               console.log('Splitbutton could not find adorner');
             }
           }
