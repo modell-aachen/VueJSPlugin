@@ -75,18 +75,29 @@
       return scope;
     },
 
+    getSpinner: function() {
+        var $spinner = $('<div></div>');
+
+        var opts = this.options.spinner;
+        if(!opts) {
+            return $spinner;
+        }
+
+        var spinner = new Spinner( opts ).spin().el;
+        var size = (opts.radius + opts.length + 20) * 2;
+        $spinner.css('height', size).css('width', size).css('background-color', '#000'); // XXX make background-color configurable
+        $spinner.append(spinner);
+
+        return $spinner;
+    },
+
     block: function() {
         var opts = this.options.spinner;
         if(!opts || !$.blockUI) {
             return;
         }
 
-        var spinner = new Spinner( opts ).spin().el;
-        var size = (opts.radius + opts.length + 20) * 2;
-        var $spinner = $('<div></div>').css('height', size).css('width', size);
-        $spinner.append(spinner);
-
-        $.blockUI({message: $spinner});
+        $.blockUI({message: this.getSpinner()});
     },
 
     unblock: function() {
