@@ -52,6 +52,10 @@
 			> .task-title {
 				display: inline-block;
 				@include flex($grow: 4);
+				max-width: 50%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 				padding: 0.625rem 0.25rem 0.3125rem 0.3125rem;
 				margin: 0;
 				top: $qw-dashboard-task-title-top;
@@ -71,9 +75,13 @@
 			}
 
 			> .task-responsible {
-				padding: 0.3125rem 2.25rem 0.3125rem 0.3125rem;
+				@include flex($grow: 1);
+				padding: 0.3125rem 1.25rem 0.3125rem 0.3125rem;
 				margin-top: 5px;
-				
+				min-width: 5%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 				> span {
 					background: $qw-agenda-container-responsible-span-bg-color;
 					border-radius: $global-radius;
