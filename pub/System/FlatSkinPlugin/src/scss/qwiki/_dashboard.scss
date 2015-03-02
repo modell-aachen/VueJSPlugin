@@ -206,19 +206,9 @@
 
 	height: $qw-dashboard-topbar-height;
 	background: $qw-dashboard-topbar-bg-color;
-	> span {
-		float: left;
-		font-size: $qw-dashboard-topbar-span-font-size;
-		color:$qw-dashboard-topbar-span-font-color;
-		padding: $qw-dashboard-topbar-span-padding;
-		> i {
-			font-size: $qw-dashboard-topbar-i-font-size;
-		}
-	}
 
 	.dashboard-list {
-		 @include inline-list;
-
+		@include inline-list;
 		> li {
 			min-width: $qw-dashboard-list-min-width;
 			font-size: $qw-dashboard-list-font-size;
@@ -226,11 +216,20 @@
 			color: $qw-dashboard-list-font-color;
 			padding: $qw-dashboard-list-padding;
 			cursor: pointer;
-			&:hover {
+			&:hover:not(:first-child) {
 				/* transition: all 10s ease-in-out; */
 				background : $qw-dashboard-list-hover-bg;
 				border-radius: $global-radius;
 				color: $qw-dashboard-list-hover-font-color;
+			}
+		}
+
+		> li:first-child {
+			color: #4D4D4D;
+			cursor: auto;
+			padding: 0 30px 0 15px;
+			i {
+				font-size: 30px;
 			}
 		}
 	}
