@@ -119,13 +119,14 @@
     // abort requests
     var xhrAbort = function(){}, xhr;
     if (typeof self.$e.autocomplete('option', 'source') !== 'object') {
+      var src = self.$e.metadata().source;
       self.$e.autocomplete('option', {
         source: function(req, resp) {
           var term = req.term;
 
           xhrAbort();
           xhr = $.ajax({
-            url: self.$e.autocomplete('option', 'source'),
+            url: src,
             dataType: 'json',
             data: req,
           }).done(function(data, textStatus, xhr) {
