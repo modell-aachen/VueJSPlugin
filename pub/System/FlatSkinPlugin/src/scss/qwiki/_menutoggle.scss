@@ -43,8 +43,8 @@
     }
 
     > i {
-      position: relative;
-      top: 14px;
+/*       position: relative;
+      top: 14px; */
       display: inline-block;
       width: $qw-leftbar-width;
       font-size: 1.8rem;
@@ -63,7 +63,7 @@
     &.leftbar {
       transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
       > .toggle > i {
-        //font-size: 1rem;
+        font-size: 1rem;
         &:before {
           content: $icon-arrow-left;
         }
