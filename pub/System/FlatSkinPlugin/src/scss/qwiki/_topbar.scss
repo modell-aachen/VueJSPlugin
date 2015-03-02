@@ -391,7 +391,7 @@
 
       &.maximized {
         width: 100%;
-        @media #{$medium-up} {width: calc(100% - #{$qw-content-padding} - #{$qw-leftbar-width});}
+        @media #{$medium-up} {width: calc(100%);}
       }
     }
   }
