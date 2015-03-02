@@ -203,7 +203,20 @@
   }
 }
 
-.KVPTransition-overlay {
+.qw-newlink > div.panelcontent { // XXX unfortunately I can't style bigoffcanvas because it has been used in different places as well, will clean this up later
+    padding: 0 $qw-content-padding;
+}
+.qw-newlink {
+  .jqTextboxListValue {
+    @extend .qw-meta-user;
+    background: #f2f5f7 !important; // XXX
+    border-color: #f2f5f7 !important; // XXX
+    padding-right: 25px !important; // XXX
+    margin-bottom: rem-calc(6);
+  }
+}
+
+.KVPTransition-overlay { // XXX doing it like this is lazy and idiotic
   padding: 0 $qw-content-padding;
 
   .buttons {

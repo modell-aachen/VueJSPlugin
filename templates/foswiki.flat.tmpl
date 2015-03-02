@@ -45,6 +45,7 @@
 %TMPL:DEF{"offcanvas:bars"}%<!--offcanvas:bars-->
 %TMPL:P{"commentbar"}%
 %TMPL:P{"comments"}%
+%TMPL:P{"newlink:bar"}%
 <!--/offcanvas:bars-->%TMPL:END%
 
 %TMPL:DEF{"body"}%<!--body-->
@@ -592,3 +593,18 @@ Keep this, it will load the JSI18N scripts:
   LOGO
 }%
 %TMPL:DEF{"logo"}%<div class="patternSimpleLogo"><img src="%WIKILOGOIMG%" height="50px" border="0" alt="%WIKILOGOALT%" style="padding-left:12px; margin-top:4px;"/></div>%TMPL:END%
+
+%TMPL:DEF{"newlink:bar"}%<!--newlink:bar-->%JQREQUIRE{"select2,wikiword,textboxlist"}%
+<div class="qw-newlink qw-bigoffcanvas" data-offcanvas data-title="%MAKETEXT{"Create new topic"}%" data-target="newlink">
+  <div class="close" data-offcanvas-toggle="newlink">
+    <div><i class="icon-arrow-right"></i></div>
+  </div>
+  <div class="panelcontent">
+    <div class="header">
+      <span>%MAKETEXT{"Create a new topic"}%</span>
+    </div>
+    <div class="content">
+    </div>
+  </div>
+</div>
+<!--/newlink:bar-->%TMPL:END%
