@@ -39,7 +39,12 @@
     }
 
     $.blockUI();
-    $('form' + target).submit();
+    var $form = $('form' + target);
+    var $submit = $form.find('input[type="submit"][name="action_save"]');
+    if(!$submit.length) {
+        $submit = $('<input type="submit" name="action_save" style="display:none" />').appendTo($form);
+    }
+    $submit.click();
     return false;
   };
 
