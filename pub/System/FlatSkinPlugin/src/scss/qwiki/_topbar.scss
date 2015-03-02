@@ -381,8 +381,8 @@
       margin: rem-calc(0 10 0 0); */
       $p: percentage(1/$total-columns);
       @media #{$mobile-up} {width: 100%;}
-      @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-leftbar-width});}
-      @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-leftbar-width});}
+      @media #{$large-only} {width: calc(8 * #{$p} - #{$qw-content-padding}/2);}
+      @media #{$extended-up} {width: calc(9 * #{$p} - #{$qw-content-padding}/2);}
       
 
       > div {
