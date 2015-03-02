@@ -543,9 +543,14 @@
 							float: left;
 							background: $qw-add-task-content-user-bg-color;
 							color: $qw-add-task-content-user-font-color;
+							
+							> .icon-user {
+								margin-right: 5px;
+							}
 
 							> .icon-close {
-								float: right;
+								//float: right;
+								padding-left: 5px;
 								color: $qw-add-task-content-user-icon-close-font-color;
 								font-size: $qw-add-task-content-user-icon-close-font-size;
 							}	
@@ -688,6 +693,7 @@
 						border-radius: $global-radius;
 						font-style: italic;
 						margin-top: $qw-add-task-content-attachment-margin-top;
+						padding-top: 25px;
 
 						i {
 							font-size: $qw-add-task-content-attachment-icon-font-size;
