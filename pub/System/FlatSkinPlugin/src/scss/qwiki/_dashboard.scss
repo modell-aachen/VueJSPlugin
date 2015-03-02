@@ -227,7 +227,7 @@
 		> li:first-child {
 			color: #4D4D4D;
 			cursor: auto;
-			padding: 0 30px 0 15px;
+			padding: 5px 30px 0 15px;
 			i {
 				font-size: 30px;
 			}
@@ -390,7 +390,6 @@
 
 			> .firstdetail {
 				@include flex-container($wrap: wrap, $direction: row);
-				border-radius: $global-radius;
 				padding: 5px 15px 10px  15px;
 				height: auto; 
 
@@ -402,21 +401,24 @@
 						background: #F2F5F7;
 						color: #236AA2;
 						padding: 0.3125rem;
+						border-radius: $global-radius;
 
 						> i { 
-							font-size: 0.875rem;	
+							font-size: 1rem;	
 						}
 					}
 
 					> .due {
-						
+						border-radius: $global-radius;
 						color: #999;
 						background: #F5F5F5;
+
 						
 
 						i {
 							@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-future-badge-bg, $radius:$global-radius);
 							font-size: 1rem;
+							padding-right: 5px;
 						}
 					}					
 				}
@@ -484,7 +486,7 @@
 				> .done {
 					text-align: left !important;
 					width: 150px;
-					padding: 0 0 8px 5px;
+					//padding: 0 0 8px 5px;
 					i {
 						font-size: 1.7rem;
 					}
