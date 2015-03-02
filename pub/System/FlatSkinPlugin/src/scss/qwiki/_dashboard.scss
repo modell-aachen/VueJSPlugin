@@ -551,7 +551,6 @@
 							float: left;
 							background: $qw-add-task-content-user-bg-color;
 							color: $qw-add-task-content-user-font-color;
-							
 							> .icon-user {
 								margin-right: 5px;
 							}
@@ -643,7 +642,7 @@
 								display: inline-block;
 								position: absolute;
 								top: 0;
-								right: 0;
+								right: 25px;
 								color: $qw-add-task-content-taskpriority-switch-font-color;
 								pointer-events: none; 
 								font-size: $qw-add-task-content-taskpriority-switch-font-size;
