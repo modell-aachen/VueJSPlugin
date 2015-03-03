@@ -100,6 +100,11 @@
         $('[data-offcanvas-toggle="' + target + '"]').removeClass('active');
         if(wasactive) {
             QWiki.raiseEvent( bar, sender, 'closing' );
+
+// ToDo: delete me!!
+if ( bar.hasClass('qw-quicksearch') || bar.hasClass('qw-commentbar') || bar.hasClass('qw-newlink') || bar.hasClass('qw-documentcontrol') ) {
+    $('.qw-kvpbar').offcanvas({action:'open'});
+}
         }
     }
 
@@ -118,8 +123,12 @@
     var data = self.Q.restoreData( self.name );
     if ( data ) {
         var arr = data.split(',');
-        if ( arr.length === 2 && arr[1] === '1' ) {
-            var $target = $(arr[0]);
+// ToDo: delete me!!
+if ( true ) {
+        // if ( arr.length === 2 && arr[1] === '1' ) {
+// ToDo: delete me!!
+var $target = $('.qw-kvpbar');
+            // var $target = $(arr[0]);
             $target.addClass('no-transition');
             $target.offcanvas({action: 'open'});
             setTimeout( function() {
