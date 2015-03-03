@@ -16,6 +16,7 @@
 			color: $qw-agenda-container-font-color;
 			font-size: $qw-agenda-container-font-size;
 			float: left;
+			height: 40px;
 			width: $qw-agenda-container-width;
 			margin:$qw-dashboard-task-margin;
 			border-radius: $global-radius;
@@ -51,6 +52,7 @@
 
 			> .task-title {
 				display: inline-block;
+				height: 38px;
 				@include flex($grow: 4);
 				max-width: 50%;
 				white-space: nowrap;
