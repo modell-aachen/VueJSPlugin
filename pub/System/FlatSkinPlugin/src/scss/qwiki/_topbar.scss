@@ -67,7 +67,7 @@
     }
 
     > .dashboardmenu, .sessionmenu {
-      margin: rem-calc(5 0 10 20);
+      margin: rem-calc(5 0 10 0);
       //divides topbar to grids
       @media #{$mobile-up} {@include grid-column($columns: 10, $collapse: true);}
       @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
