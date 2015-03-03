@@ -102,7 +102,7 @@
             QWiki.raiseEvent( bar, sender, 'closing' );
 
 // ToDo: delete me!!
-if ( bar.hasClass('qw-quicksearch') || bar.hasClass('qw-commentbar') ) {
+if ( bar.hasClass('qw-quicksearch') || bar.hasClass('qw-commentbar') || bar.hasClass('qw-newlink') || bar.hasClass('qw-documentcontrol') ) {
     $('.qw-kvpbar').offcanvas({action:'open'});
 }
         }
