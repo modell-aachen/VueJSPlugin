@@ -8,6 +8,25 @@
 
 %TMPL:DEF{"top"}%%TMPL:END%
 
+%TMPL:DEF{"topbar"
+}%<!--topbar--><nav class="qw-top" data-offcanvas>
+  <div class="one">
+    <div class="dashboardmenu">%TMPL:P{"dashboard:menu"}%</div>
+    <div class="search">
+      <div class="close" data-offcanvas-toggle="quicksearch">
+        <div><i class="icon-arrow-right"></i></div>
+      </div>
+      <div>%TMPL:P{"topbar:search"}%</div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="dashboardactions" data-offcanvas>
+      <div>%TMPL:P{"dashboard:actions"}%</div>
+    </div>
+  </div>
+</nav>
+<!--/topbar-->%TMPL:END%
+
 %TMPL:DEF{"perspage:scripts"}%%TMPL:PREV%%ADDTOZONE{
   "script" requires="JQUERYPLUGIN" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/System/ActionTrackerPlugin/atp.js\"></script>"
 }%%ADDTOZONE{"head" text="<link rel=\"stylesheet\" type=\"text/css\" href=\"%PUBURLPATH%/System/ActionTrackerPlugin/styles_src.css\" /><style type=\"text/css\">
@@ -42,16 +61,13 @@
 "script" id="JavascriptFiles/strikeone" text="<script type=\"text/javascript\" src=\"%PUBURLPATH%/%SYSTEMWEB%/JavascriptFiles/strikeone.js\"></script>"
 }%%TMPL:END%
 
-%TMPL:DEF{"perspage:bookmarks:backup"
-}%%TMPL:END%
-
+%TMPL:DEF{"perspage:bookmarks:backup"}%%TMPL:END%
 %TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"addtask"}%%TMPL:END%
 %TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"addknowledge"}%%TMPL:END%
-
 %TMPL:DEF{"offcanvas:bars"}%%TMPL:PREV%%TMPL:P{"taskdetail"}%%TMPL:END%
 
-%TMPL:DEF{"taskdetail"}%
-<div class="qw-taskdetail qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="taskdetail">
+%TMPL:DEF{"taskdetail"
+}%<div class="qw-taskdetail qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="taskdetail">
   <div class="close" data-offcanvas-toggle="taskdetail">
     <div><i class="icon-arrow-right"></i></div>
   </div>
@@ -96,11 +112,10 @@
       </div>
     </div>
   </div>
-</div>
-%TMPL:END%
+</div>%TMPL:END%
 
-%TMPL:DEF{"addtask"}%
-<div class="qw-addtask qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="addtask">
+%TMPL:DEF{"addtask"
+}%<div class="qw-addtask qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="addtask">
   <div class="close" data-offcanvas-toggle="addtask">
     <div><i class="icon-arrow-right"></i></div>
   </div>
@@ -161,11 +176,10 @@
       </div>
     </div>
   </div>
-</div>
-%TMPL:END%
+</div>%TMPL:END%
 
-%TMPL:DEF{"addknowledge"}%
-<div class="qw-addknowledge qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="addknowledge">
+%TMPL:DEF{"addknowledge"
+}%<div class="qw-addknowledge qw-bigoffcanvas" data-offcanvas data-offcanvas-persist-state data-target="addknowledge">
   <div class="close" data-offcanvas-toggle="addknowledge">
     <div><i class="icon-arrow-right"></i></div>
   </div>
@@ -206,10 +220,7 @@
       </div>
     </div>
   </div>
-
-
-</div>
-%TMPL:END%
+</div>%TMPL:END%
 
 %TMPL:DEF{"dashboard:menu"
 }%<div class="qw-dashboard-topbar" data-offcanvas>
@@ -222,8 +233,8 @@
   </ul>
 </div>%TMPL:END%
 
-%TMPL:DEF{"dashboard:actions"}%
-<div class="qw-dashboard-toptwo tasks  active" data-offcanvas>
+%TMPL:DEF{"dashboard:actions"
+}%<div class="qw-dashboard-toptwo tasks  active" data-offcanvas>
   <span class="content">%MAKETEXT{Tasks}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-task-more-menu"></i>
 <ul id="qw-task-more-menu" class="qw-dropdown-light" style="display:none;">
   <li><a href="#">sub menu 1</a></li>
@@ -270,26 +281,6 @@
   <span class="qw-prio2-btn add"><i class="icon-add"></i>%MAKETEXT{Creating an agenda point}%</span>
 </div>%TMPL:END%
 
-%TMPL:DEF{"topbar"
-}%<!--topbar--><nav class="qw-top" data-offcanvas>
-  <div class="one">
-    <div class="dashboardmenu">%TMPL:P{"dashboard:menu"}%</div>
-    <div class="search">
-      <div class="close" data-offcanvas-toggle="quicksearch">
-        <div><i class="icon-arrow-right"></i></div>
-      </div>
-      <div>%TMPL:P{"topbar:search"}%</div>
-    </div>
-  </div>
-  <div class="two">
-    <div class="dashboardactions" data-offcanvas>
-      <div>%TMPL:P{"dashboard:actions"}%</div>
-    </div>
-  </div>
-</nav>
-<!--/topbar-->%TMPL:END%
-
-
 %TMPL:DEF{"perspage:bookmarks"
 }%<div class="qw-dashboard-container tasks active" data-offcanvas>
     %SOLRSEARCH{"type:action -topic:*Template action_who_lst:(%USERNAME% OR %WIKINAME% OR %WIKIUSERNAME%) -action_closed_dt:?* -action_state_s:(closed OR discarded)"format="<div class=\"task future priority \" data-offcanvas-toggle=\"taskdetail\"><div class=\"task-input\"><label><i class=\"icon-task-open\"></i><span>%MAKETEXT{"New"}%</label></span></div><div class=\"task-title\"><span>$action_text_s</span></div><div class=\"task-meetings\"><i class=\"icon-app-meetings\"> </i> GESELLSCHAFTERSITZUNG</div><div class=\"task-responsible\"><span><i class=\"icon-user\"></i>$action_creator_s</span></div><div class=\"task-badge\"><span><i class=\"icon-clock-inv\"> </i>$percntIF{\"'$action_due_dt'~'$*'\" else=\"$action_due_dt\"}$percnt</span></div></div>"rows="1000" sort="createdate" reverse="on"
@@ -322,10 +313,9 @@
     <div class="perspageBlock modacBookmarks">
       <div class="splittitle">%ICON{viewtopic}% %MAKETEXT{Topics}%</div>
           %SOLRSEARCH{"type:topic webtopic:(%FAVORITELIST{format="\\"$swebtopic\\"" separator=" OR " default="NOT *"}%)"
-            rows="999999" sort="webtopic"
-            format="<li>$percntFAVORITEBUTTON{web=\"$web\" topic=\"$topic\" redirectto=\"%WEB%.%TOPIC%\" format=\"$formstart$linkstart<img src=\\"%PUBURLPATH%/%SYSTEMWEB%/FamFamFamSilkCompanion1Icons/decline.png\\" alt=\\"%MAKETEXT{"Remove bookmark"}%\\" title=\\"%MAKETEXT{"Remove bookmark"}%\\" />$linkend$formend\"}$percnt <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$web.$topic\"><strong>$title</strong></a>&nbsp; $percntIF{\"istopic '$web.$topic$percntDUMMY{default=\"\"}$percntTALK'\" then=\"&nbsp;&nbsp;|&nbsp;&nbsp;<a href='$percntSCRIPTURL{view}$percnt/$web/$topic$percntDUMMY{default=\"\"}$percntTALK'><span class=\\"bmsubinfo\\">$dollarpercntICON{comments}$dollarpercnt&nbsp;$percntMAKETEXT{\"Discussion available\"}$percnt</span></a>\"}$percnt%BR%<span class=\"bmsubinfo\">[[$web.WebHome][$web]]</span></li>"
-            }%
-    </div>
+          rows="999999" sort="webtopic"
+          format="<li>$percntFAVORITEBUTTON{web=\"$web\" topic=\"$topic\" redirectto=\"%WEB%.%TOPIC%\" format=\"$formstart$linkstart<img src=\\"%PUBURLPATH%/%SYSTEMWEB%/FamFamFamSilkCompanion1Icons/decline.png\\" alt=\\"%MAKETEXT{"Remove bookmark"}%\\" title=\\"%MAKETEXT{"Remove bookmark"}%\\" />$linkend$formend\"}$percnt <a href=\"%SCRIPTURL{view}%/$web/$topic\" title=\"$web.$topic\"><strong>$title</strong></a>&nbsp; $percntIF{\"istopic '$web.$topic$percntDUMMY{default=\"\"}$percntTALK'\" then=\"&nbsp;&nbsp;|&nbsp;&nbsp;<a href='$percntSCRIPTURL{view}$percnt/$web/$topic$percntDUMMY{default=\"\"}$percntTALK'><span class=\\"bmsubinfo\\">$dollarpercntICON{comments}$dollarpercnt&nbsp;$percntMAKETEXT{\"Discussion available\"}$percnt</span></a>\"}$percnt%BR%<span class=\"bmsubinfo\">[[$web.WebHome][$web]]</span></li>"
+          }%</div>
 </div>
 <div class="qw-dashboard-container userdata" data-offcanvas> 
     <div class="perspageBlockTitle">%MAKETEXT{"User data"}% <a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?template=UserDataEdit;t=%GMTIME{"$epoch"}%" title="%MAKETEXT{Edit}%">%ICON{pencil}%</a></div>
@@ -341,97 +331,6 @@
         <tr><td>%MAKETEXT{"Bank"}%</td><td>%RENDERFORDISPLAY{field="Bank" format="$value"}%</td></tr>
         </table>
     </div>
-</div> 
-<div class="qw-session-container sessions" data-offcanvas> <!-- all session names belongs to minutes plugin --> 
-  <div class="session-title">
-    <span class="session-title-name">%MAKETEXT{Name}%</span>
-    <span class="session-title-termin">%MAKETEXT{Appointment}%</span>
-    <span class="session-title-tag">%MAKETEXT{Day, Time}%</span>
-    <span class="session-title-turnus">%MAKETEXT{Rota}%</span>
-    <span class="session-title-ort">%MAKETEXT{Place}%</span>
-    <span class="session-title-num">%MAKETEXT{}%</span>
-  </div>
-  <div class="session-container">
-    <div class="session-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
-    <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
-    <div class="session-tag">%MAKETEXT{ Freitag, 10:00h}%</div>
-    <div class="session-turnus">%MAKETEXT{ Wochentlich}%</div>
-    <div class="session-ort">
-      <span><i class="icon-location"> </i> %MAKETEXT{Geb, 5, Raum 115}%</span>
-    </div>
-    <div class="session-num">16</div>
-  </div>
-  <div class="session-container future">
-    <div class="session-name"><i class="icon-task-open"></i>%MAKETEXT{QM-Runde}%</div>
-    <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ 03.11.}%</span></div>
-    <div class="session-tag">%MAKETEXT{ Montag, 10:30h-12:30h}%</div>
-    <div class="session-turnus">%MAKETEXT{ Alle zwei Wochen}%</div>
-    <div class="session-ort">
-      <span><i class="icon-location"> </i> %MAKETEXT{Konfi}%</span>
-    </div>
-    <div class="session-num">87</div>
-  </div>
-  <div class="session-container">
-    <div class="session-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
-    <div class="session-termin"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
-    <div class="session-tag">%MAKETEXT{ Freitag, 10:00h}%</div>
-    <div class="session-turnus">%MAKETEXT{ Wochentlich}%</div>
-    <div class="session-ort">
-      <span><i class="icon-location"> </i> %MAKETEXT{Geb, 5, Raum 115}%</span>
-    </div>
-    <div class="session-num">16</div>
-  </div>
-</div> 
-<div class="qw-session-container departmenthead" data-offcanvas>
-  <div class="agenda-title">
-        <span class="agenda-title-name">%MAKETEXT{Description}%</span>
-        <span class="agenda-title-due">%MAKETEXT{Due on}%</span>
-        <span class="agenda-title-responsible">%MAKETEXT{Responsible}%</span>
-        <span class="agenda-title-author">%MAKETEXT{Author}%</span>
-        <span class="agenda-title-date">%MAKETEXT{Date}%</span>
-  </div>
-  <div class="agenda-container">
-    <div class="agenda-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
-    <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ Heute}%</span></div>
-    <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
-    <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
-    <div class="agenda-date">%MAKETEXT{ Freitag, 10:00h}%</div> 
-    <div class="agenda-tools">
-      <ul>
-        <li class="agenda-add"><i class="icon-checkmark"></i></li>
-        <li class="agenda-download"><i class="icon-arrowlong-down"></i></li>
-        <li class="agenda-check"><i class="icon-remove"></i></li>
-      </ul>
-    </div> 
-  </div>
-  <div class="agenda-container future">
-    <div class="agenda-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
-    <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ 21.10.}%</span></div>
-    <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
-    <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
-    <div class="agenda-date">%MAKETEXT{ Freitag, 10:00h}%</div>
-    <div class="agenda-tools">
-      <ul>
-        <li class="agenda-add"><i class="icon-checkmark"></i></li>
-        <li class="agenda-download"><i class="icon-arrowlong-down"></i></li>
-        <li class="agenda-check"><i class="icon-remove"></i></li>
-      </ul>
-    </div> 
-  </div>
-  <div class="agenda-container tomorrow">
-    <div class="agenda-name"><i class="icon-task-open"></i>%MAKETEXT{Abteilungsleitersitzung}%</div>
-    <div class="agenda-due"><span><i class="icon-clock-inv"> </i>%MAKETEXT{ tomorrow}%</span></div>
-    <div class="agenda-responsible"><span><i class="icon-user"></i> %QUERY{"Responsible"}%</span></div>
-    <div class="agenda-author"><span><i class="icon-user-author"></i> %REVINFO{format="$wikiusername"}%</span></div> 
-    <div class="agenda-date">%MAKETEXT{ Freitag, 10:00h}%</div>
-    <div class="agenda-tools">
-      <ul>
-        <li class="agenda-add"><i class="icon-checkmark"></i></li>
-        <li class="agenda-download"><i class="icon-arrowlong-down"></i></li>
-        <li class="agenda-check"><i class="icon-remove"></i></li>
-      </ul>
-    </div>  
-  </div>
 </div>%TMPL:END%
 
 %TMPL:DEF{"document:head"}%%TMPL:END%
