@@ -40,7 +40,9 @@
 %TMPL:DEF{"topbar"}%<!--topbar-->
 <nav class="qw-top" data-offcanvas>
   <div class="one">
-    <div id="cke-toolbar-container" class="editor"></div>
+    <div id="cke-toolbar-container" class="editor">
+      <div class="breadcrumbs"><div>%TMPL:P{"breadcrumb"}%</div></div>
+    </div>
     <div class="buttons">
       <div class="%TMPL:P{"topbar:buttons:class"}%">%TMPL:P{"topbar:buttons"}%</div>
     </div>
@@ -81,3 +83,19 @@
   </div>
 </div>
 <!--/topbar:buttons-->%TMPL:END%
+
+
+%TMPL:DEF{"breadcrumbs"}%<!--breadcrumbs-->
+Vertrieb > Lieferantenmanagement > Section > Headline
+<!--/breadcrumbs-->%TMPL:END%
+
+
+%TMPL:DEF{"breadcrumb"}%<!--breadcrumb-->
+%TMPL:P{"breadcrumb:home"}%%TMPL:P{"breadcrumb:parentwebs"}%%TMPL:P{"breadcrumb:parenttopics"}%%TMPL:P{"breadcrumb:topic"}%
+<!--/breadcrumb >-->%TMPL:END%
+
+%TMPL:DEF{"breadcrumb:home"}%<i class="icon-%QWAPPICON{%WEB%}%"></i>%TMPL:END%
+%TMPL:DEF{"breadcrumb:parentwebs"}%%QWWEBLIST{format="<i class=\"icon-arrow-right\"></i><span>$title</span><i class=\"icon-arrow-right\"></i>"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:parenttopics"}%%META{"parent" nowebhome="on" format="$percntTMPL:P{\"breadcrumb:topic:title\" web=\"$web\" topic=\"$topic\"}$percnt" separator=">"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic"}%%IF{"$TOPIC != 'WebHome'" then="$percntTMPL:P{\"breadcrumb:topic:title\" web=\"%WEB%\" topic=\"%TOPIC%\"}$percnt"}%%TMPL:END%
+%TMPL:DEF{"breadcrumb:topic:title"}%%IF{"'%web%.%topic%'/TopicTitle" then="<span>$percntQUERY{\"'%web%.%topic%'/TopicTitle\"}$percnt</span>" else="<span>%topic%</span>"}%%TMPL:END%
