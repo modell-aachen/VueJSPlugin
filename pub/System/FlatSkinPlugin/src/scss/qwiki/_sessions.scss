@@ -766,3 +766,41 @@
 	}
 }
 
+.qw-session-topbar {
+
+	height: $qw-dashboard-topbar-height;
+	background: $qw-dashboard-topbar-bg-color;
+
+	> span {
+		min-width: $qw-dashboard-list-min-width;
+		font-size: $qw-dashboard-list-font-size;
+		margin-left: 0;
+		color: #4D4D4D;
+		cursor: auto;
+		padding: 5px 30px 0 0;
+		i {
+			font-size: 30px;
+		}
+	}
+/* 	.dashboard-list {
+		
+		> li {
+			min-width: $qw-dashboard-list-min-width;
+			
+			color: $qw-dashboard-list-font-color;
+			padding: $qw-dashboard-list-padding;
+			cursor: pointer;
+			&:hover:not(:first-child) {
+				/* transition: all 10s ease-in-out;
+				background : $qw-dashboard-list-hover-bg;
+				border-radius: $global-radius;
+				color: $qw-dashboard-list-hover-font-color;
+			}
+		}
+
+		> li:first-child {
+
+		}
+	} */ 
+}
+

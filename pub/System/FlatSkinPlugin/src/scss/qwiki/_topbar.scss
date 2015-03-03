@@ -66,7 +66,7 @@
       }
     }
 
-    > .dashboardmenu {
+    > .dashboardmenu, .sessionmenu {
       margin: rem-calc(5 0 10 20);
       //divides topbar to grids
       @media #{$mobile-up} {@include grid-column($columns: 10, $collapse: true);}
@@ -367,7 +367,7 @@
       }
     }
 
-    > .dashboardactions {
+    > .dashboardactions, .sessionactions {
       display: table;
       background: #FFF;
       transition: width 0.3s ease-in-out;
