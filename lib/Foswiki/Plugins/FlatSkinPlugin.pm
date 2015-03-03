@@ -253,7 +253,7 @@ sub _handleAPPICON {
   return 'app-processes' unless $requested;
 
   my $prefix = Foswiki::Func::getPreferencesValue( "APPICON_PREFIX" ) || 'app-';
-  my $icon = Foswiki::Func::getPreferencesValue( "APPICON_$requested" );
+  my $icon = Foswiki::Func::getPreferencesValue( "APPICON_" . uc($requested) );
   return $icon if $icon;
 
   $web = lc($web);
