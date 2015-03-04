@@ -336,8 +336,7 @@
 %TMPL:DEF{"document:head"}%%TMPL:END%
 %TMPL:DEF{"topbar:tabs"}%%TMPL:END%
 %TMPL:DEF{"content"}%%TMPL:P{"perspage:scripts"}%%IF{"$WIKINAME = $TOPIC"
- then="$percentTMPL:P{perspage:bookmarks}$percent
-$percentTMPL:P{dashboard:row}$percent </div>"
+ then="$percentTMPL:P{perspage:bookmarks}$percent"
 }%%TMPL:END%
 
 %{</verbatim>}%

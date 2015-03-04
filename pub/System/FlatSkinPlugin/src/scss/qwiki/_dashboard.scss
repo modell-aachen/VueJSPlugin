@@ -25,7 +25,11 @@
 
 			> .task-input, .knowledge-title {
 				display: inline-block;
-				height: 38px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				height: 100%;
 				border-right: 3px solid transparent;
 				border-radius: rem-calc( $global-radius 0 0 $global-radius);
 				padding: 0.125rem 0 0 0.3rem;
@@ -60,6 +64,7 @@
 				text-overflow: ellipsis;
 				padding: 0.625rem 0.25rem 0.3125rem 0.3125rem;
 				margin: 0;
+				margin-left: 30px;
 				top: $qw-dashboard-task-title-top;
 				font-size: $qw-dashboard-task-title-font-size;
 				color: $qw-dashboard-task-title-color;
@@ -121,7 +126,7 @@
 					}
 
 				> .task-title {
-					padding: 0.125rem 0 0 0.3rem;
+					padding: 0.125rem 0 0 3.3rem;
 					}
 				}
 			}
