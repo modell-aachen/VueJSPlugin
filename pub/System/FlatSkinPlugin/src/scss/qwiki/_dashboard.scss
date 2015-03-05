@@ -741,37 +741,37 @@
 
 .qw-addknowledge {
 	> .addknowledge-header {
-		padding: 0 !important;
+		padding: $qw-addknowledge-header-padding;
 
 		> div {
-			padding: 5px;
+			padding: $qw-addknowledge-header-div-padding;
 			position: relative;
 
 			> .content {
-				font-size: 22px;
-				color: #236AA2;
+				font-size: $qw-addknowledge-header-content-font-size;
+				color: $qw-addknowledge-header-content-font-color;
 				display: inline-block;
-				width: 80%;
-				padding: 10px;
+				width: $qw-addknowledge-header-content-width;
+				padding: $qw-addknowledge-header-content-padding;
 
 			}
 
 			> .question {
-				color: #236AA2;
+				color: $qw-addknowledge-header-question-font-color;
 				float: right;
-				padding-right: 5px;
+				padding-right: $qw-addknowledge-header-question-padding-right;
 
 				> i {
-					font-size: 2rem;
+					font-size: $qw-addknowledge-header-question-font-size;
 				}
 			}
 		}
 	}
 	> .addknowledge-content {
-		border-top: 1px solid #F5F5F5;
+		border-top: $qw-addknowledge-content-border-top;
 
 		> div {
-			padding: 15px;
+			padding: $qw-addknowledge-content-div-padding;
 			> .entry {
 				> .priority {
 				
@@ -779,7 +779,7 @@
 					display: inline-block;
 
 					> label {
-						color: #5C5C5C;
+						color: $qw-addknowledge-content-label-color;
 						font-size: $qw-add-task-content-priority-label-font-size;
 						font-weight: bold;
 						margin-top: $qw-add-task-content-priority-label-margin-top;
@@ -787,7 +787,7 @@
 						> .knowledgepriority {
 							margin-top: $qw-add-task-content-taskpriority-margin-top;
 							display: inline-block;
-							width: 100%;
+							width: $qw-addknowledge-content-knowledgepriority-width;
 							
 							> .switch {
 								@include switch($transition-speed: $qw-add-task-content-taskpriority-switch-transition-speed , $transition-ease: ease-out, $height: $qw-add-task-content-taskpriority-switch-height, $radius: $global-radius, $base-style: true);
@@ -818,7 +818,7 @@
 				}
 
 				> label {
-					color: #5C5C5C;
+					color:$qw-addknowledge-content-label-color;
 					.knowledgenote {
 						margin-top: $qw-add-task-content-tasknote-margin-top;
 						position: relative;

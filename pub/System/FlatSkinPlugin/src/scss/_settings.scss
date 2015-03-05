@@ -825,6 +825,23 @@ $qw-session-toptwo-departmenthead-maximize-icon-font-size: rem-calc(24);
 $qw-session-toptwo-departmenthead-maximize-icon-padding: rem-calc(0 5);
 
 
+// add knowledge 
+$qw-addknowledge-header-padding: 0 !important;
+$qw-addknowledge-header-div-padding: rem-calc(5);
+$qw-addknowledge-header-content-font-size: rem-calc(22);
+$qw-addknowledge-header-content-font-color: #236AA2;
+$qw-addknowledge-header-content-width: 80%;
+$qw-addknowledge-header-content-padding: rem-calc(10);
+$qw-addknowledge-header-question-font-color: #236AA2;
+$qw-addknowledge-header-question-font-size: rem-calc(32);
+$qw-addknowledge-header-question-padding-right: rem-calc(5);
+$qw-addknowledge-content-border-top: 1px solid #F5F5F5;
+$qw-addknowledge-content-div-padding: rem-calc(15);
+$qw-addknowledge-content-label-color: #5C5C5C;
+$qw-addknowledge-content-knowledgepriority-width: 100%;
+
+
+
 // typography
 $qw-code-background: #f3f3f3;
 $qw-code-color: #cd0cab;
