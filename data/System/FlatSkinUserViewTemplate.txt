@@ -2,7 +2,6 @@
 %TMPL:INCLUDE{"view"}%
 %TMPL:INCLUDE{"SystemTabs"}%
 %TMPL:INCLUDE{"Inbox"}%
-%TMPL:INCLUDE{"Session"}%
 
 %TMPL:DEF{"modacMore"}%<div class="foswikiRequiresChangePermission requireModacChangePermission %IF{"context edit" then="modacActionButtonACTIVE"}%"><a href='%SCRIPTURL{"edit"}%/%BASEWEB%/%BASETOPIC%?template=UserFormEdit;t=%GMTIME{"$epoch"}%%TMPL:P{"url_param_editaction"}%%IF{"context CKEditorPluginEnabled" then="" else=";nowysiwyg=1"}%' class='modacChanging' rel='nofollow' %MAKETEXT{"title='Edit users data' accesskey='e'>&Edit users data"}%</a></div>%TMPL:END%
 
