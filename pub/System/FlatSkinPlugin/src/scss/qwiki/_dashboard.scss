@@ -233,11 +233,11 @@
 		}
 
 		> li:first-child {
-			color: #4D4D4D;
+			color: $qw-dashboard-list-first-child-font-color;
 			cursor: auto;
-			padding: 5px 30px 0 0;
+			padding: $qw-dashboard-list-first-child-padding;
 			i {
-				font-size: 30px;
+				font-size: $qw-dashboard-list-first-child-font-size;
 			}
 		}
 	}
@@ -356,37 +356,37 @@
 }
 
 .qw-taskdetail {
-	padding: 3px;
+	padding: $qw-taskdetail-padding;
 
 	> .taskdetail-header {
-		padding: 0 !important;
+		padding: $qw-taskdetail-header-padding;
 
 		> div {
-			padding: 5px;
+			padding: $qw-taskdetail-header-div-padding;
 			
 			position: relative;
 
 			> .content {
-				font-size: 24px;
-				color: #236AA2;
+				font-size: $qw-taskdetail-header-content-font-size;
+				color: $qw-taskdetail-header-content-font-color;
 				display: inline-block;
-				width: 90%;
-				padding: 10px;
+				width: $qw-taskdetail-header-content-width;
+				padding: $qw-taskdetail-header-content-padding;
 
 			}
 
 			> .edit {
-				color: #4D4D4D;
-				padding: 5px 8px;
+				color: $qw-taskdetail-header-edit-font-color;
+				padding: $qw-taskdetail-header-edit-padding;
 				position: absolute;
 				top: 0;
 				right: 0;
 				border-radius: $global-radius;
-				border: 1px solid #E2E2E2;
-				margin: 10px 10px 10px 20px;
+				border: $qw-taskdetail-header-edit-border;
+				margin: $qw-taskdetail-header-edit-margin;
 
 				> i {
-					font-size: 1.3rem;
+					font-size: $qw-taskdetail-header-edit-font-size;
 				}
 			}
 		}
@@ -398,114 +398,114 @@
 
 			> .firstdetail {
 				@include flex-container($wrap: wrap, $direction: row);
-				padding: 5px 15px 10px  15px;
-				height: auto; 
+				padding: $qw-taskdetail-content-firstdetail-padding;
+				height: $qw-taskdetail-content-firstdetail-height; 
 
 				> label {
-					color: #999;
-					margin-right: 10px;
+					color: $qw-taskdetail-content-firstdetail-label-font-color;
+					margin-right: $qw-taskdetail-content-firstdetail-label-margin-right;
 
 					> .responsible {
-						background: #F2F5F7;
-						color: #236AA2;
-						padding: 0.3125rem;
+						background: $qw-taskdetail-content-firstdetail-responsible-bg-color;
+						color: $qw-taskdetail-content-firstdetail-responsible-font-color;
+						padding: $qw-taskdetail-content-firstdetail-responsible-padding;
 						border-radius: $global-radius;
 
 						> i { 
-							font-size: 1rem;	
+							font-size: $qw-taskdetail-content-firstdetail-responsible-font-size;	
 						}
 					}
 
 					> .due {
 						border-radius: $global-radius;
-						color: #999;
-						background: #F5F5F5;
+						color: $qw-taskdetail-content-firstdetail-due-font-color;
+						background: $qw-taskdetail-content-firstdetail-due-bg-color;
 
 						
 
 						i {
 							@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-future-badge-bg, $radius:$global-radius);
-							font-size: 1rem;
-							padding-right: 5px;
+							font-size: $qw-taskdetail-content-firstdetail-due-font-size;
+							padding-right: $qw-taskdetail-content-firstdetail-due-padding-right;
 						}
 					}					
 				}
 
 				> .remain {
-					height: auto;
-					padding: 15px;
+					height: $qw-taskdetail-content-firstdetail-remain-height;
+					padding: $qw-taskdetail-content-firstdetail-remain-padding;
 	
 					> span {
 						vertical-align: middle;
-						color: #DC3E56;
+						color: $qw-taskdetail-content-firstdetail-remain-font-color;
 					}
 				}
 			}
 
 			> .seconddetail {
-				padding: 15px;  
+				padding: $qw-taskdetail-content-seconddetail-padding;  
 
 				> .second-header {
-					color: #999;
-					font-size: 0.8rem;
+					color: $qw-taskdetail-content-seconddetail-header-font-size;
+					font-size: $qw-taskdetail-content-seconddetail-header-font-size;
 				}
 
 				> .second-content {
-					font-size: 0.9rem;
-					color: #606060;
+					font-size: $qw-taskdetail-content-seconddetail-content-font-size;
+					color: $qw-taskdetail-content-seconddetail-content-font-color;
 				}
 
 				> .second-footer {
 
-					font-size: 0.8rem;
-					margin-top: 15px;
+					font-size: $qw-taskdetail-content-seconddetail-footer-font-size;
+					margin-top: $qw-taskdetail-content-seconddetail-footer-margin-top;
 
 					> .author, .meeting {
-						background: #F2F5F7;
-						color: #236AA2;
+						background: $qw-taskdetail-content-seconddetail-author-bg-color;
+						color: $qw-taskdetail-content-seconddetail-author-font-color;
 						border-radius: $global-radius;
-						padding: 5px;
-						margin-right: 10px;
+						padding: $qw-taskdetail-content-seconddetail-author-padding;
+						margin-right: $qw-taskdetail-content-seconddetail-author-margin-right;
 						> i {
-							font-size: 1rem;
+							font-size: $qw-taskdetail-content-seconddetail-author-font-size;
 						}
 					}
 
 					> .meeting {
-						background: #F5F5F5;
-						color: #999;
+						background: $qw-taskdetail-content-seconddetail-meeting-bg-color;
+						color: $qw-taskdetail-content-seconddetail-meeting-font-color;
 
 					}
 				}
 			}
 
 			> .thirddetail {
-				padding: 15px; 
+				padding: $qw-taskdetail-content-thirddetail-padding; 
 				font-style: italic;
 
 				> div {
-					margin-bottom: 50px;
+					margin-bottom: $qw-taskdetail-content-thirddetail-margin-bottom;
 				}
 
 				> .done, .forward, .read {
-					margin-right: 10px;
+					margin-right: $qw-taskdetail-content-thirddetail-done-margin-right;
 				} 
 
 				> .done {
 					text-align: left !important;
-					width: 150px;
+					width: $qw-taskdetail-content-thirddetail-done-width;
 					//padding: 0 0 8px 5px;
 					i {
-						font-size: 1.7rem;
+						font-size: $qw-taskdetail-content-thirddetail-done-font-size;
 					}
 
 				}
 
 				> .forward {
-					padding: 3px 8px 8px 8px;
+					padding: $qw-taskdetail-content-thirddetail-forward-padding;
 
 					i {
-						font-size: 1.5rem;
+						font-size: $qw-taskdetail-content-thirddetail-forward-font-size;
 					}
 				}
 			}
