@@ -130,7 +130,7 @@ if ( true ) {
 var $target = $('.qw-kvpbar');
             // var $target = $(arr[0]);
             $target.addClass('no-transition');
-            $target.offcanvas({action: 'open'});
+        //    $target.offcanvas({action: 'open'});
             setTimeout( function() {
                 $target.removeClass('no-transition');
             }, 500 );
