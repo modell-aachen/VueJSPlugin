@@ -97,6 +97,7 @@
 				> .inbox-container {
 
 					> .inbox {
+						cursor: auto;
 						position: relative;
 						background-color: $qw-dashboard-task-bg;
 						border-radius: $global-radius;
@@ -117,7 +118,6 @@
 
 						> .inbox-right {
 							margin-left: $qw-inboxbar-inbox-right-margin-left;
-							cursor: pointer;
 							border:0;
 							padding: $qw-inboxbar-inbox-right-padding;
 
@@ -153,26 +153,35 @@
 							}
 
 							> .author {
-
-								> span {
+								@include flex-container($direction: row, $wrap:wrap);
+								> div {
+									
 									border-radius: $qw-inboxbar-inbox-right-caption-author-border-radius;
 									background: $qw-inboxbar-inbox-right-caption-author-bg-color;
 									padding: $qw-inboxbar-inbox-right-caption-author-padding;
-									margin: $qw-inboxbar-inbox-right-caption-author-margin; 
+									margin: 0; 
 									font-size: $qw-inboxbar-inbox-right-caption-author-font-size;
+
 									&.responsible {
+										> i {
+											font-size: $qw-inboxbar-inbox-right-caption-author-meetings-font-size;
+										}
 										color: $qw-inboxbar-inbox-right-caption-author-responsible-font-color;
+										margin-right: 15px;
 									}
 
 									&.meetings {
-										font-size: $qw-inboxbar-inbox-right-caption-author-meetings-font-size;
-										color: $qw-inboxbar-inbox-right-caption-author-meetings-font-color;
+										> i {
+											font-size: $qw-inboxbar-inbox-right-caption-author-meetings-font-size;
+											color: $qw-inboxbar-inbox-right-caption-author-meetings-font-color;
+										}	
 									}
 								}
 							}
 						}
 
 						> .tools {
+							cursor: pointer;
 							transition: opacity 0.15s ease-in-out;
 							opacity: 0;
 							height: $qw-inboxbar-inbox-tools-height;
@@ -203,7 +212,7 @@
 									background: $qw-inboxbar-inbox-tools-li-bg-color;
 
 									i {
-										margin: 15px;
+										margin: $qw-inboxbar-inbox-tools-li-icon-margin;
 									}
 
 									&.inbox-add {
@@ -226,6 +235,27 @@
 							> .tools {
 								opacity: 1;
 								display: inline-block;
+							}
+						}
+
+						&.new {
+							> .inbox-left {
+								background: #FFED4D;	
+							} 
+						}
+
+						&:nth-child(even) {
+							background: #FFF;
+
+							> .inbox-right {
+								> .author {
+									> div {
+										background: #F2F5F7;
+									}		
+								}	
+							}
+							&:hover {
+								background: $qw-inboxbar-inbox-tools-hover;
 							}
 						}
 
