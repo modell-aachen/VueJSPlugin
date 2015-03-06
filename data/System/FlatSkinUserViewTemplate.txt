@@ -290,19 +290,26 @@
     <div class="perspageBlock">
         %TEXT%
     </div>
-  New stuff:
+  <div class="knowledge-title">
+    <div class="title-content">%MAKETEXT{"Description"}%</div>
+    <div class="title-tag">%MAKETEXT{"Tag"}%</div>
+    <div class="title-date">%MAKETEXT{"Date"}%</div>
+  </div>
   <div class="knowledge priority future">
-    <div class="knowledge-title">Beschreibung der Aufgabe</div>
+    <div class="knowledge-priority"></div>
+    <div class="knowledge-content">Beschreibung der Aufgabe</div>
     <div class="knowledge-keywords">Tag</div>
     <div class="knowledge-badge"><span><i class="icon-clock-inv"></i> 12.20.</span></div>
   </div>
   <div class="knowledge">
-    <div class="knowledge-title">Beschreibung der Aufgabe</div>
+    <div class="knowledge-priority"></div>
+    <div class="knowledge-content">Beschreibung der Aufgabe</div>
     <div class="knowledge-keywords">Tag</div>
     <div class="knowledge-badge"><span><i class="icon-clock-inv"></i> 12.20.</span></div>
   </div>
   <div class="knowledge priority tomorrow">
-    <div class="knowledge-title">Beschreibung der Aufgabe</div>
+    <div class="knowledge-priority"></div>
+    <div class="knowledge-content">Beschreibung der Aufgabe</div>
     <div class="knowledge-keywords">Tag</div>
     <div class="knowledge-badge"><span><i class="icon-clock-inv"></i> 12.20.</span></div>
   </div>
