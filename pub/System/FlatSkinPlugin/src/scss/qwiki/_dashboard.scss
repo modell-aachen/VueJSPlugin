@@ -292,6 +292,7 @@
 		@include inline-list;
 		margin: 0px !important;
 		> li {
+			background: #E0E0E0;
 			min-width: $qw-dashboard-list-min-width;
 			font-size: $qw-dashboard-list-font-size;
 			//margin-left: $qw-dashboard-list-margin-left;
@@ -303,6 +304,12 @@
 				background : $qw-dashboard-list-hover-bg;
 				border-radius: $global-radius;
 				color: $qw-dashboard-list-hover-font-color;
+			}
+
+			&.active {
+				background: $qw-leftbar-btn-active-bg;
+				color: $qw-leftbar-btn-active-color;
+				border-radius: $global-radius;
 			}
 		}
 
