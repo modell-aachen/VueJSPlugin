@@ -163,6 +163,7 @@
 									font-size: $qw-inboxbar-inbox-right-caption-author-font-size;
 
 									&.responsible {
+										margin-bottom: 5px;
 										> i {
 											font-size: $qw-inboxbar-inbox-right-caption-author-meetings-font-size;
 										}
