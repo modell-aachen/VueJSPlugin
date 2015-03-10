@@ -75,7 +75,7 @@
 						font-size: 1.6rem;
 						vertical-align: top;
 						position: relative;
-						top: 5px;
+						bottom: 5px;
 					}
 				}
 
@@ -125,7 +125,7 @@
 					background: $qw-agenda-container-responsible-span-bg-color;
 					border-radius: $global-radius;
 					color: $qw-agenda-container-responsible-span-font-color;
-					padding: 0.3125rem 2.25rem 0.3125rem 0.3125rem;
+					padding: 0.3125rem 1rem 0.3125rem 0.3125rem;
 
 					> i {
 					font-size: $qw-agenda-container-responsible-span-icon-font-size;
