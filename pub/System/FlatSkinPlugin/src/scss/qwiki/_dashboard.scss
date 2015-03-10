@@ -501,13 +501,13 @@
 						border-radius: $global-radius;
 						color: $qw-taskdetail-content-firstdetail-due-font-color;
 						background: $qw-taskdetail-content-firstdetail-due-bg-color;
-
+						padding-right: $qw-taskdetail-content-firstdetail-due-padding-right ;
 						
 
 						i {
 							@include label($padding:$qw-dashboard-task-label-padding,$text-size:$qw-dashboard-task-badge-font-size, $bg:$qw-dashboard-task-future-badge-bg, $radius:$global-radius);
 							font-size: $qw-taskdetail-content-firstdetail-due-font-size;
-							padding-right: $qw-taskdetail-content-firstdetail-due-padding-right;
+							padding-right: $qw-taskdetail-content-firstdetail-due-padding-right ;
 						}
 					}					
 				}
@@ -573,17 +573,22 @@
 				} 
 
 				> .done {
+					padding: 0 0 7px 0 !important;
 					text-align: left !important;
-					width: $qw-taskdetail-content-thirddetail-done-width;
-					//padding: 0 0 8px 5px;
+					width: 37%;
 					i {
 						font-size: $qw-taskdetail-content-thirddetail-done-font-size;
 					}
 
 				}
 
+				> .read {
+					width: 35%;
+				}
+
 				> .forward {
 					padding: $qw-taskdetail-content-thirddetail-forward-padding;
+					width: 7%;
 
 					i {
 						font-size: $qw-taskdetail-content-thirddetail-forward-font-size;
