@@ -1,7 +1,13 @@
 jQuery(function($){ 
 
 	$(".switch input").on("change", function() {
-		$(this).parent().children("span").toggleClass("checkmark");
+		var $this = $(this);
+		var $spans = $(this).parent().children("span");
+		if($this.attr('checked')) {
+			$spans.addClass("checkmark");
+		} else {
+			$spans.removeClass("checkmark");
+		}
 	});
 
 	// initialize checkboxes
