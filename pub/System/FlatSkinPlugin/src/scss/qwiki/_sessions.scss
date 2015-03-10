@@ -804,3 +804,266 @@
 	} */ 
 }
 
+.qw-agendadetail {
+	padding: $qw-taskdetail-padding;
+
+	> .agendadetail-header {
+		padding: $qw-taskdetail-header-padding;
+
+		> div {
+			padding: $qw-taskdetail-header-div-padding;
+			
+			position: relative;
+
+			> .content {
+				font-size: $qw-taskdetail-header-content-font-size;
+				color: $qw-taskdetail-header-content-font-color;
+				display: inline-block;
+				width: $qw-taskdetail-header-content-width;
+				padding: $qw-taskdetail-header-content-padding;
+
+			}
+
+			> .edit {
+				color: $qw-taskdetail-header-edit-font-color;
+				padding: $qw-taskdetail-header-edit-padding;
+				position: absolute;
+				top: 0;
+				right: 0;
+				border-radius: $global-radius;
+				border: $qw-taskdetail-header-edit-border;
+				margin: $qw-taskdetail-header-edit-margin;
+
+				> i {
+					font-size: $qw-taskdetail-header-edit-font-size;
+				}
+			}
+		}
+	}
+
+	> .agendadetail-content {
+		> div {
+			border-top: $qw-add-task-header-border-bottom;
+
+			> .firstdetail {
+				@include flex-container($wrap: wrap, $direction: row);
+				padding: $qw-taskdetail-content-firstdetail-padding;
+				height: $qw-taskdetail-content-firstdetail-height; 
+
+				> label {
+					color: $qw-taskdetail-content-firstdetail-label-font-color;
+					margin-right: $qw-taskdetail-content-firstdetail-label-margin-right;
+
+					> div {
+						margin-top: $qw-add-task-content-label-margin-top;
+						border-radius: $global-radius;
+						border: $qw-add-task-content-label-border;
+						min-height: $qw-add-task-content-label-min-height;
+						padding: $qw-add-task-content-label-padding; 
+
+						> .user , .useradd {
+							border-radius: $global-radius;
+							display: inline-block; 
+							
+						}
+
+						> .user {
+							padding: $qw-add-task-content-user-padding;
+							float: left;
+							background: $qw-add-task-content-user-bg-color;
+							color: $qw-add-task-content-user-font-color;
+							> .icon-user {
+								margin-right: 5px;
+							}
+
+							> .icon-close {
+								//float: right;
+								padding-left: 5px;
+								color: $qw-add-task-content-user-icon-close-font-color;
+								font-size: $qw-add-task-content-user-icon-close-font-size;
+							}	
+						}
+
+						> .useradd {
+							padding: $qw-add-task-content-user-add-padding;
+							margin-left: 0.4rem;
+							float: right;
+							background: $qw-add-task-content-user-add-bg-color;
+							color: $qw-add-task-content-user-add-font-color;
+							cursor: pointer;
+						}
+					}				
+				}
+
+				> .taskcalendar {
+					display: inline-block;
+					float: right;
+
+					> label {
+					color: $qw-taskdetail-content-firstdetail-label-font-color;
+					font-size: $qw-add-task-content-taskcalendar-label-font-size;
+					//font-weight: bold;
+					margin-bottom: 0.53125rem; 
+					//margin-top: $qw-add-task-content-taskcalendar-label-margin-top;
+					}
+
+					> .duecalendar {
+						display: inline-block;
+						border: $qw-add-task-content-duecalendar-border;
+						height: $qw-add-task-content-duecalendar-height;
+						width: $qw-add-task-content-duecalendar-width;
+						border-radius:$global-radius;
+						background: $qw-add-task-content-duecalendar-bg-color;
+						padding: $qw-add-task-content-duecalendar-padding;
+						
+						> input {
+							width: $qw-add-task-content-duecalendar-input-width;
+							background: $qw-add-task-content-duecalendar-input-bg-color;
+							border: $qw-add-task-content-duecalendar-input-border;
+							box-shadow: $qw-add-task-content-duecalendar-input-box-shadow;
+						}
+
+						> i {
+
+							color: $qw-add-task-content-duecalendar-icon-font-color;
+							font-size: $qw-add-task-content-duecalendar-icon-font-size;
+							float: right;
+							display: inline-block;
+							padding: $qw-add-task-content-duecalendar-icon-padding;
+							cursor: pointer;
+						}
+					}
+				}
+			}
+
+			> .seconddetail {
+				padding: $qw-taskdetail-content-seconddetail-padding;  
+
+				> .second-header {
+					> span {				
+						font-size: $qw-taskdetail-content-seconddetail-header-font-size;
+						color: #9F9F9F;
+					}
+				}
+
+				> .second-content {
+					> span {
+						color: $qw-taskdetail-content-seconddetail-header-font-size;
+						font-size: $qw-taskdetail-content-seconddetail-content-font-size;
+					}
+				}
+
+				> .second-footer {
+
+					font-size: $qw-taskdetail-content-seconddetail-footer-font-size;
+					margin-top: $qw-taskdetail-content-seconddetail-footer-margin-top;
+
+					> .author, .meeting {
+						background: $qw-taskdetail-content-seconddetail-author-bg-color;
+						color: $qw-taskdetail-content-seconddetail-author-font-color;
+						border-radius: $global-radius;
+						padding: $qw-taskdetail-content-seconddetail-author-padding;
+						margin-right: $qw-taskdetail-content-seconddetail-author-margin-right;
+						> i {
+							font-size: $qw-taskdetail-content-seconddetail-author-font-size;
+						}
+					}
+
+					> .meeting {
+						background: $qw-taskdetail-content-seconddetail-meeting-bg-color;
+						color: $qw-taskdetail-content-seconddetail-meeting-font-color;
+
+					}
+				}
+			}
+
+			> .thirddetail {
+				padding: $qw-taskdetail-content-thirddetail-padding; 
+				font-style: italic;
+				> div {
+					> .taskdetail-list {
+						@include inline-list;
+						margin: 10px 0px 15px 0px !important;
+						text-align: center;
+						text-decoration: normal;
+						
+						> li {
+							margin: 0px !important;
+							padding:10px 0;
+							width: 33%;
+							border-top: 1px solid #E0E0E0;
+							border-left: 1px solid #E0E0E0; 
+							border-bottom: 1px solid #E0E0E0;
+							color: #999;
+
+							> span {
+								font-size: 0.9rem;
+								font-style: normal;
+								i {
+									font-size: 1.1rem;
+									margin-right: 5px;	
+								}
+							}
+
+							&:hover {
+								background: #BFBFBF;
+								color: white;
+							}
+
+							&:active {
+								background: #262626;
+								color: white;
+							}
+
+							&.active {
+								background: #262626;
+								color: white;
+							}
+
+							&:last-child {
+								border-top-right-radius: $global-radius;
+								border-bottom-right-radius: $global-radius;
+								border-right: 1px solid #E0E0E0;
+							}
+
+							&:first-child {
+								border-top-left-radius: $global-radius;
+								border-bottom-left-radius: $global-radius;
+							}
+						}
+					}
+
+					> .tasknote {
+						border-radius: $global-radius;
+						margin-top: $qw-add-task-content-tasknote-margin-top;
+						position: relative;
+						min-height: $qw-add-task-content-tasknote-min-height;
+						background: $qw-add-task-content-tasknote-bg-color;
+
+						textarea {
+							background: #f0f0f0;
+							border: 0;
+							border-radius: $global-radius;
+						} 
+					}
+				}
+
+				> .buttons {
+					margin-top: $qw-add-task-content-buttons-margin-top;
+					height: $qw-add-task-content-buttons-height;
+					font-style: italic;
+					> .finish {
+						float: left;
+						width: $qw-add-task-content-buttons-finish-width;
+					}
+
+					> .cancel {
+						width: $qw-add-task-content-buttons-cancel-width;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+}
+
