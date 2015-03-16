@@ -203,4 +203,124 @@
 
     timeouts.push( timeout );
   };
+
+  // This block is required, because the z-index of the topic is above the
+  // z-index of the action-buttons (otherwise this could be done with a few
+  // lines of css).
+  // The Submenu will be attached to the body and a script makes sure it will
+  // be shown and hidden when appropriate.
+  $(function() {
+      var dropTimeoutCounter = {}; // only use addCounter to access this
+
+      // Increases the counter for the submenue
+      // Parameters:
+      //    * $dropdown: jQuery object of the dropdown, for which the counter
+      //       shall be increased
+      //    * addend: the amount, the counter shall be increased (omit to just
+      //       retrieve the value)
+      //
+      // Return: The new value of the counter
+      var addCounter = function($dropdown, addend) {
+          var id = $dropdown.attr('id');
+          if(!id) {
+              id = 'dropdown' + foswikiUniqueId();
+              $dropdown.attr('id', id);
+          }
+          if(!dropTimeoutCounter[id]) {
+              dropTimeoutCounter[id] = 0;
+          }
+          var sum = dropTimeoutCounter[id] += addend;
+          return sum;
+      };
+
+      // Sets a timeout for the this-object. After the timeout expires and the
+      // counter for the corresponding submenue did not change, the submenue
+      // will be hidden.
+      var doSetTimeout = function() {
+          var $this = $(this);
+          var $dropdown;
+
+          var dropdown = $this.data('dropdown');
+          if(dropdown) {
+              $dropdown = $(dropdown);
+              if(!$dropdown.length) {
+                  if(window.console) {
+                      console.log("Could not find dropdown: " + dropdown);
+                  }
+                  return;
+              }
+          } else {
+              $dropdown = $this;
+          }
+          var count = addCounter($dropdown, 1);
+          setTimeout( function() {
+            if(count === addCounter($dropdown, 0)) {
+                closeSubMenu($dropdown);
+            }
+          }, 750 );
+      };
+
+      // Opens the submenue (dropdown).
+      // Sets an 'active' class to anything having a data-dropdown set to the
+      // dropdown's id.
+      // Parameters:
+      //     $dropdown: jQuery-object of the dropdown's ul, or any child of it.
+      var openSubMenu = function($dropdown) {
+        if(!$dropdown || !$dropdown.length) {
+            return;
+        }
+        if(!$dropdown.is('ul')) {
+            $dropdown = $dropdown.closest('ul');
+        }
+        addCounter($dropdown, 1);
+        $dropdown.addClass('showing');
+        var id = $dropdown.attr('id');
+        if(id) {
+            $('[data-dropdown="#' + id + '"]').addClass('active'); // XXX works only with ids
+        }
+      };
+
+      // Closes the submenue (dropdown).
+      // Removes the 'active' class from anything having a data-dropdown set to
+      // the dropdown's id.
+      // Parameters:
+      //     $dropdown: jQuery-object of the dropdown's ul, or any child of it.
+      var closeSubMenu = function($dropdown) {
+        if(!$dropdown || !$dropdown.length) {
+            return;
+        }
+        if(!$dropdown.is('ul')) {
+            $dropdown = $dropdown.closest('ul');
+        }
+        $dropdown.removeClass('showing');
+        var id = $dropdown.attr('id');
+        if(id) {
+            $('[data-dropdown="#' + id + '"]').removeClass('active'); // XXX works only with ids
+        }
+      };
+
+      // Initializes all qw-dropdowns.
+      //    * Moves the submenue to the body.
+      //    * Sets the position of the submenue below (the last) element having
+      //       it as its 'data-dropdown' attribute.
+      //    * Handle mouseovers
+      $('[data-dropdown]').each(function() {
+          var $this = $(this);
+          var $dropdown = $($this.data('dropdown'));
+          var offset = $this.offset(); // XXX arguably this should be updated when the menue is being shown
+          var top = offset.top + $this.height();
+          var left = offset.left;
+          $dropdown.appendTo('body');
+          $dropdown.css('position', 'fixed').css('top', top + 'px').css('left', left + 'px').css('z-index', 250);
+      });
+      $('#qw-more-menu').mouseover(function() {
+        openSubMenu($(this));
+      }).mouseleave(doSetTimeout);
+      $('[data-dropdown]').mouseover(function(){
+        var dropdown = $(this).data('dropdown');
+        openSubMenu($(dropdown));
+      }).mouseleave(doSetTimeout);
+  });
+
+
 }(jQuery, window._, window.document, window));
