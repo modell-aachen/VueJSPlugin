@@ -727,7 +727,7 @@ $qw-session-container-width: 100%;
 $qw-session-container-name-min-width: rem-calc(450);
 $qw-session-container-name-font-weight: bold;
 $qw-session-container-name-margin-right: rem-calc(1);
-$qw-session-container-name-font-color: #4D4D4D;
+$qw-session-container-name-font-color: #4D4D4D !important;
 $qw-session-container-name-icon-font-size: rem-calc(25);
 $qw-session-container-name-icon-font-color: #999;
 $qw-session-container-name-icon-padding-right: rem-calc(10);

@@ -63,13 +63,15 @@
 			float: left;
 			width: $qw-session-container-width;
 
-		> .session-name {
+		> a {
+
+			color: $qw-session-container-name-font-color;
+			font-weight: $qw-session-container-name-font-weight;
+			text-decoration: none;	
+			> .session-name {
 			min-width: $qw-session-container-name-min-width;
 			margin-right: $qw-session-container-name-margin-right;
-			> a {
-				color: $qw-session-container-name-font-color;
-				font-weight: $qw-session-container-name-font-weight;
-				text-decoration: none;	
+
 			}
 
 		}
