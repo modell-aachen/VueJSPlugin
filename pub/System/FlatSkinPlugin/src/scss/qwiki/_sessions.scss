@@ -494,7 +494,7 @@
 	}
 }
 
-.qw-sessionbar {
+.qw-sessionbar, .qw-agendabar {
 
 	position: fixed;
 	right: 0;
@@ -547,7 +547,7 @@
 		padding: $qw-inboxbar-padding;
 		padding-top: 15px;
 
-		> .session-header {
+		> .agenda-header {
 			padding: $qw-inboxbar-header-padding;
 			background: $qw-inboxbar-header-bg-color;
 			border-bottom: $qw-inboxbar-header-border-bottom;
@@ -563,7 +563,7 @@
 					vertical-align: middle;
 				}
 
-				> .session-data-max {
+				> .agenda-data-max {
 					float: right;
 					color: #BFBFBF;
 					padding: 1px 3px 3px 3px;
@@ -579,10 +579,10 @@
 			}
 		}
 
-		> .session-content {
+		> .agenda-content {
 			background: $qw-inboxbar-content-bg-color;
 
-			.session-data-container {
+			.agenda-data-container {
 				position: relative;
 				top: 0;
 				left: 0;
@@ -628,7 +628,7 @@
 			}
 		}
 
-		> .history-header {
+		> .history-header, .agenda-history-header {
 			margin-top: 15px;
 			padding: $qw-inboxbar-header-padding;
 			background: $qw-inboxbar-header-bg-color;
@@ -643,6 +643,11 @@
 					margin-left: $qw-inboxbar-header-span-left-margin;
 					color: $qw-infobar-header-color;
 					vertical-align: middle;
+
+					> i {
+						font-size: 25px; 
+						margin-right: 5px;
+					}
 				}
 
 				> .history-data-max {
@@ -660,7 +665,11 @@
 			}
 		}
 
-		> .history-content {
+		.history-header {
+			margin-top: 0;
+		}
+
+		> .history-content, .agenda-history-content {
 			background: white;
 
 			> div {
