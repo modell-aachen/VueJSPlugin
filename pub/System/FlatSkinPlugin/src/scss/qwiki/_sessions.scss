@@ -645,20 +645,20 @@
 					vertical-align: middle;
 
 					> i {
-						font-size: 25px; 
-						margin-right: 5px;
+						font-size: $qw-infobar-header-icon-font-size; 
+						//margin-right: 5px;
 					}
 				}
 
-				> .history-data-max {
-					float: right;
-					color: #BFBFBF;
-					padding: 1px 3px 3px 3px;
-					margin: 0px 7px;
+				> .agenda-data-max {
+					float: $qw-infobar-header-icon-max-float;
+					color: $qw-infobar-header-icon-max-font-color;
+					padding: $qw-infobar-header-icon-max-padding;
+					margin: $qw-infobar-header-icon-max-margin;
 
 					> i {
 						font-size: $qw-session-toptwo-session-maximize-icon-font-size;
-						color: #BFBFBF;
+						color: $qw-infobar-header-icon-max-font-color;
 
 					}
 				}
