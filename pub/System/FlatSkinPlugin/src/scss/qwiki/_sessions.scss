@@ -596,7 +596,7 @@
 				> .entry {
 					@include flex-container($direction:column, $wrap:wrap);
 					float: left;
-					margin: rem-calc(10 0 10 10);
+					margin: rem-calc(10 10 10 10);
 
 					> .label {
 						text-transform: uppercase;
@@ -755,6 +755,9 @@
 									font-size: $qw-inboxbar-inbox-right-caption-date-font-size;
 									color: $qw-inboxbar-inbox-right-caption-date-font-color;
 									border-radius: $global-radius;
+									padding: 0.1875rem 0.5rem 0.1875rem 0.1875rem;
+									margin: $qw-inboxbar-inbox-right-caption-author-margin; 
+									background: #F5F5F5;
 								}		
 							}
 						}
