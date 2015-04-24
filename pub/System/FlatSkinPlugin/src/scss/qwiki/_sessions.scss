@@ -1,6 +1,10 @@
-.qw-extra {		border: 0 !important;
+.qw-extra {		
+	border: 0 !important; 
+	
 
-	> div {
+	> .filter {
+		background: #FFF !important;
+		border-bottom: 1px solid #F5F5F5 ;
 	  > div {
 	  	> .options {
 	  		> .title {
@@ -57,7 +61,7 @@
 	    		font-style: italic;
 	    		font-weight: normal;
 	    		font-size: 14px;
-	    		border: 1px #CCC solid;
+	    		border: 1px solid #CCC;
 	    	}
 	      	> span {
 	        color: #BFBFBF;
