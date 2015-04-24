@@ -48,7 +48,7 @@
       position: relative;
       @include flex($grow:1);
       vertical-align: top;
-      padding: 0 $qw-content-padding;
+      padding: 0 20px 0 20px;
 
       &.adorner-visible {
         padding-right: $qw-content-padding/4;

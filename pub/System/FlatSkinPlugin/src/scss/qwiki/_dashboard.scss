@@ -125,7 +125,7 @@
 					background: $qw-agenda-container-responsible-span-bg-color;
 					border-radius: $global-radius;
 					color: $qw-agenda-container-responsible-span-font-color;
-					padding: 0.3125rem 1rem 0.3125rem 0.3125rem;
+					padding: 0.125rem 1rem 0.125rem 0.125rem;
 
 					> i {
 					font-size: $qw-agenda-container-responsible-span-icon-font-size;
@@ -291,36 +291,38 @@
 	.dashboard-list {
 		@include inline-list;
 		margin: 0px !important;
+		height: 60px;
 		> li {
-			background: #E0E0E0;
+			background: #E5E0D5;
 			min-width: $qw-dashboard-list-min-width;
 			font-size: $qw-dashboard-list-font-size;
-			//margin-left: $qw-dashboard-list-margin-left;
+			margin-left: 0 !important;
 			color: $qw-dashboard-list-font-color;
 			padding: $qw-dashboard-list-padding;
 			cursor: pointer;
-			&:hover:not(:first-child) {
+			height: 36px;
+			&:hover {
 				/* transition: all 10s ease-in-out; */
-				background : $qw-dashboard-list-hover-bg;
-				border-radius: $global-radius;
+				//background : $qw-dashboard-list-hover-bg;
+				//border-radius: $global-radius;
 				color: $qw-dashboard-list-hover-font-color;
 			}
 
 			&.active {
 				background: $qw-leftbar-btn-active-bg;
 				color: $qw-leftbar-btn-active-color;
-				border-radius: $global-radius;
+				//border-radius: $global-radius;
 			}
 		}
 
-		> li:first-child {
+/* 		> li:first-child {
 			color: $qw-dashboard-list-first-child-font-color;
 			cursor: auto;
 			padding: $qw-dashboard-list-first-child-padding;
 			i {
 				font-size: $qw-dashboard-list-first-child-font-size;
 			}
-		}
+		} */
 	}
 }
 
@@ -343,6 +345,7 @@
 
 			> i {
 				margin-left: $qw-dashboard-list-margin-left;
+				color: $qw-dashboard-toptwo-content-font-color;
 			}
 		}
 
@@ -353,6 +356,7 @@
 			font-style: italic;
 			font-size: $qw-dashboard-toptwo-a-font-color-font-size;
 			color: $qw-dashboard-toptwo-a-font-color;
+			background: #52CAE4 !important;
 			> i { 
 			padding-right: $qw-dashboard-toptwo-a-margin;
 			font-size: $qw-dashboard-toptwo-a-icon-font-size;
