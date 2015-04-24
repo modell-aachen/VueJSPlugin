@@ -300,7 +300,7 @@
 			color: $qw-dashboard-list-font-color;
 			padding: $qw-dashboard-list-padding;
 			cursor: pointer;
-			height: 36px;
+			height: 30px;
 			&:hover {
 				/* transition: all 10s ease-in-out; */
 				//background : $qw-dashboard-list-hover-bg;
@@ -375,9 +375,12 @@
 			float: right;
 			font-style: $qw-dashboard-toptwo-maximize-font-style;
 			color: $qw-dashboard-toptwo-maximize-font-color;
+			background: #7F7B71;
 			> i { 
 			font-size: $qw-dashboard-toptwo-maximize-icon-font-size;
 			padding: $qw-dashboard-toptwo-maximize-icon-padding;
+			  color: #FFF;
+
 
 			}
 		}

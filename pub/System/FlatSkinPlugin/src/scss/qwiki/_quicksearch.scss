@@ -87,20 +87,37 @@
     > .input {
       @include flex($grow: 1);
 
+
       > input {
-        color: #FFF !important;
+
         background: #7F7B71 !important;
         border: none !important;
         box-shadow: none !important;
         height: $qw-search-height;
         border-radius: 25px 0 0 25px;
-        width: 66%;
+        width: 60%;
         transition: width 0.3s ease-in-out;
         float: right;
         font-style: italic;
+        padding-left: 20px;
 
         &:focus {
           width: 100%;
+        }
+        &::-webkit-input-placeholder {
+          color: #FFF;
+        }
+
+        &:-moz-placeholder {
+          color: #FFF;
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: #FFF;  
+        }
+
+        &:-ms-input-placeholder {  
+           color: #FFF;  
         }
       }
     }
