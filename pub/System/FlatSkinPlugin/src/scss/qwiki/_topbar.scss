@@ -44,7 +44,7 @@
       left: 0;
     }
 
-    > .breadcrumb {
+    > .tabs-container {
       background: $qw-top-one-bg;
 
       @media #{$mobile-only} {
@@ -62,7 +62,7 @@
       @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
 
       > div {
-        padding-left: rem-calc(10); // ToDo. padding muss angepasst werden
+        //padding-left: rem-calc(10); // ToDo. padding muss angepasst werden
       }
     }
 
@@ -286,7 +286,7 @@
 
     > .actions {
       display: table;
-      background: $qw-top-two-bg;
+      background: #FFF;
       transition: width 0.3s ease-in-out;
 
       @media #{$mobile-only} {min-height: $qw-top-two-height-mobile;}
@@ -346,7 +346,7 @@
               &.topbar-edit {
                 float: right;
                 max-height: 32px;
-                border: 1px solid #f2f5f7;
+                //border: 1px solid #f2f5f7;
                 border-radius: 4px;
 
                 > .qw-action-button {

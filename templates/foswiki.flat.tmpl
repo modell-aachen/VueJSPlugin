@@ -97,7 +97,11 @@ jQuery(function($) {
 %TMPL:DEF{"topbar"}%<!--topbar-->
 <nav class="qw-top" data-offcanvas>
   <div class="one">
-    <div class="breadcrumb"><div>%TMPL:P{"breadcrumb"}%</div></div>
+    <div class="tabs-container">
+      <div class="tabs">
+        <div>%TMPL:P{"topbar:tabs"}%</div>
+      </div>
+    </div>
     <div class="search">
       <div class="close" data-offcanvas-toggle="quicksearch">
         <div><i class="icon-arrow-right"></i></div>
@@ -108,11 +112,7 @@ jQuery(function($) {
   <div class="two">
     <div class="actions">
       <div>
-        <div class="tabs-container">
-          <div class="tabs">
-            <div>%TMPL:P{"topbar:tabs"}%</div>
-          </div>
-        </div>
+        <div><div>%TMPL:P{"breadcrumb"}%</div></div>
         <div class="topicactions-container">
           <div class="topicactions">%TMPL:P{"topbar:actions"}%</div>
         </div>
