@@ -116,7 +116,7 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
       line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
     }
 
-    font-size: rem-calc(13);
+    font-size: rem-calc(25);
     padding-left: $button-tny;
     padding-right: $button-tny;
   }
@@ -129,7 +129,7 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   &.approved {
     & > div.pseudoborder > a, & > a {
       &:before {
-        @extend .icon-page-free;
+       // @extend .icon-page-free;
       }
     }
 
@@ -161,16 +161,24 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
     &.active {
       & > div.pseudoborder {
-          background-image: $qw-stripes;
-          background-color: $qw-tab-unapproved-active-color;
+      /*   for approved page. not home page  */
+          //display: none;
+       // background-image: $qw-stripes;
+        // background-color: $qw-tab-unapproved-active-color;
+        padding: 20px 20px 0 20px;
       }
 
       & > * {
-        background-color: $qw-edit-color;
+       // background-color: $qw-edit-color;
+       background: #FFF;
       }
     }
     &.inactive {
-      & > div.pseudoborder > a,
+      /*   for home page  */
+      & > div.pseudoborder  {
+        display: none;
+        } 
+        > a,
       & > a {
           background: $qw-tab-approved-inactive-color;
       }
@@ -178,6 +186,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   }
 
   & > .sub-tab > div.pseudoborder {
+      /* for edit button in both approved and home page  */
+      display: none;
       background-color: transparent;
 
       & a {

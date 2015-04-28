@@ -35,11 +35,11 @@ ul.qw-breadcrumb {
 
         &:after {
           border-left: none;
-          background: transparent;
+          background: #E5E0D5;
         }
 
         &:before {
-          border-left: 30px solid transparent;
+          border-left: 30px solid #E5E0D5;
         }
       }
     }
@@ -75,7 +75,7 @@ ul.qw-breadcrumb {
         height: 0;
         border-top: $qw-breadcrumb-border-size solid transparent;
         border-bottom: $qw-breadcrumb-border-size solid transparent;
-        border-left: 10px solid $qw-breadcrumb-border-color;
+        border-left: 10px solid #FFF;
         position: absolute;
         top: 0;
         margin-left: $qw-breadcrumb-spacing;
@@ -165,7 +165,7 @@ ul.qw-breadcrumb {
   }
 
   > li.qw-breadcrumb-home > a {
-    font-size: 2.2rem;
+    font-size: 2rem;
     padding: rem-calc( 0 0 0 10 ) !important;
     max-height: $qw-breadcrumb-height;
     > i {
