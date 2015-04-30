@@ -3,22 +3,19 @@
 %TMPL:DEF{"topbar:actions"}%%TMPL:P{"topbar:two:right"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard"}%
-<div class="qw-joinedtab approved active"><div class="pseudoborder">%TMPL:P{"topbar:two:left:standard:view"}%</div>%IF{"$TOPIC allows 'CHANGE' and not context edit" then="$percentTMPL:P{\"topbar:two:left:standard:edit\"}$percent"}%</div>
-%TMPL:END%
+<div class="qw-joinedtab approved active"><div class="pseudoborder">%TMPL:P{"topbar:two:left:standard:view"}%</div>%IF{"$TOPIC allows 'CHANGE' and not context edit" then="$percentTMPL:P{\"topbar:two:left:standard:edit\"}$percent"}%</div>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard:view"}%<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%">%MAKETEXT{"Version [_1]" args="%REVINFO{format=" $rev"}%"}%</a>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:left:standard:edit"}%<div class="sub-tab edit"><div class="pseudoborder"><a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?t=%GMTIME{"$epoch"}%"><i class="icon-edit"></i><span class="expander">%MAKETEXT{"Edit topic"}%</span></a></div></div>%TMPL:END%
 
-%TMPL:DEF{"topbar:two:right"}%<div>%TMPL:P{"topbar:two:right:misc"}%</div><div class="topbar-edit">%TMPL:P{"topbar:two:right:edit"}%</div>%TMPL:END%
+%TMPL:DEF{"topbar:two:right"}%<div class="topbar-edit">%TMPL:P{"topbar:two:right:misc"}%</div>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:misc"}%%{
 }%<a href="#" class="qw-action-button hidden-mobile" title="%MAKETEXT{"Choose language"}%" data-tooltip="top"><i class="icon-flag"></i></a>%{
 }%%IF{"$FAVORITES='1' AND $'GETWORKFLOWROW{approved}'" then="$percntTMPL:P{favorites:button}$percnt"}%%{
 }%<a href="#" class="qw-action-button hidden-mobile" title="%MAKETEXT{"Recommend topic"}%" data-tooltip="top"><i class="icon-forward"></i></a>%{
 }%<a href="#" class="qw-action-button hidden-mobile" data-dropdown="#qw-more-menu" title="%MAKETEXT{"More"}%" data-tooltip="top"><i class="icon-more"></i></a>%{
+}%<a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button visible-large-up action-maximize" data-behavior="radio" data-group="qw-action-buttons" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-toggle data-tooltip="top"><i class="icon-arrow-right"></i></a>%{
 }%%TMPL:P{"menu:more"}%%TMPL:END%
 
-%TMPL:DEF{"topbar:two:right:edit"}%<!--name-->
-<a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button visible-large-up" data-behavior="radio" data-group="qw-action-buttons" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-toggle data-tooltip="top"><i class="icon-maximize"></i></a>
-<!--/name-->%TMPL:END%

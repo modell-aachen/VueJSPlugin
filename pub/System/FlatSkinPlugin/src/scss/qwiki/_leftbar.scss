@@ -139,6 +139,52 @@
         }
       }
     }
+
+    .user {
+      position: relative;
+      top: 0;
+      left: 0;
+      height:$qw-leftbar-width;
+      width: $qw-leftbar-width;
+      background: #282C2E;
+      padding: 10px 0;
+              border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+
+      > .user-avatar {
+        position: inherit;
+        top: 5px;
+        left: 5px;
+        width: $qw-leftbar-width - 10;
+        height: $qw-leftbar-width - 10;
+        border-radius: 25px;
+        background-color: $qw-leftbar-avatar-bg;
+        background-image: url('../assets/avatar.png');
+        background-position: center 5px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+
+        > .role {
+          position: absolute;
+          left: rem-calc(4);
+          right: rem-calc(4);
+          bottom: rem-calc(8);
+          height: rem-calc(15);
+          background: $qw-leftbar-avatar-role-bg;
+          color: $qw-leftbar-avatar-role-color;
+          border-radius: $global-radius;
+
+          font-size: rem-calc(10);
+          font-weight: bold;
+          text-align: center;
+
+          span {
+            position: relative;
+            top: rem-calc(2);
+          }
+        }
+      }
+    }
   }
 
   > .menu {
