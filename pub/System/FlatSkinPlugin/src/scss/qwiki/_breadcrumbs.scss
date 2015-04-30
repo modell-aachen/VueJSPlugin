@@ -9,8 +9,8 @@ ul.qw-breadcrumb {
   > li {
     float: left;
     margin-left: $qw-breadcrumb-spacing;
-    height: $qw-breadcrumb-height;
-    line-height: $qw-breadcrumb-height;
+    //height: $qw-breadcrumb-height;
+    //line-height: $qw-breadcrumb-height;
 
     &:first-child {
       border-left: none;
@@ -20,7 +20,7 @@ ul.qw-breadcrumb {
       a {
         border-top-left-radius: $qw-breadcrumb-radius;
         border-bottom-left-radius: $qw-breadcrumb-radius;
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
     }
 
