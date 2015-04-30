@@ -327,7 +327,7 @@
 }
 
 .qw-dashboard-toptwo {
-	margin-top: $qw-dashboard-toptwo-margin-top;
+	//margin-top: $qw-dashboard-toptwo-margin-top;
 	height: $qw-dashboard-toptwo-height;
 	&.tasks {
 		display: none;
@@ -350,8 +350,9 @@
 		}
 
 		> .add {
-			
-			margin: $qw-dashboard-toptwo-a-margin;
+			border: 0px !important;
+			padding: $qw-dashboard-toptwo-create-padding;
+			margin: $qw-dashboard-toptwo-create-margin;
 			float: right;
 			font-style: italic;
 			font-size: $qw-dashboard-toptwo-a-font-color-font-size;
@@ -370,6 +371,7 @@
 		}
 
 		> .maximize {
+			border:0px !important;
 			padding: $qw-dashboard-toptwo-maximize-padding;
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;

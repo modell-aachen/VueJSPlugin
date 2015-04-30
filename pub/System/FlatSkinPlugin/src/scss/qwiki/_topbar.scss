@@ -289,8 +289,8 @@
       background: #FFF;
       transition: width 0.3s ease-in-out;
 
-      @media #{$mobile-only} {min-height: $qw-top-two-height-mobile;}
-      @media #{$small-up} {min-height: $qw-top-two-height;}
+      @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
+      @media #{$small-up} {height: $qw-top-two-height;}
 
       padding: 0;
       $p: percentage(1/$total-columns);
@@ -376,8 +376,8 @@
       border-bottom: 1px solid #E2E2E2;
 
 
-      @media #{$mobile-only} {min-height: $qw-top-two-height-mobile;}
-      @media #{$small-up} {min-height: $qw-top-two-height;}
+      @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
+      @media #{$small-up} {height: $qw-top-two-height;}
 
       /* padding: rem-calc(0 10 0 25);
       margin: rem-calc(0 10 0 0); */
