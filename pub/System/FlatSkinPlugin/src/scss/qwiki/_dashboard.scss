@@ -381,7 +381,7 @@
 			> i { 
 			font-size: $qw-dashboard-toptwo-maximize-icon-font-size;
 			padding: $qw-dashboard-toptwo-maximize-icon-padding;
-			  color: #FFF;
+			color: #FFF;
 
 
 			}
@@ -400,7 +400,7 @@
 			display: inline-block;
 		}
 
-		> a {
+/* 		> a {
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;
 			font-style: italic;
@@ -411,19 +411,46 @@
 				padding-right: $qw-dashboard-toptwo-a-margin;
 				font-size: $qw-dashboard-toptwo-a-icon-font-size;
 			}
+		} */
+		> .addknowledge, .lastknowledge {
+			border: 0px !important;
+			padding: $qw-dashboard-toptwo-create-padding;
+			margin: $qw-dashboard-toptwo-create-margin;
+			float: right;
+			font-style: italic;
+			font-size: $qw-dashboard-toptwo-a-font-color-font-size;
+			color: $qw-dashboard-toptwo-a-font-color;
+			background: #52CAE4 !important;
+			> i { 
+			padding-right: $qw-dashboard-toptwo-a-margin;
+			font-size: $qw-dashboard-toptwo-a-icon-font-size;
+
+			}
+
+			&:active {
+				background: #236AA2;
+				color: #FFF;
+			}
+		}
+
+		> .lastknowledge {
+			background: #FFF !important;
+			color: #5F5F5F;
+			border: 1px solid #999 !important;
 		}
 		> .view {
 			float: right;
 			display: inline-block;
 			border: $qw-dashboard-toptwo-view-border;
 			margin:$qw-dashboard-toptwo-view-margin;
-			height: $qw-dashboard-toptwo-view-height;
-			padding-top: 3px;
+			///height: $qw-dashboard-toptwo-view-height;
+			padding: 3px;
 			border-radius: $global-radius;
 			> .qw-action-button {
+				padding: 0 5px 0 0;
 				width: $qw-dashboard-toptwo-view-action-button-width;
-				height: $qw-dashboard-toptwo-view-action-button-height;
-				padding-left: 0;
+				//height: $qw-dashboard-toptwo-view-action-button-height;
+				padding: 0;
 				> i {
 					font-size: $qw-dashboard-toptwo-view-action-button-font-size;
 				}
@@ -431,14 +458,17 @@
 		}
 
 		> .maximize {
+			border:0px !important;
 			padding: $qw-dashboard-toptwo-maximize-padding;
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;
 			font-style: $qw-dashboard-toptwo-maximize-font-style;
 			color: $qw-dashboard-toptwo-maximize-font-color;
+			background: #7F7B71;
 			> i { 
 			font-size: $qw-dashboard-toptwo-maximize-icon-font-size;
 			padding: $qw-dashboard-toptwo-maximize-icon-padding;
+			color: #FFF;
 
 			}
 		}
