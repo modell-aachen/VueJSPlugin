@@ -9,8 +9,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
       border-right: none;
   }
 
-  @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
-  @media #{$small-up} {height: $qw-top-two-height;}
+  @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+  @media #{$small-up} {height: $qw-top-one-height;}
 
   margin-right: $button-tny - $qw-tab-deco-border-width;
   &:last-child {
