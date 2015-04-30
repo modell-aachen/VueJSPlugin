@@ -263,16 +263,14 @@ TODO
         <div class="role"><span>TBD</span></div>
       </div>
     </div>
-    %TMPL:P{"leftbar:buttons"}%<!--     <div class="bottom">
-  <div class="login">
+    %TMPL:P{"leftbar:buttons"}%
+    <div class="bottom">
+      <div class="login">
     <a href="%IF{"$ USERNAME != 'guest'" then='%SCRIPTURLPATH{"view"}%?logout=1' else='%SCRIPTURLPATH{"login"}%'}%" title="%IF{"$ USERNAME != 'guest'" then='%MAKETEXT{"Logout"}%' else='%MAKETEXT{"Login"}%'}%" data-tooltip="right">
       <i class="icon-%IF{"$ USERNAME != 'guest'" then='logout' else='login'}%"></i>
     </a>
-  </div>
-  <div class="avatar" title="%MAKETEXT{"Logged in as"}% %WIKINAME%" data-offcanvas-toggle="leftbar" data-tooltip="right">
-    <div class="role"><span>TBD</span></div>
-  </div>
-</div> -->
+      </div>
+    </div>
   </section>
   <section class="menu">
     <div class="links">%TMPL:P{"leftbar:links"}%</div>

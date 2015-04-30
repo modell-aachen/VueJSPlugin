@@ -82,7 +82,7 @@
 
       > .login {
         position: inherit;
-        bottom: $qw-leftbar-width + 5px;
+        bottom: 5px;
         left: 0;
         width: $qw-leftbar-width;
 
@@ -147,9 +147,9 @@
       height:$qw-leftbar-width;
       width: $qw-leftbar-width;
       background: #282C2E;
-      padding: 10px 0;
-              border-top: 2px solid #333;
-        border-bottom: 2px solid #333;
+      padding: 15px 0;
+      border-top: 2px solid #333;
+      border-bottom: 2px solid #333;
 
       > .user-avatar {
         position: inherit;
