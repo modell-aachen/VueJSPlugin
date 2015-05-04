@@ -174,9 +174,9 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
       }
     }
     &.inactive {
-      /*   for home page  */
+      /*  disscosion for home page  */
       & > div.pseudoborder  {
-        display: none;
+        display: inline-block;
         } 
         > a,
       & > a {
@@ -186,8 +186,8 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   }
 
   & > .sub-tab > div.pseudoborder {
-      /* for edit button in both approved and home page  */
-      display: none;
+      /* edit button in both approved and home page  */
+      display: inline-block;
       background-color: transparent;
 
       & a {
@@ -347,4 +347,23 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
 background: #7F7B71;
 color: #FFF;
+}
+
+.kvpForkLinkstartDiscussion {
+  padding: 8px 15px 8px 5px !important;
+  background: #7F7B71 !important;
+  border: 0 !important;
+  color: #FFF !important;
+  font-style: italic !important;
+  font-size: 12px !important;
+  &:before {
+    content: "\f501" !important;
+    font-style: normal;
+    font-size: 12px;
+  }
+  &:hover {
+    background: #282C2E !important;
+    color: #84878A !important;
+  }
+
 }
