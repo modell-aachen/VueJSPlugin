@@ -315,6 +315,7 @@
         > div {
           overflow: hidden !important;
           padding-left: 10px;
+          width: 50%;
 
           @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
           @media #{$small-up} {height: $qw-top-two-height;}
