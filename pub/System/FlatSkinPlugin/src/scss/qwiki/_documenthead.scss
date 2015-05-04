@@ -46,6 +46,11 @@
         &.user {
           color: $qw-dochead-user-box-color;
         }
+
+        &.approvement {
+          background: #84BB2E;
+          color: #FFF;
+        }
       }
     }
   }

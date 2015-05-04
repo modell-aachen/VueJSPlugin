@@ -6,6 +6,10 @@
   </div>
   <div class="flex-box">
     <div class="entry">
+      <span class="label">%MAKETEXT{"Status"}%</span>
+      <span class="content approvement">%WORKFLOWMETA{}%</span>
+    </div>
+    <div class="entry">
       <span class="label">%MAKETEXT{"Type"}%</span>
       <span class="content">%QUERY{"DocumentType"}%</span>
     </div>
@@ -18,8 +22,8 @@
       <span class="content user"><i class="icon-user"></i> %QUERY{"Responsible"}%</span>
     </div>
     <div class="entry">
-      <span class="label">%MAKETEXT{"Status"}%</span>
-      <span class="content">%REVINFO{format="$date"}%</span>
+      <span class="label">%MAKETEXT{"Date of approvement"}%</span>
+      <span class="content">%WORKFLOWMETA{"LASTTIME_APPROVED"}%</span>
     </div>
     <div class="entry">
       <span class="label">%MAKETEXT{"Last author"}%</span>
