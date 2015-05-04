@@ -59,8 +59,8 @@ ul.qw-breadcrumb {
         display: block;
         width: 0;
         height: 0;
-        border-top: $qw-breadcrumb-border-size solid transparent;
-        border-bottom: $qw-breadcrumb-border-size solid transparent;
+        border-top: 15px solid transparent;
+        border-bottom: 16px solid transparent;
         border-left: 10px solid $qw-breadcrumb-bg;
         position: absolute;
         top: 0;
@@ -73,8 +73,8 @@ ul.qw-breadcrumb {
         display: block;
         width: 0;
         height: 0;
-        border-top: $qw-breadcrumb-border-size solid transparent;
-        border-bottom: $qw-breadcrumb-border-size solid transparent;
+        border-top: 15px solid transparent;
+        border-bottom: 16px solid transparent;
         border-left: 10px solid $qw-breadcrumb-border-color;
         position: absolute;
         top: 0;
@@ -165,7 +165,7 @@ ul.qw-breadcrumb {
   }
 
   > li.qw-breadcrumb-home > a {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     padding: rem-calc( 0 0 0 10 ) !important;
     max-height: $qw-breadcrumb-height;
     > i {

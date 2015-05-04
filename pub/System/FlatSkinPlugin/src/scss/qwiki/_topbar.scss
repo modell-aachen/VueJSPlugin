@@ -306,7 +306,7 @@
         transition: width 0.3s ease-in-out;
         @include flex-container;
         overflow: hidden;
-        border-bottom: 5px solid $qw-content-bg;
+        //border-bottom: 5px solid $qw-content-bg;
 
         @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
         @media #{$small-up} {height: $qw-top-two-height;}
@@ -324,7 +324,7 @@
             @include flex($grow:2);
 
             @media #{$mobile-only} {padding: rem-calc(0 10 0 0);}
-            @media #{$small-up} {padding: rem-calc(10 10 0 0);}
+            @media #{$small-up} {padding: rem-calc(5 10 0 0);}
           }
 
           .tabs {
