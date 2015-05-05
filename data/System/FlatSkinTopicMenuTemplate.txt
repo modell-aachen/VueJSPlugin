@@ -3,6 +3,8 @@
 <!-- PDF Export -->%IF{"context MAPrinceModPluginEnabled" then="<li><span class='moremenue-print'>$percentTMPL:P{pdfexport}$percent</span></li>"}%
 <li class='requireModacChangePermission'><span class='moremenue-wikitext'>%TMPL:P{"raw_edit_link"}%</span></li>
 <li class="ignore-input"><hr class="divider"><li>
+<!-- History --><li><span class='moremenue-generic'><a href='%SCRIPTURL{view}%/%WEB%/%TOPIC%?template=oopshistory'>%MAKETEXT{"History"}%</a></span></li>
+<li class="ignore-input"><hr class="divider"><li>
 <!-- TOPIC PREFERENCES --><li class='requireModacChangePermission'><span class='modacDialogable morelink-settings'><a href='%SCRIPTURLPATH{"view"}%/%BASEWEB%/%BASETOPIC%?template=more' class='modacChanging'>%MAKETEXT{"Topic preferences"}%</a></span></li>
 <!-- CHANGE PARENT --><li class='requireModacChangePermission'><span class='modacDialogable morelink-setparent'><a href='%SCRIPTURLPATH{"view"}%/%BASEWEB%/%BASETOPIC%?template=more' class='modacChanging'>%MAKETEXT{"Topic parent"}%</a></span></li>
 <li class="ignore-input"><hr class="divider"><li>
