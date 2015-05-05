@@ -210,12 +210,13 @@
     }
 
     > .links {
-      top: 50px;
+      top: 100px;
 
       > .button {
-        margin: rem-calc(0 5 3 5);
+        margin: rem-calc(0 5 0 5);
+        height: 50px;
         cursor: pointer;
-        border-radius: $global-radius;
+        //border-radius: $global-radius;
         color: $qw-leftbar-color-expanded;
         display: block;
         transition: background 0.15s ease-in-out,
@@ -227,11 +228,11 @@
         line-height: rem-calc(36);
 
         font-family: 'OpenSans';
-        font-size: rem-calc(14);
+        font-size: rem-calc(16);
 
         i {
-          font-size: 1.5rem;
-          margin-right: rem-calc(5);
+          font-size: 2rem;
+          margin-right: rem-calc(10);
         }
 
         &:hover {
@@ -304,6 +305,51 @@
         padding-left: 60px;
         padding-top: 15px;
         vertical-align: middle;
+      }
+    }
+    > .user {
+        position: relative;
+        top: 0;
+        left: 0;
+        height:$qw-leftbar-width;
+        //width: $qw-leftbar-width;
+        background: #3B3F41;
+        padding: 15px 0;
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+  
+        > .user-avatar {
+          position: inherit;
+          top: 5px;
+          left: 5px;
+          width: 5px;
+          height: 5px;
+          border-radius: 25px;
+          background-color: $qw-leftbar-avatar-bg;
+          background-image: url('../assets/avatar.png');
+          background-position: center 5px;
+          background-repeat: no-repeat;
+          cursor: pointer;
+  
+          > .role {
+            position: absolute;
+            left: rem-calc(4);
+            right: rem-calc(4);
+            bottom: rem-calc(8);
+            height: rem-calc(15);
+            background: $qw-leftbar-avatar-role-bg;
+            color: $qw-leftbar-avatar-role-color;
+            border-radius: $global-radius;
+  
+            font-size: rem-calc(10);
+            font-weight: bold;
+            text-align: center;
+  
+            span {
+              position: relative;
+              top: rem-calc(2);
+            }
+          }
       }
     }
   }

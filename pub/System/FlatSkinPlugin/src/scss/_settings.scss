@@ -288,14 +288,14 @@ $qw-login-header-box-shadow: 1px 0 10px $qw-approved-color;
 
 // offcanvas areas
 // leftbar, rightbar, quicksearch
-$qw-leftbar-active-bg-expanded: #236aa2;
-$qw-leftbar-active-color-expanded: #fff;
+$qw-leftbar-active-bg-expanded: #FFF;
+$qw-leftbar-active-color-expanded: #000;
 $qw-leftbar-active-hover-bg-expanded: lighten($qw-leftbar-active-bg-expanded, 10%);
 $qw-leftbar-active-hover-color-expanded: #fff;
-$qw-leftbar-bg-expanded: #fafafa;
+$qw-leftbar-bg-expanded: #282C2E;
 $qw-leftbar-bg: #282C2E;
 $qw-leftbar-border-bg: #f2f2f2;
-$qw-leftbar-color-expanded: #4d4d4d;
+$qw-leftbar-color-expanded: #84878A;
 $qw-leftbar-customer-logo-height: $qw-top-one-height;
 $qw-leftbar-hover-bg-expanded: #DAE4EE;
 $qw-leftbar-hover-color-expanded: #1b537d;

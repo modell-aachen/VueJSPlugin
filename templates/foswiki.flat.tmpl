@@ -273,13 +273,12 @@ TODO
     </div>
   </section>
   <section class="menu">
-    <div class="links">%TMPL:P{"leftbar:links"}%</div>
     <div class="user">
-      <div>
-        <span>%MAKETEXT{"Logged in as"}%:</span>
-        <span>%WIKINAME%</span>
+      <div class="user-avatar" data-offcanvas-toggle="leftbar" data-tooltip="right">
+        <div class="role"><span>TBD</span></div>
       </div>
     </div>
+    <div class="links">%TMPL:P{"leftbar:links"}%</div>
     <div class="actions">
       <div>
         <a href="%SCRIPTURLPATH{"view"}%/Manuals" title="%MAKETEXT{"Help"}%" class="qw-prio3-btn" data-tooltip="top"><i class="icon-questionmark-circle"></i></a>
@@ -594,7 +593,10 @@ Keep this, it will load the JSI18N scripts:
 %{
   LOGO
 }%
-%TMPL:DEF{"logo"}%<div class="patternSimpleLogo"><img src="%WIKILOGOIMG%" height="50px" border="0" alt="%WIKILOGOALT%" style="padding-left:12px; margin-top:4px;"/></div>%TMPL:END%
+%TMPL:DEF{"logo"}%<div class="expanded-panel">
+  <span class="expanded-logo"><i class="icon-menu"></i></span>
+  <span class="expanded-closetext">%MAKETEXT{"Close the menu"}%</span>
+</div>%TMPL:END%
 
 %TMPL:DEF{"newlink:bar"}%<!--newlink:bar-->%JQREQUIRE{"select2,wikiword,textboxlist"}%
 <div class="qw-newlink qw-bigoffcanvas" data-offcanvas data-title="%MAKETEXT{"Create new topic"}%" data-target="newlink">

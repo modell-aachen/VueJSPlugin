@@ -14,12 +14,27 @@
     display: inline-block;
     background-color: $qw-leftbar-bg-expanded;
     border-bottom: 1px solid $qw-leftbar-border-bg;
-
     padding: 0;
     margin: 0;
 
-    @media #{$mobile-only} {height: $qw-top-one-height-mobile - 1px;}
-    @media #{$small-up} {height: $qw-top-one-height - 1px;}
+    @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+    @media #{$small-up} {height: $qw-top-one-height;}
+    > .expanded-panel { 
+      > .expanded-logo {
+        > i {
+          line-height: 60px;
+          display: inline-block;
+          width: 60px;
+          font-size: 1.8rem;
+          text-align: center; 
+          color: #FFF;
+        }
+      }
+      > .expanded-closetext {
+          display: inline-block;
+          color: #fff;
+      }
+    }
   }
 
   > .toggle {
