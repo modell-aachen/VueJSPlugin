@@ -99,6 +99,10 @@
     var $form = $('<form method="post"></form>');
     $form.attr('action', $originalForm.attr('action'));
     $form.append('<input type="hidden" name="action_cancel" value="cancel" />');
+    var actionCommand = $originalForm.find('[name="action"]').val();
+    if(actionCommand) {
+        $('<input type="hidden" name="action" />').val(actionCommand).appendTo($form);
+    }
     $.each(["redirectto", "topicparent", "newtopic"], function(idx, item) {
       var $item = $originalForm.find("input[name='" + item + "']");
       if($item.length) {
