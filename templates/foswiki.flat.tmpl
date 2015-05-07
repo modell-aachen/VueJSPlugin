@@ -298,6 +298,32 @@ TODO
 </nav>
 <!--/leftbar-->%TMPL:END%
 
+%TMPL:DEF{"infobar:content"}%
+<!-- infobar-general -->%TMPL:P{"infobar:general"}%<!-- /infobar-general -->
+<!-- infobar-general -->%TMPL:P{"infobar:kvp"}%<!-- /infobar-general -->
+%TMPL:END%
+
+%TMPL:DEF{"infobar:general"}%
+      <div>
+        <span class="label">%MAKETEXT{"General"}%</span>
+        <ul class='togglelink'>
+          <li><a href="#" data-attachtable-toggle>%MAKETEXT{"Attachments"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Version history"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Language comparison"}%</a></li>
+        </ul>
+      </div>
+%TMPL:END%
+
+%TMPL:DEF{"infobar:kvp"}%
+      <div>
+        <span class="label">%MAKETEXT{"KVP"}%</span>
+        <ul class='togglelink'>
+          <li><a href="#">%MAKETEXT{"Key figures"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Tasks"}%</a></li>
+          <li><a href="#">%MAKETEXT{"Risks"}%</a></li>
+        </ul>
+      </div>
+%TMPL:END%
 
 %TMPL:DEF{"infobar"}%<!--infobar-->
 <div class="qw-infobar" data-offcanvas data-offcanvas-persist-state data-target="infobar">
@@ -309,24 +335,7 @@ TODO
         <a href="#" class="qw-close-btn" data-maximize-toggle=".qw-page, .qw-top .two .actions" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
       </div>
     </div>
-    <div class="content">
-      <div>
-        <span class="label">%MAKETEXT{"General"}%</span>
-        <ul class='togglelink'>
-          <li><a href="#" data-attachtable-toggle>%MAKETEXT{"Attachments"}%</a></li>
-          <li><a href="#">%MAKETEXT{"Version history"}%</a></li>
-          <li><a href="#">%MAKETEXT{"Language comparison"}%</a></li>
-        </ul>
-      </div>
-      <div>
-        <span class="label">%MAKETEXT{"KVP"}%</span>
-        <ul class='togglelink'>
-          <li><a href="#">%MAKETEXT{"Key figures"}%</a></li>
-          <li><a href="#">%MAKETEXT{"Tasks"}%</a></li>
-          <li><a href="#">%MAKETEXT{"Risks"}%</a></li>
-        </ul>
-      </div>
-    </div>
+    <div class="content">%TMPL:P{"infobar:content"}%</div>
   </div>
 </div>
 <!--/infobar-->%TMPL:END%
