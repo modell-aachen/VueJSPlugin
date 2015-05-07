@@ -48,10 +48,33 @@
     }
 
     $.blockUI();
-    var $submit = $form.find('input[type="submit"][name="action_save"]');
-    if(!$submit.length) {
-        $submit = $('<input type="submit" name="action_save" style="display:none" />').appendTo($form);
+    var action = $sender.data('action');
+    if(!action) {
+        action = 'action_save';
     }
+    var $submit = $form.find('input[type="submit"][name="' + action + '"]');
+    var val = $sender.data('value');
+    if(val) {
+        var $candidate;
+        $submit.each(function() {
+            if($(this).val() === val) {
+                $candidate = $(this);
+            }
+        });
+        if($candidate) {
+            $submit = $candidate;
+        } else {
+            $submit = {};
+        }
+    }
+
+    if(!$submit.length) {
+        $submit = $('<input type="submit" name="' + action + '" style="display:none" />').appendTo($form);
+        if(val) {
+            $submit.val(val);
+        }
+    }
+
     $submit.click();
     return false;
   };
