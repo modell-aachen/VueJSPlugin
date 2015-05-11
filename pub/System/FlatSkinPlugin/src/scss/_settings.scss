@@ -346,9 +346,9 @@ $qw-rightbar-bg: $qw-content-bg;
 
 
 // document head (DocumentForm in view ctx)
-$qw-dochead-default-bg: #f5f5f5;
-$qw-dochead-label-color: #bfbfbf;
-$qw-dochead-label-font-size: rem-calc(10);
+$qw-dochead-default-bg: #F1EEEA;
+$qw-dochead-label-color: #282C2E;
+$qw-dochead-label-font-size: rem-calc(11);
 $qw-dochead-label-font-weight: bold;
 $qw-dochead-default-box-bg: #ffffff;
 $qw-dochead-default-box-color: #999999;
@@ -361,8 +361,8 @@ $qw-dochead-user-box-font-size: $qw-dochead-default-box-font-size;
 $qw-dochead-classic-height: rem-calc(55);
 $qw-dochead-classic-margin: rem-calc(1);
 $qw-dochead-classic-box-font-size: rem-calc(10);
-$qw-dochead-classic-box-font-color: #ffffff;
-$qw-dochead-classic-box-bg: #CACACA;
+$qw-dochead-classic-box-font-color: #7F7B71;
+$qw-dochead-classic-box-bg: #E5E0D5;
 $qw-dochead-classic-label-min-width: rem-calc(75);
 $qw-dochead-classic-padding: rem-calc(7);
 $qw-dochead-classic-tcontent-min-width: rem-calc(100);
