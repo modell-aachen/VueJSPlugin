@@ -206,18 +206,12 @@ TODO
 </div>
 <!--/commentbar-->%TMPL:END%
 
+%TMPL:DEF{"infobar:content"}%
+<!-- infobar:general -->%TMPL:P{"infobar:general"}%<!-- /infobar:general -->
+<!-- infobar:kvp -->%TMPL:P{"infobar:kvp"}%<!-- /infobar:kvp -->
+%TMPL:END%
 
-%TMPL:DEF{"infobar"}%<!--infobar-->
-<div class="qw-infobar" data-offcanvas data-offcanvas-persist-state data-target="infobar">
-  <div>
-    <div class="header">
-      <div>
-        <i class="icon-page-info"></i>
-        <span>%MAKETEXT{"Document information"}%</span>
-        <a href="#" class="qw-close-btn" data-maximize-toggle=".qw-page, .qw-top .two .actions" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
-      </div>
-    </div>
-    <div class="content">
+%TMPL:DEF{"infobar:general"}%
       <div>
         <span class="label">%MAKETEXT{"General"}%</span>
         <ul class='togglelink'>
