@@ -194,8 +194,9 @@ $qw-split-shadow-color: #164263;
 $qw-upload-dnd-bg: #f2f5f7;
 $qw-upload-dnd-hover-bg: #dae4eb;
 
-// wat
-$qw-content-padding: rem-calc(30);
+$qw-breadcrumbs-padding: rem-calc(10);
+$qw-dochead-padding: rem-calc(10);
+$qw-content-padding: rem-calc(20);
 
 
 // default border values borders
@@ -210,14 +211,18 @@ $qw-context-border-color: $secondary-color;
 
 // topbar(s)
 $qw-top-one-height: 60px;
-$qw-top-one-height-mobile: 40px;
-$qw-top-one-bg: #e0e0e0;
+$qw-top-one-bg: #e5e0d5;
 $qw-top-one-color: #555;
-$qw-top-two-height: 60px;
-$qw-top-two-height-mobile: 40px;
-$qw-top-two-bg: #f5f5f5;
+
+$qw-top-two-height: 50px;
+$qw-top-two-bg: #fff;
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
+
+// ToDo: delete me
+$qw-top-one-height-mobile: 40px;
+$qw-top-two-height-mobile: 40px;
 $qw-top-height-mobile: $qw-top-one-height-mobile + $qw-top-two-height-mobile;
+//
 
 $qw-top-one-cke-bg: #4d4d4d;
 $qw-cke-button-bg: #666666;
@@ -228,15 +233,15 @@ $qw-cke-button-color: #ffffff;
 
 
 // breadcrumbs
-$qw-breadcrumb-bg: #bfbfbf;
-$qw-breadcrumb-color: #fff;
+$qw-breadcrumb-bg: #e5e0d5;
+$qw-breadcrumb-color: #7f7b71;
 $qw-breadcrumb-title-color: #4d4d4d;
 $qw-breadcrumb-topic-color: #262626;
 $qw-breadcrumb-hover-bg: #ccc;
-$qw-breadcrumb-border-color: $qw-top-one-bg;
+$qw-breadcrumb-border-color: #fff;
 $qw-breadcrumb-border-width: $qw-border-width;
 $qw-breadcrumb-radius: $qw-border-radius;
-$qw-breadcrumb-height: 40px;
+$qw-breadcrumb-height: 30px;
 $qw-breadcrumb-offset-top: 10px;
 $qw-breadcrumb-border-size: 30px - $qw-breadcrumb-offset-top;
 $qw-breadcrumb-spacing: 3px;
@@ -288,38 +293,25 @@ $qw-login-header-box-shadow: 1px 0 10px $qw-approved-color;
 
 // offcanvas areas
 // leftbar, rightbar, quicksearch
-$qw-leftbar-active-bg-expanded: #236aa2;
-$qw-leftbar-active-color-expanded: #fff;
-$qw-leftbar-active-hover-bg-expanded: lighten($qw-leftbar-active-bg-expanded, 10%);
-$qw-leftbar-active-hover-color-expanded: #fff;
-$qw-leftbar-bg-expanded: #fafafa;
-$qw-leftbar-bg: #e0e0e0;
-$qw-leftbar-border-bg: #f2f2f2;
-$qw-leftbar-color-expanded: #4d4d4d;
-$qw-leftbar-customer-logo-height: $qw-top-one-height;
-$qw-leftbar-hover-bg-expanded: #DAE4EE;
-$qw-leftbar-hover-color-expanded: #1b537d;
-$qw-leftbar-ma-logo-height: 40px;
-$qw-leftbar-toggle-active-bg: #1b537d;
-$qw-leftbar-toggle-bg: #236aa2;
-$qw-leftbar-toggle-edit-bg: #e92727;
-$qw-leftbar-toggle-hover-bg: #2c85c9;
-$qw-leftbar-width-expanded: 210px;
+$qw-leftbar-bg: #282c2e;
+$qw-leftbar-color: #282c2e;
+$qw-leftbar-width-expanded: 250px;
 $qw-leftbar-width: 60px;
-$qw-leftbar-avatar-bg: #cbcbcb;
-$qw-leftbar-avatar-role-bg: #606060;
-$qw-leftbar-avatar-role-color: #ffffff;
-$qw-leftbar-avatar-login-color: #cacaca;
-$qw-leftbar-avatar-login-hover-color: $qw-leftbar-avatar-role-bg;
+$qw-leftbar-item-bg-active: #fff;
+$qw-leftbar-item-color-active: #000;
+$qw-leftbar-item-color-inactive: #84878a;
+$qw-leftbar-toggle-color-inactive: #fff;
+$qw-leftbar-user-bg: #3b3f41;
 
+// ToDo: delete me
 $qw-leftbar-btn-color: #bfbfbf;
 $qw-leftbar-btn-hover-color: #4d4d4d;
 $qw-leftbar-btn-active-color: #fff;
-
 $qw-leftbar-btn-bg: transparent;
 $qw-leftbar-btn-hover-bg: transparent;
 $qw-leftbar-btn-active-bg: #bfbfbf;
 $qw-leftbar-btn-active-hover-bg: #ebebeb;
+//
 
 $qw-page-width: calc(100% - #{$qw-leftbar-width});
 

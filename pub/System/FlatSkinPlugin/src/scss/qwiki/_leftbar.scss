@@ -1,264 +1,71 @@
+@mixin leftbar-item($color: #fff, $color-active: #fff, $bg-active: #fff) {
+  color: $color;
+  padding: rem-calc(6.5 15);
+  text-decoration: none;
+  font-family: 'OpenSans';
+  font-size: 1rem;
+
+
+  i {
+    font-size: 1.5rem;
+    line-height: 100%;
+    margin-right: 20px;
+    margin: rem-calc(0 20 0 2);
+  }
+
+  &.active {
+    background: $bg-active;
+    color: $color-active;
+  }
+}
+
 .qw-leftbar {
   position: fixed;
-  top: $qw-leftbar-width;
+  top: 0;
   left: 0;
-  z-index: 100;
+  bottom: 0;
+  z-index: 0;
 
-  @media #{$mobile-only} {max-height: $qw-top-one-height-mobile;}
-  @media #{$small-only} {max-height: $qw-top-one-height;}
-  @media #{$medium-up} {bottom: 0;}
-
-  width: $qw-leftbar-width + $qw-leftbar-width-expanded;
   background: $qw-leftbar-bg;
+  color: $qw-leftbar-color;
+  width: $qw-leftbar-width-expanded;
 
-  transition: transform 0.3s ease-in-out;
-  transform: translate3d(-1 * $qw-leftbar-width-expanded, 0, 0);
+  @include flex-container($direction: column, $align: stretch);
 
-  &.offcanvas {
-    &.leftbar {
-      transform: translate3d( 0, 0, 0);
-
-      > .buttons .button {
-        pointer-events: none;
-        cursor: default;
-      }
-    }
+  > * {
+    margin-bottom: rem-calc(7);
   }
+}
 
-  > .buttons {
-    position: absolute;
-    top: 0;
-    left: $qw-leftbar-width-expanded;
+.qw-leftbar-toggle {
+  @include flex-container($direction: column, $align: stretch);
+  line-height: $qw-top-one-height;
 
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+  a {
+    @include leftbar-item(
+      $color: $qw-leftbar-toggle-color-inactive,
+      $bg-active: $qw-leftbar-item-bg-active,
+      $color-active: $qw-leftbar-item-color-active
+    );
 
-    @media #{$mobile-only} {display: none;}
-    @media #{$small-only} {display: none;}
-    @media #{$medium-up} {height: 100%;}
-
-    .button {
-      width: $qw-leftbar-width - 10px;
-      height: $qw-leftbar-width - 10px;
-      border-radius: $global-radius;
-      background: $qw-leftbar-btn-bg;
-      color: $qw-leftbar-btn-color;
-      margin-bottom: 10px;
-      font-size: 2.0rem;
-      text-decoration: none;
-      text-align: center;
-      display: block;
-      cursor: pointer;
-      transition: background 0.15s ease-in-out,
-                  color 0.15s ease-in-out,
-                  opacity 0.05s ease-in-out;
-
-      &:hover {
-        background: $qw-leftbar-btn-hover-bg;
-        color: $qw-leftbar-btn-hover-color;
-      }
-
-      &.active {
-        background: $qw-leftbar-btn-active-bg;
-        color: $qw-leftbar-btn-active-color;
-
-        &:hover {
-          background: $qw-leftbar-btn-active-hover-bg;
-          color: $qw-leftbar-btn-hover-color;
-        }
-      }
-      > i:before {
-        line-height: $qw-leftbar-width - 10px;
-      }
-    }
-
-    .bottom {
-      position: inherit;
-      bottom: 0;
-      left: 0;
-      height: 2 * $qw-leftbar-width;
-      width: $qw-leftbar-width;
-
-      > .login {
-        position: inherit;
-        bottom: $qw-leftbar-width + 5px;
-        left: 0;
-        width: $qw-leftbar-width;
-
-        a {
-          display: block;
-          text-align: center;
-          font-size: 2rem;
-          text-decoration: none;
-
-          > i {
-            color: $qw-leftbar-avatar-login-color;
-            transition: color 0.3s ease-in-out;
-          }
-
-          &:hover {
-            > i {
-              color: $qw-leftbar-avatar-login-hover-color;
-            }
-          }
-        }
-      }
-
-      > .avatar {
-        position: inherit;
-        bottom: 0;
-        left: 0;
-        width: $qw-leftbar-width;
-        height: $qw-leftbar-width;
-        border-radius: $global-radius;
-        background-color: $qw-leftbar-avatar-bg;
-        background-image: url('../assets/avatar.png');
-        background-position: center 5px;
-        background-repeat: no-repeat;
-        cursor: pointer;
-
-        > .role {
-          position: inherit;
-          left: rem-calc(4);
-          right: rem-calc(4);
-          bottom: rem-calc(8);
-          height: rem-calc(15);
-          background: $qw-leftbar-avatar-role-bg;
-          color: $qw-leftbar-avatar-role-color;
-          border-radius: $global-radius;
-
-          font-size: rem-calc(10);
-          font-weight: bold;
-          text-align: center;
-
-          span {
-            position: relative;
-            top: rem-calc(2);
-          }
-        }
-      }
-    }
+    padding-top: 0;
+    padding-bottom: 0;
   }
+}
 
-  > .menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: $qw-leftbar-width-expanded;
-    background: $qw-leftbar-bg-expanded;
+.qw-leftbar-entries {
+  @include flex-container($direction: column, $align: stretch);
 
-    > div {
-      position: inherit;
-      left: inherit;
-      width: inherit;
-    }
-
-    > .customer-logo {
-      top: 0;
-      height: $qw-leftbar-customer-logo-height;
-      max-height: $qw-leftbar-customer-logo-height;
-      overflow: hidden;
-      border-bottom: 1px solid $qw-leftbar-border-bg;
-    }
-
-    > .links {
-      top: 50px;
-
-      > .button {
-        margin: rem-calc(0 5 3 5);
-        cursor: pointer;
-        border-radius: $global-radius;
-        color: $qw-leftbar-color-expanded;
-        display: block;
-        transition: background 0.15s ease-in-out,
-                    color 0.15s ease-in-out,
-                    opacity 0.2s ease-in-out;
-
-        text-decoration: none;
-        padding: rem-calc(0 15 0 10);
-        line-height: rem-calc(36);
-
-        font-family: 'OpenSans';
-        font-size: rem-calc(14);
-
-        i {
-          font-size: 1.5rem;
-          margin-right: rem-calc(5);
-        }
-
-        &:hover {
-          background: $qw-leftbar-hover-bg-expanded;
-          color: $qw-leftbar-hover-color-expanded;
-        }
-        &.active {
-          background: $qw-leftbar-active-bg-expanded;
-          color: $qw-leftbar-active-color-expanded;
-
-          &:hover {
-            background: $qw-leftbar-active-hover-bg-expanded;
-            color: $qw-leftbar-active-hover-color-expanded;
-          }
-        }
-      }
-    }
-
-    > .user {
-      height: auto;
-      bottom: 1px + $qw-leftbar-ma-logo-height + 60px;
-
-      > div {
-        padding: rem-calc(24);
-
-        > span {
-          display: block;
-
-          &:first-child {
-            color: $primary-color;
-            font-size: 0.6rem;
-            margin-bottom: rem-calc(6);
-          }
-
-          &:last-child {
-            color: $body-font-color;
-            font-size: 0.8rem;
-            font-weight: bold;
-          }
-        }
-      }
-    }
-
-    > .actions {
-      @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
-      @media #{$small-up} {height: $qw-top-one-height;}
-      bottom: 10px + $qw-leftbar-ma-logo-height;
-
-      > div {
-        margin: 0 auto;
-        padding: rem-calc(0 12);
-
-        > * {margin-right: rem-calc(6);}
-      }
-    }
-
-    > .ma-logo {
-      bottom: 15px;
-      border-top: 1px solid $qw-leftbar-border-bg;
-      height: $qw-leftbar-ma-logo-height;
-
-      background-image: url("../assets/logo-blue.png");
-      background-repeat: no-repeat;
-      background-position: 20px center;
-
-      > span {
-        display: block;
-        height: inherit;
-        font-size: 0.8rem;
-        padding-left: 60px;
-        padding-top: 15px;
-        vertical-align: middle;
-      }
-    }
+  a {
+    @include leftbar-item(
+      $color: $qw-leftbar-item-color-inactive,
+      $bg-active: $qw-leftbar-item-bg-active,
+      $color-active: $qw-leftbar-item-color-active
+    );
   }
+}
+
+.qw-leftbar-user {
+  background: $qw-leftbar-user-bg;
+  padding: rem-calc(3);
 }
