@@ -1,0 +1,93 @@
+%TMPL:DEF{"topbar"}%<!--topbar-->
+<nav class="qw-top">
+  <section class="qw-top-one">
+    <div class="tabs"></div>
+    <div class="search"></div>
+  </section>
+  <section class="qw-top-two">
+    <div class="wrapper">
+      <div class="breadcrumbs">%TMPL:P{"breadcrumbs"}%</div>
+      <div class="actions"></div>
+    </div>
+  </section>
+</nav>
+<!--/topbar-->%TMPL:END%
+
+
+%TMPL:DEF{"topbar:search"}%<!--topbar:search-->
+<div class="qw-quicksearch-form">
+  <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
+    <div class="input">
+      <input name="search"
+             type="text"
+             class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
+             placeholder="%MAKETEXT{"search..."}%">
+    </div>
+    <div class="submit">
+      <a href="#" class="submit"><i class="icon-search"></i></a>
+    </div>
+  </form>
+</div>
+<div class="qw-search-toggle">
+  <a href="#" data-offcanvas-toggle="quicksearch"><i class="icon-search"></i></a>
+</div>
+<!--/topbar:search-->%TMPL:END%
+
+
+
+%TMPL:DEF{"topbar:old"}%<!--topbar-->
+<nav class="qw-top" data-offcanvas>
+  <div class="one">
+    <div class="breadcrumb"><div>%TMPL:P{"breadcrumb"}%</div></div>
+    <div class="search">
+      <div class="close" data-offcanvas-toggle="quicksearch">
+        <div><i class="icon-arrow-right"></i></div>
+      </div>
+      <div>%TMPL:P{"topbar:search"}%</div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="actions">
+      <div>
+        <div class="tabs-container">
+          <div class="tabs">
+            <div>%TMPL:P{"topbar:tabs"}%</div>
+          </div>
+        </div>
+        <div class="topicactions-container">
+          <div class="topicactions">%TMPL:P{"topbar:actions"}%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--/topbar-->%TMPL:END%
+
+
+%TMPL:DEF{"topbar:search:old"}%<!--topbar:search-->
+<div class="qw-quicksearch-form">
+  <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
+<!--
+TODO
+    <div class="toggle">
+      <div id="qw-quicksearch-filter-toggle" class="filter-toggle">
+        <span class="filter-show">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-down"></i></span>
+        <span class="filter-hide">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-up"></i></span>
+      </div>
+    </div>
+-->
+    <div class="input">
+      <input name="search"
+             type="text"
+             class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
+             placeholder="%MAKETEXT{"search..."}%">
+    </div>
+    <div class="submit">
+      <a href="#" class="submit"><i class="icon-search"></i></a>
+    </div>
+  </form>
+</div>
+<div class="qw-search-toggle">
+  <a href="#" data-offcanvas-toggle="quicksearch"><i class="icon-search"></i></a>
+</div>
+<!--/topbar:search-->%TMPL:END%

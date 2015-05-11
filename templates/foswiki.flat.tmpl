@@ -1,6 +1,8 @@
 %TMPL:INCLUDE{"TopbarButtons"}%
 %TMPL:INCLUDE{"DocumentHead"}%
-%TMPL:INCLUDE{"LeftBar"}%
+
+%TMPL:INCLUDE{"leftbar"}%
+%TMPL:INCLUDE{"viewtopbar"}%
 
 %TMPL:DEF{"document"}%
 %TMPL:P{"doctype"}%
@@ -55,15 +57,17 @@
 %TMPL:DEF{"body"}%<!--body-->
 <body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui,cookie,placeholder,ui::autocomplete,wikiword,jqp::underscore,jqp::moment,jqp::spin,jqp::observe,jqp::tooltipster"}%
 <literal>%TMPL:P{"topbar"}%
-%TMPL:P{"menutoggle"}%
 <!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
-<div class="qw-page" data-offcanvas>
-  <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
-  <section class="content">
-    <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></literal>%TMPL:P{"contentwrapper"}%<literal></div>
-    <div class="adorner adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></div>
-  </section>
-</div>
+<main class="qw-page">
+  <article class="qw-topic">
+    <section class="notes"></section>
+    <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
+    <section class="content">
+      <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></literal>%TMPL:P{"content"}%<literal></div>
+      <div class="adorner adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></div>
+    </section>
+  </article>
+</main>
 <script src="%PUBURLPATH%/%SYSTEMWEB%/QgularContrib/qgular.js"></script>
 <script>
 jQuery(function($) {
@@ -98,62 +102,6 @@ jQuery(function($) {
 </div>
 <!--/modals-->%TMPL:END%
 
-%TMPL:DEF{"topbar"}%<!--topbar-->
-<nav class="qw-top" data-offcanvas>
-  <div class="one">
-    <div class="breadcrumb"><div>%TMPL:P{"breadcrumb"}%</div></div>
-    <div class="search">
-      <div class="close" data-offcanvas-toggle="quicksearch">
-        <div><i class="icon-arrow-right"></i></div>
-      </div>
-      <div>%TMPL:P{"topbar:search"}%</div>
-    </div>
-  </div>
-  <div class="two">
-    <div class="actions">
-      <div>
-        <div class="tabs-container">
-          <div class="tabs">
-            <div>%TMPL:P{"topbar:tabs"}%</div>
-          </div>
-        </div>
-        <div class="topicactions-container">
-          <div class="topicactions">%TMPL:P{"topbar:actions"}%</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<!--/topbar-->%TMPL:END%
-
-
-%TMPL:DEF{"topbar:search"}%<!--topbar:search-->
-<div class="qw-quicksearch-form">
-  <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
-<!--
-TODO
-    <div class="toggle">
-      <div id="qw-quicksearch-filter-toggle" class="filter-toggle">
-        <span class="filter-show">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-down"></i></span>
-        <span class="filter-hide">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-up"></i></span>
-      </div>
-    </div>
--->
-    <div class="input">
-      <input name="search"
-             type="text"
-             class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
-             placeholder="%MAKETEXT{"search..."}%">
-    </div>
-    <div class="submit">
-      <a href="#" class="submit"><i class="icon-search"></i></a>
-    </div>
-  </form>
-</div>
-<div class="qw-search-toggle">
-  <a href="#" data-offcanvas-toggle="quicksearch"><i class="icon-search"></i></a>
-</div>
-<!--/topbar:search-->%TMPL:END%
 
 %TMPL:DEF{"quicksearch"}%<!--quicksearch-->
 <div class="qw-quicksearch" data-offcanvas data-target="quicksearch" data-quicksearch data-solrsearch-widget data-quicksearch-dismax-main=".qw-quicksearch-form input" data-quicksearch-submit=".qw-quicksearch-form .submit">
@@ -259,51 +207,17 @@ TODO
 <!--/commentbar-->%TMPL:END%
 
 
-%TMPL:DEF{"leftbar"}%<!--leftbar-->
-<nav class="qw-leftbar" data-offcanvas data-friendly data-target="leftbar">
-  <section class="buttons">
-    %TMPL:P{"leftbar:buttons"}%
-    <div class="bottom">
-      <div class="login">
-        <a href="%IF{"$ USERNAME != 'guest'" then='%SCRIPTURLPATH{"view"}%?logout=1' else='%SCRIPTURLPATH{"login"}%'}%" title="%IF{"$ USERNAME != 'guest'" then='%MAKETEXT{"Logout"}%' else='%MAKETEXT{"Login"}%'}%" data-tooltip="right">
-          <i class="icon-%IF{"$ USERNAME != 'guest'" then='logout' else='login'}%"></i>
-        </a>
-      </div>
-      <div class="avatar" title="%MAKETEXT{"Logged in as"}% %WIKINAME%" data-offcanvas-toggle="leftbar" data-tooltip="right">
-        <div class="role"><span>TBD</span></div>
-      </div>
-    </div>
-  </section>
-  <section class="menu">
-    <div class="links">%TMPL:P{"leftbar:links"}%</div>
-    <div class="user">
+%TMPL:DEF{"infobar"}%<!--infobar-->
+<div class="qw-infobar" data-offcanvas data-offcanvas-persist-state data-target="infobar">
+  <div>
+    <div class="header">
       <div>
-        <span>%MAKETEXT{"Logged in as"}%:</span>
-        <span>%WIKINAME%</span>
+        <i class="icon-page-info"></i>
+        <span>%MAKETEXT{"Document information"}%</span>
+        <a href="#" class="qw-close-btn" data-maximize-toggle=".qw-page, .qw-top .two .actions" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
       </div>
     </div>
-    <div class="actions">
-      <div>
-        <a href="%SCRIPTURLPATH{"view"}%/Manuals" title="%MAKETEXT{"Help"}%" class="qw-prio3-btn" data-tooltip="top"><i class="icon-questionmark-circle"></i></a>
-        <a href="%IF{"$ USERNAME != 'guest'" then='%SCRIPTURLPATH{"view"}%?logout=1' else='%SCRIPTURLPATH{"login"}%'}%" class="qw-prio3-btn" title="%IF{"$ USERNAME != 'guest'" then='%MAKETEXT{"Logout"}%' else='%MAKETEXT{"Login"}%'}%" data-tooltip="top">
-        <i class="icon-%IF{"$ USERNAME != 'guest'" then='logout' else='login'}%"></i>
-        </a>
-        <a href="%SCRIPTURLPATH{"view"}%/%WEB%/WebPreferences" class="qw-prio3-btn" title="%MAKETEXT{"Settings"}%" data-tooltip="top"><i class="icon-config"></i></a>
-      </div>
-    </div>
-    <div class="ma-logo">
-      <span>Modell Aachen GmbH</span>
-    </div>
-  </section>
-</nav>
-<!--/leftbar-->%TMPL:END%
-
-%TMPL:DEF{"infobar:content"}%
-<!-- infobar-general -->%TMPL:P{"infobar:general"}%<!-- /infobar-general -->
-<!-- infobar-general -->%TMPL:P{"infobar:kvp"}%<!-- /infobar-general -->
-%TMPL:END%
-
-%TMPL:DEF{"infobar:general"}%
+    <div class="content">
       <div>
         <span class="label">%MAKETEXT{"General"}%</span>
         <ul class='togglelink'>
@@ -340,15 +254,8 @@ TODO
 </div>
 <!--/infobar-->%TMPL:END%
 
-%TMPL:DEF{"menutoggle"}%<!--menutoggle-->
-<div class="qw-menutoggle" data-offcanvas>
-  <div class="customer-logo">%TMPL:P{"logo"}%</div>
-  <div class="toggle" data-offcanvas-toggle="leftbar" title="%MAKETEXT{"Menu"}%" data-tooltip="right"><i class="icon-menu"></i></div>
-</div>
-<!--/menutoggle-->%TMPL:END%
 
-
-%TMPL:DEF{"breadcrumb"}%<!--breadcrumb-->
+%TMPL:DEF{"breadcrumbs"}%<!--breadcrumb-->
 <ul class="qw-breadcrumb" data-breadcrumb>
   <!--breadcrumb:home-->%TMPL:P{"breadcrumb:home"}%<!--/breadcrumb:home-->
   <!--breadcrumb:parentwebs-->%TMPL:P{"breadcrumb:parentwebs"}%<!--/breadcrumb:parentwebs-->

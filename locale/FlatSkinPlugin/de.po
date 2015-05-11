@@ -33,3 +33,6 @@ msgstr "Version %1"
 #: foswiki.flat.tmpl
 msgid "Logged in as"
 msgstr "Angemeldet als"
+
+msgid "Close menu"
+msgstr "Menü schließen"

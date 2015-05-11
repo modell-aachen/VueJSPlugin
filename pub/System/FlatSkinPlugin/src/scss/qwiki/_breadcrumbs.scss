@@ -13,7 +13,7 @@ ul.qw-breadcrumb {
     line-height: $qw-breadcrumb-height;
 
     &:first-child {
-      border-left: none;
+      border-left: 0;
       margin-left: 0;
       padding-top: 1px; // for some reason this one is aligned differently than all others
 
@@ -34,7 +34,7 @@ ul.qw-breadcrumb {
         background: transparent;
 
         &:after {
-          border-left: none;
+          border-left: 0;
           background: transparent;
         }
 
@@ -55,12 +55,12 @@ ul.qw-breadcrumb {
       display: inline-block;
 
       &:after {
-        content: " ";
+        content: ' ';
         display: block;
         width: 0;
         height: 0;
-        border-top: $qw-breadcrumb-border-size solid transparent;
-        border-bottom: $qw-breadcrumb-border-size solid transparent;
+        border-top: 15px solid transparent;
+        border-bottom: 16px solid transparent;
         border-left: 10px solid $qw-breadcrumb-bg;
         position: absolute;
         top: 0;
@@ -69,12 +69,12 @@ ul.qw-breadcrumb {
       }
 
       &:before {
-        content: " ";
+        content: ' ';
         display: block;
         width: 0;
         height: 0;
-        border-top: $qw-breadcrumb-border-size solid transparent;
-        border-bottom: $qw-breadcrumb-border-size solid transparent;
+        border-top: 15px solid transparent;
+        border-bottom: 16px solid transparent;
         border-left: 10px solid $qw-breadcrumb-border-color;
         position: absolute;
         top: 0;
@@ -115,6 +115,7 @@ ul.qw-breadcrumb {
   > li.qw-breadcrumb-ellipsis {
     position: relative;
   }
+
   > li.qw-breadcrumb-ellipsis ul {
     visibility: hidden;
     position: fixed;
@@ -136,27 +137,30 @@ ul.qw-breadcrumb {
         padding: 8px 10px 5px;
         display: block;
       }
+
       &:hover {
         background: $qw-breadcrumb-hover-bg;
       }
     }
 
     > li:first-child a {
-      border-top: none;
+      border-top: 0;
       border-top-left-radius: $qw-breadcrumb-radius;
       border-top-right-radius: $qw-breadcrumb-radius;
     }
   }
+
   > li.qw-breadcrumb-ellipsis:hover > ul {
     visibility: visible;
   }
+
   > li.qw-breadcrumb-topic {
     float: none;
+
     > a {
       display: block;
       overflow: hidden;
       white-space: nowrap;
-      text-overflow: ellipsis-word;
       text-overflow: ellipsis;
       min-width: 0;
       color: $qw-breadcrumb-topic-color;
@@ -165,11 +169,13 @@ ul.qw-breadcrumb {
   }
 
   > li.qw-breadcrumb-home > a {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     padding: rem-calc( 0 0 0 10 ) !important;
     max-height: $qw-breadcrumb-height;
+
     > i {
       position: relative; display: inline-block; width: 2.2rem; height: $qw-breadcrumb-height;
+
       &:before {
         line-height: $qw-breadcrumb-height;
         position: absolute; top: 0; left: 0;
