@@ -338,14 +338,14 @@ $qw-rightbar-bg: $qw-content-bg;
 
 
 // document head (DocumentForm in view ctx)
-$qw-dochead-default-bg: #f5f5f5;
-$qw-dochead-label-color: #bfbfbf;
-$qw-dochead-label-font-size: rem-calc(10);
+$qw-dochead-default-bg: #f1eeea;
+$qw-dochead-label-color: #282c2e;
+$qw-dochead-label-font-size: rem-calc(11);
 $qw-dochead-label-font-weight: bold;
-$qw-dochead-default-box-bg: #ffffff;
-$qw-dochead-default-box-color: #999999;
+$qw-dochead-default-box-bg: #fff;
+$qw-dochead-default-box-color: #999;
 $qw-dochead-default-box-font-size: rem-calc(13);
-$qw-dochead-user-box-bg: #ffffff;
+$qw-dochead-user-box-bg: #fff;
 $qw-dochead-user-box-color: #236aa2;
 $qw-dochead-user-box-font-size: $qw-dochead-default-box-font-size;
 
@@ -353,8 +353,8 @@ $qw-dochead-user-box-font-size: $qw-dochead-default-box-font-size;
 $qw-dochead-classic-height: rem-calc(55);
 $qw-dochead-classic-margin: rem-calc(1);
 $qw-dochead-classic-box-font-size: rem-calc(10);
-$qw-dochead-classic-box-font-color: #ffffff;
-$qw-dochead-classic-box-bg: #CACACA;
+$qw-dochead-classic-box-font-color: #7f7b71;
+$qw-dochead-classic-box-bg: #e5e0d5;
 $qw-dochead-classic-label-min-width: rem-calc(75);
 $qw-dochead-classic-padding: rem-calc(7);
 $qw-dochead-classic-tcontent-min-width: rem-calc(100);
@@ -364,7 +364,7 @@ $qw-infobar-content-bg: $qw-content-bg;
 $qw-infobar-header-color: #4d4d4d;
 $qw-infobar-header-icon-font-size: rem-calc(25);
 $qw-infobar-header-icon-max-float: right;
-$qw-infobar-header-icon-max-font-color: #BFBFBF;
+$qw-infobar-header-icon-max-font-color: #bfbfbf;
 $qw-infobar-header-icon-max-padding: rem-calc(1 3 3 3);
 $qw-infobar-header-icon-max-margin: rem-calc(0 7);
 $qw-infobar-label-color: #bfbfbf;

@@ -84,7 +84,6 @@
 
     > .actions {
       @include grid-column($columns: 4, $collapse: true);
-      // height: inherit;
     }
   }
 }

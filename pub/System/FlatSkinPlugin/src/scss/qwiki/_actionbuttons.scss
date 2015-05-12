@@ -1,5 +1,84 @@
 $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $qw-tab-outerborder;
 
+.qw-topicactions-container {
+  display: inline-block;
+  float: right;
+  padding-top: rem-calc(10);
+}
+
+.qw-actionbutton-grp {
+  @include button-group-container();
+  display: inline-block;
+
+  .qw-action-button {
+    @include button($padding: rem-calc(4), $bg: #e4dfd4);
+    color: #7e7a71;
+    min-width: 32px;
+  }
+
+  > li {
+    @include button-group-style($radius: $global-radius);
+  }
+}
+
+.qw-tab {
+  border: 0;
+  border-radius: 0;
+  float: left;
+  line-height: $qw-top-one-height;
+  padding: 0 1.5rem;
+  transition: background-color .3s ease-in-out;
+  width: auto;
+
+  &:hover,
+  &:active {
+    background-color: darken($qw-top-one-bg, 5%);
+  }
+
+  &.active {
+    background-color: $qw-content-bg;
+
+    &:hover,
+    &:active {
+      background-color: darken($qw-content-bg, 5%);
+    }
+  }
+
+  .edit {
+    display: inline-block;
+    float: right;
+    margin-left: rem-calc(15);
+    overflow-x: hidden;
+    width: auto;
+    max-width: 20px;
+    white-space: nowrap;
+    transition: max-width .3s ease-in-out;
+
+    &:hover {
+      max-width: 200px;
+      background-color: white;
+    }
+
+    i {
+      vertical-align: top;
+      font-size: 1.5rem;
+    }
+  }
+
+  a {
+    color: red;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+
+
 .qw-joinedtab {
   float: left;
   border-top: $qw-tab-outerborder solid transparent;
@@ -285,49 +364,49 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 }
 
 // printing, further topic actions, language selector, etc
-.qw-action-button {
-  @include button( $padding: $button-tny, $bg: $qw-actionbtn-bg, $radius: $global-radius );
-  margin: 0;
-  padding: rem-calc(2 9 3 5);
-  font-size: 1rem;
-  line-height: 1rem;
-  color: $qw-actionbtn-color;
+// .qw-action-button {
+//   @include button( $padding: $button-tny, $bg: $qw-actionbtn-bg, $radius: $global-radius );
+//   margin: 0;
+//   padding: rem-calc(2 9 3 5);
+//   font-size: 1rem;
+//   line-height: 1rem;
+//   color: $qw-actionbtn-color;
 
-  > * {
-    max-width: 34px;
-    max-height: 34px;
-  }
+//   > * {
+//     max-width: 34px;
+//     max-height: 34px;
+//   }
 
-  &:hover {
-    background: $qw-actionbtn-hover-bg;
-    color: $qw-actionbtn-hover-color;
-  }
+//   &:hover {
+//     background: $qw-actionbtn-hover-bg;
+//     color: $qw-actionbtn-hover-color;
+//   }
 
-  &:active {
-    background: $qw-actionbtn-active-bg;
-    color: $qw-actionbtn-hover-color;
-  }
+//   &:active {
+//     background: $qw-actionbtn-active-bg;
+//     color: $qw-actionbtn-hover-color;
+//   }
 
-  &.active {
-    background: $qw-actionbtn-active-bg;
-    color: $qw-actionbtn-hover-color;
+//   &.active {
+//     background: $qw-actionbtn-active-bg;
+//     color: $qw-actionbtn-hover-color;
 
-    &:first-child {
-      border-top-left-radius: $global-radius;
-      border-bottom-left-radius: $global-radius;
-    }
+//     &:first-child {
+//       border-top-left-radius: $global-radius;
+//       border-bottom-left-radius: $global-radius;
+//     }
 
-    &:last-child {
-      border-top-right-radius: $global-radius;
-      border-bottom-right-radius: $global-radius;
-    }
+//     &:last-child {
+//       border-top-right-radius: $global-radius;
+//       border-bottom-right-radius: $global-radius;
+//     }
 
-    &:hover {
-      background: lighten($qw-actionbtn-active-bg, 10%);
-    }
-  }
+//     &:hover {
+//       background: lighten($qw-actionbtn-active-bg, 10%);
+//     }
+//   }
 
-  > i:before {
-    width: 20px !important;
-  }
-}
+//   > i:before {
+//     width: 20px !important;
+//   }
+// }

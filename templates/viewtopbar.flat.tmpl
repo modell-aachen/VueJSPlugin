@@ -1,13 +1,15 @@
+%TMPL:INCLUDE{"TopbarButtons"}%
+
 %TMPL:DEF{"topbar"}%<!--topbar-->
 <nav class="qw-top">
   <section class="qw-top-one">
-    <div class="tabs"></div>
+    <div class="tabs">%TMPL:P{"topbar:tabs"}%</div>
     <div class="search"></div>
   </section>
   <section class="qw-top-two">
     <div class="wrapper">
       <div class="breadcrumbs">%TMPL:P{"breadcrumbs"}%</div>
-      <div class="actions"></div>
+      <div class="actions"><div>%TMPL:P{"topbar:actions"}%</div></div>
     </div>
   </section>
 </nav>
