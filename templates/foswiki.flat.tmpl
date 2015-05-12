@@ -53,13 +53,17 @@
 
 %TMPL:DEF{"topicinfo"}%%TMPL:P{"topicaction"}%%TMPL:END%
 
+%TMPL:DEF{"broadcastmessage:contents"}%<div class="foswikiBroadcastMessage"> %BROADCASTMESSAGE% </div>%TMPL:END%
+
+%TMPL:DEF{"notes"}%%IF{"defined BROADCASTMESSAGE and $BROADCASTMESSAGE != ''" then="$percntTMPL:P{$quotbroadcastmessage:contents$quot}$percnt"}%%TMPL:END%
+
 %TMPL:DEF{"body"}%<!--body-->
 <body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui,cookie,placeholder,ui::autocomplete,wikiword,jqp::underscore,jqp::moment,jqp::spin,jqp::observe,jqp::tooltipster"}%
 <literal>%TMPL:P{"topbar"}%
 <!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
 <main class="qw-page">
   <article class="qw-topic">
-    <section class="notes"></section>
+    <section class="notes">%TMPL:P{"notes"}%</section>
     <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
     <section class="content">
       <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></literal>%TMPL:P{"content"}%<literal></div>
