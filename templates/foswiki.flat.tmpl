@@ -67,6 +67,15 @@
     </section>
   </article>
 </main>
+<nav class="qw-sidebar">
+  <div class="wrapper">
+    <div class="title">%MAKETEXT{"Document informations"}%</div>
+    <div class="content">
+      %TMPL:P{"infobar:general"}%
+      %TMPL:P{"infobar:kvp"}%
+    </div>
+  </div>
+</nav>
 <script src="%PUBURLPATH%/%SYSTEMWEB%/QgularContrib/qgular.js"></script>
 <script>
 jQuery(function($) {
@@ -212,8 +221,8 @@ TODO
 
 %TMPL:DEF{"infobar:general"}%
       <div>
-        <span class="label">%MAKETEXT{"General"}%</span>
-        <ul class='togglelink'>
+        <span class="title">%MAKETEXT{"General"}%</span>
+        <ul>
           <li><a href="#" data-attachtable-toggle>%MAKETEXT{"Attachments"}%</a></li>
           <li><a href="#">%MAKETEXT{"Version history"}%</a></li>
           <li><a href="#">%MAKETEXT{"Language comparison"}%</a></li>
@@ -223,8 +232,8 @@ TODO
 
 %TMPL:DEF{"infobar:kvp"}%
       <div>
-        <span class="label">%MAKETEXT{"KVP"}%</span>
-        <ul class='togglelink'>
+        <span class="title">%MAKETEXT{"Improvement process"}%</span>
+        <ul>
           <li><a href="#">%MAKETEXT{"Key figures"}%</a></li>
           <li><a href="#">%MAKETEXT{"Tasks"}%</a></li>
           <li><a href="#">%MAKETEXT{"Risks"}%</a></li>

@@ -36,3 +36,10 @@ msgstr "Angemeldet als"
 
 msgid "Close menu"
 msgstr "Menü schließen"
+
+msgid "Document informations"
+msgstr "Dokumenteninformationen"
+
+#: COMMENT
+msgid "Improvement process"
+msgstr "Verbesserungsprozess"

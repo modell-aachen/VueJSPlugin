@@ -60,23 +60,13 @@
 
   > .wrapper {
     @include grid-row($behavior: collapse);
+
+    border-bottom: 1px solid $qw-top-one-bg;
     height: inherit;
 
     @media #{$mobile-up} {@include grid-column($columns: 12, $collapse: true);}
-
-    @media #{$large-only} {
-      $c: $total-columns/3*2;
-      $p: percentage($c/$total-columns);
-      width: calc(#{$p} - 2 * #{$qw-breadcrumbs-padding});
-      border-bottom: 1px solid $qw-top-one-bg;
-    }
-
-    @media #{$extended-up} {
-      $c: $total-columns/4*3;
-      $p: percentage($c/$total-columns);
-      width: calc(#{$p} - 2 * #{$qw-breadcrumbs-padding});
-      border-bottom: 1px solid $qw-top-one-bg;
-    }
+    @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
+    @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
 
     > .breadcrumbs {
       @include grid-column($columns: 8, $collapse: true);

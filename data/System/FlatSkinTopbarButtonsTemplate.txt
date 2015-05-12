@@ -27,5 +27,5 @@
 }%%TMPL:P{"menu:more"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:actions:toggle"}%<!--name-->
-<li><a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button" data-behavior="radio" data-tooltip="top"><i class="icon-maximize"></i></a></li>
+<li><a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button" data-behavior="radio" data-tooltip="top"><i class="icon-arrow-right"></i></a></li>
 <!--/name-->%TMPL:END%
