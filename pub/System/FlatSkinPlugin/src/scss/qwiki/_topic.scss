@@ -21,7 +21,27 @@
   @media #{$medium-up} {
     left: $qw-leftbar-width;
     width: $qw-page-width;
+<<<<<<< HEAD
     max-width: $qw-page-width;
+=======
+    min-width: $qw-page-width;
+  }
+
+  &.leftbar-active {
+    $tx: $qw-leftbar-width-expanded - $qw-leftbar-width;
+
+    @media #{$mobile-up} {
+      transform: translate3d($qw-leftbar-width-expanded, 0, 0);
+    }
+
+    @media #{$medium-up} {
+      transform: translate3d( $tx, 0, 0 );
+    }
+
+    & ~ .qw-sidebar:not(.minimized) {
+      transform: translate3d($tx, 0, 0);
+    }
+>>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
   }
   $p: percentage(1/$total-columns);
   @media #{$large-only} {width: calc(8 * #{$p} - 2.01*#{$qw-content-padding});}
@@ -31,6 +51,7 @@
   bottom: 0;
   overflow-y: auto;
 <<<<<<< HEAD
+<<<<<<< HEAD
   @include flex-container($direction:column);
 =======
   transition: width $qw-default-ease;
@@ -38,6 +59,12 @@
 
   > .heading > div {
     padding: 0 0.6rem;
+=======
+  transition: width .3s ease-in-out;
+
+  &.maximized {
+    width: calc(100% - 60px);
+>>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
   }
 
   > .heading {
@@ -64,14 +91,27 @@
   bottom: 0;
   right: 0;
   background: $qw-content-bg;
+<<<<<<< HEAD
   transition: transform $qw-default-ease;
+=======
+  transition: transform .3s ease-in-out;
+>>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
   z-index: 100;
 
   $pad: 3 * $qw-content-padding;
   width: calc(25% - #{$pad});
 >>>>>>> 39e6d84... Introduced easing variables
 
+<<<<<<< HEAD
     $adorner-width: 30px;
+=======
+  &.minimized {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  > .wrapper {
+    padding: 0 rem-calc(30);
+>>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
 
     > .topic {
       position: relative;

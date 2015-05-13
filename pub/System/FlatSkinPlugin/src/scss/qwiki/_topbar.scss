@@ -274,8 +274,12 @@
 =======
     border-bottom: 1px solid $qw-top-one-bg;
     height: inherit;
+<<<<<<< HEAD
     transition: width $qw-default-ease;
 >>>>>>> 39e6d84... Introduced easing variables
+=======
+    transition: width .3s ease-in-out;
+>>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
 
         &:active {
           background: $qw-closebtn-active-large-bg;
@@ -284,6 +288,7 @@
     }
   }
 
+<<<<<<< HEAD
   > .two {
     @include grid-row($behavior: collapse);
     background: $qw-top-two-bg;
@@ -301,6 +306,14 @@
     @media #{$small-up} {
       height: $qw-top-two-height;
       max-height: $qw-top-two-height;
+=======
+    &.maximized {
+      width: calc(100% - 2 * #{$qw-breadcrumbs-padding});
+    }
+
+    > .breadcrumbs {
+      @include grid-column($columns: 8, $collapse: true);
+>>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
     }
 
     > .actions {

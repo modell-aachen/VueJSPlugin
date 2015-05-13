@@ -19,3 +19,9 @@
 }%<a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button visible-large-up action-maximize" data-behavior="radio" data-group="qw-action-buttons" data-maximize-toggle=".qw-page, .qw-top .two .actions" data-offcanvas-toggle data-tooltip="top"><i class="icon-arrow-right"></i></a>%{
 }%%TMPL:P{"menu:more"}%%TMPL:END%
 
+<<<<<<< HEAD
+=======
+%TMPL:DEF{"topbar:actions:toggle"}%<!--name-->
+<li><a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button dark" data-tooltip="top" data-maximize-toggle><i class="icon-arrow-right"></i></a></li>
+<!--/name-->%TMPL:END%
+>>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
