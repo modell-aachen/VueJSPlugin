@@ -1,5 +1,6 @@
 %TMPL:INCLUDE{"TopicMenu"}%
-%TMPL:DEF{"topbar:tabs"}%%TMPL:P{"topbar:tabs:standard"}%%TMPL:END%
+
+%TMPL:DEF{"topbar:tabs"}%FOOBAR%TMPL:P{"topbar:tabs:standard"}%%TMPL:END%
 %TMPL:DEF{"topbar:actions"}%%TMPL:P{"topbar:actions:buttons"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:tabs:standard"}%%{
@@ -21,11 +22,11 @@
 
 %TMPL:DEF{"topbar:actions:topicactions"}%%{
 }%<li><a href="#" class="qw-action-button hidden-mobile" title="%MAKETEXT{"Choose language"}%" data-tooltip="top"><i class="icon-flag"></i></a></li>%{
-}%%IF{"$FAVORITES='1' AND $'GETWORKFLOWROW{approved}'" then="$percntTMPL:P{favorites:button}$percnt"}%%{
+}%<li>%IF{"$FAVORITES='1' AND $'GETWORKFLOWROW{approved}'" then="$percntTMPL:P{favorites:button}$percnt"}%</li>%{
 }%<li><a href="#" class="qw-action-button hidden-mobile" title="%MAKETEXT{"Recommend topic"}%" data-tooltip="top"><i class="icon-forward"></i></a></li>%{
 }%<li><a href="#" class="qw-action-button hidden-mobile" data-dropdown="#qw-more-menu" title="%MAKETEXT{"More"}%" data-tooltip="top"><i class="icon-more"></i></a></li>%{
 }%%TMPL:P{"menu:more"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:actions:toggle"}%<!--name-->
-<li><a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button" data-behavior="radio" data-tooltip="top"><i class="icon-arrow-right"></i></a></li>
+<li><a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button dark" data-tooltip="top"><i class="icon-arrow-right"></i></a></li>
 <!--/name-->%TMPL:END%

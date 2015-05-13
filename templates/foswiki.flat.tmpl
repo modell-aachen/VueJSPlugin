@@ -75,6 +75,7 @@
   <div class="wrapper">
     <div class="title">%MAKETEXT{"Document informations"}%</div>
     <div class="content">
+      %TMPL:P{"infobar:transitions"}%
       %TMPL:P{"infobar:general"}%
       %TMPL:P{"infobar:kvp"}%
     </div>
@@ -245,20 +246,9 @@ TODO
       </div>
 %TMPL:END%
 
-%TMPL:DEF{"infobar"}%<!--infobar-->
-<div class="qw-infobar" data-offcanvas data-offcanvas-persist-state data-target="infobar">
-  <div>
-    <div class="header">
-      <div>
-        <i class="icon-page-info"></i>
-        <span>%MAKETEXT{"Document information"}%</span>
-        <a href="#" class="qw-close-btn" data-maximize-toggle=".qw-page, .qw-top .two .actions" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
-      </div>
-    </div>
-    <div class="content">%TMPL:P{"infobar:content"}%</div>
-  </div>
-</div>
-<!--/infobar-->%TMPL:END%
+%TMPL:DEF{"infobar:transitions"}%
+      <div class="transitions">%TMPL:P{"kvp:info"}%</div>
+%TMPL:END%
 
 
 %TMPL:DEF{"breadcrumbs"}%<!--breadcrumb-->
