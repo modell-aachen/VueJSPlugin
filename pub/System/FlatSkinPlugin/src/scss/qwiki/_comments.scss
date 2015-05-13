@@ -39,11 +39,11 @@
   }
 
   .header {
-    background: white;
+    background: $qw-white;
     border-bottom: $qw-border-width solid $qw-border-bg;
 
     i {
-      color: white;
+      color: $qw-white;
       font-size: 2rem;
       margin-left: rem-calc(12);
     }
@@ -56,14 +56,14 @@
   &.idea .header {
     background: $qw-comment-idea-color;
     span {
-      color: white;
+      color: $qw-white;
     }
   }
 
   &.issue .header {
     background: $qw-comment-issue-color;
     span {
-      color: white;
+      color: $qw-white;
     }
   }
 
@@ -271,7 +271,7 @@ input[type="radio"][name="commentType"] {
     margin-right: 0;
 
     span {
-      @include button( $padding: $button-tny, $bg: #fff, $full-width: true );
+      @include button( $padding: $button-tny, $bg: $qw-white, $full-width: true );
       font-size: 0.8rem;
       width: 99%;
       padding: rem-calc(6 0);
@@ -329,7 +329,7 @@ input[type="radio"][name="commentType"] {
 
 .qw-comment-reply {
   display: none;
-  background: white;
+  background: $qw-white;
   border-top: $qw-border-width solid $qw-border-bg;
   z-index: 2;
   position: fixed;
@@ -394,7 +394,7 @@ input[type="radio"][name="commentType"] {
 }
 
 .qw-comment-editbox {
-  background: white;
+  background: $qw-white;
   border-radius: $global-radius;
   position: relative;
   z-index: 2000;
@@ -442,7 +442,7 @@ input[type="radio"][name="commentType"] {
 }
 
 .qw-comment-viewbox {
-  background: white;
+  background: $qw-white;
   border-radius: $global-radius;
   position: relative;
   // z-index: 2000;

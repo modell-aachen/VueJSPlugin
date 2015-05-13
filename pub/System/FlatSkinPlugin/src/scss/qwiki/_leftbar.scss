@@ -1,10 +1,6 @@
-@mixin leftbar-item($color: #fff, $color-active: #fff, $bg-active: #fff) {
-  color: $color;
+@mixin leftbar-item($color: $qw-white, $color-active: $qw-white, $bg-active: $qw-white) {
+  @include default-font($size: 1rem, $color: $color)
   padding: rem-calc(6.5 15);
-  text-decoration: none;
-  font-family: 'OpenSans';
-  font-size: 1rem;
-
 
   i {
     font-size: 1.5rem;

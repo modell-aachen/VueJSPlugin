@@ -20,13 +20,11 @@ div#cke_topic.cke_chrome {
 
 nav.qw-top > .one {
   #cke-toolbar-container > .breadcrumbs {
+    @include default-font($bold: true, $color: $qw-white);
+
     height: rem-calc(14);
     max-height: rem-calc(14);
     background:$qw-top-one-cke-bg;
-    color: #fff;
-    font-family: 'OpenSans';
-    font-size: rem-calc(11);
-    font-weight: bold;
 
     i {
       font-size: 1.1rem;

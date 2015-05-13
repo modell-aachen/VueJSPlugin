@@ -257,7 +257,7 @@
 			}
 
 			&:nth-child(odd) {
-				background: #fff;
+				background: $qw-white;
 				&:hover {
 					background-color: $qw-dashboard-task-hover-bg;
 				}
@@ -361,7 +361,7 @@
 
 			&:active {
 				background: #236AA2;
-				color: #FFF;
+				color: $qw-white;
 			}
 		}
 

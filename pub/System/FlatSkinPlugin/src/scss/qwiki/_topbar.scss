@@ -1,4 +1,4 @@
-@mixin topbar($bg: #fff, $height: 50px) {
+@mixin topbar($bg: $qw-white, $height: 50px) {
   @include grid-row($behavior: collapse);
   background: $bg;
   height: $height;

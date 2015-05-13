@@ -31,7 +31,7 @@
     			  right: 8px;
     			  top:10px;
 			
-    			  color:#000;
+    			  color: $qw-black;
     			  content: '>';
     			  font: 11px "Consolas", monospace;
     			  padding: 0 0 2px;
@@ -751,7 +751,7 @@
 		}
 
 		> .history-content, .agenda-history-content {
-			background: white;
+			background: $qw-white;
 
 			> div {
 
@@ -759,7 +759,7 @@
 
 					> .history {
 						position: relative;
-						background-color: white;
+						background-color: $qw-white;
 						border-radius: $global-radius;
 						margin-bottom: $qw-inboxbar-inbox-margin-bottom;
 
@@ -1110,17 +1110,17 @@
 
 							&:hover {
 								background: #BFBFBF;
-								color: white;
+								color: $qw-white;
 							}
 
 							&:active {
 								background: #262626;
-								color: white;
+								color: $qw-white;
 							}
 
 							&.active {
 								background: #262626;
-								color: white;
+								color: $qw-white;
 							}
 
 							&:last-child {

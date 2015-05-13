@@ -97,7 +97,7 @@
     padding-top: rem-calc(10);
 
     .title {
-      @include default-font($bold: true, $transform: uppercase, $color: #6a5f41);
+      @include default-font($bold: true, $transform: uppercase, $color: $qw-mud-text);
 
       :not(:first-child) {
         line-height: rem-calc(60);
@@ -111,7 +111,7 @@
 
     li,
     a {
-      @include default-font($line: rem-calc(18), $color: #52cae4);
+      @include default-font($line: rem-calc(18), $color: $qw-blue);
       padding: rem-calc(11) 0;
       text-decoration: none;
     }

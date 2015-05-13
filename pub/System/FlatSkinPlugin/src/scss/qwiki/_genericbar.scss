@@ -295,7 +295,7 @@
     transition: background $qw-default-ease;
 
     &:focus {
-      background: #fff;
+      background: $qw-white;
     }
   }
 

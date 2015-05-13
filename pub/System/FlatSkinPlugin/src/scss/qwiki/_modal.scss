@@ -31,7 +31,7 @@
   width: 500px;
   padding: $qw-content-padding/2;
   opacity: 0;
-  background: #fff;
+  background: $qw-white;
   transform: translate3d(0, -150%, 0);
   transition: opacity $qw-default-ease,
               transform $qw-slow-ease;
