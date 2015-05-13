@@ -1,1 +1,0 @@
-%FLEXWEBLIST{format="<li>[[$web.%HOMETOPIC%][$name]]</li>" header="<ul>" footer="</ul>" subheader="<ul>" subfooter="</ul>" subformat="<li>[[$web.%HOMETOPIC%][$name]]</li>"}%
