@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+@mixin topbar($bg: $qw-white, $height: 50px) {
+  @include grid-row($behavior: collapse);
+  background: $bg;
+  height: $height;
+}
+
+>>>>>>> b024ad8... Replaced hard coded color by their variables
 .qw-top {
   position: fixed;
   top: 0;

@@ -6,7 +6,7 @@ section.content a span.qlink {
 
     & span.type {
         display: inline-block;
-        border-color: white;
+        border-color: $qw-white;
         border-style: inherit;
         border-width: inherit;
         border-radius: 0.3rem;
@@ -34,7 +34,7 @@ section.content a span.qlink {
     }
     &.approved span.type,
     &.uncontrolled span.type {
-        background-color: white;
+        background-color: $qw-white;
     }
     &.approved span.type {
         &:before {

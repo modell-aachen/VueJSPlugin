@@ -55,10 +55,15 @@
       }
     }
 
+<<<<<<< HEAD
     > .adorner {
       position: relative;
       @include flex($grow:0,$shrink:0);
       vertical-align: top;
+=======
+    .title {
+      @include default-font($bold: true, $transform: uppercase, $color: $qw-mud-text);
+>>>>>>> b024ad8... Replaced hard coded color by their variables
 
       &.adorner-hidden {
         display: none;
@@ -68,10 +73,18 @@
         width: $adorner-width;
         padding-right: $qw-content-padding/4;
 
+<<<<<<< HEAD
         > div {
           position: absolute;
         }
       }
+=======
+    li,
+    a {
+      @include default-font($line: rem-calc(18), $color: $qw-blue);
+      padding: rem-calc(11) 0;
+      text-decoration: none;
+>>>>>>> b024ad8... Replaced hard coded color by their variables
     }
   }
 

@@ -3,8 +3,13 @@
     width: 100%;
     border: none;
     border-radius: 5px;
+<<<<<<< HEAD
     background: white;
     transition: background-color 0.3s ease-in-out;
+=======
+    background: $qw-white;
+    transition: background-color $qw-default-ease;
+>>>>>>> b024ad8... Replaced hard coded color by their variables
     margin-top: 5px;
 
     @media #{$mobile-only} {max-height: $qw-top-one-height-mobile - 10px;}
@@ -19,7 +24,7 @@
     }
 
     &:valid {
-      background: white;
+      background: $qw-white;
     }
 
     &.ui-autocomplete-loading {

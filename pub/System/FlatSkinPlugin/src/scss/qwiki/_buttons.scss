@@ -120,8 +120,13 @@
 
   > a {
     display: block;
+<<<<<<< HEAD
     background: #fff;
     transition: background 0.3s ease-in-out;
+=======
+    background: $qw-white;
+    transition: background $qw-default-ease;
+>>>>>>> b024ad8... Replaced hard coded color by their variables
     border: 1px solid $qw-border-bg;
     padding: rem-calc(0 6 6 6);
     color: $body-font-color;
@@ -212,7 +217,7 @@
   }
 
   &.primary {
-    color: white;
+    color: $qw-white;
     background: $qw-button1-bg-color;
 
     &:hover {background-color: $qw-button1-bg-hover-color;}
@@ -351,7 +356,7 @@ input[type="text"].qw-input {
       line-height: 1.5rem;
     }
 
-    border-left: 1px solid white;
+    border-left: $qw-1px solid $qw-white;
     float: right;
     margin: rem-calc(-12 -12 -15 0);
 
@@ -369,7 +374,7 @@ input[type="text"].qw-input {
   &.active {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid $qw-white;
 
     > [data-adorner] {
       @extend .icon-arrow-up;
@@ -425,13 +430,7 @@ ul[data-drop] {
     font-size: 0.8rem;
     padding: rem-calc(8 15);
     min-width: 100%;
-    color: white;
+    color: $qw-white;
   }
 }
 
-// .qw-btn-grp {
-//   @include button-group-container( $styles: true, $float: false );
-//   > li {
-//     @include button-group-style( $radius: false, $even: false, $float: left );
-//   }
-// }

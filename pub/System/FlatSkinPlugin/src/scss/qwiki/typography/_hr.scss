@@ -13,7 +13,7 @@ hr {
   &.divider {
     border: 0;
     height: 1px;
-    $transparent: rgba( #000, 0 );
+    $transparent: rgba( $qw-black, 0 );
     $color: rgba( $body-bg, 0.85 );
     background-image: -webkit-linear-gradient(left, $transparent, $color, $transparent);
     background-image: -moz-linear-gradient(left, $transparent, $color, $transparent);
