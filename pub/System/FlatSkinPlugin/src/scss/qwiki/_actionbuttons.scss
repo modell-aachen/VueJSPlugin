@@ -29,7 +29,7 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   float: left;
   line-height: $qw-top-one-height;
   padding: 0 1.5rem;
-  transition: background-color .3s ease-in-out;
+  transition: background-color $qw-default-ease;
   width: auto;
 
   &:hover,
@@ -63,7 +63,7 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     width: auto;
     max-width: 20px;
     white-space: nowrap;
-    transition: max-width .3s ease-in-out;
+    transition: max-width $qw-default-ease;
 
     &:hover {
       max-width: 500px;

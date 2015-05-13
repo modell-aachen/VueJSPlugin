@@ -77,7 +77,7 @@
   background: $qw-infobar-content-bg;
   z-index: 100;
   overflow: hidden !important;
-  transition: transform 0.3s ease-in-out;
+  transition: transform $qw-default-ease;
   transform: translate3d(125%, 0, 0);
 
   $p: percentage(1/$total-columns);
@@ -116,7 +116,7 @@
 
   > section.list {
     transform: translate3d( 0, 0, 0 );
-    transition: transform 0.3s ease-in-out;
+    transition: transform $qw-default-ease;
 
     &.deactive {
       transform: translate3d( -100%, 0, 0 );
@@ -217,7 +217,7 @@
   > section.attach {
     position: relative;
     transform: translate3d( 100%, 0, 0 );
-    transition: transform 0.3s ease-in-out;
+    transition: transform $qw-default-ease;
 
     &.active {
       transform: translate3d( 0, 0, 0 );
@@ -278,7 +278,7 @@
 
   > section.details {
     transform: translate3d( 100%, 0, 0 );
-    transition: transform 0.3s ease-in-out;
+    transition: transform $qw-default-ease;
 
     &.active {
       transform: translate3d( 0, 0, 0 );

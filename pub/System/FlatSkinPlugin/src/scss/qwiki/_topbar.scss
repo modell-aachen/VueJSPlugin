@@ -9,7 +9,7 @@
   top: 0;
   padding: 0;
   min-width: $qw-page-width;
-  transition: transform .3s ease-in-out;
+  transition: transform $qw-default-ease;
   z-index: 99;
 
   @media #{$mobile-up} {
@@ -63,7 +63,7 @@
 
     border-bottom: 1px solid $qw-top-one-bg;
     height: inherit;
-    transition: width .3s ease-in-out;
+    transition: width $qw-default-ease;
 
     @media #{$mobile-up} {@include grid-column($columns: 12, $collapse: true);}
     @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}

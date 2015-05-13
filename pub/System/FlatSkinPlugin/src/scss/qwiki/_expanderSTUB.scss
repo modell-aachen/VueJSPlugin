@@ -5,8 +5,8 @@
   > .caption {
     background-color: #fff;
     color: #ccc;
-    transition: background-color 0.3s ease-in-out,
-                color 0.3s ease-in-out;
+    transition: background-color $qw-default-ease,
+                color $qw-default-ease;
     padding: rem-calc(6);
     cursor: pointer;
     font-size: 0.7rem;
@@ -37,7 +37,7 @@
     height: auto;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
+    transition: max-height $qw-default-ease;
   }
 
   &:focus {
@@ -77,7 +77,7 @@
     margin-bottom: rem-calc(2);
     border-radius: $global-radius;
     background-color: #f2f5f7;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color $qw-fast-ease;
     color: $primary-color;
     font-size: 0.8rem;
     clear: both;

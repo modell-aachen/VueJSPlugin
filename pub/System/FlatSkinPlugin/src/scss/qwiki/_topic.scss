@@ -4,7 +4,7 @@
   padding: 0;
   background: $qw-content-bg;
   bottom: 0;
-  transition: transform .3s ease-in-out;
+  transition: transform $qw-default-ease;
   height: 100%;
 
   @media #{$mobile-only} {top: $qw-top-height-mobile;}
@@ -51,7 +51,7 @@
 
   height: calc(100% - #{$qw-top-height});
   overflow-y: auto;
-  transition: width .3s ease-in-out;
+  transition: width $qw-default-ease;
 
   &.maximized {
     width: calc(100% - 60px);
@@ -72,7 +72,7 @@
   bottom: 0;
   right: 0;
   background: $qw-content-bg;
-  transition: transform .3s ease-in-out;
+  transition: transform $qw-default-ease;
   z-index: 100;
 
   $pad: 3 * $qw-content-padding;
