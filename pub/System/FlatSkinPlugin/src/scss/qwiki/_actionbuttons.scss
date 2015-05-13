@@ -53,7 +53,7 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
   .edit {
     display: inline-block;
-    // float: right;
+    float: right;
     margin-left: rem-calc(15);
     overflow-x: hidden;
     width: auto;
