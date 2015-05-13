@@ -84,16 +84,12 @@
   }
 
   .content {
-    font-family: 'OpenSans';
-    font-size: rem-calc(12);
+    @include default-font($bold: false, $size: rem-calc(12));
     height: calc(100% - #{$qw-top-height});
     padding-top: rem-calc(10);
 
     .title {
-      color: #6a5f41;
-      font-size: rem-calc(11);
-      font-weight: bold;
-      text-transform: uppercase;
+      @include default-font($bold: true, $transform: uppercase, $color: #6a5f41);
 
       :not(:first-child) {
         line-height: rem-calc(60);
@@ -107,23 +103,28 @@
 
     li,
     a {
-      color: #52cae4;
-      line-height: rem-calc(18);
+      @include default-font($line: rem-calc(18), $color: #52cae4);
       padding: rem-calc(11) 0;
       text-decoration: none;
     }
   }
 
-  section.notes {
+  .notes {
     padding: $qw-dochead-padding;
 
     div + div {
       margin-top: 2px;
     }
 
-    > div.foswikiBroadcastMessage {
+    > .foswikiBroadcastMessage {
       background-color: $qw-broadcast-color;
       text-align: center;
     }
+  }
+
+  .transitions {
+    background: $qw-yellow;
+    padding: rem-calc(10);
+    margin-bottom: rem-calc(20);
   }
 }

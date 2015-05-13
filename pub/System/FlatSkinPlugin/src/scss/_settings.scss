@@ -11,6 +11,9 @@
   font-style: normal;
 }
 
+// testing
+$qw-font-color: 000;
+
 // do not include any auto-generated Foundation classes
 $include-html-classes: false;
 $include-print-styles: false;
@@ -78,6 +81,24 @@ $qw-draft-color: $alert-color;
 $qw-edit-color: $warning-color;
 $qw-approved-color: white;
 $qw-broadcast-color: #ffe8ae;
+
+
+$qw-white: #fff;
+$qw-black: #000;
+$qw-red: #d83314;
+$qw-orange: #e2af19;
+$qw-yellow: #ffe8ae;
+$qw-green: #84bb2e;
+$qw-blue: #52cae4;
+$qw-sand: #e4dfd4;
+$qw-dust: #f1efea;
+$qw-mud: #7e7a71;
+
+$qw-dust-text: #7f7b71;
+$qw-gray-text: #84878a;
+$qw-mud-text: #6a5f41;
+$qw-dark-text: #282c2e;
+
 
 // global defaults
 $qw-border-radius: rem-calc(3);
