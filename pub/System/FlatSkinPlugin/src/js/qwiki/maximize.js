@@ -18,11 +18,11 @@
     bind: function() {
       this.unbind();
 
-      $('[data-maximize-toggle]').on('click', this, handleClick );
+      $('[data-maximize-toggle]').on('click', this, handleClick);
     },
 
     unbind: function() {
-      $('[data-maximize-toggle]').off('click', handleClick );
+      $('[data-maximize-toggle]').off('click', handleClick);
     },
 
     maximizeOnce: function() {
@@ -97,43 +97,68 @@
   };
 
   var handleClick = function( evt ) {
-    var self = evt.data;
-    var $this = $(this);
-    if ( $this.hasClass('qw-close-btn') ) {
-      self.maximizeOnce();
-      var data = $(this).data('maximize-toggle');
-      if ( data ) {
-        self.Q.persistData( self.name, data );
-      }
+    var $toggle = $(this).find('i');
+    var $topic = $('.qw-topic');
+    var $sidebar = $('.qw-sidebar');
+    var $top = $('.qw-top-two > .wrapper');
+    var maximized = $topic.hasClass('maximized');
 
-      return;
-    }
+    if ( maximized ) {
+      $toggle.removeClass('icon-arrow-left');
+      $toggle.addClass('icon-arrow-right');
 
-    $(this).toggleClass('active');
-    var targets = $(this).data('maximize-toggle');
-    if ( !targets ) {
-      return;
-    }
-
-    var maximized = [];
-    _.each( targets.split(','), function(elem) {
-      var $elem = $(elem);
-      $elem.toggleClass(self.cssClass);
-      if ( $elem.hasClass(self.cssClass) ) {
-        maximized.push( elem );
-
-        $('.offcanvas').each( function() {
-          $(this).offcanvas({action: 'close'});
-        });
-      }
-    });
-
-    if(maximized.length) {
-      QWiki.raiseEvent( document, QWiki.plugins.maximize, 'maximizing' );
+      $topic.removeClass('maximized');
+      $top.removeClass('maximized');
+      $sidebar.removeClass('minimized');
     } else {
-      QWiki.raiseEvent( document, QWiki.plugins.maximize, 'minimizing' );
+      $toggle.addClass('icon-arrow-left');
+      $toggle.removeClass('icon-arrow-right');
+
+      $topic.addClass('maximized');
+      $top.addClass('maximized');
+      $sidebar.addClass('minimized');
     }
 
-    self.Q.persistData( self.name, maximized.join(',') );
+    return false;
+
+    // ToDo
+    // var self = evt.data;
+    // var $this = $(this);
+    // if ( $this.hasClass('qw-close-btn') ) {
+    //   self.maximizeOnce();
+    //   var data = $(this).data('maximize-toggle');
+    //   if ( data ) {
+    //     self.Q.persistData( self.name, data );
+    //   }
+
+    //   return;
+    // }
+
+    // $(this).toggleClass('active');
+    // var targets = $(this).data('maximize-toggle');
+    // if ( !targets ) {
+    //   return;
+    // }
+
+    // var maximized = [];
+    // _.each( targets.split(','), function(elem) {
+    //   var $elem = $(elem);
+    //   $elem.toggleClass(self.cssClass);
+    //   if ( $elem.hasClass(self.cssClass) ) {
+    //     maximized.push( elem );
+
+    //     $('.offcanvas').each( function() {
+    //       $(this).offcanvas({action: 'close'});
+    //     });
+    //   }
+    // });
+
+    // if(maximized.length) {
+    //   QWiki.raiseEvent( document, QWiki.plugins.maximize, 'maximizing' );
+    // } else {
+    //   QWiki.raiseEvent( document, QWiki.plugins.maximize, 'minimizing' );
+    // }
+
+    // self.Q.persistData( self.name, maximized.join(',') );
   };
 }(jQuery, window._, window.document, window));

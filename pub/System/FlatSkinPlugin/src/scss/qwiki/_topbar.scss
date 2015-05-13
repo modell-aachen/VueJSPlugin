@@ -63,10 +63,15 @@
 
     border-bottom: 1px solid $qw-top-one-bg;
     height: inherit;
+    transition: width .3s ease-in-out;
 
     @media #{$mobile-up} {@include grid-column($columns: 12, $collapse: true);}
     @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
     @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
+
+    &.maximized {
+      width: calc(100% - 2 * #{$qw-breadcrumbs-padding});
+    }
 
     > .breadcrumbs {
       @include grid-column($columns: 8, $collapse: true);
