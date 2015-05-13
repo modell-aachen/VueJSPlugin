@@ -1,6 +1,13 @@
 .qw-page {
   position: absolute;
   padding: 0;
+<<<<<<< HEAD
+=======
+  background: $qw-content-bg;
+  bottom: 0;
+  transition: transform $qw-default-ease;
+  height: 100%;
+>>>>>>> 39e6d84... Introduced easing variables
 
   @media #{$mobile-only} {top: $qw-top-height-mobile;}
   @media #{$small-up} {top: $qw-top-height;}
@@ -23,7 +30,11 @@
 
   bottom: 0;
   overflow-y: auto;
+<<<<<<< HEAD
   @include flex-container($direction:column);
+=======
+  transition: width $qw-default-ease;
+>>>>>>> 39e6d84... Introduced easing variables
 
   > .heading > div {
     padding: 0 0.6rem;
@@ -36,11 +47,29 @@
   }
 
   > .content {
+<<<<<<< HEAD
     @include flex-container($align:stretch);
     @include flex($grow:1);
     width: 100%;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+=======
+    padding: $qw-content-padding;
+  }
+}
+
+.qw-sidebar {
+  position: fixed;
+  top: $qw-top-one-height;
+  bottom: 0;
+  right: 0;
+  background: $qw-content-bg;
+  transition: transform $qw-default-ease;
+  z-index: 100;
+
+  $pad: 3 * $qw-content-padding;
+  width: calc(25% - #{$pad});
+>>>>>>> 39e6d84... Introduced easing variables
 
     $adorner-width: 30px;
 

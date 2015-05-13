@@ -7,7 +7,7 @@
   z-index: 10000;
   background-color: rgba(0, 0, 0, 0);
   display: none;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color $qw-default-ease;
 
   &.active {
     background-color: rgba(0, 0, 0, 0.5);
@@ -33,8 +33,8 @@
   opacity: 0;
   background: $qw-white;
   transform: translate3d(0, -150%, 0);
-  transition: opacity 0.3s ease-in-out,
-              transform 0.4s ease-in-out;
+  transition: opacity $qw-default-ease,
+              transform $qw-slow-ease;
 
   &.active {
     opacity: 1;

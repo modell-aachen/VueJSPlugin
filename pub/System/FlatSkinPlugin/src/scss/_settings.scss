@@ -80,6 +80,9 @@ $qw-approved-color: white;
 
 // global defaults
 $qw-border-radius: rem-calc(3);
+$qw-default-ease: .3s ease-in-out;
+$qw-fast-ease: .15s ease-in-out;
+$qw-slow-ease: .5s ease-in-out;
 
 // colors: generic interaction elements
 $qw-button1-bg-color: $primary-color;

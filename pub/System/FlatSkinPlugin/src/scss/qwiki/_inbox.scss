@@ -6,8 +6,8 @@
 	z-index: 100;
 	overflow-x: hidden;
 	transform: translate3d( 100%, 0, 0 );
-	transition: opacity 0.5s ease-in-out,
-	          transform 0.3s ease-in-out;
+	transition: opacity $qw-slow-ease,
+	          transform $qw-default-ease;
 
 	@media #{$mobile-only} {top: $qw-top-one-height-mobile;}
 	@media #{$small-up} {top: $qw-top-one-height;}
@@ -183,7 +183,7 @@
 
 						> .tools {
 							cursor: pointer;
-							transition: opacity 0.15s ease-in-out;
+							transition: opacity $qw-fast-ease;
 							opacity: 0;
 							height: $qw-inboxbar-inbox-tools-height;
 							border: solid 5px $qw-button2-bg-color;

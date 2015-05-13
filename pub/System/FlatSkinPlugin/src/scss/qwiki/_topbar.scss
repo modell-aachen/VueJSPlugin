@@ -12,6 +12,10 @@
   top: 0;
   padding: 0;
   min-width: $qw-page-width;
+<<<<<<< HEAD
+=======
+  transition: transform $qw-default-ease;
+>>>>>>> 39e6d84... Introduced easing variables
   z-index: 99;
 
   @media #{$mobile-up} {
@@ -263,9 +267,15 @@
           border-radius: 0;
         }
 
+<<<<<<< HEAD
         &:hover {
           background: $qw-closebtn-hover-large-bg;
         }
+=======
+    border-bottom: 1px solid $qw-top-one-bg;
+    height: inherit;
+    transition: width $qw-default-ease;
+>>>>>>> 39e6d84... Introduced easing variables
 
         &:active {
           background: $qw-closebtn-active-large-bg;

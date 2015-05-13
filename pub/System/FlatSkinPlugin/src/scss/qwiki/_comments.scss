@@ -4,8 +4,8 @@
   z-index: 100;
   background: $qw-infobar-bg;
   transform: translate3d( 100%, 0, 0 );
-  transition: opacity 0.5s ease-in-out,
-              transform 0.3s ease-in-out;
+  transition: opacity $qw-slow-ease,
+              transform $qw-default-ease;
 
   @media #{$mobile-only} {
     top: $qw-top-one-height-mobile;
@@ -163,7 +163,7 @@
     > .content {
       background: $qw-commentbar-content-bg;
       padding: rem-calc(12 3);
-      transition: transform 0.3s ease-in-out;
+      transition: transform $qw-default-ease;
 
       position: relative;
       height: 100%;
@@ -181,7 +181,7 @@
   padding-right: 0.5rem;
   margin-left: -0.5rem;
   margin-right: -0.5rem;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color $qw-default-ease;
 
   &.active {
     &.idea { background-color: $qw-comment-idea-bg; }
@@ -211,8 +211,8 @@
 
   display: none;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out,
-              background 0.3s ease-in-out;
+  transition: opacity $qw-default-ease,
+              background $qw-default-ease;
 
   i {
     font-size: 2rem;
@@ -337,7 +337,7 @@ input[type="radio"][name="commentType"] {
   left: $qw-content-padding;
   right: $qw-content-padding;
   bottom: 0;
-  transition: height 0.15s ease-in-out;
+  transition: height $qw-fast-ease;
 
   > .btn {
     $pt: rem-calc(12);

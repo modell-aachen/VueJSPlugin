@@ -40,12 +40,23 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     color: $qw-tab-text-inactive-hover-color;
   }
 
+<<<<<<< HEAD
   &,
   & > *,
   & > div.pseudoborder > * {
     transition: background $qw-tab-transition-time ease-in-out,
                 color $qw-tab-transition-time ease-in-out;
   }
+=======
+.qw-tab {
+  border: 0;
+  border-radius: 0;
+  float: left;
+  line-height: $qw-top-one-height;
+  padding: 0 1.5rem;
+  transition: background-color $qw-default-ease;
+  width: auto;
+>>>>>>> 39e6d84... Introduced easing variables
 
   &.inactive > *:first-child a {
       border-top-left-radius: $qw-tab-radius;
@@ -221,11 +232,23 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
   > .sub-tab {
     float: right;
+<<<<<<< HEAD
     background-color: transparent;
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
+=======
+    line-height: rem-calc(40);
+    margin-left: rem-calc(10);
+    margin-top: rem-calc(10);
+    padding: rem-calc(0 5);
+    overflow-x: hidden;
+    width: auto;
+    max-width: 20px;
+    white-space: nowrap;
+    transition: max-width $qw-default-ease;
+>>>>>>> 39e6d84... Introduced easing variables
 
     & > div.pseudoborder {
         padding-top: $qw-tab-pseudoborder;

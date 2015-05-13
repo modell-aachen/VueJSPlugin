@@ -7,5 +7,5 @@ html body {
 }
 
 [data-offcanvas] {
-  transition: transform 0.3s ease-in-out;
+  transition: transform $qw-default-ease;
 }
