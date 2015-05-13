@@ -52,9 +52,13 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   }
 
   .edit {
+    border-radius: $global-radius;
     display: inline-block;
     float: right;
-    margin-left: rem-calc(15);
+    line-height: rem-calc(40);
+    margin-left: rem-calc(10);
+    margin-top: rem-calc(10);
+    padding: rem-calc(0 5);
     overflow-x: hidden;
     width: auto;
     max-width: 20px;
@@ -63,7 +67,11 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
     &:hover {
       max-width: 500px;
-      background-color: white;
+      background-color: $qw-white;
+    }
+
+    a {
+      color: $qw-blue;
     }
 
     i {
@@ -73,299 +81,6 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   }
 
   a {
-    color: red;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: none;
-    }
+    @include default-font($size: 1rem, $color: $qw-gray-text);
   }
 }
-
-
-
-
-
-// .qw-joinedtab {
-//   float: left;
-//   border-top: $qw-tab-outerborder solid transparent;
-//   border-left: $qw-tab-outerborder solid transparent;
-//   border-right: $qw-tab-outerborder solid transparent;
-//   &.inactive:last-child {
-//       border-right: none;
-//   }
-
-//   @media #{$mobile-only} {height: $qw-top-two-height-mobile;}
-//   @media #{$small-up} {height: $qw-top-two-height;}
-
-//   margin-right: $button-tny - $qw-tab-deco-border-width;
-//   &:last-child {
-//       margin-right: $button-tny;
-//   }
-
-//   &.approved:first-child > * {
-//       margin-left: $button-tny - $qw-tab-deco-border-width;
-//   }
-
-//   & div.active a,
-//   &:hover div.active:not(:hover) a,
-//   &.active a {
-//     color: $qw-tab-text-active-color;
-//   }
-//   & div.inactive a,
-//   &:hover div.inactive:not(:hover) a,
-//   &.inactive a {
-//     color: $qw-tab-text-inactive-color;
-//   }
-//   & div.active:hover a,
-//   &.active:hover a {
-//     color: $qw-tab-text-active-hover-color;
-//   }
-//   & div.inactive:hover a,
-//   &.inactive:hover a {
-//     color: $qw-tab-text-inactive-hover-color;
-//   }
-
-//   &,
-//   & > *,
-//   & > div.pseudoborder > * {
-//     transition: background $qw-tab-transition-time ease-in-out,
-//                 color $qw-tab-transition-time ease-in-out;
-//   }
-
-//   &.inactive > *:first-child a {
-//       border-top-left-radius: $qw-tab-radius;
-//       border-bottom-left-radius: $qw-tab-radius;
-//       border-left-width: $qw-tab-deco-border-width;
-//   }
-//   &.inactive > *:last-child a {
-//       border-top-right-radius: $qw-tab-radius;
-//       border-bottom-right-radius: $qw-tab-radius;
-//   }
-//   &.inactive a {
-//     border-color: $qw-content-bg;
-//     border-right-width: $qw-tab-deco-border-width;
-//   }
-//   & a {
-//     border-style: solid;
-//     border-color: transparent;
-//     border-width: $qw-tab-deco-border-width 0 $qw-tab-deco-border-width 0;
-//   }
-
-//   & > * {
-//   }
-//   & > div.pseudoborder {
-//     & > * {
-//       background-image: none;
-//       background-color: inherit;
-//     }
-//     display: inline-block;
-//     margin-top: 0px;
-//     margin-bottom: 0px;
-//     padding-top: $qw-tab-pseudoborder;
-//     padding-bottom: $qw-tab-pseudoborder;
-//   }
-
-//   & a {
-//     text-decoration: none;
-//   }
-
-//   &.active {
-//     border-color: $qw-content-bg;
-//     background-color: $qw-content-bg;
-//   }
-
-//   & > a,
-//   & > div.pseudoborder > a,
-//   & >.sub-tab > a,
-//   & i {
-//     &:before {
-//       font-family:"QWikiSymbol";
-//       font-size: 1.75rem;
-//       vertical-align: middle;
-//       transition: margin-right $qw-tab-transition-time linear;
-//     }
-//   }
-
-
-//   & > div.pseudoborder > a,
-//   & > a {
-//     display: inline-block;
-
-//     @media #{$mobile-only} {
-//       height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-//       line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-//     }
-
-//     @media #{$small-up} {
-//       height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-//       line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-//     }
-
-//     font-size: rem-calc(13);
-//     padding-left: $button-tny;
-//     padding-right: $button-tny;
-//   }
-//   &.inactive > div.pseudoborder > a,
-//   &.inactive > a {
-//     padding-left: $button-tny - $qw-tab-deco-border-width;
-//     padding-right: $button-tny - $qw-tab-deco-border-width;
-//   }
-
-//   &.approved {
-//     & > div.pseudoborder > a, & > a {
-//       &:before {
-//         @extend .icon-page-free;
-//       }
-//     }
-
-//     &.active {
-//       border-color: $qw-content-bg;
-
-//       &,
-//       & > * {
-//         background: $qw-tab-approved-active-color;
-//       }
-//     }
-
-//     &.inactive {
-//       & > div.pseudoborder > a,
-//       & > a {
-//           background: $qw-tab-approved-inactive-color;
-//       }
-//     }
-//   }
-
-//   &.unapproved {
-//     > div.pseudoborder > a:before, > a:before {
-//       @extend .icon-page-draft;
-//     }
-
-//     & > * {
-//       background-image: none;
-//     }
-
-//     &.active {
-//       & > div.pseudoborder {
-//           background-image: $qw-stripes;
-//           background-color: $qw-tab-unapproved-active-color;
-//       }
-
-//       & > * {
-//         background-color: $qw-edit-color;
-//       }
-//     }
-//     &.inactive {
-//       & > div.pseudoborder > a,
-//       & > a {
-//           background: $qw-tab-approved-inactive-color;
-//       }
-//     }
-//   }
-
-//   & > .sub-tab > div.pseudoborder {
-//       background-color: transparent;
-
-//       & a {
-//           background-color: $qw-tab-subtab-color;
-//       }
-//   }
-//   &.inactive > .sub-tab a {
-//       border-left: $qw-tab-deco-border-width solid $qw-content-bg;
-//   }
-//   &.active > .sub-tab > div.pseudoborder {
-//       border-left: $qw-tab-deco-border-width solid $qw-content-bg;
-
-//       &,
-//       & a {
-//           background-color: $qw-tab-subtab-color;
-//       }
-//   }
-//   & > .sub-tab.inactive:hover > div.pseudoborder {
-//       & a {
-//           background-color: $qw-tab-subtab-inactive-hover-color;
-//       }
-//   }
-//   &.active > .sub-tab:hover > div.pseudoborder,
-//   & > .sub-tab.active:hover > div.pseudoborder {
-//       &,
-//       & a {
-//           background-color: $qw-tab-subtab-active-hover-color;
-//       }
-//   }
-
-
-//   > .sub-tab {
-//     float: right;
-//     background-color: transparent;
-//     padding-top: 0px;
-//     padding-bottom: 0px;
-//     margin-top: 0px;
-//     margin-bottom: 0px;
-
-//     & > div.pseudoborder {
-//         padding-top: $qw-tab-pseudoborder;
-//         padding-bottom: $qw-tab-pseudoborder;
-//     }
-
-//     @media #{$mobile-only} {height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;}
-//     @media #{$small-up} {height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;}
-
-//     > div.pseudoborder > a,
-//     > a {
-//       display: inline-block;
-//       font-size: rem-calc(13);
-//       font-weight: normal;
-//       background-color: $qw-tab-subtab-color;
-//       background-image: none;
-//       padding-left: $button-tny;
-//       padding-right: $button-tny;
-
-//       @media #{$mobile-only} {
-//         height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-//         line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-//       }
-
-//       @media #{$small-up} {
-//         height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-//         line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-//       }
-
-//       &:not(:hover) {
-//         &:before {
-//           margin-right: 0;
-//         }
-
-//         .expander {
-//           max-width: 0;
-//         }
-//       }
-
-//       .expander {
-//         width: auto;
-//         max-width: rem-calc(500);
-//         overflow-x: hidden;
-//         float: right;
-//         transition: max-width $qw-tab-transition-time ease-in-out;
-//         white-space: nowrap;
-
-//         @media #{$mobile-only} {
-//           height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-//           line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-//         }
-
-//         @media #{$small-up} {
-//           height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-//           line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-//         }
-//       }
-//     }
-//   }
-
-//   /* XXX this is a quick workaround to disable the active tabs, that does not require re-doing all the templates and is also quick to undo */
-//   &.active > a,
-//   &.active > div.pseudoborder > a,
-//   &.active > div.psuedoborder *:not(.inactive) a {
-//       pointer-events:none;
-//   }
-// }

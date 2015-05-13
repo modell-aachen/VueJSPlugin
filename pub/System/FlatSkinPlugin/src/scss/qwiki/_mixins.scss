@@ -1,7 +1,8 @@
-@mixin default-font($size: rem-calc(11), $bold: false, $color: $qw-font-color, $line: 1, $align: baseline, $transform: none) {
+@mixin default-font($size: rem-calc(11), $bold: false, $color: $qw-font-color, $line: 1, $align: baseline, $transform: none, $decoration: none) {
   color: $color;
   font-family: 'OpenSans';
   font-size: $size;
+  text-decoration: $decoration;
 
   @if $line != 1 {
     line-height: $line;
