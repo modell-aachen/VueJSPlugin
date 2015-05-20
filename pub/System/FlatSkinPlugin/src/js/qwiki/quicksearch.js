@@ -47,8 +47,8 @@
         element: $e
       });
       $.data($e[0], 'quicksearch_searcher', searcher);
-      var submit = $e.data('quicksearch-submit'),
-        dismaxMain = $e.data('quicksearch-dismax-main'),
+      var submit = $e.attr('data-quicksearch-submit'),
+        dismaxMain = $e.attr('data-quicksearch-dismax-main'),
         filterToggle = $e.find('[data-quicksearch-filter-toggle]');
       if (submit) {
         submit = $(submit);
@@ -60,14 +60,6 @@
           parent: searcher
         });
       }
-// XXX temporary
-      var topicsOnly = new SearchBoolFilter({
-        element: $(),
-        parent: searcher,
-        filter: 'type:topic'
-      });
-      topicsOnly.enabled = true;
-//
       if (filterToggle) {
         var toggle = $(filterToggle.data('quicksearch-filter-toggle'));
         toggle.on('click.quicksearch', function() {
@@ -88,23 +80,25 @@
             return; // Skip this one; broken parent
           }
         }
-        var type = $fe.data('quicksearch-filter-type');
+        var type = $fe.attr('data-quicksearch-filter-type');
         var filter;
-        if (type === 'bool-filter') {
-          filter = new SearchBoolFilter({
+        if (type === 'facetqueries') {
+          filter = new SearchFacetQueries({
             element: $fe,
             parent: p,
-            filter: $fe.data('quicksearch-filter-query')
+            queries: $.parseJSON($fe.attr('data-quicksearch-filter-queries')),
+            combineMode: $fe.attr('data-quicksearch-filter-combine'),
+            radioMode: $fe.has('input[type="radio"]').length
           });
         }
         else if (type === 'facet') {
-          var vals = $fe.data('quicksearch-filter-values');
+          var vals = $fe.attr('data-quicksearch-filter-values');
           if (!vals) {
             vals = [];
           } else {
             vals = vals.split(/\s*,\s*/);
           }
-          var vmap = $fe.data('quicksearch-filter-map');
+          var vmap = $fe.attr('data-quicksearch-filter-map');
           if (!vmap) {
             vmap = {};
           } else {
@@ -118,8 +112,9 @@
           filter = new SearchFacet({
             element: $fe,
             parent: p,
-            facetField: $fe.data('quicksearch-filter-field'),
-            combineMode: $fe.data('quicksearch-filter-combine'),
+            facetField: $fe.attr('data-quicksearch-filter-field'),
+            combineMode: $fe.attr('data-quicksearch-filter-combine'),
+            radioMode: $fe.has('input[type="radio"]').length,
             selectedValues: vals,
             valueMap: vmap
           });
@@ -136,6 +131,7 @@
         location.assign(location.protocol +'//'+ location.host + foswiki.preferences.SCRIPTURLPATH +'/view'+ foswiki.preferences.SCRIPTSUFFIX +'/'+ foswiki.preferences.WEB +'/WebSearch');
         return false;
       });
+      setTimeout(function() { searcher.update(); });
     },
 
     unbind: function($e) {

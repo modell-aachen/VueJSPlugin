@@ -118,8 +118,6 @@ jQuery(function($) {
 
 %TMPL:DEF{"quicksearch"}%<!--quicksearch-->
 <div class="qw-quicksearch" data-offcanvas data-target="quicksearch" data-quicksearch data-solrsearch-widget data-quicksearch-dismax-main=".qw-quicksearch-form input" data-quicksearch-submit=".qw-quicksearch-form .submit">
-<!--
-TODO
   <div id="qw-searchbar-filters" class="filter" data-quicksearch-filter-toggle="#qw-quicksearch-filter-toggle">
     <div class="filter-summary">
       <div class="filter-active-list" data-solrsearch-filterlist>
@@ -128,33 +126,27 @@ TODO
       </div>
     </div>
     <div class="filter-dropdown-container">
-      <div class="filter-dropdown-main">
+      <div class="filter-dropdown-main" data-quicksearch-filter-type="facetqueries" data-quicksearch-filter-queries="{%FORMATLIST{"%MAKETEXT{"all applications"}%=*,%APPLICATIONMAP{default="%MAKETEXT{"Processes"}%=Processes"}%" pattern="(.*)=(.*)" separator="," format="&quot;web:$2&quot;:&quot;$1&quot;"
+      }%}">
         <div class="filter-label">%MAKETEXT{"Search where?"}%</div>
-        <div class="filter-values"><ul>
-          <li><label>%MAKETEXT{"all applications"}% <input type="radio" name="quicksearch_filter_app_radio"></label></li>
-          %FORMATLIST{"%APPLICATIONMAP{default="%MAKETEXT{"Processes"}%=Processes"}%" pattern="(.*)=(.*)" separator="$n"
-            format="<li data-quicksearch-filter-type=\"bool-filter\" data-quicksearch-filter-query=\"web:$2\" data-check-target=\"input\"><label>$1 <input type=\"radio\" name=\"quicksearch_filter_app_radio\"></label></li>"
-          }%
+        <div class="filter-values"><ul data-facet-values>
+          <li data-qtemplate data-facet-value qbind="data-facet-value-id: id"><label><span qbind="title"></span> (<span qbind="count"></span>) <input type="radio" name="quicksearch_filter_app_radio"></label></li>
         </ul></div>
       </div>
       <div class="filter-dropdown-popup">
       </div>
     </div>
     <div class="filter-dropdown-container">
-      <div class="filter-dropdown-main">
+      <div class="filter-dropdown-main" data-quicksearch-filter-type="facetqueries" data-quicksearch-filter-combine="OR" data-quicksearch-filter-queries="{&quot;*:* -type:(topic OR comment OR action OR task)&quot;:&quot;%MAKETEXT{"Attachments"}%&quot;, &quot;type:(task OR action)&quot;:&quot;%MAKETEXT{"Tasks"}%&quot;, &quot;type:topic web:Main form:*UserForm&quot;:&quot;%MAKETEXT{"Users"}%&quot;, &quot;type:topic -web:(Main OR System OR Custom OR Sandbox)&quot;:&quot;%MAKETEXT{"Topics"}%&quot;}">
         <div class="filter-label">%MAKETEXT{"Search what?"}%</div>
-        <div class="filter-values"><ul>
-          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="-type:(topic OR comment OR action OR task)" data-check-target="input"><label>%MAKETEXT{"Attachments"}% <input type="checkbox"></label></li>
-          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:(task OR action)" data-check-target="input"><label>%MAKETEXT{"Tasks"}% <input type="checkbox"></label></li>
-          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:topic web:Main form:*UserForm" data-check-target="input"><label>%MAKETEXT{"Users"}% <input type="checkbox"></label></li>
-          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:topic -web:(Main OR System OR Custom OR Sandbox)" data-check-target="input"><label>%MAKETEXT{"Topics"}% <input type="checkbox"></label></li>
+        <div class="filter-values"><ul data-facet-values>
+          <li data-qtemplate data-facet-value qbind="data-facet-value-id: id"><label><span qbind="title"></span> (<span qbind="count"></span>) <input type="checkbox"></label></li>
         </ul></div>
       </div>
       <div class="filter-dropdown-popup">
       </div>
     </div>
   </div>
--->
   <div class="results">
       <div class="qw-total-results" data-qtemplate="total">
         <span qbind="count"></span> results

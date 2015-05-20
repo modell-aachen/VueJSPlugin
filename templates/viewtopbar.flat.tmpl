@@ -4,7 +4,7 @@
 <nav class="qw-top">
   <section class="qw-top-one">
     <div class="tabs">%TMPL:P{"topbar:tabs"}%</div>
-    <div class="search"></div>
+    <div class="search">%TMPL:P{"topbar:search"}%</div>
   </section>
   <section class="qw-top-two">
     <div class="wrapper">
@@ -19,6 +19,12 @@
 %TMPL:DEF{"topbar:search"}%<!--topbar:search-->
 <div class="qw-quicksearch-form">
   <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
+    <div class="toggle">
+      <div id="qw-quicksearch-filter-toggle" class="filter-toggle">
+        <span class="filter-show">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-down"></i></span>
+        <span class="filter-hide">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-up"></i></span>
+      </div>
+    </div>
     <div class="input">
       <input name="search"
              type="text"
