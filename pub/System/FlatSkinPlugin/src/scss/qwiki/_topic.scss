@@ -104,13 +104,13 @@
       }
     }
 
-    ul {
+    ul.togglelink {
       list-style: none;
       padding: 0;
     }
 
-    li,
-    a {
+    .togglelink li,
+    .togglelink a {
       @include default-font($line: rem-calc(18), $color: $qw-blue);
       padding: rem-calc(11) 0;
       text-decoration: none;
