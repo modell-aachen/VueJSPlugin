@@ -114,13 +114,12 @@
 }
 
 .qw-kvp-compare-btn {
-  border-top: 1px solid $qw-border-bg;
   padding-top: $qw-content-padding/2;
   min-width: 100%;
 
   > a {
     display: block;
-    background: $qw-white;
+    background: transparent;
     transition: background $qw-default-ease;
     border: 1px solid $qw-border-bg;
     padding: rem-calc(0 6 6 6);
