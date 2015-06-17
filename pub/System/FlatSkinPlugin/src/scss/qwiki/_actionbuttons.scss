@@ -1,24 +1,10 @@
 $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $qw-tab-outerborder;
 
-<<<<<<< HEAD
-.qw-joinedtab {
-  float: left;
-  border-top: $qw-tab-outerborder solid transparent;
-  border-left: $qw-tab-outerborder solid transparent;
-  border-right: $qw-tab-outerborder solid transparent;
-  &.inactive:last-child {
-      border-right: none;
-  }
-
-  @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
-  @media #{$small-up} {height: $qw-top-one-height;}
-=======
 .qw-topicactions-container {
   display: inline-block;
   float: right;
   padding-top: rem-calc(10);
 }
->>>>>>> sprint/design
 
 .qw-actionbutton-grp {
   @include button-group-container();
@@ -27,29 +13,10 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   .qw-action-button {
     @include actionbutton($bg: $qw-sand, $color: $qw-mud);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  &,
-  & > *,
-  & > div.pseudoborder > * {
-    transition: background $qw-tab-transition-time ease-in-out,
-                color $qw-tab-transition-time ease-in-out;
-=======
     &.dark {
       @include actionbutton($bg: $qw-mud, $color: $qw-white);
     }
->>>>>>> sprint/design
   }
-=======
-.qw-tab {
-  border: 0;
-  border-radius: 0;
-  float: left;
-  line-height: $qw-top-one-height;
-  padding: 0 1.5rem;
-  transition: background-color $qw-default-ease;
-  width: auto;
->>>>>>> 39e6d84... Introduced easing variables
 
   > li {
     @include button-group-style($radius: $global-radius);
@@ -81,131 +48,6 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
   > div {
     display: inline-block;
-<<<<<<< HEAD
-
-    @media #{$mobile-only} {
-      height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-      line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-    }
-
-    @media #{$small-up} {
-      height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-      line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-    }
-
-    font-size: rem-calc(25);
-    padding-left: $button-tny;
-    padding-right: $button-tny;
-  }
-  &.inactive > div.pseudoborder > a,
-  &.inactive > a {
-    padding-left: $button-tny - $qw-tab-deco-border-width;
-    padding-right: $button-tny - $qw-tab-deco-border-width;
-  }
-
-  &.approved {
-    & > div.pseudoborder > a, & > a {
-      &:before {
-       // @extend .icon-page-free;
-      }
-    }
-
-    &.active {
-      border-color: $qw-content-bg;
-
-      &,
-      & > * {
-        background: $qw-tab-approved-active-color;
-      }
-    }
-
-    &.inactive {
-      & > div.pseudoborder > a,
-      & > a {
-          background: $qw-tab-approved-inactive-color;
-      }
-    }
-  }
-
-  &.unapproved {
-    > div.pseudoborder > a:before, > a:before {
-      @extend .icon-page-draft;
-    }
-
-    & > * {
-      background-image: none;
-    }
-
-    &.active {
-      & > div.pseudoborder {
-      /*   for approved page. not home page  */
-          //display: none;
-       // background-image: $qw-stripes;
-        // background-color: $qw-tab-unapproved-active-color;
-        padding: 20px 20px 0 20px;
-      }
-
-      & > * {
-       // background-color: $qw-edit-color;
-       background: #FFF;
-      }
-    }
-    &.inactive {
-      /*  disscosion for home page  */
-      & > div.pseudoborder  {
-        display: inline-block;
-        } 
-        > a,
-      & > a {
-          background: $qw-tab-approved-inactive-color;
-      }
-    }
-  }
-
-  & > .sub-tab > div.pseudoborder {
-      /* edit button in both approved and home page  */
-      display: inline-block;
-      background-color: transparent;
-
-      & a {
-          background-color: $qw-tab-subtab-color;
-      }
-  }
-  &.inactive > .sub-tab a {
-      border-left: $qw-tab-deco-border-width solid $qw-content-bg;
-  }
-  &.active > .sub-tab > div.pseudoborder {
-      border-left: $qw-tab-deco-border-width solid $qw-content-bg;
-
-      &,
-      & a {
-          background-color: $qw-tab-subtab-color;
-      }
-  }
-  & > .sub-tab.inactive:hover > div.pseudoborder {
-      & a {
-          background-color: $qw-tab-subtab-inactive-hover-color;
-      }
-  }
-  &.active > .sub-tab:hover > div.pseudoborder,
-  & > .sub-tab.active:hover > div.pseudoborder {
-      &,
-      & a {
-          background-color: $qw-tab-subtab-active-hover-color;
-      }
-  }
-
-
-  > .sub-tab {
-    float: right;
-<<<<<<< HEAD
-    background-color: transparent;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-=======
-=======
     float: left;
   }
 
@@ -213,7 +55,6 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     border-radius: $global-radius;
     display: inline-block;
     float: right;
->>>>>>> sprint/design
     line-height: rem-calc(40);
     margin-left: rem-calc(10);
     margin-top: rem-calc(10);
@@ -223,114 +64,10 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     max-width: 20px;
     white-space: nowrap;
     transition: max-width $qw-default-ease;
-<<<<<<< HEAD
->>>>>>> 39e6d84... Introduced easing variables
-
-    & > div.pseudoborder {
-        padding-top: $qw-tab-pseudoborder;
-        padding-bottom: $qw-tab-pseudoborder;
-    }
-
-    @media #{$mobile-only} {height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;}
-    @media #{$small-up} {height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;}
-
-    > div.pseudoborder > a,
-    > a {
-      display: inline-block;
-      font-size: rem-calc(13);
-      font-weight: normal;
-      background-color: $qw-tab-subtab-color;
-      background-image: none;
-      padding-left: $button-tny;
-      padding-right: $button-tny;
-
-      @media #{$mobile-only} {
-        height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-        line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-      }
-
-      @media #{$small-up} {
-        height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-        line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-      }
-
-      &:not(:hover) {
-        &:before {
-          margin-right: 0;
-        }
-
-        .expander {
-          max-width: 0;
-        }
-      }
-
-      .expander {
-        width: auto;
-        max-width: rem-calc(500);
-        overflow-x: hidden;
-        float: right;
-        transition: max-width $qw-tab-transition-time ease-in-out;
-        white-space: nowrap;
-
-        @media #{$mobile-only} {
-          height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-          line-height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
-        }
-
-        @media #{$small-up} {
-          height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-          line-height: rem-calc($qw-top-two-height) - $qw-tab-height-diff;
-        }
-      }
-    }
-  }
-
-  /* XXX this is a quick workaround to disable the active tabs, that does not require re-doing all the templates and is also quick to undo */
-  &.active > a,
-  &.active > div.pseudoborder > a,
-  &.active > div.psuedoborder *:not(.inactive) a {
-      pointer-events:none;
-  }
-}
-
-// printing, further topic actions, language selector, etc
-.qw-action-button {
-  @include button( $padding: $button-tny, $bg: $qw-actionbtn-bg, $radius: $global-radius );
-  margin: 0;
-  padding: rem-calc(2 9 3 5);
-  font-size: 1rem;
-  line-height: 1rem;
-  color: $qw-actionbtn-color;
-  //
-
-  > * {
-    max-width: 34px;
-    max-height: 34px;
-  }
-
-  &:hover {
-    background: $qw-actionbtn-hover-bg;
-    color: $qw-actionbtn-hover-color;
-  }
-
-  &:active {
-    background: $qw-actionbtn-active-bg;
-    color: $qw-actionbtn-hover-color;
-  }
-
-  &.active {
-    background: $qw-actionbtn-active-bg;
-    color: $qw-actionbtn-hover-color;
-
-    &:first-child {
-      border-top-left-radius: $global-radius;
-      border-bottom-left-radius: $global-radius;
-=======
 
     &:hover {
       max-width: 500px;
       background-color: $qw-white;
->>>>>>> sprint/design
     }
 
     a {
@@ -346,26 +83,4 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   a {
     @include default-font($size: 1rem, $color: $qw-gray-text);
   }
-}
-
-.action-maximize {
-
-background: #7F7B71;
-color: #FFF;
-}
-
-
-.DiscussionButton {
-  padding: 8px 15px 8px 5px !important;
-  background: #7F7B71 !important;
-  border: 0 !important;
-  color: #FFF !important;
-  font-style: italic !important;
-  font-size: 12px !important;
-
-  &:hover {
-    background: #282C2E !important;
-    color: #84878A !important;
-  }
-
 }
