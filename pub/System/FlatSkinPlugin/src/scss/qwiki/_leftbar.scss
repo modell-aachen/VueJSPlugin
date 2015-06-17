@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> sprint/design
 @mixin leftbar-item($color: $qw-white, $color-active: $qw-white, $bg-active: $qw-white) {
   @include default-font($size: 1rem, $color: $color);
   padding: rem-calc(6.5 15);
@@ -17,34 +20,29 @@
   }
 }
 
+<<<<<<< HEAD
 >>>>>>> b024ad8... Replaced hard coded color by their variables
+=======
+>>>>>>> sprint/design
 .qw-leftbar {
   position: fixed;
-  top: $qw-leftbar-width;
+  top: 0;
   left: 0;
-  z-index: 100;
+  bottom: 0;
+  z-index: 0;
 
-  @media #{$mobile-only} {max-height: $qw-top-one-height-mobile;}
-  @media #{$small-only} {max-height: $qw-top-one-height;}
-  @media #{$medium-up} {bottom: 0;}
-
-  width: $qw-leftbar-width + $qw-leftbar-width-expanded;
   background: $qw-leftbar-bg;
+  color: $qw-leftbar-color;
+  width: $qw-leftbar-width-expanded;
 
-  transition: transform 0.3s ease-in-out;
-  transform: translate3d(-1 * $qw-leftbar-width-expanded, 0, 0);
+  @include flex-container($direction: column, $align: stretch);
 
-  &.offcanvas {
-    &.leftbar {
-      transform: translate3d( 0, 0, 0);
-
-      > .buttons .button {
-        pointer-events: none;
-        cursor: default;
-      }
-    }
+  > * {
+    margin-bottom: rem-calc(7);
   }
+}
 
+<<<<<<< HEAD
   > .buttons {
     position: absolute;
     top: 0;
@@ -147,11 +145,20 @@
           background: $qw-leftbar-avatar-role-bg;
           color: $qw-leftbar-avatar-role-color;
           border-radius: $global-radius;
+=======
+.qw-leftbar-toggle {
+  @include flex-container($direction: column, $align: stretch);
+  line-height: $qw-top-one-height;
+>>>>>>> sprint/design
 
-          font-size: rem-calc(10);
-          font-weight: bold;
-          text-align: center;
+  a {
+    @include leftbar-item(
+      $color: $qw-leftbar-toggle-color-inactive,
+      $bg-active: $qw-leftbar-item-bg-active,
+      $color-active: $qw-leftbar-item-color-active
+    );
 
+<<<<<<< HEAD
           span {
             position: relative;
             top: rem-calc(2);
@@ -205,8 +212,14 @@
         }
       }
     }
+=======
+    padding-top: 0;
+    padding-bottom: 0;
+>>>>>>> sprint/design
   }
+}
 
+<<<<<<< HEAD
   > .menu {
     position: absolute;
     top: 0;
@@ -372,5 +385,21 @@
           }
       }
     }
+=======
+.qw-leftbar-entries {
+  @include flex-container($direction: column, $align: stretch);
+
+  a {
+    @include leftbar-item(
+      $color: $qw-leftbar-item-color-inactive,
+      $bg-active: $qw-leftbar-item-bg-active,
+      $color-active: $qw-leftbar-item-color-active
+    );
+>>>>>>> sprint/design
   }
+}
+
+.qw-leftbar-user {
+  background: $qw-leftbar-user-bg;
+  padding: rem-calc(3);
 }

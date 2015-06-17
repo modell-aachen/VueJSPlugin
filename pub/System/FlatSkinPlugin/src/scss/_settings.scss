@@ -11,6 +11,9 @@
   font-style: normal;
 }
 
+// testing
+$qw-font-color: 000;
+
 // do not include any auto-generated Foundation classes
 $include-html-classes: false;
 $include-print-styles: false;
@@ -77,6 +80,25 @@ $qw-info-color: $primary-color;
 $qw-draft-color: $alert-color;
 $qw-edit-color: $warning-color;
 $qw-approved-color: white;
+$qw-broadcast-color: #ffe8ae;
+
+
+$qw-white: #fff;
+$qw-black: #000;
+$qw-red: #d83314;
+$qw-orange: #e2af19;
+$qw-yellow: #ffe8ae;
+$qw-green: #84bb2e;
+$qw-blue: #52cae4;
+$qw-sand: #e4dfd4;
+$qw-dust: #f1efea;
+$qw-mud: #7e7a71;
+
+$qw-dust-text: #7f7b71;
+$qw-gray-text: #84878a;
+$qw-mud-text: #6a5f41;
+$qw-dark-text: #282c2e;
+
 
 // global defaults
 $qw-border-radius: rem-calc(3);
@@ -197,8 +219,9 @@ $qw-split-shadow-color: #164263;
 $qw-upload-dnd-bg: #f2f5f7;
 $qw-upload-dnd-hover-bg: #dae4eb;
 
-// wat
-$qw-content-padding: rem-calc(30);
+$qw-breadcrumbs-padding: rem-calc(10);
+$qw-dochead-padding: rem-calc(10);
+$qw-content-padding: rem-calc(20);
 
 
 // default border values borders
@@ -213,14 +236,27 @@ $qw-context-border-color: $secondary-color;
 
 // topbar(s)
 $qw-top-one-height: 60px;
+<<<<<<< HEAD
 $qw-top-one-height-mobile: 40px;
 $qw-top-one-bg: #e5e0d5;
 $qw-top-one-color: #555;
 $qw-top-two-height: 50px;
 $qw-top-two-height-mobile: 40px;
 $qw-top-two-bg: #f5f5f5;
+=======
+$qw-top-one-bg: #e5e0d5;
+$qw-top-one-color: #555;
+
+$qw-top-two-height: 50px;
+$qw-top-two-bg: #fff;
+>>>>>>> sprint/design
 $qw-top-height: $qw-top-one-height + $qw-top-two-height;
+
+// ToDo: delete me
+$qw-top-one-height-mobile: 40px;
+$qw-top-two-height-mobile: 40px;
 $qw-top-height-mobile: $qw-top-one-height-mobile + $qw-top-two-height-mobile;
+//
 
 $qw-top-one-cke-bg: #4d4d4d;
 $qw-cke-button-bg: #666666;
@@ -231,12 +267,21 @@ $qw-cke-button-color: #ffffff;
 
 
 // breadcrumbs
+<<<<<<< HEAD
 $qw-breadcrumb-bg: #E5E0D5;
 $qw-breadcrumb-color: #7F7B71;
 $qw-breadcrumb-title-color: #4d4d4d;
 $qw-breadcrumb-topic-color: #262626;
 $qw-breadcrumb-hover-bg: #ccc;
 $qw-breadcrumb-border-color: #FFF;
+=======
+$qw-breadcrumb-bg: #e5e0d5;
+$qw-breadcrumb-color: #7f7b71;
+$qw-breadcrumb-title-color: #4d4d4d;
+$qw-breadcrumb-topic-color: #262626;
+$qw-breadcrumb-hover-bg: #ccc;
+$qw-breadcrumb-border-color: #fff;
+>>>>>>> sprint/design
 $qw-breadcrumb-border-width: $qw-border-width;
 $qw-breadcrumb-radius: $qw-border-radius;
 $qw-breadcrumb-height: 30px;
@@ -291,6 +336,7 @@ $qw-login-header-box-shadow: 1px 0 10px $qw-approved-color;
 
 // offcanvas areas
 // leftbar, rightbar, quicksearch
+<<<<<<< HEAD
 $qw-leftbar-active-bg-expanded: #FFF;
 $qw-leftbar-active-color-expanded: #000;
 $qw-leftbar-active-hover-bg-expanded: lighten($qw-leftbar-active-bg-expanded, 10%);
@@ -308,21 +354,34 @@ $qw-leftbar-toggle-bg: #282C2E;
 $qw-leftbar-toggle-edit-bg: #e92727;
 $qw-leftbar-toggle-hover-bg: #2c85c9;
 $qw-leftbar-width-expanded: 210px;
+=======
+$qw-leftbar-bg: #282c2e;
+$qw-leftbar-color: #282c2e;
+$qw-leftbar-width-expanded: 250px;
+>>>>>>> sprint/design
 $qw-leftbar-width: 60px;
-$qw-leftbar-avatar-bg: #cbcbcb;
-$qw-leftbar-avatar-role-bg: #606060;
-$qw-leftbar-avatar-role-color: #ffffff;
-$qw-leftbar-avatar-login-color: #cacaca;
-$qw-leftbar-avatar-login-hover-color: $qw-leftbar-avatar-role-bg;
+$qw-leftbar-item-bg-active: #fff;
+$qw-leftbar-item-color-active: #000;
+$qw-leftbar-item-color-inactive: #84878a;
+$qw-leftbar-toggle-color-inactive: #fff;
+$qw-leftbar-user-bg: #3b3f41;
 
+<<<<<<< HEAD
 $qw-leftbar-btn-color: #84878A;
 $qw-leftbar-btn-hover-color: #4d4d4d;
 $qw-leftbar-btn-active-color: #000;
 
+=======
+// ToDo: delete me
+$qw-leftbar-btn-color: #bfbfbf;
+$qw-leftbar-btn-hover-color: #4d4d4d;
+$qw-leftbar-btn-active-color: #fff;
+>>>>>>> sprint/design
 $qw-leftbar-btn-bg: transparent;
 $qw-leftbar-btn-hover-bg: transparent;
 $qw-leftbar-btn-active-bg: #FFF;
 $qw-leftbar-btn-active-hover-bg: #ebebeb;
+//
 
 $qw-page-width: calc(100% - #{$qw-leftbar-width});
 
@@ -349,14 +408,19 @@ $qw-rightbar-bg: $qw-content-bg;
 
 
 // document head (DocumentForm in view ctx)
+<<<<<<< HEAD
 $qw-dochead-default-bg: #F1EEEA;
 $qw-dochead-label-color: #282C2E;
+=======
+$qw-dochead-default-bg: #f1eeea;
+$qw-dochead-label-color: #282c2e;
+>>>>>>> sprint/design
 $qw-dochead-label-font-size: rem-calc(11);
 $qw-dochead-label-font-weight: bold;
-$qw-dochead-default-box-bg: #ffffff;
-$qw-dochead-default-box-color: #999999;
+$qw-dochead-default-box-bg: #fff;
+$qw-dochead-default-box-color: #999;
 $qw-dochead-default-box-font-size: rem-calc(13);
-$qw-dochead-user-box-bg: #ffffff;
+$qw-dochead-user-box-bg: #fff;
 $qw-dochead-user-box-color: #236aa2;
 $qw-dochead-user-box-font-size: $qw-dochead-default-box-font-size;
 
@@ -364,8 +428,13 @@ $qw-dochead-user-box-font-size: $qw-dochead-default-box-font-size;
 $qw-dochead-classic-height: rem-calc(55);
 $qw-dochead-classic-margin: rem-calc(1);
 $qw-dochead-classic-box-font-size: rem-calc(10);
+<<<<<<< HEAD
 $qw-dochead-classic-box-font-color: #7F7B71;
 $qw-dochead-classic-box-bg: #E5E0D5;
+=======
+$qw-dochead-classic-box-font-color: #7f7b71;
+$qw-dochead-classic-box-bg: #e5e0d5;
+>>>>>>> sprint/design
 $qw-dochead-classic-label-min-width: rem-calc(75);
 $qw-dochead-classic-padding: rem-calc(7);
 $qw-dochead-classic-tcontent-min-width: rem-calc(100);
@@ -375,7 +444,7 @@ $qw-infobar-content-bg: $qw-content-bg;
 $qw-infobar-header-color: #4d4d4d;
 $qw-infobar-header-icon-font-size: rem-calc(25);
 $qw-infobar-header-icon-max-float: right;
-$qw-infobar-header-icon-max-font-color: #BFBFBF;
+$qw-infobar-header-icon-max-font-color: #bfbfbf;
 $qw-infobar-header-icon-max-padding: rem-calc(1 3 3 3);
 $qw-infobar-header-icon-max-margin: rem-calc(0 7);
 $qw-infobar-label-color: #bfbfbf;

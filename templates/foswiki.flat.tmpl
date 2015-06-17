@@ -1,6 +1,7 @@
-%TMPL:INCLUDE{"TopbarButtons"}%
 %TMPL:INCLUDE{"DocumentHead"}%
-%TMPL:INCLUDE{"LeftBar"}%
+
+%TMPL:INCLUDE{"leftbar"}%
+%TMPL:INCLUDE{"viewtopbar"}%
 
 %TMPL:DEF{"document"}%
 %TMPL:P{"doctype"}%
@@ -48,18 +49,38 @@
 %TMPL:P{"newlink:bar"}%
 <!--/offcanvas:bars-->%TMPL:END%
 
+%TMPL:DEF{"contentwrapper"}%%TMPL:P{"content"}%%TMPL:END%
+
+%TMPL:DEF{"topicinfo"}%%TMPL:P{"topicaction"}%%TMPL:END%
+
+%TMPL:DEF{"broadcastmessage:contents"}%<div class="foswikiBroadcastMessage"> %BROADCASTMESSAGE% </div>%TMPL:END%
+
+%TMPL:DEF{"topbarnotes"}%%IF{"defined BROADCASTMESSAGE and $BROADCASTMESSAGE != ''" then="$percntTMPL:P{$quotbroadcastmessage:contents$quot}$percnt"}%%TMPL:END%
+
 %TMPL:DEF{"body"}%<!--body-->
 <body class="context-%TMPL:P{"context"}%">%JQREQUIRE{"blockui,cookie,placeholder,ui::autocomplete,wikiword,jqp::underscore,jqp::moment,jqp::spin,jqp::observe,jqp::tooltipster"}%
 <literal>%TMPL:P{"topbar"}%
-%TMPL:P{"menutoggle"}%
 <!-- offcanvas:bars -->%TMPL:P{"offcanvas:bars"}%<!-- /offcanvas:bars -->
-<div class="qw-page" data-offcanvas>
-  <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
-  <section class="content">
-    <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></literal>%TMPL:P{"content"}%<literal></div>
-    <div class="adorner adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></div>
-  </section>
-</div>
+<main class="qw-page">
+  <article class="qw-topic">
+    <section class="notes">%TMPL:P{"topbarnotes"}%</section>
+    <section class="heading"><div>%TMPL:P{"document:head"}%</div></section>
+    <section class="content">
+      <div class="topic adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></literal>%TMPL:P{"content"}%<literal></div>
+      <div class="adorner adorner-%IF{"$FLATCOMMENTS='1'" then="visible" else="hidden"}%"></div>
+    </section>
+  </article>
+</main>
+<nav class="qw-sidebar">
+  <div class="wrapper">
+    <div class="title">%MAKETEXT{"Document informations"}%</div>
+    <div class="content">
+      %TMPL:P{"infobar:misc"}%
+      %TMPL:P{"infobar:general"}%
+      %TMPL:P{"infobar:kvp"}%
+    </div>
+  </div>
+</nav>
 <script src="%PUBURLPATH%/%SYSTEMWEB%/QgularContrib/qgular.js"></script>
 <script>
 jQuery(function($) {
@@ -94,6 +115,7 @@ jQuery(function($) {
 </div>
 <!--/modals-->%TMPL:END%
 
+<<<<<<< HEAD
 %TMPL:DEF{"topbar"}%<!--topbar-->
 <nav class="qw-top" data-offcanvas>
   <div class="one">
@@ -150,11 +172,11 @@ TODO
   <a href="#" data-offcanvas-toggle="quicksearch"><i class="icon-search"></i></a>
 </div>
 <!--/topbar:search-->%TMPL:END%
+=======
+>>>>>>> sprint/design
 
 %TMPL:DEF{"quicksearch"}%<!--quicksearch-->
 <div class="qw-quicksearch" data-offcanvas data-target="quicksearch" data-quicksearch data-solrsearch-widget data-quicksearch-dismax-main=".qw-quicksearch-form input" data-quicksearch-submit=".qw-quicksearch-form .submit">
-<!--
-TODO
   <div id="qw-searchbar-filters" class="filter" data-quicksearch-filter-toggle="#qw-quicksearch-filter-toggle">
     <div class="filter-summary">
       <div class="filter-active-list" data-solrsearch-filterlist>
@@ -163,33 +185,27 @@ TODO
       </div>
     </div>
     <div class="filter-dropdown-container">
-      <div class="filter-dropdown-main">
+      <div class="filter-dropdown-main" data-quicksearch-filter-type="facetqueries" data-quicksearch-filter-queries="{%FORMATLIST{"%MAKETEXT{"all applications"}%=*,%APPLICATIONMAP{default="%MAKETEXT{"Processes"}%=Processes"}%" pattern="(.*)=(.*)" separator="," format="&quot;web:$2&quot;:&quot;$1&quot;"
+      }%}">
         <div class="filter-label">%MAKETEXT{"Search where?"}%</div>
-        <div class="filter-values"><ul>
-          <li><label>%MAKETEXT{"all applications"}% <input type="radio" name="quicksearch_filter_app_radio"></label></li>
-          %FORMATLIST{"%APPLICATIONMAP{default="%MAKETEXT{"Processes"}%=Processes"}%" pattern="(.*)=(.*)" separator="$n"
-            format="<li data-quicksearch-filter-type=\"bool-filter\" data-quicksearch-filter-query=\"web:$2\" data-check-target=\"input\"><label>$1 <input type=\"radio\" name=\"quicksearch_filter_app_radio\"></label></li>"
-          }%
+        <div class="filter-values"><ul data-facet-values>
+          <li data-qtemplate data-facet-value qbind="data-facet-value-id: id"><label><span qbind="title"></span> (<span qbind="count"></span>) <input type="radio" name="quicksearch_filter_app_radio"></label></li>
         </ul></div>
       </div>
       <div class="filter-dropdown-popup">
       </div>
     </div>
     <div class="filter-dropdown-container">
-      <div class="filter-dropdown-main">
+      <div class="filter-dropdown-main" data-quicksearch-filter-type="facetqueries" data-quicksearch-filter-combine="OR" data-quicksearch-filter-queries="{&quot;*:* -type:(topic OR comment OR action OR task)&quot;:&quot;%MAKETEXT{"Attachments"}%&quot;, &quot;type:(task OR action)&quot;:&quot;%MAKETEXT{"Tasks"}%&quot;, &quot;type:topic web:Main form:*UserForm&quot;:&quot;%MAKETEXT{"Users"}%&quot;, &quot;type:topic -web:(Main OR System OR Custom OR Sandbox)&quot;:&quot;%MAKETEXT{"Topics"}%&quot;}">
         <div class="filter-label">%MAKETEXT{"Search what?"}%</div>
-        <div class="filter-values"><ul>
-          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="-type:(topic OR comment OR action OR task)" data-check-target="input"><label>%MAKETEXT{"Attachments"}% <input type="checkbox"></label></li>
-          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:(task OR action)" data-check-target="input"><label>%MAKETEXT{"Tasks"}% <input type="checkbox"></label></li>
-          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:topic web:Main form:*UserForm" data-check-target="input"><label>%MAKETEXT{"Users"}% <input type="checkbox"></label></li>
-          <li data-quicksearch-filter-type="bool-filter" data-quicksearch-filter-query="type:topic -web:(Main OR System OR Custom OR Sandbox)" data-check-target="input"><label>%MAKETEXT{"Topics"}% <input type="checkbox"></label></li>
+        <div class="filter-values"><ul data-facet-values>
+          <li data-qtemplate data-facet-value qbind="data-facet-value-id: id"><label><span qbind="title"></span> (<span qbind="count"></span>) <input type="checkbox"></label></li>
         </ul></div>
       </div>
       <div class="filter-dropdown-popup">
       </div>
     </div>
   </div>
--->
   <div class="results">
       <div class="qw-total-results" data-qtemplate="total">
         <span qbind="count"></span> results
@@ -254,7 +270,12 @@ TODO
 </div>
 <!--/commentbar-->%TMPL:END%
 
+%TMPL:DEF{"infobar:content"}%
+<!-- infobar:general -->%TMPL:P{"infobar:general"}%<!-- /infobar:general -->
+<!-- infobar:kvp -->%TMPL:P{"infobar:kvp"}%<!-- /infobar:kvp -->
+%TMPL:END%
 
+<<<<<<< HEAD
 %TMPL:DEF{"leftbar"}%<!--leftbar-->
 <nav class="qw-leftbar" data-offcanvas data-friendly data-target="leftbar">
   <section class="buttons">
@@ -307,36 +328,32 @@ TODO
       </div>
     </div>
     <div class="content">
+=======
+%TMPL:DEF{"infobar:general"}%
+>>>>>>> sprint/design
       <div>
-        <span class="label">%MAKETEXT{"General"}%</span>
-        <ul>
+        <span class="title">%MAKETEXT{"General"}%</span>
+        <ul class='togglelink'>
           <li><a href="#" data-attachtable-toggle>%MAKETEXT{"Attachments"}%</a></li>
           <li><a href="#">%MAKETEXT{"Version history"}%</a></li>
           <li><a href="#">%MAKETEXT{"Language comparison"}%</a></li>
         </ul>
       </div>
+%TMPL:END%
+
+%TMPL:DEF{"infobar:kvp"}%
       <div>
-        <span class="label">%MAKETEXT{"KVP"}%</span>
-        <ul>
+        <span class="title">%MAKETEXT{"Improvement process"}%</span>
+        <ul class='togglelink'>
           <li><a href="#">%MAKETEXT{"Key figures"}%</a></li>
           <li><a href="#">%MAKETEXT{"Tasks"}%</a></li>
           <li><a href="#">%MAKETEXT{"Risks"}%</a></li>
         </ul>
       </div>
-    </div>
-  </div>
-</div>
-<!--/infobar-->%TMPL:END%
-
-%TMPL:DEF{"menutoggle"}%<!--menutoggle-->
-<div class="qw-menutoggle" data-offcanvas>
-  <div class="customer-logo">%TMPL:P{"logo"}%</div>
-  <div class="toggle" data-offcanvas-toggle="leftbar" title="%MAKETEXT{"Menu"}%" data-tooltip="right"><i class="icon-menu"></i></div>
-</div>
-<!--/menutoggle-->%TMPL:END%
+%TMPL:END%
 
 
-%TMPL:DEF{"breadcrumb"}%<!--breadcrumb-->
+%TMPL:DEF{"breadcrumbs"}%<!--breadcrumb-->
 <ul class="qw-breadcrumb" data-breadcrumb>
   <!--breadcrumb:home-->%TMPL:P{"breadcrumb:home"}%<!--/breadcrumb:home-->
   <!--breadcrumb:parentwebs-->%TMPL:P{"breadcrumb:parentwebs"}%<!--/breadcrumb:parentwebs-->

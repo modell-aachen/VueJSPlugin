@@ -1,14 +1,22 @@
 %TMPL:INCLUDE{"TopicMenu"}%
-%TMPL:DEF{"topbar:tabs"}%%TMPL:P{"topbar:two:left:standard"}%%TMPL:END%
-%TMPL:DEF{"topbar:actions"}%%TMPL:P{"topbar:two:right"}%%TMPL:END%
 
+<<<<<<< HEAD
 %TMPL:DEF{"topbar:two:left:standard"}%
 <div class="qw-joinedtab approved active"><div class="pseudoborder">%TMPL:P{"topbar:two:left:standard:view"}%</div>%IF{"$TOPIC allows 'CHANGE' and not context edit" then="$percentTMPL:P{\"topbar:two:left:standard:edit\"}$percent"}%</div>%TMPL:END%
+=======
+%TMPL:DEF{"topbar:tabs"}%FOOBAR%TMPL:P{"topbar:tabs:standard"}%%TMPL:END%
+%TMPL:DEF{"topbar:actions"}%%TMPL:P{"topbar:actions:buttons"}%%TMPL:END%
+>>>>>>> sprint/design
 
-%TMPL:DEF{"topbar:two:left:standard:view"}%<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%">%MAKETEXT{"Version [_1]" args="%REVINFO{format=" $rev"}%"}%</a>%TMPL:END%
+%TMPL:DEF{"topbar:tabs:standard"}%%{
+}%<div class="qw-tab approved active">
+   <div>%TMPL:P{"topbar:tabs:standard:view"}%%IF{"$TOPIC allows 'CHANGE' and not context edit" then="$percentTMPL:P{\"topbar:tabs:standard:edit\"}$percent"}%</div>
+   </div>%{
+}%%TMPL:END%
 
-%TMPL:DEF{"topbar:two:left:standard:edit"}%<div class="sub-tab edit"><div class="pseudoborder"><a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?t=%GMTIME{"$epoch"}%"><i class="icon-edit"></i><span class="expander">%MAKETEXT{"Edit topic"}%</span></a></div></div>%TMPL:END%
+%TMPL:DEF{"topbar:tabs:standard:view"}%<a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%">%MAKETEXT{"Version [_1]" args="%REVINFO{format=" $rev"}%"}%</a>%TMPL:END%
 
+<<<<<<< HEAD
 %TMPL:DEF{"topbar:two:right"}%<div class="topbar-edit">%TMPL:P{"topbar:two:right:misc"}%</div>%TMPL:END%
 
 %TMPL:DEF{"topbar:two:right:misc"}%%{
@@ -21,6 +29,24 @@
 
 <<<<<<< HEAD
 =======
+=======
+%TMPL:DEF{"topbar:tabs:standard:edit"}%<div class="edit"><a href="%SCRIPTURLPATH{"edit"}%/%WEB%/%TOPIC%?t=%GMTIME{"$epoch"}%"><i class="icon-edit"></i><span class="expander">%MAKETEXT{"Edit topic"}%</span></a></div>%TMPL:END%
+
+
+%TMPL:DEF{"topbar:actions:buttons"}%%{
+}%<div class="qw-topicactions-container">
+   <ul class="qw-actionbutton-grp">%TMPL:P{"topbar:actions:topicactions"}%</ul><ul class="qw-actionbutton-grp">%TMPL:P{"topbar:actions:toggle"}%</ul>
+</div>%{
+}%%TMPL:END%
+
+%TMPL:DEF{"topbar:actions:topicactions"}%%{
+}%<li><a href="#" class="qw-action-button hidden-mobile" title="%MAKETEXT{"Choose language"}%" data-tooltip="top"><i class="icon-flag"></i></a></li>%{
+}%<li>%IF{"$FAVORITES='1' AND $'GETWORKFLOWROW{approved}'" then="$percntTMPL:P{favorites:button}$percnt"}%</li>%{
+}%<li><a href="#" class="qw-action-button hidden-mobile" title="%MAKETEXT{"Recommend topic"}%" data-tooltip="top"><i class="icon-forward"></i></a></li>%{
+}%<li><a href="#" class="qw-action-button hidden-mobile" data-dropdown="#qw-more-menu" title="%MAKETEXT{"More"}%" data-tooltip="top"><i class="icon-more"></i></a></li>%{
+}%%TMPL:P{"menu:more"}%%TMPL:END%
+
+>>>>>>> sprint/design
 %TMPL:DEF{"topbar:actions:toggle"}%<!--name-->
 <li><a href="#" title="%MAKETEXT{"Maximize"}%" class="qw-action-button dark" data-tooltip="top" data-maximize-toggle><i class="icon-arrow-right"></i></a></li>
 <!--/name-->%TMPL:END%

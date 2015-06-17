@@ -34,16 +34,47 @@
     var $sender = $(this);
 
     var target = $sender.data('submit-form');
-    if ( !target ) {
-      return false;
+    var $form;
+    if ( target ) {
+        $form = $('form' + target);
+    } else {
+        $form = $sender.closest('form');
+    }
+    if ( !$form.length ) {
+        if(window.console) {
+            console.log('found no form to submit');
+        }
+        return false;
     }
 
     $.blockUI();
-    var $form = $('form' + target);
-    var $submit = $form.find('input[type="submit"][name="action_save"]');
-    if(!$submit.length) {
-        $submit = $('<input type="submit" name="action_save" style="display:none" />').appendTo($form);
+    var action = $sender.data('action');
+    if(!action) {
+        action = 'action_save';
     }
+    var $submit = $form.find('input[type="submit"][name="' + action + '"]');
+    var val = $sender.data('value');
+    if(val) {
+        var $candidate;
+        $submit.each(function() {
+            if($(this).val() === val) {
+                $candidate = $(this);
+            }
+        });
+        if($candidate) {
+            $submit = $candidate;
+        } else {
+            $submit = {};
+        }
+    }
+
+    if(!$submit.length) {
+        $submit = $('<input type="submit" name="' + action + '" style="display:none" />').appendTo($form);
+        if(val) {
+            $submit.val(val);
+        }
+    }
+
     $submit.click();
     return false;
   };
@@ -53,16 +84,25 @@
     var $sender = $(this);
 
     var target = $sender.data('cancel-form');
-    if ( !target ) {
+    var $originalForm;
+    if ( target ) {
+        $originalForm = $('form' + target);
+    } else {
+        $originalForm = $sender.closest('form');
+    }
+    if ( !$originalForm.length ) {
       return false;
     }
-    var $originalForm = $('form' + target);
 
     // building a new form, so we do not have to modify the original one and
     // do not submit all the text/data
     var $form = $('<form method="post"></form>');
     $form.attr('action', $originalForm.attr('action'));
     $form.append('<input type="hidden" name="action_cancel" value="cancel" />');
+    var actionCommand = $originalForm.find('[name="action"]').val();
+    if(actionCommand) {
+        $('<input type="hidden" name="action" />').val(actionCommand).appendTo($form);
+    }
     $.each(["redirectto", "topicparent", "newtopic"], function(idx, item) {
       var $item = $originalForm.find("input[name='" + item + "']");
       if($item.length) {

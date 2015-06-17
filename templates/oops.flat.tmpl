@@ -1,13 +1,10 @@
 %TMPL:INCLUDE{"oops"}%
-%TMPL:INCLUDE{"messages"}%
+%TMPL:INCLUDE{"topicactions"}%
 
 %{Need to undfine it here, because a view/edit-script might have included the sidebar}%
 %TMPL:DEF{"sidebar"}%%TMPL:END%
 
 %TMPL:DEF{"bodyclassname"}%modacNoViewPage modacOopsPage%TMPL:END%
-
-%{ topicinfo might containt the appropriate buttons, so we need to display it: }%
-%TMPL:DEF{"content"}%<div class="oopsContent"> %TMPL:PREV%</div>%TMPL:P{"topicinfo"}%%TMPL:END%
 
 %{ Hide elements we do not want: }%
 %TMPL:DEF{"breadcrumb"}%%TMPL:END%

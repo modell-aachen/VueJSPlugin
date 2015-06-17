@@ -165,64 +165,13 @@
     });
   };
 
-  var tabId = 0;
-  window.SearchBoolFilter = function(params) {
-    var self = this;
-    this.$e = params.element;
-    this.filter = params.filter;
-    this.parent = params.parent;
-    this.tabTarget = params.tabTarget;
-    this.tabTitle = params.tabTitle;
-    this.children = [];
-    this.enabled = false;
-
-    this.parent.addFilter(this);
-
-    this.update = function() {
-      this.parent.update();
-    };
-
-    this.addFilter = function(f) {
-      this.children.push(f);
-    };
-    this.render = function(data) {
-      $.each(this.children, function() {
-        this.render(data);
-      });
-    };
-
-    this.getQueryParts = function() {
-      var res = [];
-      if (this.enabled) {
-        $.each(this.children, function() {
-          res = res.concat(this.getQueryParts());
-        });
-        res.push(['fq', this.filter]);
-        res.push(['facet.query', this.filter]);
-      }
-      return res;
-    };
-    this.getFacetParts = function() {
-      var res = [];
-      $.each(this.children, function() {
-        res = res.concat(this.getFacetParts());
-      });
-      return res;
-    };
-
-    var $cb = this.$e.find(this.$e.data('check-target'));
-    $cb.change(function() {
-      self.enabled = $cb.is(':checked');
-      self.update();
-    });
-  };
-
-  window.SearchFacet = function(params) {
+  function SearchFacet(params) {
     var self = this;
     this.combineMode = params.combineMode || 'AND';
     this.facetField = params.facetField;
     this.$e = params.element;
-    this.selectedValues = params.selectedValues || [];
+    this.selectedValues = params.selectedValues || {};
+    this.radioMode = params.radioMode;
     this.valueMap = params.valueMap || {};
     /* valueMap example:
      * {
@@ -234,31 +183,48 @@
     this.parent.addFilter(this);
 
     this.visible = true;
-    this.isApplicable = function(results) {
+
+    this.$e.on('click.solrsearch', '[data-facet-value]', function(ev) {
+      var $v = $(this);
+      var id = $v.data('facet-value-id');
+      if (self.selectedValues[id]) {
+        self.deselect(id);
+        $v.removeClass('active');
+      } else {
+        self.select(id);
+        $v.addClass('active');
+      }
+    });
+  }
+  $.extend(SearchFacet.prototype, {
+    isApplicable: function(results) {
       if (results && results.facet_counts && results.facet_counts.facet_fields &&
           results.facet_counts.facet_fields[this.facetField]) {
         return true;
       }
       return false;
-    };
-    this.select = function(value) {
+    },
+    select: function(value) {
       if (!value) { return; }
+      if (this.radioMode) {
+        this.selectedValues = {};
+      }
       this.selectedValues[value] = true;
       this.parent.update();
-    };
-    this.deselect = function(value) {
+    },
+    deselect: function(value) {
       if (!value) { return; }
-      this.selectedValues[value] = false;
+      if (this.radioMode) { return; }
+      delete this.selectedValues[value];
       this.parent.update();
-    };
-    this.render = function(results) {
+    },
+    render: function(results) {
       this.$e.hide();
       if (!this.isApplicable(results)) { return; }
       var $c = this.$e.find('[data-facet-values]');
       if (!$c.length) {
         $c = this.$e;
       }
-      if (!results || !results.facet_counts || !results.facet_counts.facet_fields) { return; }
       var ff = results.facet_counts.facet_fields[this.facetField];
       if (!ff || !ff.length) { return; }
       $c.empty();
@@ -278,18 +244,18 @@
         facetElems[title] += num;
       }
       for (var fe in facetElems) {
-        var $v = this.$e.qtemplate('add', {
+        var $v = $c.qtemplate('add', {
           id: fe,
           title: fe,
           count: facetElems[fe]
         });
         if (this.selectedValues[fe]) {
           $v.addClass('active');
+          $v.find('input').prop('checked', true);
         }
       }
-    };
-
-    this.getQueryParts = function() {
+    },
+    getQueryParts: function() {
       var filters = [];
       for (var k in this.selectedValues) {
         if (k in this.valueMap) {
@@ -301,34 +267,97 @@
       if (!filters.length) {
         return [];
       }
-      if (self.combineMode === 'AND') {
+      if (this.combineMode === 'AND') {
+        return ['fq', filters.join(' ') ];
+      } else {
+        return [
+          ['fq', '{!tag=f_'+ this.facetField +'}'+ this.facetField +':('+ filters.join(' OR ') +')']
+        ];
+      }
+    },
+    getFacetParts: function() {
+      var flt = '';
+      if (this.combineMode === 'OR') {
+        flt = '{!ex=f_'+ this.facetField +'}';
+      }
+      return [
+        ['facet.field', flt + this.facetField]
+      ];
+    }
+  });
+
+  var sfq_id = 0;
+  window.SearchFacetQueries = function(params) {
+    SearchFacet.call(this, params);
+    delete this.valueMap;
+    this.queries = params.queries || {};
+    this.tag = sfq_id++;
+  };
+  $.extend(SearchFacetQueries.prototype, Object.create(SearchFacet.prototype), {
+    isApplicable: function(results) {
+      if (!results || !results.facet_counts || !results.facet_counts.facet_queries) { return false; }
+      var appl = false, self = this;
+      $.each(results.facet_counts.facet_queries, function(q, _lbl) {
+        q = q.replace(/^\{!ex=\w+\}/, '');
+        if (self.queries[q]) { appl = true; return false; }
+      });
+      return appl;
+    },
+    render: function(results) {
+      this.$e.hide();
+      if (!this.isApplicable(results)) { return; }
+      var $c = this.$e.find('[data-facet-values]');
+      if (!$c.length) {
+        $c = this.$e;
+      }
+      var qs = [], self = this;
+      $.each(results.facet_counts.facet_queries, function(q, val) {
+        var norm_q = q.replace(/^\{!ex=\w+\}/, '');
+        if (!self.queries[norm_q]) { return; }
+        if (val === 0 && !self.selectedValues[norm_q]) { return; }
+        qs.push({norm: norm_q, raw: q});
+      });
+      if (!qs.length) { return; }
+      $c.empty();
+      this.$e.show();
+
+      $.each(qs, function(_idx, q) {
+        var $v = $c.qtemplate('add', {
+          id: q.norm,
+          title: self.queries[q.norm],
+          count: results.facet_counts.facet_queries[q.raw]
+        });
+        if (self.selectedValues[q.norm]) {
+          $v.addClass('active');
+          $v.find('input').prop('checked', true);
+        }
+      });
+    },
+    getQueryParts: function() {
+      var filters = $.map(this.selectedValues, function(_v, k) {
+        return [k];
+      });
+      if (!filters.length) { return []; }
+      if (this.combineMode === 'AND') {
         return filters.map(function(v) {
           return ['fq', v];
         });
       } else {
         return [
-          ['fq', self.facetField +':('+ filters.join(' OR ') +')']
+          ['fq', '{!tag=fq_'+ this.tag +'}'+ filters.map(function(v) { return '('+v+')'; }).join(' OR ') ]
         ];
       }
-    };
-    this.getFacetParts = function() {
-      return [
-        ['facet.field', this.facetField]
-      ];
-    };
-
-    this.$e.on('click.solrsearch', '[data-facet-value]', function(ev) {
-      var $v = $(this);
-      var id = $v.data('facet-value-id');
-      if (self.selectedValues[id]) {
-        self.deselect(id);
-        $v.removeClass('active');
-      } else {
-        self.select(id);
-        $v.addClass('active');
+    },
+    getFacetParts: function() {
+      var flt = '';
+      if (this.combineMode === 'OR') {
+        flt = '{!ex=fq_'+ this.tag +'}';
       }
-    });
-  };
+      return $.map(this.queries, function(_v, k) {
+        return [['facet.query', flt + k]];
+      });
+    }
+  });
 
   QWiki.plugins.solrsearch = {
     name: 'solrsearch',

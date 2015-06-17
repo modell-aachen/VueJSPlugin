@@ -4,6 +4,7 @@
     border: none;
     border-radius: 5px;
 <<<<<<< HEAD
+<<<<<<< HEAD
     background: white;
 <<<<<<< HEAD
     transition: background-color 0.3s ease-in-out;
@@ -14,6 +15,10 @@
 =======
     transition: background-color $qw-default-ease;
 >>>>>>> 39e6d84... Introduced easing variables
+=======
+    background: $qw-white;
+    transition: background-color $qw-default-ease;
+>>>>>>> sprint/design
     margin-top: 5px;
 
     @media #{$mobile-only} {max-height: $qw-top-one-height-mobile - 10px;}

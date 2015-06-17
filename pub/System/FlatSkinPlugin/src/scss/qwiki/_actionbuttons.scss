@@ -1,5 +1,6 @@
 $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $qw-tab-outerborder;
 
+<<<<<<< HEAD
 .qw-joinedtab {
   float: left;
   border-top: $qw-tab-outerborder solid transparent;
@@ -11,41 +12,33 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
 
   @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
   @media #{$small-up} {height: $qw-top-one-height;}
+=======
+.qw-topicactions-container {
+  display: inline-block;
+  float: right;
+  padding-top: rem-calc(10);
+}
+>>>>>>> sprint/design
 
-  margin-right: $button-tny - $qw-tab-deco-border-width;
-  &:last-child {
-      margin-right: $button-tny;
-  }
+.qw-actionbutton-grp {
+  @include button-group-container();
+  display: inline-block;
 
-  &.approved:first-child > * {
-      margin-left: $button-tny - $qw-tab-deco-border-width;
-  }
+  .qw-action-button {
+    @include actionbutton($bg: $qw-sand, $color: $qw-mud);
 
-  & div.active a,
-  &:hover div.active:not(:hover) a,
-  &.active a {
-    color: $qw-tab-text-active-color;
-  }
-  & div.inactive a,
-  &:hover div.inactive:not(:hover) a,
-  &.inactive a {
-    color: $qw-tab-text-inactive-color;
-  }
-  & div.active:hover a,
-  &.active:hover a {
-    color: $qw-tab-text-active-hover-color;
-  }
-  & div.inactive:hover a,
-  &.inactive:hover a {
-    color: $qw-tab-text-inactive-hover-color;
-  }
-
+<<<<<<< HEAD
 <<<<<<< HEAD
   &,
   & > *,
   & > div.pseudoborder > * {
     transition: background $qw-tab-transition-time ease-in-out,
                 color $qw-tab-transition-time ease-in-out;
+=======
+    &.dark {
+      @include actionbutton($bg: $qw-mud, $color: $qw-white);
+    }
+>>>>>>> sprint/design
   }
 =======
 .qw-tab {
@@ -58,64 +51,37 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
   width: auto;
 >>>>>>> 39e6d84... Introduced easing variables
 
-  &.inactive > *:first-child a {
-      border-top-left-radius: $qw-tab-radius;
-      border-bottom-left-radius: $qw-tab-radius;
-      border-left-width: $qw-tab-deco-border-width;
+  > li {
+    @include button-group-style($radius: $global-radius);
   }
-  &.inactive > *:last-child a {
-      border-top-right-radius: $qw-tab-radius;
-      border-bottom-right-radius: $qw-tab-radius;
-  }
-  &.inactive a {
-    border-color: $qw-content-bg;
-    border-right-width: $qw-tab-deco-border-width;
-  }
-  & a {
-    border-style: solid;
-    border-color: transparent;
-    border-width: $qw-tab-deco-border-width 0 $qw-tab-deco-border-width 0;
-  }
+}
 
-  & > * {
-  }
-  & > div.pseudoborder {
-    & > * {
-      background-image: none;
-      background-color: inherit;
-    }
-    display: inline-block;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-top: $qw-tab-pseudoborder;
-    padding-bottom: $qw-tab-pseudoborder;
-  }
+.qw-tab {
+  border: 0;
+  border-radius: 0;
+  float: left;
+  line-height: $qw-top-one-height;
+  padding: 0 1.5rem;
+  transition: background-color $qw-default-ease;
+  width: auto;
 
-  & a {
-    text-decoration: none;
+  &:hover,
+  &:active {
+    background-color: darken($qw-top-one-bg, 5%);
   }
 
   &.active {
-    border-color: $qw-content-bg;
     background-color: $qw-content-bg;
-  }
 
-  & > a,
-  & > div.pseudoborder > a,
-  & >.sub-tab > a,
-  & i {
-    &:before {
-      font-family:"QWikiSymbol";
-      font-size: 1.75rem;
-      vertical-align: middle;
-      transition: margin-right $qw-tab-transition-time linear;
+    &:hover,
+    &:active {
+      background-color: darken($qw-content-bg, 5%);
     }
   }
 
-
-  & > div.pseudoborder > a,
-  & > a {
+  > div {
     display: inline-block;
+<<<<<<< HEAD
 
     @media #{$mobile-only} {
       height: rem-calc($qw-top-two-height-mobile) - $qw-tab-height-diff;
@@ -239,6 +205,15 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     margin-top: 0px;
     margin-bottom: 0px;
 =======
+=======
+    float: left;
+  }
+
+  .edit {
+    border-radius: $global-radius;
+    display: inline-block;
+    float: right;
+>>>>>>> sprint/design
     line-height: rem-calc(40);
     margin-left: rem-calc(10);
     margin-top: rem-calc(10);
@@ -248,6 +223,7 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     max-width: 20px;
     white-space: nowrap;
     transition: max-width $qw-default-ease;
+<<<<<<< HEAD
 >>>>>>> 39e6d84... Introduced easing variables
 
     & > div.pseudoborder {
@@ -349,20 +325,26 @@ $qw-tab-height-diff: 2 * ($qw-tab-pseudoborder + $qw-tab-deco-border-width) + $q
     &:first-child {
       border-top-left-radius: $global-radius;
       border-bottom-left-radius: $global-radius;
-    }
-
-    &:last-child {
-      border-top-right-radius: $global-radius;
-      border-bottom-right-radius: $global-radius;
-    }
+=======
 
     &:hover {
-      background: lighten($qw-actionbtn-active-bg, 10%);
+      max-width: 500px;
+      background-color: $qw-white;
+>>>>>>> sprint/design
+    }
+
+    a {
+      color: $qw-blue;
+    }
+
+    i {
+      vertical-align: top;
+      font-size: 1.5rem;
     }
   }
 
-  > i:before {
-    width: 20px !important;
+  a {
+    @include default-font($size: 1rem, $color: $qw-gray-text);
   }
 }
 

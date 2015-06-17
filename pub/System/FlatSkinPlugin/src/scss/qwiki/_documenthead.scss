@@ -61,7 +61,10 @@
     top: 0;
     right: 0;
     background-color: $qw-dochead-classic-box-bg;
-    border-radius: $global-radius;  
+    border-bottom-left-radius: $global-radius;
+    border-top-right-radius: $global-radius;
+    border-left: 3px solid $qw-dochead-default-box-bg;
+    border-bottom: 3px solid $qw-dochead-default-box-bg;
     font-size: $qw-dochead-classic-box-font-size;
     color: $qw-dochead-classic-box-font-color;
     padding: rem-calc(6 12);

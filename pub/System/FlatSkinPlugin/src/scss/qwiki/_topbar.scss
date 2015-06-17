@@ -1,21 +1,31 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> sprint/design
 @mixin topbar($bg: $qw-white, $height: 50px) {
   @include grid-row($behavior: collapse);
   background: $bg;
   height: $height;
 }
 
+<<<<<<< HEAD
 >>>>>>> b024ad8... Replaced hard coded color by their variables
+=======
+>>>>>>> sprint/design
 .qw-top {
   position: fixed;
   top: 0;
   padding: 0;
   min-width: $qw-page-width;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   transition: transform $qw-default-ease;
 >>>>>>> 39e6d84... Introduced easing variables
+=======
+  transition: transform $qw-default-ease;
+>>>>>>> sprint/design
   z-index: 99;
 
   @media #{$mobile-up} {
@@ -25,34 +35,18 @@
   }
 
   @media #{$medium-up} {
+    min-width: $qw-page-width;
     width: $qw-page-width;
-    height: $qw-top-height;
     left: $qw-leftbar-width;
   }
 
-  > .one {
-    @include grid-row($behavior: collapse);
-
-    background: $qw-top-one-bg;
-    height: $qw-top-one-height;
-    max-height: $qw-top-one-height;
-
-    @media #{$mobile-only} {
-      height: $qw-top-one-height-mobile;
-      max-height: $qw-top-one-height-mobile;
-    }
-
-    @media #{$small-up} {
-      height: $qw-top-one-height;
-      max-height: $qw-top-one-height;
-    }
-
+  &.leftbar-active {
     @media #{$mobile-up} {
-      position: relative;
-      left: $qw-leftbar-width;
+      transform: translate3d($qw-leftbar-width-expanded, 0, 0);
     }
 
     @media #{$medium-up} {
+<<<<<<< HEAD
       position: static;
       left: 0;
     }
@@ -285,9 +279,15 @@
           background: $qw-closebtn-active-large-bg;
         }
       }
+=======
+      $tx: $qw-leftbar-width-expanded - $qw-leftbar-width;
+      transform: translate3d($tx, 0, 0);
+>>>>>>> sprint/design
     }
   }
+}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   > .two {
     @include grid-row($behavior: collapse);
@@ -423,70 +423,51 @@
       > div {
         padding: rem-calc(0 10 0 25);
       }
+=======
+.qw-top-one {
+  @include topbar($bg: $qw-top-one-bg, $height: $qw-top-one-height);
+>>>>>>> sprint/design
 
-      &.maximized {
-        width: 100%;
-        @media #{$medium-up} {width: calc(100%);}
-      }
-    }
+  > .tabs {
+    @media #{$mobile-up} {@include grid-column($columns: 10, $collapse: true);}
+    @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
+    @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
+    height: inherit;
   }
 
-  &.quicksearch {
-    background: $qw-quicksearch-bg;
-
-    .search {
-      background: white;
-
-      input[name="search"] {
-        background: $qw-top-one-bg;
-      }
-    }
+  > .search {
+    @media #{$mobile-up} {@include grid-column($columns: 2, $collapse: true);}
+    @media #{$large-only} {@include grid-column($columns: 4, $collapse: true);}
+    @media #{$extended-up} {@include grid-column($columns: 3, $collapse: true);}
+    height: inherit;
   }
+}
 
-  &.offcanvas {
-    &.leftbar {
-      transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
+.qw-top-two {
+  @include topbar($bg: $qw-top-two-bg, $height: $qw-top-two-height);
+  padding: 0 $qw-breadcrumbs-padding;
+
+  > .wrapper {
+    @include grid-row($behavior: collapse);
+
+    border-bottom: 1px solid $qw-top-one-bg;
+    height: inherit;
+    transition: width $qw-default-ease;
+
+    @media #{$mobile-up} {@include grid-column($columns: 12, $collapse: true);}
+    @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
+    @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
+
+    &.maximized {
+      width: calc(100% - 2 * #{$qw-breadcrumbs-padding});
     }
 
-    &.quicksearch {
-      background: $qw-quicksearch-bg;
-
-    > .one {
-      > .breadcrumb {
-        @media #{$mobile-only} {display: none;}
-        @media #{$small-only} {display: none;}
-        @media #{$medium-only} {@include grid-column($columns: 6, $collapse: true);}
-        @media #{$large-only} {@include grid-column($columns: 8, $collapse: true);}
-        @media #{$extended-up} {@include grid-column($columns: 9, $collapse: true);}
-      }
-
-      > .search {
-        @media #{$mobile-up} {@include grid-column($columns: $total-columns, $last-column: true, $collapse: true);}
-        @media #{$medium-only} {@include grid-column($columns: 6, $last-column: true, $collapse: true);}
-        @media #{$large-only} {@include grid-column($columns: 4, $last-column: true, $collapse: true);}
-        @media #{$extended-up} {@include grid-column($columns: 3, $last-column: true, $collapse: true);}
-        background: $qw-quicksearch-bg;
-      }
-
-      .close {
-        opacity: 1;
-        pointer-events: auto;
-        cursor: pointer;
-      }
-
-      .qw-quicksearch-form {
-        display: block !important;
-
-        > .form > .input input {
-          width: 100%;
-        }
-      }
-
-      .qw-search-toggle {
-          display: none !important;
-        }
-      }
+    > .breadcrumbs {
+      @include grid-column($columns: 8, $collapse: true);
     }
 
+    > .actions {
+      @include grid-column($columns: 4, $collapse: true);
+    }
   }
 }

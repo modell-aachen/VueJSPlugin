@@ -1,0 +1,23 @@
+%TMPL:INCLUDE{"LeftBar"}%
+
+%TMPL:DEF{"leftbar"}%<!--leftbar-->
+<nav class="qw-leftbar">
+  <section>%TMPL:P{"leftbar:menu"}%</section>
+  <section>%TMPL:P{"leftbar:user"}%</section>
+  <section>%TMPL:P{"leftbar:items"}%</section>
+</nav>
+<!--/leftbar-->%TMPL:END%
+
+%TMPL:DEF{"leftbar:menu"}%<!--leftbar:menu-->
+<div class="qw-leftbar-toggle">%TMPL:P{"leftbar:toggle"}%</div>
+<!--/leftbar:menu-->%TMPL:END%
+
+%TMPL:DEF{"leftbar:user"}%<!--leftbar:user-->
+<div class="qw-leftbar-user">
+  <img src="%PUBURL%/%SYSTEMWEB%/FlatSkinPlugin/assets/avatar.png" alt="">
+</div>
+<!--/leftbar:user-->%TMPL:END%
+
+%TMPL:DEF{"leftbar:items"}%<!--leftbar:items-->
+<div class="qw-leftbar-entries">%TMPL:P{"leftbar:webs"}%</div>
+<!--/leftbar:items-->%TMPL:END%
