@@ -2,19 +2,10 @@
   @include grid-row($behavior: collapse);
   position: fixed;
   padding: 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> sprint/design
   background: $qw-content-bg;
   bottom: 0;
   transition: transform $qw-default-ease;
   height: 100%;
-<<<<<<< HEAD
->>>>>>> 39e6d84... Introduced easing variables
-=======
->>>>>>> sprint/design
 
   @media #{$mobile-only} {top: $qw-top-height-mobile;}
   @media #{$small-up} {top: $qw-top-height;}
@@ -28,31 +19,7 @@
   @media #{$medium-up} {
     left: $qw-leftbar-width;
     width: $qw-page-width;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    max-width: $qw-page-width;
-=======
     min-width: $qw-page-width;
-  }
-
-  &.leftbar-active {
-    $tx: $qw-leftbar-width-expanded - $qw-leftbar-width;
-
-    @media #{$mobile-up} {
-      transform: translate3d($qw-leftbar-width-expanded, 0, 0);
-    }
-
-    @media #{$medium-up} {
-      transform: translate3d( $tx, 0, 0 );
-    }
-
-    & ~ .qw-sidebar:not(.minimized) {
-      transform: translate3d($tx, 0, 0);
-    }
->>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
-=======
-    min-width: $qw-page-width;
->>>>>>> sprint/design
   }
 
   &.leftbar-active {
@@ -84,28 +51,10 @@
 
   height: calc(100% - #{$qw-top-height});
   overflow-y: auto;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  @include flex-container($direction:column);
-=======
-  transition: width $qw-default-ease;
->>>>>>> 39e6d84... Introduced easing variables
-
-  > .heading > div {
-    padding: 0 0.6rem;
-=======
-  transition: width .3s ease-in-out;
-
-  &.maximized {
-    width: calc(100% - 60px);
->>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
-=======
   transition: width $qw-default-ease;
 
   &.maximized {
     width: calc(100% - 60px);
->>>>>>> sprint/design
   }
 
   > .heading {
@@ -113,16 +62,6 @@
   }
 
   > .content {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    @include flex-container($align:stretch);
-    @include flex($grow:1);
-    width: 100%;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-=======
-=======
->>>>>>> sprint/design
     padding: $qw-content-padding;
   }
 }
@@ -133,41 +72,11 @@
   bottom: 0;
   right: 0;
   background: $qw-content-bg;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  transition: transform $qw-default-ease;
-=======
-  transition: transform .3s ease-in-out;
->>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
-  z-index: 100;
-
-  $pad: 3 * $qw-content-padding;
-  width: calc(25% - #{$pad});
->>>>>>> 39e6d84... Introduced easing variables
-
-<<<<<<< HEAD
-    $adorner-width: 30px;
-=======
-  &.minimized {
-    transform: translate3d(100%, 0, 0);
-  }
-
-  > .wrapper {
-    padding: 0 rem-calc(30);
->>>>>>> b499a86... (Re)Added basic maximize/minimize functionality
-
-    > .topic {
-      position: relative;
-      @include flex($grow:1);
-      vertical-align: top;
-      padding: 0 20px 0 20px;
-=======
   transition: transform $qw-default-ease;
   z-index: 100;
 
   $pad: 3 * $qw-content-padding;
   width: calc(25% - #{$pad});
->>>>>>> sprint/design
 
   &.minimized {
     transform: translate3d(100%, 0, 0);
@@ -187,20 +96,8 @@
     height: calc(100% - #{$qw-top-height});
     padding-top: rem-calc(10);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    > .adorner {
-      position: relative;
-      @include flex($grow:0,$shrink:0);
-      vertical-align: top;
-=======
     .title {
       @include default-font($bold: true, $transform: uppercase, $color: $qw-mud-text);
->>>>>>> b024ad8... Replaced hard coded color by their variables
-=======
-    .title {
-      @include default-font($bold: true, $transform: uppercase, $color: $qw-mud-text);
->>>>>>> sprint/design
 
       :not(:first-child) {
         line-height: rem-calc(60);
@@ -212,26 +109,11 @@
       padding: 0;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        > div {
-          position: absolute;
-        }
-      }
-=======
-    li,
-    a {
-      @include default-font($line: rem-calc(18), $color: $qw-blue);
-      padding: rem-calc(11) 0;
-      text-decoration: none;
->>>>>>> b024ad8... Replaced hard coded color by their variables
-=======
     .togglelink li,
     .togglelink a {
       @include default-font($line: rem-calc(18), $color: $qw-blue);
       padding: rem-calc(11) 0;
       text-decoration: none;
->>>>>>> sprint/design
     }
   }
 

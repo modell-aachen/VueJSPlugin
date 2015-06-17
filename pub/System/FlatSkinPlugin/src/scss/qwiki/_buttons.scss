@@ -119,22 +119,8 @@
 
   > a {
     display: block;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    background: #fff;
-<<<<<<< HEAD
-    transition: background 0.3s ease-in-out;
-=======
-    background: $qw-white;
-    transition: background $qw-default-ease;
->>>>>>> b024ad8... Replaced hard coded color by their variables
-=======
-    transition: background $qw-default-ease;
->>>>>>> 39e6d84... Introduced easing variables
-=======
     background: transparent;
     transition: background $qw-default-ease;
->>>>>>> sprint/design
     border: 1px solid $qw-border-bg;
     padding: rem-calc(0 6 6 6);
     color: $body-font-color;

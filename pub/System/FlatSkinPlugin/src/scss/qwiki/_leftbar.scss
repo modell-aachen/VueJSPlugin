@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> sprint/design
 @mixin leftbar-item($color: $qw-white, $color-active: $qw-white, $bg-active: $qw-white) {
   @include default-font($size: 1rem, $color: $color);
   padding: rem-calc(6.5 15);
@@ -20,10 +15,6 @@
   }
 }
 
-<<<<<<< HEAD
->>>>>>> b024ad8... Replaced hard coded color by their variables
-=======
->>>>>>> sprint/design
 .qw-leftbar {
   position: fixed;
   top: 0;
@@ -42,114 +33,9 @@
   }
 }
 
-<<<<<<< HEAD
-  > .buttons {
-    position: absolute;
-    top: 0;
-    left: $qw-leftbar-width-expanded;
-
-/*     padding-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px; */
-
-    @media #{$mobile-only} {display: none;}
-    @media #{$small-only} {display: none;}
-    @media #{$medium-up} {height: 100%;}
-
-    .button {
-      width: $qw-leftbar-width;
-      height: $qw-leftbar-width - 10px;
-     // border-radius: $global-radius;
-      background: $qw-leftbar-btn-bg;
-      color: $qw-leftbar-btn-color;
-      //margin-bottom: 10px;
-      font-size: 2.0rem;
-      text-decoration: none;
-      text-align: center;
-      display: block;
-      cursor: pointer;
-      transition: background 0.15s ease-in-out,
-                  color 0.15s ease-in-out,
-                  opacity 0.05s ease-in-out;
-
-      &:hover {
-        background: $qw-leftbar-btn-hover-bg;
-        color: $qw-leftbar-btn-hover-color;
-      }
-
-      &.active {
-        background: $qw-leftbar-btn-active-bg;
-        color: $qw-leftbar-btn-active-color;
-
-        &:hover {
-          background: $qw-leftbar-btn-active-hover-bg;
-          color: $qw-leftbar-btn-hover-color;
-        }
-      }
-      > i:before {
-        line-height: $qw-leftbar-width - 10px;
-      }
-    }
-
-    .bottom {
-      position: inherit;
-      bottom: 0;
-      left: 0;
-      height: 2 * $qw-leftbar-width;
-      width: $qw-leftbar-width;
-
-      > .login {
-        position: inherit;
-        bottom: 5px;
-        left: 0;
-        width: $qw-leftbar-width;
-
-        a {
-          display: block;
-          text-align: center;
-          font-size: 2rem;
-          text-decoration: none;
-
-          > i {
-            color: $qw-leftbar-avatar-login-color;
-            transition: color 0.3s ease-in-out;
-          }
-
-          &:hover {
-            > i {
-              color: $qw-leftbar-avatar-login-hover-color;
-            }
-          }
-        }
-      }
-
-      > .avatar {
-        position: inherit;
-        bottom: 0;
-        left: 0;
-        width: $qw-leftbar-width;
-        height: $qw-leftbar-width;
-        border-radius: $global-radius;
-        background-color: $qw-leftbar-avatar-bg;
-        background-image: url('../assets/avatar.png');
-        background-position: center 5px;
-        background-repeat: no-repeat;
-        cursor: pointer;
-
-        > .role {
-          position: inherit;
-          left: rem-calc(4);
-          right: rem-calc(4);
-          bottom: rem-calc(8);
-          height: rem-calc(15);
-          background: $qw-leftbar-avatar-role-bg;
-          color: $qw-leftbar-avatar-role-color;
-          border-radius: $global-radius;
-=======
 .qw-leftbar-toggle {
   @include flex-container($direction: column, $align: stretch);
   line-height: $qw-top-one-height;
->>>>>>> sprint/design
 
   a {
     @include leftbar-item(
@@ -158,234 +44,11 @@
       $color-active: $qw-leftbar-item-color-active
     );
 
-<<<<<<< HEAD
-          span {
-            position: relative;
-            top: rem-calc(2);
-          }
-        }
-      }
-    }
-
-    .user {
-      position: relative;
-      top: 0;
-      left: 0;
-      height:$qw-leftbar-width;
-      width: $qw-leftbar-width;
-      background: #282C2E;
-      padding: 15px 0;
-      border-top: 2px solid #333;
-      border-bottom: 2px solid #333;
-
-      > .user-avatar {
-        position: inherit;
-        top: 5px;
-        left: 5px;
-        width: $qw-leftbar-width - 10;
-        height: $qw-leftbar-width - 10;
-        border-radius: 25px;
-        background-color: $qw-leftbar-avatar-bg;
-        background-image: url('../assets/avatar.png');
-        background-position: center 5px;
-        background-repeat: no-repeat;
-        cursor: pointer;
-
-        > .role {
-          position: absolute;
-          left: rem-calc(4);
-          right: rem-calc(4);
-          bottom: rem-calc(8);
-          height: rem-calc(15);
-          background: $qw-leftbar-avatar-role-bg;
-          color: $qw-leftbar-avatar-role-color;
-          border-radius: $global-radius;
-
-          font-size: rem-calc(10);
-          font-weight: bold;
-          text-align: center;
-
-          span {
-            position: relative;
-            top: rem-calc(2);
-          }
-        }
-      }
-    }
-=======
     padding-top: 0;
     padding-bottom: 0;
->>>>>>> sprint/design
   }
 }
 
-<<<<<<< HEAD
-  > .menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: $qw-leftbar-width-expanded;
-    background: $qw-leftbar-bg-expanded;
-
-    > div {
-      position: inherit;
-      left: inherit;
-      width: inherit;
-    }
-
-    > .customer-logo {
-      top: 0;
-      height: $qw-leftbar-customer-logo-height;
-      max-height: $qw-leftbar-customer-logo-height;
-      overflow: hidden;
-      border-bottom: 1px solid $qw-leftbar-border-bg;
-    }
-
-    > .links {
-      top: 100px;
-
-      > .button {
-        margin: rem-calc(0 5 0 5);
-        height: 50px;
-        cursor: pointer;
-        //border-radius: $global-radius;
-        color: $qw-leftbar-color-expanded;
-        display: block;
-        transition: background 0.15s ease-in-out,
-                    color 0.15s ease-in-out,
-                    opacity 0.2s ease-in-out;
-
-        text-decoration: none;
-        padding: rem-calc(0 15 0 10);
-        line-height: rem-calc(36);
-
-        font-family: 'OpenSans';
-        font-size: rem-calc(16);
-
-        i {
-          font-size: 2rem;
-          margin-right: rem-calc(10);
-        }
-
-        &:hover {
-          background: $qw-leftbar-hover-bg-expanded;
-          color: $qw-leftbar-hover-color-expanded;
-        }
-        &.active {
-          background: $qw-leftbar-active-bg-expanded;
-          color: $qw-leftbar-active-color-expanded;
-
-          &:hover {
-            background: $qw-leftbar-active-hover-bg-expanded;
-            color: $qw-leftbar-active-hover-color-expanded;
-          }
-        }
-      }
-    }
-
-    > .user {
-      height: auto;
-      bottom: 1px + $qw-leftbar-ma-logo-height + 60px;
-
-      > div {
-        padding: rem-calc(24);
-
-        > span {
-          display: block;
-
-          &:first-child {
-            color: $primary-color;
-            font-size: 0.6rem;
-            margin-bottom: rem-calc(6);
-          }
-
-          &:last-child {
-            color: $body-font-color;
-            font-size: 0.8rem;
-            font-weight: bold;
-          }
-        }
-      }
-    }
-
-    > .actions {
-      @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
-      @media #{$small-up} {height: $qw-top-one-height;}
-      bottom: 10px + $qw-leftbar-ma-logo-height;
-
-      > div {
-        margin: 0 auto;
-        padding: rem-calc(0 12);
-
-        > * {margin-right: rem-calc(6);}
-      }
-    }
-
-    > .ma-logo {
-      bottom: 15px;
-      border-top: 1px solid $qw-leftbar-border-bg;
-      height: $qw-leftbar-ma-logo-height;
-
-      background-image: url("../assets/logo-blue.png");
-      background-repeat: no-repeat;
-      background-position: 20px center;
-
-      > span {
-        display: block;
-        height: inherit;
-        font-size: 0.8rem;
-        padding-left: 60px;
-        padding-top: 15px;
-        vertical-align: middle;
-      }
-    }
-    > .user {
-        position: relative;
-        top: 0;
-        left: 0;
-        height:$qw-leftbar-width;
-        //width: $qw-leftbar-width;
-        background: #3B3F41;
-        padding: 15px 0;
-        border-top: 2px solid #333;
-        border-bottom: 2px solid #333;
-  
-        > .user-avatar {
-          position: inherit;
-          top: 5px;
-          left: 5px;
-          width: 5px;
-          height: 5px;
-          border-radius: 25px;
-          background-color: $qw-leftbar-avatar-bg;
-          background-image: url('../assets/avatar.png');
-          background-position: center 5px;
-          background-repeat: no-repeat;
-          cursor: pointer;
-  
-          > .role {
-            position: absolute;
-            left: rem-calc(4);
-            right: rem-calc(4);
-            bottom: rem-calc(8);
-            height: rem-calc(15);
-            background: $qw-leftbar-avatar-role-bg;
-            color: $qw-leftbar-avatar-role-color;
-            border-radius: $global-radius;
-  
-            font-size: rem-calc(10);
-            font-weight: bold;
-            text-align: center;
-  
-            span {
-              position: relative;
-              top: rem-calc(2);
-            }
-          }
-      }
-    }
-=======
 .qw-leftbar-entries {
   @include flex-container($direction: column, $align: stretch);
 
@@ -395,7 +58,6 @@
       $bg-active: $qw-leftbar-item-bg-active,
       $color-active: $qw-leftbar-item-color-active
     );
->>>>>>> sprint/design
   }
 }
 
