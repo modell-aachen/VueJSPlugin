@@ -52,13 +52,30 @@
 .qw-leftbar-entries {
   @include flex-container($direction: column, $align: stretch);
 
-  a {
-    @include leftbar-item(
-      $color: $qw-leftbar-item-color-inactive,
-      $bg-active: $qw-leftbar-item-bg-active,
-      $color-active: $qw-leftbar-item-color-active
-    );
+  > .leftbar-items-top {
+    height: 10px;
+    //background: #fff;
+    border-bottom-right-radius: 3px;
   }
+  
+  > .leftbar-items-bottom {
+    height: 10px;
+    //background: #fff;
+    border-top-right-radius: 3px;
+
+  }
+
+  > .leftbar-items-center {
+    a {
+      @include leftbar-item(
+        $color: $qw-leftbar-item-color-inactive,
+        $bg-active: $qw-leftbar-item-bg-active,
+        $color-active: $qw-leftbar-item-color-active
+      );
+    }
+  }
+
+
 }
 
 .qw-leftbar-user {
