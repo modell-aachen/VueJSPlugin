@@ -115,65 +115,6 @@ jQuery(function($) {
 </div>
 <!--/modals-->%TMPL:END%
 
-<<<<<<< HEAD
-%TMPL:DEF{"topbar"}%<!--topbar-->
-<nav class="qw-top" data-offcanvas>
-  <div class="one">
-    <div class="tabs-container">
-      <div class="tabs">
-        <div>%TMPL:P{"topbar:tabs"}%</div>
-      </div>
-    </div>
-    <div class="search">
-      <div class="close" data-offcanvas-toggle="quicksearch">
-        <div><i class="icon-arrow-right"></i></div>
-      </div>
-      <div>%TMPL:P{"topbar:search"}%</div>
-    </div>
-  </div>
-  <div class="two">
-    <div class="actions">
-      <div>
-        <div><div>%TMPL:P{"breadcrumb"}%</div></div>
-        <div class="topicactions-container">
-          <div class="topicactions">%TMPL:P{"topbar:actions"}%</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<!--/topbar-->%TMPL:END%
-
-
-%TMPL:DEF{"topbar:search"}%<!--topbar:search-->
-<div class="qw-quicksearch-form">
-  <form class="form" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
-<!--
-TODO
-    <div class="toggle">
-      <div id="qw-quicksearch-filter-toggle" class="filter-toggle">
-        <span class="filter-show">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-down"></i></span>
-        <span class="filter-hide">%MAKETEXT{"Filters"}% <i class="fa fa-chevron-up"></i></span>
-      </div>
-    </div>
--->
-    <div class="input">
-      <input name="search"
-             type="text"
-             class="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete?limit=5', delay: 500}"
-             placeholder="%MAKETEXT{"search..."}%">
-    </div>
-    <div class="submit">
-      <a href="#" class="submit"><i class="icon-search"></i></a>
-    </div>
-  </form>
-</div>
-<div class="qw-search-toggle">
-  <a href="#" data-offcanvas-toggle="quicksearch"><i class="icon-search"></i></a>
-</div>
-<!--/topbar:search-->%TMPL:END%
-=======
->>>>>>> sprint/design
 
 %TMPL:DEF{"quicksearch"}%<!--quicksearch-->
 <div class="qw-quicksearch" data-offcanvas data-target="quicksearch" data-quicksearch data-solrsearch-widget data-quicksearch-dismax-main=".qw-quicksearch-form input" data-quicksearch-submit=".qw-quicksearch-form .submit">
@@ -275,62 +216,7 @@ TODO
 <!-- infobar:kvp -->%TMPL:P{"infobar:kvp"}%<!-- /infobar:kvp -->
 %TMPL:END%
 
-<<<<<<< HEAD
-%TMPL:DEF{"leftbar"}%<!--leftbar-->
-<nav class="qw-leftbar" data-offcanvas data-friendly data-target="leftbar">
-  <section class="buttons">
-    <div class="user">
-      <div class="user-avatar" title="%MAKETEXT{"Logged in as"}% %WIKINAME%" data-offcanvas-toggle="leftbar" data-tooltip="right">
-        <div class="role"><span>TBD</span></div>
-      </div>
-    </div>
-    %TMPL:P{"leftbar:buttons"}%
-    <div class="bottom">
-      <div class="login">
-    <a href="%IF{"$ USERNAME != 'guest'" then='%SCRIPTURLPATH{"view"}%?logout=1' else='%SCRIPTURLPATH{"login"}%'}%" title="%IF{"$ USERNAME != 'guest'" then='%MAKETEXT{"Logout"}%' else='%MAKETEXT{"Login"}%'}%" data-tooltip="right">
-      <i class="icon-%IF{"$ USERNAME != 'guest'" then='logout' else='login'}%"></i>
-    </a>
-      </div>
-    </div>
-  </section>
-  <section class="menu">
-    <div class="user">
-      <div class="user-avatar" data-offcanvas-toggle="leftbar" data-tooltip="right">
-        <div class="role"><span>TBD</span></div>
-      </div>
-    </div>
-    <div class="links">%TMPL:P{"leftbar:links"}%</div>
-    <div class="actions">
-      <div>
-        <a href="%SCRIPTURLPATH{"view"}%/Manuals" title="%MAKETEXT{"Help"}%" class="qw-prio3-btn" data-tooltip="top"><i class="icon-questionmark-circle"></i></a>
-        <a href="%IF{"$ USERNAME != 'guest'" then='%SCRIPTURLPATH{"view"}%?logout=1' else='%SCRIPTURLPATH{"login"}%'}%" class="qw-prio3-btn" title="%IF{"$ USERNAME != 'guest'" then='%MAKETEXT{"Logout"}%' else='%MAKETEXT{"Login"}%'}%" data-tooltip="top">
-        <i class="icon-%IF{"$ USERNAME != 'guest'" then='logout' else='login'}%"></i>
-        </a>
-        <a href="%SCRIPTURLPATH{"view"}%/%WEB%/WebPreferences" class="qw-prio3-btn" title="%MAKETEXT{"Settings"}%" data-tooltip="top"><i class="icon-config"></i></a>
-      </div>
-    </div>
-    <div class="ma-logo">
-      <span>Modell Aachen GmbH</span>
-    </div>
-  </section>
-</nav>
-<!--/leftbar-->%TMPL:END%
-
-
-%TMPL:DEF{"infobar"}%<!--infobar-->
-<div class="qw-infobar" data-offcanvas data-offcanvas-persist-state data-target="infobar">
-  <div>
-    <div class="header">
-      <div>
-        <i class="icon-page-info"></i>
-        <span>%MAKETEXT{"Document information"}%</span>
-        <a href="#" class="qw-close-btn" data-maximize-toggle=".qw-page, .qw-top .two .actions" title="%MAKETEXT{"Close"}%" data-tooltip="left"></a>
-      </div>
-    </div>
-    <div class="content">
-=======
 %TMPL:DEF{"infobar:general"}%
->>>>>>> sprint/design
       <div>
         <span class="title">%MAKETEXT{"General"}%</span>
         <ul class='togglelink'>
@@ -610,10 +496,7 @@ Keep this, it will load the JSI18N scripts:
 %{
   LOGO
 }%
-%TMPL:DEF{"logo"}%<div class="expanded-panel">
-  <span class="expanded-logo"><i class="icon-menu"></i></span>
-  <span class="expanded-closetext">%MAKETEXT{"Close the menu"}%</span>
-</div>%TMPL:END%
+%TMPL:DEF{"logo"}%<div class="patternSimpleLogo"><img src="%WIKILOGOIMG%" height="50px" border="0" alt="%WIKILOGOALT%" style="padding-left:12px; margin-top:4px;"/></div>%TMPL:END%
 
 %TMPL:DEF{"newlink:bar"}%<!--newlink:bar-->%JQREQUIRE{"select2,wikiword,textboxlist"}%
 <div class="qw-newlink qw-bigoffcanvas" data-offcanvas data-title="%MAKETEXT{"Create new topic"}%" data-target="newlink">
