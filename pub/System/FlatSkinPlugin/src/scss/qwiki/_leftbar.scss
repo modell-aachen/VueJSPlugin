@@ -21,10 +21,20 @@
   left: 0;
   bottom: 0;
   z-index: 0;
+  white-space: nowrap;
+  overflow: hidden;
 
   background: $qw-leftbar-bg;
   color: $qw-leftbar-color;
-  width: $qw-leftbar-width-expanded;
+  width: $qw-leftbar-width;
+  transition: width $qw-default-ease;
+
+
+&.leftbar-active {
+    width: $qw-leftbar-width-expanded;
+    transition: width $qw-default-ease;
+
+  }
 
   @include flex-container($direction: column, $align: stretch);
 
@@ -51,31 +61,42 @@
 
 .qw-leftbar-entries {
   @include flex-container($direction: column, $align: stretch);
+  line-height: 40px;
 
-  > .leftbar-items-top {
-    height: 10px;
-    //background: #fff;
-    border-bottom-right-radius: 3px;
-  }
+  > .leftbar-entity {
+
+    &.active {
+        background: #FFF;
+    }
+    margin: 0;
+    padding: 0;
+
+    > .leftbar-items-top {
+      background: $qw-leftbar-item-entity-bg;
+      height: $qw-leftbar-item-entity-height;
+      border-bottom-right-radius: $global-radius;
+      position: relative;
+      width: $qw-leftbar-item-entity-width;
+    }
   
-  > .leftbar-items-bottom {
-    height: 10px;
-    //background: #fff;
-    border-top-right-radius: 3px;
-
-  }
-
-  > .leftbar-items-center {
-    a {
-      @include leftbar-item(
-        $color: $qw-leftbar-item-color-inactive,
-        $bg-active: $qw-leftbar-item-bg-active,
-        $color-active: $qw-leftbar-item-color-active
-      );
+    > .leftbar-items-center {
+      a {
+        @include leftbar-item(
+          $color: $qw-leftbar-item-color-inactive,
+          $bg-active: $qw-leftbar-item-bg-active,
+          $color-active: $qw-leftbar-item-color-active
+        );
+      }
+    }
+    
+    > .leftbar-items-bottom {  
+      background: $qw-leftbar-item-entity-bg;
+      height: $qw-leftbar-item-entity-height;
+      border-top-right-radius: $global-radius;
+      position: relative;
+      width:  $qw-leftbar-item-entity-width;
     }
   }
-
-
 }
 
 .qw-leftbar-user {

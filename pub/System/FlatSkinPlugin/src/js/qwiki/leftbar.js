@@ -16,6 +16,7 @@
       this.unbind();
 
       $('.qw-leftbar-toggle > a').on( 'click', this, toggleLeftbar );
+
     },
 
     unbind: function() {
@@ -24,9 +25,10 @@
   };
 
   var toggleLeftbar = function( evt ) {
-    $('.qw-top').toggleClass('leftbar-active');
+    $('.qw-top, .qw-leftbar').toggleClass('leftbar-active');
     $('.qw-page').toggleClass('leftbar-active');
 
     return false;
   };
+
 }(jQuery, window._, window.document, window));
