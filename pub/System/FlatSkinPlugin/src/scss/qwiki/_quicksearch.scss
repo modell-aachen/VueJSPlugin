@@ -87,18 +87,37 @@
     > .input {
       @include flex($grow: 1);
 
+
       > input {
+
+        background: #7F7B71 !important;
         border: none !important;
         box-shadow: none !important;
         height: $qw-search-height;
-        border-radius: $global-radius 0 0 $global-radius;
-        width: 66%;
+        border-radius: 25px 0 0 25px;
+        width: 50%;
         transition: width 0.3s ease-in-out;
         float: right;
         font-style: italic;
+        padding-left: 20px;
 
         &:focus {
           width: 100%;
+        }
+        &::-webkit-input-placeholder {
+          color: #FFF;
+        }
+
+        &:-moz-placeholder {
+          color: #FFF;
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: #FFF;  
+        }
+
+        &:-ms-input-placeholder {  
+           color: #FFF;  
         }
       }
     }
@@ -109,7 +128,7 @@
         @include button(
           $bg: $qw-quicksearch-bg
         );
-
+        background: #7F7B71;
         display: inline-block;
         width: rem-calc(50);
         padding: 0; margin: 0;
@@ -118,9 +137,10 @@
 
         border: none !important;
         box-shadow: none !important;
-        border-radius: 0 $global-radius $global-radius 0;
+        border-radius: 0 25px 25px 0;
 
         > i {
+          color: #FFF;
           display: block;
           height: $qw-search-height;
           &:before { line-height: $qw-search-height; }

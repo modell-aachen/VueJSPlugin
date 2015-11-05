@@ -476,7 +476,7 @@
 
 .qw-session-toptwo {
 
-	margin-top: $qw-dashboard-toptwo-margin-top;
+	//margin-top: $qw-dashboard-toptwo-margin-top;
 	height: $qw-dashboard-toptwo-height;
 	&.sessions {
 		display: none;
@@ -499,27 +499,39 @@
 		}
 
 		> .add {
-			margin: $qw-dashboard-toptwo-a-margin;
+			border: 0px !important;
+			padding: $qw-dashboard-toptwo-create-padding;
+			margin: $qw-dashboard-toptwo-create-margin;
 			float: right;
 			font-style: italic;
 			font-size: $qw-dashboard-toptwo-a-font-color-font-size;
 			color: $qw-dashboard-toptwo-a-font-color;
+			background: #52CAE4 !important;
 			> i { 
 			padding-right: $qw-dashboard-toptwo-a-margin;
-			font-size: $qw-session-toptwo-session-add-icon-font-size;
+			font-size: $qw-dashboard-toptwo-a-icon-font-size;
 
+			}
+
+			&:active {
+				background: #236AA2;
+				color: #FFF;
 			}
 		}
 
 		> .maximize {
-			padding: $qw-session-toptwo-session-maximize-padding;
+			border:0px !important;
+			padding: $qw-dashboard-toptwo-maximize-padding;
 			margin: $qw-dashboard-toptwo-a-margin;
 			float: right;
-			font-style: italic;
-			color: $qw-session-toptwo-session-maximize-font-color;
+			font-style: $qw-dashboard-toptwo-maximize-font-style;
+			color: $qw-dashboard-toptwo-maximize-font-color;
+			background: #7F7B71;
 			> i { 
-			font-size: $qw-session-toptwo-session-maximize-icon-font-size;
-			padding: $qw-session-toptwo-session-maximize-icon-padding;
+			font-size: $qw-dashboard-toptwo-maximize-icon-font-size;
+			padding: $qw-dashboard-toptwo-maximize-icon-padding;
+			color: #FFF;
+
 
 			}
 		}

@@ -325,6 +325,9 @@ $qw-leftbar-width: 60px;
 $qw-leftbar-item-bg-active: #fff;
 $qw-leftbar-item-color-active: #000;
 $qw-leftbar-item-color-inactive: #84878a;
+$qw-leftbar-item-entity-height: rem-calc(5);
+$qw-leftbar-item-entity-bg: #282C2E;
+$qw-leftbar-item-entity-width: 100%;
 $qw-leftbar-toggle-color-inactive: #fff;
 $qw-leftbar-user-bg: #3b3f41;
 
@@ -527,6 +530,8 @@ $qw-dashboard-toptwo-maximize-font-style: italic;
 $qw-dashboard-toptwo-maximize-font-color: #BFBFBF;
 $qw-dashboard-toptwo-maximize-icon-font-size: rem-calc(24);
 $qw-dashboard-toptwo-maximize-icon-padding: rem-calc(0 5);
+$qw-dashboard-toptwo-create-padding: rem-calc(7 16 6 6) !important;
+$qw-dashboard-toptwo-create-margin: rem-calc(10 5 5 5);
 $qw-dashboard-toptwo-margin-top: rem-calc(5);
 $qw-dashboard-toptwo-height: rem-calc(50);
 $qw-dashboard-toptwo-content-line-height: rem-calc(45);

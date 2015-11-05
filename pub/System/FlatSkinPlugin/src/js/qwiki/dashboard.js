@@ -8,5 +8,5 @@ jQuery(function($){
  		$(".qw-dashboard-toptwo:not(." + target + ")").removeClass("active");
  		$(".qw-dashboard-container." + target).addClass("active"); 
  		$(".qw-dashboard-toptwo." + target).addClass("active");
-	});
+	});	
 });

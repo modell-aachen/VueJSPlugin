@@ -199,7 +199,6 @@
 %TMPL:DEF{"dashboard:menu"
 }%<div class="qw-dashboard-topbar" data-offcanvas>
   <ul class="dashboard-list" data-inline-list>
-    <li><span><i class="icon-home"></i> %MAKETEXT{"Dashboard"}%</span></li>
     <li class="active" data-target="tasks" ><span href="#" >%MAKETEXT{"Aufgaben"}%</span></li>
     <li data-target="knowledge"><span href="#">%MAKETEXT{"Wissen"}%</span></li>
     <li data-target="bookmarks"><span href="#">%MAKETEXT{"Lesezeichen"}%</span></li>
@@ -208,7 +207,7 @@
 </div>%TMPL:END%
 
 %TMPL:DEF{"dashboard:actions"
-}%<div class="qw-dashboard-toptwo tasks  active" data-offcanvas>
+}%<div class="qw-dashboard-toptwo tasks active" data-offcanvas>
   <span class="content">%MAKETEXT{Tasks}%, <a href="#"> %MAKETEXT{Current}%</a><i class="icon-arrow-down"  data-dropdown="#qw-task-more-menu"></i>
 <ul id="qw-task-more-menu" class="qw-dropdown-light" style="display:none;">
   <li><a href="#">sub menu 1</a></li>
@@ -217,14 +216,14 @@
   <li><a href="#">sub menu 4</a></li>
 </ul>
   </span>
-  <span class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-maximize"></i></span>
+  <span class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-arrow-right"></i></span>
   <span class="qw-prio2-btn add" data-offcanvas-toggle="addtask"><i class="icon-add"></i>%MAKETEXT{Creating a task}%</span>
 </div>
 <div class="qw-dashboard-toptwo knowledge" data-offcanvas>
   <span class="content">%MAKETEXT{Knowledge}%</span>
-    <a class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-maximize"></i></a>
-    <a class="qw-prio2-btn knowledge" data-offcanvas-toggle="addknowledge"><i class="icon-add"></i>%MAKETEXT{Invest}%</a>
-    <a class="qw-prio2-btn" href="#"><i class="icon-sort"></i>%MAKETEXT{Letzte Verwendung}%</a>
+    <span class="qw-prio2-btn maximize" data-maximize-toggle=".dashboardactions, .qw-page" data-offcanvas-toggle=""><i class="icon-arrow-right"></i></span>
+    <span class="qw-prio2-btn addknowledge" data-offcanvas-toggle="addknowledge"><i class="icon-add"></i>%MAKETEXT{Invest}%</span>
+    <span class="qw-prio2-btn lastknowledge" href="#"><i class="icon-sort"></i>%MAKETEXT{Letzte Verwendung}%</span>
     <div class="view">
       <a href="#" class="row qw-action-button"><i class="icon-list-bullets"></i></a>
       <a href="#" class="grid qw-action-button"><i class="icon-grid-view"></i></a>

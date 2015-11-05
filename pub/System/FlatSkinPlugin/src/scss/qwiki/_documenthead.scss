@@ -27,16 +27,17 @@
 
       > .label {
         display: block;
-        text-transform: uppercase;
+        //text-transform: uppercase;
         color: $qw-dochead-label-color;
         font-size: $qw-dochead-label-font-size;
         font-weight: $qw-dochead-label-font-weight;
         min-width: rem-calc(75);
+        margin-bottom: rem-calc(5);
       }
       > .content {
         margin-top: rem-calc(3);
         $pad: rem-calc(6);
-        padding: rem-calc(3 7);
+        padding: rem-calc(2 7);
         min-height: rem-calc(30) - 2 * $pad;
         border-radius: $global-radius;
         background: $qw-dochead-default-box-bg;
@@ -46,6 +47,11 @@
         &.user {
           color: $qw-dochead-user-box-color;
         }
+
+        &.approvement {
+          background: #84BB2E;
+          color: #FFF;
+        }
       }
     }
   }
@@ -54,7 +60,6 @@
     position: absolute;
     top: 0;
     right: 0;
-
     background-color: $qw-dochead-classic-box-bg;
     border-bottom-left-radius: $global-radius;
     border-top-right-radius: $global-radius;
@@ -63,6 +68,12 @@
     font-size: $qw-dochead-classic-box-font-size;
     color: $qw-dochead-classic-box-font-color;
     padding: rem-calc(6 12);
+    border: solid 5px white;
+    border-top: 0;
+    border-right: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
     cursor: pointer;
     z-index: 1;
 

@@ -1,0 +1,100 @@
+.qw-menutoggle {
+  position: fixed;
+  top: 0;
+  left: -1 * $qw-leftbar-width-expanded;
+  width: $qw-leftbar-width-expanded + $qw-leftbar-width;
+  z-index: 101;
+
+  @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+  @media #{$small-up} {height: $qw-top-one-height;}
+
+  > .customer-logo {
+    width: $qw-leftbar-width-expanded;
+    float: left;
+    display: inline-block;
+    background-color: $qw-leftbar-bg-expanded;
+    border-bottom: 1px solid $qw-leftbar-border-bg;
+    padding: 0;
+    margin: 0;
+
+    @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+    @media #{$small-up} {height: $qw-top-one-height;}
+    > .expanded-panel { 
+      > .expanded-logo {
+        > i {
+          line-height: 60px;
+          display: inline-block;
+          width: 60px;
+          font-size: 1.8rem;
+          text-align: center; 
+          color: #FFF;
+        }
+      }
+      > .expanded-closetext {
+          display: inline-block;
+          color: #fff;
+      }
+    }
+  }
+
+  > .toggle {
+    display: inline-block;
+    float: left;
+    width: $qw-leftbar-width;
+    background: $qw-leftbar-toggle-bg;
+    cursor: pointer;
+    color: white;
+    transition: background 0.1s ease-in-out;
+
+    @media #{$mobile-only} {height: $qw-top-one-height-mobile;}
+    @media #{$small-up} {height: $qw-top-one-height;}
+
+    &:hover {
+      background: $qw-leftbar-toggle-hover-bg;
+    }
+
+    &:active {
+      background: $qw-leftbar-toggle-active-bg;
+    }
+
+    > i {
+/*       position: relative;
+      top: 14px; */
+      display: inline-block;
+      width: $qw-leftbar-width;
+      font-size: 1.8rem;
+      text-align: center;
+      @media #{$mobile-only} {line-height: $qw-top-one-height-mobile;}
+      @media #{$small-up} {line-height: $qw-top-one-height;}
+    }
+  }
+
+  &.offcanvas {
+    &.quicksearch {
+      @media #{$mobile-only} {display: none;}
+      @media #{$small-only} {display: none;}
+    }
+
+    &.leftbar {
+      transform: translate3d( $qw-leftbar-width-expanded, 0, 0 );
+      > .toggle > i {
+        font-size: 1rem;
+        &:before {
+          content: $icon-arrow-left;
+        }
+      }
+    }
+  }
+
+  &.edit {
+    left: 0;
+    background: $qw-leftbar-toggle-edit-bg;
+    width: $qw-leftbar-width;
+
+    > div {
+      color: white;
+      font-size: 2rem;
+      padding: rem-calc(4 12 9 12);
+    }
+  }
+}
