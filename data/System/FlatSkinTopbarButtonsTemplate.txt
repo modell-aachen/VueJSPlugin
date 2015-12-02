@@ -1,6 +1,6 @@
 %TMPL:INCLUDE{"TopicMenu"}%
 
-%TMPL:DEF{"topbar:tabs"}%FOOBAR%TMPL:P{"topbar:tabs:standard"}%%TMPL:END%
+%TMPL:DEF{"topbar:tabs"}%%TMPL:P{"topbar:tabs:standard"}%%TMPL:END%
 %TMPL:DEF{"topbar:actions"}%%TMPL:P{"topbar:actions:buttons"}%%TMPL:END%
 
 %TMPL:DEF{"topbar:tabs:standard"}%%{
