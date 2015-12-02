@@ -75,7 +75,7 @@
   position: fixed;
   right: $qw-content-padding;
   background: $qw-infobar-content-bg;
-  z-index: 100;
+  z-index: 10000;
   overflow: hidden !important;
   transition: transform $qw-default-ease;
   transform: translate3d(125%, 0, 0);
@@ -92,8 +92,8 @@
   }
 
   @media #{$small-up} {
-    top: $qw-top-height;
-    height: calc(99% - #{$qw-top-height});
+    top: $qw-top-one-height;
+    height: calc(99% - #{$qw-top-one-height});
   }
 
   &.active {
