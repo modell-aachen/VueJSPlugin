@@ -17,6 +17,11 @@
 
       var $search = $('.qw-quicksearch-form input[name="search"]');
       $search.on('click.qw-searchbar', this, onShowOffCanvas);
+
+      $('#hotfix-close-search').on('click', function() {
+        $('.qw-quicksearch').offcanvas({action: 'close'});
+        return false;
+      });
     },
 
     unbind: function() {
