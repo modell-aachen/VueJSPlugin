@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="" date="1443077395" format="1.1" version="1"}%
+
+---+!! %TOPIC%
+<!--
+* Set SHORTDESCRIPTION = jQuery <nop>JavaScript library for Foswiki
+-->
+%SHORTDESCRIPTION%
+
+%TOC%
+
+---++ Description
+
+%TOC%
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="ProjectContributor"}%
+%META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
+%META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/distro"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2007-2015 Foswiki Contributors http://foswiki.org"}%
+%META:FIELD{name="License" title="License" value="GPL"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%25$ROOTMODULE%25"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%25$ROOTMODULE%25"}%

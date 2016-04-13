@@ -1,0 +1,4 @@
+data/System/VueJSPlugin.txt 0644
+lib/Foswiki/Plugins/VueJSPlugin.pm 0644
+lib/Foswiki/Plugins/VueJSPlugin/DEPENDENCIES 0644
+pub/System/VueJSPlugin/vue.js 0644
