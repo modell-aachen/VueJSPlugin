@@ -10,15 +10,11 @@ Container for Vue.JS
 
 
 use Foswiki::Func ();
-use Foswiki::Meta ();
 use Foswiki::Plugins ();
-use Foswiki::Plugins::JQueryPlugin();
-use Foswiki::Contrib::JsonRpcContrib ();
 
 our $VERSION = '0.00_001';
 our $RELEASE = '08 Mar 2016';
 our $SHORTDESCRIPTION = '';
-our $NO_PREFS_IN_TOPIC = 1;
 our $service;
 
 sub initPlugin {
@@ -29,25 +25,46 @@ sub initPlugin {
         );
         return 0;
     }
+    Foswiki::Func::registerTagHandler('VUE', \&loadDependencies);
 
+  return 1;
+}
+
+###############################################################################
+
+sub loadDependencies {
+
+    my ( $session, $params, $topic, $web, $topicObject ) = @_;
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
     my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 0;
     my $suffix = $dev ? '' : '.min';
-    Foswiki::Func::registerTagHandler( 'VUE', sub {
-            my ( $session, $params, $topic, $web, $topicObject ) = @_;
-            my $app = $params->{_DEFAULT} || "App";
-            Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', "<script type='text/javascript' src='$pluginURL/vue$suffix.js'></script>", "JQUERYPLUGIN");
-            Foswiki::Func::addToZone( 'head', "VUEJS::STYLES", "<link rel='stylesheet' type='text/css' href='$pluginURL/vue.css' />");
-            if (Foswiki::Func::attachmentExists('System', 'VueJSPlugin', "$app.js")) {
-                Foswiki::Func::addToZone( 'script', "VUEJSPLUGIN::$app", "<script type='text/javascript' src='$pluginURL/$app.js'></script>", "VUEJSPLUGIN");
-            }
-            if (Foswiki::Func::attachmentExists('System', 'VueJSPlugin', "$app.css")) {
-                Foswiki::Func::addToZone( 'head', "VUEJS::STYLES::$app", "<link rel='stylesheet' type='text/css' href='$pluginURL/$app.css' />");
-            }
-            return "";
-    });
 
-    return 1;
+    my $app = $params->{_DEFAULT} || "App";
+    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', "<script type='text/javascript' src='$pluginURL/vue$suffix.js'></script>");
+    Foswiki::Func::addToZone( 'head', "VUEJS::STYLES", "<link rel='stylesheet' type='text/css' href='$pluginURL/vue.css' />");
+
+    my $scripts = <<LOAD;
+<script type='text/javascript' src='$pluginURL/$app$suffix.js'></script>
+<link rel='stylesheet' type='text/css' href='$pluginURL/$app.css' />
+LOAD
+
+    my $return;
+    my ($meta, $text) = Foswiki::Func::readTopic('System', $app .'VueTemplate');
+    $return .= _loadTemplate($text);
+    ($meta, $text) = Foswiki::Func::readTopic('System', 'VueJSTemplate');
+    $return .= _loadTemplate($text);
+
+    return $return . $scripts;
+}
+
+sub _loadTemplate {
+    my  ($text) = @_;
+    my @components = ( $text =~ /TMPL:DEF{"([^"]+)"}/g);
+    my $snippet;
+    foreach my $component (@components) {
+        $snippet .= "<script id='$component' type='x-template'>\n%TMPL:P{\"$component\"}%\n</script>\n";
+    }
+    return $snippet;
 }
 
 1;
