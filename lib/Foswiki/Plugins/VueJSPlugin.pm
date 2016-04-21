@@ -41,11 +41,11 @@ sub loadDependencies {
 
     my $app = $params->{_DEFAULT} || "App";
     Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', "<script type='text/javascript' src='$pluginURL/vue$suffix.js'></script>");
-    Foswiki::Func::addToZone( 'head', "VUEJS::STYLES", "<link rel='stylesheet' type='text/css' href='$pluginURL/vue.css' />");
+    Foswiki::Func::addToZone( 'head', "VUEJS::STYLES", "<link rel='stylesheet' type='text/css' href='$pluginURL/vue$suffix.css' />");
 
     my $scripts = <<LOAD;
 <script type='text/javascript' src='$pluginURL/$app$suffix.js'></script>
-<link rel='stylesheet' type='text/css' href='$pluginURL/$app.css' />
+<link rel='stylesheet' type='text/css' href='$pluginURL/$app$suffix.css' />
 LOAD
 
     my $return;
