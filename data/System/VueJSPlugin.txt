@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="" date="1443077395" format="1.1" version="1"}%
+
+---+!! %TOPIC%
+<!--
+* Set SHORTDESCRIPTION = jQuery <nop>JavaScript library for Foswiki
+-->
+%SHORTDESCRIPTION%
+
+%TOC%
+
+---++ Description
+<blockquote>
+Vue.js (pronounced /vjuː/, like view) is a library for building interactive web interfaces. The goal of Vue.js is to provide the benefits of reactive data binding and composable view components with an API that is as simple as possible.
+
+Vue.js itself is not a full-blown framework - it is focused on the view layer only. It is therefore very easy to pick up and to integrate with other libraries or existing projects. On the other hand, when used in combination with proper tooling and supporting libraries, Vue.js is also perfectly capable of powering sophisticated Single-Page Applications.
+</blockquote>
+
+---++ Vue.js references and tutorials
+   * [[https://vuejs.org/][vue.js Hompage]]
+   * [[https://vuejs.org/api/][vue.js API]]
+   * [[https://github.com/vuejs/vue][vue.js on GitHub]]
+
+---++ How to use
+A Vue.js app usually needs some HTML code, some JS and also some CSS code to run. When you call the %<nop>VUE% macro with the app name (%<nop>VUE{"<<nop>APPNAME>"}%) the Plugin tries to load the JS and CSS files for your Application. It looks on the VueJS public folder in the System Web for a JS and CSS file with the app name. Example: Appname: TestAPP -> JS: %PUBURL%/%SYSTEMWEB%/VueJSPlugin/TestApp.js etc...
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="ProjectContributor"}%
+%META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
+%META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/distro"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2007-2015 Foswiki Contributors http://foswiki.org"}%
+%META:FIELD{name="License" title="License" value="GPL"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%25$ROOTMODULE%25"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%25$ROOTMODULE%25"}%

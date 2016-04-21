@@ -1,0 +1,28 @@
+%META:TOPICPARENT{name="Macros"}%
+---+ VUE -- add vue.js funtionality in Page
+
+---++ Parameters
+   | *Parameter* | *Description* | *Default* |
+   | =""= | AppName to find dependent files. | =App= |
+
+---++ Example Application
+<verbatim class="tml">
+%VUE{"HelloWorld"}%
+<div id='HelloWorld' v-cloak>
+   <input type="text" v-model="message" />
+  <h1>{{message}}</h1>
+</div>
+</verbatim>
+HelloWorld.js
+<verbatim class="tml">
+$(document).ready(function(){
+   new Vue({
+     el: '#HelloWorld',
+     data: {
+       message: 'Change Me!',
+     }
+   });
+})
+</verbatim>
+---++ Related
+[[VueJSPlugin][VueJSPlugin]],
