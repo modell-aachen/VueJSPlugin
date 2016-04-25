@@ -1,0 +1,15 @@
+@import 'color-palette';
+
+$white: #fff;
+$black: #000;
+
+// foundation overrides
+$primary-color: map-get($qwiki-colors, primary);
+$success-color: map-get($qwiki-colors, success);
+$warning-color: map-get($qwiki-colors, warning);
+$alert-color: map-get($qwiki-colors, failure);
+
+$primary-hover: map-get($qwiki-colors, primary-hover);
+$success-hover: map-get($qwiki-colors, success-hover);
+$warning-hover: map-get($qwiki-colors, warning-hover);
+$alert-hover: map-get($qwiki-colors, failure-hover);

@@ -1,0 +1,33 @@
+{
+  "name": "flatskin",
+  "version": "1.0.0",
+  "description": "Modell Aachen's default Q.wiki skin",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "postinstall": "grunt build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.modac.lan:q-wiki/FlatSkinPlugin.git"
+  },
+  "author": "Modell Aachen GmbH",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "foundation-sites": "^6.2.1",
+    "grunt": "^1.0.0",
+    "grunt-concurrent": "^2.3.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-csslint": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "include-all": "^0.1.6",
+    "install": "^0.6.1",
+    "npm": "^3.8.7"
+  }
+}

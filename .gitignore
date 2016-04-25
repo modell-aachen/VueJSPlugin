@@ -1,0 +1,4 @@
+node_modules/*
+pub/System/FlatSkin/css/flatskin.*
+pub/System/FlatSkin/js/flatskin.*
+.sass-cache/*
