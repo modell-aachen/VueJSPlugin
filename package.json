@@ -16,6 +16,7 @@
   "author": "Modell Aachen GmbH",
   "license": "GPL-3.0",
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "foundation-sites": "^6.2.1",
     "grunt": "^1.0.0",
     "grunt-concurrent": "^2.3.0",
@@ -26,8 +27,12 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.8.0",
     "include-all": "^0.1.6",
     "install": "^0.6.1",
-    "npm": "^3.8.7"
+    "postcss-colors-only": "0.0.3",
+    "postcss-discard-duplicates": "^2.0.1",
+    "postcss-discard-empty": "^2.1.0",
+    "postcss-zindex": "^2.1.1"
   }
 }

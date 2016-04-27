@@ -1,11 +1,16 @@
 module.exports = function(grunt) {
   grunt.config.set('cssmin', {
     options: {
-      keepSpecialComments: 0
+      keepSpecialComments: 0,
+      sourceMap: true
     },
     dev: {
-      src: 'pub/System/FlatSkin/css/flatskin.css',
-      dest: 'pub/System/FlatSkin/css/flatskin.min.css'
+      files: {
+        'pub/System/FlatSkin/css/flatskin.min.css':
+          'pub/System/FlatSkin/css/flatskin.css',
+        'pub/System/FlatSkin/css/flatskin.colors.min.css':
+          'pub/System/FlatSkin/css/flatskin.colors.css'
+      }
     }
   });
 

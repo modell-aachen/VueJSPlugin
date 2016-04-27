@@ -1,0 +1,13 @@
+!noci
+data/System/FlatSkin.txt 0644
+data/System/FlatSkinPlugin.txt 0644
+pub/System/FlatSkin/css/flatskin.css 0644
+pub/System/FlatSkin/css/flatskin.min.css 0644
+pub/System/FlatSkin/css/flatskin.colors.css 0644
+pub/System/FlatSkin/css/flatskin.colors.min.css 0644
+lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
+lib/Foswiki/Plugins/SafeWikiPlugin/Signatures/FlatSkin.pm 0644
+locale/FlatSkinPlugin/de.po 0644
+test/unit/FlatSkinPlugin/FlatSkinSuite.pm 0444
+test/unit/FlatSkinPlugin/FlatSkinSeleniumTestCase.pm 0444
+test/unit/FlatSkinPlugin/qwikitest 0444
