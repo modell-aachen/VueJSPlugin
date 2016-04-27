@@ -3,7 +3,8 @@ module.exports = function(grunt) {
     dev: {
       options: {
         loadPath: [
-          'node_modules/foundation-sites/scss'
+          'node_modules/foundation-sites/scss',
+          'node_modules/open-sans-fontface/sass'
         ],
         style: 'expanded',
         trace: true

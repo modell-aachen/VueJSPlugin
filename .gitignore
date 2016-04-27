@@ -1,4 +1,5 @@
 node_modules/*
 pub/System/FlatSkin/css/flatskin.*
 pub/System/FlatSkin/js/flatskin.*
+pub/System/FlatSkin/fonts/opensans/*
 .sass-cache/*
