@@ -1,6 +1,7 @@
 h1, h2, h3, h4,
 small, .small-text {
   @include ma-font('semibold');
+  border: 0;
   color: $ma-body-text;
 }
 
