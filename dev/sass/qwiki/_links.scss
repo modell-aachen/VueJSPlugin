@@ -1,0 +1,56 @@
+.foswikiNewLink {
+  @include ma-font('semibold');
+  border: 0;
+  color: $ma-failure !important;
+  font-size: rem-calc(13);
+  line-height: rem-calc(21);
+
+  &:link,
+  &:hover,
+  &:visited {
+    border: 0;
+  }
+
+  a:hover sup {
+    color: $primary-color;
+  }
+}
+
+.foswikiTopic a {
+  @include ma-font('semibold');
+  color: $primary-color;
+  font-size: rem-calc(13);
+  line-height: rem-calc(21);
+
+  &:hover,
+  &:visited {
+    color: $primary-color;
+  }
+}
+
+.foswikiTopicUnvisited a {
+  @include ma-font('semibold');
+  color: $primary-color;
+  font-size: rem-calc(13);
+  line-height: rem-calc(21);
+
+  &:hover,
+  &:visited {
+    color: $primary-color;
+  }
+}
+
+:link,
+:visited {
+  @include ma-font('semibold');
+  color: $primary-color;
+  font-size: rem-calc(13);
+  line-height: rem-calc(21);
+
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    color: $primary-color;
+  }
+}

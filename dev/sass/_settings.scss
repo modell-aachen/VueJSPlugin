@@ -18,6 +18,11 @@ $ma-light-grey: #e2e2e2;
 $ma-grey: #a4aeb9;
 $ma-bg-beige: #f5f3ef;
 $ma-bg-light: #f7f7f7;
+$ma-light-border: #f1efea;
+
+$ma-font-regular: 'Open Sans';
+$ma-font-semibold: $ma-font-regular;
+$ma-font-bold: $ma-font-regular;
 
 $primary-hover: $ma-primary-hover;
 $success-hover: $ma-success-hover;
@@ -43,5 +48,4 @@ $medium-gray: $ma-grey;
 $dark-gray: $ma-dark-grey;
 $body-background: $ma-bg-light;
 $body-font-color: $ma-body-text;
-
-$body-font-family: 'OpenSans', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: $ma-font-regular;

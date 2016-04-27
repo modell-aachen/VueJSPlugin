@@ -1,0 +1,37 @@
+html, body {
+  table.foswikiTable {
+    @include ma-font();
+    border: 0;
+    font-size: rem-calc(13);
+    line-height: rem-calc(18);
+    text-align: left;
+    width: 100%;
+
+    td, th {
+      background: 0;
+      background-color: transparent;
+      border: 0;
+      padding: rem-calc(13 0 13 14);
+    }
+
+    tr:first-child {
+      td, th {
+        @include ma-font('semibold');
+        padding: rem-calc(11 0 11 14);
+      }
+    }
+
+    tr:not(:last-child) {
+      border-bottom: 1px solid $ma-light-border;
+    }
+
+    tr.foswikiTableRowdataBg0 td,
+    tr.foswikiTableRowdataBg1 td {
+      background-color: transparent;
+    }
+
+    &.striped tr:nth-child(odd) {
+     background-color: $ma-bg-light;
+    }
+  }
+}
