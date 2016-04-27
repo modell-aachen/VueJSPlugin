@@ -50,10 +50,13 @@ pub/System/FlatSkin/fonts/opensans/SemiboldItalic/OpenSans-SemiboldItalic.svg 06
 pub/System/FlatSkin/fonts/opensans/SemiboldItalic/OpenSans-SemiboldItalic.ttf 0644
 pub/System/FlatSkin/fonts/opensans/SemiboldItalic/OpenSans-SemiboldItalic.woff 0644
 pub/System/FlatSkin/fonts/opensans/SemiboldItalic/OpenSans-SemiboldItalic.woff2 0644
+pub/System/FlatSkin/images/qwiki-logo.png 0644
+pub/System/FlatSkin/images/ma-logo.png 0644
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
 lib/Foswiki/Plugins/SafeWikiPlugin/Signatures/FlatSkin.pm 0644
 locale/FlatSkinPlugin/de.po 0644
 templates/viewsidebar.flat.tmpl 0644
+templates/viewbottombar.flat.tmpl 0644
 test/unit/FlatSkinPlugin/FlatSkinSuite.pm 0444
 test/unit/FlatSkinPlugin/FlatSkinSeleniumTestCase.pm 0444
 test/unit/FlatSkinPlugin/qwikitest 0444

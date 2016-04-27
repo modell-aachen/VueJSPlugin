@@ -14,7 +14,9 @@ $OpenSansPath: '../fonts/opensans';
 // Modell Aachen Styles & Mixins
 //
 @import 'qwiki/mixins';
+@import 'qwiki/base';
 @import 'qwiki/inputs';
+@import 'qwiki/leftbar';
 @import 'qwiki/links';
 @import 'qwiki/table';
 @import 'qwiki/typography';
