@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   grunt.config.set('copy', {
-    dev: {
+    opensans: {
       files: [{
         expand: true,
         cwd: 'node_modules/open-sans-fontface/fonts/',

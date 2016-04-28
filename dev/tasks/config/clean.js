@@ -3,6 +3,7 @@ module.exports = function(grunt) {
     dev: [
       'pub/System/FlatSkin/css/flatskin.*',
       'pub/System/FlatSkin/js/flatskin.*',
+      'pub/System/FlatSkin/js/foundation.*',
       'pub/System/FlatSkin/fonts/opensans/**'
     ]
   });

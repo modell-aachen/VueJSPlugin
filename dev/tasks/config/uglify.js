@@ -4,9 +4,13 @@ module.exports = function(grunt) {
       preserveComments: false,
       sourceMap: true
     },
-    dev: {
+    flat: {
       src: 'pub/System/FlatSkin/js/flatskin.js',
       dest: 'pub/System/FlatSkin/js/flatskin.min.js'
+    },
+    fndt: {
+      src: 'pub/System/FlatSkin/js/foundation.js',
+      dest: 'pub/System/FlatSkin/js/foundation.min.js'
     }
   });
 
