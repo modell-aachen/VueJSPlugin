@@ -5,6 +5,10 @@ pub/System/FlatSkin/css/flatskin.css 0644
 pub/System/FlatSkin/css/flatskin.min.css 0644
 pub/System/FlatSkin/css/flatskin.colors.css 0644
 pub/System/FlatSkin/css/flatskin.colors.min.css 0644
+pub/System/FlatSkin/js/flatskin.js 0644
+pub/System/FlatSkin/js/flatskin.min.js 0644
+pub/System/FlatSkin/js/foundation.js 0644
+pub/System/FlatSkin/js/foundation.min.js 0644
 pub/System/FlatSkin/fonts/opensans/Bold/OpenSans-Bold.eot 0644
 pub/System/FlatSkin/fonts/opensans/Bold/OpenSans-Bold.svg 0644
 pub/System/FlatSkin/fonts/opensans/Bold/OpenSans-Bold.ttf 0644
@@ -55,6 +59,7 @@ pub/System/FlatSkin/images/ma-logo.png 0644
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
 lib/Foswiki/Plugins/SafeWikiPlugin/Signatures/FlatSkin.pm 0644
 locale/FlatSkinPlugin/de.po 0644
+templates/foswiki.flat.tmpl 0644
 templates/viewsidebar.flat.tmpl 0644
 templates/viewbottombar.flat.tmpl 0644
 test/unit/FlatSkinPlugin/FlatSkinSuite.pm 0444
