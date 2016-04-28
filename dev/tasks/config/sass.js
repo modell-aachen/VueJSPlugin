@@ -2,12 +2,12 @@ module.exports = function(grunt) {
   grunt.config.set('sass', {
     flat: {
       options: {
-        loadPath: [
+        includePaths: [
           'node_modules/foundation-sites/scss',
           'node_modules/open-sans-fontface/sass'
         ],
-        style: 'expanded',
-        trace: true
+        outputStlye: 'expanded',
+        sourceMap: true
       },
       files: [{
         expand: true,
@@ -19,5 +19,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
 };
