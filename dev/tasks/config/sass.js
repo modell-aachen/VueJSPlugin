@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   grunt.config.set('sass', {
-    dev: {
+    flat: {
       options: {
         loadPath: [
           'node_modules/foundation-sites/scss',
