@@ -10,6 +10,10 @@ module.exports = function(grunt) {
     sass: {
       files: ['dev/sass/**/*.scss'],
       tasks: ['sass', 'cssmin']
+    },
+    js: {
+      files: ['dev/js/**/*.js'],
+      tasks: ['concurrent:js']
     }
   });
 

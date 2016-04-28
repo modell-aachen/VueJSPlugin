@@ -11,6 +11,13 @@ module.exports = function(grunt) {
         ]
       }
     },
+    flat: {
+      files: {
+        'pub/System/FlatSkin/js/flatskin.js': [
+          'dev/js/**/*.js'
+        ]
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
