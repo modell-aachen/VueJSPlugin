@@ -1,11 +1,17 @@
 html, body {
-  table.foswikiTable {
+  table.foswikiTable,
+  .Modac_Standard {
     @include ma-font();
+    background: 0;
     border: 0;
     font-size: rem-calc(13);
     line-height: rem-calc(18);
     text-align: left;
     width: 100%;
+
+    thead tr:first-child {
+      background: 0;
+    }
 
     td, th {
       background: 0;
@@ -33,5 +39,9 @@ html, body {
     &.striped tr:nth-child(odd) {
      background-color: $ma-bg-light;
     }
+  }
+
+  .Modac_Standard.autonumbered tbody tr td:first-child:before {
+    color: $primary-color;
   }
 }

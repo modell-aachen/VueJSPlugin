@@ -35,3 +35,14 @@
     overflow: hidden;
   }
 }
+
+.ma-sidebar-item {
+  a,
+  a:active,
+  a:focus,
+  a:hover,
+  a:link,
+  a:visited {
+    color: $white;
+  }
+}
