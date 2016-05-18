@@ -1,9 +1,0 @@
-*.DS_Store
-pub/System/FlatSkinPlugin/src/scss/qwiki/_QWikiSymbol.scss
-/pub/System/FlatSkinPlugin/fonts/QWikiSymbol*
-/pub/System/FlatSkinPlugin/css/*
-/pub/System/FlatSkinPlugin/js/*
-/bower_components/*
-/node_modules/*
-/grunt.json
-/pub/System/FlatSkinPlugin/src/scss/_qwiki-font.scss
