@@ -1,0 +1,34 @@
+%TMPL:DEF{"sidebar"}%%{
+}%<div class="ma-sidebar">%TMPL:P{"websidebar"}%</div>
+<div id="modacSidebar"><!-- KEEP THIS FOR COMPATIBILITY REASONS --></div>%{
+}%%TMPL:END%
+
+%{ Please note that there must be a new line before the include of the WebLeftBar. Other wise the first bullet will not be displayed as a bullet. See Foswiki task Item410 }%
+%TMPL:DEF{"websidebar"}%
+<div class="ma-sidebar-item">
+  <div class="ma-logo top">
+      <a href="%WEBLOGOURL%"><img src="%WEBLOGOIMG%" border="0" alt="%WEBLOGOALT%" style="border:none;" /></a>
+   </div>
+</div>
+<div class="ma-sidebar-item stretch">
+  %IF{"istopic 'WebLeftBar'" then="$percntINCLUDE{$quot%WEB%.WebLeftBar$quot}$percnt" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%.WebLeftBarDefault'" then="$dollarpercntINCLUDE{$dollarquot%CUSTOMIZINGWEB{default="Custom"}%.WebLeftBarDefault$dollarquot}$dollarpercnt" else="$dollarpercntINCLUDE{$dollarquot%SYSTEMWEB%.WebLeftBarDefault$dollarquot}$dollarpercnt"}%"}%
+</div>
+<div class="ma-sidebar-item">
+   <div class="ma-logo bottom">
+      <a href="%SCRIPTURLPATH{"view"}%/Main/UeberQWiki?template=viewplain">
+         <img src="%QWIKILOGOIMG%" border="0" alt="%WEBLOGOALT%" style="border:none;" />
+      </a>
+   </div>
+</div>
+%TMPL:END%
+
+%TMPL:DEF{"sidebar:webindicator2"}%<div class="patternWebIndicator" style="border-color:%WEBBGCOLOR%">
+<a href='%SCRIPTURL{"view"}%/%BASEWEB%/%HOMETOPIC%'><nop>%BASEWEB%</a>
+</div>%TMPL:END%
+
+%TMPL:DEF{"sidebar:webindicator"}%%TMPL:END%
+
+
+%TMPL:DEF{"sidebar:weblink"}%<div class="patternWebIndicator">
+[[%BASEWEB%/%HOMETOPIC%][%BASEWEB%]]
+</div>%TMPL:END%

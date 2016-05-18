@@ -1,0 +1,24 @@
+%TMPL:INCLUDE{"foswiki"}%
+
+%TMPL:DEF{"head"}%<head>
+<meta charset="%CHARSET%" />
+%TMPL:P{"windowtitle"}%
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+%TMPL:P{context="edit" then="ie8compatibilitymode"}%
+<link rel="icon" href="%FAVICON%" type="image/x-icon" />
+<link rel="shortcut icon" href="%FAVICON%" type="image/x-icon" />
+<link rel="alternate" href="%SCRIPTURL{edit}%/%BASEWEB%/%BASETOPIC%?t=%GMTIME{"$epoch"}%" type="application/x-wiki" title="edit %BASETOPIC%" />
+<meta name="TEXT_NUM_TOPICS" content="%MAKETEXT{"Number of topics:"}%" />
+<meta name="TEXT_MODIFY_SEARCH" content="%MAKETEXT{"Modify search"}%" />
+<meta name="robots" content="noindex" />%HTTP_EQUIV_ON_VIEW%
+<base href="%SCRIPTURL{%SCRIPTNAME%}%/%WEB%/%TOPIC%" /><!--[if IE]></base><![endif]-->
+%TMPL:P{"defaultstyle"}%%RENDERZONE{"head"}%%{
+}%<link rel="stylesheet" type="text/css" media="all" href="%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome$suffix.css%QUERYVERSION{name="FontAwesomeContrib" format="?version=$version"}%" />
+<link rel="stylesheet" href="%PUBURLPATH%/%SYSTEMWEB%/FlatSkin/css/flatskin.min.css%QUERYVERSION{name="FlatSkinPlugin" format="?version=$version"}%">%{
+}%%RENDERZONE{"script"}%%TMPL:P{"script"}%%{
+}%<script class="script" type="text/javascript" src="%PUBURLPATH%/%SYSTEMWEB%/FlatSkin/js/foundation.min.js%QUERYVERSION{name="FlatSkinPlugin" format="?version=$version"}%"></script>
+<script class="script" type="text/javascript" src="%PUBURLPATH%/%SYSTEMWEB%/FlatSkin/js/flatskin.min.js%QUERYVERSION{name="FlatSkinPlugin" format="?version=$version"}%"></script>
+</head>%TMPL:END%
+
+%TMPL:DEF{"htmldoctype"}%<!doctype html>
+<html class="no-js" lang="%LANG%">%TMPL:END%

@@ -1,0 +1,51 @@
+//
+// Modell Aachen Default Colors
+//
+
+$ma-primary: #52cae4;
+$ma-primary-hover: #75d5ea;
+$ma-success: #84bb2e;
+$ma-success-hover: #9dc958;
+$ma-failure: #d83314;
+$ma-failure-hover: #e05c43;
+$ma-warning: #e2af19;
+$ma-warning-hover: #eecf75;
+$ma-brown: #7f7b71;
+$ma-sand: #e5e0d5;
+$ma-body-text: #282c2e;
+$ma-dark-grey: #84878a;
+$ma-light-grey: #e2e2e2;
+$ma-grey: #a4aeb9;
+$ma-bg-beige: #f5f3ef;
+$ma-bg-light: #f7f7f7;
+$ma-light-border: #f1efea;
+
+$ma-font-regular: 'Open Sans';
+$ma-font-semibold: $ma-font-regular;
+$ma-font-bold: $ma-font-regular;
+
+$primary-hover: $ma-primary-hover;
+$success-hover: $ma-success-hover;
+$warning-hover: $ma-warning-hover;
+$alert-hover: $ma-failure-hover;
+
+//
+// Override of Foundation Globals
+// See 'node_modules/foundation-sites/scss/_global.scss' for a full list of
+// variables.
+//
+
+$foundation-palette: (
+  primary: $ma-primary,
+  secondary: #777,
+  success: $ma-success,
+  warning: $ma-warning,
+  alert: $ma-failure,
+);
+
+$light-gray: $ma-light-grey;
+$medium-gray: $ma-grey;
+$dark-gray: $ma-dark-grey;
+$body-background: $ma-bg-light;
+$body-font-color: $ma-body-text;
+$body-font-family: $ma-font-regular;
