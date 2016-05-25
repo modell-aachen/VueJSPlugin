@@ -11,6 +11,8 @@ $OpenSansPath: '../fonts/opensans';
 //
 @import 'settings';
 @import 'foundation';
+@include foundation-flex-classes;
+@include foundation-flex-grid;
 
 //
 // Modell Aachen Styles & Mixins
