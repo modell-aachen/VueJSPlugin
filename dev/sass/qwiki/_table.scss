@@ -1,47 +1,56 @@
-html, body {
-  table.foswikiTable,
-  .Modac_Standard {
-    @include ma-font();
-    background: 0;
-    border: 0;
+.ma-table {
+  background-color: white;
+  text-align: left;
+  border-collapse: collapse;
+
+  th, td {
     font-size: rem-calc(13);
-    line-height: rem-calc(18);
-    text-align: left;
-    width: 100%;
-
-    thead tr:first-child {
-      background: 0;
-    }
-
-    td, th {
-      background: 0;
-      background-color: transparent;
-      border: 0;
-      padding: rem-calc(13 0 13 14);
-    }
-
-    tr:first-child {
-      td, th {
-        @include ma-font('semibold');
-        padding: rem-calc(11 0 11 14);
-      }
-    }
-
-    tr:not(:last-child) {
-      border-bottom: 1px solid $ma-light-border;
-    }
-
-    tr.foswikiTableRowdataBg0 td,
-    tr.foswikiTableRowdataBg1 td {
-      background-color: transparent;
-    }
-
-    &.striped tr:nth-child(odd) {
-     background-color: $ma-bg-light;
-    }
+    border: 0;
+    border-bottom: 1px solid $ma-light-border;
+    line-height: 1.4;
   }
+  th {
+    @include ma-font('bold');
+    padding: rem-calc(11 0 11 14);
+  }
+  td {
+    @include ma-font('regular');
+    padding: rem-calc(11 0 11 13);
+  }
+  tr:last-child td {
+    border-bottom: 0;
+  }
+  tr.ma-success {
+    background-color: rgba($ma-success, 0.3);
+  }
+  tr.ma-warning {
+    background-color: rgba($ma-warning, 0.3);
+  }
+  tr.ma-failure {
+    background-color: rgba($ma-failure, 0.3);
+  }
+}
 
-  .Modac_Standard.autonumbered tbody tr td:first-child:before {
+.ma-table.ma-striped{
+  tr:nth-child(even) {
+    background-color: $ma-bg-light;
+  }
+}
+
+//Specific overwrites for the old modac skin
+.Modac_Standard {
+  @extend .ma-table;
+  thead tr:first-child {
+    background-color: white;
+  }
+  th {
+    color: black;
+    text-align: left;
+  }
+}
+
+.Modac_Standard.autonumbered{
+  tbody tr td:first-child:before {
     color: $primary-color;
   }
 }
