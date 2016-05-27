@@ -15,7 +15,7 @@
   }
   td {
     @include ma-font('regular');
-    padding: rem-calc(11 0 11 13);
+    padding: rem-calc(13 14 13 14);
   }
   tr:last-child td {
     border-bottom: 0;
@@ -30,9 +30,28 @@
     background-color: rgba($ma-failure, 0.3);
   }
 }
+.ma-table.ma-striped {
+  //To avoid !important for the context colors we exclude them here
+  //so they take precedence.
+  tr:not(.ma-success):not(.ma-warning):not(.ma-failure):nth-child(even) {
+    background-color: $ma-bg-light;
+  }
+}
 
-.ma-table.ma-striped{
-  tr:nth-child(even) {
+.ma-table.ma-definition {
+  tr td{
+    border-style: none;
+  }
+  tr td:first-child {
+    @include ma-font('semibold');
+    border-top-left-radius: $ma-border-radius;
+    border-bottom-left-radius: $ma-border-radius;
+  }
+  tr td:last-child {
+    border-top-right-radius: $ma-border-radius;
+    border-bottom-right-radius: $ma-border-radius;
+  }
+  tr:nth-child(odd) {
     background-color: $ma-bg-light;
   }
 }
