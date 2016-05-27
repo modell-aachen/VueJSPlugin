@@ -1,10 +1,13 @@
 !noci
 data/System/FlatSkin.txt 0644
+data/System/KvpFlatSkinTopHeadTemplate.txt 0644
+data/System/FlatSkinTopHeadTemplate.txt 0644
 data/System/FlatSkinPlugin.txt 0644
 pub/System/FlatSkin/css/flatskin.css 0644
 pub/System/FlatSkin/css/flatskin.min.css 0644
 pub/System/FlatSkin/css/flatskin.colors.css 0644
 pub/System/FlatSkin/css/flatskin.colors.min.css 0644
+pub/System/FlatSkin/js/flat_tophead.js 0644
 pub/System/FlatSkin/js/flatskin.js 0644
 pub/System/FlatSkin/js/flatskin.min.js 0644
 pub/System/FlatSkin/js/foundation.js 0644

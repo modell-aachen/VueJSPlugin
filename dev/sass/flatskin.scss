@@ -13,6 +13,7 @@ $OpenSansPath: '../fonts/opensans';
 @import 'foundation';
 @include foundation-flex-classes;
 @include foundation-flex-grid;
+@include foundation-callout;
 
 //
 // Modell Aachen Styles & Mixins
@@ -27,3 +28,5 @@ $OpenSansPath: '../fonts/opensans';
 @import 'qwiki/widgets';
 @import 'qwiki/search';
 @import 'qwiki/notifications';
+@import 'qwiki/document_head';
+>>>>>>> 147c0a4... second iteration

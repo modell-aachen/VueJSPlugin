@@ -1,0 +1,71 @@
+html, body {
+  .patternTop {
+    div.documentHead {
+        background: $ma-bg-beige;
+        border-radius: 7px;
+
+        div.toggleTopHead {
+            width: 2%;
+            float: right;
+            padding-top: rem-calc(22);
+        }
+
+        div.contentTopHead{
+            width: auto;
+            float: left;
+            table.flatHeaderTable {
+                @include ma-font('bold');
+                border: 0;
+                width: 100%;
+
+                tr:first-child {
+                  td, th {
+                    padding: rem-calc(9 0 9 10);
+                  }
+                }
+                td, th {
+                  padding: rem-calc(0 0 10 10);
+                }
+                .keyFlatTopHead,
+                .valueFlatTopHead,
+                .approvedFlatTopHead,
+                .disFlatTopHead {
+                    padding: rem-calc(5);
+                    margin: rem-calc(5);
+                }
+                .valueFlatTopHead {
+                    border-radius: 7px;
+                    background: white;
+                }
+                .approvedFlatTopHead {
+                    border-radius: 7px;
+                    background: $ma-success;
+                    color: white;
+                }
+                .disFlatTopHead {
+                    border-radius: 7px;
+                    background: $ma-failure;
+                    color: white;
+                }
+            }
+        }
+      }
+    }
+    .expand-transition {
+        max-height: 100px;
+        transition: max-height .2s ease;
+        overflow: hidden;
+    }
+    .expand-enter, .expand-leave {
+        max-height: 0px;
+    }
+}
+.patternTop-callout {
+   @include callout($alert-hover);
+   border: 1px solid #D83314;
+   border-radius: 4px;
+   color: $white;
+   background: $alert-hover;
+   padding: rem-calc(10);
+   margin: rem-calc(0 0 12 0);
+}
