@@ -1,3 +1,4 @@
+//Notifications
 p.ma-notification {
 	background-color: $ma-bg-beige;
 	border-radius: $ma-border-radius;
@@ -23,9 +24,10 @@ p.ma-notification.ma-failure {
 	border-color: $ma-failure;
 }
 
+//Labels
 span.ma-label {
 	padding: rem-calc(7 9);
-    background-color: $ma-bg-beige;
+    background-color: $ma-light-grey;
     border-radius: $ma-border-radius;
     font-size: 75%;
     @include ma-font('semibold');
@@ -44,4 +46,10 @@ span.ma-label.ma-warning {
 span.ma-label.ma-failure {
 	background-color: $ma-failure-hover;
 	color: white;
+}
+
+//Badges
+span.ma-badge {
+	@extend .ma-label;
+	border-radius: 10px;
 }
