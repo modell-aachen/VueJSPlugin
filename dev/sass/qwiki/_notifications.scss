@@ -22,3 +22,26 @@ p.ma-notification.ma-failure {
 	color: white;
 	border-color: $ma-failure;
 }
+
+span.ma-label {
+	padding: rem-calc(7 9);
+    background-color: $ma-bg-beige;
+    border-radius: $ma-border-radius;
+    font-size: 75%;
+    @include ma-font('semibold');
+}
+
+span.ma-label.ma-success {
+	background-color: $ma-success-hover;
+	color: white;
+}
+
+span.ma-label.ma-warning {
+	background-color: $ma-warning-hover;
+	color: black;
+}
+
+span.ma-label.ma-failure {
+	background-color: $ma-failure-hover;
+	color: white;
+}
