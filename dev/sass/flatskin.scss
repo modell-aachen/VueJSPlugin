@@ -17,6 +17,11 @@ $OpenSansPath: '../fonts/opensans';
 @include foundation-flex-grid;
 @include foundation-callout;
 @include foundation-forms;
+@include foundation-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
 
 //
 // Modell Aachen Styles & Mixins

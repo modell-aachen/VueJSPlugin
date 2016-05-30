@@ -87,7 +87,9 @@ JQUERYPLUGIN is not a hard requirement, but it must sort earlier.
 %TMPL:DEF{"ma:top"}%%{
 }%<div class="row">
   <div class="small-6 columns">%TMPL:P{"ma:top:tabs"}%</div>
-  <div class="small-6 columns">%TMPL:P{"ma:top:menu"}%</div>
+  <div class="small-6 columns clearfix">
+    <div class="float-right">%TMPL:P{"ma:top:menu"}%</div>
+  </div>
 </div>%TMPL:END%
 
 %TMPL:DEF{"ma:left"}%%TMPL:P{"sidebar"}%%TMPL:END%
@@ -134,7 +136,15 @@ JQUERYPLUGIN is not a hard requirement, but it must sort earlier.
   <div class="ma-content">%TMPL:P{"ma:main"}%</div>
 </div>%TMPL:END%
 
-%TMPL:DEF{"bodyend"}%</body></html>%TMPL:END%
+%TMPL:DEF{"bodyend"}%
+<script>
+(function($) {
+  $(document).ready( function() {
+    $(document).foundation();
+  });
+})(jQuery);
+</script>
+</body></html>%TMPL:END%
 
 %TMPL:DEF{"textareabuttons"}%<span class="foswikiRight foswikiMakeVisible" style="text-align:left; margin:0 0 0 1em;"><span class="foswikiLeft patternTextareaButton patternButtonFontSelector" title="%MAKETEXT{"Switch to monotype or propotional font"}%">&nbsp;</span><span class="foswikiLeft patternTextareaButton patternButtonEnlarge" title="%MAKETEXT{"Enlarge edit box"}%">&nbsp;</span><span class="foswikiLeft patternTextareaButton patternButtonShrink" title="%MAKETEXT{"Shrink edit box"}%">&nbsp;</span></span>%TMPL:END%
 

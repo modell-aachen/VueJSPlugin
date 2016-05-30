@@ -16,7 +16,12 @@
   left: $ma-left-width;
   width: calc(100% - #{$ma-left-width});
   height: $ma-top-height;
-  background-color: red;
+  z-index: 1;
+}
+
+.ma-top-tabs {
+  @extend .menu;
+  padding-left: 0;
 }
 
 .ma-content {
