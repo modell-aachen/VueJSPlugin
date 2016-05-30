@@ -9,11 +9,14 @@ $OpenSansPath: '../fonts/opensans';
 //
 // Foundation for Sites 6
 //
-@import 'settings';
+// @import 'util/util';
 @import 'foundation';
+@import 'settings';
+@include foundation-global-styles;
 @include foundation-flex-classes;
 @include foundation-flex-grid;
 @include foundation-callout;
+@include foundation-forms;
 
 //
 // Modell Aachen Styles & Mixins
@@ -21,6 +24,7 @@ $OpenSansPath: '../fonts/opensans';
 @import 'qwiki/mixins';
 @import 'qwiki/base';
 @import 'qwiki/inputs';
+@import 'qwiki/layout';
 @import 'qwiki/leftbar';
 @import 'qwiki/links';
 @import 'qwiki/table';
