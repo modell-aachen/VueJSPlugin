@@ -20,12 +20,13 @@ $ma-grey: #a4aeb9;
 $ma-bg-beige: #f5f3ef;
 $ma-bg-light: #f7f7f7;
 $ma-light-border: #f1efea;
+$ma-help-text: #9a9a9a;
 
 $ma-font-regular: 'Open Sans';
 $ma-font-semibold: $ma-font-regular;
 $ma-font-bold: $ma-font-regular;
 
-$ma-border-radius: 5px;
+$ma-border-radius: 4px;
 
 $primary-hover: $ma-primary-hover;
 $success-hover: $ma-success-hover;
@@ -61,3 +62,25 @@ $body-font-family: $ma-font-regular;
 
 $ma-left-width: rem-calc(180);
 $ma-top-height: rem-calc(60);
+
+//Form settings
+$form-label-font-size: rem-calc(13);
+$form-label-font-weight: 600;
+$form-label-line-height: 1.4;
+$input-radius: $ma-border-radius;
+$input-background: $ma-medium-grey;
+$input-background-focus: $ma-medium-grey;
+$input-border: 0;
+$input-border-focus: 0;
+$input-shadow: 0;
+$input-shadow-focus: 0;
+$input-font-family: $ma-font-regular;
+$select-background: $ma-medium-grey;
+$select-radius: $ma-border-radius;
+$helptext-color: $ma-help-text;
+$helptext-font-size: rem-calc(12);
+$helptext-font-style: normal;
+$input-prefix-background: $ma-medium-grey;
+$input-prefix-border: 0;
+$input-prefix-color: $medium-gray;
+$input-prefix-padding: rem-calc(15);

@@ -1,0 +1,68 @@
+form{
+  table{
+    width: 100%;
+    td:first-child{
+      width:1px;
+      white-space: nowrap;
+      text-align: right;
+      padding-right: 34px;
+    }
+  }
+}
+.help-text{
+  @include ma-font('semibold');
+  line-height: 1.4;
+}
+
+input.ma-success{
+  border: 1px solid $ma-success;
+}
+input.ma-failure{
+  border: 1px solid $ma-failure;
+}
+
+
+.input-group>:first-child{
+    border-top-left-radius: $ma-border-radius;
+    border-bottom-left-radius: $ma-border-radius;
+}
+
+.input-group>:last-child{
+    border-top-right-radius: $ma-border-radius;
+    border-bottom-right-radius: $ma-border-radius;
+}
+
+.input-group>.input-group-label~.input-group-field {
+  padding-left: 0;
+}
+
+@mixin placeholder-style{
+  @include ma-font('regular');
+  color: $ma-grey;
+  font-size: rem-calc(13);
+  font-style: italic;
+  line-height: 1.4;
+
+}
+
+::-webkit-input-placeholder {
+  @include placeholder-style;
+}
+::-moz-placeholder {
+  @include placeholder-style;
+}
+:-ms-input-placeholder {
+  @include placeholder-style;
+}
+:-moz-placeholder {
+  @include placeholder-style;
+}
+
+label input[type],select,textarea{
+  margin-top:5px;
+}
+textarea{
+  min-height: 90px;
+  color: $ma-body-text;
+  font-size: rem-calc(13);
+}
