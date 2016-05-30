@@ -1,0 +1,30 @@
+.row {
+  @extend .expanded;
+}
+
+.ma-left {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: $ma-left-width;
+}
+
+.ma-top {
+  position: fixed;
+  top: 0;
+  left: $ma-left-width;
+  width: calc(100% - #{$ma-left-width});
+  height: $ma-top-height;
+  background-color: red;
+}
+
+.ma-content {
+  position: fixed;
+  top: $ma-top-height;
+  bottom: 0;
+  left: $ma-left-width;
+  overflow: auto;
+  width: calc(100% - #{$ma-left-width});
+  height: calc(100% - #{$ma-top-height});
+}

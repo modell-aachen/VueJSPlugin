@@ -3,6 +3,7 @@ data/System/FlatSkin.txt 0644
 data/System/KvpFlatSkinTopHeadTemplate.txt 0644
 data/System/FlatSkinTopHeadTemplate.txt 0644
 data/System/FlatSkinPlugin.txt 0644
+data/System/FlatSkinDocumentHeadTemplate.txt 0644
 pub/System/FlatSkin/css/flatskin.css 0644
 pub/System/FlatSkin/css/flatskin.min.css 0644
 pub/System/FlatSkin/css/flatskin.colors.css 0644
@@ -62,9 +63,14 @@ pub/System/FlatSkin/images/ma-logo.png 0644
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
 lib/Foswiki/Plugins/SafeWikiPlugin/Signatures/FlatSkin.pm 0644
 locale/FlatSkinPlugin/de.po 0644
+templates/attachtables.flat.tmpl 0644
+templates/edit.flat.tmpl 0644
 templates/foswiki.flat.tmpl 0644
+templates/view.flat.tmpl 0644
 templates/viewsidebar.flat.tmpl 0644
 templates/viewbottombar.flat.tmpl 0644
+templates/viewtopbar.flat.tmpl 0644
+templates/viewtopicactionbuttons.flat.tmpl 0644
 test/unit/FlatSkinPlugin/FlatSkinSuite.pm 0444
 test/unit/FlatSkinPlugin/FlatSkinSeleniumTestCase.pm 0444
 test/unit/FlatSkinPlugin/qwikitest 0444

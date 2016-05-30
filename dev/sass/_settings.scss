@@ -38,6 +38,8 @@ $alert-hover: $ma-failure-hover;
 // variables.
 //
 
+$global-flexbox: true;
+
 $foundation-palette: (
   primary: $ma-primary,
   secondary: #777,
@@ -52,3 +54,10 @@ $dark-gray: $ma-dark-grey;
 $body-background: $ma-bg-light;
 $body-font-color: $ma-body-text;
 $body-font-family: $ma-font-regular;
+
+//
+// Layout settings
+// 
+
+$ma-left-width: rem-calc(180);
+$ma-top-height: rem-calc(60);
