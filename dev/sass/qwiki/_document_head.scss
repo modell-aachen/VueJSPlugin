@@ -16,8 +16,6 @@ html, body {
             table.flatHeaderTable {
                 @include ma-font('bold');
                 border: 0;
-                width: 100%;
-
                 tr:first-child {
                   td, th {
                     padding: rem-calc(9 0 9 10);

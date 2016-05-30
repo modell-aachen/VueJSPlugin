@@ -1,0 +1,7 @@
+%FLEXWEBLIST{
+   exclude="(?:%URLPARAM{"MODAC_HIDEWEBS" default="%MODAC_HIDEWEBS{default="dummy"}%"}%).*"
+   format="$indent   * [[$web.%HOMETOPIC%][$name]]$n"
+   markerformat="$indent   * [[$web.%HOMETOPIC%][<span class=\"active\"> $name</span>]]$n"
+   selection="%BASEWEB%"
+   map="%MODAC_WEBMAPPINGS{default=""}%"
+}%

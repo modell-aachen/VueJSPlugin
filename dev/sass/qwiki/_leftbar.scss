@@ -13,9 +13,43 @@
 
 .ma-sidebar-item {
   flex-grow: 0;
+  width: 100%;
 
   &.stretch {
     flex-grow: 2;
+  }
+
+  .twistyPlugin{
+    .patternTwistyButton {
+      i.right {
+          float: right;
+          margin-right: 5px;
+      }
+      .foswikiLinkLabel {
+          color: $ma-dark-grey;
+      }
+      &:hover {
+        text-decoration-line: none;
+      }
+    }
+    i {
+      margin: 2px 5px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0px;
+      li {
+        padding-left: 22px;
+        &:hover {
+          background: $ma-bg-light;
+          a {
+              color: $black;
+              text-decoration-line: none;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -28,10 +62,13 @@
 
   &.top {
     padding-top: rem-calc(6);
+    margin-bottom: rem-calc(12);
     background-color: $white;
     border-bottom-left-radius: rem-calc(5);
     border-bottom-right-radius: rem-calc(5);
     overflow: hidden;
+    margin: auto;
+    width: 85%;
   }
 }
 

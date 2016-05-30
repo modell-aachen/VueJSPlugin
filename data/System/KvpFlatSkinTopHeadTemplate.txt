@@ -48,9 +48,7 @@
 						<td><span class='keyFlatTopHead'>
 							Version</span></td>
 						<td><span class='keyFlatTopHead'>
-							(Seite)</span></td>
-						<td><span class='keyFlatTopHead'>
-							(LOGO)</span></td>
+							%IF{"$'URLPARAM{cover}'" then="Seite"}%</span></td>
 					</tr>
 					<tr>
 						<td><span class='valueFlatTopHead'>
@@ -60,8 +58,6 @@
 						<td><span class='valueFlatTopHead'>%WORKFLOWMETA{"Revision"}%</span></td>
 						<td><span class='valueFlatTopHead'>
 							%TMPL:P{"modacPageNr"}%</span></td>
-						<td><span class='valueFlatTopHead'>
-							%{<img alt='Logo' src='%WIKILOGOIMG%' />}%</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -123,9 +119,7 @@
 						<td><span class='keyFlatTopHead'>
 							Version</span></td>
 						<td><span class='keyFlatTopHead'>
-							(Page)</span></td>
-						<td><span class='keyFlatTopHead'>
-							(LOGO)</span></td>
+							%IF{"$'URLPARAM{cover}'" then="Page"}%</span></td>
 					</tr>
 					<tr>
 						<td><span class='valueFlatTopHead'>
@@ -135,8 +129,6 @@
 						<td><span class='valueFlatTopHead'>%WORKFLOWMETA{"Revision"}%</span></td>
 						<td><span class='valueFlatTopHead'>
 							%TMPL:P{"modacPageNr"}%</span></td>
-						<td><span class='valueFlatTopHead'>
-							%{<img alt='Logo' src='%WIKILOGOIMG%' />}%</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -198,9 +190,7 @@
 						<td><span class='keyFlatTopHead'>
 							%MAKETEXT{Version}%</span></td>
 						<td><span class='keyFlatTopHead'>
-							(%MAKETEXT{Page}%)</span></td>
-						<td><span class='keyFlatTopHead'>
-							(LOGO)</span></td>
+							%IF{"$'URLPARAM{cover}'" then="%MAKETEXT{Page}%"}%</span></td>
 					</tr>
 					<tr>
 						<td><span class='valueFlatTopHead'>
@@ -210,8 +200,6 @@
 						<td><span class='valueFlatTopHead'>%WORKFLOWMETA{"Revision"}%</span></td>
 						<td><span class='valueFlatTopHead'>
 							%TMPL:P{"modacPageNr"}%</span></td>
-						<td><span class='valueFlatTopHead'>
-							%{<img alt='Logo' src='%WIKILOGOIMG%' />}%</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -275,9 +263,7 @@
 						<td><span class='keyFlatTopHead'>
 							Version</span></td>
 						<td><span class='keyFlatTopHead'>
-							(Seite)</span></td>
-						<td><span class='keyFlatTopHead'>
-							(LOGO)</span></td>
+							%IF{"$'URLPARAM{cover}'" then="Seite"}%</span></td>
 					</tr>
 					<tr>
 						<td><span class='valueFlatTopHead'>
@@ -352,9 +338,7 @@
 						<td><span class='keyFlatTopHead'>
 							Version</span></td>
 						<td><span class='keyFlatTopHead'>
-							(Seite)</span></td>
-						<td><span class='keyFlatTopHead'>
-							(LOGO)</span></td>
+							%IF{"$'URLPARAM{cover}'" then="Page"}%</span></td>
 					</tr>
 					<tr>
 						<td><span class='valueFlatTopHead'>
@@ -364,8 +348,6 @@
 						<td><span class='valueFlatTopHead'>%WORKFLOWMETA{"Revision"}%</span></td>
 						<td><span class='valueFlatTopHead'>
 							%TMPL:P{"modacPageNr"}%</span></td>
-						<td><span class='valueFlatTopHead'>
-							%{<img alt='Logo' src='%WIKILOGOIMG%' />}%</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -428,9 +410,7 @@
 						<td><span class='keyFlatTopHead'>
 							%MAKETEXT{Version}%</span></td>
 						<td><span class='keyFlatTopHead'>
-							(%MAKETEXT{Page}%)</span></td>
-						<td><span class='keyFlatTopHead'>
-							(LOGO)</span></td>
+							%IF{"$'URLPARAM{cover}'" then="%MAKETEXT{Page}%"}%</span></td>
 					</tr>
 					<tr>
 						<td><span class='valueFlatTopHead'>
@@ -440,8 +420,6 @@
 						<td><span class='valueFlatTopHead'>%WORKFLOWMETA{"Revision"}%</span></td>
 						<td><span class='valueFlatTopHead'>
 							%TMPL:P{"modacPageNr"}%</span></td>
-						<td><span class='valueFlatTopHead'>
-							%{<img alt='Logo' src='%WIKILOGOIMG%' />}%</span></td>
 					</tr>
 				</tbody>
 			</table>

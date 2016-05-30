@@ -1,0 +1,69 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1335199636" format="1.1" reprev="9" version="9"}%
+%JQREQUIRE{"ui::dialog"}%
+<div class="modacSidebarTwisty">
+%TWISTY{
+    id="modacSidebarZERO"
+    firststart="hide"
+    remember="on"
+	noscript="show"
+    showlink="<i class=\"fa fa-list\"></i>%MAKETEXT{"ALLGEMEINES"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-list\"></i>%MAKETEXT{"ALLGEMEINES"}% <i class=\"fa fa-angle-down right\"></i>"
+	linkclass="patternTwistyButton"
+}%
+<div id="modacSidebarIE">
+   * [[%MAINWEB%.WebHome][%MAKETEXT{"Start"}%]]
+   * [[Manuals.WebHome][%MAKETEXT{"Manuals"}%]]
+   * [[%BASEWEB%.WebTopicList][%MAKETEXT{"Index"}%]]
+</div>
+%ENDTWISTY%
+</div>
+
+
+<div class="modacSidebarTwisty">
+%TWISTY{
+    id="modacSidebarONE"
+    firststart="hide"
+    remember="on"
+	noscript="show"
+    showlink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% <i class=\"fa fa-angle-down right\"></i>"
+	linkclass="patternTwistyButton"
+}%
+%INCLUDE{"%IF{"istopic '%BASEWEB%/WebTools'" then="%BASEWEB%/WebTools" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebToolsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebToolsDefault" else="%SYSTEMWEB%/WebToolsDefault"}%"}%"}%
+%ENDTWISTY%
+</div>
+
+%IF{"$USERNAME ingroup 'KeyUserGroup' OR $USERNAME ingroup 'AdminGroup' OR $USERNAME = 'admin'" else="<!--"}%
+<div class="modacSidebarTwisty">
+%TWISTY{
+    id="modacSidebarMASDINHKXY"
+    firststart="hide"
+    remember="on"
+	noscript="show"
+    showlink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% <i class=\"fa fa-angle-down right\"></i>"
+	linkclass="patternTwistyButton"
+}%
+%INCLUDE{"%IF{"istopic '%BASEWEB%/WebKeyUserTools'" then="%BASEWEB%/WebKeyUserTools" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebKeyUserToolsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebKeyUserToolsDefault" else="%SYSTEMWEB%/WebKeyUserToolsDefault"}%"}%"}%
+%ENDTWISTY%
+</div>
+%IF{"$USERNAME ingroup 'KeyUserGroup' OR $USERNAME ingroup 'AdminGroup' OR $USERNAME = 'admin'" else="-->"}%
+
+<div class="modacSidebarTwisty">
+%TWISTY{
+    id="modacSidebarTWO"
+    firststart="hide"
+    remember="on"
+	noscript="show"
+    showlink="<i class=\"fa fa-th\"></i>%MAKETEXT{"Webs"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-th\"></i>%MAKETEXT{"Webs"}% <i class=\"fa fa-angle-down right\"></i>"
+	linkclass="patternTwistyButton"
+}%
+<div id="modacSidebarTwisty_webs" class="modacAjaxContent" data-url="%SCRIPTURL{rest}%/RenderPlugin/tag?name=INCLUDE;render=1;MaxAge=600;param=%IF{ "context FlexWebListPluginEnabled" then="$percntSYSTEMWEB$percnt.FlatSkinFlexWebList" else="percntSYSTEMWEB$percnt.ModacSkinWebList" }%;web=%ENCODE{"%BASEWEB%"}%;topic=%ENCODE{"%BASEWEB%.%HOMETOPIC%"}%;user=%WIKINAME%%IF{"$'URLPARAM{MODAC_HIDEWEBS}'!=''" then=";MODAC_HIDEWEBS=$percentURLPARAM{MODAC_HIDEWEBS}$percent"}%">%JQREQUIRE{"jqp::spin"}%
+</div>
+%ENDTWISTY%
+<div class="modacSidebarActions">
+%INCLUDE{"%IF{"istopic '%BASEWEB%/WebActions'" then="%BASEWEB%/WebActions" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebActionsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebActionsDefault" else="%SYSTEMWEB%/WebActionsDefault"}%"}%"}%
+</div>
+</div>
+<div class="modacHideSidebar" title="%MAKETEXT{"Hide menu"}%"></div>
