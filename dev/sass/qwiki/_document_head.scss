@@ -1,67 +1,67 @@
-html, body {
-  .patternTop {
-    div.documentHead {
-        background: $ma-bg-beige;
-        border-radius: 7px;
+.ma-documenthead {
+    background: $ma-bg-beige;
+    border-radius: rem-calc(7);
 
-        div.toggleTopHead {
-            width: 2%;
-            float: right;
-            padding-top: rem-calc(22);
+   .ma-documenthead-container{
+        &.left {
+          width: auto;
+          float: left;
         }
-
-        div.contentTopHead{
-            width: auto;
-            float: left;
-            table.flatHeaderTable {
-                @include ma-font('bold');
-                border: 0;
-                tr:first-child {
-                  td, th {
-                    padding: rem-calc(9 0 9 10);
-                  }
-                }
-                td, th {
-                  padding: rem-calc(0 0 10 10);
-                }
-                .keyFlatTopHead,
-                .valueFlatTopHead,
-                .approvedFlatTopHead,
-                .disFlatTopHead {
-                    padding: rem-calc(5);
-                    margin: rem-calc(5);
-                }
-                .valueFlatTopHead {
-                    border-radius: 7px;
-                    background: white;
-                }
-                .approvedFlatTopHead {
-                    border-radius: 7px;
-                    background: $ma-success;
-                    color: white;
-                }
-                .disFlatTopHead {
-                    border-radius: 7px;
-                    background: $ma-failure;
-                    color: white;
-                }
-            }
+        &.toggle {
+          width: 2%;
+          float: right;
+          padding-top: rem-calc(22);
         }
-      }
-    }
-    .expand-transition {
-        max-height: 100px;
-        transition: max-height .2s ease;
-        overflow: hidden;
-    }
-    .expand-enter, .expand-leave {
-        max-height: 0px;
     }
 }
+.ma-documenthead-table {
+    @include ma-font('bold');
+    border: 0;
+
+    tr:first-child {
+      td, th {
+        padding: rem-calc(9 0 9 10);
+      }
+    }
+
+    td, th {
+      padding: rem-calc(0 0 10 10);
+    }
+}
+
+.ma-documenthead-content {
+  padding: rem-calc(5);
+  margin: rem-calc(5);
+  border-radius: rem-calc(7);
+
+  &.value {
+    background: $white;
+  }
+  &.approved {
+    background: $ma-success;
+    color: $white;
+  }
+  &.discussion {
+    background: $ma-failure;
+    color: $white;
+
+  }
+}
+
+.expand-transition {
+    max-height: rem-calc(100);
+    transition: max-height .2s ease;
+    overflow: hidden;
+}
+
+.expand-enter, .expand-leave {
+    max-height: 0;
+}
+
 .patternTop-callout {
    @include callout($alert-hover);
-   border: 1px solid #D83314;
-   border-radius: 4px;
+   border: rem-calc(1) solid #D83314;
+   border-radius: rem-calc(4);
    color: $white;
    background: $alert-hover;
    padding: rem-calc(10);

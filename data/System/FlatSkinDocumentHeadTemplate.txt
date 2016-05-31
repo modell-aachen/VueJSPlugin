@@ -1,91 +1,92 @@
 %TMPL:DEF{"ma:documenthead:std:de"}%%{
-}%<div class='patternTop'>
-  <table class='modacHeaderTable' border='1' cellpadding='0' cellspacing='0' style='width: 100%; height: 24px; '>
-    <tbody>
-      <tr style="height: 24px;">
-        <td colspan='3' width='50%' style='text-align: center;'>
-          <strong><font size='4'>%MAKETEXT{"%QUERY{"DocumentType"}%"}% </font></strong>
-        </td>
-        <td width='35%' style='text-align: center;'>
-          %{Number:<strong><br />#QUERY{"Nummer"}#</strong>}%
-        </td>
-        <td width='12%' style='text-align: center;'>
-          Rev.:<strong><br /> %REVINFO{format="$rev"}%</strong>
-        </td>
-        <td rowspan='2' width='12%'>
-          <img alt='Logo' src='%WIKILOGOIMG%' style='width: 90px; float: right;' />
-        </td>
-      </tr>
-      <tr style="height: 24px;">
-        <td colspan='3' style='text-align: center;'>
-          <strong><font size='3'>%QUERY{"TopicTitle"}%</font></strong>
-        </td>
-        <td colspan='2' style='text-align: center;'>
-          Geltungsbereich&#58; <strong><br />%MAKETEXT{"%QUERY{"AreaOfApplication"}%"}%</strong>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>%TMPL:END%
+}%<div class='ma-documenthead'>
+	<div class='ma-documenthead-container left'>
+		<table class='ma-documenthead-table'>
+			<tbody>
+				<tr>
+					<td><span class='ma-documenthead-content'>
+						Seitenname</span></td>
+					<td><span class='ma-documenthead-content'>
+						Geltungsbereich</span></td>
+					<td><span class='ma-documenthead-content'>
+						Rev</span></td>
+					<td><span class='ma-documenthead-content'>
+						Dokumenten Typ</span></td>
+				</tr>
+				<tr>
+					<td><span class='ma-documenthead-content value'>
+						%QUERY{"TopicTitle"}%</span></td>
+					<td><span class='ma-documenthead-content value'>
+						%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
+					<td><span class='ma-documenthead-content value'>%REVINFO{format="$rev"}%</span></td>
+					<td><span class='ma-documenthead-content value'>
+						%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+%TMPL:END%
 
 %TMPL:DEF{"ma:documenthead:std:en"}%%{
-}%<div class='patternTop'>
-  <table class='modacHeaderTable' border='1' cellpadding='0' cellspacing='0' style='width: 100%; height: 24px; '>
-    <tbody>
-      <tr style="height: 24px;">
-        <td colspan='3' width='50%' style='text-align: center;'>
-          <strong><font size='4'>%QUERY{"DocumentType"}% </font></strong>
-        </td>
-        <td width='35%' style='text-align: center;'>
-          %{Number:<strong><br />#QUERY{"Nummer"}#</strong>}%
-        </td>
-        <td width='12%' style='text-align: center;'>
-          Rev.:<strong><br /> %REVINFO{format="$rev"}%</strong>
-        </td>
-        <td rowspan='2' width='12%'>
-          <img alt='Logo' src='%WIKILOGOIMG%' style='width: 90px; float: right;' />
-        </td>
-      </tr>
-      <tr style="height: 24px;">
-        <td colspan='3' style='text-align: center;'>
-          <strong><font size='3'>%QUERY{"TopicTitle"}%</font></strong>
-        </td>
-        <td colspan='2' style='text-align: center;'>
-          Area of application&#58; <strong><br />%QUERY{"AreaOfApplication"}%</strong>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+}%<div class='ma-documenthead'>
+	<div class='ma-documenthead-container left'>
+		<table class='ma-documenthead-table'>
+			<tbody>
+				<tr>
+					<td><span class='ma-documenthead-content'>
+						Topic title</span></td>
+					<td><span class='ma-documenthead-content'>
+						Area of application</span></td>
+					<td><span class='ma-documenthead-content'>
+						Rev</span></td>
+					<td><span class='ma-documenthead-content'>
+						Document type</span></td>
+				</tr>
+				<tr>
+					<td><span class='ma-documenthead-content value'>
+						%QUERY{"TopicTitle"}%</span></td>
+					<td><span class='ma-documenthead-content value'>
+						%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
+					<td><span class='ma-documenthead-content value'>%REVINFO{format="$rev"}%</span></td>
+					<td><span class='ma-documenthead-content value'>
+						%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div style="clear: both;"></div>
 </div>%TMPL:END%
 
 %TMPL:DEF{"ma:documenthead:std:auto"}%%{
-}%<div class='patternTop'>
-  <table class='modacHeaderTable' border='1' cellpadding='0' cellspacing='0' style='width: 100%; height: 24px; '>
-    <tbody>
-      <tr style="height: 24px;">
-        <td colspan='3' width='50%' style='text-align: center;'>
-          <strong><font size='4'>%MAKETEXT{"%QUERY{"DocumentType"}%"}% </font></strong>
-        </td>
-        <td width='35%' style='text-align: center;'>
-          %{#MAKETEXT{"Number"}#:<strong><br />#QUERY{"Nummer"}#</strong>}%
-        </td>
-        <td width='12%' style='text-align: center;'>
-          Rev.:<strong><br /> %REVINFO{format="$rev"}%</strong>
-        </td>
-        <td rowspan='2' width='12%'>
-          <img alt='Logo' src='%WIKILOGOIMG%' style='width: 90px; float: right;' />
-        </td>
-      </tr>
-      <tr style="height: 24px;">
-        <td colspan='3' style='text-align: center;'>
-          <strong><font size='3'>%QUERY{"TopicTitle"}%</font></strong>
-        </td>
-        <td colspan='2' style='text-align: center;'>
-          %MAKETEXT{"Area of application"}%&#58; <strong><br />%MAKETEXT{"%QUERY{"AreaOfApplication"}%"}%</strong>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+}%<div class='ma-documenthead'>
+	<div class='ma-documenthead-container left'>
+		<table class='ma-documenthead-table'>
+			<tbody>
+				<tr>
+					<td><span class='ma-documenthead-content'>
+						%MAKETEXT{"Topic title"}%</span></td>
+					<td><span class='ma-documenthead-content'>
+						%MAKETEXT{"Area of application"}%</span></td>
+					<td><span class='ma-documenthead-content'>
+						%MAKETEXT{"Rev"}%</span></td>
+					<td><span class='ma-documenthead-content'>
+						%MAKETEXT{"Document type"}%</span></td>
+				</tr>
+				<tr>
+					<td><span class='ma-documenthead-content value'>
+						%QUERY{"TopicTitle"}%</span></td>
+					<td><span class='ma-documenthead-content value'>
+						%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
+					<td><span class='ma-documenthead-content value'>%REVINFO{format="$rev"}%</span></td>
+					<td><span class='ma-documenthead-content value'>
+						%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
+				</tr>
+			</tbody>
+		</table>
+   </div>
+	<div style="clear: both;"></div>
 </div>%TMPL:END%
 
 %TMPL:DEF{"ma:documenthead:std"}%%SWITCHTMPL{"%CONTENT_LANGUAGE%" prefix="ma:documenthead:std:" defaultTo="auto"}%%TMPL:END%

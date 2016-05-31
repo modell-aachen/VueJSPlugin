@@ -19,35 +19,37 @@
     flex-grow: 2;
   }
 
-  .twistyPlugin{
-    .patternTwistyButton {
-      i.right {
-          float: right;
-          margin-right: 5px;
-      }
-      .foswikiLinkLabel {
-          color: $ma-dark-grey;
-      }
-      &:hover {
-        text-decoration-line: none;
-      }
-    }
-    i {
-      margin: 2px 5px;
+  .patternTwistyButton {
+    &:hover {
+      text-decoration-line: none;
     }
 
-    ul {
-      list-style-type: none;
-      padding-left: 0px;
-      li {
-        padding-left: 22px;
-        &:hover {
-          background: $ma-bg-light;
-          a {
-              color: $black;
-              text-decoration-line: none;
-          }
-        }
+    .right {
+      float: right;
+      margin-right: rem-calc(5);
+    }
+
+    .foswikiLinkLabel {
+      color: $ma-dark-grey;
+    }
+  }
+
+  i {
+    margin: rem-calc(2 5);
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: rem-calc(22);
+    &:hover {
+      background: $ma-bg-light;
+      a {
+        color: $black;
+        text-decoration-line: none;
       }
     }
   }
@@ -78,6 +80,7 @@
   a:focus,
   a:hover,
   a:link,
+
   a:visited {
     color: $white;
   }

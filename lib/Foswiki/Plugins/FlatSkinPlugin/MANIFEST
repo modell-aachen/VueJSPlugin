@@ -4,7 +4,6 @@ data/System/FlatSkin.txt 0644
 data/System/FlatSkinDocumentHeadTemplate.txt 0644
 data/System/FlatSkinFlexWebList.txt 0644
 data/System/FlatSkinPlugin.txt 0644
-data/System/FlatSkinTopHeadTemplate.txt 0644
 data/System/FlatSkinTopicMenuTemplate.txt 0644
 data/System/WebFlatBarDefault.txt 0644
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
