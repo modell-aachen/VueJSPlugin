@@ -3,7 +3,7 @@
 <div id="modacSidebar"><!-- KEEP THIS FOR COMPATIBILITY REASONS --></div>%{
 }%%TMPL:END%
 
-%{ Please note that there must be a new line before the include of the WebLeftBar. Other wise the first bullet will not be displayed as a bullet. See Foswiki task Item410 }%
+%{ Please note that there must be a new line before the include of the WebFlatBar. Other wise the first bullet will not be displayed as a bullet. See Foswiki task Item410 }%
 %TMPL:DEF{"websidebar"}%
 <div class="ma-sidebar-item">
   <div class="ma-logo top">
@@ -11,7 +11,7 @@
    </div>
 </div>
 <div class="ma-sidebar-item stretch">
-  %IF{"istopic 'WebLeftBar'" then="$percntINCLUDE{$quot%WEB%.WebLeftBar$quot}$percnt" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%.WebLeftBarDefault'" then="$dollarpercntINCLUDE{$dollarquot%CUSTOMIZINGWEB{default="Custom"}%.WebLeftBarDefault$dollarquot}$dollarpercnt" else="$dollarpercntINCLUDE{$dollarquot%SYSTEMWEB%.WebLeftBarDefault$dollarquot}$dollarpercnt"}%"}%
+  %IF{"istopic 'WebFlatBar'" then="$percntINCLUDE{$quot%WEB%.WebFlatBar$quot}$percnt" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%.WebFlatBarDefault'" then="$dollarpercntINCLUDE{$dollarquot%CUSTOMIZINGWEB{default="Custom"}%.WebFlatBarDefault$dollarquot}$dollarpercnt" else="$dollarpercntINCLUDE{$dollarquot%SYSTEMWEB%.WebFlatBarDefault$dollarquot}$dollarpercnt"}%"}%
 </div>
 <div class="ma-sidebar-item">
    <div class="ma-logo bottom">

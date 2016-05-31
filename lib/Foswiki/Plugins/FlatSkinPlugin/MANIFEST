@@ -6,8 +6,7 @@ data/System/FlatSkinFlexWebList.txt 0644
 data/System/FlatSkinPlugin.txt 0644
 data/System/FlatSkinTopHeadTemplate.txt 0644
 data/System/FlatSkinTopicMenuTemplate.txt 0644
-data/System/KvpFlatSkinTopHeadTemplate.txt 0644
-data/System/WebLeftBarDefault.txt 0644
+data/System/WebFlatBarDefault.txt 0644
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
 lib/Foswiki/Plugins/SafeWikiPlugin/Signatures/FlatSkin.pm 0644
 locale/FlatSkinPlugin/de.po 0644
@@ -62,7 +61,6 @@ pub/System/FlatSkin/fonts/opensans/SemiboldItalic/OpenSans-SemiboldItalic.woff 0
 pub/System/FlatSkin/fonts/opensans/SemiboldItalic/OpenSans-SemiboldItalic.woff2 0644
 pub/System/FlatSkin/images/ma-logo.png 0644
 pub/System/FlatSkin/images/qwiki-logo.png 0644
-pub/System/FlatSkin/js/flat_tophead.js 0644
 pub/System/FlatSkin/js/flatskin.js 0644
 pub/System/FlatSkin/js/flatskin.min.js 0644
 pub/System/FlatSkin/js/foundation.js 0644
