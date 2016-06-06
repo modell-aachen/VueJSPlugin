@@ -9,6 +9,10 @@ form{
     }
   }
 }
+//Overwrite the foswiki select with the foundation form-select mixin
+.foswikiSelect {
+  @include form-select
+}
 .help-text{
   @include ma-font('semibold');
   line-height: 1.4;
