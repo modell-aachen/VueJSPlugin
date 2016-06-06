@@ -1,40 +1,40 @@
 .solrSearchHit {
-	h3 img {
-	display: none;
-	}
-	.solrContainerLink {
-		color: $ma-dark-grey;
-		a {
-			color: $ma-dark-grey;
-		}
-		em {
-			font-size: inherit !important;
-		}
-	}
+  h3 img {
+  display: none;
+  }
+  .solrContainerLink {
+    color: $ma-dark-grey;
+    a {
+      color: $ma-dark-grey;
+    }
+    em {
+      font-size: inherit !important;
+    }
+  }
 }
 
 //Search header style
 .solrHeader .patternBorder {
-	padding: 15px;
-	background-color: $ma-bg-beige;
-	border-radius: $ma-border-radius;
-	border: none;
+  padding: 15px;
+  background-color: $ma-bg-beige;
+  border-radius: $ma-border-radius;
+  border: none;
 
-	.foswikiFormStep {
-		padding: 10px;
-		background-color: white;
-		border-radius: $ma-border-radius;
-	}
+  .foswikiFormStep {
+    padding: 10px;
+    background-color: white;
+    border-radius: $ma-border-radius;
+  }
 
-	.foswikiLayoutTable {
-		display: none;
-	}
+  .foswikiLayoutTable {
+    display: none;
+  }
 }
 
 //Select style
 .foswikiSelect {
-	-webkit-appearance: none;
-	-moz-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
     color: black;
     border-radius: 5px;
     background-color: $ma-medium-grey;
@@ -52,72 +52,72 @@
 
 //Pager styles
 .solrPager {
-	border-bottom: none !important;
-	a {
-		margin: 5px 10px;
-		color: $ma-brown !important;
-		&:hover {
-			background: transparent;
-		}
+  border-bottom: none !important;
+  a {
+    margin: 5px 10px;
+    color: $ma-brown !important;
+    &:hover {
+      background: transparent;
+    }
 
-	}
-	a.solrPagerPrev,a.solrPagerNext{
-		&:hover {
-			background: $ma-medium-grey;
-		}
-	}
-	a.current {
-		color: $ma-primary !important;
-		background-color: transparent !important;
-	}
-	.solrPagerPrev, .solrPagerNext {
-		display: inline-block;
-		vertical-align: middle;
-	    width: 40px;
-	    overflow: hidden;
-	    height: 40px;
-	    background-color: $ma-medium-grey;
-	    background-repeat: no-repeat;
-	    //background-image: url(../images/select-arrow.png);
-	    border: 0px;
-	    border-radius: 5px;
-	    color: transparent !important;
-	    background-position: center;
-	    padding: 0;
-	    position: relative;
-	    font-weight: normal;
-	    margin: 0;
-	    &:before {
-	    	position: absolute;
-	    	font-family: 'FontAwesome';
-	    	top: 25%;
-	    	left: 35%;
-	    	color: $ma-dark-grey;
-	    	font-size: medium;
-	    }
-	}
-	.solrPagerPrev {
-		&:before {
-			content: "\f060";
-		}
-	}
-	.solrPagerNext {
-		&:before {
-			content: "\f061";
-		}
-	}
+  }
+  a.solrPagerPrev,a.solrPagerNext{
+    &:hover {
+      background: $ma-medium-grey;
+    }
+  }
+  a.current {
+    color: $ma-primary !important;
+    background-color: transparent !important;
+  }
+  .solrPagerPrev, .solrPagerNext {
+    display: inline-block;
+    vertical-align: middle;
+      width: 40px;
+      overflow: hidden;
+      height: 40px;
+      background-color: $ma-medium-grey;
+      background-repeat: no-repeat;
+      //background-image: url(../images/select-arrow.png);
+      border: 0px;
+      border-radius: 5px;
+      color: transparent !important;
+      background-position: center;
+      padding: 0;
+      position: relative;
+      font-weight: normal;
+      margin: 0;
+      &:before {
+        position: absolute;
+        font-family: 'FontAwesome';
+        top: 25%;
+        left: 35%;
+        color: $ma-dark-grey;
+        font-size: medium;
+      }
+  }
+  .solrPagerPrev {
+    &:before {
+      content: "\f060";
+    }
+  }
+  .solrPagerNext {
+    &:before {
+      content: "\f061";
+    }
+  }
 }
 
 #modacSolrRightBar {
-	border-radius: 5px;
+  border-radius: 5px;
     background-color: white;
     h2 {
-    	border-bottom: 1px;
-	    border-style: solid;
-	    margin: 5px;
+      border-bottom: 1px;
+      border-style: solid;
+      margin: 5px;
     }
 
     #solrCurrentSelection h3 {
-    	margin: 5px;
+      margin: 5px;
     }
 }
