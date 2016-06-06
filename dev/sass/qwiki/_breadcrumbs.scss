@@ -1,0 +1,65 @@
+.ma-breadcrumbs {
+	overflow: hidden;
+	padding-left: 0;
+	margin-bottom: 10px;
+	span { //Hides the foswiki breadcrumb separators
+		display: none;
+	}
+	a {
+		text-decoration: none; 
+		padding: 10px 0 10px 45px;
+		position: relative; 
+		display: block;
+		float: left;
+
+		&:link, &:visited, &:hover, &:active {
+			color: $ma-brown;
+			background: $ma-bg-beige;
+		}
+
+		&:after {
+			content: " "; 
+			display: block; 
+			width: 0; 
+			height: 0;
+			border-top: 50px solid transparent;
+			border-bottom: 50px solid transparent;
+			border-left: 30px solid $ma-bg-beige;
+			position: absolute;
+			top: 50%;
+			margin-top: -50px; 
+			left: 100%;
+			z-index: 2; 
+		}
+		&:before {
+			content: " "; 
+			display: block; 
+			width: 0; 
+			height: 0;
+			border-top: 50px solid transparent;       
+			border-bottom: 50px solid transparent;
+			border-left: 30px solid white;
+			position: absolute;
+			top: 50%;
+			margin-top: -50px; 
+			margin-left: 3px;
+			left: 100%;
+			z-index: 1; 
+		}
+		&:first-of-type {
+			padding-left: 10px;
+		}
+		&:last-of-type {
+			background: transparent;
+			font-weight: bold;
+			pointer-events: none;
+			cursor: default;
+			&:after {
+				visibility: hidden;
+			}
+			&:before {
+				visibility: hidden;
+			}
+		}
+	}
+}
