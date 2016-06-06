@@ -69,6 +69,7 @@ input[type]:disabled {
     line-height: 1.4;
 }
 
+//Checkboxes
 [type="checkbox"]{
   display: none;
   &+label{
@@ -95,8 +96,61 @@ input[type]:disabled {
     }
 }
 
+//Radios
+//Idea: Use :before in the label as the radio background and :after as the checkmark
+[type="radio"]{
+  $radio-dimension: 21;
+  $radio-checkmark-padding: 3;
+  display: none;
+  &+label{
+    @include ma-font('regular');
+    font-size: rem-calc(13);
+    color: black;
+    position: relative;
+    padding-left: rem-calc($radio-dimension + 13);
+  }
+  &+label::before{
+    content: "";
+    font-family: "FontAwesome";
+    color: $ma-primary;
+    display: inline-block;
+    width: rem-calc($radio-dimension);
+    height: rem-calc($radio-dimension);
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid $ma-primary;
+    vertical-align: middle;
+    position:absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &+label::after{
+    content: "";
+    font-family: "FontAwesome";
+    color: $ma-primary;
+    display: inline-block;
+    width: rem-calc($radio-dimension);
+    height: rem-calc($radio-dimension);
+    border-radius: 50%;
+    background-color: $ma-primary;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &:checked+label::after{
+    $radio-checkmark-dimension: $radio-dimension - 2 * $radio-checkmark-padding;
+    display: inline-block;
+    width: rem-calc($radio-checkmark-dimension);
+    height: rem-calc($radio-checkmark-dimension);
+    top: rem-calc($radio-checkmark-padding);
+    left: rem-calc($radio-checkmark-padding);
+    }
+}
+
 textarea{
-  min-height: 90px;
+  min-height: rem-calc(90);
   color: $ma-body-text;
   font-size: rem-calc(13);
 }
