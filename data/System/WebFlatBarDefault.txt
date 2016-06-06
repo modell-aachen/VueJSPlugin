@@ -1,65 +1,110 @@
 %META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1335199636" format="1.1" reprev="9" version="9"}%
 %JQREQUIRE{"ui::dialog"}%
-<div class="modacSidebarTwisty">
+<div class="ma-leftbar-user-twisty">
+  %TWISTY{
+    id="modacSidebarUSER"
+    firststart="hide"
+    remember="on"
+    noscript="show"
+    showlink="<i class=\"fa fa-user\"></i>%RENDERUSER{"%WIKIUSERNAME%" convert="on"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-user\"></i>%RENDERUSER{"%WIKIUSERNAME%" convert="on"}% <i class=\"fa fa-angle-down right\"></i>"
+    linkclass="ma-leftbar-twisty-link"
+  }%
+    %IF{"istopic '%WEB%.WebTopBar'" then="$percntINCLUDE{$quot%WEB%.WebTopBar$quot}$percnt" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%.WebFlatUserBar'" then="$dollarpercntINCLUDE{$dollarquot%CUSTOMIZINGWEB{default="Custom"}%.WebFlatUserBar$dollarquot}$dollarpercnt" else="$dollarpercntINCLUDE{$dollarquot%SYSTEMWEB%.WebFlatUserBar$dollarquot}$dollarpercnt"}%"}%
+  %ENDTWISTY%
+</div>
+<div class="ma-leftbar-location-twisty">
+  %TWISTY{
+    id="modacSidebarLOCALTION"
+    firststart="hide"
+    remember="on"
+    noscript="show"
+    showlink="<i class=\"fa fa-home\"></i>%RENDERUSER{"Standort Aachen"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-home\"></i>%RENDERUSER{"Standort Aachen"}% <i class=\"fa fa-angle-down right\"></i>"
+    linkclass="ma-leftbar-twisty-link"
+  }%
+    <ul>
+      <li>[[%MAINWEB%.WebHome][%MAKETEXT{"Deutschland"}%]]</li>
+      <li>[[%MAINWEB%.WebHome][%MAKETEXT{"Europa"}%]]</li>
+      <li>[[%MAINWEB%.WebHome][%MAKETEXT{"Global"}%]]</li>
+    </ul>
+  %ENDTWISTY%
+</div>
+<div class="ma-leftbar-twisty">
 %TWISTY{
     id="modacSidebarZERO"
     firststart="hide"
     remember="on"
-	noscript="show"
-    showlink="<i class=\"fa fa-list\"></i>%MAKETEXT{"ALLGEMEINES"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-list\"></i>%MAKETEXT{"ALLGEMEINES"}% <i class=\"fa fa-angle-down right\"></i>"
-	linkclass="patternTwistyButton"
+    noscript="show"
+    showlink="<i class=\"fa fa-list\"></i>%MAKETEXT{"GENERAL"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-list\"></i>%MAKETEXT{"GENERAL"}% <i class=\"fa fa-angle-down right\"></i>"
+    linkclass="ma-leftbar-twisty-link"
 }%
-<div id="modacSidebarIE">
-   * [[%MAINWEB%.WebHome][%MAKETEXT{"Start"}%]]
-   * [[Manuals.WebHome][%MAKETEXT{"Manuals"}%]]
-   * [[%BASEWEB%.WebTopicList][%MAKETEXT{"Index"}%]]
+<div id="ma-leftbar-common">
+  <ul>
+    <li>[[%BASEWEB%.WebTopicList][%MAKETEXT{"Index"}%]]</li>
+    <li>[[Manuals.WebHome][%MAKETEXT{"Manuals"}%]]</li>
+    <li>[[%MAINWEB%.WebHome][%MAKETEXT{"Start"}%]]</li>
+  </ul>
 </div>
 %ENDTWISTY%
 </div>
 
 
-<div class="modacSidebarTwisty">
+<div class="ma-leftbar-twisty">
 %TWISTY{
     id="modacSidebarONE"
     firststart="hide"
     remember="on"
-	noscript="show"
+    noscript="show"
     showlink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% <i class=\"fa fa-angle-right right\"></i>"
     hidelink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% <i class=\"fa fa-angle-down right\"></i>"
-	linkclass="patternTwistyButton"
+    linkclass="ma-leftbar-twisty-link"
 }%
 %INCLUDE{"%IF{"istopic '%BASEWEB%/WebTools'" then="%BASEWEB%/WebTools" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebToolsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebToolsDefault" else="%SYSTEMWEB%/WebToolsDefault"}%"}%"}%
 %ENDTWISTY%
 </div>
 
 %IF{"$USERNAME ingroup 'KeyUserGroup' OR $USERNAME ingroup 'AdminGroup' OR $USERNAME = 'admin'" else="<!--"}%
-<div class="modacSidebarTwisty">
+<div class="ma-leftbar-twisty">
 %TWISTY{
     id="modacSidebarMASDINHKXY"
     firststart="hide"
     remember="on"
-	noscript="show"
+    noscript="show"
     showlink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% <i class=\"fa fa-angle-right right\"></i>"
     hidelink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% <i class=\"fa fa-angle-down right\"></i>"
-	linkclass="patternTwistyButton"
+    linkclass="ma-leftbar-twisty-link"
 }%
 %INCLUDE{"%IF{"istopic '%BASEWEB%/WebKeyUserTools'" then="%BASEWEB%/WebKeyUserTools" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebKeyUserToolsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebKeyUserToolsDefault" else="%SYSTEMWEB%/WebKeyUserToolsDefault"}%"}%"}%
 %ENDTWISTY%
 </div>
 %IF{"$USERNAME ingroup 'KeyUserGroup' OR $USERNAME ingroup 'AdminGroup' OR $USERNAME = 'admin'" else="-->"}%
 
-<div class="modacSidebarTwisty">
+<div class="ma-leftbar-twisty">
 %TWISTY{
     id="modacSidebarTWO"
     firststart="hide"
     remember="on"
-	noscript="show"
-    showlink="<i class=\"fa fa-th\"></i>%MAKETEXT{"Webs"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-th\"></i>%MAKETEXT{"Webs"}% <i class=\"fa fa-angle-down right\"></i>"
-	linkclass="patternTwistyButton"
+    noscript="show"
+    showlink="<i class=\"fa fa-lightbulb-o\"></i>%MAKETEXT{"KNOWLEDGE"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-lightbulb-o\"></i>%MAKETEXT{"KNOWLEDGE"}% <i class=\"fa fa-angle-down right\"></i>"
+    linkclass="ma-leftbar-twisty-link"
 }%
-<div id="modacSidebarTwisty_webs" class="modacAjaxContent" data-url="%SCRIPTURL{rest}%/RenderPlugin/tag?name=INCLUDE;render=1;MaxAge=600;param=%IF{ "context FlexWebListPluginEnabled" then="$percntSYSTEMWEB$percnt.FlatSkinFlexWebList" else="percntSYSTEMWEB$percnt.ModacSkinWebList" }%;web=%ENCODE{"%BASEWEB%"}%;topic=%ENCODE{"%BASEWEB%.%HOMETOPIC%"}%;user=%WIKINAME%%IF{"$'URLPARAM{MODAC_HIDEWEBS}'!=''" then=";MODAC_HIDEWEBS=$percentURLPARAM{MODAC_HIDEWEBS}$percent"}%">%JQREQUIRE{"jqp::spin"}%
+<div id="ma-leftbar-twisty webs" class="modacAjaxContent" data-url="%SCRIPTURL{rest}%/RenderPlugin/tag?name=INCLUDE;render=1;MaxAge=600;param=%IF{ "context FlexWebListPluginEnabled" then="$percntSYSTEMWEB$percnt.FlatSkinFlexWebList" else="percntSYSTEMWEB$percnt.ModacSkinWebList" }%;web=%ENCODE{"%BASEWEB%"}%;topic=%ENCODE{"%BASEWEB%.%HOMETOPIC%"}%;section=knowledge;user=%WIKINAME%%IF{"$'URLPARAM{MODAC_HIDEWEBS}'!=''" then=";MODAC_HIDEWEBS=$percentURLPARAM{MODAC_HIDEWEBS}$percent"}%">%JQREQUIRE{"jqp::spin"}%
+</div>
+%ENDTWISTY%
+
+%TWISTY{
+    id="modacSidebarTWO"
+    firststart="hide"
+    remember="on"
+    noscript="show"
+    showlink="<i class=\"fa fa-th\"></i>%MAKETEXT{"APPLICATIONS"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-th\"></i>%MAKETEXT{"APPLICATIONS"}% <i class=\"fa fa-angle-down right\"></i>"
+    linkclass="ma-leftbar-twisty-link"
+}%
+<div id="ma-leftbar-twisty webs" class="modacAjaxContent" data-url="%SCRIPTURL{rest}%/RenderPlugin/tag?name=INCLUDE;render=1;MaxAge=600;param=%IF{ "context FlexWebListPluginEnabled" then="$percntSYSTEMWEB$percnt.FlatSkinFlexWebList" else="percntSYSTEMWEB$percnt.ModacSkinWebList" }%;web=%ENCODE{"%BASEWEB%"}%;topic=%ENCODE{"%BASEWEB%.%HOMETOPIC%"}%;section=apps;user=%WIKINAME%%IF{"$'URLPARAM{MODAC_HIDEWEBS}'!=''" then=";MODAC_HIDEWEBS=$percentURLPARAM{MODAC_HIDEWEBS}$percent"}%">%JQREQUIRE{"jqp::spin"}%
 </div>
 %ENDTWISTY%
 <div class="modacSidebarActions">

@@ -12,26 +12,20 @@
 }
 
 .ma-sidebar-item {
-  flex-grow: 0;
+  algin-self: flex-start;
   width: 100%;
 
   &.stretch {
-    flex-grow: 2;
+    algin-self: stretch;
   }
 
-  .patternTwistyButton {
-    &:hover {
-      text-decoration-line: none;
-    }
-
-    .right {
-      float: right;
-      margin-right: rem-calc(5);
-    }
-
-    .foswikiLinkLabel {
-      color: $ma-dark-grey;
-    }
+  .right {
+    float: right;
+    margin-right: rem-calc(5);
+  }
+  .ma-flyout-icon {
+    line-height: rem-calc(20);
+    color: $ma-dark-grey;
   }
 
   i {
@@ -41,17 +35,64 @@
   ul {
     list-style-type: none;
     padding-left: 0;
+    margin-top: 0;
   }
 
   li {
     padding-left: rem-calc(22);
+    &.active,
     &:hover {
-      background: $ma-bg-light;
+      background-color: $ma-bg-light;
       a {
         color: $black;
         text-decoration-line: none;
       }
     }
+  }
+}
+
+@mixin ma-leftbar-box($topbar, $content) {
+  margin-bottom: rem-calc(12);
+  .twistyPlugin:first-child {
+    height: rem-calc(30);
+    .foswikiLinkLabel {
+      font-size: rem-calc(13);
+      line-height: rem-calc(30);
+      color: $white;
+    }
+    background: $topbar;
+  }
+  .right {
+    float: right;
+    margin-right: rem-calc(5);
+    line-height: rem-calc(25);
+  }
+  .twistyPlugin {
+    background: $content;
+  }
+  ul {
+    padding: rem-calc(5 0);
+  }
+}
+
+.ma-leftbar-user-twisty {
+  @include ma-leftbar-box($ma-dark-grey, $ma-grey);
+}
+
+.ma-leftbar-location-twisty {
+  @include ma-leftbar-box($ma-primary, $ma-primary-hover);
+}
+
+.ma-leftbar-twisty-link {
+  margin: rem-calc(8 0);
+
+  &:hover {
+    text-decoration-line: none;
+  }
+
+
+  .foswikiLinkLabel {
+    color: $ma-dark-grey;
   }
 }
 
@@ -63,7 +104,7 @@
   }
 
   &.top {
-    padding-top: rem-calc(6);
+    padding: rem-calc(6);
     margin-bottom: rem-calc(12);
     background-color: $white;
     border-bottom-left-radius: rem-calc(5);

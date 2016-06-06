@@ -1,7 +1,23 @@
+%STARTSECTION{"knowledge" type="section"}%
 %FLEXWEBLIST{
    exclude="(?:%URLPARAM{"MODAC_HIDEWEBS" default="%MODAC_HIDEWEBS{default="dummy"}%"}%).*"
-   format="$indent   * [[$web.%HOMETOPIC%][$name]]$n"
-   markerformat="$indent   * [[$web.%HOMETOPIC%][<span class=\"active\"> $name</span>]]$n"
+   header="<ul>"
+   format="$percntIF{\"'$pref(APPLICATION)'=''\" then=\"$indent(<ul>)<li>[[$web.%HOMETOPIC%][$name]]</li>$indent(</ul>)\"}$percnt"
+   footer="</ul>"
+   markerformat="$percntIF{\"'$pref(APPLICATION)'=''\" then=\"$indent(<ul>)<li class=\\"active\\">[[$web.%HOMETOPIC%][$name]]<i class=\\"ma-flyout-icon fa fa-ellipsis-h right\\"></i></li>$indent(</ul>)\"}$percnt"
    selection="%BASEWEB%"
    map="%MODAC_WEBMAPPINGS{default=""}%"
 }%
+%ENDSECTION{"knowledge" type="section"}%
+
+%STARTSECTION{"apps" type="section"}%
+%FLEXWEBLIST{
+   exclude="(?:%URLPARAM{"MODAC_HIDEWEBS" default="%MODAC_HIDEWEBS{default="dummy"}%"}%).*"
+   format="$percntIF{\"'$pref(APPLICATION)'=''\" else=\"$indent(<ul>)<li>[[$web.%HOMETOPIC%][$name]]</li>$indent(</ul>)\"}$percnt"
+   markerformat="$percntIF{\"'$pref(APPLICATION)'=''\" else=\"$indent(<ul>)<li class=\\"active\\">[[$web.%HOMETOPIC%][$name]]<i class=\\"ma-flyout-icon fa fa-ellipsis-h right\\"></i>\"}$percnt"
+   selection="%BASEWEB%"
+   map="%MODAC_WEBMAPPINGS{default=""}%"
+}%
+%ENDSECTION{"apps" type="section"}%
+
+
