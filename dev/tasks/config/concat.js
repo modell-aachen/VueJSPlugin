@@ -12,7 +12,9 @@ module.exports = function(grunt) {
           'node_modules/foundation-sites/js/foundation.util.box.js',
           'node_modules/foundation-sites/js/foundation.util.keyboard.js',
           'node_modules/foundation-sites/js/foundation.util.nest.js',
-          'node_modules/foundation-sites/js/foundation.dropdownMenu.js'
+          'node_modules/foundation-sites/js/foundation.util.triggers.js',
+          'node_modules/foundation-sites/js/foundation.dropdownMenu.js',
+          'node_modules/foundation-sites/js/foundation.sticky.js'
         ]
       }
     },

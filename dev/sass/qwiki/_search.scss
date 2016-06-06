@@ -121,3 +121,34 @@
       margin: 5px;
     }
 }
+
+.ma-searchbox {
+  $ma-searchbox-radius: 3*$ma-border-radius;
+
+  background-color: $ma-brown;
+  border-radius: $ma-searchbox-radius;
+  color: $ma-white;
+  max-height: rem-calc(30);
+  margin-left: rem-calc(10);
+
+  > * {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  > .input-group-field {
+    border-top-left-radius: $ma-searchbox-radius;
+    border-bottom-left-radius: $ma-searchbox-radius;
+
+    &:focus {
+      background-color: $ma-brown;
+      color: $ma-white;
+    }
+  }
+
+  > .input-group-label:last-child {
+    border-top-right-radius: $ma-searchbox-radius;
+    border-bottom-right-radius: $ma-searchbox-radius;
+  }
+}
+

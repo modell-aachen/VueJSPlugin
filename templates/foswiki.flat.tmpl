@@ -85,11 +85,9 @@ JQUERYPLUGIN is not a hard requirement, but it must sort earlier.
 
 %{ma:top:tabs/menu are defined in viewtopicactionbuttons.flat.tmpl}%
 %TMPL:DEF{"ma:top"}%%{
-}%<div class="row">
-  <div class="small-6 columns">%TMPL:P{"ma:top:tabs"}%</div>
-  <div class="small-6 columns clearfix">
-    <div class="float-right">%TMPL:P{"ma:top:menu"}%</div>
-  </div>
+}%<div class="row medium-collapse align-middle">
+  <div class="columns">%TMPL:P{"ma:top:tabs"}%</div>
+  <div class="columns shrink">%TMPL:P{"ma:top:menu"}%</div>
 </div>%TMPL:END%
 
 %TMPL:DEF{"ma:left"}%%TMPL:P{"sidebar"}%%TMPL:END%
@@ -117,7 +115,7 @@ JQUERYPLUGIN is not a hard requirement, but it must sort earlier.
 
 %TMPL:DEF{"ma:dochead"}%%{
 }%<div class="row">
-  <div class="columns">%TMPL:P{"top"}%</div>
+  <div class="columns"> %TMPL:P{"top"}%</div>
 </div>%TMPL:END%
 
 %TMPL:DEF{"ma:content"}%%{
