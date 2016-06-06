@@ -11,6 +11,7 @@
 		position: relative; 
 		display: block;
 		float: left;
+		color: $ma-brown !important;
 
 		&:link, &:visited, &:hover, &:active {
 			color: $ma-brown;
