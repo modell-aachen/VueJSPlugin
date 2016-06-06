@@ -1,92 +1,76 @@
 %TMPL:DEF{"ma:documenthead:std:de"}%%{
-}%<div class='ma-documenthead'>
-	<div class='ma-documenthead-container left'>
-		<table class='ma-documenthead-table'>
-			<tbody>
-				<tr>
-					<td><span class='ma-documenthead-content'>
-						Seitenname</span></td>
-					<td><span class='ma-documenthead-content'>
-						Geltungsbereich</span></td>
-					<td><span class='ma-documenthead-content'>
-						Rev</span></td>
-					<td><span class='ma-documenthead-content'>
-						Dokumenten Typ</span></td>
-				</tr>
-				<tr>
-					<td><span class='ma-documenthead-content value'>
-						%QUERY{"TopicTitle"}%</span></td>
-					<td><span class='ma-documenthead-content value'>
-						%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
-					<td><span class='ma-documenthead-content value'>%REVINFO{format="$rev"}%</span></td>
-					<td><span class='ma-documenthead-content value'>
-						%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div style="clear: both;"></div>
-</div>
-%TMPL:END%
+}%<div class="patternTop">
+  <div class="documentHead">
+    <div class="contentTopHead">
+      <table class="flatHeaderTable">
+        <tbody>
+          <tr>
+            <td><span class="keyFlatTopHead">Seitenname</span></td>
+            <td><span class="keyFlatTopHead">Geltungsbereich</span></td>
+            <td><span class="keyFlatTopHead">Rev</span></td>
+            <td><span class="keyFlatTopHead">Dokumenten Typ</span></td>
+          </tr>
+          <tr>
+            <td><span class="valueFlatTopHead">%QUERY{"TopicTitle"}%</span></td>
+            <td><span class="valueFlatTopHead">%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
+            <td><span class="valueFlatTopHead">%REVINFO{format="$rev"}%</span></td>
+            <td><span class="valueFlatTopHead">%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+</div>%TMPL:END%
 
 %TMPL:DEF{"ma:documenthead:std:en"}%%{
-}%<div class='ma-documenthead'>
-	<div class='ma-documenthead-container left'>
-		<table class='ma-documenthead-table'>
-			<tbody>
-				<tr>
-					<td><span class='ma-documenthead-content'>
-						Topic title</span></td>
-					<td><span class='ma-documenthead-content'>
-						Area of application</span></td>
-					<td><span class='ma-documenthead-content'>
-						Rev</span></td>
-					<td><span class='ma-documenthead-content'>
-						Document type</span></td>
-				</tr>
-				<tr>
-					<td><span class='ma-documenthead-content value'>
-						%QUERY{"TopicTitle"}%</span></td>
-					<td><span class='ma-documenthead-content value'>
-						%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
-					<td><span class='ma-documenthead-content value'>%REVINFO{format="$rev"}%</span></td>
-					<td><span class='ma-documenthead-content value'>
-						%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div style="clear: both;"></div>
+}%<div class="patternTop">
+  <div class="documentHead">
+    <div class="contentTopHead">
+      <table class="flatHeaderTable">
+        <tbody>
+          <tr>
+            <td><span class="keyFlatTopHead">Topic title</span></td>
+            <td><span class="keyFlatTopHead">Area of application</span></td>
+            <td><span class="keyFlatTopHead">Rev</span></td>
+            <td><span class="keyFlatTopHead">Document type</span></td>
+          </tr>
+          <tr>
+            <td><span class="valueFlatTopHead">%QUERY{"TopicTitle"}%</span></td>
+            <td><span class="valueFlatTopHead">%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
+            <td><span class="valueFlatTopHead">%REVINFO{format="$rev"}%</span></td>
+            <td><span class="valueFlatTopHead">%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
 </div>%TMPL:END%
 
 %TMPL:DEF{"ma:documenthead:std:auto"}%%{
-}%<div class='ma-documenthead'>
-	<div class='ma-documenthead-container left'>
-		<table class='ma-documenthead-table'>
-			<tbody>
-				<tr>
-					<td><span class='ma-documenthead-content'>
-						%MAKETEXT{"Topic title"}%</span></td>
-					<td><span class='ma-documenthead-content'>
-						%MAKETEXT{"Area of application"}%</span></td>
-					<td><span class='ma-documenthead-content'>
-						%MAKETEXT{"Rev"}%</span></td>
-					<td><span class='ma-documenthead-content'>
-						%MAKETEXT{"Document type"}%</span></td>
-				</tr>
-				<tr>
-					<td><span class='ma-documenthead-content value'>
-						%QUERY{"TopicTitle"}%</span></td>
-					<td><span class='ma-documenthead-content value'>
-						%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
-					<td><span class='ma-documenthead-content value'>%REVINFO{format="$rev"}%</span></td>
-					<td><span class='ma-documenthead-content value'>
-						%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
-				</tr>
-			</tbody>
-		</table>
-   </div>
-	<div style="clear: both;"></div>
+}%<div class="patternTop">
+  <div class="documentHead">
+    <div class="contentTopHead">
+      <table class="flatHeaderTable">
+        <tbody>
+          <tr>
+            <td><span class="keyFlatTopHead">%MAKETEXT{"Topic title"}%</span></td>
+            <td><span class="keyFlatTopHead">%MAKETEXT{"Area of application"}%</span></td>
+            <td><span class="keyFlatTopHead">%MAKETEXT{"Rev"}%</span></td>
+            <td><span class="keyFlatTopHead">%MAKETEXT{"Document type"}%</span></td>
+          </tr>
+          <tr>
+            <td><span class="valueFlatTopHead">%QUERY{"TopicTitle"}%</span></td>
+            <td><span class="valueFlatTopHead">%MAKETEXT{%QUERY{"AreaOfApplication"}%}%</span></td>
+            <td><span class="valueFlatTopHead">%REVINFO{format="$rev"}%</span></td>
+            <td><span class="valueFlatTopHead">%MAKETEXT{"%QUERY{"DocumentType"}%"}%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
 </div>%TMPL:END%
 
 %TMPL:DEF{"ma:documenthead:std"}%%SWITCHTMPL{"%CONTENT_LANGUAGE%" prefix="ma:documenthead:std:" defaultTo="auto"}%%TMPL:END%
