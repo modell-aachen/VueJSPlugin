@@ -5,7 +5,7 @@
 %TMPL:DEF{ATTACH:files:header(basic)}%%TMPL:END%
 %TMPL:DEF{ATTACH:files:tableformat}%%TMPL:END%
 
-%TMPL:DEF{"topicattachmentwisty"}%%TWISTY{id="topicattachmentslist" mode="div" remember="on" showimgleft="%ICONURLPATH{toggleopen}%" hideimgleft="%ICONURLPATH{toggleclose}%" showlink="%MAKETEXT{"Attachments"}%" hidelink="%MAKETEXT{"Attachments"}%" linkclass="patternTwistyButton patternAttachmentHeader"}%%TMPL:END%
+%TMPL:DEF{"topicattachmentwisty"}%%TWISTY{id="topicattachmentslist" mode="div" remember="on" showlink="%MAKETEXT{"Attachments"}% %TMPL:P{"TwistyShowIcon"}%" hidelink="%MAKETEXT{"Attachments"}% %TMPL:P{"TwistyHideIcon"}%" linkclass="patternTwistyButton patternAttachmentHeader"}%%TMPL:END%
 
 %TMPL:DEF{ATTACH:files:header(toprow)}%<table class="Modac_Standard"><thead><tr><th style="display:none"></th><th class='iconCol'>%MAKETEXT{"Type"}%</th><th>%MAKETEXT{"Filename"}%</th><th>%MAKETEXT{"Action"}%</th><th>%MAKETEXT{"Size"}%</th><th>%MAKETEXT{"Date"}%</th><th>%MAKETEXT{"Uploaded by"}%</th><th>%MAKETEXT{"Comment"}%</th></tr></thead><tbody>%TMPL:END%
 

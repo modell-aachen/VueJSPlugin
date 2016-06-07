@@ -11,7 +11,7 @@
 
 %TMPL:DEF{"script:skintemplate:edit"}%%TMPL:P{"PatternSkin/pattern_edit"}%%TMPL:END%
 
-%TMPL:DEF{"toolbar"}%<div class="patternTop">%TWISTYBUTTON{id="edithelp" mode="div" remember="on" link="%MAKETEXT{"Edit help"}%" showimgleft="%ICONURLPATH{toggleopen}%" hideimgleft="%ICONURLPATH{toggleclose}%"  linkclass="patternTwistyButton"}%%TMPL:P{"pagehelp"}%</div>%TMPL:END%
+%TMPL:DEF{"toolbar"}%<div class="patternTop">%TWISTYBUTTON{id="edithelp" mode="div" remember="on" link="%MAKETEXT{"Edit help"}% %TMPL:P{"TwistyShowIcon"}%" showimgleft="%ICONURLPATH{toggleopen}% %TMPL:P{"TwistyHideIcon"}%" hideimgleft="%ICONURLPATH{toggleclose}%"  linkclass="patternTwistyButton"}%%TMPL:P{"pagehelp"}%</div>%TMPL:END%
 
 
 %TMPL:DEF{"bodyclassname"}%modacViewPage modacEditPage%TMPL:END%

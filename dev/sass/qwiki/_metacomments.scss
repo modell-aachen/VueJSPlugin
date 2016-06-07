@@ -32,6 +32,29 @@
   float: right;
 }
 
+// this will be re-styled with the advent of the tab-menue
+.modacCmtCounter {
+  line-height: rem-calc(11);
+  font-size: rem-calc(11);
+  border-radius: rem-calc(11) / 2;
+  background-color: $body-background;
+  color: $body-font-color;
+  margin-left: .5rem;
+  padding-left: .3rem;
+  padding-right: .3rem;
+}
+
+#modacComments .foswikiLinkLabel {
+    line-height: rem-calc(13);
+    & i {
+        font-size: rem-calc(18);
+        font-weight: bold;
+        margin-right: .5rem;
+    }
+
+    color: $ma-dark-grey;
+    font-size: rem-calc(13);
+}
 
 // Undo some ModacSkin styles
 #modacComments .cmtCommentOdd .cmtControls,

@@ -143,3 +143,39 @@
 %TMPL:P{"comments::formend"}%<!-- -->
 </div>
 <!-- -->%TMPL:END%
+
+%{ ################################################################################ 
+   comments::topbar - renders the number of comments
+}%
+%TMPL:DEF{"comments::topbar"}%<!-- -->
+%METACOMMENTS{
+  header="<h2 class='cmtCounter foswikiHidden'>$count</h2>"
+  singular="1"
+  plural="$count"
+  limit="1"
+  template=""
+  %IF{"'%TMPL:P{"comments::format"}%' = 'threaded'" then="threaded=\"on\"" else="threaded=\"off\""}%
+  %IF{"$COMMENTMODERATION='on'" then="moderation=\"on\"" else="moderation=\"off\""}%
+}%<!-- -->%TMPL:END%
+
+%{ ################################################################################ 
+}%
+%TMPL:DEF{"metacomments"}%%IF{"context view" then="<div id='modacComments' class='modacBorder'><div class='foswikiFormSteps'><div class='foswikiFormStep'>$percentTWISTY{id=$quotcommentlist$quot mode=$quotdiv$quot remember=$quoton$quot showimgleft=$quot%TMPL:P{"TwistyToggleOpenImage"}%$quot hideimgleft=$quot%TMPL:P{"TwistyToggleCloseImage"}%$quot showlink=$quot%TMPL:P{"TwistyShowIcon"}%%MAKETEXT{"Comments"}%<span class='modacCmtCounter'></span>$quot hidelink=$quot%TMPL:P{"TwistyHideIcon"}%%MAKETEXT{"Comments"}%<span class='modacCmtCounter'></span>$quot linkclass=$quotpatternTwistyButton patternAttachmentHeader$quot}$percent"}%
+%CLEAR%
+<div id='comments' class='cmtComments cmtStyle_%IF{"defined COMMENTFORMAT" then="%COMMENTFORMAT%" else="%TMPL:P{"comments::format::default"}%"}% cmtState_%IF{"defined COMMENTSTATE" then="%COMMENTSTATE%" else="open"}% cmtModeration_%IF{"defined COMMENTMODERATION" then="%COMMENTMODERATION%" else="off"}%'>
+%TMPL:P{"comments::topbar"}%<!-- -->
+%IF{"$COMMENTFORMAT=~'reverse|insidetab' and $COMMENTSTATE!='closed'" 
+  then="%IF{"context canComment" 
+    then="$dollarpercntTMPL:P{\\"comments::add::simple\\"}$dollarpercnt"
+    else="$dollarpercntTMPL:P{\\"comments::add::denied\\"}$dollarpercnt"
+  }%"
+}%<!-- -->
+%TMPL:P{"comments::list"}%<!-- -->%JQREQUIRE{"textboxlist"}%
+%IF{"not $COMMENTFORMAT=~'reverse|insidetab' and $COMMENTSTATE!='closed'" 
+  then="%IF{"context canComment and not $COMMENTFORMAT=~'reverse|insidetab' and $COMMENTSTATE!='closed'" 
+    then="$dollarpercntTMPL:P{\\"comments::add::default\\"}$dollarpercnt"
+    else="$dollarpercntTMPL:P{\\"comments::add::denied\\"}$dollarpercnt"
+  }%"
+}%<!-- -->
+</div>
+%IF{"context view" then="$percentENDTWISTY$percent</div></div></div>"}%%TMPL:END%
