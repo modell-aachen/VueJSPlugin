@@ -44,7 +44,7 @@
 %TMPL:DEF{"SearchBox"}%%JQREQUIRE{"UI::autocomplete"}%
 <form name="quickSearchForm" id="quickSearchForm" action="%SCRIPTURLPATH{view}%/%WEB%/WebSearch">
   <div class="input-group ma-searchbox" style="margin-bottom: 0">
-    <input type="text" class="input-group-field foswikiInputField modacAutoSubmit hidePlaceholder %IF{"defined MODAC_SOLR_AUTOCOMPLETE" then="modacSolrAutocomplete $percentMODAC_SOLR_AUTOCOMPLETE$percent" else="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete', extraParams:{field:'catchall_autocomplete', filter:'%MODAC_SOLR_AC_FILTER{default=""}%'}}"}%" title="%MAKETEXT{"Search"}%" placeholder="%MAKETEXT{"Search"}%" id="quickSearchBox" name="search" value="%URLPARAM{search}%" size="26" />
+    <input type="text" class="input-group-field foswikiInputField modacAutoSubmit hidePlaceholder %IF{"defined MODAC_SOLR_AUTOCOMPLETE" then="modacSolrAutocomplete $percentMODAC_SOLR_AUTOCOMPLETE$percent" else="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete', extraParams:{field:'catchall_autocomplete', filter:'%MODAC_SOLR_AC_FILTER{default=""}%'}}"}%" title="%MAKETEXT{"Search"}%" placeholder="%MAKETEXT{"search..."}%" id="quickSearchBox" name="search" value="%URLPARAM{search}%" size="26" />
     <span class="input-group-label"><i class="fa fa-search modacSearchIcon"></i></span>
 </div>
 </form>%TMPL:END%

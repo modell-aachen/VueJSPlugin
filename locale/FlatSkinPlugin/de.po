@@ -14,3 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.1.6\n"
+
+#: %TMPL:DEF{"SearchBox"}% in viewtopicactionbuttons.flat.tmpl
+msgid "search..."
+msgstr "suchen..."

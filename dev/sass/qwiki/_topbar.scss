@@ -64,6 +64,7 @@
   }
 
   a {
+    @include ma-font;
     color: $ma-white;
 
     &:hover,
@@ -71,6 +72,11 @@
     &:focus,
     &:visited {
       color: $ma-white;
+    }
+
+    &:hover {
+      @include ma-font('bold');
+      text-decoration: none
     }
   }
 
@@ -106,6 +112,7 @@
   > .input-group-field {
     border-top-left-radius: $ma-searchbox-radius;
     border-bottom-left-radius: $ma-searchbox-radius;
+    font-size: .8rem;
     width: rem-calc(125);
 
     &:focus {
