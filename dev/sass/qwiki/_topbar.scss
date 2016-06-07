@@ -28,6 +28,7 @@
     }
 
     &.modacChanging {
+      color: $ma-primary;
       overflow: hidden;
       transition: max-width .3s ease-out,
                   color .15s ease-in-out;
