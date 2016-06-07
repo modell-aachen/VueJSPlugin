@@ -6,8 +6,8 @@
     firststart="hide"
     remember="on"
     noscript="show"
-    showlink="<i class=\"fa fa-user\"></i>%RENDERUSER{"%WIKIUSERNAME%" convert="on"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-user\"></i>%RENDERUSER{"%WIKIUSERNAME%" convert="on"}% <i class=\"fa fa-angle-down right\"></i>"
+    showlink="<i class=\"fa fa-user\"></i>%RENDERUSER{"%WIKIUSERNAME%" convert="on"}% %TMPL:P{"TwistyShowIcon"}%"
+    hidelink="<i class=\"fa fa-user\"></i>%RENDERUSER{"%WIKIUSERNAME%" convert="on"}% %TMPL:P{"TwistyHideIcon"}%"
     linkclass="ma-leftbar-twisty-link"
   }%
     %IF{"istopic '%WEB%.WebTopBar'" then="$percntINCLUDE{$quot%WEB%.WebTopBar$quot}$percnt" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%.WebFlatUserBar'" then="$dollarpercntINCLUDE{$dollarquot%CUSTOMIZINGWEB{default="Custom"}%.WebFlatUserBar$dollarquot}$dollarpercnt" else="$dollarpercntINCLUDE{$dollarquot%SYSTEMWEB%.WebFlatUserBar$dollarquot}$dollarpercnt"}%"}%
@@ -19,8 +19,8 @@
     firststart="hide"
     remember="on"
     noscript="show"
-    showlink="<i class=\"fa fa-home\"></i>%RENDERUSER{"Standort Aachen"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-home\"></i>%RENDERUSER{"Standort Aachen"}% <i class=\"fa fa-angle-down right\"></i>"
+    showlink="<i class=\"fa fa-home\"></i>%RENDERUSER{"Standort Aachen"}% %TMPL:P{"TwistyShowIcon"}%"
+    hidelink="<i class=\"fa fa-home\"></i>%RENDERUSER{"Standort Aachen"}% %TMPL:P{"TwistyHideIcon"}%"
     linkclass="ma-leftbar-twisty-link"
   }%
     <ul>
@@ -36,8 +36,8 @@
     firststart="hide"
     remember="on"
     noscript="show"
-    showlink="<i class=\"fa fa-list\"></i>%MAKETEXT{"GENERAL"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-list\"></i>%MAKETEXT{"GENERAL"}% <i class=\"fa fa-angle-down right\"></i>"
+    showlink="<i class=\"fa fa-list\"></i>%MAKETEXT{"GENERAL"}% %TMPL:P{"TwistyShowIcon"}%"
+    hidelink="<i class=\"fa fa-list\"></i>%MAKETEXT{"GENERAL"}% %TMPL:P{"TwistyHideIcon"}%"
     linkclass="ma-leftbar-twisty-link"
 }%
 <div id="ma-leftbar-common">
@@ -57,8 +57,8 @@
     firststart="hide"
     remember="on"
     noscript="show"
-    showlink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% <i class=\"fa fa-angle-down right\"></i>"
+    showlink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% %TMPL:P{"TwistyShowIcon"}%"
+    hidelink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% %TMPL:P{"TwistyHideIcon"}%"
     linkclass="ma-leftbar-twisty-link"
 }%
 %INCLUDE{"%IF{"istopic '%BASEWEB%/WebTools'" then="%BASEWEB%/WebTools" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebToolsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebToolsDefault" else="%SYSTEMWEB%/WebToolsDefault"}%"}%"}%
@@ -72,8 +72,8 @@
     firststart="hide"
     remember="on"
     noscript="show"
-    showlink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% <i class=\"fa fa-angle-down right\"></i>"
+    showlink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% %TMPL:P{"TwistyShowIcon"}%"
+    hidelink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% %TMPL:P{"TwistyHideIcon"}%"
     linkclass="ma-leftbar-twisty-link"
 }%
 %INCLUDE{"%IF{"istopic '%BASEWEB%/WebKeyUserTools'" then="%BASEWEB%/WebKeyUserTools" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebKeyUserToolsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebKeyUserToolsDefault" else="%SYSTEMWEB%/WebKeyUserToolsDefault"}%"}%"}%
@@ -87,8 +87,8 @@
     firststart="hide"
     remember="on"
     noscript="show"
-    showlink="<i class=\"fa fa-lightbulb-o\"></i>%MAKETEXT{"KNOWLEDGE"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-lightbulb-o\"></i>%MAKETEXT{"KNOWLEDGE"}% <i class=\"fa fa-angle-down right\"></i>"
+    showlink="<i class=\"fa fa-lightbulb-o\"></i>%MAKETEXT{"KNOWLEDGE"}% %TMPL:P{"TwistyShowIcon"}%"
+    hidelink="<i class=\"fa fa-lightbulb-o\"></i>%MAKETEXT{"KNOWLEDGE"}% %TMPL:P{"TwistyHideIcon"}%"
     linkclass="ma-leftbar-twisty-link"
 }%
 <div id="ma-leftbar-twisty webs" class="modacAjaxContent" data-url="%SCRIPTURL{rest}%/RenderPlugin/tag?name=INCLUDE;render=1;MaxAge=600;param=%IF{ "context FlexWebListPluginEnabled" then="$percntSYSTEMWEB$percnt.FlatSkinFlexWebList" else="percntSYSTEMWEB$percnt.ModacSkinWebList" }%;web=%ENCODE{"%BASEWEB%"}%;topic=%ENCODE{"%BASEWEB%.%HOMETOPIC%"}%;section=knowledge;user=%WIKINAME%%IF{"$'URLPARAM{MODAC_HIDEWEBS}'!=''" then=";MODAC_HIDEWEBS=$percentURLPARAM{MODAC_HIDEWEBS}$percent"}%">%JQREQUIRE{"jqp::spin"}%
@@ -100,8 +100,8 @@
     firststart="hide"
     remember="on"
     noscript="show"
-    showlink="<i class=\"fa fa-th\"></i>%MAKETEXT{"APPLICATIONS"}% <i class=\"fa fa-angle-right right\"></i>"
-    hidelink="<i class=\"fa fa-th\"></i>%MAKETEXT{"APPLICATIONS"}% <i class=\"fa fa-angle-down right\"></i>"
+    showlink="<i class=\"fa fa-th\"></i>%MAKETEXT{"APPLICATIONS"}% %TMPL:P{"TwistyShowIcon"}%"
+    hidelink="<i class=\"fa fa-th\"></i>%MAKETEXT{"APPLICATIONS"}% %TMPL:P{"TwistyHideIcon"}%"
     linkclass="ma-leftbar-twisty-link"
 }%
 <div id="ma-leftbar-twisty webs" class="modacAjaxContent" data-url="%SCRIPTURL{rest}%/RenderPlugin/tag?name=INCLUDE;render=1;MaxAge=600;param=%IF{ "context FlexWebListPluginEnabled" then="$percntSYSTEMWEB$percnt.FlatSkinFlexWebList" else="percntSYSTEMWEB$percnt.ModacSkinWebList" }%;web=%ENCODE{"%BASEWEB%"}%;topic=%ENCODE{"%BASEWEB%.%HOMETOPIC%"}%;section=apps;user=%WIKINAME%%IF{"$'URLPARAM{MODAC_HIDEWEBS}'!=''" then=";MODAC_HIDEWEBS=$percentURLPARAM{MODAC_HIDEWEBS}$percent"}%">%JQREQUIRE{"jqp::spin"}%
