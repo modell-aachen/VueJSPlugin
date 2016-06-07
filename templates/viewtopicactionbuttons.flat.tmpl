@@ -17,7 +17,7 @@
 
 %TMPL:DEF{"modacMore"}%<li>%TMPL:P{"more_link"}%%TMPL:P{"modacMoreSubmenu"}%</li>%TMPL:END%
 
-%TMPL:DEF{"more_link"}%<a href="#" rel="nofollow" title="%MAKETEXT{"Delete or rename this topic; set parent topic; view and compare revisions"}%">...</a>%TMPL:END%
+%TMPL:DEF{"more_link"}%<a href="#" rel="nofollow" title="%MAKETEXT{"Delete or rename this topic; set parent topic; view and compare revisions"}%"><i class="fa fa-ellipsis-h"></i></a>%TMPL:END%
 
 %TMPL:DEF{"modacEdit"}%%IF{"defined rev or defined rev1" then="" else="$percntTMPL:P{modacEditLATEST}$percnt"}%%TMPL:END%
 %TMPL:DEF{"modacEditLATEST"}%<span class="foswikiRequiresChangePermission requireModacChangePermission %IF{"context edit" then="active"}%"><a %IF{"not context edit" then="href='%SCRIPTURL{"edit"}%/%BASEWEB%/%BASETOPIC%?t=%GMTIME{"$epoch"}%%TMPL:P{"url_param_editaction"}%%IF{"context CKEditorPluginEnabled" then="" else=";nowysiwyg=1"}%'"}% class='modacChanging' rel='nofollow' title="%MAKETEXT{"Edit this topic"}%"><i class="fa fa-pencil"></i> <span>%MAKETEXT{"Edit"}%</span></a></span>%TMPL:END%
