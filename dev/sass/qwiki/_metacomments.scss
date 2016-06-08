@@ -34,6 +34,9 @@
 
 // this will be re-styled with the advent of the tab-menue
 .modacCmtCounter {
+  &:empty {
+    display: none;
+  }
   line-height: rem-calc(11);
   font-size: rem-calc(11);
   border-radius: rem-calc(11) / 2;
