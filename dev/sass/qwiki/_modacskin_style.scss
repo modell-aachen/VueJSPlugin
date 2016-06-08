@@ -22,18 +22,10 @@
 
 html body {
 	font-size:104%; /* to change the site's font size, change .foswikiPage below */
-	voice-family:"\"}\"";
-	voice-family:inherit;
-	font-family:arial, verdana, sans-serif;
 	font-size:small;
 }
 html>body { /* Mozilla */
 	font-size:small;
-}
-body {
-	background-image:url("../../ModacSkinTheme/ModacSkinLogos/page-fade_xlarge.png");
-	background-position:left top;
-	background-repeat:repeat-x;
 }
 th {
 	line-height:1.15em;
@@ -58,10 +50,6 @@ pre, code, tt {
 	font-size:86%;
 }
 
-/* IE behavior for pre is defined in css.pattern.tmpl in conditional comment */
-html>body pre { /* hide from IE */
-	/*\*/ overflow:auto !important; /* */ overflow:scroll; width:auto; /* for Mac Safari */
-}
 blockquote {
 	margin:0;
 	font-size:94%;
@@ -322,56 +310,6 @@ html>body #modacLogoIE {
 	margin: 0.5em 0em;
 }
 /* -------------------------- modacTabs ----------------------------*/
-#modacActionButtonsWrapper  {
-	background-image:url("../../ModacSkinTheme/ModacSkinLogos/border.png");
-	background-position:left bottom;
-	background-repeat:repeat-x;
-}
-#modacActionButtonsWrapper p {
-	display: none;
-}
-#modacButtonsLEFT,
-#modacButtonsRIGHT {
-	background-image:url("../../ModacSkinTheme/ModacSkinLogos/tab-break.png");
-	background-position:left bottom;
-	background-repeat:no-repeat;
-	padding: 5px 0px 0px 1px;
-}
-#modacButtonsLEFT {
-	float: left;
-}
-#modacButtonsRIGHT {
-	float: right;
-}
-.modacTabs {
-	margin: 0;
-	padding: 0;
-}
-.modacTabs li {
-	background-image:url("../../ModacSkinTheme/ModacSkinLogos/tab-normal-fade.png");
-	background-position:left bottom;
-	background-repeat:repeat-x;
-	float: left;
-}
-.modacTabs li a,
-.modacTabs li a:hover {
-	background-image:url("../../ModacSkinTheme/ModacSkinLogos/tab-break.png");
-	background-position:right bottom;
-	background-repeat:no-repeat;
-	display: inline-block;
-	padding: 0.6em 0.4em;
-}
-.modacActionButtonACTIVE {
-	background-image: url("../../ModacSkinTheme/ModacSkinLogos/tab-current-fade.png");
-}
-.modacActionButtonACTIVE a {
-	color: #333333;
-	text-decoration: none;
-}
-#modacWrapper ul.modacTabs,
-#modacWrapper .registration ul {
-	list-style: none;
-}
 #modacSearchBox {
 	margin: 0.5em 0.7em 0 0.7em;
 	background-image: none!important;
@@ -390,45 +328,6 @@ html>body #modacLogoIE {
 }
 .modacFileStar {
 	padding: 0 8px 2px 0;
-}
-
-.modacMoreMenu ul { padding-left: 0px; }
-.modacMoreMenu li ul li {
-	width: 100%;
-	float: none;
-	position: relative;
-	display: block;
-	border: 0;
-	border-bottom: solid 1px #a7d7f9;
-}
-.modacMoreMenu li {
-	position: relative;
-	z-index: 99;
-}
-.modacMoreMenu li ul {
-	display: none;
-	position: absolute;
-	top: -999em;
-	border: solid 1px #a7d7f9;
-	border-bottom-width: 0;
-	margin: 2px 0 0 0px;
-}
-.modacMoreMenu li ul li { list-style-image: none; } /* fix broken prop inheritance in IE7 */
-.modacMoreMenu li.sfHover ul {
-	display: block;
-	left: 0;
-	top: 2.5em;
-	z-index: 99;
-}
-.modacMoreMenu li.sfHover ul ul {
-	top: 0;
-	left: 100%;
-}
-.modacMoreMenu li.modacMoreDynamic ul li a { background: none; width: 11em; }
-.modacMoreMenu li ul li { background: white none; }
-
-.modacMoreDynamic div span a:after {
-	content: ' \bb ';
 }
 
 /* -------------------------- /modacTabs ----------------------------*/
@@ -1148,157 +1047,9 @@ a:hover .foswikiAccessKey {
 	margin-right:0;
 }
 
-#patternBottomBar {
-	background-image:url("../../ModacSkinTheme/ModacSkinLogos/border.png");
-	background-position:left top;
-	background-repeat:repeat-x;
-}
-#patternWebBottomBar {
-	font-size:94%; /*S2*/
-	line-height:125%;
-	text-align:left;
-}
-#patternSideBarContents {
-	margin:0 0 1em 0;
-	padding-right:.5em;
-	padding-left:1em;
-}
-
-#patternSideBarContents {
-	padding-left:30px;
-}
-
-#patternMainContents {
-	padding-right:2em;
-	padding-left:2em;
-}
-#patternSideBarContents,
-#patternMainContents {
-	padding-top:1em;
-}
-#patternSideBarContents {
-	padding-bottom:2em;
-}
-#patternBottomBarContents {
-	padding-top:.6em;
-	padding-left:0.4em;
-}
-
-/* bottom paddings */
-#patternMainContents {
-	padding-bottom:1em;
-}
-
 .foswikiTopic {
 	margin:0;
 	padding: .8em 0 .4em 0;
-}
-
-
-#patternSideBarContents ul {
-	padding:0 0 8px 0;
-	margin:0;
-	list-style:none;
-}
-
-#patternSideBarContents .patternTwistyButton {
-	margin:0.4em 0;
-	display:inline-block;
-}
-
-#patternSideBarContents h2 {
-	border:none;
-	background-color:transparent;
-}
-
-#patternSideBarContents .patternLeftBarPersonal {
-	padding:0 1em .75em 1em;
-	margin:0 -1em .75em -1em; /*S6*/
-	border-style:none none solid none;
-	border-width:1px;
-}
-.patternWebIndicator {
-	border-style:none none none solid;
-	border-width:7px;
-	padding:0 0 0 9px;
-	margin:0 0 1em -16px;
-}
-.patternWebIndicator a {
-	font-weight:bold;
-}
-.modacWebIndicator {
-	width: 16px;
-	height: 16px;
-	margin-right: 0.3em;
-}
-.patternLeftBarPersonalContent {
-	padding:1em 0 0 0;
-}
-#patternSideBarContents li {
-	overflow:hidden;
-	padding-left: 10px;
-}
-html>body #patternSideBarContents li { /* Mozilla */
-	overflow:visible;
-}
-
-/* form options in top bar */
-.patternMetaMenu {}
-.patternMetaMenu input,
-.patternMetaMenu select,
-.patternMetaMenu select option {
-	margin:0;
-}
-.patternMetaMenu select option {
-	padding:1px 0 0 0;
-}
-.patternMetaMenu ul {
-	padding:0;
-	margin:0;
-	list-style:none;
-}
-.patternMetaMenu ul li {
-	padding:0;
-	display:inline;
-}
-.patternMetaMenu ul li .foswikiInputField,
-.patternMetaMenu ul li .foswikiSelect {
-	margin:0 0 0 .5em;
-}
-.patternHomePath .foswikiSeparator {
-	padding:0 .35em;
-}
-.patternToolBar span {
-	float:left;
-}
-.patternToolBar span s,
-.patternToolBar span strike,
-.patternToolBar span a:link,
-.patternToolBar span a:visited {
-	display:block;
-	border-width:1px;
-	border-style:solid;
-	padding:2px 4px;
-	line-height:1em;
-	margin:0 0 4px 4px;
-	font-weight:bold;
-}
-.patternToolBar span a:hover,
-.patternToolBar span a:hover {
-	text-decoration:none;
-	border-width:1px;
-	border-style:solid;
-}
-.patternToolBar span a:active {
-	outline:none;
-}
-.patternToolBar span.foswikiAccessKey {
-	float:none;
-	border:none;
-}
-.patternToolBar span s,
-.patternToolBar span strike {
-	text-decoration:none;
 }
 
 .patternTopicActions {
@@ -1326,19 +1077,6 @@ html>body #patternSideBarContents li { /* Mozilla */
 	padding:2px 4px;
 }
 .patternInfo {
-	margin:1em 0 0 0;
-}
-.patternHomePath,
-.patternInfo {
-	font-size:94%;
-}
-.patternHomePath .patternRevInfo {
-	white-space:nowrap;
-}
-.patternTopicFooter {
-	margin:1em 0 0 0;
-}
-.patternSimpleLogo {
 	margin:1em 0 0 0;
 }
 .patternBorder {
@@ -1614,65 +1352,6 @@ span.select2system {
         border-color: #F7BA0B;
 
 }
-.modacMoreMenu li.modacMoreDynamic ul li span a {
-	padding-left: 25px;
-	background-repeat: no-repeat;
-	background-position: 4px center;
-}
-.modacMoreMenu li ul li span.moremenue-attach a {
-	background-image: url(../../FamFamFamSilkIcons/attach.png);
-}
-.modacMoreMenu li ul li span.moremenue-print a {
-	background-image: url(../../FamFamFamSilkIcons/page_white_acrobat.png);
-}
-.modacMoreMenu li ul li span.moremenue-history a {
-	background-image: url(../../FamFamFamSilkIcons/time.png);
-}
-.modacMoreMenu li ul li span.moremenue-wikitext a {
-	background-image: url(../../FamFamFamSilkIcons/page_white_code.png);
-}
-.modacMoreMenu li ul li span.moremenue-references a {
-	background-image: url(../../FamFamFamSilkIcons/link.png);
-}
-.modacMoreMenu li ul li span.moremenue-managepage a {
-	background-image: url(../../FamFamFamSilkIcons/page_white_gear.png);
-}
-.modacMoreMenu li ul li span.morelink-settings a {
-	background-image: url(../../FamFamFamSilkIcons/page_white_wrench.png);
-}
-.modacMoreMenu li ul li span.morelink-setparent a {
-	background-image: url(../../FamFamFamSilkIcons/chart_organisation.png);
-}
-.modacMoreMenu li ul li span.morelink-rename a {
-	background-image: url(../../FamFamFamSilkIcons/page_white_go.png);
-}
-.modacMoreMenu li ul li span.morelink-copy a {
-	background-image: url(../../FamFamFamSilkIcons/page_white_copy.png);
-}
-.modacMoreMenu li ul li span.morelink-delete a {
-	background-image: url(../../FamFamFamSilkIcons/page_white_delete.png);
-}
-.modacHideSidebar {
-	width: 14px;
-	position: absolute;
-	left: 0px;
-	top: 100px;
-	height: 62px;
-	cursor: pointer;
-	background-image: url("../../ModacSkinTheme/sidebarHide.png");
-	background-repeat: no-repeat;
-	display: none;
-}
-.modacShowSidebar {
-	width: 18px;
-	position: fixed;
-	left: 0px;
-	top: 100px;
-	height: 62px;
-	cursor: pointer;
-	background-image: url("../../ModacSkinTheme/sidebarShow.png");
-	background-repeat: no-repeat;
-}
 .WYSIWYG_TEXT_HIDDEN {
 	display: none;
 }
@@ -1696,11 +1375,6 @@ span.select2system {
   width: 0;
   height: 0;
 }
-.clearfix,
-.foswikiClearFix {
-  *zoom:1; /* IE7 hack */
-}
-
 * html .clearfix,
 * html .foswikiClearFix {
   height: 1%;

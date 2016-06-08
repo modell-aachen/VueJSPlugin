@@ -11,9 +11,6 @@ Reworked and simplified for Foswiki: (c) Arthur Clemens @ visiblearea.com
 */
 
 html, body {
-	margin:0; /*** Do NOT set anything other than a left margin for the page
-as this will break the design ***/
-	padding:0;
 	border:0;
 	height:100%;
 }
@@ -28,50 +25,6 @@ body {
 	overflow:hidden;
 	line-height:1%;
 	font-size:0px;
-}
-#patternPage {
-	position:relative;
-	width:100%;
-	min-width: 940px;
-}
-#patternOuter {
-	height:100%;
-	margin-left: 13em!important;
-}
-
-#patternFloatWrap {
-	width:100%;
-	float:left;
-	display:inline;
-}
-
-/* The modacSkin-Sidebar is a bit thinner then the one used in the patternSkin /HYK */
-#patternSideBar {
-	float:left;
-	/*display:inline;*/
-	overflow:hidden;
-	margin-left:0!important;
-	width:14em !important;
-}
-
-#modacMainContents {
-	position:relative;
-	top: -32px;
-	z-index: 33;
-	background: transparent;
-}
-
-#patternClearHeaderLeft {
-	height: 148px!important;	
-}
-#patternMain {
-	width:100%;
-	float:right;
-	display:inline;
-}
-
-#patternBottomBar {
-	clear:both;
 }
 
 /*------------Themes for standard applications------------*/

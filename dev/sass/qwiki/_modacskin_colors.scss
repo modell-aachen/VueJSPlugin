@@ -3,14 +3,7 @@
 
 /* LAYOUT ELEMENTS */
 
-#patternScreen {
-	background:#F3F3F3;
-}
-
-.patternViewPage #patternMainContents,
 .patternOopsPage #patternMainContents,
-.patternEditPage #patternMainContents,
-.patternDiffPage #patternMainContents,
 .patternAttachPage #patternMainContents {
 	background: #FFFFFF;
 	background-image:url("../../ModacSkinTheme/ModacSkinLogos/border.png");
@@ -26,28 +19,6 @@
 	background: #FFFFFF;
 	background-image:url("../../ModacSkinTheme/ModacSkinLogos/GrayBlend.gif");
 	background-position:left top;
-}
-
-
-#patternTopBar {
-	border-color:#dfdfdf;
-	background:#eeedec;
-	/* color can be overridden with WEBHEADERBGCOLOR in System/DefaultPreferences */
-}
-#patternMain { /* don't set a background here; use patternOuter */ }
-#patternOuter {
-	background:none;
-	border-color:#eee;
-}
-
-
-#patternBottomBarContents,
-#patternBottomBarContents a:link,
-#patternBottomBarContents a:visited {
-	color:#797979;
-}
-#patternBottomBarContents a:hover {
-	color:#06c;
 }
 
 /* GENERAL HTML ELEMENTS */
@@ -372,35 +343,6 @@ a:hover .foswikiAccessKey {
 /*   -----------------------------------------------------------
 	Pattern skin specific elements
 	-----------------------------------------------------------   */
-
-
-
-.patternHomePathTitle,
-.patternRevInfo {
-	color:#797979;
-}
-.patternHomePath:hover a:link,
-.patternHomePath:hover a:visited {
-	color:#06c;
-}
-
-/* Left bar */
-#patternSideBarContents {
-	color:#000;
-}
-#patternSideBarContents hr {
-	color:#ddd;
-	background-color:#ddd;
-}
-
-#patternSideBarContents .patternLeftBarPersonal,
-#patternSideBarContents .patternWebIndicator {
-	border-color:#eee;
-}
-#patternSideBarContents b,
-#patternSideBarContents strong {
-	color:#333;
-}
 
 .patternTopicActions {
 	background-color:#fff;
