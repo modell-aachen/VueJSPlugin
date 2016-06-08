@@ -1564,17 +1564,6 @@ td.foswikiDiffDebugLeft {
 	text-align:left;
 }
 
-/* MetaCommentPlugin */
-h2.cmtCounter,
-h2.cmtAddCommentTitle {
-    margin-left: 12px;
-    margin-right: 12px;
-    margin-top: 8px;
-}
-.cmtComments {
-    border: 1px solid #DDDDDD;
-    background-color: #FFFFFF;
-}
 div.cmtAddComment {
     border-top: 1px solid #DDDDDD;
     border-left: none;
@@ -1585,10 +1574,6 @@ div.cmtAddComment {
 img.modacFlag {
     vertical-align: middle;
 }
-#modacComments {
-    margin-bottom: 3px;
-}
-/* /MetaCommentPlugin */
 
 .Seitenzahl {
 	display:none;
@@ -1719,26 +1704,6 @@ span.select2system {
 * html .clearfix,
 * html .foswikiClearFix {
   height: 1%;
-}
-div#comments div.cmtCommentContainer > div.foswikiFormSteps,
-div#comments div.cmtCommentContainer:last-child {
-	margin-bottom: 0px;
-	border-bottom: none;
-}
-#modacComments .cmtCommentEven {
-	border-top: 1px #ddd solid;
-	border-bottom: 1px #ddd solid;
-}
-#modacComments .cmtCommentOdd {
-	border: none;
-}
-#modacComments .cmtCommentEven,
-#modacComments .cmtCommentEven .cmtControls {
-	background-color: #F9F9F9;
-}
-#modacComments .cmtCommentOdd,
-#modacComments .cmtCommentOdd .cmtControls {
-	background-color: #FFF;
 }
 #modacSolrRightBar ul,
 #modacWraper #modacSolrRightBar ul {
