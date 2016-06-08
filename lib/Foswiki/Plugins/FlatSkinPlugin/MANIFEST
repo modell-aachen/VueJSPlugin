@@ -66,6 +66,7 @@ pub/System/FlatSkin/js/flatskin.min.js 0644
 pub/System/FlatSkin/js/foundation.js 0644
 pub/System/FlatSkin/js/foundation.min.js 0644
 templates/attachtables.flat.tmpl 0644
+templates/css.flat.tmpl 0644
 templates/edit.flat.tmpl 0644
 templates/foswiki.flat.tmpl 0644
 templates/metacomments.flat.tmpl 0644
