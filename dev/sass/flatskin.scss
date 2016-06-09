@@ -3,8 +3,8 @@
 //
 // Open Sans Font-Face
 //
-$OpenSansPath: '../fonts/opensans';
-@import 'open-sans';
+$OpenSansPath: 'open-sans-fontface/fonts/opensans';
+@import 'open-sans-fontface/sass/open-sans';
 
 // ModacSkin
 @import 'qwiki/modacskin_layout';
@@ -16,7 +16,7 @@ $OpenSansPath: '../fonts/opensans';
 // Foundation for Sites 6
 //
 // @import 'util/util';
-@import 'foundation';
+@import 'foundation-sites/scss/foundation';
 @import 'settings';
 @include foundation-global-styles;
 @include foundation-flex-classes;

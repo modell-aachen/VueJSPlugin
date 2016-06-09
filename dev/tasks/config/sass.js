@@ -3,8 +3,7 @@ module.exports = function(grunt) {
     flat: {
       options: {
         includePaths: [
-          'node_modules/foundation-sites/scss',
-          'node_modules/open-sans-fontface/sass'
+          'node_modules'
         ],
         outputStlye: 'expanded',
         sourceMap: true
