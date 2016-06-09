@@ -179,3 +179,23 @@
 }%<!-- -->
 </div>
 %IF{"context view" then="$percentENDTWISTY$percent</div></div></div>"}%%TMPL:END%
+
+%{ ################################################################################ 
+   metacomments::init - loads all required css and js
+}%
+%TMPL:DEF{"metacomments::init"}%<!-- -->
+<!-- %IMAGE% -->
+<!-- %JQREQUIRE{"blockui, ui::dialog, form, jsonrpc, button, pnotify, ui::autocomplete, select2"}% -->
+%ADDTOZONE{
+  "script" 
+  id="METACOMMENTPLUGIN::JS" 
+  requires="JQUERYPLUGIN::UI, JQUERYPLUGIN::FORM, JQUERYPLUGIN::JSONRPC, JQUERYPLUGIN::PNOTIFY, JQUERYPLUGIN::SELECT2"
+  text="<script type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/MetaCommentPlugin/metacomment.js'></script><script type='text/javascript' src='%PUBURLPATH%/System/MoreFormfieldsPlugin/select2field.js'></script><script type='text/javascript'>
+	var prevAllowInteraction = $.ui.dialog.prototype._allowInteraction;
+	$.ui.dialog.prototype._allowInteraction = function(event) {
+		if ($(event.target).closest('.select2-container--open').length) { return true; }
+		return prevAllowInteraction.apply(this, arguments);
+	};
+  </script>"
+}%%JSI18N{"MetaCommentPlugin"}%<!-- -->%TMPL:END%
+
