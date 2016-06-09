@@ -38,6 +38,7 @@
     "postcss-colors-only": "0.0.3",
     "postcss-discard-duplicates": "^2.0.1",
     "postcss-discard-empty": "^2.1.0",
-    "postcss-zindex": "^2.1.1"
+    "postcss-zindex": "^2.1.1",
+    "select2": "4.0.1"
   }
 }
