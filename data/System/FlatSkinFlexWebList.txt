@@ -2,9 +2,14 @@
 %FLEXWEBLIST{
    exclude="(?:%URLPARAM{"MODAC_HIDEWEBS" default="%MODAC_HIDEWEBS{default="dummy"}%"}%).*"
    header="<ul>"
-   format="$percntIF{\"'$pref(APPLICATION)'=''\" then=\"$indent(<ul>)<li>[[$web.%HOMETOPIC%][$name]]</li>$indent(</ul>)\"}$percnt"
+   format="$percntIF{\"'$pref(APPLICATION)'=''\"
+      then=\"$indent(<ul>)<li>[[$web.%HOMETOPIC%][$name]]</li>$indent(</ul>)\"
+   }$percnt"
    footer="</ul>"
-   markerformat="$percntIF{\"'$pref(APPLICATION)'=''\" then=\"$indent(<ul>)<li class=\\"active\\">[[$web.%HOMETOPIC%][$name]]<i class=\\"ma-flyout-icon fa fa-ellipsis-h right\\"></i></li>$indent(</ul>)\"}$percnt"
+   markerformat="$percntIF{\"'$pref(APPLICATION)'=''\"
+      then=\"$indent(<ul>)<li class=\\"active\\">[[$web.%HOMETOPIC%][$name]] <i class=\\"ma-flyout-icon fa fa-ellipsis-h right\\"></i>
+$dollarpercntINCLUDE{\\"$dollarpercntIF{\\"istopic '%BASEWEB%/WebActions'\\" then=\\"%BASEWEB%/WebActions\\" else=\\"$dollarpercntIF{\\"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebActionsDefault'\\" then=\\"%CUSTOMIZINGWEB{default="Custom"}%/WebActionsDefault\\" else=\\"%SYSTEMWEB%/WebActionsDefault\\"}$dollarpercnt\\"}$dollarpercnt\\"}$dollarpercnt
+</li>$indent(</ul>)\"}$percnt"
    selection="%BASEWEB%"
    map="%MODAC_WEBMAPPINGS{default=""}%"
 }%
@@ -13,11 +18,15 @@
 %STARTSECTION{"apps" type="section"}%
 %FLEXWEBLIST{
    exclude="(?:%URLPARAM{"MODAC_HIDEWEBS" default="%MODAC_HIDEWEBS{default="dummy"}%"}%).*"
-   format="$percntIF{\"'$pref(APPLICATION)'=''\" else=\"$indent(<ul>)<li>[[$web.%HOMETOPIC%][$name]]</li>$indent(</ul>)\"}$percnt"
-   markerformat="$percntIF{\"'$pref(APPLICATION)'=''\" else=\"$indent(<ul>)<li class=\\"active\\">[[$web.%HOMETOPIC%][$name]]<i class=\\"ma-flyout-icon fa fa-ellipsis-h right\\"></i>\"}$percnt"
+   format="$percntIF{\"'$pref(APPLICATION)'=''\"
+      else=\"$indent(<ul>)<li>[[$web.%HOMETOPIC%][$name]]</li>$indent(</ul>)\"
+   }$percnt"
+   markerformat="$percntIF{\"'$pref(APPLICATION)'=''\"
+      else=\"$indent(<ul>)<li class=\\"active\\">[[$web.%HOMETOPIC%][$name]] <i class=\\"ma-flyout-icon fa fa-ellipsis-h right\\"></i>
+$dollarpercntINCLUDE{\\"$dollarpercntIF{\\"istopic '%BASEWEB%/WebActions'\\" then=\\"%BASEWEB%/WebActions\\" else=\\"$dollarpercntIF{\\"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebActionsDefault'\\" then=\\"%CUSTOMIZINGWEB{default="Custom"}%/WebActionsDefault\\" else=\\"%SYSTEMWEB%/WebActionsDefault\\"}$dollarpercnt\\"}$dollarpercnt\\"}$dollarpercnt
+</li>$indent(</ul>)\"}$percnt"
    selection="%BASEWEB%"
    map="%MODAC_WEBMAPPINGS{default=""}%"
 }%
 %ENDSECTION{"apps" type="section"}%
-
 

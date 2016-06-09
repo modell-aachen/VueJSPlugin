@@ -1,5 +1,8 @@
+.ma-left {
+    min-height: 100vh;
+}
 .ma-sidebar {
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
 
   background-color: $ma-body-text;
@@ -22,24 +25,28 @@
   .right {
     float: right;
     margin-right: rem-calc(5);
+    line-height: rem-calc(16);
   }
   .ma-flyout-icon {
     line-height: rem-calc(20);
     color: $ma-dark-grey;
+    border-radius: rem-calc(4);
   }
 
   i {
+    text-align: center;
     margin: rem-calc(2 5);
+    min-width: rem-calc(15);
   }
 
-  ul {
+ ul {
     list-style-type: none;
     padding-left: 0;
     margin-top: 0;
   }
 
   li {
-    padding-left: rem-calc(22);
+    padding: rem-calc(4 0 4 22);
     &.active,
     &:hover {
       background-color: $ma-bg-light;
@@ -54,6 +61,9 @@
 @mixin ma-leftbar-box($topbar, $content) {
   margin-bottom: rem-calc(12);
   .twistyPlugin:first-child {
+    &:hover {
+      background-color: $content;
+    }
     height: rem-calc(30);
     .foswikiLinkLabel {
       font-size: rem-calc(13);
@@ -75,8 +85,58 @@
   }
 }
 
+.active {
+  ul{
+    display: none;
+    position: absolute;
+  }
+}
+
+.active:hover {
+    position: relative;
+  ul{
+    color: $white;
+    display: inline-block;
+    left: rem-calc(180);
+    top: rem-calc(-5);
+    background-color: $ma-primary;
+    z-index: 100;
+    width: rem-calc(200);
+    border: rem-calc(5) solid rgba(0,0,0,0);
+    border-radius: rem-calc(8);
+    background-clip: padding-box;
+    > li a{
+      color: $white;
+    }
+    li:hover {
+        background-color: $ma-primary-hover;
+        &:first-child {
+            border-top-left-radius: rem-calc(6);
+            border-top-right-radius: rem-calc(6);
+        }
+        &:last-child {
+            border-bottom-left-radius: rem-calc(6);
+            border-bottom-right-radius: rem-calc(6);
+        }
+    }
+  }
+  .ma-flyout-icon {
+    color: $white;
+    text-align: left;
+    padding-left: rem-calc(5);
+    display: inline-block;
+    position: absolute;
+    top: rem-calc(1.6);
+    left: rem-calc(155);
+    width: rem-calc(45);
+    height: rem-calc(22);
+    background-color: $ma-primary;
+    z-index: 100;
+  }
+}
+
 .ma-leftbar-user-twisty {
-  @include ma-leftbar-box($ma-dark-grey, $ma-grey);
+  @include ma-leftbar-box($ma-darker-grey, $ma-dark-grey);
 }
 
 .ma-leftbar-location-twisty {
@@ -92,10 +152,14 @@
 
 
   .foswikiLinkLabel {
+    font-size: rem-calc(12);
     color: $ma-dark-grey;
   }
 }
 
+.twistyPlugin:first-child:hover {
+  background-color: $ma-darker-grey;
+}
 .ma-logo {
   overflow: hidden;
 

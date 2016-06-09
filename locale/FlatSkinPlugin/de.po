@@ -18,3 +18,19 @@ msgstr ""
 #: %TMPL:DEF{"SearchBox"}% in viewtopicactionbuttons.flat.tmpl
 msgid "search..."
 msgstr "suchen..."
+
+#: in WebFlatBarDefault.txt
+msgid "KNOWLEDGE"
+msgstr "WISSEN"
+
+msgid "APPLICATIONS"
+msgstr "APPLIKATIONEN"
+
+msgid "GENERAL"
+msgstr "ALLGEMEINES"
+
+msgid "TOOLS"
+msgstr "WERKZEUGE"
+
+msgid "KEY USER TOOLS"
+msgstr "KEYUSER WERKZEUGE"

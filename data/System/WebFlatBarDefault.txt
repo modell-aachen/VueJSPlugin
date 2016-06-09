@@ -57,8 +57,13 @@
     firststart="hide"
     remember="on"
     noscript="show"
+<<<<<<< HEAD
     showlink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% %TMPL:P{"TwistyShowIcon"}%"
     hidelink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"Tools"}% %TMPL:P{"TwistyHideIcon"}%"
+=======
+    showlink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"TOOLS"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-wrench\"></i>%MAKETEXT{"TOOLS"}% <i class=\"fa fa-angle-down right\"></i>"
+>>>>>>> 78a271a... style for left bar and a new separation for apps and knowledge.
     linkclass="ma-leftbar-twisty-link"
 }%
 %INCLUDE{"%IF{"istopic '%BASEWEB%/WebTools'" then="%BASEWEB%/WebTools" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebToolsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebToolsDefault" else="%SYSTEMWEB%/WebToolsDefault"}%"}%"}%
@@ -72,8 +77,13 @@
     firststart="hide"
     remember="on"
     noscript="show"
+<<<<<<< HEAD
     showlink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% %TMPL:P{"TwistyShowIcon"}%"
     hidelink="<i class=\"fa fa-key\"></i>%MAKETEXT{"Key user tools"}% %TMPL:P{"TwistyHideIcon"}%"
+=======
+    showlink="<i class=\"fa fa-key\"></i>%MAKETEXT{"KEY USER TOOLS"}% <i class=\"fa fa-angle-right right\"></i>"
+    hidelink="<i class=\"fa fa-key\"></i>%MAKETEXT{"KEY USER TOOLS"}% <i class=\"fa fa-angle-down right\"></i>"
+>>>>>>> 78a271a... style for left bar and a new separation for apps and knowledge.
     linkclass="ma-leftbar-twisty-link"
 }%
 %INCLUDE{"%IF{"istopic '%BASEWEB%/WebKeyUserTools'" then="%BASEWEB%/WebKeyUserTools" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebKeyUserToolsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebKeyUserToolsDefault" else="%SYSTEMWEB%/WebKeyUserToolsDefault"}%"}%"}%
@@ -94,7 +104,9 @@
 <div id="ma-leftbar-twisty webs" class="modacAjaxContent" data-url="%SCRIPTURL{rest}%/RenderPlugin/tag?name=INCLUDE;render=1;MaxAge=600;param=%IF{ "context FlexWebListPluginEnabled" then="$percntSYSTEMWEB$percnt.FlatSkinFlexWebList" else="percntSYSTEMWEB$percnt.ModacSkinWebList" }%;web=%ENCODE{"%BASEWEB%"}%;topic=%ENCODE{"%BASEWEB%.%HOMETOPIC%"}%;section=knowledge;user=%WIKINAME%%IF{"$'URLPARAM{MODAC_HIDEWEBS}'!=''" then=";MODAC_HIDEWEBS=$percentURLPARAM{MODAC_HIDEWEBS}$percent"}%">%JQREQUIRE{"jqp::spin"}%
 </div>
 %ENDTWISTY%
+</div>
 
+<div class="ma-leftbar-twisty">
 %TWISTY{
     id="modacSidebarTWO"
     firststart="hide"
@@ -107,8 +119,5 @@
 <div id="ma-leftbar-twisty webs" class="modacAjaxContent" data-url="%SCRIPTURL{rest}%/RenderPlugin/tag?name=INCLUDE;render=1;MaxAge=600;param=%IF{ "context FlexWebListPluginEnabled" then="$percntSYSTEMWEB$percnt.FlatSkinFlexWebList" else="percntSYSTEMWEB$percnt.ModacSkinWebList" }%;web=%ENCODE{"%BASEWEB%"}%;topic=%ENCODE{"%BASEWEB%.%HOMETOPIC%"}%;section=apps;user=%WIKINAME%%IF{"$'URLPARAM{MODAC_HIDEWEBS}'!=''" then=";MODAC_HIDEWEBS=$percentURLPARAM{MODAC_HIDEWEBS}$percent"}%">%JQREQUIRE{"jqp::spin"}%
 </div>
 %ENDTWISTY%
-<div class="modacSidebarActions">
-%INCLUDE{"%IF{"istopic '%BASEWEB%/WebActions'" then="%BASEWEB%/WebActions" else="%IF{"istopic '%CUSTOMIZINGWEB{default="Custom"}%/WebActionsDefault'" then="%CUSTOMIZINGWEB{default="Custom"}%/WebActionsDefault" else="%SYSTEMWEB%/WebActionsDefault"}%"}%"}%
-</div>
 </div>
 <div class="modacHideSidebar" title="%MAKETEXT{"Hide menu"}%"></div>

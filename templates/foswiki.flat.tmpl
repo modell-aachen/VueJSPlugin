@@ -128,7 +128,7 @@ JQUERYPLUGIN is not a hard requirement, but it must sort earlier.
   <div class="columns">%TMPL:P{"breadcrumb"}%</div>
 </div>%TMPL:END%
 
-%TMPL:DEF{"ma:messages"}%%TMPL:END%
+%TMPL:DEF{"ma:messages"}%%IF{"'%URLPARAM{"notify"}%'!=''" then="<p class=\"ma-notification ma-warning\"> $percntURLPARAM{\"notify\"}$percnt</p>"}%%TMPL:END%
 
 %TMPL:DEF{"ma:dochead"}%%{
 }%<div class="row">
@@ -147,7 +147,8 @@ JQUERYPLUGIN is not a hard requirement, but it must sort earlier.
 
 %TMPL:DEF{"main"}%%{
 }%<div class="foswikiPage">
-  <div class="ma-left">%TMPL:P{"ma:left"}%</div>
+  <div class="ma-left">
+   %TMPL:P{"ma:left"}%</div>
   <div class="ma-top">%TMPL:P{"ma:top"}%</div>
   <div class="ma-content">%TMPL:P{"ma:main"}%</div>
 </div>%TMPL:END%
