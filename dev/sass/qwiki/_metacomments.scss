@@ -13,14 +13,19 @@
   padding-left: $ma-common-spacing;
   padding-bottom: $ma-common-spacing;
 }
-.cmtComment {
+.cmtCommentContainer {
   margin-bottom: $ma-common-spacing;
-  padding: $ma-common-spacing;
+}
+.cmtComment {
+  padding: $ma-common-spacing $ma-common-spacing 0 $ma-common-spacing;
 
   h3 {
     margin-bottom: $ma-h3-margin-bottom;
     margin-top: 0;
   }
+}
+h2.cmtAddCommentTitle {
+  padding-left: $ma-common-spacing;
 }
 .cmtAuthor {
   font-weight: bold;
@@ -30,7 +35,12 @@
   margin-left: $ma-common-spacing;
 }
 .cmtControls {
+  padding-right: rem-calc(5);
   float: right;
+  a {
+    color: $ma-dark-grey;
+    margin: rem-calc(8 4)
+  }
 }
 
 // this will be re-styled with the advent of the tab-menue
