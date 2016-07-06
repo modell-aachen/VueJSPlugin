@@ -8,6 +8,9 @@ data/System/FlatSkinTopicMenuTemplate.txt 0644
 data/System/FlatSkinWebCreateNewTopicTemplate.txt 0644
 data/System/WebFlatBarDefault.txt 0644
 data/System/WebFlatUserBar.txt 0644
+data/System/VarFLATPANEL.txt 0644
+data/System/VarFLATTABPANE.txt 0644
+data/System/VarFLATTAB.txt 0644
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
 lib/Foswiki/Plugins/SafeWikiPlugin/Signatures/FlatSkin.pm 0644
 locale/FlatSkinPlugin/de.po 0644
