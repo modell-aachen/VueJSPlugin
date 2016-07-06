@@ -1,0 +1,66 @@
+.cmtBoxTitle {
+  background-color: $ma-light-grey;
+  border-top-left-radius: $ma-border-radius;
+  border-top-right-radius: $ma-border-radius;
+  line-height: 40px; // no rem-calc, because the avatar height is coded in metacomment.flat.tmpl
+  height: 40px;
+  padding-left: $ma-common-spacing;
+}
+.cmtBoxContent {
+  background-color: $ma-bg-light;
+  border-bottom-left-radius: $ma-border-radius;
+  border-bottom-right-radius: $ma-border-radius;
+  padding-left: $ma-common-spacing;
+  padding-bottom: $ma-common-spacing;
+}
+.cmtComment {
+  margin-bottom: $ma-common-spacing;
+  padding: $ma-common-spacing;
+
+  h3 {
+    margin-bottom: $ma-h3-margin-bottom;
+    margin-top: 0;
+  }
+}
+.cmtAuthor {
+  font-weight: bold;
+}
+.cmtSubComments {
+  border: none;
+  margin-left: $ma-common-spacing;
+}
+.cmtControls {
+  float: right;
+}
+
+// this will be re-styled with the advent of the tab-menue
+.modacCmtCounter {
+  &:empty {
+    display: none;
+  }
+  line-height: rem-calc(11);
+  font-size: rem-calc(11);
+  border-radius: rem-calc(11) / 2;
+  background-color: $body-background;
+  color: $body-font-color;
+  margin-left: .5rem;
+  padding-left: .3rem;
+  padding-right: .3rem;
+}
+
+#comments {
+  background-color: $body-background;
+}
+
+#modacComments .foswikiLinkLabel {
+  line-height: rem-calc(13);
+  & i {
+      font-size: rem-calc(18);
+      font-weight: bold;
+      margin-right: .5rem;
+  }
+
+  color: $ma-dark-grey;
+  font-size: rem-calc(13);
+}
+
