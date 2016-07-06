@@ -5,6 +5,7 @@ data/System/FlatSkinDocumentHeadTemplate.txt 0644
 data/System/FlatSkinFlexWebList.txt 0644
 data/System/FlatSkinPlugin.txt 0644
 data/System/FlatSkinTopicMenuTemplate.txt 0644
+data/System/FlatSkinWebCreateNewTopicTemplate.txt 0644
 data/System/WebFlatBarDefault.txt 0644
 data/System/WebFlatUserBar.txt 0644
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
@@ -70,6 +71,8 @@ templates/css.flat.tmpl 0644
 templates/edit.flat.tmpl 0644
 templates/foswiki.flat.tmpl 0644
 templates/metacomments.flat.tmpl 0644
+templates/more.flat.tmpl 0644
+templates/renamebase.flat.tmpl 0644
 templates/view.flat.tmpl 0644
 templates/viewbottombar.flat.tmpl 0644
 templates/viewprint.flat.tmpl 0644

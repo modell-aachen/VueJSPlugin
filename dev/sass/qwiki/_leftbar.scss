@@ -21,11 +21,9 @@
   &.stretch {
     algin-self: stretch;
   }
-
-  .right {
+  .ma-twisty-icon {
     float: right;
-    margin-right: rem-calc(5);
-    line-height: rem-calc(16);
+    margin: rem-calc(2 5 0 0);
   }
   .ma-flyout-icon {
     line-height: rem-calc(20);
@@ -58,7 +56,7 @@
   }
 }
 
-@mixin ma-leftbar-box($topbar, $content) {
+@mixin ma-leftbar-box($topbar, $content, $icon: $ma-dark-grey) {
   margin-bottom: rem-calc(12);
   .twistyPlugin:first-child {
     &:hover {
@@ -72,16 +70,19 @@
     }
     background: $topbar;
   }
-  .right {
-    float: right;
-    margin-right: rem-calc(5);
-    line-height: rem-calc(25);
-  }
   .twistyPlugin {
     background: $content;
   }
+  .ma-twisty-icon {
+    float: right;
+    margin: rem-calc(5 5 0 0);
+  }
   ul {
     padding: rem-calc(5 0);
+  }
+  i.fa {
+    color: $icon;
+    padding-right: rem-calc(5);
   }
 }
 
@@ -89,6 +90,9 @@
   ul{
     display: none;
     position: absolute;
+  }
+  .ma-flyout-icon {
+    float: right;
   }
 }
 
@@ -136,11 +140,11 @@
 }
 
 .ma-leftbar-user-twisty {
-  @include ma-leftbar-box($ma-darker-grey, $ma-dark-grey);
+  @include ma-leftbar-box($ma-darker-grey, $ma-dark-grey, $white);
 }
 
 .ma-leftbar-location-twisty {
-  @include ma-leftbar-box($ma-primary, $ma-primary-hover);
+  @include ma-leftbar-box($ma-primary, $ma-primary-hover, $white);
 }
 
 .ma-leftbar-twisty-link {
@@ -149,7 +153,9 @@
   &:hover {
     text-decoration-line: none;
   }
-
+  i.fa {
+    padding-right: rem-calc(5);
+  }
 
   .foswikiLinkLabel {
     font-size: rem-calc(12);
