@@ -5,6 +5,7 @@ data/System/FlatSkinDocumentHeadTemplate.txt 0644
 data/System/FlatSkinFlexWebList.txt 0644
 data/System/FlatSkinPlugin.txt 0644
 data/System/FlatSkinTopicMenuTemplate.txt 0644
+data/System/FlatSkinWebCreateNewTopicTemplate.txt 0644
 data/System/FlatSkinSolrSearchBaseTemplate.txt 0644
 data/System/FlatSkinSolrSearchViewTemplate.txt 0644
 data/System/WebFlatBarDefault.txt 0644
