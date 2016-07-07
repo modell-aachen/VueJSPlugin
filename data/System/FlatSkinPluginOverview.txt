@@ -6,6 +6,29 @@
 ---++ About this Topic
 This Topic shows the style and posibilities for the FlatSkin.
 
+---++ Tables
+---+++ Standard
+Just use the *ma-table* class on a table.
+
+<table class="ma-table" style="width:100%;"> <thead> <tr> <th scope="col">Art</th> <th scope="col">Von</th> <th scope="col">Bis</th> </tr> </thead> <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> </tbody> </table>
+
+---+++ Striped
+Just use the *ma-table* and *ma-striped* classes on the table.
+
+<table class="ma-table ma-striped" style="width:100%;"> <thead> <tr> <th scope="col">Art</th> <th scope="col">Von</th> <th scope="col">Bis</th> </tr> </thead> <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> </tbody> </table>
+
+---+++ Definition
+Just use the *ma-table* and *ma-definition* classes on the table.
+
+<table class="ma-table ma-definition"> <thead> </thead> <tbody> <tr> <td>Seitenname:</td> <td>Applikationsentwicklung</td> </tr> <tr> <td>Verantwortlicher:</td> <td>Daniel Thulfaut</td> </tr> <tr> <td>Geltungsbereich:</td> <td>Unternehmensweit</td> </tr> <tr> <td>Seitentyp:</td> <td>Prozessbeschreibung</td> </tr> </tbody> </table>
+
+---+++ Data
+Just use the *ma-table* and *ma-data-table* classes on the table.
+<table class="ma-table ma-data-table"> <thead> <tr> <th>Name</th> <th>Datum</th> <th>Aktion</th> </tr> </thead> <tbody> <tr> <td>Daniel Thulfaut</td> <td>14.09.2015</td> <td><button><i class="fa fa-pencil" aria-hidden="true"></i></button></td> </tr> <tr> <td>Jan Krüger</td> <td>14.09.2015</td> <td><button><i class="fa fa-pencil" aria-hidden="true"></i></button></td> </tr> <tr> <td>Svenja Geisen</td> <td>14.09.2015</td> <td><a><i class="fa fa-pencil" aria-hidden="true"></i></a></td> </tr> </tbody> </table>
+
+---+++ Context colors
+Just use the *ma-success*, *ma-warning* or *ma-failure* classes on table rows.
+<table class="ma-table" style="width:100%;"> <thead> <tr> <th scope="col">Art</th> <th scope="col">Von</th> <th scope="col">Bis</th> </tr> </thead> <tbody> <tr class="ma-success"> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr class="ma-warning"> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr class="ma-failure"> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> </tbody> </table>
 
 ---++ Twistys
 To get the default twisty use the default twisty icon (=%<nop>TMPL:P{"TwistyShowIcon"}%=) in the link parameter:
@@ -67,6 +90,6 @@ Aenean mattis mauris eget fermentum aliquam. Ut nisl tellus, interdum non laoree
  %TAB{"Tab 3"}%
  Etiam aliquet lacus sit amet dictum faucibus. Nam dictum scelerisque dictum. Donec ultricies ligula a tellus sagittis ornare. Sed id eros vel ipsum vestibulum congue vel id ligula. In mattis, metus in mollis vestibulum, lectus velit scelerisque quam, a pulvinar libero libero eget dui. Curabitur iaculis, felis a maximus fermentum, augue ante venenatis enim, vitae scelerisque ex risus a ipsum. Aliquam in ornare sapien. Cras nec egestas lectus. Vivamus at suscipit lacus. Nam neque nibh, condimentum eu vehicula consectetur, euismod nec justo. Sed elementum orci quis justo porta, id laoreet ligula molestie. Mauris vitae magna sodales, egestas nibh ac, vestibulum ligula. Aenean eu luctus turpis.
 
-Nulla vel felis a odio blandit dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis felis a lectus rutrum euismod. Fusce porta magna sed massa fringilla rhoncus. Pellentesque non lorem vel tortor ullamcorper finibus at a dui. Cras et neque semper purus malesuada faucibus. Pellentesque a ipsum maximus, mattis lectus eget, ornare quam. Suspendisse mi risus, lobortis ut lorem sit amet, tincidunt sodales justo. Pellentesque porttitor dui vitae arcu faucibus, sed fermentum diam fringilla. Suspendisse a luctus massa. Integer elementum turpis posuere augue egestas, vel fringilla nulla aliquam. Nam mattis nisl pellentesque augue interdum commodo. Sed volutpat, dolor id aliquam hendrerit, turpis arcu venenatis quam, quis auctor enim mauris vel elit. Fusce ullamcorper metus sem, quis sodales purus convallis id. Sed blandit viverra mi, eget lobortis massa lobortis vitae. 
+Nulla vel felis a odio blandit dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis felis a lectus rutrum euismod. Fusce porta magna sed massa fringilla rhoncus. Pellentesque non lorem vel tortor ullamcorper finibus at a dui. Cras et neque semper purus malesuada faucibus. Pellentesque a ipsum maximus, mattis lectus eget, ornare quam. Suspendisse mi risus, lobortis ut lorem sit amet, tincidunt sodales justo. Pellentesque porttitor dui vitae arcu faucibus, sed fermentum diam fringilla. Suspendisse a luctus massa. Integer elementum turpis posuere augue egestas, vel fringilla nulla aliquam. Nam mattis nisl pellentesque augue interdum commodo. Sed volutpat, dolor id aliquam hendrerit, turpis arcu venenatis quam, quis auctor enim mauris vel elit. Fusce ullamcorper metus sem, quis sodales purus convallis id. Sed blandit viverra mi, eget lobortis massa lobortis vitae.
  %ENDTAB%
 %ENDTABPANE%
