@@ -2,7 +2,6 @@
   &.jqTabPaneJustified {
     .jqTabGroup {
       display: flex;
-      justify-content: space-between;
       width: 100%;
     }
     li {
@@ -18,21 +17,25 @@
     }
   }
   .jqTab {
-    border-top: rem-calc(2) solid $ma-light-grey;
-    border-right: rem-calc(0) solid $ma-light-grey;
-    border-bottom: rem-calc(0) solid $ma-light-grey;
-    border-left: rem-calc(0) solid $ma-light-grey;
+    border-top: 2px solid $ma-light-grey;
+    border-right: 0px solid $ma-light-grey;
+    border-bottom: 0px solid $ma-light-grey;
+    border-left: 0px solid $ma-light-grey;
   }
   .jqTabGroup {
-    margin: rem-calc(-1.5);
+    margin: -2px;
     li {
       > a{
         padding: rem-calc(13 22);
-        border: rem-calc(0) solid $ma-light-grey !important;
-        border-radius: rem-calc($ma-border-radius $ma-border-radius 0 0);
-        background-color: $ma-white;
+        border: 2px solid transparent !important;
+        border-radius: $ma-border-radius $ma-border-radius 0 0;
+        background-color: transparent;
         color: $ma-dark-grey;
         &:hover {
+          border-top: 2px solid $ma-light-grey !important;
+          border-right: 2px solid $ma-light-grey !important;
+          border-bottom: 0px solid transparent !important;
+          border-left: 2px solid $ma-light-grey !important;
           padding: rem-calc(13 22);
           background-color: $ma-light-grey;
           color: $ma-dark-grey;
@@ -40,11 +43,11 @@
       }
       &.current > a{
         color: $ma-primary;
-        background-color: $ma-white;
-        border-top: rem-calc(2) solid $ma-light-grey !important;
-        border-right: rem-calc(2) solid $ma-light-grey !important;
-        border-bottom: rem-calc(0) solid $ma-light-grey !important;
-        border-left: rem-calc(2) solid $ma-light-grey !important;
+        background-color: transparent;
+        border-top: 2px solid $ma-light-grey !important;
+        border-right: 2px solid $ma-light-grey !important;
+        border-bottom: 2px solid $ma-white !important;
+        border-left: 2px solid $ma-light-grey !important;
       }
     }
   }
