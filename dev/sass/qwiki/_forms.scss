@@ -94,10 +94,13 @@ input[type]:disabled {
     margin-right: rem-calc(13);
     vertical-align: middle;
   }
-  &:checked+label::before{
+  &:checked,
+  &[checked="checked"]{
+    &+label::before{
     content: "\f00c";
     text-align: center;
     }
+  }
 }
 
 //Radios

@@ -1,6 +1,7 @@
 .solrSearchHit {
   h3 img {
   display: none;
+  font-family: ma-font('regular');
   }
   .solrContainerLink {
     color: $ma-dark-grey;
@@ -13,6 +14,10 @@
   }
 }
 
+.solrSearchHitsList {
+  margin-top: 5px !important;
+}
+
 //Search header style
 .solrHeader .patternBorder {
   padding: 15px;
@@ -20,7 +25,7 @@
   border-radius: $ma-border-radius;
   border: none;
 
-  .foswikiFormStep {
+  .foswikiFormSteps {
     padding: 10px;
     background-color: white;
     border-radius: $ma-border-radius;
@@ -28,6 +33,14 @@
 
   .foswikiLayoutTable {
     display: none;
+  }
+}
+
+.facet-heading {
+  border-bottom: solid 1px black;
+  color: black;
+  p {
+    display: inline;
   }
 }
 
@@ -53,17 +66,19 @@
 //Pager styles
 .solrPager {
   border-bottom: none !important;
+  margin: 0 !important;
   a {
-    margin: 5px 10px;
+    @include ma-font('regular');
+    margin: 5px 5px !important;
     color: $ma-brown !important;
     &:hover {
-      background: transparent;
+      background: transparent !important;
     }
 
   }
   a.solrPagerPrev,a.solrPagerNext{
     &:hover {
-      background: $ma-medium-grey;
+      background: $ma-medium-grey !important;
     }
   }
   a.current {
@@ -90,20 +105,21 @@
       &:before {
         position: absolute;
         font-family: 'FontAwesome';
-        top: 25%;
-        left: 35%;
+        top: 50%;
+        left: 50%;
         color: $ma-dark-grey;
-        font-size: medium;
+        font-size: 3em;
+        transform: translate(-50%, -50%);
       }
   }
   .solrPagerPrev {
     &:before {
-      content: "\f060";
+      content: "\f104";
     }
   }
   .solrPagerNext {
     &:before {
-      content: "\f061";
+      content: "\f105";
     }
   }
 }
@@ -120,4 +136,48 @@
     #solrCurrentSelection h3 {
       margin: 5px;
     }
+}
+
+.solr-sorting {
+  display: table;
+  float: right;
+}
+
+.right-bar-wrapper {
+  padding: 15px;
+  background-color: $ma-bg-beige;
+  border-radius: $ma-border-radius;
+}
+
+.facet-field {
+  margin: 5px 0;
+  white-space: nowrap;
+}
+
+//SerialPager styling
+
+a.jqSerialPagerPrev,
+a.jqSerialPagerNext {
+  background-image: none !important;
+  &::before {
+    font-family: "FontAwesome";
+    font-size: 2em;
+    color: $ma-brown;
+  }
+}
+
+a.jqSerialPagerPrev{
+  &::before {
+    content: "\f104";
+  }
+}
+
+a.jqSerialPagerNext{
+  &::before {
+    content: "\f105";
+  }
+}
+
+.solrSearchField {
+  width: 400px;
 }
