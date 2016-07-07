@@ -1,10 +1,9 @@
 .solrSearchHit {
   h3 img {
-  display: none;
-  font-family: ma-font('regular');
+    display: none;
+    font-family: ma-font('regular');
   }
   .solrContainerLink {
-    color: $ma-dark-grey;
     a {
       color: $ma-dark-grey;
     }
@@ -20,122 +19,128 @@
 
 //Search header style
 .solrHeader .patternBorder {
-  padding: 15px;
   background-color: $ma-bg-beige;
+  border: 0;
   border-radius: $ma-border-radius;
-  border: none;
+  padding: 15px;
 
   .foswikiFormSteps {
-    padding: 10px;
-    background-color: white;
+    background-color: $ma-white;
     border-radius: $ma-border-radius;
+    padding: 10px;
   }
 
   .foswikiLayoutTable {
     display: none;
   }
-}
-
-.facet-heading {
-  border-bottom: solid 1px black;
-  color: black;
-  p {
-    display: inline;
+  .search-field {
+    margin-bottom: 0;
   }
 }
 
-//Select style
-.foswikiSelect {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-    color: black;
-    border-radius: 5px;
-    background-color: $ma-medium-grey;
-    width: 100%;
-    border: none;
-    /* border: 1px solid #bbb; */
-    padding: .75em 1em .5em 1em;
-    /* box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2); */
-    /* background-color: white; */
-    background-image: url(../images/select-arrow.png);
-    background-position: right;
-    background-repeat: no-repeat;
-    padding-right: 35px;
+.facet-heading {
+  border-bottom: solid 1px $ma-black;
+  color: $ma-black;
+
+  p {
+    display: inline;
+  }
+
+  .ma-twisty-icon {
+    font-size: 2em;
+  }
 }
 
 //Pager styles
 .solrPager {
-  border-bottom: none !important;
+  border-bottom: 0 !important;
   margin: 0 !important;
-  a {
-    @include ma-font('regular');
-    margin: 5px 5px !important;
-    color: $ma-brown !important;
-    &:hover {
-      background: transparent !important;
+
+  .solrPagerPrev, .solrPagerNext {
+    background-color: $ma-medium-grey;
+    border: 0;
+    border-radius: 5px;
+    color: transparent;
+    display: inline-block;
+    font-weight: normal;
+    height: 40px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    vertical-align: middle;
+    width: 40px;
+
+    &::before {
+      color: $ma-dark-grey;
+      font-family: 'FontAwesome';
+      font-size: 3em;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
 
-  }
-  a.solrPagerPrev,a.solrPagerNext{
     &:hover {
       background: $ma-medium-grey !important;
     }
   }
-  a.current {
-    color: $ma-primary !important;
-    background-color: transparent !important;
-  }
-  .solrPagerPrev, .solrPagerNext {
-    display: inline-block;
-    vertical-align: middle;
-      width: 40px;
-      overflow: hidden;
-      height: 40px;
-      background-color: $ma-medium-grey;
-      background-repeat: no-repeat;
-      //background-image: url(../images/select-arrow.png);
-      border: 0px;
-      border-radius: 5px;
-      color: transparent !important;
-      background-position: center;
-      padding: 0;
-      position: relative;
-      font-weight: normal;
-      margin: 0;
-      &:before {
-        position: absolute;
-        font-family: 'FontAwesome';
-        top: 50%;
-        left: 50%;
-        color: $ma-dark-grey;
-        font-size: 3em;
-        transform: translate(-50%, -50%);
-      }
-  }
+
   .solrPagerPrev {
-    &:before {
-      content: "\f104";
+    &::before {
+      content: '\f104';
     }
   }
   .solrPagerNext {
-    &:before {
-      content: "\f105";
+    &::before {
+      content: '\f105';
     }
+  }
+
+  :link,
+  :visited {
+    @include ma-font('regular');
+    color: $ma-brown;
+    margin: 5px;
+
+    &:hover,
+    &:focus,
+    &:hover {
+      color: $ma-brown;
+      background: transparent !important;
+    }
+
+    &.solrPagerPrev,
+    &.solrPagerNext {
+      color: transparent;
+      background: $ma-medium-grey !important;
+    }
+
+  }
+
+  a.current {
+    background-color: transparent !important;
+    color: $ma-primary !important;
   }
 }
 
-#modacSolrRightBar {
-  border-radius: 5px;
-    background-color: white;
-    h2 {
-      border-bottom: 1px;
-      border-style: solid;
-      margin: 5px;
-    }
+.solrFooter .solrPager {
+  border-top: 0 !important;
+}
 
-    #solrCurrentSelection h3 {
-      margin: 5px;
-    }
+#modacSolrRightBar {
+  background-color: $ma-white;
+  border-radius: 5px;
+
+  h2 {
+    border-bottom: 1px;
+    border-style: solid;
+    margin: 5px;
+  }
+
+  #solrCurrentSelection h3 {
+    margin: 5px;
+  }
 }
 
 .solr-sorting {
@@ -144,9 +149,9 @@
 }
 
 .right-bar-wrapper {
-  padding: 15px;
   background-color: $ma-bg-beige;
   border-radius: $ma-border-radius;
+  padding: 15px;
 }
 
 .facet-field {
@@ -160,24 +165,36 @@ a.jqSerialPagerPrev,
 a.jqSerialPagerNext {
   background-image: none !important;
   &::before {
-    font-family: "FontAwesome";
-    font-size: 2em;
     color: $ma-brown;
+    font-family: 'FontAwesome';
+    font-size: 2em;
   }
 }
 
 a.jqSerialPagerPrev{
   &::before {
-    content: "\f104";
+    content: '\f104';
   }
 }
 
 a.jqSerialPagerNext{
   &::before {
-    content: "\f105";
+    content: '\f105';
   }
 }
 
 .solrSearchField {
+  min-width: 400px;
   width: 400px;
+}
+
+//This is a placeholder style and needs to be removed once we have
+//the real button styles.
+
+.button {
+  @include ma-font('semibold');
+  background-color: $ma-primary;
+  border-radius: $ma-border-radius;
+  color: $ma-white;
+  padding: 14px 32px;
 }

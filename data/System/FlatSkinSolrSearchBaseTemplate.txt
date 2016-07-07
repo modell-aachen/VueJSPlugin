@@ -3,13 +3,13 @@
 %TMPL:DEF{"solr::inputstep"}%<table>
 <tr>
 <td>
-<div class="input-group">
+<div class="input-group search-field">
   <span class="input-group-label"><i class="fa fa-search" aria-hidden="true"></i></span>
 		<input type="text" autocomplete="off" placeholder="%MAKETEXT{"keyword"}%..." class="input-group-field foswikiInputField jqFocus solrSearchField %IF{"defined MODAC_SOLR_AUTOCOMPLETE" then="modacSolrAutocomplete $percentMODAC_SOLR_AUTOCOMPLETE$percent" else="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete', extraParams:{field:'catchall_autocomplete', filter:'%MODAC_SOLR_AC_FILTER{default=""}%'}}"}%" value="%URLPARAM{"search"}%" />
 </div>
 </td>
 <td>
-<button class="button">%MAKETEXT{"search"}%<button>
+<button class="button">%MAKETEXT{"Search"}%<button>
 </td>
 <td class="solr-sorting">
 %TMPL:P{"solr::sortby"}%
