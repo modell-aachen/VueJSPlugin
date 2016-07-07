@@ -93,3 +93,9 @@ Aenean mattis mauris eget fermentum aliquam. Ut nisl tellus, interdum non laoree
 Nulla vel felis a odio blandit dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis felis a lectus rutrum euismod. Fusce porta magna sed massa fringilla rhoncus. Pellentesque non lorem vel tortor ullamcorper finibus at a dui. Cras et neque semper purus malesuada faucibus. Pellentesque a ipsum maximus, mattis lectus eget, ornare quam. Suspendisse mi risus, lobortis ut lorem sit amet, tincidunt sodales justo. Pellentesque porttitor dui vitae arcu faucibus, sed fermentum diam fringilla. Suspendisse a luctus massa. Integer elementum turpis posuere augue egestas, vel fringilla nulla aliquam. Nam mattis nisl pellentesque augue interdum commodo. Sed volutpat, dolor id aliquam hendrerit, turpis arcu venenatis quam, quis auctor enim mauris vel elit. Fusce ullamcorper metus sem, quis sodales purus convallis id. Sed blandit viverra mi, eget lobortis massa lobortis vitae.
  %ENDTAB%
 %ENDTABPANE%
+
+---+++ Pager
+<verbatim class="tml">
+%PAGINATOR{topic="%WEB%.%TOPIC%" name="%TOPIC%View" perpage="20" total="200"}%
+</verbatim>
+%PAGINATOR{topic="%WEB%.%TOPIC%" name="%TOPIC%View" expand="searchWorkflowManagement" perpage="20" total="200"}%
