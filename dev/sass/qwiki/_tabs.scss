@@ -1,4 +1,22 @@
 .jqTabPane {
+  &.jqTabPaneJustified {
+    .jqTabGroup {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    li {
+      width: 100%;
+      margin: rem-calc(0 8 0 0);
+      text-align: center;
+      &:last-child {
+        margin: rem-calc(0 0 0 0);
+      }
+      a {
+        width: 100%;
+      }
+    }
+  }
   .jqTab {
     border-top: rem-calc(2) solid $ma-light-grey;
     border-right: rem-calc(0) solid $ma-light-grey;
@@ -6,26 +24,29 @@
     border-left: rem-calc(0) solid $ma-light-grey;
   }
   .jqTabGroup {
-    margin: rem-calc(-1);
-    li > a{
-      padding: rem-calc(13 22);
-      border: rem-calc(0) solid $ma-light-grey !important;
-      border-radius: rem-calc(3 3 0 0);
-      background-color: $ma-white;
-      color: $ma-dark-grey;
-      &:hover {
+    margin: rem-calc(-1.5);
+    li {
+      > a{
         padding: rem-calc(13 22);
-        background-color: $ma-light-grey;
+        border: rem-calc(0) solid $ma-light-grey !important;
+        border-radius: rem-calc($ma-border-radius $ma-border-radius 0 0);
+        background-color: $ma-white;
         color: $ma-dark-grey;
+        &:hover {
+          padding: rem-calc(13 22);
+          background-color: $ma-light-grey;
+          color: $ma-dark-grey;
+        }
+      }
+      &.current > a{
+        color: $ma-primary;
+        background-color: $ma-white;
+        border-top: rem-calc(2) solid $ma-light-grey !important;
+        border-right: rem-calc(2) solid $ma-light-grey !important;
+        border-bottom: rem-calc(0) solid $ma-light-grey !important;
+        border-left: rem-calc(2) solid $ma-light-grey !important;
       }
     }
-  }
-  .jqTabGroup li.current > a{
-    color: $ma-primary;
-    border-top: rem-calc(2) solid $ma-light-grey !important;
-    border-right: rem-calc(2) solid $ma-light-grey !important;
-    border-bottom: rem-calc(0) solid $ma-light-grey !important;
-    border-left: rem-calc(2) solid $ma-light-grey !important;
   }
 }
 
