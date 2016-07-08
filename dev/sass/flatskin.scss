@@ -28,6 +28,7 @@ $OpenSansPath: '../fonts/opensans';
 @include foundation-dropdown-menu;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
+@include foundation-badge;
 
 //
 // Modell Aachen Styles & Mixins
@@ -51,3 +52,9 @@ $OpenSansPath: '../fonts/opensans';
 @import 'qwiki/metacomments';
 @import 'qwiki/breadcrumbs';
 @import 'qwiki/select2skin';
+
+//
+// FlatSkin Macros
+//
+@import 'macros/flatpanel';
+@import 'macros/flattabpane';
