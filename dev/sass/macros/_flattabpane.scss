@@ -1,0 +1,92 @@
+.ma-tabpane {
+  $duration: .2s;
+
+  background-color: $ma-sand;
+  border-radius: $ma-border-radius;
+  clear: right;
+  display: block;
+  margin: rem-calc(12 0);
+  padding: rem-calc(6 12);
+
+  &.collapsible > .header {
+    cursor: pointer;
+  }
+
+  > .header {
+    display: block;
+
+    > .chevron {
+      float: right;
+      margin-top: rem-calc(8);
+    }
+  }
+
+  > .header ul {
+    display: table-row;
+    list-style: none;
+
+    li {
+      display: table-cell;
+      padding: rem-calc(6) rem-calc(6) rem-calc(6) 0;
+      vertical-align: middle;
+    }
+
+    li > a {
+      background-color: $ma-sand;
+      border-radius: $ma-border-radius;
+      padding: rem-calc(6);
+      transition: background-color $duration ease-out;
+      vertical-align: middle;
+
+      &:hover {
+        background-color: $ma-white;
+        text-decoration: none;
+      }
+
+      &:hover .badge {
+        background-color: $ma-sand;
+      }
+
+      .badge {
+        @include ma-font('semibold');
+        background-color: $ma-white;
+        border-radius: 40%;
+        color: $ma-body-text;
+        padding: rem-calc(0 4);
+        transition: background-color $duration ease-out;
+      }
+
+      .title {
+        @include ma-font('semibold');
+        color: $ma-dark-grey;
+        margin-right: rem-calc(6);
+      }
+    }
+
+    li.active > a {
+      background-color: $ma-white;
+
+      .badge {
+        background-color: $ma-sand;
+      }
+    }
+  }
+
+  > .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $duration ease-in;
+  }
+
+  > .content > div {
+    background-color: $ma-white;
+    border-radius: $ma-border-radius;
+    display: none;
+    margin: rem-calc(8 0 6);
+    padding: rem-calc(12 6);
+
+    &.active {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+%META:TOPICPARENT{name="FlatSkinPlugin"}%
+---+ FlatSkin Overview
+
+%TOC%
+
+---++ About this Topic
+This Topic shows the style and posibilities for the FlatSkin.
+
+---++ Tables
+---+++ Standard
+Just use the *ma-table* class on a table.
+
+<table class="ma-table" style="width:100%;"> <thead> <tr> <th scope="col">Art</th> <th scope="col">Von</th> <th scope="col">Bis</th> </tr> </thead> <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> </tbody> </table>
+
+---+++ Striped
+Just use the *ma-table* and *ma-striped* classes on the table.
+
+<table class="ma-table ma-striped" style="width:100%;"> <thead> <tr> <th scope="col">Art</th> <th scope="col">Von</th> <th scope="col">Bis</th> </tr> </thead> <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> </tbody> </table>
+
+---+++ Definition
+Just use the *ma-table* and *ma-definition* classes on the table.
+
+<table class="ma-table ma-definition"> <thead> </thead> <tbody> <tr> <td>Seitenname:</td> <td>Applikationsentwicklung</td> </tr> <tr> <td>Verantwortlicher:</td> <td>Daniel Thulfaut</td> </tr> <tr> <td>Geltungsbereich:</td> <td>Unternehmensweit</td> </tr> <tr> <td>Seitentyp:</td> <td>Prozessbeschreibung</td> </tr> </tbody> </table>
+
+---+++ Data
+Just use the *ma-table* and *ma-data-table* classes on the table.
+<table class="ma-table ma-data-table"> <thead> <tr> <th>Name</th> <th>Datum</th> <th>Aktion</th> </tr> </thead> <tbody> <tr> <td>Daniel Thulfaut</td> <td>14.09.2015</td> <td><button><i class="fa fa-pencil" aria-hidden="true"></i></button></td> </tr> <tr> <td>Jan Krüger</td> <td>14.09.2015</td> <td><button><i class="fa fa-pencil" aria-hidden="true"></i></button></td> </tr> <tr> <td>Svenja Geisen</td> <td>14.09.2015</td> <td><a><i class="fa fa-pencil" aria-hidden="true"></i></a></td> </tr> </tbody> </table>
+
+---+++ Context colors
+Just use the *ma-success*, *ma-warning* or *ma-failure* classes on table rows.
+<table class="ma-table" style="width:100%;"> <thead> <tr> <th scope="col">Art</th> <th scope="col">Von</th> <th scope="col">Bis</th> </tr> </thead> <tbody> <tr class="ma-success"> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr class="ma-warning"> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> <tr class="ma-failure"> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr> </tbody> </table>
+
+---++ Twistys
+To get the default twisty use the default twisty icon (=%<nop>TMPL:P{"TwistyShowIcon"}%=) in the link parameter:
+
+To style another icon as twisty icon, use the CSS-Class ="ma-twisty-icon"=.
+<verbatim class="tml">
+%TWISTY{
+    showlink="%TMPL:P{"TwistyShowIcon"}% %MAKETEXT{"Show form..."}%"
+    hidelink="%TMPL:P{"TwistyHideIcon"}% %MAKETEXT{"Hide form..."}%"
+}%
+%ENDTWISTY%
+</verbatim>
+%TWISTY{
+    showlink="%TMPL:P{"TwistyShowIcon"}% %MAKETEXT{"Show form..."}%"
+    hidelink="%TMPL:P{"TwistyHideIcon"}% %MAKETEXT{"Hide form..."}%"
+    remember="off"
+    start=hide"
+}%
+%RENDERFOREDIT{
+  form="%USERSWEB%.UserForm"
+  topic="Sandbox.TestTopic1"
+  include="FirstName|LastName"
+  FirstName_value="Horst"
+  LastName_value="Buchholz"
+  map="VoIP=Skype"
+}%
+%ENDTWISTY%
+---++ Tabs
+
+---+++ Normal Tabs
+To get normal Tabs you can use the Tabforeach Macro:
+
+<verbatim class="tml">
+%TABFOREACH{
+  "New, Managed, Delete"
+  titleformat="$title"
+  urlformat="%SCRIPTURL{rest}%/RenderPlugin/template?topic=%WEB%.WebHomeViewTemplate;name=WebHomeView;expand=%22getRiskData%22%20status%3D%22$value%22%20pdf%3D%22off%22;"
+}%
+</verbatim>
+%TABFOREACH{
+  "New, Managed, Delete"
+  titleformat="$title"
+  urlformat="%SCRIPTURL{rest}%/RenderPlugin/template?topic=Risks.WebHomeViewTemplate;name=WebHomeView;expand=%22getRiskData%22%20status%3D%22$value%22%20pdf%3D%22off%22;"
+}%
+
+---+++ Justified Tabs
+Set class to =justified=.
+<verbatim class="tml">
+%TABPANE{class="justified"}%
+ %TAB{"Tab 1"}%
+</verbatim>
+%TABPANE{class="justified"}%
+ %TAB{"Tab 1"}%
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo tellus ligula, nec euismod massa aliquet nec. Etiam interdum nulla facilisis turpis cursus fermentum. Nam ultricies purus vel mi blandit, nec luctus tortor pretium. In consectetur feugiat dolor, sit amet commodo erat iaculis a. Aliquam ac orci ut eros lacinia tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas vitae luctus nulla. In in erat accumsan felis dictum ultrices at id massa. Donec sit amet fringilla est. Sed quis tincidunt mauris.
+ %ENDTAB%
+ %TAB{"Tab 2"}%
+Aenean mattis mauris eget fermentum aliquam. Ut nisl tellus, interdum non laoreet sit amet, aliquet sit amet leo. Nunc pretium mi quis est ultricies elementum. Quisque ornare, neque quis tempor fermentum, justo mauris dapibus ante, id mattis arcu nibh et eros. Praesent aliquet commodo velit vel elementum. In molestie nibh enim. In aliquet diam ligula, et placerat lorem finibus vel. Proin sodales justo et massa cursus, in suscipit nunc feugiat. Donec eget euismod augue. Vivamus sed iaculis augue. Aenean mollis ultrices ante, quis laoreet nulla luctus et.
+ %ENDTAB%
+ %TAB{"Tab 3"}%
+ Etiam aliquet lacus sit amet dictum faucibus. Nam dictum scelerisque dictum. Donec ultricies ligula a tellus sagittis ornare. Sed id eros vel ipsum vestibulum congue vel id ligula. In mattis, metus in mollis vestibulum, lectus velit scelerisque quam, a pulvinar libero libero eget dui. Curabitur iaculis, felis a maximus fermentum, augue ante venenatis enim, vitae scelerisque ex risus a ipsum. Aliquam in ornare sapien. Cras nec egestas lectus. Vivamus at suscipit lacus. Nam neque nibh, condimentum eu vehicula consectetur, euismod nec justo. Sed elementum orci quis justo porta, id laoreet ligula molestie. Mauris vitae magna sodales, egestas nibh ac, vestibulum ligula. Aenean eu luctus turpis.
+
+Nulla vel felis a odio blandit dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis felis a lectus rutrum euismod. Fusce porta magna sed massa fringilla rhoncus. Pellentesque non lorem vel tortor ullamcorper finibus at a dui. Cras et neque semper purus malesuada faucibus. Pellentesque a ipsum maximus, mattis lectus eget, ornare quam. Suspendisse mi risus, lobortis ut lorem sit amet, tincidunt sodales justo. Pellentesque porttitor dui vitae arcu faucibus, sed fermentum diam fringilla. Suspendisse a luctus massa. Integer elementum turpis posuere augue egestas, vel fringilla nulla aliquam. Nam mattis nisl pellentesque augue interdum commodo. Sed volutpat, dolor id aliquam hendrerit, turpis arcu venenatis quam, quis auctor enim mauris vel elit. Fusce ullamcorper metus sem, quis sodales purus convallis id. Sed blandit viverra mi, eget lobortis massa lobortis vitae.
+ %ENDTAB%
+%ENDTABPANE%
+
+---++ Pager
+<verbatim class="tml">
+%PAGINATOR{topic="%WEB%.%TOPIC%" name="%TOPIC%View" perpage="20" total="200"}%
+</verbatim>
+%PAGINATOR{topic="%WEB%.%TOPIC%" name="%TOPIC%View" expand="searchWorkflowManagement" perpage="20" total="200"}%
