@@ -71,7 +71,7 @@ To get normal Tabs you can use the Tabforeach Macro:
 %TABFOREACH{
   "New, Managed, Delete"
   titleformat="$title"
-  urlformat="%SCRIPTURL{rest}%/RenderPlugin/template?topic=%WEB%.WebHomeViewTemplate;name=WebHomeView;expand=%22getRiskData%22%20status%3D%22$value%22%20pdf%3D%22off%22;"
+  urlformat="%SCRIPTURL{rest}%/RenderPlugin/template?topic=Risks.WebHomeViewTemplate;name=WebHomeView;expand=%22getRiskData%22%20status%3D%22$value%22%20pdf%3D%22off%22;"
 }%
 
 ---+++ Justified Tabs
@@ -94,7 +94,7 @@ Nulla vel felis a odio blandit dapibus. Lorem ipsum dolor sit amet, consectetur 
  %ENDTAB%
 %ENDTABPANE%
 
----+++ Pager
+---++ Pager
 <verbatim class="tml">
 %PAGINATOR{topic="%WEB%.%TOPIC%" name="%TOPIC%View" perpage="20" total="200"}%
 </verbatim>

@@ -1,4 +1,7 @@
 .jqTabPane {
+  .jqTabContents {
+    padding: rem-calc(15 0);
+  }
   &.jqTabPaneJustified {
     .jqTabGroup {
       display: flex;
