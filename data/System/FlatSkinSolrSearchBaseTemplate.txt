@@ -177,7 +177,7 @@
   <tr>
     <td><label for="solrSorting" class="text-right middle">%MAKETEXT{"Sort by"}%:</label></td>
     <td>
-      <select class='foswikiSelect' id='solrSorting' data-default-sort="%TMPL:P{"solr::defaultsort"}%">
+      <select id='solrSorting' data-default-sort="%TMPL:P{"solr::defaultsort"}%">
         <option class='foswikiOption' value='score desc'>%MAKETEXT{"Relevance"}%</option>
         <option class='foswikiOption' value='date desc'>%MAKETEXT{"Last changed"}%</option>
         <option class='foswikiOption' value='createdate desc'>%MAKETEXT{"Create date"}%</option>

@@ -10,8 +10,19 @@ form{
   }
 }
 //Overwrite the foswiki select with the foundation form-select mixin
+@mixin ma-select {
+  @include form-select;
+  font-size: rem-calc(13);
+  height: rem-calc(42);
+  color: $ma-black;
+}
+
+select {
+  @include ma-select;
+}
+
 .foswikiSelect {
-  @include form-select
+  @include ma-select
 }
 .help-text{
   @include ma-font('semibold');
