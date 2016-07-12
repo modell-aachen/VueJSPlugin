@@ -36,6 +36,9 @@ input.ma-failure{
   border: 1px solid $ma-failure;
 }
 
+.input-group {
+  height: 42px;
+}
 
 .input-group>:first-child{
     border-top-left-radius: $ma-border-radius;
