@@ -9,7 +9,7 @@
 </div>
 </td>
 <td>
-<button class="button">%MAKETEXT{"Search"}%<button>
+<button class="button">%MAKETEXT{"Search"}%</button>
 </td>
 <td class="solr-sorting">
 %TMPL:P{"solr::sortby"}%
