@@ -199,7 +199,7 @@
      {{/if}}
     </td>
     <td align="right">
-      <table class="foswikiNullTable solrRows">
+      <table class="foswikiNullTable">
         <tr>
           <td><label for="results-per-page-select" class="text-right middle">%MAKETEXT{"Results per page"}%:</label></td>
           <td>
