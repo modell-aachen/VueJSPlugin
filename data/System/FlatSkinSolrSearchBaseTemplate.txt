@@ -1,0 +1,221 @@
+%TMPL:INCLUDE{"SolrSearchBase"}%
+
+%TMPL:DEF{"solr::inputstep"}%<table>
+<tr>
+<td>
+<div class="input-group search-field">
+  <span class="input-group-label"><i class="fa fa-search" aria-hidden="true"></i></span>
+		<input type="text" autocomplete="off" placeholder="%MAKETEXT{"keyword"}%..." class="input-group-field foswikiInputField jqFocus solrSearchField %IF{"defined MODAC_SOLR_AUTOCOMPLETE" then="modacSolrAutocomplete $percentMODAC_SOLR_AUTOCOMPLETE$percent" else="jqUIAutocomplete {source:'%SCRIPTURL%/rest/SolrPlugin/autocomplete', extraParams:{field:'catchall_autocomplete', filter:'%MODAC_SOLR_AC_FILTER{default=""}%'}}"}%" value="%URLPARAM{"search"}%" />
+</div>
+</td>
+<td>
+<button class="button">%MAKETEXT{"Search"}%<button>
+</td>
+<td class="solr-sorting">
+%TMPL:P{"solr::sortby"}%
+</td>
+</tr>
+</table>
+%TMPL:P{"solr::input::checkboxes"}%%TMPL:END%
+
+%TMPL:DEF{"solr::input::checkboxes"}%<table>
+<tr>
+%IF{"'%TMPL:P{"solr::defaultweb"}%'='all'"
+  then="$percntTMPL:P{\"solr::input::checkboxes::incurrentweb\"}$percnt"
+  else="$percntTMPL:P{\"solr::input::checkboxes::inallwebs\"}$percnt"
+}%<!-- -->
+%TMPL:P{"solr::input::checkboxes::inweb"}%<!-- -->
+%TMPL:P{"solr::input::checkboxes::inmycontribs"}%<!-- -->
+</tr>
+</table>%TMPL:END%
+
+
+%TMPL:DEF{"solr::input::checkboxes::incurrentweb"}%<!-- -->
+<td>
+	%TMPL:PREV%
+</td>
+<!-- -->%TMPL:END%
+
+
+%TMPL:DEF{"solr::input::checkboxes::inallwebs"}%<!-- -->
+<td>
+	%TMPL:PREV%
+<td>
+<!-- -->%TMPL:END%
+
+
+%TMPL:DEF{"solr::input::checkboxes::inmycontribs"}%<!-- -->
+<td>
+	%TMPL:PREV%
+</td>
+<!-- -->%TMPL:END%
+
+%TMPL:DEF{"solr::sortby"}%<!-- -->
+<table>
+<tr>
+<td>
+<label for="solrSorting" class="text-right middle">%MAKETEXT{"Sort by"}%</label>
+</td>
+<td>
+<select id='solrSorting' data-default-sort="%TMPL:P{"solr::defaultsort"}%">
+    <option class='foswikiOption' value='score desc'>%MAKETEXT{"Relevance"}%</option>
+        <option class='foswikiOption' value='date desc'>%MAKETEXT{"Last changed"}%</option>
+        <option class='foswikiOption' value='createdate desc'>%MAKETEXT{"Create date"}%</option>
+        <option class='foswikiOption' value='title_sort asc'>%MAKETEXT{"Name"}%</option>
+ </select>
+ </td>
+</tr>
+</table>
+<!-- -->%TMPL:END%
+
+%TMPL:DEF{"solr::templates::facetfield"}%<script id="solrFacetFieldTemplate" type="text/x-jsrender">
+  <div class="jqSerialPager" data-prev-text="" data-next-text="" data-pagesize="10">
+    <ul>
+      {{for widget.facetCounts ~widget=widget}}
+        <li class="facet-field">
+              <input type='{{:~widget.inputType}}' name='{{:~widget.field}}' title='{{:~getFacetKey(facet)}}' value='{{:~getFacetValue(facet)}}' id='{{:~widget.field}}_{{:#index}}' autocomplete='off' class='solrFacetValue' {{:~checked(facet)}} />
+<label for='{{:~widget.field}}_{{:#index}}' style='display:block'>{{:~getFacetKey(facet)}} ({{:count}})</label>
+        </li>
+      {{/for}}
+    </ul>
+  </div>
+</script>%TMPL:END%
+
+%TMPL:DEF{"solr::templates::currentselection"}%<script id="solrCurrentSelectionTemplate" type="text/x-jsrender">
+  <li class="facet-field">
+      <input type='checkbox' class='foswikiCheckbox' id='{{:id}}' name='filter' checked='checked'/>
+      <label for='{{:id}}' style='display:block'>{{:facet}} <nobr>({{:field}})</nobr></label>
+  </li>
+</script>%TMPL:END%
+
+%TMPL:DEF{"solr::templates::webfacetfield"}%<script id="solrWebFacetFieldTemplate" type="text/x-jquery-tmpl">
+  <div class="jqSerialPager" data-prev-text="" data-next-text="" data-pagesize="10">
+    <ul>
+      {{for widget.facetCounts ~widget=widget}}
+        <li class="facet-field">
+              <input type='{{:~widget.inputType}}' name='{{:~widget.field}}' title='{{: ~getWebMapping(~getFacetKey(facet))}}' value='{{: ~getFacetValue(facet)}}' id='{{:~widget.field}}_{{:#index}}' autocomplete='off' class='solrFacetValue' {{: ~checked(facet)}} />
+            <label for='{{:~widget.field}}_{{:#index}}' style='display:block'>{{: ~getWebMapping(~getFacetKey(facet))}} ({{:count}})</label>
+        </li>
+      {{/for}}
+    </ul>
+  </div>
+</script>%TMPL:END%
+
+%TMPL:DEF{"solr::facet"}%<div data-field='%id%' %IF{
+  "not '%class%'=~'^([%]class%)?$'"
+  then="class='%class%'"
+  else="class='solrFacetField'"
+}%%IF{
+  "not '%hidesingle%'=~'^([%]hidesingle%)?$'"
+  then=" data-hide-single='%hidesingle%'"
+}%%IF{
+  "not '%hidenullvalues%'=~'^([%]hidenullvalues%)?$'"
+  then=" data-hide-null-values='%hidenullvalues%'"
+}%%IF{
+  "not '%multivalue%'=~'^([%]multivalue%)?$'"
+  then=" data-multi-value='%multivalue%'"
+}%%IF{
+  "not '%union%'=~'^[%]union%$'"
+  then=" data-union='%union%'"
+}%%IF{
+  "not '%exclusion%'=~'^([%]exclusion%)?$'"
+  then=" data-exclusion='%exclusion%'"
+}%%IF{
+  "not '%sort%'=~'^([%]sort%)?$'"
+  then=" data-facet-sort='%sort%'"
+}%%IF{
+  "not '%exclude%'=~'^([%]exclude%)?$'"
+  then=" data-exclude='%exclude%'"
+}%%IF{
+  "not '%mincount%'=~'^([%]mincount%)?$'"
+  then=" data-facet-mincount='%mincount%'"
+}%%IF{
+  "not '%limit%'=~'^([%]limit%)?$'"
+  then=" data-facet-limit='%limit%'"
+}%%IF{
+  "not '%include%'=~'^([%]include%)?$'"
+  then=" data-include='%include%'"
+}%%IF{
+  "not '%reverse%'=~'^([%]reverse%)?$'"
+  then="data-facet-sort-reverse='%reverse%'"
+}%>
+%TWISTY{
+    showlink="<div class='facet-heading'>%TMPL:P{"TwistyShowIcon"}% <p>%title%</p></div>"
+    hidelink="<div class='facet-heading'>%TMPL:P{"TwistyHideIcon"}% <p>%title%</p></div>"
+    remember="off"
+    start="show"
+}%
+<div class='solrFacetFieldContainer'></div>
+%ENDTWISTY%
+</div>%TMPL:END%
+
+%TMPL:DEF{"solr::facetquery"}%<div class='solrFacetField' data-field='%id%' data-facet-type='facet_queries' %IF{
+  "not '%multivalue%'=~'^([%]multivalue%)?$'"
+  then=" data-multi-value='%multivalue%'"
+}%%IF{
+  "not '%union%'=~'^[%]union%$'"
+  then=" data-union='%union%'"
+}%%IF{
+  "not '%exclusion%'=~'^([%]exclusion%)?$'"
+  then=" data-exclusion='%exclusion%'"
+}%>
+  <literal>
+  <div class="solrJsonData">%queries%</div>
+  </literal>
+  %TWISTY{
+    showlink="<div class='facet-heading'>%TMPL:P{"TwistyShowIcon"}% <p>%title%</p></div>"
+    hidelink="<div class='facet-heading'>%TMPL:P{"TwistyHideIcon"}% <p>%title%</p></div>"
+    remember="off"
+    start="show"
+}%
+<div class='solrFacetFieldContainer'></div>
+%ENDTWISTY%
+</div>%TMPL:END%
+
+%TMPL:DEF{"solr::sortby"}%<!-- -->
+<table class='foswikiNullTable'>
+  <tr>
+    <td><label for="solrSorting" class="text-right middle">%MAKETEXT{"Sort by"}%:</label></td>
+    <td>
+      <select id='solrSorting' data-default-sort="%TMPL:P{"solr::defaultsort"}%">
+        <option class='foswikiOption' value='score desc'>%MAKETEXT{"Relevance"}%</option>
+        <option class='foswikiOption' value='date desc'>%MAKETEXT{"Last changed"}%</option>
+        <option class='foswikiOption' value='createdate desc'>%MAKETEXT{"Create date"}%</option>
+        <option class='foswikiOption' value='title_sort asc'>%MAKETEXT{"Name"}%</option>
+      </select>
+    </td>
+  </tr>
+</table>
+<!-- -->%TMPL:END%
+
+%TMPL:DEF{"solr::templates::resultsperpage"}%<script id="solrResultsPerPageTemplate" type="text/x-jsrender">
+<table class="foswikiNullTable" width="100%">
+  <tr>
+    <td>
+     {{if count > 0}}
+       %MAKETEXT{"Results [_1] - [_2] of <b>[_3]</b>" args="{{:from}}, {{:to}}, {{:count}}"}%
+     {{else}}
+        <span class="foswikiAlert">%MAKETEXT{"nothing found"}%</span>
+     {{/if}}
+    </td>
+    <td align="right">
+      <table class="foswikiNullTable solrRows">
+        <tr>
+          <td><label for="results-per-page-select" class="text-right middle">%MAKETEXT{"Results per page"}%:</label></td>
+          <td>
+            <select class="foswikiSelect">
+              <option class="foswikiOption" value="5">5</option>
+              <option class="foswikiOption" value="10">10</option>
+              <option class="foswikiOption" value="20">20</option>
+              <option class="foswikiOption" value="30">30</option>
+              <option class="foswikiOption" value="40">40</option>
+              <option class="foswikiOption" value="50">50</option>
+              <option class="foswikiOption" value="100">100</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</script>%TMPL:END%
