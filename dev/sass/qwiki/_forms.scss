@@ -1,0 +1,186 @@
+form{
+  table{
+    width: 100%;
+    td:first-child{
+      width:1px;
+      white-space: nowrap;
+      text-align: right;
+      padding-right: 34px;
+    }
+  }
+}
+//Overwrite the foswiki select with the foundation form-select mixin
+@mixin ma-select {
+  @include form-select;
+  font-size: rem-calc(13);
+  height: rem-calc(42);
+  color: $ma-black;
+}
+
+select {
+  @include ma-select;
+}
+
+.foswikiSelect {
+  @include ma-select
+}
+.help-text{
+  @include ma-font('semibold');
+  line-height: 1.4;
+}
+
+input.ma-success{
+  border: 1px solid $ma-success;
+}
+input.ma-failure{
+  border: 1px solid $ma-failure;
+}
+
+.input-group {
+  height: 42px;
+}
+
+.input-group>:first-child{
+    border-top-left-radius: $ma-border-radius;
+    border-bottom-left-radius: $ma-border-radius;
+}
+
+.input-group>:last-child{
+    border-top-right-radius: $ma-border-radius;
+    border-bottom-right-radius: $ma-border-radius;
+}
+
+.input-group>.input-group-label~.input-group-field {
+  padding-left: 0;
+}
+
+@mixin placeholder-style{
+  @include ma-font('regular');
+  color: $ma-grey;
+  font-size: rem-calc(13);
+  font-style: italic;
+  line-height: 1.4;
+
+}
+
+::-webkit-input-placeholder {
+  @include placeholder-style;
+}
+::-moz-placeholder {
+  @include placeholder-style;
+}
+:-ms-input-placeholder {
+  @include placeholder-style;
+}
+:-moz-placeholder {
+  @include placeholder-style;
+}
+
+label input[type],select,textarea{
+  margin-top:5px;
+}
+
+input[type]:disabled {
+    @include ma-font('regular');
+    color: $ma-dark-grey;
+    font-size: rem-calc(13);
+    line-height: 1.4;
+}
+
+//Checkboxes
+[type="checkbox"]{
+  display: none;
+  &+label{
+    @include ma-font('regular');
+    font-size: rem-calc(13);
+    color: black;
+  }
+  &+label::before{
+    content: "";
+    font-family: "FontAwesome";
+    color: $ma-primary;
+    display: inline-block;
+    width: rem-calc(21);
+    height: rem-calc(21);
+    background-color: white;
+    border-radius: $ma-border-radius;
+    border: 1px solid $ma-grey;
+    margin-right: rem-calc(13);
+    vertical-align: middle;
+  }
+  &:checked,
+  &[checked="checked"]{
+    &+label::before{
+    content: "\f00c";
+    text-align: center;
+    }
+  }
+}
+
+//Radios
+//Idea: Use :before in the label as the radio background and :after as the checkmark
+[type="radio"]{
+  $radio-dimension: 21;
+  $radio-checkmark-padding: 3;
+  display: none;
+  &+label{
+    @include ma-font('regular');
+    font-size: rem-calc(13);
+    color: black;
+    position: relative;
+    padding-left: rem-calc($radio-dimension + 13);
+  }
+  &+label::before{
+    content: "";
+    font-family: "FontAwesome";
+    color: $ma-primary;
+    display: inline-block;
+    width: rem-calc($radio-dimension);
+    height: rem-calc($radio-dimension);
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid $ma-primary;
+    vertical-align: middle;
+    position:absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &+label::after{
+    content: "";
+    font-family: "FontAwesome";
+    color: $ma-primary;
+    display: inline-block;
+    width: rem-calc($radio-dimension);
+    height: rem-calc($radio-dimension);
+    border-radius: 50%;
+    background-color: $ma-primary;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &:checked+label::after{
+    $radio-checkmark-dimension: $radio-dimension - 2 * $radio-checkmark-padding;
+    display: inline-block;
+    width: rem-calc($radio-checkmark-dimension);
+    height: rem-calc($radio-checkmark-dimension);
+    top: rem-calc($radio-checkmark-padding);
+    left: rem-calc($radio-checkmark-padding);
+    }
+}
+
+textarea{
+  min-height: rem-calc(90);
+  color: $ma-body-text;
+  font-size: rem-calc(13);
+}
+.foswikiTextarea {
+  &,
+  &:active,
+  &:focus {
+    border: 1px solid transparent; // 1px transparent vs. none: do not jump when textarea gets failure/success state or becomes active
+  }
+  background-color: $ma-light-grey;
+  box-shadow: none;
+}

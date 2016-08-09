@@ -1,0 +1,19 @@
+.widgetBlockTitle {
+  @include ma-font('semibold');
+  background: 0;
+  border-bottom: 2px solid $ma-bg-beige;
+  color: $primary-color;
+  font-size: rem-calc(24);
+  line-height: rem-calc(19);
+  margin-bottom: rem-calc(7);
+  padding-bottom: rem-calc(10);
+}
+
+.widgetBlockContent {
+  @include ma-font();
+  border: 0;
+  font-size: rem-calc(13);
+  line-height: rem-calc(21);
+  margin: 0;
+  padding: 0;
+}

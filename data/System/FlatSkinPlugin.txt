@@ -1,0 +1,31 @@
+---+ !CKEditorPlugin
+
+%SHORTDESCRIPTION%
+
+%TOC%
+
+---++ Introduction
+
+This is a Skin to bring a new fresh and flat look in the Wiki. For more informations about skins read the [[%SYSTEMWEB%.Skins][Foswiki Skins]] topic. The [[%SYSTEMWEB%.FlatSkinPluginOverview][Overview-Topic]] shows some posibel components and their configurations.
+---++ Installation
+Dependencies (or "you need to update also"):
+   * ModacSkin (so far)
+   * JQueryPlugin
+---++ Configuration
+<verbatim>
+   * Set SKIN = custom,risk,contextmenu,kvpflat,kvp,metacomment,flat,modac
+</verbatim>
+<verbatim>
+   * Set APPLICATION = 1
+</verbatim>
+---++ Developer Info
+%BR%
+
+---++ Info
+
+|  Author: | Modell Aachen GmbH |
+|  Copyright: | 2015, Modell Aachen GmbH, All Rights Reserved |
+|  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
+|  Dependencies: | <table border="1" class="foswikiTable"><tr><th>Name</th><th>Version</th><th>Description</th></tr><tr><td align="left">Foswiki::Plugins::JQueryPlugin</td><td align="left">&gt;=4.33</td><td align="left">JQueryPlugin required.</td></tr></table> |
+|  Version: | 0.1 |
+|  Release: | 8 Jul 2016 |
