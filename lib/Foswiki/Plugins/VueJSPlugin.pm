@@ -59,7 +59,7 @@ LOAD
 
 sub _loadTemplate {
     my  ($text) = @_;
-    my @components = ( $text =~ /TMPL:DEF{"([^"]+)"}/g);
+    my @components = ( $text =~ /TMPL:DEF\{"([^"]+)"\}/g);
     my $snippet;
     foreach my $component (@components) {
         $snippet .= "<script id='$component' type='x-template'>\n%TMPL:P{\"$component\"}%\n</script>\n";
