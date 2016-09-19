@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   grunt.registerTask('compile', [
-    'clean',
+    'clean:dev',
     'concurrent:all'
   ]);
 };

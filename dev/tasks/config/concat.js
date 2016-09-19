@@ -24,6 +24,14 @@ module.exports = function(grunt) {
           'dev/js/**/*.js'
         ]
       }
+    },
+    modac: {
+      files: {
+        'pub/System/FlatSkin/css/flatskin.css': [
+           'pub/System/FlatSkin/css/modacskin.css',
+           'pub/System/FlatSkin/css/flatskin.css'
+         ]
+      }
     }
   });
 
