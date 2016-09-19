@@ -1,6 +1,7 @@
 !noci
 data/System/FlatPrintLayoutTemplate.txt 0644
 data/System/FlatSkin.txt 0644
+data/System/FlatSkinColorConfig.txt 0644
 data/System/FlatSkinDocumentHeadTemplate.txt 0644
 data/System/FlatSkinFlexWebList.txt 0644
 data/System/FlatSkinPlugin.txt 0644
@@ -17,6 +18,7 @@ data/System/VarFLATTAB.txt 0644
 lib/Foswiki/Plugins/FlatSkinPlugin.pm 0444
 lib/Foswiki/Plugins/SafeWikiPlugin/Signatures/FlatSkin.pm 0644
 locale/FlatSkinPlugin/de.po 0644
+pub/System/FlatSkin/css/colorconfig.css 0644
 pub/System/FlatSkin/css/flatskin.colors.css 0644
 pub/System/FlatSkin/css/flatskin.colors.min.css 0644
 pub/System/FlatSkin/css/flatskin.css 0644
@@ -68,6 +70,7 @@ pub/System/FlatSkin/fonts/opensans/SemiboldItalic/OpenSans-SemiboldItalic.woff 0
 pub/System/FlatSkin/fonts/opensans/SemiboldItalic/OpenSans-SemiboldItalic.woff2 0644
 pub/System/FlatSkin/images/ma-logo.png 0644
 pub/System/FlatSkin/images/qwiki-logo.png 0644
+pub/System/FlatSkin/js/colorconfig.js 0644
 pub/System/FlatSkin/js/flatskin.js 0644
 pub/System/FlatSkin/js/flatskin.min.js 0644
 pub/System/FlatSkin/js/foundation.js 0644

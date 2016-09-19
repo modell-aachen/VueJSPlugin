@@ -1,0 +1,15 @@
+%VUE%
+%ADDTOZONE{
+    "script"
+    id="COLORCONFIG::JS"
+    text="<script type=\"text/javascript\" src=\"%PUBURL%/System/FlatSkin/js/colorconfig.js\">"
+    requires="JQUERYPLUGIN::FOSWIKI::PREFERENCES,VUEJSPLUGIN"
+}%
+%ADDTOZONE{
+    "head"
+    id="COLORCONFIG::CSS"
+    text="<link rel=\"stylesheet\" href=\"%PUBURL%/System/FlatSkin/css/colorconfig.css\">"
+}%
+
+<div id="colorconfig">
+</div>
