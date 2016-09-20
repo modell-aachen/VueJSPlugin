@@ -1,4 +1,37 @@
+// Filter to turn "ma-css-color-name" into "Css Color Name"
+Vue.filter('colorName', function(cssName) {
+    return cssName.replace(/^ma/, "").replace(/-([a-z])/g, function (match, p1) {
+        return " "+p1.toUpperCase();
+    });
+});
+
+// Component displaying the color name and a color picker to change the value
+var SetColorComponent = Vue.extend({
+    props: ['color'],
+    template:
+        '<div class="row">'+
+            '<div class="column">{{ color.name | colorName }}</div>'+
+            '<div class="column">'+
+                '<input type="color" v-model="color.value">'+
+            '</div>'+
+        '</div>'
+});
+// Component which lists every editable color
+var ColorConfigComponent = Vue.extend({
+    props: ['colors'],
+    template:
+        '<div class="table">'+
+            '<vue-set-color v-for="(key, value) in colors" :color="{name: key, value: value}"></vue-set-color>'+
+        '</div>',
+    components: {
+        'vue-set-color': SetColorComponent
+    }
+});
+Vue.component('vue-color-config', ColorConfigComponent);
+
+
 jQuery(document).ready(function($) {
+    // Get the css file containing every color definition
     $.get('/pub/System/FlatSkin/css/flatskin.colors.css', function(cssString) {
         // Replace literal names with hex
         cssString = cssString.replace(/white/g, "#ffffff");
@@ -20,6 +53,7 @@ jQuery(document).ready(function($) {
             }
         }
 
+        // In _settings.scss defined colors
         var maColors = {
             "ma-primary": "#52cae4",
             "ma-primary-hover": "#75d5ea",
@@ -50,11 +84,13 @@ jQuery(document).ready(function($) {
             "ma-data-table-border": "#cdd0d3"
         };
 
-        for(var name in maColors) {
-            if(maColors.hasOwnProperty(name)) {
-                $("#colorconfig").append('<div class="row"><div class="column">'+name+'</div><div class="column"><input type="color" value="'+maColors[name]+'"></div></div>');
+        // Create a new Vue instance
+        var vm = new Vue({
+            el: '#colorconfig',
+            data: {
+                colors: maColors
             }
-        }
+        });
 
         console.log(cssString, colorMatches, colors, maColors);
         //cssString = cssString.replace(/white/gi, 'red');
