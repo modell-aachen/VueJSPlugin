@@ -6,13 +6,13 @@ $ma-primary: #52cae4;
 $ma-primary-hover: #75d5ea;
 $ma-success: #84bb2e;
 $ma-success-hover: #9dc958;
-$ma-success-transparent: rgba($ma-success, 0.3);
+$ma-success-light: #e1eecc; // equals rgba($ma-success, 0.3) on white background
 $ma-failure: #d83314;
 $ma-failure-hover: #e05c43;
-$ma-failure-transparent: rgba($ma-failure, 0.3);
+$ma-failure-light: #f5cec6; // equals rgba($ma-failure, 0.3) on white background
 $ma-warning: #e2af19;
 $ma-warning-hover: #eecf75;
-$ma-warning-transparent: rgba($ma-warning, 0.3);
+$ma-warning-light: #f6e7ba; // equals rgba($ma-warning, 0.3) on white background
 $ma-brown: #7f7b71;
 $ma-sand: #e5e0d5;
 $ma-body-text: #282c2e;
