@@ -4,7 +4,7 @@ module.exports = function(grunt) {
       limit: 4
     },
     all: [
-      ['sass', 'postcss:full', 'postcss:themify', 'cssmin'],
+      ['sass', 'postcss:themify', 'concat:modac', 'clean:modac', 'postcss:full', 'cssmin'],
       ['concat:fndt', 'babel:fndt', 'uglify:fndt'],
       ['concat:flat', 'uglify:flat'],
       'copy:opensans'

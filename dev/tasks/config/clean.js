@@ -5,6 +5,9 @@ module.exports = function(grunt) {
       'pub/System/FlatSkin/js/flatskin.*',
       'pub/System/FlatSkin/js/foundation.*',
       'pub/System/FlatSkin/fonts/opensans/**'
+    ],
+    modac: [
+      'pub/System/FlatSkin/css/modacskin*'
     ]
   });
 

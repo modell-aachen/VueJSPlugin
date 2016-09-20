@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       files: [{
         expand: true,
         cwd: 'dev/sass/',
-        src: ['flatskin.scss'],
+        src: ['flatskin.scss','modacskin.scss'],
         dest: 'pub/System/FlatSkin/css/',
         ext: '.css',
       }]
