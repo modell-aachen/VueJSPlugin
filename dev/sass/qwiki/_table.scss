@@ -29,15 +29,15 @@
     }
 
     &.ma-success {
-      background-color: $ma-success-transparent;
+      background-color: $ma-success-light;
     }
 
     &.ma-warning {
-      background-color: $ma-warning-transparent;
+      background-color: $ma-warning-light;
     }
 
     &.ma-failure {
-      background-color: $ma-failure-transparent;
+      background-color: $ma-failure-light;
     }
   }
 

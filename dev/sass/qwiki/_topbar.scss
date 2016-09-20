@@ -105,7 +105,8 @@
   max-height: rem-calc(30);
   margin-left: rem-calc(10);
 
-  > * {
+  > span,
+  > input {
     background-color: inherit;
     color: inherit;
   }
