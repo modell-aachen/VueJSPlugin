@@ -16,15 +16,11 @@ var SetColorComponent = Vue.extend({
         }
     },
     template:
-        '<div class="row">'+
-            '<div class="column">{{ color.name | colorName }}</div>'+
-            '<div class="column">'+
-                '<input type="color" v-model="color.customValue">'+
-            '</div>'+
-            '<div class="column">'+
-                '<input type="text" v-model="textValue" debounce="1000" @keyup="onKeyup() | debounce 500" :class="{\'ma-failure\': invalidHex}">'+
-            '</div>'+
-        '</div>',
+        '<tr>'+
+            '<td>{{ color.name | colorName }}</td>'+
+            '<td><input type="color" v-model="color.customValue"></td>'+
+            '<td><input type="text" v-model="textValue" debounce="1000" @keyup="onKeyup() | debounce 500" :class="{\'ma-failure\': invalidHex}"></td>'+
+        '</tr>',
     methods: {
         onKeyup: function () {
 
@@ -47,38 +43,11 @@ var SetColorComponent = Vue.extend({
                 } else {
                     this.invalidHex = true;
                 }
-                console.log(this.textValue);
             }
         },
         "color.customValue": function(newVal, oldVal) {
             this.textValue = newVal;
-            this.$root.replaceColor(this.color.maValue, newVal);
-        },
-        "asdf": function (newVal, oldVal) {
-            console.log(oldVal, newVal, this.justChanged, this.invalidHex);
-            if(newVal !== oldVal) {
-                // Replace 3 digit hex with 6 digit hex
-                newVal = newVal.replace(/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])([;\s])/g, "#$1$1$2$2$3$3$4");
-                // Make every hex lowercase
-                newVal = newVal.replace(/#[a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]/g, function (match) {
-                    return match.toLowerCase();
-                });
-                let hexRegex = /^#[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]$/;
-                if(hexRegex.test(newVal)) {
-                    this.color.customValue = newVal;
-                    this.$root.replaceColor(this.color.maValue, newVal);
-                    if(!this.justChanged) {
-                        console.log("+++++", newVal);
-                        this.invalidHex = false;
-                    }
-                    this.justChanged = false;
-                } else {
-                    this.invalidHex = true;
-                    this.justChanged = true;
-                    this.color.customValue = oldVal;
-                    console.log("-----", oldVal);
-                }
-            }
+            this.$root.updatePreview();
         }
     }
 });
@@ -86,9 +55,14 @@ var SetColorComponent = Vue.extend({
 var ColorConfigComponent = Vue.extend({
     props: ['colors'],
     template:
-        '<div class="table">'+
-            '<vue-set-color v-for="color in colors" :color="color"></vue-set-color>'+
-        '</div>',
+        '<div>'+
+            '<input type="submit" id="save" class="foswikiSubmit" @click.stop.prevent="this.$root.save()" value="Save"><input type="submit" id="cancel" class="foswikiButtonCancel" @click.stop.prevent="this.$root.cancel()" value="Cancel">'+
+        '</div>'+
+        '<table class="ma-table ma-striped">'+
+            '<thead><tr><th>Color Name</th><th>Pick Color</th><th>Color Value</th></tr></thead>'+
+            '<tbody><tr is="vue-set-color" v-for="color in colors" :color="color"></tr></tbody>'+
+        '</table>'+
+        '<style id="cssPreview"></style>',
     components: {
         'vue-set-color': SetColorComponent
     }
@@ -124,115 +98,115 @@ jQuery(document).ready(function($) {
             {
                 "name": "ma-primary",
                 "maValue": "#52cae4",
-                "customValue": "#52cae4",
+                "customValue": ""
             },{
                 "name": "ma-primary-hover",
                 "maValue": "#75d5ea",
-                "customValue": "#75d5ea",
+                "customValue": ""
             },{
                 "name": "ma-success",
                 "maValue": "#84bb2e",
-                "customValue": "#84bb2e",
+                "customValue": ""
             },{
                 "name": "ma-success-hover",
                 "maValue": "#9dc958",
-                "customValue": "#9dc958",
+                "customValue": ""
             },{
                 "name": "ma-success-light",
                 "maValue": "#e1eecc",
-                "customValue": "#e1eecc",
+                "customValue": ""
             },{
                 "name": "ma-failure",
                 "maValue": "#d83314",
-                "customValue": "#d83314",
+                "customValue": ""
             },{
                 "name": "ma-failure-hover",
                 "maValue": "#e05c43",
-                "customValue": "#e05c43",
+                "customValue": ""
             },{
                 "name": "ma-failure-light",
                 "maValue": "#f5cec6",
-                "customValue": "#f5cec6",
+                "customValue": ""
             },{
                 "name": "ma-warning",
                 "maValue": "#e2af19",
-                "customValue": "#e2af19",
+                "customValue": ""
             },{
                 "name": "ma-warning-hover",
                 "maValue": "#eecf75",
-                "customValue": "#eecf75",
+                "customValue": ""
             },{
                 "name": "ma-warning-light",
                 "maValue": "#f6e7ba",
-                "customValue": "#f6e7ba",
+                "customValue": ""
             },{
                 "name": "ma-brown",
                 "maValue": "#7f7b71",
-                "customValue": "#7f7b71",
+                "customValue": ""
             },{
                 "name": "ma-sand",
                 "maValue": "#e5e0d5",
-                "customValue": "#e5e0d5",
+                "customValue": ""
             },{
                 "name": "ma-body-text",
                 "maValue": "#282c2e",
-                "customValue": "#282c2e",
+                "customValue": ""
             },{
                 "name": "ma-darker-grey",
                 "maValue": "#3E4143",
-                "customValue": "#3E4143",
+                "customValue": ""
             },{
                 "name": "ma-dark-grey",
                 "maValue": "#84878a",
-                "customValue": "#84878a",
+                "customValue": ""
             },{
                 "name": "ma-light-grey",
                 "maValue": "#e2e2e2",
-                "customValue": "#e2e2e2",
+                "customValue": ""
             },{
                 "name": "ma-medium-grey",
                 "maValue": "#e5e8eb",
-                "customValue": "#e5e8eb",
+                "customValue": ""
             },{
                 "name": "ma-grey",
                 "maValue": "#a4aeb9",
-                "customValue": "#a4aeb9",
+                "customValue": ""
             },{
                 "name": "ma-bg-beige",
                 "maValue": "#f5f3ef",
-                "customValue": "#f5f3ef",
+                "customValue": ""
             },{
                 "name": "ma-bg-light",
                 "maValue": "#f7f7f7",
-                "customValue": "#f7f7f7",
+                "customValue": ""
             },{
                 "name": "ma-light-border",
                 "maValue": "#f1efea",
-                "customValue": "#f1efea",
+                "customValue": ""
             },{
                 "name": "ma-help-text",
                 "maValue": "#9a9a9a",
-                "customValue": "#9a9a9a",
+                "customValue": ""
             },{
                 "name": "ma-white",
                 "maValue": "#ffffff",
-                "customValue": "#ffffff",
+                "customValue": ""
             },{
                 "name": "ma-black",
                 "maValue": "#000000",
-                "customValue": "#000000",
+                "customValue": ""
             },{
                 "name": "ma-select-multi-text-color",
                 "maValue": "#8c7b71",
-                "customValue": "#8c7b71",
+                "customValue": ""
             },{
                 "name": "ma-data-table-border",
                 "maValue": "#cdd0d3",
-                "customValue": "#cdd0d3"
+                "customValue": ""
             }
         ];
 
-        $('body').append('<style id="cssPreview"></style>');
+//        $('body').append('<style id="cssPreview"></style>');
 
         // Create a new Vue instance
         var vm = new Vue({
@@ -256,10 +230,35 @@ jQuery(document).ready(function($) {
                 }
             },
             methods: {
-                replaceColor: function (maValue, customValue) {
+                updatePreview: function () {
                     $('#cssPreview').html(this.customCss);
+                },
+                save: function () {
+                    var blob = new Blob([this.customCss], {type: 'text/csv'});
+                    if(window.navigator.msSaveOrOpenBlob) {
+                        window.navigator.msSaveBlob(blob, "customColors.css");
+                    }
+                    else{
+                        var elem = window.document.createElement('a');
+                        elem.href = window.URL.createObjectURL(blob);
+                        elem.download = "customColors.css";
+                        document.body.appendChild(elem);
+                        elem.click();
+                        document.body.removeChild(elem);
+                    }
+                },
+                cancel: function () {
+                    for(var i in this.colors) {
+                        this.colors[i].customValue = this.colors[i].maValue;
+                    }
+                },
+                updateTextFields: function () {
+                    for(var i in this.colors) {
+                        this.colors[i].customValue = this.colors[i].maValue; //"#123456"
+                    }
                 }
             }
         });
+        vm.updateTextFields();
     });
 });
