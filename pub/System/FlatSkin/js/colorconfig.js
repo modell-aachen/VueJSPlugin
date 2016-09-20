@@ -8,16 +8,77 @@ Vue.filter('colorName', function(cssName) {
 // Component displaying the color name and a color picker to change the value
 var SetColorComponent = Vue.extend({
     props: ['color'],
+    data: function () {
+        return {
+            invalidHex: false,
+            justChanged: false,
+            textValue: "#000000"
+        }
+    },
     template:
         '<div class="row">'+
             '<div class="column">{{ color.name | colorName }}</div>'+
             '<div class="column">'+
                 '<input type="color" v-model="color.customValue">'+
             '</div>'+
+            '<div class="column">'+
+                '<input type="text" v-model="textValue" debounce="1000" @keyup="onKeyup() | debounce 500" :class="{\'ma-failure\': invalidHex}">'+
+            '</div>'+
         '</div>',
+    methods: {
+        onKeyup: function () {
+
+        }
+    },
     watch: {
-        "color.customValue": function (newVal, oldVal) {
+        "textValue": function(newVal, oldVal) {
+            // Replace 3 digit hex with 6 digit hex
+            var parsed = newVal.replace(/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])$/, "#$1$1$2$2$3$3");
+            // Make every hex lowercase
+            parsed = parsed.replace(/#[a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]$/, function (match) {
+                return match.toLowerCase();
+            });
+            if(newVal !== oldVal) {
+                let hexRegex = /^#[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]$/;
+                if(hexRegex.test(parsed)) {
+                    this.color.customValue = parsed;
+                    this.textValue = parsed;
+                    this.invalidHex = false;
+                } else {
+                    this.invalidHex = true;
+                }
+                console.log(this.textValue);
+            }
+        },
+        "color.customValue": function(newVal, oldVal) {
+            this.textValue = newVal;
             this.$root.replaceColor(this.color.maValue, newVal);
+        },
+        "asdf": function (newVal, oldVal) {
+            console.log(oldVal, newVal, this.justChanged, this.invalidHex);
+            if(newVal !== oldVal) {
+                // Replace 3 digit hex with 6 digit hex
+                newVal = newVal.replace(/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])([;\s])/g, "#$1$1$2$2$3$3$4");
+                // Make every hex lowercase
+                newVal = newVal.replace(/#[a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]/g, function (match) {
+                    return match.toLowerCase();
+                });
+                let hexRegex = /^#[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]$/;
+                if(hexRegex.test(newVal)) {
+                    this.color.customValue = newVal;
+                    this.$root.replaceColor(this.color.maValue, newVal);
+                    if(!this.justChanged) {
+                        console.log("+++++", newVal);
+                        this.invalidHex = false;
+                    }
+                    this.justChanged = false;
+                } else {
+                    this.invalidHex = true;
+                    this.justChanged = true;
+                    this.color.customValue = oldVal;
+                    console.log("-----", oldVal);
+                }
+            }
         }
     }
 });
