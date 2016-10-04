@@ -23,6 +23,7 @@ pub/System/FlatSkin/css/flatskin.colors.css 0644
 pub/System/FlatSkin/css/flatskin.colors.min.css 0644
 pub/System/FlatSkin/css/flatskin.css 0644
 pub/System/FlatSkin/css/flatskin.min.css 0644
+pub/System/FlatSkin/css/flatskin.wrapped.min.css 0644
 pub/System/FlatSkin/fonts/opensans/Bold/OpenSans-Bold.eot 0644
 pub/System/FlatSkin/fonts/opensans/Bold/OpenSans-Bold.svg 0644
 pub/System/FlatSkin/fonts/opensans/Bold/OpenSans-Bold.ttf 0644
