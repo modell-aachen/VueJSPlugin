@@ -48,6 +48,7 @@ $alert-hover: $ma-failure-hover;
 //
 
 $global-flexbox: true;
+$global-radius: $ma-border-radius;
 
 $foundation-palette: (
   primary: $ma-primary,
@@ -80,6 +81,10 @@ $ma-common-spacing: rem-calc(14);
 
 // headers
 $ma-h3-margin-bottom: rem-calc(3);
+
+// Button settings
+$button-background: $ma-primary;
+$button-radius: $ma-border-radius;
 
 //Form settings
 $form-label-font-size: rem-calc(12);

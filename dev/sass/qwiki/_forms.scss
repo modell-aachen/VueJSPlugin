@@ -12,16 +12,14 @@ form{
 //Overwrite the foswiki select with the foundation form-select mixin
 @mixin ma-select {
   @include form-select;
-  font-size: rem-calc(13);
-  height: rem-calc(38);
+  // font-size: rem-calc(13);
+  // height: rem-calc(38);
   width: rem-calc(138);
+  height: auto;
   color: $ma-black;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 10px;
-  border-radius: 4px;
-  border: 1px solid #bbb;
-  //margin: 1px 1px 1px 1px;
+  // padding-top: 1px;
+  // padding-bottom: 1px;
+  // padding-left: 10px;
 }
 
 select {
@@ -43,9 +41,9 @@ input.ma-failure{
   border: 1px solid $ma-failure;
 }
 
-.input-group {
-  height: 42px;
-}
+// .input-group {
+//   height: 42px;
+// }
 
 .input-group>:first-child{
     border-top-left-radius: $ma-border-radius;
@@ -127,8 +125,8 @@ input[type]:disabled {
 //Radios
 //Idea: Use :before in the label as the radio background and :after as the checkmark
 [type="radio"]{
-  $radio-dimension: 21;
-  $radio-checkmark-padding: 3;
+  $radio-dimension: 17;
+  $radio-checkmark-padding: 2;
   display: none;
   &+label{
     @include ma-font('regular');
