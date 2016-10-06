@@ -1,0 +1,17 @@
+@mixin ma-button {
+	background-color: #4AC9E5;
+  	color: #FFFFFF; 
+  	font-size: 14px;
+  	line-height: 19px;
+  	margin:25px 1px;
+  	font-family: 'OpenSans-SemiboldItalic';
+  	font-weight: bold;
+  	font-style: italic;
+  	padding: 11px 30px 11px 30px;
+  	border: 1px solid #bbb;
+  	border-radius: 4px;
+}
+
+button {
+  @include ma-button;
+}

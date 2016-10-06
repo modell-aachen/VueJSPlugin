@@ -11,10 +11,14 @@ form{
 }
 //Overwrite the foswiki select with the foundation form-select mixin
 @mixin ma-select {
-  @include form-select;
   font-size: rem-calc(13);
-  height: rem-calc(42);
+  height: rem-calc(38);
+  width: rem-calc(138);
   color: $ma-black;
+  padding:1px 10px 1px 10px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  margin: 1px 1px 1px 1px;
 }
 
 select {
@@ -165,8 +169,8 @@ input[type]:disabled {
     display: inline-block;
     width: rem-calc($radio-checkmark-dimension);
     height: rem-calc($radio-checkmark-dimension);
-    top: rem-calc($radio-checkmark-padding);
-    left: rem-calc($radio-checkmark-padding);
+    top: rem-calc($radio-checkmark-padding + 1);
+    left: rem-calc($radio-checkmark-padding + 1);
     }
 }
 
