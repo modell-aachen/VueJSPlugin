@@ -8,7 +8,11 @@
 	// font-style: italic;
 	// padding: 11px 30px 11px 30px;
 	// border-radius: 4px;
+  &.alert {
+    background-color: $ma-failure;
+  }
 }
+
 
 button {
   @extend .ma-button;
