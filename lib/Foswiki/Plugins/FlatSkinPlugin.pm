@@ -29,17 +29,6 @@ sub initPlugin {
   Foswiki::Func::registerTagHandler('FLATTABPANE', \&_FLATTABPANE);
   Foswiki::Func::registerTagHandler('FLATTAB', \&_FLATTAB);
 
-  my $requestObject = Foswiki::Func::getRequestObject();
-  my $useFlat = $requestObject->param('flat');
-  if (defined $useFlat) {
-    if($useFlat =~ /no|0/){
-      Foswiki::Func::setPreferencesValue('SKIN', 'custom,risk,contextmenu,kvp,metacomment,modac');
-    }
-    if($useFlat =~ /yes|1/){
-      Foswiki::Func::setPreferencesValue('SKIN', 'custom,risk,contextmenu,kvpflat,kvp,metacomment,flat,modac');
-    }
-  }
-
   return 1;
 }
 
