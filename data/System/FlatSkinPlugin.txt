@@ -7,6 +7,12 @@
 ---++ Introduction
 
 This is a Skin to bring a new fresh and flat look in the Wiki. For more informations about skins read the [[%SYSTEMWEB%.Skins][Foswiki Skins]] topic. The [[%SYSTEMWEB%.FlatSkinPluginOverview][Overview-Topic]] shows some posibel components and their configurations.
+
+%RED%
+Attention: The FlatSkin is still in development and is not intended to be used in production wikis.
+Currently this plugin should be installed but not enabled. Currently it is just used to provide FlatSkin styles for newly developed components.
+%ENDCOLOR%
+
 ---++ Installation
 Dependencies (or "you need to update also"):
    * ModacSkin (so far)
