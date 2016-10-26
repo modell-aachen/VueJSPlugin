@@ -32,6 +32,23 @@ sub initPlugin {
   return 1;
 }
 
+sub maintenanceHandler {
+  Foswiki::Plugins::MaintenancePlugin::registerCheck("FlatSkinPlugin:check_enabled", {
+      name => "FlatSkinPlugin: Should be disabled",
+      description => "The FlatSkinPlugin is still in development and should be disabled",
+      check => sub {
+          my $result = { result => 0 };
+          if ($Foswiki::cfg{Plugins}{FlatSkinPlugin}{Enabled} eq 1) {
+              $result->{result} = 1;
+              $result->{priority} = $Foswiki::Plugins::MaintenancePlugin::WARN;
+              $result->{solution} = "Please disable (don't uninstall) the FlatSkinPlugin.";
+          }
+
+          return $result;
+     }
+  });
+}
+
 sub _FLATPANEL {
   my($session, $params, $topic, $web, $meta) = @_;
 
