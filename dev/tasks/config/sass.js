@@ -11,10 +11,11 @@ module.exports = function(grunt) {
       files: [{
         expand: true,
         cwd: 'dev/sass/',
-        src: ['flatskin.scss','modacskin.scss'],
+        src: ['flatskin.scss','flatskin_wrapped.scss','modacskin.scss'],
         dest: 'pub/System/FlatSkin/css/',
         ext: '.css',
-      }]
+      }
+      ]
     }
   });
 

@@ -10,7 +10,7 @@ module.exports = function(grunt) {
           require('autoprefixer')({browsers: ['last 2 version']})
         ]
       },
-      src: 'pub/System/FlatSkin/css/flatskin.css'
+      src: ['pub/System/FlatSkin/css/flatskin.css','pub/System/FlatSkin/css/flatskin_wrapped.css']
     },
     themify: {
       options: {
