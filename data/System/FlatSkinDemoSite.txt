@@ -1,0 +1,142 @@
+%META:TOPICPARENT{name="FlatSkinPlugin"}%
+%JQREQUIRE{"chili"}%
+---+ FlatSkin Overview
+
+%TOC%
+
+%ADDTOZONE{"head" text="<link rel='stylesheet' type='text/css' media='all' href='%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome.min.css' />"}%
+
+---++ About this Topic
+This topic provides an overview of the FlatSkin styles.
+In general the FlatSkin is build on Foundation for Sites 6.
+For further documentation please have a look at the Foundation docs.
+
+---++ Tables
+---+++ Standard
+The standard table.
+
+<table style="width:100%;">
+  <thead>
+    <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
+  </thead>
+  <tbody>
+    <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+    <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+    <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  </tbody>
+</table>
+
+<verbatim class="html">
+<table style="width:100%;">
+  <thead>
+    <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
+  </thead>
+  <tbody>
+    <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+    <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+    <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  </tbody>
+</table>
+</verbatim>
+
+---+++ Striped
+To create a striped table just add the *striped* class to the table.
+
+<table class="striped" style="width:100%;">
+  <thead>
+    <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
+  </thead>
+  <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+</tbody>
+</table>
+
+<verbatim class="html">
+<table class="striped" style="width:100%;">
+  <thead>
+    <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
+  </thead>
+  <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+</tbody>
+</table>
+</verbatim>
+
+---++ Grids
+The standard foundation grid can be used to layout elements.
+<div class="row">
+  <div class="small-6 columns" style="background-color: lightgrey;">6 columns</div>
+  <div class="small-6 columns" style="background-color: lightblue;">6 columns</div>
+</div>
+<div class="row">
+  <div class="medium-6 large-4 columns" style="background-color: lightgrey;">12/6/4 columns</div>
+  <div class="medium-6 large-8 columns" style="background-color: lightblue;">12/6/8 columns</div>
+</div>
+
+<verbatim class="html">
+<div class="row">
+  <div class="small-6 columns" style="background-color: lightgrey;">6 columns</div>
+  <div class="small-6 columns" style="background-color: lightblue;">6 columns</div>
+</div>
+<div class="row">
+  <div class="medium-6 large-4 columns" style="background-color: lightgrey;">12/6/4 columns</div>
+  <div class="medium-6 large-8 columns" style="background-color: lightblue;">12/6/8 columns</div>
+</div>
+</verbatim>
+---++ Buttons
+The standard foundation button classes are used.
+
+<div class="row">
+<div class="columns"><a class="button">.button</a></div>
+<div class="columns"><a class="primary button">.primary.button</a></div>
+<div class="columns"><a class="warning button">.warning.button</a></div>
+<div class="columns"><a class="alert button">.alert.button</a></div>
+</div>
+
+<verbatim class="html">
+<div class="row">
+<div class="columns"><a class="button">.button</a></div>
+<div class="columns"><a class="primary button">.primary.button</a></div>
+<div class="columns"><a class="warning button">.warning.button</a></div>
+<div class="columns"><a class="alert button">.alert.button</a></div>
+</div>
+</verbatim>
+
+---++ Forms
+
+<form>
+  <div class="row">
+    <div class="small-6 columns">
+      <label>Input Label
+        <input type="text" placeholder=".small-6.columns">
+      </label>
+    </div>
+    <div class="small-6 columns">
+      <label>Input Label
+        <input type="text" placeholder=".small-6.columns">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-6 columns">
+    <div class="input-group">
+      <span class="input-group-label"><i class="fa fa-search" aria-hidden="true"></i></span>
+      <input class="input-group-field" type="text">
+    </div>
+    </div>
+    <div class="small-6 columns">
+      <label>Select Menu
+  <select>
+    <option value="husker">Husker</option>
+    <option value="starbuck">Starbuck</option>
+    <option value="hotdog">Hot Dog</option>
+    <option value="apollo">Apollo</option>
+  </select>
+</label>
+    </div>
+  </div>
+</form>

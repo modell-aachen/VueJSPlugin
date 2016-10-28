@@ -17,3 +17,15 @@
   margin: 0;
   padding: 0;
 }
+
+.wrapper {
+  padding: rem-calc(7);
+  background-color: $ma-bg-beige;
+  border-radius: $ma-border-radius;
+  & > div {
+      width: 100%;
+      background-color: $ma-white;
+      border-radius: $ma-border-radius;
+      padding: rem-calc(7);
+  }
+}

@@ -5,6 +5,10 @@ small, .small-text {
   color: $ma-body-text;
 }
 
+@each $name, $color in $foundation-palette {
+  h1.#{$name} { color:$color; }
+}
+
 h1,
 .foswikiTopic h1 {
   font-size: rem-calc(30);

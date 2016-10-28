@@ -1,3 +1,38 @@
+//Foundation overwrites
+$table-head-background: $ma-white;
+$table-background: $ma-white;
+$table-border: 0;
+$table-stripe: "none"; //Disable foundation default stripes
+
+//New variables
+$table-inner-border: 1px solid $ma-light-border;
+
+th, td {
+  border-bottom: 1px solid $ma-light-border;
+}
+
+th {
+    @include ma-font('semibold');
+}
+
+tr {
+  &:last-child {
+    td {
+      border-bottom: 0;
+    }
+  }
+}
+
+.striped {
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: $table-striped-background;
+      }
+    }
+  }
+}
+
 .ma-table {
   background-color: $ma-white;
   border-collapse: collapse;
@@ -6,7 +41,7 @@
   th,
   td {
     border: 0;
-    border-bottom: 1px solid $ma-light-border;
+    border-bottom: $table-inner-border;
     font-size: rem-calc(13);
     line-height: 1.4;
   }

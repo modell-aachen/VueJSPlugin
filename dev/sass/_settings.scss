@@ -81,30 +81,3 @@ $ma-common-spacing: rem-calc(14);
 
 // headers
 $ma-h3-margin-bottom: rem-calc(3);
-
-// Button settings
-$button-background: $ma-primary;
-$button-radius: $ma-border-radius;
-
-//Form settings
-$form-label-font-size: rem-calc(12);
-$form-label-font-weight: 600;
-$form-label-line-height: 1.4;
-$input-radius: $ma-border-radius;
-$input-background: $ma-medium-grey;
-$input-background-focus: $ma-medium-grey;
-$input-border: 0;
-$input-border-focus: 0;
-$input-shadow: 0;
-$input-shadow-focus: 0;
-$input-font-family: $ma-font-regular;
-$select-background: $ma-medium-grey;
-$select-radius: $ma-border-radius;
-$helptext-color: $ma-help-text;
-$helptext-font-size: rem-calc(12);
-$helptext-font-style: normal;
-$input-prefix-background: $ma-medium-grey;
-$input-prefix-border: 0;
-$input-prefix-color: $medium-gray;
-$input-prefix-padding: rem-calc(15);
-$input-background-disabled: $ma-medium-grey;

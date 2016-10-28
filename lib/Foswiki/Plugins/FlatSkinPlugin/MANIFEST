@@ -5,7 +5,9 @@ data/System/FlatSkinColorConfig.txt 0644
 data/System/FlatSkinDocumentHeadTemplate.txt 0644
 data/System/FlatSkinFlexWebList.txt 0644
 data/System/FlatSkinPlugin.txt 0644
-data/System/FlatSkinPluginOverview.txt 0644
+data/System/FlatSkinDemoSite.txt 0644
+data/System/FlatSkinOverview.txt 0644
+data/System/FlatSkinWrappedOverview.txt 0644
 data/System/FlatSkinTopicMenuTemplate.txt 0644
 data/System/FlatSkinWebCreateNewTopicTemplate.txt 0644
 data/System/FlatSkinSolrSearchBaseTemplate.txt 0644
