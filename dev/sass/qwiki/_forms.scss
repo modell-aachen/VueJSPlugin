@@ -135,7 +135,7 @@ input[type]:disabled {
 //Radios
 //Idea: Use :before in the label as the radio background and :after as the checkmark
 [type="radio"]{
-  $radio-dimension: 17;
+  $radio-dimension: 20;
   $radio-checkmark-padding: 3;
   display: none;
   &+label{
@@ -148,7 +148,6 @@ input[type]:disabled {
   &+label::before{
     content: "";
     font-family: "FontAwesome";
-    color: $ma-primary;
     display: inline-block;
     width: rem-calc($radio-dimension);
     height: rem-calc($radio-dimension);
@@ -159,6 +158,9 @@ input[type]:disabled {
     position:absolute;
     top: 0;
     left: 0;
+  }
+  &:not(:checked)+label::before {
+    border-color: $ma-grey;
   }
 
   &+label::after{
