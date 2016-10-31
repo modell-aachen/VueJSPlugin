@@ -9,6 +9,7 @@ $input-border-focus: 0;
 $input-shadow: 0;
 $input-shadow-focus: 0;
 $input-font-family: $ma-font-regular;
+$input-font-size: rem-calc(13);
 $select-background: $ma-medium-grey;
 $select-radius: $ma-border-radius;
 $helptext-color: $ma-help-text;
@@ -19,6 +20,8 @@ $input-prefix-border: 0;
 $input-prefix-color: $medium-gray;
 $input-prefix-padding: rem-calc(15);
 $input-background-disabled: $ma-medium-grey;
+
+@include foundation-forms;
 // form{
 //   table{
 //     width: 100%;
@@ -31,21 +34,22 @@ $input-background-disabled: $ma-medium-grey;
 //   }
 // }
 //Overwrite the foswiki select with the foundation form-select mixin
-// @mixin ma-select {
-//   @include form-select;
-//   // font-size: rem-calc(13);
-//   // height: rem-calc(38);
-//   width: rem-calc(138);
-//   height: auto;
-//   color: $ma-black;
-//   // padding-top: 1px;
-//   // padding-bottom: 1px;
-//   // padding-left: 10px;
-// }
+@mixin ma-select {
+  @include form-select;
+  @include ma-font('regular');
+  font-size: rem-calc(13);
+  // height: rem-calc(38);
+  // width: rem-calc(138);
+  // height: auto;
+  color: $ma-black;
+  // padding-top: 1px;
+  // padding-bottom: 1px;
+  // padding-left: 10px;
+}
 
-// select {
-//   @include ma-select;
-// }
+select {
+  @include ma-select;
+}
 
 // .foswikiSelect {
 //   @include ma-select

@@ -42,40 +42,17 @@ $OpenSansPath: '../fonts/opensans';
     }
 
 
-
+    @include foundation-global-styles;
+    @include foundation-flex-classes;
+    @include foundation-flex-grid;
+    @include foundation-visibility-classes;
+    @include foundation-float-classes;
     @import 'qwiki/mixins';
     @import 'qwiki/base';
     @import 'qwiki/typography';
+    @import 'qwiki/links';
     @import 'qwiki/buttons';
     @import 'qwiki/table';
     @import 'qwiki/widgets';
     @import 'qwiki/forms';
-    @include foundation-global-styles;
-    @include foundation-flex-classes;
-    @include foundation-flex-grid;
-    @include foundation-callout;
-    @include foundation-forms;
-    @include foundation-menu;
-    @include foundation-dropdown;
-    @include foundation-dropdown-menu;
-    @include foundation-visibility-classes;
-    @include foundation-float-classes;
-    @include foundation-badge;
-    @include foundation-table;
-
-
-    //
-    // Modell Aachen Styles & Mixins
-    //
-
-    //@import 'qwiki/buttons';
-    //@import 'qwiki/inputs';
-    //@import 'qwiki/layout';
-    //@import 'qwiki/links';
-    //@import 'qwiki/paginator';
-    //@import 'qwiki/tabs';
-    //@import 'qwiki/typography';
-    //@import 'qwiki/widgets';
-    //@import 'qwiki/notifications';
-    //@import 'qwiki/forms';
 }

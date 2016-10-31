@@ -4,6 +4,8 @@ $table-background: $ma-white;
 $table-border: 0;
 $table-stripe: "none"; //Disable foundation default stripes
 
+@include foundation-table;
+
 //New variables
 $table-inner-border: 1px solid $ma-light-border;
 
