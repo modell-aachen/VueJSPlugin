@@ -39,20 +39,20 @@
 .ma-pager-new {
   ul.pagination li a {
     border: 0px; /* Gray */
-    border-radius: 0px;
+    border-radius: $ma-border-radius;
     color: #A4AEB9;
     font-size: 14px;
   }
 
   .pagination > .active > a, .pagination > .active > a:hover {
     background-color: #FFFFFF;
-    border-radius: 0px;
+    border-radius: $ma-border-radius;
     color: #4AC9E5;
   }
 
   ul.pagination li a.active {
     background-color: #FFFFFF;
-    border-radius: 0px;
+    border-radius: $ma-border-radius;
     color: #4AC9E5;
   }
 
@@ -61,12 +61,12 @@
   }
 
   .pagination li:first-child a {
-    border: 1px solid #ddd;
+    //border: 1px solid #ddd;
     background-color: #E5E8EB;
   }
 
   .pagination li:last-child a {
-    border: 1px solid #ddd;
+    //border: 1px solid #ddd;
     background-color: #E5E8EB;
   }
 }
