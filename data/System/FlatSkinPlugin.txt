@@ -6,7 +6,7 @@
 
 ---++ Introduction
 
-This is a Skin to bring a new fresh and flat look in the Wiki. For more informations about skins read the [[%SYSTEMWEB%.Skins][Foswiki Skins]] topic. The [[%SYSTEMWEB%.FlatSkinPluginOverview][Overview-Topic]] shows some posibel components and their configurations.
+This is a Skin to bring a new fresh and flat look in the Wiki. For more informations about skins read the [[%SYSTEMWEB%.Skins][Foswiki Skins]] topic. The [[%SYSTEMWEB%.FlatSkinWrappedOverview][Overview-Topic]] shows some posibel components and their configurations.
 
 %RED%
 Attention: The FlatSkin is still in development and is not intended to be used in production wikis.
@@ -19,10 +19,10 @@ Dependencies (or "you need to update also"):
    * JQueryPlugin
 ---++ Configuration
 <verbatim>
-   * Set SKIN = custom,risk,contextmenu,kvpflat,kvp,metacomment,flat,modac
+    * Set SKIN = custom,risk,contextmenu,kvpflat,kvp,metacomment,flat,modac
 </verbatim>
 <verbatim>
-   * Set APPLICATION = 1
+    * Set APPLICATION = 1
 </verbatim>
 ---++ Developer Info
 %BR%
