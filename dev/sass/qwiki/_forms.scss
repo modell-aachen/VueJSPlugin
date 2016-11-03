@@ -9,51 +9,15 @@ $input-border-focus: 0;
 $input-shadow: 0;
 $input-shadow-focus: 0;
 $input-font-family: $ma-font-regular;
-$input-font-size: rem-calc(13);
 $select-background: $ma-medium-grey;
 $select-radius: $ma-border-radius;
-$helptext-color: $ma-help-text;
-$helptext-font-size: rem-calc(12);
-$helptext-font-style: normal;
 $input-prefix-background: $ma-medium-grey;
 $input-prefix-border: 0;
 $input-prefix-color: $medium-gray;
-$input-prefix-padding: rem-calc(15);
 $input-background-disabled: $ma-medium-grey;
 
 @include foundation-forms;
-// form{
-//   table{
-//     width: 100%;
-//     td:first-child{
-//       width:1px;
-//       white-space: nowrap;
-//       text-align: right;
-//       padding-right: 34px;
-//     }
-//   }
-// }
-//Overwrite the foswiki select with the foundation form-select mixin
-@mixin ma-select {
-  @include form-select;
-  @include ma-font('regular');
-  font-size: rem-calc(13);
-  // height: rem-calc(38);
-  // width: rem-calc(138);
-  // height: auto;
-  color: $ma-black;
-  // padding-top: 1px;
-  // padding-bottom: 1px;
-  // padding-left: 10px;
-}
 
-select {
-  @include ma-select;
-}
-
-// .foswikiSelect {
-//   @include ma-select
-// }
 .help-text{
   @include ma-font('semibold');
   line-height: 1.4;
@@ -78,7 +42,6 @@ input.ma-failure{
 @mixin placeholder-style{
   @include ma-font('regular');
   color: $ma-grey;
-  font-size: rem-calc(13);
   font-style: italic;
 }
 
