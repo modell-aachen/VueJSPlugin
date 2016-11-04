@@ -1,7 +1,7 @@
 .jqTabPane {
   padding: 10px;
   .jqTabContents {
-    padding: rem-calc(15 0);
+    padding: 0;
   }
   &.jqTabPaneJustified {
     .jqTabGroup {
@@ -50,7 +50,7 @@
         background-color: transparent;
         border-top: 2px solid $ma-light-grey !important;
         border-right: 2px solid $ma-light-grey !important;
-        border-bottom: 2px solid $ma-white !important;
+        border-bottom: 3px solid $ma-white !important;
         border-left: 2px solid $ma-light-grey !important;
       }
     }
