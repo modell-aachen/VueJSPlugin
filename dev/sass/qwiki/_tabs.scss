@@ -1,38 +1,42 @@
-.jqTabPaneFlat > .jqTabGroup li {
-  background:transparent;
-  margin: rem-calc(0 8 -2 4);
-}
+.jqTabPaneFlat {
+  > .jqTabGroup {
+    a {
+      background: $ma-white;
+      border: 0;
+      border-top-left-radius: $ma-border-radius;
+      border-top-right-radius: $ma-border-radius;
+      color: $ma-dark-grey;
+      font-weight: bold;
+      line-height: 100%;
+      padding: rem-calc(13 22);
 
-.jqTabPaneFlat > .jqTabGroup li:first-child {
-  margin-left: 8px;
-}
+      &:hover {
+        color: inherit;
+        background: $ma-light-grey;
+        border-bottom: 2px solid $ma-light-grey;
+      }
+    }
 
-.jqTabPaneFlat > .jqTabGroup li.current a {
-  background: $ma-white;
-  border: 2px solid $ma-light-grey;
-  border-bottom: 2px solid $ma-white;
-  color: $ma-primary;
-  font-weight: bold;
-}
+    li {
+      background: transparent;
+      margin: rem-calc(0 8 -2 4);
 
-.jqTabPaneFlat > .jqTabGroup a {
-  background: $ma-white;
-  border: 0;
-  border-top-left-radius: $ma-border-radius;
-  border-top-right-radius: $ma-border-radius;
-  color: $ma-dark-grey;
-  font-weight: bold;
-  line-height: 100%;
-  padding: rem-calc(13 22);
-}
+      &:first-child {
+        margin-left: rem-calc(8);
+      }
 
-.jqTabPaneFlat > .jqTabGroup a:hover {
-  color: inherit;
-  background: $ma-light-grey;
-  border-bottom: 2px solid $ma-light-grey;
-}
+      &.current a {
+        background: $ma-white;
+        border: 2px solid $ma-light-grey;
+        border-bottom: 2px solid $ma-white;
+        color: $ma-primary;
+        font-weight: bold;
+      }
+    }
+  }
 
-.jqTabPaneFlat .jqTab.current {
-  border: 0;
-  border-top: 2px solid $ma-light-grey;
+  .jqTab.current {
+    border: 0;
+    border-top: 2px solid $ma-light-grey;
+  }
 }
