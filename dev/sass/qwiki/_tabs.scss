@@ -1,3 +1,7 @@
+.flatskin-wrapped > .jqTabPaneFlat {
+  margin: .5em;
+}
+
 .jqTabPaneFlat {
   > .jqTabGroup {
     a {
@@ -19,11 +23,7 @@
 
     li {
       background: transparent;
-      margin: rem-calc(0 8 -2 4);
-
-      &:first-child {
-        margin-left: rem-calc(8);
-      }
+      margin: rem-calc(0 8 -2 0);
 
       &.current a {
         background: $ma-white;
@@ -41,6 +41,6 @@
   }
 
   .jqTabContents {
-    padding: 1em 0;
+    padding: 1rem 0;
   }
 }
