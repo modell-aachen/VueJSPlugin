@@ -3,6 +3,7 @@ $button-radius: $ma-border-radius;
 $button-color: $ma-brown;
 $lightness: 15%;
 $button-background-hover: scale-color($button-background, $lightness: $lightness);
+$buttongroup-spacing: 5px;
 
 @include foundation-button;
 @include foundation-button-group;
