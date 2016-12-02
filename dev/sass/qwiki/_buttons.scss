@@ -1,0 +1,42 @@
+$button-background: $ma-sand;
+$button-radius: $ma-border-radius;
+$button-color: $ma-brown;
+$lightness: 15%;
+$button-background-hover: scale-color($button-background, $lightness: $lightness);
+$buttongroup-spacing: 5px;
+
+@include foundation-button;
+@include foundation-button-group;
+
+.button {
+  @include ma-font('semibold');
+  font-style: italic;
+}
+
+//Unfortunately the button-background-hover only applies
+//if no styling class besides 'button' is set (e.g. alert).
+// Therefore we have to override the background color for styles
+// we want to use.
+
+@mixin ma-button-style($class, $background-color, $color: $ma-white){
+  .button {
+    &.#{$class} {
+      color: $color;
+      &:hover, &:focus {
+        color: $color;
+        background-color: scale-color($background-color, $lightness: $lightness);
+      }
+    }
+  }
+}
+
+@include ma-button-style(primary, $ma-primary);
+@include ma-button-style(warning, $ma-warning);
+@include ma-button-style(alert, $ma-failure);
+// .button {
+//   &.alert {
+//     &:hover, &:focus {
+//       background-color: scale-color($ma-failure, $lightness: $lightness) !important;
+//     }
+//   }
+// }

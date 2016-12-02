@@ -1,0 +1,47 @@
+h1, h2, h3, h4,
+small, .small-text {
+  @include ma-font('semibold');
+  border: 0;
+  color: $ma-body-text;
+}
+
+@each $name, $color in $foundation-palette {
+  h1.#{$name} { color:$color; }
+}
+
+h1,
+.foswikiTopic h1 {
+  font-size: rem-calc(30);
+  line-height: rem-calc(41);
+  margin-bottom: rem-calc(12);
+}
+
+h2,
+.foswikiTopic h2 {
+  font-size: rem-calc(24);
+  line-height: rem-calc(33);
+  margin-bottom: rem-calc(5);
+}
+
+h3,
+.foswikiTopic h3 {
+  font-size: rem-calc(18);
+  line-height: rem-calc(24);
+  margin-bottom: rem-calc(3);
+}
+
+h4,
+.foswikiTopic h4 {
+  font-size: rem-calc(14);
+  line-height: rem-calc(19);
+  margin-bottom: rem-calc(3);
+}
+
+small, .small-text, .foswikiSmallish {
+  font-size: rem-calc(11);
+  line-height: rem-calc(19);
+}
+
+.foswikiPage {
+  font-family: ma-font('regular');
+}

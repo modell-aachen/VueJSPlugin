@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+//
+// Open Sans Font-Face
+//
+$OpenSansPath: '../fonts/opensans';
+@import 'open-sans-fontface/sass/open-sans';
+
+.flatskin-wrapped {
+    //Resets for the ModacSkin are put here
+    label {
+        padding: 0;
+    }
+    //
+    // Foundation for Sites 6
+    //
+    // @import 'util/util';
+    @import 'foundation-sites/scss/foundation';
+    @import 'settings';
+
+    //Here we put all styles foundation sets on html or body.
+    //Unfortunately this is copy paste
+
+    //html styles
+    font-size: $global-font-size;
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+
+    //body styles
+    padding: 0;
+    margin: 0;
+    font-family: $body-font-family;
+    font-weight: $global-weight-normal;
+    line-height: $global-lineheight;
+    color: $body-font-color;
+    background: $body-background;
+
+    @if ($body-antialiased) {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+
+    @include foundation-global-styles;
+    @include foundation-flex-classes;
+    @include foundation-flex-grid;
+    @include foundation-visibility-classes;
+    @include foundation-float-classes;
+    @import 'qwiki/mixins';
+    @import 'qwiki/base';
+    @import 'qwiki/typography';
+    @import 'qwiki/links';
+    @import 'qwiki/buttons';
+    @import 'qwiki/table';
+    @import 'qwiki/widgets';
+    @import 'qwiki/forms';
+    @import 'qwiki/paginator';
+    @import 'qwiki/tabs';
+    @import 'qwiki/notifications';
+}

@@ -1,0 +1,16 @@
+@mixin ma-font($type: 'regular') {
+  @if $type == 'regular' {
+    font-family: $ma-font-regular;
+    font-weight: normal;
+  }
+
+  @if $type == 'semibold' {
+    font-family: $ma-font-semibold;
+    font-weight: 600;
+  }
+
+  @if $type == 'bold' {
+    font-family: $ma-font-bold;
+    font-weight: bold;
+  }
+}

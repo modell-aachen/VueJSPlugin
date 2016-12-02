@@ -1,0 +1,130 @@
+.ma-top-tabs {
+  @extend .menu;
+  align-items: stretch;
+  height: $ma-top-height;
+  padding-left: 0;
+
+  li {
+    display: flex;
+    height: inherit;
+  }
+
+  .active > a {
+    background-color: $body-background;
+    color: $ma-body-text;
+  }
+
+  :not(.active) > a {
+    color: darken($ma-sand, 25%);
+  }
+
+  a {
+    align-items: center;
+    height: inherit;
+
+    &:active,
+    &:hover {
+      text-decoration: none;
+    }
+
+    &.modacChanging {
+      color: $ma-primary;
+      overflow: hidden;
+      transition: max-width .3s ease-out,
+                  color .15s ease-in-out;
+      max-width: rem-calc(32);
+    }
+
+    &.modacChanging:hover {
+      color: $ma-primary-hover;
+      max-width: rem-calc(200);
+    }
+  }
+}
+
+.ma-top-more {
+  @extend .menu;
+  @extend .dropdown;
+  background-color: $ma-brown;
+  border-radius: $ma-border-radius;
+  color: $ma-white;
+  padding: rem-calc(0 3);
+
+  > li > a {
+    padding: .5rem 1rem;
+  }
+
+  .menu > li > a {
+    padding: .3rem 0;
+  }
+
+  .submenu {
+    background-color: $ma-brown;
+    border-radius: $ma-border-radius;
+    padding: 0 .5rem;
+  }
+
+  a {
+    @include ma-font;
+    color: $ma-white;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      color: $ma-white;
+    }
+
+    &:hover {
+      @include ma-font('bold');
+      text-decoration: none
+    }
+  }
+
+  li.is-dropdown-submenu-parent {
+    > a::after {
+      border-color: $ma-white rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    }
+
+    &.opens-left > a::after {
+      border-color: rgba(0, 0, 0, 0) $ma-white rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    }
+
+    &.is-dropdown-submenu-item.opens-right > a::after {
+      border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $ma-white;
+    }
+  }
+}
+
+.ma-searchbox {
+  $ma-searchbox-radius: 3*$ma-border-radius;
+
+  background-color: $ma-brown;
+  border-radius: $ma-searchbox-radius;
+  color: $ma-white;
+  max-height: rem-calc(30);
+  margin-left: rem-calc(10);
+
+  > span,
+  > input {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  > .input-group-field {
+    border-top-left-radius: $ma-searchbox-radius;
+    border-bottom-left-radius: $ma-searchbox-radius;
+    font-size: .8rem;
+    //width: rem-calc(125);
+
+    &:focus {
+      background-color: $ma-brown;
+      color: $ma-white;
+    }
+  }
+
+  > .input-group-label:last-child {
+    border-top-right-radius: $ma-searchbox-radius;
+    border-bottom-right-radius: $ma-searchbox-radius;
+  }
+}

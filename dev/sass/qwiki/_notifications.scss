@@ -1,0 +1,55 @@
+//Notifications
+p.ma-notification {
+	background-color: $ma-bg-beige;
+	border-radius: $ma-border-radius;
+	padding: rem-calc(11);
+	border: 1px solid $ma-sand;
+}
+
+p.ma-notification.ma-success {
+	background-color: $ma-success-hover;
+	color: white;
+	border-color: $ma-success;
+}
+
+p.ma-notification.ma-warning {
+	background-color: $ma-warning-hover;
+	color: black;
+	border-color: $ma-warning;
+}
+
+p.ma-notification.ma-failure {
+	background-color: $ma-failure-hover;
+	color: white;
+	border-color: $ma-failure;
+}
+
+//Labels
+span.ma-label {
+	padding: rem-calc(7 9);
+    background-color: $ma-light-grey;
+    border-radius: $ma-border-radius;
+    font-size: 75%;
+    @include ma-font('semibold');
+}
+
+span.ma-label.ma-success {
+	background-color: $ma-success-hover;
+	color: white;
+}
+
+span.ma-label.ma-warning {
+	background-color: $ma-warning-hover;
+	color: black;
+}
+
+span.ma-label.ma-failure {
+	background-color: $ma-failure-hover;
+	color: white;
+}
+
+//Badges
+span.ma-badge {
+	@extend .ma-label;
+	border-radius: 10px;
+}

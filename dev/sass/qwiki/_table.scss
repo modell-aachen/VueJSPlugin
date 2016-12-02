@@ -1,0 +1,184 @@
+//Foundation overwrites
+$table-head-background: $ma-white;
+$table-background: $ma-white;
+$table-border: 0;
+$table-stripe: "none"; //Disable foundation default stripes
+
+@include foundation-table;
+
+//New variables
+$table-inner-border: 1px solid $ma-light-border;
+
+th, td {
+  border-bottom: 1px solid $ma-light-border;
+}
+
+th {
+    @include ma-font('semibold');
+}
+
+tr {
+  &:last-child {
+    td {
+      border-bottom: 0;
+    }
+  }
+}
+
+.striped {
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: $table-striped-background;
+      }
+    }
+  }
+}
+
+.ma-table {
+  background-color: $ma-white;
+  border-collapse: collapse;
+  text-align: left;
+
+  th,
+  td {
+    border: 0;
+    border-bottom: $table-inner-border;
+    font-size: rem-calc(13);
+    line-height: 1.4;
+  }
+
+  th {
+    @include ma-font('bold');
+    padding: rem-calc(11 0 11 14);
+  }
+
+  td {
+    @include ma-font('regular');
+    padding: rem-calc(13 14 13 14);
+  }
+
+  tr {
+    &:last-child {
+      td {
+        border-bottom: 0;
+      }
+    }
+
+    &.ma-success {
+      background-color: $ma-success-light;
+    }
+
+    &.ma-warning {
+      background-color: $ma-warning-light;
+    }
+
+    &.ma-failure {
+      background-color: $ma-failure-light;
+    }
+  }
+
+  &.ma-striped {
+    //To avoid !important for the context colors we exclude them here
+    //so they take precedence.
+    tbody {
+      tr {
+        &:not(.ma-success):not(.ma-warning):not(.ma-failure):nth-child(even) {
+          background-color: $ma-bg-light;
+        }
+      }
+    }
+  }
+
+  &.ma-definition {
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background-color: $ma-bg-light;
+        }
+      }
+
+      td {
+        border-style: none;
+
+        &:first-child {
+          @include ma-font('semibold');
+          border-bottom-left-radius: $ma-border-radius;
+          border-top-left-radius: $ma-border-radius;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: $ma-border-radius;
+          border-top-right-radius: $ma-border-radius;
+        }
+      }
+    }
+  }
+
+  &.ma-data-table {
+    th,
+    td {
+      border-bottom: 0;
+    }
+
+    tbody {
+      tr {
+        &:not(.ma-success):not(.ma-warning):not(.ma-failure):nth-child(odd) {
+          background-color: $ma-bg-light;
+        }
+      }
+
+      td {
+        &:first-child {
+          border-bottom-left-radius: $ma-border-radius;
+          border-top-left-radius: $ma-border-radius;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: $ma-border-radius;
+          border-left: 1px solid $ma-data-table-border;
+          border-top-right-radius: $ma-border-radius;
+          color: $ma-grey;
+          text-align: center;
+          white-space: nowrap;
+          width: 1%;
+          & button,
+          a {
+            color: $ma-grey;
+            &:hover {
+              color: $ma-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//Specific overwrites for the old modac skin
+.Modac_Standard,
+.Modac_Standard_Ohne {
+  @extend .ma-table;
+
+  thead {
+    tr:first-child {
+      background-color: $ma-white;
+    }
+  }
+
+  th {
+    color: $ma-black;
+    text-align: left;
+  }
+
+  &.autonumbered {
+    tbody td:first-child::before {
+      color: $primary-color;
+    }
+  }
+}
+
+.tablesorter {
+  @extend .ma-table;
+  width: 100%;
+}

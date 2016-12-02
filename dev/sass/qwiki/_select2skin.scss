@@ -1,0 +1,32 @@
+@import "select2/src/scss/theme/default/layout";
+
+.select2-container--ma {
+  @extend .select2-container--default;
+
+	&.select2-container--focus .select2-selection--multiple {
+    border: 2px solid $ma-medium-grey;
+  }
+  .select2-selection--multiple{
+    border: 2px solid $ma-medium-grey;
+
+    .select2-selection__choice{
+      padding: 10px;
+      background-color: $ma-sand;
+      border-radius: $ma-border-radius;
+      border: 0;
+      @include ma-font('regular');
+      color: $ma-select-multi-text-color;
+      font-size: rem-calc(12);
+      line-height: 1.4;
+
+      .choice-icon {
+        margin-right: 10px;
+      }
+
+      .select2-selection__choice__remove {
+        float: right;
+        margin-left: 10px;
+      }    
+    }
+  }
+}
