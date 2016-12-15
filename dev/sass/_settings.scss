@@ -41,6 +41,8 @@ $success-hover: $ma-success-hover;
 $warning-hover: $ma-warning-hover;
 $alert-hover: $ma-failure-hover;
 
+$breakpoint-classes: (small medium large xlarge xxlarge);
+
 //
 // Override of Foundation Globals
 // See 'node_modules/foundation-sites/scss/_global.scss' for a full list of
