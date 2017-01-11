@@ -20,14 +20,17 @@ $input-background-disabled: $ma-medium-grey;
 
 .help-text{
   @include ma-font('semibold');
+  color: $ma-help-text;
   line-height: 1.4;
 }
 
-input.ma-success{
-  border: 1px solid $ma-success;
-}
-input.ma-failure{
-  border: 1px solid $ma-failure;
+input,input:focus,.v-select {
+  &.ma-success{
+    border: 1px solid $ma-success;
+  }
+  &.ma-failure{
+    border: 1px solid $ma-failure;
+  }
 }
 
 .input-group>:last-child{
