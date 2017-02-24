@@ -28,25 +28,58 @@ sub initPlugin {
   Foswiki::Func::registerTagHandler('FLATPANEL', \&_FLATPANEL);
   Foswiki::Func::registerTagHandler('FLATTABPANE', \&_FLATTABPANE);
   Foswiki::Func::registerTagHandler('FLATTAB', \&_FLATTAB);
+  Foswiki::Func::registerTagHandler('GETVIRTUALWEB', \&_GETVIRTUALWEB);
 
   return 1;
 }
 
 sub maintenanceHandler {
   Foswiki::Plugins::MaintenancePlugin::registerCheck("FlatSkinPlugin:check_enabled", {
-      name => "FlatSkinPlugin: Should be disabled",
-      description => "The FlatSkinPlugin is still in development and should be disabled",
+      name => "FlatSkinPlugin: Should be enabled",
+      description => "The FlatSkinPlugin should be enabled",
       check => sub {
           my $result = { result => 0 };
-          if ($Foswiki::cfg{Plugins}{FlatSkinPlugin}{Enabled} eq 1) {
+          unless ($Foswiki::cfg{Plugins}{FlatSkinPlugin}{Enabled} eq 1) {
               $result->{result} = 1;
               $result->{priority} = $Foswiki::Plugins::MaintenancePlugin::WARN;
-              $result->{solution} = "Please disable (don't uninstall) the FlatSkinPlugin.";
+              $result->{solution} = "Please enable the FlatSkinPlugin.";
           }
 
           return $result;
      }
   });
+}
+
+sub _GETVIRTUALWEB {
+  my($session, $params, $topic, $web, $meta) = @_;
+
+  my $formatYes = $params->{formatYes};
+  $formatYes = '$web' unless defined $formatYes;
+
+  my $formatNo = $params->{formatNo};
+  $formatNo = '' unless defined $formatNo;
+
+  my $resultWeb;
+  my $resultFormat;
+  if($session->{store}->can('getVirtualWeb')) {
+      $resultWeb = $session->{store}->getVirtualWeb($web, $topic);
+      if($web ne $resultWeb) {
+          if($resultWeb =~ m#^_#) {
+              $resultFormat = $params->{formatHidden};
+              $resultFormat = $formatYes unless defined $resultFormat;
+          } else {
+              $resultFormat = $formatYes;
+          }
+      } else {
+          $resultFormat = $formatNo;
+      }
+  } else {
+      $resultWeb = $web;
+      $resultFormat = $formatNo;
+  }
+
+  $resultFormat =~ s#\$web#$resultWeb#g;
+  return Foswiki::Func::decodeFormatTokens($resultFormat);
 }
 
 sub _FLATPANEL {
