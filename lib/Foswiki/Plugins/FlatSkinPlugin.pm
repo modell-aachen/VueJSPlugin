@@ -53,6 +53,10 @@ sub maintenanceHandler {
 sub _GETVIRTUALWEB {
   my($session, $params, $topic, $web, $meta) = @_;
 
+  if($params->{_DEFAULT}) {
+      ($web, $topic) = Foswiki::Func::normalizeWebTopicName($web, $params->{_DEFAULT});
+  }
+
   my $formatYes = $params->{formatYes};
   $formatYes = '$web' unless defined $formatYes;
 

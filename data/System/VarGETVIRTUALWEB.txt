@@ -7,6 +7,7 @@ This Macro is part of [[%SYSTEMWEB%.FlatSkinPlugin]].
 This macro is for virtual topic integration (if your store supports it).
 
 | *Parameters* | *description* |
+| =_DEFAULT= | =Web.Topic= to check, defaults to current. |
 | =formatYes= | Format string if this _is_ a virtual topic, defaults to =$web=. |
 | =formatNo= | Format string if this is _not_ a virtual topic, defaults to an empty string. |
 | =formatHidden= | Format string if this _is_ a virtual topic, but in a hidden web. Defaults to =formatYes=. |
