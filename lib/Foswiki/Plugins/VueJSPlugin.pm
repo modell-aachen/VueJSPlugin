@@ -16,6 +16,7 @@ our $VERSION = '0.00_001';
 our $RELEASE = '0.1';
 our $SHORTDESCRIPTION = 'Plugin to load VueJS dependencies.';
 our $service;
+our $NO_PREFS_IN_TOPIC = 1;
 
 sub initPlugin {
     my ($topic, $web) = @_;
