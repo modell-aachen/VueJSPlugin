@@ -4,5 +4,7 @@ lib/Foswiki/Plugins/VueJSPlugin.pm 0644
 lib/Foswiki/Plugins/VueJSPlugin/Config.spec 0644
 lib/Foswiki/Plugins/VueJSPlugin/DEPENDENCIES 0644
 pub/System/VueJSPlugin/vue.css 0644
-pub/System/VueJSPlugin/vue.js 0644
-pub/System/VueJSPlugin/vue.min.js 0644
+pub/System/VueJSPlugin/vue.v1.js 0644
+pub/System/VueJSPlugin/vue.v1.min.js 0644
+pub/System/VueJSPlugin/vue.v2.js 0644
+pub/System/VueJSPlugin/vue.v2.min.js 0644
