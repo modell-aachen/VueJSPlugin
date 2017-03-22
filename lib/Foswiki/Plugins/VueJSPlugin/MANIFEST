@@ -8,3 +8,5 @@ pub/System/VueJSPlugin/vue.v1.js 0644
 pub/System/VueJSPlugin/vue.v1.min.js 0644
 pub/System/VueJSPlugin/vue.v2.js 0644
 pub/System/VueJSPlugin/vue.v2.min.js 0644
+pub/System/VueJSPlugin/vuex.js 0644
+pub/System/VueJSPlugin/vuex.min.js 0644
