@@ -48,6 +48,7 @@ sub loadDependencies {
     if($params->{VERSION} eq "2"){
         $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/vuex$suffix.js'></script>";
     }
+    $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/init.js'></script>";
 
     Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts);
 
