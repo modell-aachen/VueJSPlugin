@@ -9,6 +9,7 @@ $input-border-focus: 0;
 $input-shadow: 0;
 $input-shadow-focus: 0;
 $input-font-family: $ma-font-regular;
+$input-font-size: rem-calc(13);
 $select-background: $ma-medium-grey;
 $select-radius: $ma-border-radius;
 $input-prefix-background: $ma-medium-grey;
@@ -20,14 +21,21 @@ $input-background-disabled: $ma-medium-grey;
 
 .help-text{
   @include ma-font('semibold');
+  color: $ma-help-text;
   line-height: 1.4;
 }
 
-input.ma-success{
-  border: 1px solid $ma-success;
+select {
+  font-size: 1em;
 }
-input.ma-failure{
-  border: 1px solid $ma-failure;
+
+input,input:focus,.v-select {
+  &.ma-success{
+    border: 1px solid $ma-success;
+  }
+  &.ma-failure{
+    border: 1px solid $ma-failure;
+  }
 }
 
 .input-group>:last-child{

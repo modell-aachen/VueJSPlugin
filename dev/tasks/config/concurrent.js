@@ -10,7 +10,8 @@ module.exports = function(grunt) {
       'copy:opensans'
     ],
     js: [
-      ['concat:flat', 'uglify:flat']
+      ['concat:flat', 'uglify:flat'],
+      ['concat:fndt', 'uglify:fndt']
     ]
   });
 
