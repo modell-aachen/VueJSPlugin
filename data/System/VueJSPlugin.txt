@@ -23,6 +23,12 @@ Vue.js itself is not a full-blown framework - it is focused on the view layer on
 ---++ How to use
 A Vue.js app usually needs some HTML code, some JS and also some CSS code to run. When you call the %<nop>VUE% macro with the app name (%<nop>VUE{"<<nop>APPNAME>"}%) the Plugin tries to load the JS and CSS files for your Application. It looks on the VueJS public folder in the System Web for a JS and CSS file with the app name. Example: Appname: TestAPP -> JS: %PUBURL%/%SYSTEMWEB%/VueJSPlugin/TestApp.js etc...
 
+---++ Loading Vue 2.x + Vuex
+By default the VUE macro loads Vue in version 1.x. To load Vue 2.x + Vuex just provide a VERSION parameter and set it to two (%<nop>VUE{VERSION="2"}%).
+
+---++ Vuex Store
+When loading Vue 2.x + Vuex a global root Vuex store is created which can be used by apps to register Vuex modules. The store is accessible via =VueJSPlugin.rootStore=.
+
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="ProjectContributor"}%
 %META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
