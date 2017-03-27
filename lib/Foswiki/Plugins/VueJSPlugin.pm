@@ -39,21 +39,32 @@ sub loadDependencies {
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
     my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 0;
     my $suffix = $dev ? '' : '.min';
+    my $version = $params->{VERSION} || "1";
+    $version = ".v$version";
 
-    my $app = $params->{_DEFAULT} || "App";
-    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', "<script type='text/javascript' src='$pluginURL/vue$suffix.js'></script>");
-    Foswiki::Func::addToZone( 'head', "VUEJS::STYLES", "<link rel='stylesheet' type='text/css' href='$pluginURL/vue$suffix.css' />");
+    my $app = $params->{_DEFAULT} || "";
+    my $vueScripts = "<script type='text/javascript' src='$pluginURL/vue$version$suffix.js'></script>";
+    # Load vuex for vue2
+    if($params->{VERSION} eq "2"){
+        $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/vuex$suffix.js'></script>";
+    }
+    $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/init.js'></script>";
 
-    my $scripts = <<LOAD;
+    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts);
+
+    my $scripts = "";
+    my $return = "";
+    if($app){
+        $scripts = <<LOAD;
 <script type='text/javascript' src='$pluginURL/$app$suffix.js'></script>
 <link rel='stylesheet' type='text/css' href='$pluginURL/$app$suffix.css' />
 LOAD
 
-    my $return;
-    my ($meta, $text) = Foswiki::Func::readTopic('System', $app .'VueTemplate');
-    $return .= _loadTemplate($text);
-    ($meta, $text) = Foswiki::Func::readTopic('System', 'VueJSTemplate');
-    $return .= _loadTemplate($text);
+        my ($meta, $text) = Foswiki::Func::readTopic('System', $app .'VueTemplate');
+        $return .= _loadTemplate($text);
+        ($meta, $text) = Foswiki::Func::readTopic('System', 'VueJSTemplate');
+        $return .= _loadTemplate($text);
+    }
 
     return $return . $scripts;
 }
