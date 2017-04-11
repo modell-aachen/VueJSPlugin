@@ -77,8 +77,14 @@ input[type]:disabled {
     line-height: 1.4;
 }
 
+//Switches
+.switch-input[type="checkbox"]:checked + .switch-paddle {
+  background: $ma-success;
+}
+
+
 //Checkboxes
-[type="checkbox"]{
+[type="checkbox"]:not(.switch-input) {
   display: none;
   &+label{
     @include ma-font('regular');
@@ -174,5 +180,4 @@ textarea{
     border: 1px solid transparent; // 1px transparent vs. none: do not jump when textarea gets failure/success state or becomes active
   }
   background-color: $ma-light-grey;
-  box-shadow: none;
-}
+  b
