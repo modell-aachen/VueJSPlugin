@@ -43,7 +43,8 @@ sub loadDependencies {
     $version = ".v$version";
 
     my $app = $params->{_DEFAULT} || "";
-    my $vueScripts = "<script type='text/javascript' src='$pluginURL/vue$version$suffix.js'></script>";
+    my $vueScripts = "<script type='text/javascript' src='$pluginURL/es6-promise.auto.min.js'></script>";
+    $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/vue$version$suffix.js'></script>";
     # Load vuex for vue2
     if($params->{VERSION} eq "2"){
         $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/vuex$suffix.js'></script>";
