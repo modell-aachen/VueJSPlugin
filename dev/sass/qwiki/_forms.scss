@@ -77,8 +77,14 @@ input[type]:disabled {
     line-height: 1.4;
 }
 
+//Switches
+.switch-input[type="checkbox"]:checked + .switch-paddle {
+  background: $ma-success;
+}
+
+
 //Checkboxes
-[type="checkbox"]{
+[type="checkbox"]:not(.switch-input) {
   display: none;
   &+label{
     @include ma-font('regular');
