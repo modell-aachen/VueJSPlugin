@@ -32,6 +32,7 @@ $buttongroup-spacing: 5px;
 
 @include ma-button-style(primary, $ma-primary);
 @include ma-button-style(warning, $ma-warning);
+@include ma-button-style(secondary, $secondary-color);
 @include ma-button-style(alert, $ma-failure);
 // .button {
 //   &.alert {
