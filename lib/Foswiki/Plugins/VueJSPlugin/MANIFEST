@@ -3,12 +3,8 @@ data/System/VarVUE.txt 0644
 lib/Foswiki/Plugins/VueJSPlugin.pm 0644
 lib/Foswiki/Plugins/VueJSPlugin/Config.spec 0644
 lib/Foswiki/Plugins/VueJSPlugin/DEPENDENCIES 0644
-pub/System/VueJSPlugin/vue.css 0644
 pub/System/VueJSPlugin/vue.v1.js 0644
 pub/System/VueJSPlugin/vue.v1.min.js 0644
-pub/System/VueJSPlugin/vue.v2.js 0644
-pub/System/VueJSPlugin/vue.v2.min.js 0644
-pub/System/VueJSPlugin/vuex.js 0644
-pub/System/VueJSPlugin/vuex.min.js 0644
-pub/System/VueJSPlugin/init.js 0644
-pub/System/VueJSPlugin/es6-promise.auto.min.js 0644
+pub/System/VueJSPlugin/VueJSPlugin.js 0644
+pub/System/VueJSPlugin/VueJSPlugin.min.js 0644
+pub/System/VueJSPlugin/VueJSPlugin.min.js.map 0644

@@ -26,8 +26,64 @@ A Vue.js app usually needs some HTML code, some JS and also some CSS code to run
 ---++ Loading Vue 2.x + Vuex
 By default the VUE macro loads Vue in version 1.x. To load Vue 2.x + Vuex just provide a VERSION parameter and set it to two (%<nop>VUE{VERSION="2"}%).
 
----++ Vuex Store
-When loading Vue 2.x + Vuex a global root Vuex store is created which can be used by apps to register Vuex modules. The store is accessible via =VueJSPlugin.rootStore=.
+---++ Vue extensions
+<pre>The following only applies when loading Vue 2.x.</pre>
+
+The VueJSPlugin does not just load Vue and Vuex. It also loads a plugin for Vue itself. This plugin extends the global Vue object and provides extra functionality for all Vue components.
+
+---+++ Additional components
+
+*vue-select*
+
+*vue-pagination*
+
+---+++ Additional instance properties
+Every Vue component instance has access to some additional properties/methods.
+
+*$foswiki*
+
+The global foswiki object.
+
+*$moment*
+
+A moment.js instance which can be used to manipulate dates and times.
+
+*$store*
+
+The global Vuex store which is the same for all components.
+
+*$lang*
+
+Returns the lang attribute set on the html tag.
+
+*$ajax*
+
+Equivalent to $.ajax
+
+---+++ Global helper functions
+Some additional helper functions are accessible via the global Vue object.
+
+*onDocumentReady(fn)*
+
+This is equivalent to $(fn).
+
+*registerStoreModule(name, store)*
+
+This registers a submodule in the global Vuex store.
+
+*instantiateEach(selector, componentOptions)*
+
+This instantiates a new component specified in componentOptions on all elements matched by selector.
+Use this only to bootstrap components which have been included via macros.
+
+*getConfigById(id)*
+
+This searches for a DOM element which has the css class named id, parses its content as JSON and returns the object.
+It should only be used to retrieve config data from macros. The standard procedure looks like this:
+
+   * The macro writes the config as stringified JSON into a script tag and sets a unique id as a css class.
+   * The macro passes the id to the vue component tag as a prop.
+   * The component gets its config by calling the getConfigById function with the provided id.
 
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="ProjectContributor"}%

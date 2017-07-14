@@ -1,0 +1,4 @@
+node_modules/
+pub/System/VueJSPlugin/VueJSPlugin.js
+pub/System/VueJSPlugin/VueJSPlugin.min.js
+pub/System/VueJSPlugin/VueJSPlugin.min.js.map

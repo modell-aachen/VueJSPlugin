@@ -40,18 +40,20 @@ sub loadDependencies {
     my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 0;
     my $suffix = $dev ? '' : '.min';
     my $version = $params->{VERSION} || "1";
-    $version = ".v$version";
 
     my $app = $params->{_DEFAULT} || "";
-    my $vueScripts = "<script type='text/javascript' src='$pluginURL/es6-promise.auto.min.js'></script>";
-    $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/vue$version$suffix.js'></script>";
-    # Load vuex for vue2
-    if($params->{VERSION} eq "2"){
-        $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/vuex$suffix.js'></script>";
-    }
-    $vueScripts = $vueScripts."<script type='text/javascript' src='$pluginURL/init.js'></script>";
+    my $vueScripts = "";
 
-    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts);
+    # Version 2 will become the new default. v1 is just there for compatibility.
+    if($version eq "2"){
+        $vueScripts = "<script type='text/javascript' src='$pluginURL/VueJSPlugin$suffix.js'></script>";
+    }
+    else {
+        $vueScripts = "<script type='text/javascript' src='$pluginURL/vue.v1$suffix.js'></script>"
+    }
+
+    Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
+    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT');
 
     my $scripts = "";
     my $return = "";
