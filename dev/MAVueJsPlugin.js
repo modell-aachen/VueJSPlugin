@@ -27,7 +27,8 @@ let MAVueJsPlugin = {
 		}
 
 		Vue.getConfigById = (id) => {
-			return JSON.parse($('.' + id).html());
+			var config = $('.' + id).html();
+			return JSON.parse(this.htmlDecode(config));
 		};
 
 		//Instance properties/methods
@@ -36,6 +37,11 @@ let MAVueJsPlugin = {
 		Vue.prototype.$moment = moment;
 		Vue.prototype.$lang = $("html").attr("lang");
 		Vue.prototype.$ajax = $.ajax;
+	},
+	htmlDecode(input){
+		var e = document.createElement('div');
+		e.innerHTML = input;
+		return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 	}
 }
 
