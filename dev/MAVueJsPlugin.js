@@ -1,13 +1,15 @@
 /* global $ foswiki moment */
 import VueSelect from './components/vue-select/index.js'
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue'
-
+import { VTooltip } from 'v-tooltip'
 
 let MAVueJsPlugin = {
 	install(Vue, options){
 		//Component registrations
 		Vue.component('vue-select', VueSelect);
 		Vue.component('vue-pagination', VuePagination);
+
+		Vue.directive('tooltip', VTooltip);
 
 		//Global functions
 		Vue.registerStoreModule = (name, module) => {

@@ -42,6 +42,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.7",
+    "v-tooltip": "^2.0.0-rc.1",
     "vue": "^2.2.0",
     "vue-hot-reload-api": "^2.0.11",
     "vue-html-loader": "^1.0.0",
