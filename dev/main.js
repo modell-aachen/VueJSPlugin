@@ -1,5 +1,4 @@
-import 'es6-object-assign/auto'; //Needed for IE
-import 'es6-promise/auto'; //Needed for IE
+import "babel-polyfill";
 
 import Vue from 'vue';
 import Vuex from 'vuex';
