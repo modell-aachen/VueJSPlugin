@@ -31,6 +31,9 @@ let MAVueJsPlugin = {
 			return JSON.parse(this.htmlDecode(config));
 		};
 
+		Vue.foswiki = foswiki;
+		Vue.moment = moment;
+
 		//Instance properties/methods
 		Vue.prototype.$store = options.store;
 		Vue.prototype.$foswiki = foswiki;
