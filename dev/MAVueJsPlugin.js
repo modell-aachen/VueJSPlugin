@@ -33,6 +33,15 @@ let MAVueJsPlugin = {
 			return JSON.parse(this.htmlDecode(config));
 		};
 
+		Vue.makeAbsoluteUrl = (url) => {
+			const absoluteBasePath = foswiki.getScriptUrl().replace(/bin\/$/,'');
+			if(!url){
+				url = "";
+			}
+			url = url.replace(/^\//,'');
+			return `${absoluteBasePath}${url}`;
+		};
+
 		Vue.foswiki = foswiki;
 		Vue.moment = moment;
 
