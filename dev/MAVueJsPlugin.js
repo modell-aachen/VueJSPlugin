@@ -53,9 +53,9 @@ let MAVueJsPlugin = {
 		Vue.prototype.$ajax = $.ajax;
 	},
 	htmlDecode(input){
-		var e = document.createElement('div');
-		e.innerHTML = input;
-		return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+		var e = $("<div></div>");
+		e.html(input);
+		return e.text();
 	}
 }
 
