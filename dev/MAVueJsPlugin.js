@@ -1,6 +1,7 @@
 /* global $ foswiki moment */
 import VueSelect from './components/vue-select/index.js'
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue'
+import Base64 from 'js-base64'
 import { VTooltip } from 'v-tooltip'
 
 let MAVueJsPlugin = {
@@ -29,8 +30,9 @@ let MAVueJsPlugin = {
 		}
 
 		Vue.getConfigById = (id) => {
-			var config = $('.' + id).html();
-			return JSON.parse(this.htmlDecode(config));
+			let base64Config = $('.' + id).html();
+                        let config = Base64.Base64.decode(base64Config);
+			return JSON.parse(config);
 		};
 
 		Vue.makeAbsoluteUrl = (url) => {
