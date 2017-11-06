@@ -25,6 +25,12 @@ sub initPlugin {
       return 0;
   }
 
+
+  Foswiki::Func::addToZone( 'head', 'FONTAWESOME',
+      '<link rel="stylesheet" type="text/css" media="all" href="%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome.min.css?version=%QUERYVERSION{"FontAwesomeContrib"}%" />');
+  Foswiki::Func::addToZone( 'head', 'FLATSKIN_WRAPPED',
+      '<link rel="stylesheet" type="text/css" media="all" href="%PUBURLPATH%/%SYSTEMWEB%/FlatSkin/css/flatskin_wrapped.min.css?version=%QUERYVERSION{"FlatSkinPlugin"}%" />');
+
   Foswiki::Func::registerTagHandler('FLATPANEL', \&_FLATPANEL);
   Foswiki::Func::registerTagHandler('FLATTABPANE', \&_FLATTABPANE);
   Foswiki::Func::registerTagHandler('FLATTAB', \&_FLATTAB);
