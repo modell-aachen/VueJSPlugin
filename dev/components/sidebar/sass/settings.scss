@@ -1,0 +1,27 @@
+$dark-gray: #84878a;
+$gray: #e5e8eb;
+$light-gray: #f7f6f3;
+$red: #cf3004;
+$white: #fff;
+$black: #000;
+
+$primary-color: #52cae4;
+$secondary-color: $dark-gray;
+$success-color: #84bb2e;
+$alert-color: #d83314;
+$warning-color: #e2af19;
+$dropdown-border-color: #e2e2e2;
+
+$sidebar-z-index: 1000;
+$sidebar-width: 500px;
+
+$sidebar-header-height: 60px;
+$sidebar-content-width: $sidebar-width - 50px;
+$sidebar-content-padding-vertical: 16px;
+$sidebar-content-padding-horizontal: 32px;
+$sidebar-content-padding: $sidebar-content-padding-vertical $sidebar-content-padding-horizontal;
+$sidebar-highlight-border-color: $red;
+$sidebar-highlight-border-width: 2px;
+$sidebar-toast-opacity: 0.8;
+$sidebar-modal-opacity: 0.9;
+$sidebar-modal-icon-color: #efecec;

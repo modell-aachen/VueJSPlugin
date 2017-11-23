@@ -1,6 +1,8 @@
 /* global $ foswiki moment */
 import VueSelect from './components/vue-select/index.js'
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue'
+import Sidebar from './components/sidebar/sidebar.vue'
+import SidebarHeaderLayout from './components/sidebar/sidebar-header-layout.vue'
 import Base64 from 'js-base64'
 import { VTooltip } from 'v-tooltip'
 
@@ -9,6 +11,8 @@ let MAVueJsPlugin = {
 		//Component registrations
 		Vue.component('vue-select', VueSelect);
 		Vue.component('vue-pagination', VuePagination);
+		Vue.component('sidebar', Sidebar);
+		Vue.component('sidebar-header-layout', SidebarHeaderLayout);
 
 		Vue.directive('tooltip', VTooltip);
 
