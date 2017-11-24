@@ -1,27 +1,34 @@
 <template>
-<div class="sidebar-modal">
-  <div class="tab-controls">
-    <button class="sidebar-tab-button close" @click="hideModal">
-      <i class="fa fa-2x fa-times"></i>
-  </button>
+<div>
+  <h3>{{this.config.header}}</h3>
+  <div>
+    <p v-for="descriptionText in description">{{descriptionText}}</p>
   </div>
-  <div class="modal-content">
-    <component :is="type" :config="contentConfig" @hide-modal="hideModal"></component>
+  <div class="small button-group float-right">
+    <button class="default button" @click="onButtonClick(config.abortButton)">{{config.abortButton.name}}</button>
+    <button class="primary button" @click="onButtonClick(config.acceptButton)">{{config.acceptButton.name}}</button>
+  </div>
+  <div class="background-icon">
+    <i class="fa" :class="config.backgroundIcon"></i>
   </div>
 </div>
 </template>
 
 <script>
-import SidebarConfirmModal from './sidebar-confirm-modal';
 export default {
-  name: 'sidebar-modal',
-  props: ['type', 'contentConfig'],
-  components: {
-    SidebarConfirmModal
+  props: ['config'],
+  computed: {
+    description() {
+      if(typeof this.config.description === "string"){
+        return [this.config.description];
+      }
+      return this.config.description;
+    }
   },
   methods: {
-    hideModal() {
-      this.$emit("hide-modal");
+    onButtonClick(buttonConfig) {
+      buttonConfig.onClick();
+      this.$emit('hide-modal');
     }
   }
 }
@@ -75,6 +82,7 @@ export default {
 
   .modal-content {
     position: absolute;
+    height: 100%;
     top: $sidebar-header-height;
     left: calc(#{$sidebar-width} - #{$sidebar-content-width});
     z-index: 3 + $sidebar-z-index;
@@ -107,6 +115,15 @@ export default {
     > :first-child {
       margin-left: .5rem;
     }
+  }
+  .background-icon {
+    position: absolute;
+    font-size: 20em;
+    color: $secondary-color;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: -1;
   }
 }
 </style>

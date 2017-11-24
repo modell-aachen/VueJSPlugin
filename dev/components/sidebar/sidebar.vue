@@ -20,12 +20,7 @@
             </div>
 
             <transition name="fade">
-            <!-- <sidebar-toast v-if="toast" :config="toast" /> -->
-            </transition>
-
-            <transition name="fade">
-            <sidebar-modal v-if="modalConfig"
-                           :config="modalConfig" />
+            <sidebar-modal v-if="isModalActive" :type="modalOptions.type" :contentConfig="modalOptions.contentConfig" @hide-modal="hideModal"/>
             </transition>
         </div>
     </div>
@@ -34,69 +29,11 @@
 <script>
 import SidebarTabButton from './sidebar-tab-button';
 import SidebarModal from './sidebar-modal';
-// var initialize = function(config) {
-//   config = Object.assign({}, config);
-//   if (!Object.keys(config).length) {
-//     throw 'Invalid configuration object!';
-//   }
-
-//   var tabs = [];
-//   if (config.tabs && Array.isArray(config.tabs)) {
-//     config.tabs.forEach(function(tab) {
-//       if (!tab.icon) {
-//         throw "Invalid tab configuration. Parameter 'icon' is mandatory!";
-//       }
-
-//       tabs.push({icon: tab.icon, tooltip: tab.tooltip, callback: tab.callback});
-//     });
-//   }
-
-//   initializeMarginals.call(this, config);
-//   this.tabs = tabs;
-//   this.isInitalized = true;
-// };
-
-var hideSidebar = function() {
-  this.isActive = false;
-  // this.isActive = this.isHighlighted = false;
-  // this.content = this.contentComponent = this.toast = undefined;
-
-  // // reset 'this.header' and 'this.footer' if they were set by 'showContent'
-  // if (!this.isInitalized) {
-  //   this.footer = undefined;
-  //   this.header = undefined;
-  // }
-}
-
-
-
-var showSidebar = function() {
-  this.isActive = true;
-  // if (!this.isInitalized) {
-  //   if (window.console && console.debug) {
-  //     console.debug("You have to call 'sidebar.initialize' first!");
-  //     return;
-  //   }
-  // }
-
-  // var content = extractContent.call(this, config);
-  // if (content === false) {
-  //   throw "Invalid content element. Needs to be one of: jQuery element, DOM element or plain (HTML) string";
-  // }
-
-  // this.isHighlighted = !!config.highlight;
-  // this.content = content;
-  // this.contentComponent = config.contentComponent;
-
-  // this.isActive = true;
-  // resetActiveTab.call(this);
-};
 
 export default {
-  name: 'qwiki-sidebar',
   components: {
     SidebarTabButton,
-    SidebarModal
+    SidebarModal,
   },
   props: {
     tabs: {
@@ -106,25 +43,39 @@ export default {
       }
     }
   },
+  computed: {
+    isModalActive: {
+      get(){
+        return !!this.modalOptions;
+      }
+    }
+  },
   methods: {
-    show: showSidebar,
-    hide: hideSidebar,
+    show(){
+      this.isActive = true;
+    },
+    hide(){
+      this.isActive = false;
+    },
     selectTab(index){
       this.selectedTab = index;
     },
-    showModal(config) {
-      this.modalConfig = config;
+    showModal(modalOptions) {
+      this.modalOptions = modalOptions;
+      if(!this.modalOptions.type){
+        this.modalOptions.type = "sidebar-confirm-modal";
+      }
+    },
+    hideModal() {
+      this.modalOptions = null;
     }
   },
   data: function() {
     return {
       isActive: false,
       selectedTab: 0,
-      modalConfig: null,
-
+      modalOptions: null,
     };
-  },
-  created: function() {
   }
 }
 </script>
