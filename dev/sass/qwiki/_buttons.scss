@@ -25,6 +25,7 @@ $buttongroup-spacing: 5px;
       &:hover, &:focus {
         color: $color;
         background-color: scale-color($background-color, $lightness: $lightness);
+        text-decoration: none;
       }
     }
   }
