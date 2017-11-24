@@ -18,14 +18,19 @@
   padding: 0;
 }
 
-.wrapper {
+.wrapper,
+.widgetBoxWrapper {
   padding: rem-calc(7);
-  background-color: $ma-bg-beige;
   border-radius: $ma-border-radius;
   & > div {
       width: 100%;
-      background-color: $ma-white;
       border-radius: $ma-border-radius;
       padding: rem-calc(7);
+  }
+}
+.wrapper {
+  background-color: $ma-bg-beige;
+  & > div {
+      background-color: $ma-white;
   }
 }
