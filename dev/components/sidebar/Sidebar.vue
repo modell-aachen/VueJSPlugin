@@ -7,14 +7,14 @@
                 <tab-button icon="fa-times" type="close" @click="hide" />
                 <div class="controls">
                     <template v-for="(tab,index) in tabs">
-                        <tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" :isActive="tabs[selectedTab] === tab" @click="selectTab(index)"/>
+                        <tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" :isActive="selectedTab === index" @click="selectTab(index)"/>
                     </template>
                 </div>
             </div>
 
             <div class="sidebar-tab-contents">
                 <slot v-if="tabs.length == 0"></slot>
-                <slot v-if="tabs.length > 0" :name="selectedTab">
+                <slot v-if="tabs.length > 0" :name="'tab' + selectedTab">
                   {{tabs[selectedTab].tooltip}}
                 </slot>
             </div>

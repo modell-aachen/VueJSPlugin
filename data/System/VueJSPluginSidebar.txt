@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="" date="1443077395" format="1.1" version="1"}%
+
+%VUE{VERSION="2"}%
+
+%ADDTOZONE{"script" requires="VUEJSPLUGIN" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/sidebarDocs.js'></script>"}%
+
+The VueJSPlugin comes with a versatile sidebar component.
+
+---+ Examples
+The following examples provide an overview of its functionality. The corresponding code examples can be found in [[%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/sidebarDocs.js][sidebarDocs.js]]
+
+
+<div class="flatskin-wrapped">
+	<div id="sidebarBareExample"></div>
+
+	<div id="sidebarLayoutExample"></div>
+
+	<div id="sidebarTabExample"></div>
+
+	<div id="sidebarTab2Example"></div>
+
+	<div id="sidebarModalExample"></div>
+</div>
