@@ -77,7 +77,7 @@ export default {
       modalOptions: null,
     };
   }
-}
+};
 </script>
 
 <style lang="scss">

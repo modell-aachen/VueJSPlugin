@@ -5,7 +5,7 @@
 </template>
 
 <script>
-var globalTabs = [];
+let globalTabs = [];
 export default {
   name: 'sidebar-tab-button',
   props: ['icon', 'tooltip', 'type'],
@@ -13,7 +13,7 @@ export default {
     return {
       active: false,
       tabs: globalTabs
-    }
+    };
   },
   computed: {
     cls: function() {
@@ -42,7 +42,7 @@ export default {
   created() {
     this.tabs.push(this);
   }
-}
+};
 </script>
 
 <style lang="scss">

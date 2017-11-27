@@ -12,48 +12,48 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            icon: {
-                default: 'magic',
-                type: String,
-            },
-            text: {
-                type: String,
-            },
-            heading: {
-                type: String,
-                required: true,
-            },
-            buttonHref: {
-                type: String,
-            },
-            buttonCallback: {
-                type: Function,
-            },
-            buttonText: {
-                type: String,
-            }
-        },
-
-        data: function() {
-            return {
-                iconClass: "fa-" + this.icon,
-                href: this.buttonHref || '',
-            };
-        },
-
-        methods: {
-            buttonClick: function(event) {
-                if(this.buttonCallback) {
-                    let result = this.buttonCallback(event);
-                    if(!(this.buttonHref && result)) {
-                        event.preventDefault();
-                    }
-                }
-            }
-        }
+export default {
+  props: {
+    icon: {
+      default: 'magic',
+      type: String,
+    },
+    text: {
+      type: String,
+    },
+    heading: {
+      type: String,
+      required: true,
+    },
+    buttonHref: {
+      type: String,
+    },
+    buttonCallback: {
+      type: Function,
+    },
+    buttonText: {
+      type: String,
     }
+  },
+
+  data: function() {
+    return {
+      iconClass: "fa-" + this.icon,
+      href: this.buttonHref || '',
+    };
+  },
+
+  methods: {
+    buttonClick: function(event) {
+      if(this.buttonCallback) {
+        let result = this.buttonCallback(event);
+        if(!(this.buttonHref && result)) {
+          event.preventDefault();
+        }
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss">

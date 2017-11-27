@@ -24,7 +24,7 @@ export default {
       this.$emit("hide-modal");
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
