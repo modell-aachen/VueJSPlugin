@@ -1,5 +1,5 @@
 <template>
-<button class="sidebar-tab-button" :class="cls" :title="tooltip" @click="click">
+  <button class="sidebar-tab-button" :class="{close: isCloseButton, active: isActiveTab}" :title="tooltip" @click="click">
   <i class="fa fa-2x" :class="icon"></i>
 </button>
 </template>
@@ -16,16 +16,16 @@ export default {
     };
   },
   computed: {
-    cls: function() {
-      return {
-        close: this.type === 'close',
-        active: this.active && this.type !== 'close'
-      };
+    isCloseButton: function() {
+      return this.type === 'close';
+    },
+    isActiveTab: function() {
+      return this.active && !this.isCloseButton;
     }
   },
   methods: {
     click: function() {
-      if (this.type !== 'close') {
+      if (!this.isCloseButton) {
         this.tabs.forEach((tab) => tab.unset());
         this.set();
       }

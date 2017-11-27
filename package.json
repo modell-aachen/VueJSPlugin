@@ -15,6 +15,7 @@
   "author": "Modell Aachen GmbH",
   "license": "GPL-3.0",
   "devDependencies": {
+    "FrontendUnitTestLibrary": "git://github.com/modell-aachen/FrontendUnitTestLibrary.git",
     "babel-core": "^6.3.17",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^7.1.0",
