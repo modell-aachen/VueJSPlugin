@@ -68,7 +68,7 @@ export default {
     }
 
     &.close {
-      border-bottom: 2px solid $light-gray;
+      border-bottom: $sidebar-header-bottom-border solid $light-gray;
       height: $sidebar-header-height;
     }
   }

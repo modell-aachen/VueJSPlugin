@@ -1,18 +1,18 @@
 <template>
     <div>
-        <div v-show="isActive" class="sidebar_overlay" @click="hide" />
+        <div v-show="isActive" class="sidebar-overlay" @click="hide" />
         <div class="flatskin-wrapped sidebar-container" :class="{active: isActive}" v-on:click.stop>
 
-            <div class="tab-controls">
-                <sidebar-tab-button icon="fa-times" type="close" @click="hide" />
+            <div class="sidebar-tab-controls">
+                <tab-button icon="fa-times" type="close" @click="hide" />
                 <div class="controls">
                     <template v-for="(tab,index) in tabs">
-                        <sidebar-tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" @click="selectTab(index)"/>
+                        <tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" @click="selectTab(index)"/>
                     </template>
                 </div>
             </div>
 
-            <div class="tab-contents">
+            <div class="sidebar-tab-contents">
                 <slot v-if="tabs.length == 0"></slot>
                 <slot v-if="tabs.length > 0" :name="selectedTab">
                   {{tabs[selectedTab].tooltip}}
@@ -20,20 +20,20 @@
             </div>
 
             <transition name="fade">
-            <sidebar-modal v-if="isModalActive" :type="modalOptions.type" :contentConfig="modalOptions.contentConfig" @hide-modal="hideModal"/>
+            <modal v-if="isModalActive" :type="modalOptions.type" :contentConfig="modalOptions.contentConfig" @hide-modal="hideModal"/>
             </transition>
         </div>
     </div>
 </template>
 
 <script>
-import SidebarTabButton from './sidebar-tab-button';
-import SidebarModal from './sidebar-modal';
+import TabButton from './TabButton';
+import Modal from './Modal';
 
 export default {
   components: {
-    SidebarTabButton,
-    SidebarModal,
+    TabButton,
+    Modal,
   },
   props: {
     tabs: {
@@ -63,7 +63,7 @@ export default {
     showModal(modalOptions) {
       this.modalOptions = modalOptions;
       if(!this.modalOptions.type){
-        this.modalOptions.type = "sidebar-confirm-modal";
+        this.modalOptions.type = "confirm-modal";
       }
     },
     hideModal() {
@@ -91,7 +91,7 @@ export default {
 .fade-leave-to {
   opacity: 0
 }
-.sidebar_overlay {
+.sidebar-overlay {
     top: 0px;
     left: 0px;
     height: 100%;
@@ -120,7 +120,7 @@ export default {
   }
 }
 
-.tab-controls {
+.sidebar-tab-controls {
   position: absolute;
   top: 0;
   left: 0;
@@ -135,43 +135,12 @@ export default {
   }
 }
 
-.tab-contents {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: calc(#{$sidebar-width} - #{$sidebar-content-width});
-  background-color: $white;
-  width: $sidebar-content-width;
-
-  > .content {
-    padding: $sidebar-content-padding;
-    height: calc(100% - 60px);
-    overflow-y: auto;
-    white-space: -moz-pre-wrap !important;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    white-space: pre-wrap;
-    white-space: -webkit-pre-wrap;
-    white-space: normal;
-
-    .section-title {
-      display: block;
-      margin: $sidebar-content-padding-horizontal #{-$sidebar-content-padding-horizontal} $sidebar-content-padding-vertical;
-      padding: 0 $sidebar-content-padding-horizontal;
-      border-bottom: 2px solid $light-gray;
-
-      color: $primary-color;
-      font-size: 1.25rem;
-
-      .sub {
-        color: $black;
-        font-size: .75rem;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
+.sidebar-tab-contents {
+  @include sidebar-content;
+  hr {
+    margin: 12px -#{$sidebar-content-padding-horizontal};
+    height: 2px;
+    background-color: $gray;
   }
 }
 </style>
