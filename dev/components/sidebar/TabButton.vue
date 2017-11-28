@@ -1,46 +1,22 @@
 <template>
-  <button class="sidebar-tab-button" :class="{close: isCloseButton, active: isActiveTab}" :title="tooltip" @click="click">
+  <button class="sidebar-tab-button" :class="{close: isCloseButton, active: isActive}" :title="tooltip" @click="click">
   <i class="fa fa-2x" :class="icon"></i>
 </button>
 </template>
 
 <script>
-let globalTabs = [];
 export default {
   name: 'sidebar-tab-button',
-  props: ['icon', 'tooltip', 'type'],
-  data: function() {
-    return {
-      active: false,
-      tabs: globalTabs
-    };
-  },
+  props: ['icon', 'tooltip', 'type', 'isActive'],
   computed: {
     isCloseButton: function() {
       return this.type === 'close';
-    },
-    isActiveTab: function() {
-      return this.active && !this.isCloseButton;
     }
   },
   methods: {
     click: function() {
-      if (!this.isCloseButton) {
-        this.tabs.forEach((tab) => tab.unset());
-        this.set();
-      }
-
       this.$emit('click');
-    },
-    set: function() {
-      this.active = true;
-    },
-    unset: function() {
-      this.active = false;
     }
-  },
-  created() {
-    this.tabs.push(this);
   }
 };
 </script>

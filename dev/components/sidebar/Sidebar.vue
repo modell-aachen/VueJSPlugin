@@ -7,7 +7,7 @@
                 <tab-button icon="fa-times" type="close" @click="hide" />
                 <div class="controls">
                     <template v-for="(tab,index) in tabs">
-                        <tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" @click="selectTab(index)"/>
+                        <tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" :isActive="tabs[selectedTab] === tab" @click="selectTab(index)"/>
                     </template>
                 </div>
             </div>
