@@ -1,8 +1,8 @@
 <template>
     <div class="vue-wizard">
-        <div class="icon"><i class="ma-primaryColor fa fa-4x" v-bind:class="iconClass"></i></div>
+        <div class="icon"><i class="ma-primary-color fa fa-4x" v-bind:class="iconClass"></i></div>
         <div>
-            <h2 class="ma-primaryColor">{{heading}}</h2>
+            <h2 class="ma-primary-color">{{heading}}</h2>
             <span v-if="text">{{text}}</span>
             <br v-if="text && (buttonHref || buttonCallback) && buttonText" />
             <a class="button primary small" v-on:click="buttonClick" :href="buttonHref" v-if="(buttonCallback || buttonHref) && buttonText">{{buttonText}}</a>
