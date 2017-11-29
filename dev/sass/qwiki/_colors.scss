@@ -1,10 +1,10 @@
-.ma-primaryColor {
+.ma-primary-color {
     color: $ma-primary;
     &.hoverable:hover {
         color: $ma-primary-hover;
     }
 }
-.ma-successColor {
+.ma-success-color {
     color: $ma-success;
     &.hoverable:hover {
         color: $ma-success-hover;
@@ -13,7 +13,7 @@
         color: $ma-success-light;
     }
 }
-.ma-failureColor {
+.ma-failure-color {
     color: $ma-failure;
     &.hoverable:hover {
         color: $ma-failure-hover;
@@ -22,7 +22,7 @@
         color: $ma-failure-light;
     }
 }
-.ma-warningColor {
+.ma-warning-color {
     color: $ma-warning;
     &.hoverable:hover {
         color: $ma-warning-hover;
@@ -31,13 +31,13 @@
         color: $ma-warning-light;
     }
 }
-.ma-browColor {
+.ma-brow-color {
     color: $ma-brown;
 }
-.ma-sandColor {
+.ma-sand-color {
     color: $ma-sand;
 }
-.ma-greyColor {
+.ma-grey-color {
     color: $ma-grey;
     &.light {
         color: $ma-light-grey;
@@ -52,21 +52,24 @@
         color: $ma-medium-grey;
     }
 }
-.ma-blackColor {
+.ma-black-color {
     color: $ma-black;
 }
-.ma-whiteColor {
+.ma-white-color {
     color: $ma-white;
 }
-.ma-bgBeigeColor {
+.ma-bg-white-color {
+    background-color: $ma-white;
+}
+.ma-bg-beige-color {
     background-color: $ma-bg-beige;
 }
-.ma-bgLightColor {
+.ma-bg-light-color {
     background-color: $ma-bg-light;
 }
-.ma-bgLightBorderColor {
+.ma-bg-light-border-color {
     border-color: $ma-light-border;
 }
-.ma-helpColor {
+.ma-help-color {
     color: $ma-help-text;
 }
