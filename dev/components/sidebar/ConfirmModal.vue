@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h3 class="ma-primaryColor">{{this.config.header}}</h3>
+  <h3 class="ma-primary-color">{{this.config.header}}</h3>
   <div>
     <p v-for="descriptionText in description">{{descriptionText}}</p>
   </div>
