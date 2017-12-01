@@ -1,7 +1,7 @@
 module.exports = {
   watch: {
     typeAheadPointer() {
-      this.maybeAdjustScroll()
+      this.maybeAdjustScroll();
     }
   },
 
@@ -13,13 +13,13 @@ module.exports = {
      * @returns {*}
      */
     maybeAdjustScroll() {
-      let pixelsToPointerTop = this.pixelsToPointerTop()
-      let pixelsToPointerBottom = this.pixelsToPointerBottom()
+      let pixelsToPointerTop = this.pixelsToPointerTop();
+      let pixelsToPointerBottom = this.pixelsToPointerBottom();
 
       if ( pixelsToPointerTop <= this.viewport().top) {
-        return this.scrollTo( pixelsToPointerTop )
+        return this.scrollTo( pixelsToPointerTop );
       } else if (pixelsToPointerBottom >= this.viewport().bottom) {
-        return this.scrollTo( this.viewport().top + this.pointerHeight() )
+        return this.scrollTo( this.viewport().top + this.pointerHeight() );
       }
     },
 
@@ -29,11 +29,11 @@ module.exports = {
      * @returns {number}
      */
     pixelsToPointerTop() {
-      let pixelsToPointerTop = 0
+      let pixelsToPointerTop = 0;
       for (let i = 0; i < this.typeAheadPointer; i++) {
-        pixelsToPointerTop += this.$refs.dropdownMenu.children[i].offsetHeight
+        pixelsToPointerTop += this.$refs.dropdownMenu.children[i].offsetHeight;
       }
-      return pixelsToPointerTop
+      return pixelsToPointerTop;
     },
 
     /**
@@ -42,7 +42,7 @@ module.exports = {
      * @returns {*}
      */
     pixelsToPointerBottom() {
-      return this.pixelsToPointerTop() + this.pointerHeight()
+      return this.pixelsToPointerTop() + this.pointerHeight();
     },
 
     /**
@@ -50,8 +50,8 @@ module.exports = {
      * @returns {number}
      */
     pointerHeight() {
-      let element = this.$refs.dropdownMenu.children[this.typeAheadPointer]
-      return element ? element.offsetHeight : 0
+      let element = this.$refs.dropdownMenu.children[this.typeAheadPointer];
+      return element ? element.offsetHeight : 0;
     },
 
     /**
@@ -62,7 +62,7 @@ module.exports = {
       return {
         top: this.$refs.dropdownMenu.scrollTop,
         bottom: this.$refs.dropdownMenu.offsetHeight + this.$refs.dropdownMenu.scrollTop
-      }
+      };
     },
 
     /**
@@ -71,7 +71,8 @@ module.exports = {
      * @returns {*}
      */
     scrollTo(position) {
-      return this.$refs.dropdownMenu.scrollTop = position
+      this.$refs.dropdownMenu.scrollTop = position;
+      return this.$refs.dropdownMenu.scrollTop;
     },
   }
-}
+};

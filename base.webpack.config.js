@@ -50,6 +50,11 @@ module.exports = {
           "style-loader",
           "css-loader"
         ]
+      },
+      {
+        test: /\.s(a|c)ss$/,
+        include: includeDirs,
+        use: ['style-loader','css-loader', 'sass-loader']
       }
     ]
   }

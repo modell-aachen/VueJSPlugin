@@ -37,6 +37,9 @@ The VueJSPlugin does not just load Vue and Vuex. It also loads a plugin for Vue 
 
 *vue-pagination*
 
+*sidebar* %BR%
+See the [[System.VueJSPluginSidebar][sidebar documentation]] for further details.
+
 ---+++ Additional instance properties
 Every Vue component instance has access to some additional properties/methods.
 
