@@ -6,9 +6,16 @@ import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
 import VueWizard from './components/vue-wizard/VueWizard.vue';
 import Base64 from 'js-base64';
 import { VTooltip } from 'v-tooltip';
+import i18next from 'i18next';
+import VueParams from 'vue-params';
+import VueI18Next from 'vue-i18next';
 
 let MAVueJsPlugin = {
   install(Vue, options){
+    i18next.init();
+    Vue.use(VueParams);
+    Vue.use(VueI18Next);
+
     //Component registrations
     Vue.component('vue-select', VueSelect);
     Vue.component('vue-pagination', VuePagination);
@@ -49,6 +56,10 @@ let MAVueJsPlugin = {
       return `${absoluteBasePath}${url}`;
     };
 
+    Vue.addTranslation = (language, namespace, translations) => {
+      i18next.addResourceBundle(language, namespace, translations);
+    };
+
     Vue.foswiki = foswiki;
     Vue.moment = moment;
 
@@ -56,7 +67,10 @@ let MAVueJsPlugin = {
     Vue.prototype.$store = options.store;
     Vue.prototype.$foswiki = foswiki;
     Vue.prototype.$moment = moment;
-    Vue.prototype.$lang = $("html").attr("lang");
+
+    const language = $("html").attr("lang");
+    Vue.params.i18nextLanguage = language;
+    Vue.prototype.$lang = language;
     Vue.prototype.$ajax = $.ajax;
   },
   htmlDecode(input){

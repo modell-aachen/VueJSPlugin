@@ -26,6 +26,8 @@ module.exports = {
   },
   devtool: "source-map",
   module: {
+    //See https://github.com/rse/vue-i18next/issues/2 why this is needed.
+    noParse: [/vue-params|vue-i18next/],
     rules: [
       {
         test: /\.vue$/,
