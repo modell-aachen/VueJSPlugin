@@ -1,5 +1,5 @@
 <template>
-  <button class="sidebar-tab-button" :class="{close: isCloseButton, active: isActive}" :title="tooltip" @click="click">
+  <button class="sidebar-tab-button" :class="{close: isCloseButton, active: isActive}" :title="tooltip" @click.self.prevent="click">
   <i class="fa fa-2x" :class="icon"></i>
 </button>
 </template>
