@@ -28,8 +28,15 @@ By default the VUE macro loads Vue in version 1.x. To load Vue 2.x + Vuex just p
 
 ---++ Vue extensions
 <pre>The following only applies when loading Vue 2.x.</pre>
+The VueJSPlugin extends the global Vue instance with some additional plugins and functions.
 
-The VueJSPlugin does not just load Vue and Vuex. It also loads a plugin for Vue itself. This plugin extends the global Vue object and provides extra functionality for all Vue components.
+---+++ Validations
+The VueJS Plugin is bundled with the Vee-Validate Plugin for Vue which can be used to define input validations.
+Search for the official Vee-Validate documentation for further information on how to use it.
+
+*Important*: The Plugin has been reconfigured to change the errors property name from 'errors' to 'validationErrors'
+and the fields property name from 'fields' to 'validationFields'.
+
 
 ---+++ Additional components
 
