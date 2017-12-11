@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div v-show="isActive" class="sidebar-overlay" @click="hide" />
+        <div v-show="isActive" class="sidebar-overlay" @click="hide"></div>
         <div class="flatskin-wrapped sidebar-container" :class="{active: isActive}" v-on:click.stop>
 
             <div class="sidebar-tab-controls">
-                <tab-button icon="fa-times" type="close" @click="hide" />
+                <tab-button icon="fa-times" type="close" @click="hide" ></tab-button>
                 <div class="controls">
                     <template v-for="(tab,index) in tabs">
-                        <tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" :isActive="selectedTab === index" @click="selectTab(index)"/>
+                        <tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" :isActive="selectedTab === index" @click="selectTab(index)"></tab-button>
                     </template>
                 </div>
             </div>
@@ -20,7 +20,7 @@
             </div>
 
             <transition name="fade">
-            <modal v-if="isModalActive" :type="modalOptions.type" :contentConfig="modalOptions.contentConfig" @hide-modal="hideModal"/>
+            <modal v-if="isModalActive" :type="modalOptions.type" :contentConfig="modalOptions.contentConfig" @hide-modal="hideModal"></modal>
             </transition>
         </div>
     </div>
