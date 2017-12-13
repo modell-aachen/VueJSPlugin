@@ -31,7 +31,7 @@
         color: $ma-warning-light;
     }
 }
-.ma-brow-color {
+.ma-brown-color {
     color: $ma-brown;
 }
 .ma-sand-color {
@@ -63,6 +63,15 @@
 }
 .ma-bg-beige-color {
     background-color: $ma-bg-beige;
+    &.dark {
+        background-color: $ma-bg-beige-dark;
+    }
+}
+.ma-beige-border-color {
+    border-color: $ma-bg-beige;
+    &.dark {
+        border-color: $ma-bg-beige-dark;
+    }
 }
 .ma-bg-light-color {
     background-color: $ma-bg-light;
