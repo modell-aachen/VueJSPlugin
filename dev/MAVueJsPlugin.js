@@ -1,5 +1,6 @@
 /* global $ foswiki moment */
 import VueSelect from './components/vue-select/index.js';
+import VueSplitbutton from './components/vue-splitbutton/Splitbutton.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
@@ -18,6 +19,7 @@ let MAVueJsPlugin = {
 
     //Component registrations
     Vue.component('vue-select', VueSelect);
+    Vue.component('vue-splitbutton', VueSplitbutton);
     Vue.component('vue-pagination', VuePagination);
     Vue.component('sidebar', Sidebar);
     Vue.component('sidebar-standard-layout', SidebarStandardLayout);
