@@ -10,12 +10,18 @@ import { VTooltip } from 'v-tooltip';
 import i18next from 'i18next';
 import VueParams from 'vue-params';
 import VueI18Next from 'vue-i18next';
+import VeeValidate from 'vee-validate';
 
 let MAVueJsPlugin = {
   install(Vue, options){
     i18next.init();
     Vue.use(VueParams);
     Vue.use(VueI18Next);
+    const veeValidateConfig = {
+      errorBagName: 'validationErrors',
+      fieldsBagName: 'validationFields'
+    };
+    Vue.use(VeeValidate, veeValidateConfig);
 
     //Component registrations
     Vue.component('vue-select', VueSelect);
