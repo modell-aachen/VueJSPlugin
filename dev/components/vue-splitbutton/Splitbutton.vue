@@ -9,7 +9,7 @@
                 <i class="fa fa-chevron-right" v-else></i>
             </span>
         </span><br>
-        <div class="animation-clipper">
+        <div class="animation-clipper ma-button-clear-margin-bottom">
             <transition name="vue-splitbutton-slide">
             <div v-show="splitOpen" class="f-dropdown">
                 <ul>
@@ -78,10 +78,6 @@ $maxWidth: 200px;
 .split-wrapper {
     position: relative;
     display: inline-block;
-
-    .button {
-        margin-bottom: 0px;
-    }
 
     .animation-clipper {
         overflow: hidden;
