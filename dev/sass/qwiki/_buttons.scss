@@ -4,6 +4,7 @@ $button-color: $ma-brown;
 $lightness: 15%;
 $button-background-hover: scale-color($button-background, $lightness: $lightness);
 $buttongroup-spacing: 5px;
+$button-margin-bottom: 1rem;
 
 @include foundation-button;
 @include foundation-button-group;
@@ -28,7 +29,12 @@ $buttongroup-spacing: 5px;
         text-decoration: none;
       }
     }
+    margin-bottom: $button-margin-bottom;
   }
+}
+
+.ma-button-clear-margin-bottom {
+    margin-top: -$button-margin-bottom;
 }
 
 @include ma-button-style(primary, $ma-primary);
