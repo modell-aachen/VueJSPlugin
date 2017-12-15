@@ -5,8 +5,8 @@
     <p v-for="descriptionText in description">{{descriptionText}}</p>
   </div>
   <div class="small button-group float-right">
-    <button class="default button" @click.self.prevent="onButtonClick(config.abortButton)">{{config.abortButton.name}}</button>
-    <button class="primary button" @click.self.prevent="onButtonClick(config.acceptButton)">{{config.acceptButton.name}}</button>
+    <button class="default button" @click.prevent="onButtonClick(config.abortButton)">{{config.abortButton.name}}</button>
+    <button class="primary button" @click.prevent="onButtonClick(config.acceptButton)">{{config.acceptButton.name}}</button>
   </div>
   <div class="modal-background-icon">
     <i class="fa" :class="config.backgroundIcon"></i>

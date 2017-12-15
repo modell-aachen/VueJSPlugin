@@ -1,7 +1,7 @@
 <template>
 <div class="sidebar-modal">
   <div class="sidebar-tab-controls">
-    <button class="sidebar-tab-button close" @click.self.prevent="hideModal">
+    <button class="sidebar-tab-button close" @click.prevent="hideModal">
       <i class="fa fa-2x fa-times"></i>
     </button>
   </div>
