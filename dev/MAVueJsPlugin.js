@@ -11,12 +11,14 @@ import i18next from 'i18next';
 import VueParams from 'vue-params';
 import VueI18Next from 'vue-i18next';
 import VeeValidate from 'vee-validate';
+import VueRouter from 'vue-router';
 
 let MAVueJsPlugin = {
   install(Vue, options){
     i18next.init();
     Vue.use(VueParams);
     Vue.use(VueI18Next);
+    Vue.use(VueRouter);
     const veeValidateConfig = {
       errorBagName: 'validationErrors',
       fieldsBagName: 'validationFields'
@@ -70,6 +72,7 @@ let MAVueJsPlugin = {
 
     Vue.foswiki = foswiki;
     Vue.moment = moment;
+    Vue.VueRouter = VueRouter;
 
     //Instance properties/methods
     Vue.prototype.$store = options.store;
