@@ -35,4 +35,5 @@ $sidebar-modal-icon-color: #efecec;
   left: calc(#{$sidebar-width} - #{$sidebar-content-width});
   background-color: $white;
   width: $sidebar-content-width;
+  overflow: auto;
 }
