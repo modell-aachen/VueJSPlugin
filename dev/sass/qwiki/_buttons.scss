@@ -23,8 +23,8 @@ $button-margin-bottom: 1rem;
   .button {
     &.#{$class} {
       color: $color;
+      background-color: $background-color;
       &:hover, &:focus {
-        color: $color;
         background-color: scale-color($background-color, $lightness: $lightness);
         text-decoration: none;
       }
