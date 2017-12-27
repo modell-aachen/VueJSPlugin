@@ -3,6 +3,7 @@
 }
 
 .jqTabPaneFlat {
+  > .vue-tabpane-group,
   > .jqTabGroup {
     a {
       background: $ma-white;
@@ -35,11 +36,13 @@
     }
   }
 
+  .vue-tab.current,
   .jqTab.current {
     border: 0;
     border-top: 2px solid $ma-light-grey;
   }
 
+  .vue-tab-contents,
   .jqTabContents {
     padding: 1rem 0;
   }
