@@ -4,6 +4,9 @@
         color: $ma-primary-hover;
     }
 }
+.ma-hover-primary-color:hover {
+    color: $ma-primary;
+}
 .ma-success-color {
     color: $ma-success;
     &.hoverable:hover {
@@ -12,6 +15,9 @@
     &.light {
         color: $ma-success-light;
     }
+}
+.ma-hover-success-color:hover {
+    color: $ma-success;
 }
 .ma-failure-color {
     color: $ma-failure;
@@ -22,6 +28,9 @@
         color: $ma-failure-light;
     }
 }
+.ma-hover-failure-color:hover {
+    color: $ma-failure;
+}
 .ma-warning-color {
     color: $ma-warning;
     &.hoverable:hover {
@@ -30,6 +39,9 @@
     &.light {
         color: $ma-warning-light;
     }
+}
+.ma-hover-primary-color:hover {
+    color: $ma-primary;
 }
 .ma-brown-color {
     color: $ma-brown;
@@ -72,6 +84,30 @@
     &.dark {
         border-color: $ma-bg-beige-dark;
     }
+}
+.ma-hover-beige-border-color:hover {
+    border-color: $ma-bg-beige;
+    &.dark {
+        border-color: $ma-bg-beige-dark;
+    }
+}
+.ma-grey-border-color:hover,
+.ma-grey-border-color {
+    border-color: $ma-grey;
+}
+.ma-light-grey-border-color:hover,
+.ma-light-grey-border-color {
+    border-color: $ma-light-grey;
+}
+.ma-dark-grey-border-color:hover,
+.ma-dark-grey-border-color {
+    border-color: $ma-dark-grey;
+}
+.ma-primary-border-color {
+    border-color: $ma-primary;
+}
+.ma-hover-primary-border-color:hover {
+    border-color: $ma-primary;
 }
 .ma-bg-light-color {
     background-color: $ma-bg-light;
