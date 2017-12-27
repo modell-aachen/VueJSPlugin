@@ -3,6 +3,8 @@ import VueSelect from './components/vue-select/index.js';
 import VueSplitbutton from './components/vue-splitbutton/Splitbutton.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
+import VueTabpane from './components/vue-tabpane/TabPane.vue';
+import VueTab from './components/vue-tabpane/Tab.vue';
 import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
 import VueWizard from './components/vue-wizard/VueWizard.vue';
@@ -31,6 +33,8 @@ let MAVueJsPlugin = {
     Vue.component('vue-splitbutton', VueSplitbutton);
     Vue.component('vue-pagination', VuePagination);
     Vue.component('vue-spinner', VueSpinner);
+    Vue.component('vue-tabpane', VueTabpane);
+    Vue.component('vue-tab', VueTab);
     Vue.component('sidebar', Sidebar);
     Vue.component('sidebar-standard-layout', SidebarStandardLayout);
     Vue.component('vue-wizard', VueWizard);

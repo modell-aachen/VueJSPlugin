@@ -47,6 +47,9 @@ and the fields property name from 'fields' to 'validationFields'.
 *sidebar* %BR%
 See the [[System.VueJSPluginSidebar][sidebar documentation]] for further details.
 
+*vue-tabpane*
+See [[VueJSPluginTabpane]].
+
 ---+++ Additional instance properties
 Every Vue component instance has access to some additional properties/methods.
 

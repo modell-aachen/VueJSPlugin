@@ -2,6 +2,7 @@
 data/System/VueJSPlugin.txt 0644
 data/System/VarVUE.txt 0644
 data/System/VueJSPluginSidebar.txt 0644
+data/System/VueJSPluginTabpane.txt 0644
 lib/Foswiki/Plugins/VueJSPlugin.pm 0644
 lib/Foswiki/Plugins/VueJSPlugin/Config.spec 0644
 lib/Foswiki/Plugins/VueJSPlugin/DEPENDENCIES 0644
