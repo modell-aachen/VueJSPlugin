@@ -82,6 +82,7 @@ export default {
 
 <style lang="scss">
 @import './sass/settings';
+@import '../../sass/settings';
 
 .fade-enter-active,
 .fade-leave-active {
@@ -126,8 +127,8 @@ export default {
   left: 0;
   bottom: 0;
 
-  background-color: $gray;
-  border-left: $sidebar-highlight-border-width solid $gray;
+  background-color: $ma-medium-grey;
+  border-left: $sidebar-highlight-border-width solid $ma-medium-grey;
   width: calc(#{$sidebar-width} - #{$sidebar-content-width});
 
   &.highlight {
@@ -140,7 +141,7 @@ export default {
   hr {
     margin: 12px -#{$sidebar-content-padding-horizontal};
     height: 2px;
-    background-color: $gray;
+    background-color: $ma-medium-grey;
   }
 }
 </style>

@@ -29,6 +29,7 @@ export default {
 
 <style lang="scss">
 @import './sass/settings';
+@import '../../sass/settings';
 
 .sidebar-modal {
   position: absolute;
@@ -37,7 +38,7 @@ export default {
   left: 0;
   right: 0;
 
-  background: rgba($white, $sidebar-modal-opacity);
+  background: rgba($ma-white, $sidebar-modal-opacity);
   z-index: 2 + $sidebar-z-index;
 
   .modal-content {
@@ -45,7 +46,7 @@ export default {
     top: $sidebar-header-height;
     z-index: 3 + $sidebar-z-index;
     padding: $sidebar-content-padding;
-    background: rgba($white, 0);
+    background: rgba($ma-white, 0);
 
     * {
       white-space: -moz-pre-wrap !important;

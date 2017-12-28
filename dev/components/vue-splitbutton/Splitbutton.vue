@@ -93,7 +93,7 @@ $maxWidth: 200px;
         text-align: left;
         box-shadow: 1px 1px $shadowWidth 1px rgba(0, 0, 0, 0.2);
         border-radius: 5px;
-        background: $white;
+        background: $ma-white;
         border: #ccc;
         z-index:100;
         height: auto;

@@ -44,6 +44,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../sass/settings';
 ul.vue-tabpane-group,
 #modacWrapper ul.vue-tabpane-group {
     margin: 0;
@@ -52,6 +53,8 @@ ul.vue-tabpane-group,
     display: block;
     float: left;
     overflow: visible !important;
+    border-bottom: 2px solid $light-gray;
+    width: 100%;
 
     li {
         float: left;

@@ -23,28 +23,29 @@ export default {
 
 <style lang="scss">
 @import './sass/settings';
+@import '../../sass/settings';
 
 .sidebar-container {
   .sidebar-tab-button {
     background-color: transparent;
     border-radius: 0;
     border-width: 0;
-    color: $dark-gray;
+    color: $ma-dark-grey;
     cursor: pointer;
     height: calc(#{$sidebar-width} - #{$sidebar-content-width} - #{$sidebar-highlight-border-width});
     width: calc(#{$sidebar-width} - #{$sidebar-content-width} - #{$sidebar-highlight-border-width});
     transition: background-color .3s ease-in;
 
     &:hover, &:active {
-      background-color: darken($gray, 5%);
+      background-color: darken($ma-light-grey, 5%);
     }
     &.active {
-      background-color: $dark-gray;
-      color: $white;
+      background-color: $ma-dark-grey;
+      color: $ma-white;
     }
 
     &.close {
-      border-bottom: $sidebar-header-bottom-border solid $light-gray;
+      border-bottom: $sidebar-header-bottom-border solid $ma-light-grey;
       height: $sidebar-header-height;
     }
   }
