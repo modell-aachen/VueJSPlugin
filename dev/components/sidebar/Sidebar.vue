@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-show="isActive" class="sidebar-overlay" @click="hide"></div>
-        <div class="flatskin-wrapped sidebar-container" :class="{active: isActive}" v-on:click.stop>
+        <div v-show="isActive" class="flatskin-wrapped sidebar-container" :class="{active: isActive}" v-on:click.stop>
 
             <div class="sidebar-tab-controls">
                 <tab-button icon="fa-times" type="close" @click="hide" ></tab-button>
