@@ -1,5 +1,5 @@
 <template>
-    <div class="vue-tab" :class="{current}">
+    <div class="vue-tab" v-show="current">
         <div class="vue-tab-contents">
             <slot></slot>
         </div>
@@ -30,9 +30,6 @@
 
 <style lang="scss">
 .vue-tab {
-    display: none;
-    &.current {
-        display: inherit;
-    }
+    display: inherit;
 }
 </style>
