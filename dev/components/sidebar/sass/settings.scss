@@ -15,6 +15,14 @@ $sidebar-toast-opacity: 0.8;
 $sidebar-modal-opacity: 0.9;
 $sidebar-modal-icon-color: #efecec;
 
+div.columns.ma-left-label-sidebar {
+    padding-left: 0;
+    padding-right: 0;
+}
+div.columns.ma-left-label-input-sidebar {
+    padding-right: 0;
+}
+
 @mixin sidebar-content {
   height: 100%;
   position: absolute;
