@@ -1,6 +1,7 @@
 <template>
     <div>
         <div v-show="isActive" class="sidebar-overlay" @click="hide"></div>
+        <transition name="sidebar">
         <div v-show="isActive" class="flatskin-wrapped sidebar-container" :class="{active: isActive}" v-on:click.stop>
 
             <div class="sidebar-tab-controls">
@@ -23,6 +24,7 @@
             <modal v-if="isModalActive" :type="modalOptions.type" :contentConfig="modalOptions.contentConfig" @hide-modal="hideModal"></modal>
             </transition>
         </div>
+      </transition>
     </div>
 </template>
 
@@ -101,6 +103,14 @@ export default {
     position: fixed;
     z-index: 99;
 }
+
+.sidebar-enter, .sidebar-leave-to {
+  transform: translate3d(100%,0,0);
+}
+.sidebar-enter-active, .sidebar-leave-active {
+  transition: transform .3s ease-in-out;
+}
+
 .sidebar-container {
   position: fixed;
   top: 0;
@@ -108,13 +118,6 @@ export default {
   right: 0;
   width: $sidebar-width;
   z-index: $sidebar-z-index;
-
-  transform: translate3d(100%, 0, 0);
-  transition: transform .3s ease-in-out;
-
-  &.active {
-    transform: translate3d(0, 0, 0);
-  }
 
   *:focus {
     outline:none;
