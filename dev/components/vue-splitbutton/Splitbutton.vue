@@ -1,12 +1,16 @@
 <template>
     <div class="split-wrapper" @mouseleave="mouseLeave" @mouseenter="mouseEnter">
-        <span @click.prevent="callAction" class="button primary split">
-            <span class="split-title">
-                {{title}}
+        <span @click.prevent="callAction" class="splitleft button primary">
+            <span>
+                {{titleLeft}}
             </span>
+        </span>
+        <span @click.prevent="callAction" class="splitright button primary">
             <span class="split-chevron" data-dropdown="drop" @click.stop="toggleSplitOpen">
-                <i class="fa fa-chevron-down" v-if="splitOpen"></i>
-                <i class="fa fa-chevron-right" v-else></i>
+                <span>
+                    {{title}}
+                <i class="fa fa-chevron-down"></i>
+                </span>
             </span>
         </span><br>
         <div class="animation-clipper ma-button-clear-margin-bottom">
@@ -29,7 +33,7 @@
 const dropdownGraceTime = 2000;
 
 export default {
-  props: ['title'],
+  props: ['title','titleLeft'],
   data() {
     return {
       splitOpen: false,
@@ -68,7 +72,7 @@ export default {
 <style lang="scss">
 @import '../../sass/settings.scss';
 $shadowWidth: 10px;
-$maxWidth: 200px;
+$maxWidth: auto;
 
 #modacWrapper .split-wrapper ul,
 .foswikiTopic .split-wrapper ul,
@@ -78,6 +82,7 @@ $maxWidth: 200px;
 .split-wrapper {
     position: relative;
     display: inline-block;
+    font-size: 0px;
 
     .animation-clipper {
         overflow: hidden;
@@ -114,27 +119,23 @@ $maxWidth: 200px;
         }
     }
 }
-.split.button{
+.splitleft.button {
     position: relative;
-    .split-title {
-        padding-right: 32px;
-    }
+    padding: 7px 10px;
+    height: 31px;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.splitright.button {
+    position: relative;
+    margin-left: 1px;
+    padding: 7px 10px;
+    height:31px;
+    border-radius: 0px 4px 4px 0px;
     .split-chevron {
-        border-left-color: rgba(255,255,255,0.5);
-        border-left: solid 1px;
-        display: block;
-        height: 100%;
-        position: absolute;
-        width: 2rem;
-        right: 0;
-        top: 0;
         i {
-            position: absolute;
             content: "";
-            width: 0;
-            height: 0;
-            top: 37%;
-            left: 27%;
+            padding-left: 5px;
         }
     }
 }
