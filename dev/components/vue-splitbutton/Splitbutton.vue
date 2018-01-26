@@ -5,7 +5,7 @@
                 {{titleLeft}}
             </span>
         </span>
-        <span @click.prevent="callAction" class="splitright button primary">
+        <span @click.stop="toggleSplitOpen" class="splitright button primary">
             <span class="split-chevron" data-dropdown="drop" @click.stop="toggleSplitOpen">
                 <span>
                     {{title}}
@@ -119,18 +119,20 @@ $maxWidth: auto;
         }
     }
 }
-.splitleft.button {
+
+.splitleft.button, .splitright.button {
     position: relative;
     padding: 7px 10px;
     height: 31px;
+    vertical-align: unset;
+}
+
+.splitleft.button {
     border-radius: 4px 0px 0px 4px;
 }
 
 .splitright.button {
-    position: relative;
     margin-left: 1px;
-    padding: 7px 10px;
-    height:31px;
     border-radius: 0px 4px 4px 0px;
     .split-chevron {
         i {
