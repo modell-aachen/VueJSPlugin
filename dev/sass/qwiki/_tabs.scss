@@ -47,3 +47,47 @@
     padding: 1rem 0;
   }
 }
+
+.jqTabPaneFlatSub {
+  > .vue-tabpane-group,
+  > .jqTabGroup {
+    background: #F0F0F0;
+    border-bottom: 0 !important;
+    margin-top: -16px !important;
+    a {
+      border: 0;
+      border-radius: $ma-border-radius;
+      color: $ma-body-text;
+      line-height: 100%;
+      padding: rem-calc(13 22);
+
+      &:hover {
+        color: inherit;
+        background: $ma-light-grey;
+      }
+    }
+    li {
+      padding: rem-calc(8);
+      background: transparent;
+      margin: rem-calc(0 8 0 0);
+
+      &.current a {
+        background: $ma-white;
+        border: 0;
+        color: $ma-body-text;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .vue-tab.current,
+  .jqTab.current {
+    border: 0;
+    border-top: 2px solid $ma-light-grey;
+  }
+
+  .vue-tab-contents,
+  .jqTabContents {
+    padding: 1rem 0;
+  }
+}
