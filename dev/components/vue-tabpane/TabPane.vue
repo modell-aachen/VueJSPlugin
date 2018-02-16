@@ -1,6 +1,6 @@
 <template>
     <div class="flatskin-wrapped vue-tabpane">
-        <div class="jqTabPaneFlat">
+        <div :class="'jqTabPaneFlat'+type">
             <ul class="vue-tabpane-group">
                 <li
                     v-for="(tab, index) in tabs"
@@ -24,6 +24,12 @@
 <script>
 export default {
   name: 'vue-tabpane',
+  props: {
+    type: {
+      type: String,
+      default: ''
+    },
+  },
   data: () => ({
     tabs: [],
   }),
