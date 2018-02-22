@@ -1,5 +1,5 @@
 import TabButton from '../dev/components/sidebar/TabButton.vue';
-import TestCase from 'FrontendUnitTestLibrary';
+import TestCase from '../dev/unit-test-library/main';
 
 describe("The TabButton component", () => {
   describe("isCloseButton", () => {

@@ -1,5 +1,5 @@
 import Modal from '../dev/components/sidebar/Modal.vue';
-import TestCase from 'FrontendUnitTestLibrary';
+import TestCase from '../dev/unit-test-library/main';
 
 describe("The Modal component", () => {
   it("shuld emit hide modal event.", () => {

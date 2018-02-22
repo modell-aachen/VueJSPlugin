@@ -1,5 +1,5 @@
 import Splitbutton from '../dev/components/vue-splitbutton/Splitbutton.vue';
-import TestCase from 'FrontendUnitTestLibrary';
+import TestCase from '../dev/unit-test-library/main';
 
 describe("The Splitbutton component", () => {
   jasmine.clock().install(); // XXX usually you would uninstall the clock after each test, however in conjunction with setTimeout this has a habit to break

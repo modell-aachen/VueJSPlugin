@@ -1,4 +1,3 @@
-/* global $ foswiki moment */
 import VueSelect from './components/vue-select/index.js';
 import VueSplitbutton from './components/vue-splitbutton/Splitbutton.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
@@ -16,7 +15,12 @@ import VueI18Next from 'vue-i18next';
 import VeeValidate from 'vee-validate';
 import VueRouter from 'vue-router';
 
-let MAVueJsPlugin = {
+class MAVueJsPlugin {
+  constructor(options) {
+    this.foswiki = options.foswiki;
+    this.moment = options.moment;
+    this.jquery = options.jquery;
+  }
   install(Vue, options){
     i18next.init();
     Vue.use(VueParams);
@@ -46,11 +50,11 @@ let MAVueJsPlugin = {
     };
 
     Vue.onDocumentReady = (fn) => {
-      $(fn);
+      this.jquery(fn);
     };
 
     Vue.instantiateEach = (selector, options) => {
-      $(selector).each((i, element) => {
+      this.jquery(selector).each((i, element) => {
         let instanceOptions = Object.assign({}, options);
         instanceOptions.el = element;
         new Vue(instanceOptions);
@@ -58,13 +62,13 @@ let MAVueJsPlugin = {
     };
 
     Vue.getConfigById = (id) => {
-      let base64Config = $('.' + id).html();
+      let base64Config = this.jquery('.' + id).html();
       let config = Base64.Base64.decode(base64Config);
       return JSON.parse(config);
     };
 
     Vue.makeAbsoluteUrl = (url) => {
-      const absoluteBasePath = foswiki.getScriptUrl().replace(/bin\/$/,'');
+      const absoluteBasePath = this.foswiki.getScriptUrl().replace(/bin\/$/,'');
       if(!url){
         url = "";
       }
@@ -76,25 +80,23 @@ let MAVueJsPlugin = {
       i18next.addResourceBundle(language, namespace, translations);
     };
 
-    Vue.foswiki = foswiki;
-    Vue.moment = moment;
+    Vue.foswiki = this.foswiki;
+    Vue.moment = this.moment;
     Vue.VueRouter = VueRouter;
 
     //Instance properties/methods
     Vue.prototype.$store = options.store;
-    Vue.prototype.$foswiki = foswiki;
-    Vue.prototype.$moment = moment;
+    Vue.prototype.$foswiki = this.foswiki;
+    Vue.prototype.$moment = this.moment;
 
-    const language = $("html").attr("lang");
+    let language = this.jquery("html").attr("lang");
+    if(!language){
+      language = 'en';
+    }
     Vue.params.i18nextLanguage = language;
     Vue.prototype.$lang = language;
-    Vue.prototype.$ajax = $.ajax;
-  },
-  htmlDecode(input){
-    let e = $("<div></div>");
-    e.html(input);
-    return e.text();
+    Vue.prototype.$ajax = this.jquery.ajax;
   }
-};
+}
 
 export default MAVueJsPlugin;

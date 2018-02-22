@@ -1,5 +1,5 @@
 import Sidebar from '../dev/components/sidebar/Sidebar.vue';
-import TestCase from 'FrontendUnitTestLibrary';
+import TestCase from '../dev/unit-test-library/main';
 
 describe("The Sidebar component", () => {
   let sidebar;

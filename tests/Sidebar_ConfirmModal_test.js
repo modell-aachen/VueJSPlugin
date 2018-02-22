@@ -1,5 +1,5 @@
 import ConfirmModal from '../dev/components/sidebar/ConfirmModal.vue';
-import TestCase from 'FrontendUnitTestLibrary';
+import TestCase from '../dev/unit-test-library/main';
 
 describe("The ConfirmModal component", () => {
   describe("onButtonClick method", () => {

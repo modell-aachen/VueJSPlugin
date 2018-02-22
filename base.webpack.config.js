@@ -1,15 +1,14 @@
-var path = require('path')
-var projectRoot = path.resolve(__dirname);
-var webpack = require('webpack')
+let path = require('path');
+let projectRoot = path.resolve(__dirname);
 
-var includeDirs = [
+let includeDirs = [
   projectRoot + '/dev',
   projectRoot + '/tests'
 ];
 
-var babelLoaderOptions = {
+let babelLoaderOptions = {
   presets: [['env', {"modules": false}]]
-}
+};
 
 module.exports = {
   resolve: {
@@ -19,7 +18,7 @@ module.exports = {
     }
   },
   entry: {
-    app: ['./dev/main.js']
+    app: ['babel-polyfill', './dev/main.js']
   },
   output: {
     path: path.join(__dirname, 'pub/System/VueJSPlugin/')
@@ -33,11 +32,11 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         include: includeDirs,
-         options: {
-           loaders: {
+        options: {
+          loaders: {
             js:'babel-loader?' + JSON.stringify(babelLoaderOptions)
           },
-       }
+        }
       },
       {
         test: /\.js$/,
@@ -60,4 +59,4 @@ module.exports = {
       }
     ]
   }
-}
+};
