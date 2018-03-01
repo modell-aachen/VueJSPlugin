@@ -2,7 +2,6 @@ $button-background: $ma-button-grey;
 $button-radius: $ma-border-radius;
 $button-padding: rem-calc(8) rem-calc(16);
 $button-color: $ma-body-text;
-$color-effect: 15%;
 //$button-background-hover: scale-color($button-background, $lightness: $lightness);
 $buttongroup-spacing: 5px;
 $button-margin-bottom: 1rem;
@@ -11,69 +10,52 @@ $button-margin-right: rem-calc(8);
 @include foundation-button;
 @include foundation-button-group;
 
-.button {
-    @include ma-font('semibold');
-    height: 36px;
-    color: $ma-secondary-text;
-    line-height: normal;
-    border: 0;
-    margin-right: $button-margin-right;
-    margin-bottom: $button-margin-bottom;
-    .fa {
-        margin-right: rem-calc(16);
-        font-size: 1.33333333em;
-        line-height: .75em;
-        vertical-align: -10%;
-    }
-    &:hover, &:focus {
-        background-color: mix(white, $ma-button-grey, $color-effect);
-        color: $ma-secondary-text;
-    }
-    &:active {
-        background-color: mix(black, $ma-button-grey, $color-effect);
-    }
-}
 
 //Unfortunately the button-background-hover only applies
 //if no styling class besides 'button' is set (e.g. alert).
 // Therefore we have to override the background color for styles
 // we want to use.
-
-.button {
-    &.primary {
-        background-color: $ma-primary;
-        color: $ma-white;
-        &:hover, &:focus {
-            background-color: mix(white, $ma-primary, $color-effect);
-            color: $ma-white;
-        }
-        &:active {
-            background-color: mix(black, $ma-primary, $color-effect);
-            color: $ma-white;
-        }
-        &[disabled] {
-            color: $ma-white;
-            &:active, &:hover {
-                color: $ma-white;
-            }
+@mixin button-hover-active($bg-color, $color-effect, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    &:hover, &:focus {
+        background-color: lighten($bg-color, $color-effect);
+        color: $text-color;
+    }
+    &:active {
+        background-color: darken($bg-color, $color-effect);
+        color: $text-color;
+    }
+    &[disabled] {
+        color: $text-color;
+        &:active, &:hover {
+            color: $text-color;
+            background-color: $bg-color;
         }
     }
+}
+
+.button {
+    @include ma-font('semibold');
+    @include button-hover-active($button-background, 3%, $ma-secondary-text);
+    height: 36px;
+    line-height: normal;
+    border: 0;
+    margin-right: $button-margin-right;
+    margin-bottom: $button-margin-bottom;
+    .fa,.far,.fal {
+        margin-right: rem-calc(16);
+        font-size: 1.33333333em;
+        line-height: .75em;
+        vertical-align: -10%;
+    }
+}
+.button {
+    &.primary {
+        @include button-hover-active($ma-primary, 10%, $ma-white);
+    }
     &.delete {
-        background-color: $ma-failure;
-        color: $ma-white;
-        &:hover, &:focus {
-            background-color: mix(white, $ma-failure, $color-effect);
-            color: $ma-white;
-        }
-        &:active {
-            background-color: mix(black, $ma-failure, $color-effect);
-            color: $ma-white;
-        }
-        &[disabled] {
-            &:active, &:hover {
-                background-color: $ma-failure;
-            }
-        }
+        @include button-hover-active($ma-failure, 15%, $ma-white);
     }
     &.ghost {
         background-color: $ma-white;
@@ -93,8 +75,9 @@ $button-margin-right: rem-calc(8);
         }
     }
     &.icon {
-      padding: rem-calc(8) rem-calc(9.5);
-      .fa {
+      padding: rem-calc(8) rem-calc(5);
+      width: rem-calc(36);
+      .fa,.far,.fal {
         margin-right: 0px;
         font-size: 1.45em;
         line-height: .9;

@@ -4,7 +4,7 @@
 
 %TOC%
 
-%ADDTOZONE{"head" text="<link rel='stylesheet' type='text/css' media='all' href='%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome.min.css' />"}%
+%ADDTOZONE{"script" id="FONTAWESOME" text="<script src=\"%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/js/fontawesome.js?version=%QUERYVERSION{"FontAwesomeContrib"}%\" />"}%
 
 ---++ About this Topic
 This topic provides an overview of the FlatSkin styles.
@@ -28,6 +28,47 @@ For further documentation please have a look at the Foundation docs.
         #asdalwkjd
     </div>
 </div>
+---++ Text
+<h1>Seiten-Header h1</h1>
+<h2>First Section-Header h2</h2>
+<h2>First Section-Header h2
+  <span class="ma-subtitle">Ein Untertitel</span>
+</h2>
+<h2 class="ma-text-hr">Section-Header h2</h2>
+<h2 class="ma-text-hr">Section-Header + h2
+  <span class="ma-subtitle">Ein Untertitel</span>
+</h2>
+<h3>First Sub-header h3</h3>
+<h3>First Sub-header + h3
+  <span class="ma-subtitle">Ein Untertitel</span>
+</h3>
+<h3 class="ma-text-hr">First Sub-header h3</h3>
+<h3 class="ma-text-hr">First Sub-header + h3
+  <span class="ma-subtitle">Ein Untertitel</span>
+</h3>
+<p>First Body-Text</p>
+<p class="ma-text-hr">Body-Text</p>
+<verbatim class="html">
+<h1>Seiten-Header h1</h1>
+<h2>First Section-Header h2</h2>
+<h2>First Section-Header h2
+  <span class="ma-subtitle">Ein Untertitel</span>
+</h2>
+<h2 class="ma-text-hr">Section-Header h2</h2>
+<h2 class="ma-text-hr">Section-Header + h2
+  <span class="ma-subtitle">Ein Untertitel</span>
+</h2>
+<h3>First Sub-header h3</h3>
+<h3>First Sub-header + h3
+  <span class="ma-subtitle">Ein Untertitel</span>
+</h3>
+<h3 class="ma-text-hr">First Sub-header h3</h3>
+<h3 class="ma-text-hr">First Sub-header + h3
+  <span class="ma-subtitle">Ein Untertitel</span>
+</h3>
+<p>First Body-Text</p>
+<p class="ma-text-hr">Body-Text</p>
+</verbatim>
 ---++ Tables
 ---+++ Standard
 The standard table.
@@ -118,11 +159,11 @@ The standard foundation button classes are used.
     <div class="cell large-2"><a class="button primary">Button</a></div>
     <div class="cell large-2"><a class="button">Button</a></div>
     <div class="cell large-2"><a class="button ghost">Button</a></div>
-    <div class="cell large-2"><a class="button"><i class="fa fa-paperclip"></i>Button</a></div>
+    <div class="cell large-2"><a class="button"><i class="far fa-paperclip"></i>Button</a></div>
     <div class="cell large-2"><a class="button delete">Button</a></div>
     <div class="cell large-2">
         <a class="button icon"><i class="fa fa-times"></i></a>
-        <a class="button icon"><i class="fa fa-save"></i></a>
+        <a class="button icon"><i class="far fa-save"></i></a>
         <a class="button icon ma-warning-color"><i class="fa fa-exclamation-triangle"></i></a>
     </div>
 </div>

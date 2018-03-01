@@ -1,40 +1,74 @@
 h1, h2, h3, h4,
 small, .small-text {
-  @include ma-font('semibold');
+  @include ma-font('regular');
+  margin-top: rem-calc(24);
+  margin-bottom: 0;
   border: 0;
   color: $ma-body-text;
+  .ma-subtitle {
+    @extend %subtitle;
+  }
 }
 
 @each $name, $color in $foundation-palette {
   h1.#{$name} { color:$color; }
 }
 
+%subtitle {
+  @include ma-font('regular');
+  display: block;
+  color: $ma-secondary-text;
+  font-size: rem-calc(14);
+}
+
+%hr {
+  border-top: 1px solid $ma-grey;
+  position: relative;
+  &:after {
+      content: "";
+      width: calc(100% - 128px);
+      height: 1.1px; /* slight higher to work around rounding errors(?) on some zoom levels in some browsers. */
+      background-color: $ma-white;
+      position: absolute;
+      right:0;
+      top:-1px;
+  }
+}
+
+@mixin header-hr($spacing: 24) {
+  &.ma-text-hr {
+    @extend %hr;
+    padding-top: rem-calc($spacing);
+  }
+}
+
 h1,
 .foswikiTopic h1 {
-  font-size: rem-calc(30);
-  line-height: rem-calc(41);
-  margin-bottom: rem-calc(12);
+  font-size: rem-calc(33);
+  margin: rem-calc(24) 0px;
 }
 
 h2,
 .foswikiTopic h2 {
-  font-size: rem-calc(24);
-  line-height: rem-calc(33);
-  margin-bottom: rem-calc(5);
+  font-size: rem-calc(25);
+  @include header-hr(24);
 }
 
 h3,
 .foswikiTopic h3 {
-  font-size: rem-calc(18);
-  line-height: rem-calc(24);
-  margin-bottom: rem-calc(3);
+  font-size: rem-calc(19);
+  @include ma-font('semibold');
+  @include header-hr(16);
 }
 
 h4,
 .foswikiTopic h4 {
   font-size: rem-calc(14);
-  line-height: rem-calc(19);
-  margin-bottom: rem-calc(3);
+}
+
+p {
+  margin-bottom: 0px;
+  @include header-hr(8);
 }
 
 small, .small-text, .foswikiSmallish {
