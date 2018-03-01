@@ -12,20 +12,116 @@ In general the FlatSkin is build on Foundation for Sites 6.
 For further documentation please have a look at the Foundation docs.
 
 ---++ Colors
-<div class="grid-x">
+<div class="grid-x grid-margin-x">
     <div class="cell shrink">
-        <div class="ma-grey-color" style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px;"></div>
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #57c9e8"></div>
     </div>
     <div class="cell small-3">
-        $ma-dark-grey
-        #asdalwkjd
+        $ma-primary-color<br />
+        #57c9e8
     </div>
     <div class="cell shrink">
-        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: grey"></div>
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #6a7f84"></div>
     </div>
     <div class="cell small-3">
-        $ma-dark-grey
-        #asdalwkjd
+        $ma-dark-grey<br />
+        #6a7f84
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #0069bf"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-colored-text<br/>
+        #0069bf
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #b0c0c4"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-grey<br/>
+        #b0c0c4
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #003764"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-secondary-color<br/>
+        #003764
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #dee4e5"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-light-grey<br/>
+        #dee4e5
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #9dc958"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-success<br/>
+        #9dc958
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #e9eff0"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-pale-grey<br/>
+        #e9eff0
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #e6ba30"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-warning<br/>
+        #e6ba30
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #eff3f4"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-button-grey<br/>
+        #eff3f4
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #d83215"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-failure<br/>
+        #d83215
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #f5f3ef"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-sand<br/>
+        #f5f3ef
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #395055"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-darker-grey<br/>
+        #395055
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #fafafa"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-whiter-grey<br/>
+        #fafafa
     </div>
 </div>
 ---++ Text
