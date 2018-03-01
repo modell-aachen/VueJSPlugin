@@ -11,6 +11,23 @@ This topic provides an overview of the FlatSkin styles.
 In general the FlatSkin is build on Foundation for Sites 6.
 For further documentation please have a look at the Foundation docs.
 
+---++ Colors
+<div class="grid-x">
+    <div class="cell shrink">
+        <div class="ma-grey-color" style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px;"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-dark-grey
+        #asdalwkjd
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: grey"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-dark-grey
+        #asdalwkjd
+    </div>
+</div>
 ---++ Tables
 ---+++ Standard
 The standard table.
@@ -90,19 +107,52 @@ The standard foundation grid can be used to layout elements.
 ---++ Buttons
 The standard foundation button classes are used.
 
-<div class="row">
-<div class="columns"><a class="button">.button</a></div>
-<div class="columns"><a class="primary button">.primary.button</a></div>
-<div class="columns"><a class="warning button">.warning.button</a></div>
-<div class="columns"><a class="alert button">.alert.button</a></div>
+<div class="grid-x">
+<div class="cell large-2">Primary Button</div>
+<div class="cell large-2">Button</div>
+<div class="cell large-2">Ghost Button</div>
+<div class="cell large-2">Icon Button</div>
+<div class="cell large-2">Delete Button</div>
+</div>
+<div class="grid-x">
+    <div class="cell large-2"><a class="button primary">Button</a></div>
+    <div class="cell large-2"><a class="button">Button</a></div>
+    <div class="cell large-2"><a class="button ghost">Button</a></div>
+    <div class="cell large-2"><a class="button"><i class="fa fa-paperclip"></i>Button</a></div>
+    <div class="cell large-2"><a class="button delete">Button</a></div>
+    <div class="cell large-2">
+        <a class="button icon"><i class="fa fa-times"></i></a>
+        <a class="button icon"><i class="fa fa-save"></i></a>
+        <a class="button icon ma-warning-color"><i class="fa fa-exclamation-triangle"></i></a>
+    </div>
+</div>
+<div class="grid-x">
+    <div class="cell large-2"><a class="button primary" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button ghost" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button" disabled><i class="fa fa-paperclip"></i>Button</a></div>
+    <div class="cell large-2"><a class="button delete" disabled>Button</a></div>
 </div>
 
 <verbatim class="html">
-<div class="row">
-<div class="columns"><a class="button">.button</a></div>
-<div class="columns"><a class="primary button">.primary.button</a></div>
-<div class="columns"><a class="warning button">.warning.button</a></div>
-<div class="columns"><a class="alert button">.alert.button</a></div>
+<div class="grid-x">
+    <div class="cell large-2"><a class="button primary">Button</a></div>
+    <div class="cell large-2"><a class="button">.button</a></div>
+    <div class="cell large-2"><a class="button ghost">.button.ghost</a></div>
+    <div class="cell large-2"><a class="button"><i class="fa fa-paperclip"></i>.button</a></div>
+    <div class="cell large-2"><a class="button delete">.button.delete</a></div>
+    <div class="cell large-2">
+        <a class="button icon"><i class="fa fa-times"></i></a>
+        <a class="button icon"><i class="fa fa-save"></i></a>
+        <a class="button icon warning"><i class="fa fa-exclamation-triangle"></i></a>
+    </div>
+</div>
+<div class="grid-x">
+    <div class="cell large-2"><a class="button primary" disabled>.button</a></div>
+    <div class="cell large-2"><a class="button" disabled>.button.secondary</a></div>
+    <div class="cell large-2"><a class="button ghost" disabled>.button.ghost</a></div>
+    <div class="cell large-2"><a class="button" disabled><i class="fa fa-paperclip"></i>.button</a></div>
+    <div class="cell large-2"><a class="button delete" disabled>.button.delete</a></div>
 </div>
 </verbatim>
 

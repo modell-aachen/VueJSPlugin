@@ -1,25 +1,25 @@
 //Notifications
 p.ma-notification {
-	background-color: $ma-bg-beige;
+	background-color: $ma-button-grey;
 	border-radius: $ma-border-radius;
 	padding: rem-calc(11);
 	border: 1px solid $ma-sand;
 }
 
 p.ma-notification.ma-success {
-	background-color: $ma-success-hover;
+	background-color: $ma-success;
 	color: white;
 	border-color: $ma-success;
 }
 
 p.ma-notification.ma-warning {
-	background-color: $ma-warning-hover;
+	background-color: $ma-warning;
 	color: black;
 	border-color: $ma-warning;
 }
 
 p.ma-notification.ma-failure {
-	background-color: $ma-failure-hover;
+	background-color: $ma-failure;
 	color: white;
 	border-color: $ma-failure;
 }
@@ -34,17 +34,17 @@ span.ma-label {
 }
 
 span.ma-label.ma-success {
-	background-color: $ma-success-hover;
+	background-color: $ma-success;
 	color: white;
 }
 
 span.ma-label.ma-warning {
-	background-color: $ma-warning-hover;
+	background-color: $ma-warning;
 	color: black;
 }
 
 span.ma-label.ma-failure {
-	background-color: $ma-failure-hover;
+	background-color: $ma-failure;
 	color: white;
 }
 

@@ -7,10 +7,10 @@ $table-stripe: "none"; //Disable foundation default stripes
 @include foundation-table;
 
 //New variables
-$table-inner-border: 1px solid $ma-light-border;
+$table-inner-border: 1px solid $ma-light-grey;
 
 th, td {
-  border-bottom: 1px solid $ma-light-border;
+  border-bottom: 1px solid $ma-light-grey;
 }
 
 th {
@@ -66,15 +66,15 @@ tr {
     }
 
     &.ma-success {
-      background-color: $ma-success-light;
+      background-color: $ma-success;
     }
 
     &.ma-warning {
-      background-color: $ma-warning-light;
+      background-color: $ma-warning;
     }
 
     &.ma-failure {
-      background-color: $ma-failure-light;
+      background-color: $ma-failure;
     }
   }
 
@@ -84,7 +84,7 @@ tr {
     tbody {
       tr {
         &:not(.ma-success):not(.ma-warning):not(.ma-failure):nth-child(even) {
-          background-color: $ma-bg-light;
+          background-color: $ma-button-grey;
         }
       }
     }
@@ -94,7 +94,7 @@ tr {
     tbody {
       tr {
         &:nth-child(odd) {
-          background-color: $ma-bg-light;
+          background-color: $ma-button-grey;
         }
       }
 
@@ -124,7 +124,7 @@ tr {
     tbody {
       tr {
         &:not(.ma-success):not(.ma-warning):not(.ma-failure):nth-child(odd) {
-          background-color: $ma-bg-light;
+          background-color: $ma-button-grey;
         }
       }
 
@@ -136,7 +136,7 @@ tr {
 
         &:last-child {
           border-bottom-right-radius: $ma-border-radius;
-          border-left: 1px solid $ma-data-table-border;
+          //border-left: 1px solid $ma-data-table-border;
           border-top-right-radius: $ma-border-radius;
           color: $ma-grey;
           text-align: center;
@@ -167,7 +167,7 @@ tr {
   }
 
   th {
-    color: $ma-black;
+    color: $ma-body-text;
     text-align: left;
   }
 

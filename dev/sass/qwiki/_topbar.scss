@@ -36,7 +36,7 @@
     }
 
     &.modacChanging:hover {
-      color: $ma-primary-hover;
+      color: $ma-colored-text-hover;
       max-width: rem-calc(200);
     }
   }
@@ -45,7 +45,7 @@
 .ma-top-more {
   @extend .menu;
   @extend .dropdown;
-  background-color: $ma-brown;
+  background-color: $ma-sand;
   border-radius: $ma-border-radius;
   color: $ma-white;
   padding: rem-calc(0 3);
@@ -59,7 +59,7 @@
   }
 
   .submenu {
-    background-color: $ma-brown;
+    background-color: $ma-sand;
     border-radius: $ma-border-radius;
     padding: 0 .5rem;
   }
@@ -99,7 +99,7 @@
 .ma-searchbox {
   $ma-searchbox-radius: 3*$ma-border-radius;
 
-  background-color: $ma-brown;
+  background-color: $ma-sand;
   border-radius: $ma-searchbox-radius;
   color: $ma-white;
   max-height: rem-calc(30);
@@ -118,7 +118,7 @@
     //width: rem-calc(125);
 
     &:focus {
-      background-color: $ma-brown;
+      background-color: $ma-sand;
       color: $ma-white;
     }
   }

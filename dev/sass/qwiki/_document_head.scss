@@ -1,5 +1,5 @@
 .ma-documenthead {
-    background: $ma-bg-beige;
+    background: $ma-button-grey;
     border-radius: rem-calc(7);
 
    .ma-documenthead-container{
@@ -59,11 +59,11 @@
 }
 
 .patternTop-callout {
-   @include callout($alert-hover);
+   @include callout($ma-warning);
    border: rem-calc(1) solid #D83314;
    border-radius: rem-calc(4);
    color: $white;
-   background: $alert-hover;
+   background: $ma-warning;
    padding: rem-calc(10);
    margin: rem-calc(0 0 12 0);
 }

@@ -32,7 +32,7 @@
   border-radius: $ma-border-radius;
   padding: 10px 13px;
   &:hover {
-    background-color: $ma-medium-grey;
+    background-color: $ma-grey;
   }
 }
 
@@ -40,34 +40,34 @@
   ul.pagination li a {
     border: 0px; /* Gray */
     border-radius: $ma-border-radius;
-    color: #A4AEB9;
+    color: $ma-colored-text;
     font-size: 14px;
   }
 
   .pagination > .active > a, .pagination > .active > a:hover {
-    background-color: #FFFFFF;
+    background-color: none;
     border-radius: $ma-border-radius;
-    color: #4AC9E5;
+    color: $ma-black;
   }
 
   ul.pagination li a.active {
-    background-color: #FFFFFF;
+    background-color: none;
     border-radius: $ma-border-radius;
-    color: #4AC9E5;
+    color: $ma-black;
   }
 
   ul.pagination li a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: $ma-colored-text-hover;
   }
 
   .pagination li:first-child a {
     //border: 1px solid #ddd;
-    background-color: #E5E8EB;
+    //background-color: #E5E8EB;
   }
 
   .pagination li:last-child a {
     //border: 1px solid #ddd;
-    background-color: #E5E8EB;
+    //background-color: #E5E8EB;
   }
 }
 

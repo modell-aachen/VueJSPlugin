@@ -1,17 +1,37 @@
-$button-background: $ma-sand;
+$button-background: $ma-button-grey;
 $button-radius: $ma-border-radius;
-$button-color: $ma-brown;
-$lightness: 15%;
-$button-background-hover: scale-color($button-background, $lightness: $lightness);
+$button-padding: rem-calc(8) rem-calc(16);
+$button-color: $ma-body-text;
+$color-effect: 15%;
+//$button-background-hover: scale-color($button-background, $lightness: $lightness);
 $buttongroup-spacing: 5px;
 $button-margin-bottom: 1rem;
+$button-margin-right: rem-calc(8);
 
 @include foundation-button;
 @include foundation-button-group;
 
 .button {
-  @include ma-font('semibold');
-  font-style: italic;
+    @include ma-font('semibold');
+    height: 36px;
+    color: $ma-secondary-text;
+    line-height: normal;
+    border: 0;
+    margin-right: $button-margin-right;
+    margin-bottom: $button-margin-bottom;
+    .fa {
+        margin-right: rem-calc(16);
+        font-size: 1.33333333em;
+        line-height: .75em;
+        vertical-align: -10%;
+    }
+    &:hover, &:focus {
+        background-color: mix(white, $ma-button-grey, $color-effect);
+        color: $ma-secondary-text;
+    }
+    &:active {
+        background-color: mix(black, $ma-button-grey, $color-effect);
+    }
 }
 
 //Unfortunately the button-background-hover only applies
@@ -19,32 +39,68 @@ $button-margin-bottom: 1rem;
 // Therefore we have to override the background color for styles
 // we want to use.
 
-@mixin ma-button-style($class, $background-color, $color: $ma-white){
-  .button {
-    &.#{$class} {
-      color: $color;
-      background-color: $background-color;
-      &:hover, &:focus {
-        background-color: scale-color($background-color, $lightness: $lightness);
-        text-decoration: none;
+.button {
+    &.primary {
+        background-color: $ma-primary;
+        color: $ma-white;
+        &:hover, &:focus {
+            background-color: mix(white, $ma-primary, $color-effect);
+            color: $ma-white;
+        }
+        &:active {
+            background-color: mix(black, $ma-primary, $color-effect);
+            color: $ma-white;
+        }
+        &[disabled] {
+            color: $ma-white;
+            &:active, &:hover {
+                color: $ma-white;
+            }
+        }
+    }
+    &.delete {
+        background-color: $ma-failure;
+        color: $ma-white;
+        &:hover, &:focus {
+            background-color: mix(white, $ma-failure, $color-effect);
+            color: $ma-white;
+        }
+        &:active {
+            background-color: mix(black, $ma-failure, $color-effect);
+            color: $ma-white;
+        }
+        &[disabled] {
+            &:active, &:hover {
+                background-color: $ma-failure;
+            }
+        }
+    }
+    &.ghost {
+        background-color: $ma-white;
+        &:hover, &:focus {
+            background-color: $ma-white;
+            color: $ma-primary;
+        }
+        &:active {
+            background-color: $ma-primary;
+            color: $ma-white;
+        }
+        &[disabled] {
+            &:active, &:hover {
+                background-color: $ma-white;
+                color: $ma-secondary-text;
+            }
+        }
+    }
+    &.icon {
+      padding: rem-calc(8) rem-calc(9.5);
+      .fa {
+        margin-right: 0px;
+        font-size: 1.45em;
+        line-height: .9;
+      }
+      &.ma-warning-color {
+        color: $ma-warning;
       }
     }
-    margin-bottom: $button-margin-bottom;
-  }
 }
-
-.ma-button-clear-margin-bottom {
-    margin-top: -$button-margin-bottom;
-}
-
-@include ma-button-style(primary, $ma-primary);
-@include ma-button-style(warning, $ma-warning);
-@include ma-button-style(secondary, $secondary-color);
-@include ma-button-style(alert, $ma-failure);
-// .button {
-//   &.alert {
-//     &:hover, &:focus {
-//       background-color: scale-color($ma-failure, $lightness: $lightness) !important;
-//     }
-//   }
-// }
