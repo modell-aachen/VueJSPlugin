@@ -4,7 +4,7 @@
 
 %TOC%
 
-%ADDTOZONE{"script" id="FONTAWESOME" text="<script src=\"%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/js/fontawesome.js?version=%QUERYVERSION{"FontAwesomeContrib"}%\" />"}%
+%ADDTOZONE{"head" text="<link rel='stylesheet' type='text/css' media='all' href='%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome.min.css' />"}%
 
 ---++ About this Topic
 This topic provides an overview of the FlatSkin styles.
@@ -330,3 +330,27 @@ The standard foundation button classes are used.
     </div>
   </div>
 </form>
+
+---++ Checkbox-Items
+<div class="grid-x">
+  <div class="cell large-4">
+    <form>
+      <input type="checkbox" id="cb-eins">
+      <label for="cb-eins">Checkbox-Item</label><br>
+      <input type="checkbox" id="cb-zwei">
+      <label for="cb-zwei">Checkbox-Item</label><br>
+      <input type="checkbox" id="cb-drei">
+      <label for="cb-drei">Checkbox-Item</label><br>
+    </form>
+  </div>
+  <div class="cell large-4">
+    <form>
+      <input type="radio" name="demo" id="rd-eins">
+      <label for="rd-eins">Radio-Item</label><br>
+      <input type="radio" name="demo" id="rd-zwei">
+      <label for="rd-zwei">Radio-Item</label><br>
+      <input type="radio" name="demo" id="rd-drei">
+      <label for="rd-drei">Radio-Item</label><br>
+    </form>
+  </div>
+</div>

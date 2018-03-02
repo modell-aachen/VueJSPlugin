@@ -83,26 +83,46 @@ input[type]:disabled {
 }
 
 
+// Used to calculate offset to center inputs.
+  $line-heigt: 1.4;
+  $font-size: rem-calc(14);
+  $size: rem-calc(16);
+  $offset: rem-calc(($font-size * $line-heigt - $size) / 2);
+
+%item-label {
+    @include ma-font('regular');
+    font-size: $font-size;
+    color: $ma-body-text;
+    margin-top: rem-calc(8);
+    margin-left: 0;
+    position: relative;
+    padding-left: rem-calc(16) + $size;
+}
+%item-label-pseudo {
+    content: "";
+    font-family: "Font Awesome\ 5 Pro";
+    font-weight: 900;
+    font-size: .5rem;
+    color: $ma-dark-grey;
+    display: inline-block;
+    width: $size;
+    height: $size;
+    background-color: white;
+    border: 2px solid $ma-grey;
+    vertical-align: middle;
+    position:absolute;
+    top: $offset;
+    left: 0;
+}
 //Checkboxes
 [type="checkbox"]:not(.switch-input) {
   display: none;
   &+label{
-    @include ma-font('regular');
-    font-size: rem-calc(13);
-    color: black;
+    @extend %item-label;
   }
   &+label::before{
-    content: "";
-    font-family: "FontAwesome";
-    color: $ma-primary;
-    display: inline-block;
-    width: rem-calc(21);
-    height: rem-calc(21);
-    background-color: white;
-    border-radius: $ma-border-radius;
-    border: 1px solid $ma-grey;
-    margin-right: rem-calc(13);
-    vertical-align: middle;
+    @extend %item-label-pseudo;
+    border-radius: 2px;
   }
   &:checked,
   &[checked="checked"]{
@@ -116,56 +136,32 @@ input[type]:disabled {
 //Radios
 //Idea: Use :before in the label as the radio background and :after as the checkmark
 [type="radio"]{
-  $radio-dimension: 20;
-  $radio-checkmark-padding: 3;
+  $radio-dimension: 16;
+  $radio-checkmark-padding: 4;
   display: none;
   &+label{
-    @include ma-font('regular');
-    font-size: rem-calc(13);
-    color: black;
-    position: relative;
-    padding-left: rem-calc($radio-dimension + 13);
+    @extend %item-label;
   }
   &+label::before{
-    content: "";
-    font-family: "FontAwesome";
-    display: inline-block;
-    width: rem-calc($radio-dimension);
-    height: rem-calc($radio-dimension);
-    background-color: white;
+    @extend %item-label-pseudo;
     border-radius: 50%;
-    border: 1px solid $ma-primary;
-    vertical-align: middle;
-    position:absolute;
-    top: 0;
-    left: 0;
-  }
-  &:not(:checked)+label::before {
-    border-color: $ma-grey;
   }
 
   &+label::after{
-    content: "";
-    font-family: "FontAwesome";
-    color: $ma-primary;
-    display: inline-block;
-    width: rem-calc($radio-dimension);
-    height: rem-calc($radio-dimension);
+    @extend %item-label-pseudo;
     border-radius: 50%;
+    border: 0;
     background-color: $ma-primary;
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
   &:checked+label::after{
     $radio-checkmark-dimension: $radio-dimension - 2 * $radio-checkmark-padding;
     display: inline-block;
     width: rem-calc($radio-checkmark-dimension);
     height: rem-calc($radio-checkmark-dimension);
-    top: rem-calc($radio-checkmark-padding);
+    top: rem-calc($radio-checkmark-padding) + $offset;
     left: rem-calc($radio-checkmark-padding);
-    }
+  }
 }
 
 textarea{
