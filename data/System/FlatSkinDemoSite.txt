@@ -170,6 +170,7 @@ For further documentation please have a look at the Foundation docs.
 ---+++ Standard
 The standard table.
 
+<h2>Tabellen-Überschrift<small>Optionale Tabelleninformation</small></h2>
 <table style="width:100%;">
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
@@ -182,6 +183,7 @@ The standard table.
 </table>
 
 <verbatim class="html">
+<h2>Tabellen-Überschrift<small>Optionale Tabelleninformation</small></h2>
 <table style="width:100%;">
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
@@ -223,13 +225,13 @@ To create a striped table just add the *striped* class to the table.
 
 ---++ Grids
 The standard foundation grid can be used to layout elements.
-<div class="row">
-  <div class="small-6 columns" style="background-color: lightgrey;">6 columns</div>
-  <div class="small-6 columns" style="background-color: lightblue;">6 columns</div>
+<div class="grid-x">
+  <div class="small-6 cell" style="background-color: lightgrey;">6 columns</div>
+  <div class="small-6 cell" style="background-color: lightblue;">6 columns</div>
 </div>
-<div class="row">
-  <div class="medium-6 large-4 columns" style="background-color: lightgrey;">12/6/4 columns</div>
-  <div class="medium-6 large-8 columns" style="background-color: lightblue;">12/6/8 columns</div>
+<div class="grid-x">
+  <div class="medium-6 large-4 cell" style="background-color: lightgrey;">12/6/4 columns</div>
+  <div class="medium-6 large-8 cell" style="background-color: lightblue;">12/6/8 columns</div>
 </div>
 
 <verbatim class="html">

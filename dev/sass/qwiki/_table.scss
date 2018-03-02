@@ -2,15 +2,22 @@
 $table-head-background: $ma-white;
 $table-background: $ma-white;
 $table-border: 0;
-$table-stripe: "none"; //Disable foundation default stripes
+$table-is-striped: "none"; //Disable foundation default stripes
+$table-head-font-color: $ma-secondary-text;
+$table-padding: rem-calc(8 20 10 0);
 
 @include foundation-table;
 
 //New variables
-$table-inner-border: 1px solid $ma-light-grey;
+$table-inner-border: 0;
 
-th, td {
-  border-bottom: 1px solid $ma-light-grey;
+table {
+  margin-top: rem-calc(16);
+}
+thead {
+  th, td {
+    border-bottom: 1px solid $ma-light-grey;
+  }
 }
 
 th {
@@ -20,7 +27,7 @@ th {
 tr {
   &:last-child {
     td {
-      border-bottom: 0;
+      border-bottom: 1px solid $ma-light-grey;
     }
   }
 }
