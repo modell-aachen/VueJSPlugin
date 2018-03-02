@@ -1,11 +1,10 @@
-h1, h2, h3, h4,
-small, .small-text {
+h1, h2, h3, h4 {
   @include ma-font('regular');
   margin-top: rem-calc(24);
   margin-bottom: 0;
   border: 0;
   color: $ma-body-text;
-  .ma-subtitle {
+  small, .small-text {
     @extend %subtitle;
   }
 }

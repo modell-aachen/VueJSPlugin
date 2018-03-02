@@ -128,42 +128,43 @@ For further documentation please have a look at the Foundation docs.
 <h1>Seiten-Header h1</h1>
 <h2>First Section-Header h2</h2>
 <h2>First Section-Header h2
-  <span class="ma-subtitle">Ein Untertitel</span>
+    <small>Ein Untertitel</small>
 </h2>
 <h2 class="ma-text-hr">Section-Header h2</h2>
 <h2 class="ma-text-hr">Section-Header + h2
-  <span class="ma-subtitle">Ein Untertitel</span>
+    <small>Ein Untertitel</small>
 </h2>
 <h3>First Sub-header h3</h3>
 <h3>First Sub-header + h3
-  <span class="ma-subtitle">Ein Untertitel</span>
+    <small>Ein Untertitel</small>
 </h3>
 <h3 class="ma-text-hr">First Sub-header h3</h3>
 <h3 class="ma-text-hr">First Sub-header + h3
-  <span class="ma-subtitle">Ein Untertitel</span>
+    <small>Ein Untertitel</small>
 </h3>
 <p>First Body-Text</p>
 <p class="ma-text-hr">Body-Text</p>
+
 <verbatim class="html">
-<h1>Seiten-Header h1</h1>
-<h2>First Section-Header h2</h2>
-<h2>First Section-Header h2
-  <span class="ma-subtitle">Ein Untertitel</span>
-</h2>
-<h2 class="ma-text-hr">Section-Header h2</h2>
-<h2 class="ma-text-hr">Section-Header + h2
-  <span class="ma-subtitle">Ein Untertitel</span>
-</h2>
-<h3>First Sub-header h3</h3>
-<h3>First Sub-header + h3
-  <span class="ma-subtitle">Ein Untertitel</span>
-</h3>
-<h3 class="ma-text-hr">First Sub-header h3</h3>
-<h3 class="ma-text-hr">First Sub-header + h3
-  <span class="ma-subtitle">Ein Untertitel</span>
-</h3>
-<p>First Body-Text</p>
-<p class="ma-text-hr">Body-Text</p>
+    <h1>Seiten-Header h1</h1>
+    <h2>First Section-Header h2</h2>
+    <h2>First Section-Header h2
+        <small>Ein Untertitel</small>
+    </h2>
+    <h2 class="ma-text-hr">Section-Header h2</h2>
+    <h2 class="ma-text-hr">Section-Header + h2
+        <small>Ein Untertitel</small>
+    </h2>
+    <h3>First Sub-header h3</h3>
+    <h3>First Sub-header + h3
+        <small>Ein Untertitel</small>
+    </h3>
+    <h3 class="ma-text-hr">First Sub-header h3</h3>
+    <h3 class="ma-text-hr">First Sub-header + h3
+        <small>Ein Untertitel</small>
+    </h3>
+    <p>First Body-Text</p>
+    <p class="ma-text-hr">Body-Text</p>
 </verbatim>
 ---++ Tables
 ---+++ Standard
