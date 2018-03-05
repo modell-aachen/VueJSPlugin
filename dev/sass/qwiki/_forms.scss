@@ -178,3 +178,18 @@ textarea{
   background-color: $ma-light-grey;
   box-shadow: none;
 }
+
+//Switches
+.ma-switch{
+  @include switch-container;
+  @include switch-size(rem-calc(14), $switch-radius * 2, rem-calc(1));
+  @include ma-font('regular');
+  margin: rem-calc(8 16 0 0);
+  .switch-input {
+    margin-bottom: 0;
+  }
+  .switch-paddle {
+    position: relative;
+    top: 2px;
+  }
+}

@@ -333,24 +333,64 @@ The standard foundation button classes are used.
 
 ---++ Checkbox-Items
 <div class="grid-x">
-  <div class="cell large-4">
-    <form>
-      <input type="checkbox" id="cb-eins">
-      <label for="cb-eins">Checkbox-Item</label><br>
-      <input type="checkbox" id="cb-zwei">
-      <label for="cb-zwei">Checkbox-Item</label><br>
-      <input type="checkbox" id="cb-drei">
-      <label for="cb-drei">Checkbox-Item</label><br>
-    </form>
-  </div>
-  <div class="cell large-4">
-    <form>
-      <input type="radio" name="demo" id="rd-eins">
-      <label for="rd-eins">Radio-Item</label><br>
-      <input type="radio" name="demo" id="rd-zwei">
-      <label for="rd-zwei">Radio-Item</label><br>
-      <input type="radio" name="demo" id="rd-drei">
-      <label for="rd-drei">Radio-Item</label><br>
-    </form>
-  </div>
+   <div class="cell large-4">
+      <form>
+         <input type="checkbox" id="cb-eins">
+         <label for="cb-eins">Checkbox-Item</label><br>
+         <input type="checkbox" id="cb-zwei">
+         <label for="cb-zwei">Checkbox-Item</label><br>
+         <input type="checkbox" id="cb-drei">
+         <label for="cb-drei">Checkbox-Item</label><br>
+      </form>
+   </div>
+   <div class="cell large-4">
+      <form>
+         <input type="radio" name="demo" id="rd-eins">
+         <label for="rd-eins">Radio-Item</label><br>
+         <input type="radio" name="demo" id="rd-zwei">
+         <label for="rd-zwei">Radio-Item</label><br>
+         <input type="radio" name="demo" id="rd-drei">
+         <label for="rd-drei">Radio-Item</label><br>
+      </form>
+   </div>
+   <div class="cell large-4">
+      <form>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-eins" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-eins"></label>Toggle-Input
+         </div>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-zwei" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-zwei"></label>Toggle-Input
+         </div>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-drei" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-drei"></label>Toggle-Input
+         </div>
+      </form>
+   </div>
 </div>
+<verbatim class="html">
+<div class="grid-x">
+   <div class="cell large-4">
+      <form>
+         <input type="checkbox" id="cb-eins">
+         <label for="cb-eins">Checkbox-Item</label><br>
+         <input type="checkbox" id="cb-zwei">
+         <label for="cb-zwei">Checkbox-Item</label><br>
+         <input type="checkbox" id="cb-drei">
+         <label for="cb-drei">Checkbox-Item</label><br>
+      </form>
+   </div>
+   <div class="cell large-4">
+      <form>
+         <input type="radio" name="demo" id="rd-eins">
+         <label for="rd-eins">Radio-Item</label><br>
+         <input type="radio" name="demo" id="rd-zwei">
+         <label for="rd-zwei">Radio-Item</label><br>
+         <input type="radio" name="demo" id="rd-drei">
+         <label for="rd-drei">Radio-Item</label><br>
+      </form>
+   </div>
+</div>
+</verbatim>
