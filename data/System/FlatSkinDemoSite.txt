@@ -410,3 +410,51 @@ The standard foundation button classes are used.
    </div>
 </div>
 </verbatim>
+---++ Tabs
+%TABPANE{class="flat"}%
+%TAB{"Daten und Ansichten"}%
+%ENDTAB%
+%TAB{"Workflow"}%
+%ENDTAB%
+%TAB{"Übersicht"}%
+  %TABPANE{class="jqTabPaneFlatSub"}%
+    %TAB{"Basis"}%
+    %ENDTAB%
+    %TAB{"Reiter"}%
+    %ENDTAB%
+    %TAB{"Tabelle"}%
+    %ENDTAB%
+    %TAB{"Filter"}%
+    %ENDTAB%
+  %ENDTABPANE%
+%ENDTAB%
+%TAB{"Übersetzungen"}%
+%ENDTAB%
+%TAB{"Rohdaten"}%
+%ENDTAB%
+%ENDTABPANE%
+<verbatim>
+%TABPANE{class="flat"}%
+%TAB{"Daten und Ansichten"}%
+%ENDTAB%
+%TAB{"Workflow"}%
+%ENDTAB%
+%TAB{"Übersicht"}%
+  %TABPANE{class="jqTabPaneFlatSub"}%
+    %TAB{"Basis"}%
+    %ENDTAB%
+    %TAB{"Reiter"}%
+    %ENDTAB%
+    %TAB{"Tabelle"}%
+    %ENDTAB%
+    %TAB{"Filter"}%
+    %ENDTAB%
+  %ENDTABPANE%
+%ENDTAB%
+%TAB{"Übersetzungen"}%
+%ENDTAB%
+%TAB{"Rohdaten"}%
+%ENDTAB%
+%ENDTABPANE%
+</verbatim>
+

@@ -5,33 +5,31 @@
 .jqTabPaneFlat {
   > .vue-tabpane-group,
   > .jqTabGroup {
+    background: $ma-white-grey;
+    width: 100%;
     a {
-      background: $ma-white;
+      background: $ma-white-grey;
       border: 0;
       border-top-left-radius: $ma-border-radius;
       border-top-right-radius: $ma-border-radius;
-      color: $ma-dark-grey;
-      font-weight: bold;
+      color: $ma-secondary-text;
       line-height: 100%;
-      padding: rem-calc(13 22);
+      padding: rem-calc(16 24);
 
       &:hover {
-        color: inherit;
-        background: $ma-light-grey;
-        border-bottom: 2px solid $ma-light-grey;
+        color: $ma-primary;
       }
     }
 
     li {
-      background: transparent;
+      background: $ma-white-grey;
       margin: rem-calc(0 8 -2 0);
 
       &.current a {
         background: $ma-white;
-        border: 2px solid $ma-light-grey;
+        border: 2px solid $ma-primary;
         border-bottom: 2px solid $ma-white;
-        color: $ma-primary;
-        font-weight: bold;
+        color: $ma-body-text;
       }
     }
   }
@@ -51,31 +49,33 @@
 .jqTabPaneFlatSub {
   > .vue-tabpane-group,
   > .jqTabGroup {
-    background: #F0F0F0;
+    background: $ma-button-grey;
     border-bottom: 0 !important;
     margin-top: -16px !important;
+    width: 100%;
     a {
       border: 0;
-      border-radius: $ma-border-radius;
-      color: $ma-body-text;
-      line-height: 100%;
-      padding: rem-calc(13 22);
+      color: $ma-secondary-text;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      padding: rem-calc(6 0);
+      margin: rem-calc(0 16);
 
       &:hover {
-        color: inherit;
-        background: $ma-light-grey;
+        border-bottom: 2px solid $ma-primary;
       }
     }
     li {
       padding: rem-calc(8);
-      background: transparent;
       margin: rem-calc(0 8 0 0);
 
       &.current a {
+        color: $ma-body-text;
+        padding: rem-calc(6 16);
+        margin: rem-calc(0);
+        border-radius: $ma-border-radius;
         background: $ma-white;
         border: 0;
-        color: $ma-body-text;
-        font-weight: bold;
       }
     }
   }
@@ -83,7 +83,6 @@
   .vue-tab.current,
   .jqTab.current {
     border: 0;
-    border-top: 2px solid $ma-light-grey;
   }
 
   .vue-tab-contents,
