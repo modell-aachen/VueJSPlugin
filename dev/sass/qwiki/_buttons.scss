@@ -1,6 +1,6 @@
 $button-background: $ma-button-grey;
 $button-radius: $ma-border-radius;
-$button-padding: rem-calc(8) rem-calc(16);
+$button-padding: 0 rem-calc(16);
 $button-color: $ma-body-text;
 //$button-background-hover: scale-color($button-background, $lightness: $lightness);
 $buttongroup-spacing: 5px;
@@ -38,16 +38,13 @@ $button-margin-right: rem-calc(8);
 .button {
     @include ma-font('semibold');
     @include button-hover-active($button-background, 3%, $ma-secondary-text);
-    height: 36px;
-    line-height: normal;
+    line-height: rem-calc(36);
     border: 0;
     margin-right: $button-margin-right;
     margin-bottom: $button-margin-bottom;
     .fa,.far,.fal {
         margin-right: rem-calc(16);
         font-size: 1.33333333em;
-        line-height: .75em;
-        vertical-align: -10%;
     }
 }
 .button {
@@ -80,7 +77,6 @@ $button-margin-right: rem-calc(8);
       .fa,.far,.fal {
         margin-right: 0px;
         font-size: 1.45em;
-        line-height: .9;
       }
       &.ma-warning-color {
         color: $ma-warning;
