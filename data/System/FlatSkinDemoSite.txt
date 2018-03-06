@@ -392,5 +392,21 @@ The standard foundation button classes are used.
          <label for="rd-drei">Radio-Item</label><br>
       </form>
    </div>
+   <div class="cell large-4">
+      <form>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-eins" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-eins"></label>Toggle-Input
+         </div>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-zwei" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-zwei"></label>Toggle-Input
+         </div>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-drei" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-drei"></label>Toggle-Input
+         </div>
+      </form>
+   </div>
 </div>
 </verbatim>
