@@ -1,5 +1,6 @@
 import VueSelect from './components/vue-select/index.js';
 import VueSplitbutton from './components/vue-splitbutton/Splitbutton.vue';
+import VueButton from './components/vue-button/Button.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
 import VueTabpane from './components/vue-tabpane/TabPane.vue';
@@ -35,6 +36,7 @@ class MAVueJsPlugin {
     //Component registrations
     Vue.component('vue-select', VueSelect);
     Vue.component('vue-splitbutton', VueSplitbutton);
+    Vue.component('vue-button', VueButton);
     Vue.component('vue-pagination', VuePagination);
     Vue.component('vue-spinner', VueSpinner);
     Vue.component('vue-tabpane', VueTabpane);

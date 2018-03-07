@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="" date="1443077395" format="1.1" version="1"}%
+
+%VUE{VERSION="2"}%
+
+%ADDTOZONE{"script" requires="VUEJSPLUGIN" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/showroom.js'></script>"}%
+
+The VueJSPlugin comes with different component. See them all.
+
+%TOC%
+
+---+ Vue Sidebar
+The following examples provide an overview of its functionality. The corresponding code examples can be found in [[%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/sidebarDocs.js][sidebarDocs.js]]
+
+
+<div class="flatskin-wrapped">
+	<div id="sidebarBareExample"></div>
+
+	<div id="sidebarLayoutExample"></div>
+
+	<div id="sidebarTabExample"></div>
+
+	<div id="sidebarTab2Example"></div>
+
+	<div id="sidebarModalExample"></div>
+</div>
+
+---+ Vue Button
+
+<div class="flatskin-wrapped">
+ <div id="buttonExamples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"ButtonVueTempalte"}%
+<div>
+   Button
+      <vue-button title='Button' @click='atClick'></vue-button><br>
+   Primary Button
+      <vue-button type='primary' title='Button'></vue-button><br>
+   Ghost Button
+      <vue-button type='ghost' title='Button'></vue-button><br>
+   Delete Button
+      <vue-button type='delete' title='Button'></vue-button><br>
+   Button with icon
+      <vue-button type='primary' icon='far fa-paperclip' title='Button'></vue-button><br>
+   Disabled Button
+      <vue-button type='primary' :isDisabled='true' title='Button'></vue-button><br>
+</div>
+%ENDSECTION{"ButtonVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="buttonTemplate">
+%INCLUDE{"%WEB%.%TOPIC%" section="ButtonVueTempalte"}%
+</script>
