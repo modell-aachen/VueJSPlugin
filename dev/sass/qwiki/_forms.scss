@@ -2,6 +2,7 @@ $form-label-font-size: rem-calc(12);
 $form-label-font-weight: normal;
 $form-label-line-height: rem-clac(16);
 $form-label-color: $ma-secondary-text;
+$form-spacing: 0;
 $input-radius: $ma-border-radius;
 $input-background: $ma-button-grey;
 $input-background-focus: $ma-white;
@@ -24,9 +25,9 @@ $input-prefix-color: $ma-button-grey;
 
 @include foundation-forms;
 
-.ma-small{
-  height: rem-calc(32);
-  padding: rem-calc(6 8);
+form{
+  display: block;
+  padding: rem-calc(8 16 0 0);
 }
 .help-text{
   @include ma-font('semibold');
@@ -38,15 +39,9 @@ select {
   font-size: 1em;
 }
 
-[type="text"]{
-  margin-top: rem-calc(8);
-}
-input,input:focus,.v-select {
-  &.ma-success{
-    border: 1px solid $ma-success;
-  }
-  &.ma-failure{
-    border: 1px solid $ma-failure;
+label{
+  input{
+    margin: rem-calc(8 0 0 0);
   }
 }
 
@@ -57,6 +52,46 @@ input,input:focus,.v-select {
 
 .input-group>.input-group-label~.input-group-field {
   padding-left: 0;
+}
+.ma-input-group{
+  &.ma-success{
+    .fas,.far,.fal {
+      color: $ma-success;
+    }
+  }
+  &.ma-failure{
+    .fas,.far,.fal {
+      color: $ma-failure;
+    }
+    small {
+      color: $ma-failure;
+    }
+    input{
+      border: 1px solid $ma-failure;
+    }
+  }
+  position: relative;
+  margin-bottom: rem-calc(16);
+  .fas,.far,.fal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $ma-grey;
+    font-size: 1.45em;
+    line-height: calc($input-font-size * $input-line-height);
+    padding: $input-padding;
+  }
+  .ma-small{
+    height: rem-calc(32);
+    padding: rem-calc(6 8);
+    & ~ .fas,& ~ .far,& ~ .fal {
+      line-height: rem-calc(19.5);
+      padding: rem-calc(6 8);
+    }
+  }
+  label input{
+    margin: rem-calc(8 0 0 0);
+  }
 }
 
 @mixin placeholder-style{
@@ -197,6 +232,7 @@ textarea{
   @include switch-size(rem-calc(14), $switch-radius * 2, rem-calc(1));
   @include ma-font('regular');
   margin: rem-calc(8 16 0 0);
+  height: rem-calc(21);
   .switch-input {
     margin-bottom: 0;
   }
@@ -204,5 +240,6 @@ textarea{
     position: relative;
     top: 2px;
     margin-left: 0;
+    margin-right: rem-calc(16);
   }
 }

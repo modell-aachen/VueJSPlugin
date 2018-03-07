@@ -18,6 +18,7 @@ table {
   th, td {
     max-width: rem-calc(400);
     word-wrap: break-word;
+    padding-right: rem-calc(48);
   }
 }
 thead {

@@ -286,16 +286,16 @@ The standard foundation button classes are used.
     <div class="cell large-2"><a class="button"><i class="far fa-paperclip"></i>Button</a></div>
     <div class="cell large-2"><a class="button delete">Button</a></div>
     <div class="cell large-2">
-        <a class="button icon"><i class="fa fa-times"></i></a>
+        <a class="button icon"><i class="far fa-times"></i></a>
         <a class="button icon"><i class="far fa-save"></i></a>
-        <a class="button icon ma-warning-color"><i class="fa fa-exclamation-triangle"></i></a>
+        <a class="button icon ma-warning-color"><i class="far fa-exclamation-triangle"></i></a>
     </div>
 </div>
 <div class="grid-x">
     <div class="cell large-2"><a class="button primary" disabled>Button</a></div>
     <div class="cell large-2"><a class="button" disabled>Button</a></div>
     <div class="cell large-2"><a class="button ghost" disabled>Button</a></div>
-    <div class="cell large-2"><a class="button" disabled><i class="fa fa-paperclip"></i>Button</a></div>
+    <div class="cell large-2"><a class="button" disabled><i class="far fa-paperclip"></i>Button</a></div>
     <div class="cell large-2"><a class="button delete" disabled>Button</a></div>
 </div>
 
@@ -304,12 +304,12 @@ The standard foundation button classes are used.
     <div class="cell large-2"><a class="button primary">Button</a></div>
     <div class="cell large-2"><a class="button">.button</a></div>
     <div class="cell large-2"><a class="button ghost">.button.ghost</a></div>
-    <div class="cell large-2"><a class="button"><i class="fa fa-paperclip"></i>.button</a></div>
+    <div class="cell large-2"><a class="button"><i class="far fa-paperclip"></i>.button</a></div>
     <div class="cell large-2"><a class="button delete">.button.delete</a></div>
     <div class="cell large-2">
-        <a class="button icon"><i class="fa fa-times"></i></a>
-        <a class="button icon"><i class="fa fa-save"></i></a>
-        <a class="button icon warning"><i class="fa fa-exclamation-triangle"></i></a>
+        <a class="button icon"><i class="far fa-times"></i></a>
+        <a class="button icon"><i class="far fa-save"></i></a>
+        <a class="button icon warning"><i class="far fa-exclamation-triangle"></i></a>
     </div>
 </div>
 <div class="grid-x">
@@ -323,53 +323,144 @@ The standard foundation button classes are used.
 
 ---++ Forms
 
-<form>
-  <div class="grid-x">
-    <div class="small-6 cell">
-      <input type="text">
-      <input type="text" placeholder="Input-Prompt">
-      <input type="text" placeholder="Disabled" disabled>
-      <input class="ma-failure" type="text" placeholder="Error">
-      <label for="exampleInputSingle">Einzeilige Überschrift
-        <input type="text" placeholder="Input-Prompt" id="exampleInputSingle">
-      </label>
-      <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.
+<div class="grid-x">
+  <div class="small-6 cell">
+    <form>
+      <div class="ma-input-group">
+         <input type="text">
+      </div>
+      <div class="ma-input-group">
+         <input type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+         <input type="text" placeholder="Disabled" disabled>
+      </div>
+      <div class="ma-input-group ma-failure">
+         <input type="text" placeholder="Error">
+         <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+         <small>etwas ist schiefgelaufen</small>
+      </div>
+      <div class="ma-input-group">
+         <label for="exampleInputSingle">Einzeilige Überschrift
+           <input type="text" placeholder="Input-Prompt" id="exampleInputSingle">
+         </label>
+      </div>
+      <div class="ma-input-group">
+        <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.
         <input type="text" placeholder="Input-Prompt">
         <small>Wir behalten die Daten für uns</small>
-      </label>
-      <div class="ma-input-group">
-        <span class="ma-input-group-label"><i class="fa fa-search" aria-hidden="true"></i></span>
-        <input class="ma-input-group-field" type="text">
+        </label>
       </div>
-    </div>
-    <div class="small-6 cell">
-      <input class="ma-small" type="text">
-      <input class="ma-small" type="text" placeholder="Input-Prompt">
-      <input class="ma-small" type="text" placeholder="Disabled" disabled>
-      <input class="ma-small ma-error" type="text" placeholder="Error">
-    </div>
+      <div class="ma-input-group">
+        <input class="ma-input-group-field" type="text">
+        <i class="far fa-search" aria-hidden="true"></i>
+      </div>
+    </form>
   </div>
-</form>
-
----+++ Extra Inputs
-  <div class="grid-x">
-    <div class="small-6 cell">
-    <div class="input-group">
-      <span class="input-group-label"><i class="fa fa-search" aria-hidden="true"></i></span>
-      <input class="input-group-field" type="text">
-    </div>
-    </div>
-    <div class="small-6 cell">
-      <label>Select Menu
-  <select>
-    <option value="husker">Husker</option>
-    <option value="starbuck">Starbuck</option>
-    <option value="hotdog">Hot Dog</option>
-    <option value="apollo">Apollo</option>
-  </select>
-</label>
-    </div>
+  <div class="small-6 cell">
+    <form>
+      <div class="ma-input-group">
+         <input class="ma-small" type="text">
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text" placeholder="Disabled" disabled>
+      </div>
+      <div class="ma-input-group ma-failure">
+        <input class="ma-small" type="text" placeholder="Error">
+        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+        <small>etwas ist schiefgelaufen</small>
+      </div>
+      <div class="ma-input-group">
+         <label>Einzeilige Überschrift
+           <input class="ma-small" type="text" placeholder="Input-Prompt">
+         </label>
+      </div>
+      <div class="ma-input-group">
+        <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.
+        <input class="ma-small" type="text" placeholder="Input-Prompt">
+        <small>Wir behalten die Daten für uns</small>
+        </label>
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text">
+        <i class="far fa-search" aria-hidden="true"></i>
+      </div>
+    </form>
   </div>
+</div>
+<verbatim class="html">
+<div class="grid-x">
+  <div class="small-6 cell">
+    <form>
+      <div class="ma-input-group">
+         <input type="text">
+      </div>
+      <div class="ma-input-group">
+         <input type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+         <input type="text" placeholder="Disabled" disabled>
+      </div>
+      <div class="ma-input-group ma-failure">
+         <input type="text" placeholder="Error">
+         <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+         <small>etwas ist schiefgelaufen</small>
+      </div>
+      <div class="ma-input-group">
+         <label for="exampleInputSingle">Einzeilige Überschrift
+           <input type="text" placeholder="Input-Prompt" id="exampleInputSingle">
+         </label>
+      </div>
+      <div class="ma-input-group">
+        <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.
+        <input type="text" placeholder="Input-Prompt">
+        <small>Wir behalten die Daten für uns</small>
+        </label>
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-input-group-field" type="text">
+        <i class="far fa-search" aria-hidden="true"></i>
+      </div>
+    </form>
+  </div>
+  <div class="small-6 cell">
+    <form>
+      <div class="ma-input-group">
+         <input class="ma-small" type="text">
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text" placeholder="Disabled" disabled>
+      </div>
+      <div class="ma-input-group ma-failure">
+        <input class="ma-small" type="text" placeholder="Error">
+        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+        <small>etwas ist schiefgelaufen</small>
+      </div>
+      <div class="ma-input-group">
+         <label>Einzeilige Überschrift
+           <input class="ma-small" type="text" placeholder="Input-Prompt">
+         </label>
+      </div>
+      <div class="ma-input-group">
+        <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.
+        <input class="ma-small" type="text" placeholder="Input-Prompt">
+        <small>Wir behalten die Daten für uns</small>
+        </label>
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text">
+        <i class="far fa-search" aria-hidden="true"></i>
+      </div>
+    </form>
+  </div>
+</div>
+</verbatim>
 ---++ Checkbox-Items
 <div class="grid-x">
    <div class="cell large-4">

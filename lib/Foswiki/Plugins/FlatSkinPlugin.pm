@@ -26,8 +26,8 @@ sub initPlugin {
   }
 
 
-  Foswiki::Func::addToZone( 'script', 'FONTAWESOME',
-      '<script defer src=\"%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/js/fontawesome.js?version=%QUERYVERSION{"FontAwesomeContrib"}%" />');
+  #Foswiki::Func::addToZone( 'script', 'FONTAWESOME',
+  #    '<script defer src=\"%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/js/fontawesome.js?version=%QUERYVERSION{"FontAwesomeContrib"}%" />');
   Foswiki::Func::addToZone( 'head', 'FLATSKIN_WRAPPED',
       '<link rel="stylesheet" type="text/css" media="all" href="%PUBURLPATH%/%SYSTEMWEB%/FlatSkin/css/flatskin_wrapped.min.css?version=%QUERYVERSION{"FlatSkinPlugin"}%" />');
 
