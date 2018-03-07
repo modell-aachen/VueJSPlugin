@@ -1,24 +1,33 @@
 $form-label-font-size: rem-calc(12);
-$form-label-font-weight: 600;
-$form-label-line-height: 1.4;
+$form-label-font-weight: normal;
+$form-label-line-height: rem-clac(16);
+$form-label-color: $ma-secondary-text;
 $input-radius: $ma-border-radius;
 $input-background: $ma-button-grey;
 $input-background-focus: $ma-white;
-$input-border: 0;
+$input-background-disabled: $ma-white-grey;
+$input-border: rem-calc(1) solid $ma-light-grey;
 $input-border-focus: rem-calc(1) solid $ma-primary;
 $input-shadow: 0;
 $input-shadow-focus: 0;
 $input-font-family: $ma-font-regular;
 $input-font-size: rem-calc(14);
+$input-line-height: rem-calc(24);
+$input-transition: border-color .2s, background-color .2s ease-in-out;
+$input-padding: rem-calc(10 8);
+$input-placeholder-color: $ma-secondary-text;
 $select-background: $ma-button-grey;
 $select-radius: $ma-border-radius;
 $input-prefix-background: $ma-button-grey;
 $input-prefix-border: 0;
 $input-prefix-color: $ma-button-grey;
-$input-background-disabled: $ma-button-grey;
 
 @include foundation-forms;
 
+.ma-small{
+  height: rem-calc(32);
+  padding: rem-calc(6 8);
+}
 .help-text{
   @include ma-font('semibold');
   color: $ma-body-text;
@@ -29,6 +38,9 @@ select {
   font-size: 1em;
 }
 
+[type="text"]{
+  margin-top: rem-calc(8);
+}
 input,input:focus,.v-select {
   &.ma-success{
     border: 1px solid $ma-success;

@@ -13,6 +13,12 @@ $table-inner-border: 0;
 
 table {
   margin-top: rem-calc(16);
+  font-size: rem-calc(14);
+  width: auto;
+  th, td {
+    max-width: rem-calc(400);
+    word-wrap: break-word;
+  }
 }
 thead {
   th, td {
@@ -22,6 +28,7 @@ thead {
 
 th {
     @include ma-font('semibold');
+    color: $ma-secondary-text;
 }
 
 tr {
@@ -32,12 +39,19 @@ tr {
   }
 }
 
-.striped {
+.ma-table-striped {
   tbody {
     tr {
       &:nth-child(even) {
         background-color: $table-striped-background;
       }
+    }
+  }
+}
+.ma-table-hover {
+  tbody {
+    tr:hover {
+      background-color: $table-striped-background;
     }
   }
 }

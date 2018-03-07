@@ -171,7 +171,7 @@ For further documentation please have a look at the Foundation docs.
 The standard table.
 
 <h2>Tabellen-Überschrift<small>Optionale Tabelleninformation</small></h2>
-<table style="width:100%;">
+<table>
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
   </thead>
@@ -179,12 +179,13 @@ The standard table.
     <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
     <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
     <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+    <tr> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis massa blandit, efficitur ante id, ornare lacus. Mauris enim ante, faucibus et felis lobortis, condimentum ultricies sapien.</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
   </tbody>
 </table>
 
 <verbatim class="html">
 <h2>Tabellen-Überschrift<small>Optionale Tabelleninformation</small></h2>
-<table style="width:100%;">
+<table>
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
   </thead>
@@ -192,14 +193,13 @@ The standard table.
     <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
     <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
     <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+    <tr> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis massa blandit, efficitur ante id, ornare lacus. Mauris enim ante, faucibus et felis lobortis, condimentum ultricies sapien.</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
   </tbody>
 </table>
 </verbatim>
 
 ---+++ Striped
-To create a striped table just add the *striped* class to the table.
-
-<table class="striped" style="width:100%;">
+<table class="ma-table-striped">
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
   </thead>
@@ -211,7 +211,32 @@ To create a striped table just add the *striped* class to the table.
 </table>
 
 <verbatim class="html">
-<table class="striped" style="width:100%;">
+<table class="ma-table-striped">
+  <thead>
+    <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
+  </thead>
+  <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+</tbody>
+</table>
+</verbatim>
+
+---+++ Hover
+<table class="ma-table-hover">
+  <thead>
+    <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
+  </thead>
+  <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+</tbody>
+</table>
+
+<verbatim class="html">
+<table class="ma-table-hover">
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
   </thead>
@@ -299,26 +324,42 @@ The standard foundation button classes are used.
 ---++ Forms
 
 <form>
-  <div class="row">
-    <div class="small-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".small-6.columns">
+  <div class="grid-x">
+    <div class="small-6 cell">
+      <input type="text">
+      <input type="text" placeholder="Input-Prompt">
+      <input type="text" placeholder="Disabled" disabled>
+      <input class="ma-failure" type="text" placeholder="Error">
+      <label for="exampleInputSingle">Einzeilige Überschrift
+        <input type="text" placeholder="Input-Prompt" id="exampleInputSingle">
       </label>
+      <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.
+        <input type="text" placeholder="Input-Prompt">
+        <small>Wir behalten die Daten für uns</small>
+      </label>
+      <div class="ma-input-group">
+        <span class="ma-input-group-label"><i class="fa fa-search" aria-hidden="true"></i></span>
+        <input class="ma-input-group-field" type="text">
+      </div>
     </div>
-    <div class="small-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".small-6.columns">
-      </label>
+    <div class="small-6 cell">
+      <input class="ma-small" type="text">
+      <input class="ma-small" type="text" placeholder="Input-Prompt">
+      <input class="ma-small" type="text" placeholder="Disabled" disabled>
+      <input class="ma-small ma-error" type="text" placeholder="Error">
     </div>
   </div>
-  <div class="row">
-    <div class="small-6 columns">
+</form>
+
+---+++ Extra Inputs
+  <div class="grid-x">
+    <div class="small-6 cell">
     <div class="input-group">
       <span class="input-group-label"><i class="fa fa-search" aria-hidden="true"></i></span>
       <input class="input-group-field" type="text">
     </div>
     </div>
-    <div class="small-6 columns">
+    <div class="small-6 cell">
       <label>Select Menu
   <select>
     <option value="husker">Husker</option>
@@ -329,8 +370,6 @@ The standard foundation button classes are used.
 </label>
     </div>
   </div>
-</form>
-
 ---++ Checkbox-Items
 <div class="grid-x">
    <div class="cell large-4">
