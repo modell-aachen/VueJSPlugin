@@ -5,7 +5,7 @@
                 <li
                     v-for="(tab, index) in tabs"
                     :key="index"
-                    :class="{current: tab.current}"
+                    :class="{current: tab.isVisible()}"
                 >
                     <a
                         v-html="tab.name"
@@ -36,13 +36,13 @@ export default {
   mounted() {
     if(this.$children.length) {
       this.tabs = this.$children;
-      this.tabs[0].current = true;
+      this.selectTab(this.tabs[0].id);
     }
   },
   methods: {
     selectTab(selectedTabId) {
       this.$children.forEach(tab => {
-        tab.current = (tab.id === selectedTabId);
+        tab.setVisible(tab.id === selectedTabId);
       });
     },
   },

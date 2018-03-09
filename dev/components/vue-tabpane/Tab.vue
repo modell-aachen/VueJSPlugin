@@ -1,5 +1,5 @@
 <template>
-    <div class="vue-tab" v-show="current">
+    <div class="vue-tab" v-show="visibleState">
         <div class="vue-tab-contents">
             <slot></slot>
         </div>
@@ -20,9 +20,18 @@
           return this.$foswiki.getUniqueID();
         },
       },
-      current: {
-        type: Boolean,
-        default: false,
+    },
+    data() {
+      return {
+        visibleState: false,
+      };
+    },
+    methods: {
+      setVisible(isVisible) {
+        this.visibleState = isVisible;
+      },
+      isVisible() { // needs to be a 'method', so we can call it from outside (TabPane)
+        return this.visibleState;
       },
     },
   };
