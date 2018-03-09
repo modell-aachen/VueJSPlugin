@@ -4,7 +4,7 @@ $table-background: $ma-white;
 $table-border: 0;
 $table-is-striped: "none"; //Disable foundation default stripes
 $table-head-font-color: $ma-secondary-text;
-$table-padding: rem-calc(8 20 10 0);
+$table-padding: rem-calc(12 48 12 0);
 
 @include foundation-table;
 
@@ -18,12 +18,13 @@ table {
   th, td {
     max-width: rem-calc(400);
     word-wrap: break-word;
-    padding-right: rem-calc(48);
   }
 }
 thead {
   th, td {
     border-bottom: 1px solid $ma-light-grey;
+    font-size: rem-calc(12);
+    padding: rem-calc(8 48 8 0);
   }
 }
 
