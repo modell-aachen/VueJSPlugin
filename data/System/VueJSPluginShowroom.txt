@@ -27,14 +27,14 @@ The following examples provide an overview of its functionality. The correspondi
 ---+ Vue Button
 
 <div class="flatskin-wrapped">
- <div id="buttonExamples"></div>
+ <div id="button-examples"></div>
 </div>
 %TWISTY%
 <verbatim>
 %STARTSECTION{"ButtonVueTempalte"}%
 <div>
    Button
-      <vue-button title='Button' @click='atClick'></vue-button><br>
+      <vue-button title='Button' @click.native='atClick'></vue-button><br>
    Primary Button
       <vue-button type='primary' title='Button'></vue-button><br>
    Ghost Button
@@ -45,10 +45,33 @@ The following examples provide an overview of its functionality. The correspondi
       <vue-button type='primary' icon='far fa-paperclip' title='Button'></vue-button><br>
    Disabled Button
       <vue-button type='primary' :isDisabled='true' title='Button'></vue-button><br>
+   Icon only Button
+      <vue-button type='icon' icon='fas fa-exclamation-triangle' color="ma-warning-color"></vue-button><br>
 </div>
 %ENDSECTION{"ButtonVueTempalte"}%
 </verbatim>
 %ENDTWISTY%
-<script type="text/x-template" id="buttonTemplate">
+<script type="text/x-template" id="button-template">
 %INCLUDE{"%WEB%.%TOPIC%" section="ButtonVueTempalte"}%
+</script>
+
+---+ Vue Input Text
+
+<div class="flatskin-wrapped">
+ <div id="input-text-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"InputTextVueTempalte"}%
+<div>
+    <vue-input-text :value="userInput" @typed="getNewValue"></vue-input-text>
+    <vue-input-text :value="userInput" @typed="getNewValue" label="Einzeilige Überschrift" data="userInput"></vue-input-text>
+    <vue-input-text :value="userInput" @typed="getNewValue" placeholder="Small" :isSmall="true"data="userInput"></vue-input-text>
+    <vue-input-text :value="userInput" placeholder="Disabled" :isDisabled="true" data="userInput"></vue-input-text>
+</div>
+%ENDSECTION{"InputTextVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="input-text-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="InputTextVueTempalte"}%
 </script>
