@@ -9,6 +9,19 @@ Vue.onDocumentReady(function(){
         }
     });
     new Vue({
+        el: '#check-item-examples',
+        template: '#check-item-template',
+        data: {
+          values: [],
+          payment: ''
+        },
+        methods: {
+            getNewValues: function(newValue) {
+               this.values = newValue.value;
+            }
+        }
+    });
+    new Vue({
         el: '#input-text-examples',
         template: '#input-text-template',
         data: {

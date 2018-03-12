@@ -55,6 +55,43 @@ The following examples provide an overview of its functionality. The correspondi
 %INCLUDE{"%WEB%.%TOPIC%" section="ButtonVueTempalte"}%
 </script>
 
+---+ Vue Check Item
+
+<div class="flatskin-wrapped">
+ <div id="check-item-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"CheckItemVueTempalte"}%
+<div class="grid-x">
+  <div class="cell large-4">
+    <h3>CheckBox</h3>
+    <vue-check-item name="zutaten[]" value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item name="zutaten[]" value="zucker" v-model="values">Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" value="pfeffer" v-model="values" >Pfeffer</vue-check-item><br>
+    {{values}}<br>
+  </div>
+  <div class="cell large-4">
+    <h3>Radio</h3>
+    <vue-check-item name="method" type="radio" value="VISA" v-model="payment" checked>VISA</vue-check-item>
+    <vue-check-item name="method" type="radio" value="PayPall" v-model="payment">PayPall</vue-check-item>
+    <vue-check-item name="method" type="radio" value="Sofortueberweisung" v-model="payment" >Sofort Überweisung</vue-check-item><br>
+    Zahlungsmethode: {{payment}}<br>
+  </div>
+  <div class="cell large-4">
+    <h3>Switch</h3>
+    <vue-check-item :isSwitch="true" name="zutaten[]" value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item :isSwitch="true" name="zutaten[]" value="zucker" v-model="values">Zucker</vue-check-item>
+    <vue-check-item :isSwitch="true" name="zutaten[]" value="pfeffer" v-model="values" >Pfeffer</vue-check-item><br>
+    {{values}}<br>
+  </div>
+</div>
+%ENDSECTION{"CheckItemVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="check-item-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="CheckItemVueTempalte"}%
+</script>
 ---+ Vue Input Text
 
 <div class="flatskin-wrapped">
