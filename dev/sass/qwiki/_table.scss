@@ -22,7 +22,7 @@ table {
 }
 thead {
   th, td {
-    border-bottom: 1px solid $ma-light-grey;
+    border-bottom: 2px solid $ma-light-grey;
     font-size: rem-calc(12);
     padding: rem-calc(8 48 8 0);
   }
@@ -36,7 +36,7 @@ th {
 tr {
   &:last-child {
     td {
-      border-bottom: 1px solid $ma-light-grey;
+      border-bottom: 2px solid $ma-light-grey;
     }
   }
 }

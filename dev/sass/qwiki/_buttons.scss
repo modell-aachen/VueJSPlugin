@@ -55,15 +55,8 @@ $button-margin-right: rem-calc(8);
         @include button-hover-active($ma-failure, 15%, $ma-white);
     }
     &.ghost {
+        @include button-hover-active($button-background, 3%, $ma-secondary-text);
         background-color: $ma-white;
-        &:hover, &:focus {
-            background-color: $ma-white;
-            color: $ma-primary;
-        }
-        &:active {
-            background-color: $ma-primary;
-            color: $ma-white;
-        }
         &[disabled] {
             &:active, &:hover {
                 background-color: $ma-white;
