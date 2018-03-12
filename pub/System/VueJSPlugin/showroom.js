@@ -24,4 +24,21 @@ Vue.onDocumentReady(function(){
         el: '#tabpane-examples',
         template: '#tabpane-template'
     });
+    new Vue({
+        el: '#select-examples',
+        template: '#select-template'
+    });
+    new Vue({
+        el: '#pagination-examples',
+        template: '#pagination-template',
+        data: {
+            page: 2,
+            pageCount: 30
+        },
+        methods: {
+            setNewPage: function(newPage) {
+                this.page = newPage;
+            }
+        }
+    });
 });

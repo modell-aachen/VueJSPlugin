@@ -76,6 +76,30 @@ The following examples provide an overview of its functionality. The correspondi
 %INCLUDE{"%WEB%.%TOPIC%" section="InputTextVueTempalte"}%
 </script>
 
+---+ Vue Select
+
+<div class="flatskin-wrapped">
+ <div id="select-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"SelectVueTempalte"}%
+<div>
+<vue-select
+  multiple
+  label="field"
+  placeholder="Search term..."
+  :onSearch="() => {}"
+>
+    <template slot="more-results">Show more results</template>
+</vue-select>
+</div>
+%ENDSECTION{"SelectVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="select-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="SelectVueTempalte"}%
+</script>
 ---+ Vue Tabpane
 <div class="flatskin-wrapped">
  <div id="tabpane-examples"></div>
@@ -109,4 +133,31 @@ The following examples provide an overview of its functionality. The correspondi
 %ENDTWISTY%
 <script type="text/x-template" id="tabpane-template">
 %INCLUDE{"%WEB%.%TOPIC%" section="TabpaneVueTempalte"}%
+</script>
+
+---+ Vue Pagination
+<div class="flatskin-wrapped">
+ <div id="pagination-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"PaginationVueTempalte"}%
+<div>
+   <vue-pagination
+     :pageCount="pageCount"
+     :currentPage="page"
+     @page-changed="setNewPage">
+   </vue-pagination>
+   <vue-pagination
+     :pageCount="pageCount"
+     :currentPage="page"
+     :pageLimit="15"
+     @page-changed="setNewPage">
+   </vue-pagination>
+</div>
+%ENDSECTION{"PaginationVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="pagination-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="PaginationVueTempalte"}%
 </script>

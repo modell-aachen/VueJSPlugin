@@ -17,6 +17,9 @@ import VueI18Next from 'vue-i18next';
 import VeeValidate from 'vee-validate';
 import VueRouter from 'vue-router';
 
+import translationsEn from './translations/en.json';
+import translationsDe from './translations/de.json';
+
 class MAVueJsPlugin {
   constructor(options) {
     this.foswiki = options.foswiki;
@@ -100,6 +103,9 @@ class MAVueJsPlugin {
     Vue.params.i18nextLanguage = language;
     Vue.prototype.$lang = language;
     Vue.prototype.$ajax = this.jquery.ajax;
+
+    Vue.addTranslation('en', 'VueJSPlugin', translationsEn);
+    Vue.addTranslation('de', 'VueJSPlugin', translationsDe);
   }
 }
 

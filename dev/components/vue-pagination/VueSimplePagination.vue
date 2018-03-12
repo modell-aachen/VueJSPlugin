@@ -4,7 +4,7 @@
         <ul :class="ulClass">
             <li :class="getClass('previous')">
                 <a @click="triggerPageChange(currentPage-1)" aria-label="Previous">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                  {{$t('paging_previous')}}
                 </a>
             </li>
             <li v-for="page in pages" :class="getClass(page.number)"><a v-if="page.number" @click="triggerPageChange(page.number)">
@@ -12,7 +12,7 @@
             </li>
             <li :class="getClass('next')">
                 <a @click="triggerPageChange(currentPage+1)" aria-label="Next">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                  {{$t('paging_next')}}
                 </a>
             </li>
         </ul>
@@ -22,6 +22,7 @@
 
 <script>
     export default {
+      i18nextNamespace: 'VueJSPlugin',
       props: {
         currentPage: {
           required: true,
@@ -33,6 +34,13 @@
         },
         ulClass: {
           default: 'pagination'
+        },
+        pageLimit: {
+          default: 7,
+          type: Number,
+          validator: function(limit) {
+            return limit === 7 || limit === 15;
+          }
         },
       },
 
@@ -59,31 +67,33 @@
       methods: {
         buildPageList() {
           this.pages = [];
-          if (this.pageCount > 10) {
-            if (this.currentPage >= 7 &&  this.currentPage < this.pageCount - 5) {
-              this.makePagesRange(1, 2);
+          let offset = (this.pageLimit - 1);
+          let spacing = Math.floor((this.pageLimit - 5)/ 2);
+          if (this.pageCount > this.pageLimit) {
+            if (this.currentPage >= offset &&  this.currentPage < this.pageCount - offset + 2) {
+              this.makePagesRange(1, 1);
               this.pages.push({
                 number: null
               });
-              this.makePagesRange(this.currentPage - 3, this.currentPage + 3);
+              this.makePagesRange(this.currentPage - spacing, this.currentPage + spacing);
               this.pages.push({
                 number: null
               });
-              this.makePagesRange(this.pageCount - 1, this.pageCount);
+              this.makePagesRange(this.pageCount, this.pageCount);
 
-            } else if (this.currentPage < 7) {
-              this.makePagesRange(1, 8);
+            } else if (this.currentPage < this.pageLimit -1) {
+              this.makePagesRange(1, offset - 1);
               this.pages.push({
                 number: null
               });
-              this.makePagesRange(this.pageCount - 1, this.pageCount);
+              this.makePagesRange(this.pageCount, this.pageCount);
 
-            } else if (this.currentPage >= this.pageCount - 5) {
-              this.makePagesRange(1, 2);
+            } else if (this.currentPage >= this.pageCount - offset + 2) {
+              this.makePagesRange(1, 1);
               this.pages.push({
                 number: null
               });
-              this.makePagesRange(this.pageCount - 5, this.pageCount);
+              this.makePagesRange(this.pageCount - offset + 2, this.pageCount);
 
             }
           } else {
