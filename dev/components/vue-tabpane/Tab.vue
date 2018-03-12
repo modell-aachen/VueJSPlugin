@@ -19,12 +19,13 @@
         default: function() {
           return this.$foswiki.getUniqueID();
         },
-      },
-      current: {
-        type: Boolean,
-        default: false,
-      },
+      }
     },
+    data: function() {
+      return {
+        current: false
+      };
+    }
   };
 </script>
 

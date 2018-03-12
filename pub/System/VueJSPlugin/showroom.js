@@ -20,4 +20,8 @@ Vue.onDocumentReady(function(){
           }
         }
     });
+    new Vue({
+        el: '#tabpane-examples',
+        template: '#tabpane-template'
+    });
 });

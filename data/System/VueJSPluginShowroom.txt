@@ -75,3 +75,38 @@ The following examples provide an overview of its functionality. The correspondi
 <script type="text/x-template" id="input-text-template">
 %INCLUDE{"%WEB%.%TOPIC%" section="InputTextVueTempalte"}%
 </script>
+
+---+ Vue Tabpane
+<div class="flatskin-wrapped">
+ <div id="tabpane-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"TabpaneVueTempalte"}%
+<div>
+   <vue-tabpane>
+      <vue-tab name="Datein und Ansichten">
+         <vue-tabpane type="Sub">
+            <vue-tab name="Basis">
+            </vue-tab>
+            <vue-tab name="Reiter">
+            </vue-tab>
+            <vue-tab name="Tabelle">
+            </vue-tab>
+         </vue-tabpane>
+      </vue-tab>
+      <vue-tab name="Workflow">
+         <span>Here is some content for the second tab</span>
+      </vue-tab>
+      <vue-tab name="Übersicht" id="someId">
+      </vue-tab>
+      <vue-tab name="Übersetzungen">
+      </vue-tab>
+   </vue-tabpane>
+</div>
+%ENDSECTION{"TabpaneVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="tabpane-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="TabpaneVueTempalte"}%
+</script>
