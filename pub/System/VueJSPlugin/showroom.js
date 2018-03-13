@@ -54,4 +54,8 @@ Vue.onDocumentReady(function(){
             }
         }
     });
+    new Vue({
+        el: '#dad-list-examples',
+        template: '#dad-list-template'
+    });
 });

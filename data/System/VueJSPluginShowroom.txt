@@ -200,3 +200,28 @@ The following examples provide an overview of its functionality. The correspondi
 <script type="text/x-template" id="pagination-template">
 %INCLUDE{"%WEB%.%TOPIC%" section="PaginationVueTempalte"}%
 </script>
+
+---+ Vue Dad (Drag & Drop) List
+We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped Slots</a> to pass a template to our List.
+<div class="flatskin-wrapped">
+ <div id="dad-list-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"DadListVueTempalte"}%
+<div>
+   <vue-dad-list>
+     <vue-collapsible-dad-item slot-scope="props"
+       :draggable="props.draggable"
+       :item="props.item"
+       :index="props.index">
+       :wrapper="props.wrapper">
+     </vue-collapsible-dad-item>
+   </vue-dad-list>
+</div>
+%ENDSECTION{"DadListVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="dad-list-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="DadListVueTempalte"}%
+</script>

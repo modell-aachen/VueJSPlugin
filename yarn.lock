@@ -6580,6 +6580,12 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
+vddl@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/vddl/-/vddl-0.7.1.tgz#9fd3fdd7ebea78160b822cb42c145d64da0d4eba"
+  dependencies:
+    vue "^2.4.2"
+
 vee-validate@^2.0.0-rc.26:
   version "2.0.0-rc.26"
   resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-2.0.0-rc.26.tgz#e556f98ca4a305484bdf153f94a227edc7bc7c4f"
@@ -6675,6 +6681,10 @@ vue-template-es2015-compiler@^1.2.2:
 vue@^2.2.0:
   version "2.5.8"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.8.tgz#f855c1c27255184a82225f4bef225473e8faf15b"
+
+vue@^2.4.2:
+  version "2.5.15"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.15.tgz#fdb67861dde967cd8d1b53116380f2f269b45202"
 
 vuex@^2.2.1:
   version "2.5.0"
