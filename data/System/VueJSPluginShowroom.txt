@@ -105,6 +105,8 @@ The following examples provide an overview of its functionality. The correspondi
     <vue-input-text :value="userInput" @typed="getNewValue" label="Einzeilige Überschrift" data="userInput"></vue-input-text>
     <vue-input-text :value="userInput" @typed="getNewValue" placeholder="Small" :isSmall="true"data="userInput"></vue-input-text>
     <vue-input-text :value="userInput" placeholder="Disabled" :isDisabled="true" data="userInput"></vue-input-text>
+    <vue-input-text :value="userInput" @typed="getNewValue" name="Email" validate="email" placeholder="Validate Email"></vue-input-text>
+    <vue-input-text :value="userInput" @typed="getNewValue" name="Feld" validate="alpha_num" placeholder="Validate alphanumerisch"></vue-input-text>
 </div>
 %ENDSECTION{"InputTextVueTempalte"}%
 </verbatim>

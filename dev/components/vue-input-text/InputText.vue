@@ -1,10 +1,10 @@
 <template>
-  <div class="ma-input-group">
+  <div class="ma-input-group" :class="{'ma-failure': hasError}">
     <label if="label">{{label}}</label>
-    <input v-model="data" :class="{'ma-small': isSmall}" type="text" :placeholder="placeholder" v-bind:disabled="isDisabled">
-    <template v-if="hasValidationError">
-      <i v-if="icon" :class="icon" aria-hidden="true"></i>
-      <small>{{error-notification}}</small>
+    <input :name="name" v-model="data" v-validate="validate" :class="{'ma-small': isSmall}" type="text" :placeholder="placeholder" v-bind:disabled="isDisabled">
+    <template v-if="hasError">
+      <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+      <small>{{definedErrorMessage}}</small>
     </template>
     <template v-else-if="icon">
       <i v-if="icon" :class="icon" aria-hidden="true"></i>
@@ -18,6 +18,18 @@ export default {
     'label':{
       type: String,
       default: undefined
+    },
+    'name': {
+      type: String,
+      default: ''
+    },
+    'validate': {
+      type: String,
+      default: ''
+    },
+    'errorMessage': {
+      type: String,
+      default: ''
     },
     'placeholder':{
       type: String,
@@ -48,12 +60,13 @@ export default {
       set: function(newValue) {
         this.$emit('typed', {value: newValue});
       }
+    },
+    hasError: function(){
+      return this.validationErrors.has(this.name);
+    },
+    definedErrorMessage: function() {
+      return this.errorMessage || this.validationErrors.first(this.name);
     }
-  },
-  data: function() {
-    return {
-      hasValidationError: false
-    };
   }
 };
 </script>

@@ -15,7 +15,8 @@ import { VTooltip } from 'v-tooltip';
 import i18next from 'i18next';
 import VueParams from 'vue-params';
 import VueI18Next from 'vue-i18next';
-import VeeValidate from 'vee-validate';
+import VeeValidateTranslationDe from 'vee-validate/dist/locale/de';
+import VeeValidate, { Validator } from 'vee-validate';
 import VueRouter from 'vue-router';
 
 import translationsEn from './translations/en.json';
@@ -92,6 +93,7 @@ class MAVueJsPlugin {
     Vue.foswiki = this.foswiki;
     Vue.moment = this.moment;
     Vue.VueRouter = VueRouter;
+    Vue.validate = Validator;
 
     //Instance properties/methods
     Vue.prototype.$store = options.store;
@@ -108,6 +110,10 @@ class MAVueJsPlugin {
 
     Vue.addTranslation('en', 'VueJSPlugin', translationsEn);
     Vue.addTranslation('de', 'VueJSPlugin', translationsDe);
+    Validator.localize('de', {
+      messages: VeeValidateTranslationDe.messages
+    });
+    Validator.localize(language);
   }
 }
 
