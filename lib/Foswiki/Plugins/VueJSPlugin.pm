@@ -37,7 +37,7 @@ sub loadDependencies {
 
     my ( $session, $params, $topic, $web, $topicObject ) = @_;
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
-    my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 0;
+    my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 1;
     my $suffix = $dev ? '' : '.min';
     my $version = $params->{VERSION} || "1";
 

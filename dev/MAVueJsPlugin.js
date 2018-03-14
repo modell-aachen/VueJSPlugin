@@ -1,4 +1,5 @@
 import VueSelect from './components/vue-select/index.js';
+import VueUserSelector from './components/vue-userselector/UserSelector.vue';
 import VueSplitbutton from './components/vue-splitbutton/Splitbutton.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
@@ -14,6 +15,9 @@ import VueParams from 'vue-params';
 import VueI18Next from 'vue-i18next';
 import VeeValidate from 'vee-validate';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
+import InfiniteScroll from 'v-infinite-scroll';
+import 'v-infinite-scroll/dist/v-infinite-scroll.css';
 
 class MAVueJsPlugin {
   constructor(options) {
@@ -26,6 +30,8 @@ class MAVueJsPlugin {
     Vue.use(VueParams);
     Vue.use(VueI18Next);
     Vue.use(VueRouter);
+    Vue.use(VueResource);
+    Vue.use(InfiniteScroll);
     const veeValidateConfig = {
       errorBagName: 'validationErrors',
       fieldsBagName: 'validationFields'
@@ -34,6 +40,7 @@ class MAVueJsPlugin {
 
     //Component registrations
     Vue.component('vue-select', VueSelect);
+    Vue.component('vue-userselector', VueUserSelector);
     Vue.component('vue-splitbutton', VueSplitbutton);
     Vue.component('vue-pagination', VuePagination);
     Vue.component('vue-spinner', VueSpinner);
