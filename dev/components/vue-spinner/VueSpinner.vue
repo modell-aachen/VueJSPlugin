@@ -1,10 +1,16 @@
 <template>
-   <div class="loader">Loading...</div>
+  <div class="loader__wrapper">
+    <div class="loader">Loading...</div>
+  </div>
 </template>
 
 <script>
 </script>
 <style>
+.loader__wrapper {
+  height: 5em;
+  overflow: hidden;
+}
 .loader,
 .loader:after {
   border-radius: 50%;
