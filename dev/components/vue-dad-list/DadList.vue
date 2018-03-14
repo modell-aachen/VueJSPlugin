@@ -1,21 +1,23 @@
 <template>
-    <div>
-        <h3>List HEADER</h3>
-        <vddl-list class="panel__body--list" :list="list" :horizontal="false">
-            <slot v-for="(item, index) in list" :item="item" :index="index" :wrapper="list">
-                <vddl-draggable class="panel__body--item"
-                  :draggable="item"
-                  :index="index"
-                  :item="item"
-                  :wrapper="list"
-                  effect-allowed="move">
-                    <vue-dad-item :item="item"></vue-dad-item>
-                  </vddl-draggable>
-            </slot>
-            <vddl-placeholder class="red">Custom placeholder</vddl-placeholder>
-            <vue-button title="Add" @click.native="add"></vue-button>
-        </vddl-list>
-    </div>
+  <div>
+    <vddl-list class="panel__body--list" :list="list" :horizontal="false">
+      <template v-for="(item, index) in list">
+        <vddl-draggable class="panel__body--item"
+          :key="item.id"
+          :draggable="item"
+          :index="index"
+          :wrapper="list"
+          effect-allowed="move">
+          <slot :item="item" :index="index">
+          </slot>
+        </vddl-draggable>
+      </template>
+      <vddl-placeholder>
+        <div :is="itemType" :item="dummyItem" :index="99999"></div>
+      </vddl-placeholder>
+      <vue-button title="Add" @click.native="add"></vue-button>
+    </vddl-list>
+  </div>
 </template>
 
 <script>
@@ -24,44 +26,28 @@ export default {
     'label':{
       type: String,
       default: undefined
+    },
+    'list':{
+    },
+    'itemType': {
     }
   },
   data: function() {
     return {
-      "list": [
-        {
-          "id": 1,
-          "label": "Item A1"
-        },
-        {
-          "id": 2,
-          "label": "Item A2"
-        }
-      ]
+      dummyItem: {
+        "id": 5,
+        "label": "",
+        "collapsed": true
+      }
     };
   },
   methods: {
     add: function() {
       this.list.push({
         "id": 5,
-        "label": "New Item A1"
+        "label": "New Item A1",
+        "collapsed": false
       });
-    }
-  },
-  computed: {
-    data: {
-      get: function() {
-        return this.value;
-      },
-      set: function(newValue) {
-        this.$emit('typed', {value: newValue});
-      }
-    },
-    hasError: function(){
-      return this.validationErrors.has(this.name);
-    },
-    definedErrorMessage: function() {
-      return this.errorMessage || this.validationErrors.first(this.name);
     }
   }
 };
@@ -73,8 +59,11 @@ export default {
 .vddl-list, .vddl-draggable {
     position: relative;
 }
-.vddl-dragging{
-    opacity: 0.7;
+.vddl-dragging {
+    opacity: .7;
+}
+.vddl-placeholder{
+    opacity: 0.4;
 }
 
 .vddl-dragging-source {

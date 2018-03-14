@@ -210,12 +210,34 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
 <verbatim>
 %STARTSECTION{"DadListVueTempalte"}%
 <div>
-   <vue-dad-list>
+   <vue-dad-list :list="list" itemType="vue-collapsible-dad-item">
      <vue-collapsible-dad-item slot-scope="props"
-       :draggable="props.draggable"
        :item="props.item"
        :index="props.index">
-       :wrapper="props.wrapper">
+       <div class="grid-x grid-margin-x">
+         <div class="cell large-6">
+           <vue-input-text :value="props.item.label" @typed="" labell="Name des Staus"></vue-input-text>
+           <vue-input-text :value="props.item.label" @typed="" label="Nur bearebeitbar durch folgende Person"></vue-input-text>
+         </div>
+         <div class="cell large-6 align-self-bottom">
+           <vue-input-text :value="props.item.label" @typed="" label="Nur kommentierbar durch folgende Personen und Gruppen" data="userInput"></vue-input-text>
+         </div>
+       </div>
+       <hr>
+       <div class="grid-x grid-margin-x">
+          <div class="cell large-6">
+             <h3>Einsprünge</h3>
+               <vue-dad-list v-if="props.item.fields" :list="props.item.fields[0]" itemType="vue-collapsible-dad-item">
+                 <vue-simple-dad-item slot-scope="props"
+                   :item="props.item"
+                   :index="props.index">
+                 </vue-simple-dad-item>
+               </vue-dad-list>
+          </div>
+          <div class="cell large-6">
+             <h3>Ausgänge</h3>
+          </div>
+       </div>
      </vue-collapsible-dad-item>
    </vue-dad-list>
 </div>

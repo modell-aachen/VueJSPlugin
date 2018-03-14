@@ -56,6 +56,36 @@ Vue.onDocumentReady(function(){
     });
     new Vue({
         el: '#dad-list-examples',
-        template: '#dad-list-template'
+        template: '#dad-list-template',
+        data: {
+            list: [
+                {
+                    "id": 1,
+                    "label": "Item A1",
+                    "subLabel": "Caption",
+                    "collapsed": false,
+                    "status": 'warning',
+                    fields: [
+                        [
+                        {
+                        "id": 1,
+                        "label": "SubItem 1"
+                        },
+                        {
+                        "id": 2,
+                        "label": "SubItem 2"
+                        }
+                        ],
+                        []
+                    ]
+                },
+                {
+                    "id": 2,
+                    "label": "Item A2",
+                    "collapsed": true,
+                    "status": 'warning'
+                }
+            ]
+        }
     });
 });
