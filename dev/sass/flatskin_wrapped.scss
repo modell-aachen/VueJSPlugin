@@ -44,6 +44,8 @@ $OpenSansPath: '../fonts/opensans';
 
     @include foundation-global-styles;
     @include foundation-xy-grid-classes;
+    @include foundation-flex-grid;
+    @include foundation-flex-classes;
     @include foundation-visibility-classes;
     @include foundation-float-classes;
     @include foundation-menu;
@@ -65,5 +67,6 @@ $OpenSansPath: '../fonts/opensans';
     @import 'qwiki/paginator';
     @import 'qwiki/tabs';
     @import 'qwiki/notifications';
+    @import 'qwiki/collapsible_item';
     //@import 'qwiki/colors';
 }

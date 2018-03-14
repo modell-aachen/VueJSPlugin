@@ -1,0 +1,54 @@
+.ma-collapsible-item,
+.ma-simple-item{
+    border-radius: $ma-border-radius;
+    margin-bottom: rem-calc(16);
+}
+.ma-simple-item-title,
+.ma-collapsible-item-title {
+    background-color: $ma-sand;
+    border-top-left-radius: $ma-border-radius;
+    border-top-right-radius: $ma-border-radius;
+    height: rem-calc(56);
+    h3 {
+        margin-top: 0;
+        padding-left: rem-calc(17);
+    }
+    i {
+        color: $ma-dark-grey;
+        font-size: 1.5em;
+        height: 100%;
+    }
+    .handle-container {
+        position: absolute;
+        padding-left: rem-calc(8);
+    }
+}
+i.ma-status-dot {
+    $dot-size: .5em;
+    padding-left: rem-calc(8);
+    font-size: $dot-size;
+    vertical-align: middle;
+    height: rem-calc(1em / 2 + $dot-size /2);
+    &.warning {
+      color: $ma-warning;
+    }
+    &.error {
+      color: $ma-failure;
+    }
+}
+.ma-collapsible-item-title-left,
+.ma-simple-item-title-left {
+    height: 100%;
+    margin-left: rem-calc(32);
+}
+.ma-collapsible-item-content {
+    padding: rem-calc(24 24 - map-get($grid-container-padding,medium)/2);
+    border: solid $ma-sand;
+    border-width: rem-calc(1 8 16 8);
+    border-bottom-left-radius: $ma-border-radius;
+    border-bottom-right-radius: $ma-border-radius;
+    hr {
+      height: rem-calc(1);
+      background: $ma-light-grey;
+    }
+}
