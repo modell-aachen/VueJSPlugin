@@ -1,17 +1,23 @@
 <template>
-<div>
-  <h3 class="ma-primary-color">{{this.config.header}}</h3>
   <div>
-    <p v-for="descriptionText in description">{{descriptionText}}</p>
+    <h3 class="ma-primary-color">{{ this.config.header }}</h3>
+    <div>
+      <p v-for="descriptionText in description">{{ descriptionText }}</p>
+    </div>
+    <div class="small button-group float-right">
+      <button
+        class="default button"
+        @click.prevent="onButtonClick(config.abortButton)">{{ config.abortButton.name }}</button>
+      <button
+        class="primary button"
+        @click.prevent="onButtonClick(config.acceptButton)">{{ config.acceptButton.name }}</button>
+    </div>
+    <div class="modal-background-icon">
+      <i
+        class="fa"
+        :class="config.backgroundIcon"/>
+    </div>
   </div>
-  <div class="small button-group float-right">
-    <button class="default button" @click.prevent="onButtonClick(config.abortButton)">{{config.abortButton.name}}</button>
-    <button class="primary button" @click.prevent="onButtonClick(config.acceptButton)">{{config.acceptButton.name}}</button>
-  </div>
-  <div class="modal-background-icon">
-    <i class="fa" :class="config.backgroundIcon"></i>
-  </div>
-</div>
 </template>
 
 <script>

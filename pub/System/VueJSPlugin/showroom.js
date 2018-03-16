@@ -57,33 +57,70 @@ Vue.onDocumentReady(function(){
     new Vue({
         el: '#dad-list-examples',
         template: '#dad-list-template',
+        methods: {
+          addMetadataBlock: function() {
+            this.list.push({
+               "id": 5,
+               "label": "New Item A1",
+               "type": "metadataBlock",
+               "collapsed": false
+            });
+          },
+          addStatusField: function() {
+            this.list[0].fields[0].push({
+               "id": 5,
+               "label": "New Status A3",
+               "type": "status",
+               "collapsed": false
+            });
+          }
+        },
         data: {
             list: [
                 {
                     "id": 1,
+                    "type": "metadataBlock",
                     "label": "Item A1",
                     "subLabel": "Caption",
                     "collapsed": false,
                     "status": 'warning',
                     fields: [
                         [
-                        {
-                        "id": 1,
-                        "label": "SubItem 1"
-                        },
-                        {
-                        "id": 2,
-                        "label": "SubItem 2"
-                        }
+                          {
+                            "id": 1,
+                            "label": "SubItem 1",
+                            "type": "status"
+                          },
+                          {
+                            "id": 2,
+                            "label": "SubItem 2",
+                            "type": "status"
+                          }
                         ],
                         []
                     ]
                 },
                 {
                     "id": 2,
+                    "type": "metadataBlock",
                     "label": "Item A2",
                     "collapsed": true,
-                    "status": 'warning'
+                    "status": 'warning',
+                    fields: [
+                        [
+                          {
+                            "id": 1,
+                            "label": "SubItem 1",
+                            "type": "status"
+                          },
+                          {
+                            "id": 2,
+                            "label": "SubItem 2",
+                            "type": "status"
+                          }
+                        ],
+                        []
+                    ]
                 }
             ]
         }

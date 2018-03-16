@@ -1,7 +1,7 @@
 <template>
-    <div>
-        {{item.label}}
-    </div>
+  <div>
+    {{ item.label }}
+  </div>
 </template>
 
 <script>

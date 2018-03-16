@@ -1,27 +1,46 @@
 <template>
   <div>
-    <vddl-list class="panel__body--list" :list="list" :horizontal="false">
+    <vddl-list
+      class="panel__body--list"
+      :list="list"
+      :allowed-types="allowedTypes"
+      :horizontal="false">
       <template v-for="(item, index) in list">
-        <vddl-draggable class="panel__body--item"
+        <vddl-draggable
+          class="panel__body--item"
+          :type="item.type"
           :key="item.id"
           :draggable="item"
           :index="index"
           :wrapper="list"
           effect-allowed="move">
-          <slot :item="item" :index="index">
-          </slot>
+          <slot
+            :item="item"
+            :index="index"/>
         </vddl-draggable>
       </template>
-      <vddl-placeholder>
-        <div :is="itemType" :item="dummyItem" :index="99999"></div>
-      </vddl-placeholder>
-      <vue-button title="Add" @click.native="add"></vue-button>
+      <slot name="placeholder">
+        <vddl-placeholder>
+          <div
+            :is="itemType"
+            :item="dummyItem"
+            :index="99999"/>
+        </vddl-placeholder>
+      </slot>
     </vddl-list>
+    <slot
+      name="addArea"
+      :add="addItemEvent">
+      <vue-button
+        title="Add"
+        @click.native="addItemEvent"/>
+    </slot>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'DadList',
   props: {
     'label':{
       type: String,
@@ -30,6 +49,9 @@ export default {
     'list':{
     },
     'itemType': {
+    },
+    'allowedTypes': {
+      type: Array,
     }
   },
   data: function() {
@@ -42,19 +64,15 @@ export default {
     };
   },
   methods: {
-    add: function() {
-      this.list.push({
-        "id": 5,
-        "label": "New Item A1",
-        "collapsed": false
-      });
+    addItemEvent: function() {
+      this.$emit("addItem");
     }
   }
 };
 </script>
 <style lang="scss">
 .vddl-list {
-    min-height: 44px;
+    min-height: 24px;
 }
 .vddl-list, .vddl-draggable {
     position: relative;

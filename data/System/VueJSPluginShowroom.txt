@@ -210,7 +210,7 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
 <verbatim>
 %STARTSECTION{"DadListVueTempalte"}%
 <div>
-   <vue-dad-list :list="list" itemType="vue-collapsible-dad-item">
+   <vue-dad-list :list="list" @addItem="addMetadataBlock" :allowedTypes="['metadataBlock']" itemType="vue-collapsible-dad-item">
      <vue-collapsible-dad-item slot-scope="props"
        :item="props.item"
        :index="props.index">
@@ -227,15 +227,36 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
        <div class="grid-x grid-margin-x">
           <div class="cell large-6">
              <h3>Einsprünge</h3>
-               <vue-dad-list v-if="props.item.fields" :list="props.item.fields[0]" itemType="vue-collapsible-dad-item">
-                 <vue-simple-dad-item slot-scope="props"
-                   :item="props.item"
-                   :index="props.index">
-                 </vue-simple-dad-item>
+               <vue-dad-list v-if="props.item.fields"
+                 :allowedTypes="['status']"
+                 :list="props.item.fields[0]"
+                 @addItem="addStatusField"
+                 itemType="vue-simple-dad-item">
+                   <vue-simple-dad-item slot-scope="props"
+                     :item="props.item"
+                     :index="props.index">
+                   </vue-simple-dad-item>
+                   <vue-button slot="addArea" slot-scope="props"
+                     type="ghost"
+                     title="Add"
+                     icon="fas fa-plus"
+                     @click.native="props.add">
+                   </vue-button>
                </vue-dad-list>
           </div>
           <div class="cell large-6">
              <h3>Ausgänge</h3>
+               <vue-dad-list v-if="props.item.fields"
+                 :allowedTypes="['status']"
+                 :list="props.item.fields[1]"
+                 @addItem="addStatusField"
+                 itemType="vue-simple-dad-item">
+                   <vue-simple-dad-item slot-scope="props"
+                     :item="props.item"
+                     :index="props.index">
+                   </vue-simple-dad-item>
+                   <p slot="addArea"></p>
+               </vue-dad-list>
           </div>
        </div>
      </vue-collapsible-dad-item>
