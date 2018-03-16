@@ -1,6 +1,13 @@
 <template>
-  <button v-once class="button" :class="[type, color]" v-bind:disabled="isDisabled">
-    <i v-if="icon" :class="icon" aria-hidden="true"></i>
+  <button
+    v-once
+    class="button"
+    :class="[type, color]"
+    :disabled="isDisabled">
+    <i
+      v-if="icon"
+      :class="icon"
+      aria-hidden="true"/>
     {{ title }}
   </button>
 </template>

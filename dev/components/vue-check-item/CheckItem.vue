@@ -1,17 +1,20 @@
 <template>
-    <div class="ma-switch">
-        <input :type="type"
-          :id="id"
-          :name="name"
-          :value="value"
-          :disabled="disabled"
-          @change="onChange"
-          :checked="state"
-          :class="{'switch-input': isSwitch}">
-        <label :class="{'switch-paddle': isSwitch}" :for="id || value">
-        <slot v-if="!isSwitch"></slot>
-        </label><slot v-if="isSwitch"></slot><br>
-    </div>
+  <div class="ma-switch">
+    <input
+      :type="type"
+      :id="id"
+      :name="name"
+      :value="value"
+      :disabled="disabled"
+      @change="onChange"
+      :checked="state"
+      :class="{'switch-input': isSwitch}">
+    <label
+      :class="{'switch-paddle': isSwitch}"
+      :for="id || value">
+      <slot v-if="!isSwitch"/>
+    </label><slot v-if="isSwitch"/><br>
+  </div>
 </template>
 
 <script>
@@ -70,6 +73,18 @@ export default {
       }
     }
   },
+  watch: {
+    checked(newValue) {
+      if (newValue !== this.state) {
+        this.toggle();
+      }
+    }
+  },
+  mounted() {
+    if (this.checked && !this.state) {
+      this.toggle();
+    }
+  },
   methods: {
     onChange() {
       this.toggle();
@@ -91,18 +106,6 @@ export default {
         }
       }
       this.$emit('input', value);
-    }
-  },
-  watch: {
-    checked(newValue) {
-      if (newValue !== this.state) {
-        this.toggle();
-      }
-    }
-  },
-  mounted() {
-    if (this.checked && !this.state) {
-      this.toggle();
     }
   },
 };

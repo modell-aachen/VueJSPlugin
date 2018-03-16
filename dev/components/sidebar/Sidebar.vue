@@ -1,31 +1,52 @@
 <template>
-    <div>
-        <div v-show="isActive" class="sidebar-overlay" @click="hide"></div>
-        <transition name="sidebar">
-        <div v-show="isActive" class="flatskin-wrapped sidebar-container" :class="{active: isActive}" v-on:click.stop>
+  <div>
+    <div
+      v-show="isActive"
+      class="sidebar-overlay"
+      @click="hide"/>
+    <transition name="sidebar">
+      <div
+        v-show="isActive"
+        class="flatskin-wrapped sidebar-container"
+        :class="{active: isActive}"
+        @click.stop>
 
-            <div class="sidebar-tab-controls">
-                <tab-button icon="fa-times" type="close" @click="hide" ></tab-button>
-                <div class="controls">
-                    <template v-for="(tab,index) in tabs">
-                        <tab-button ref="sidebar-tab-buttons" :icon="tab.icon" :title="tab.tooltip" :isActive="selectedTab === index" @click="selectTab(index)"></tab-button>
-                    </template>
-                </div>
-            </div>
-
-            <div class="sidebar-tab-contents">
-                <slot v-if="tabs.length == 0"></slot>
-                <slot v-if="tabs.length > 0" :name="'tab' + selectedTab">
-                  {{tabs[selectedTab].tooltip}}
-                </slot>
-            </div>
-
-            <transition name="fade">
-            <modal v-if="isModalActive" :type="modalOptions.type" :contentConfig="modalOptions.contentConfig" @hide-modal="hideModal"></modal>
-            </transition>
+        <div class="sidebar-tab-controls">
+          <tab-button
+            icon="fa-times"
+            type="close"
+            @click="hide" />
+          <div class="controls">
+            <template v-for="(tab,index) in tabs">
+              <tab-button
+                ref="sidebar-tab-buttons"
+                :icon="tab.icon"
+                :title="tab.tooltip"
+                :is-active="selectedTab === index"
+                @click="selectTab(index)"/>
+            </template>
+          </div>
         </div>
-      </transition>
-    </div>
+
+        <div class="sidebar-tab-contents">
+          <slot v-if="tabs.length == 0"/>
+          <slot
+            v-if="tabs.length > 0"
+            :name="'tab' + selectedTab">
+            {{ tabs[selectedTab].tooltip }}
+          </slot>
+        </div>
+
+        <transition name="fade">
+          <modal
+            v-if="isModalActive"
+            :type="modalOptions.type"
+            :content-config="modalOptions.contentConfig"
+            @hide-modal="hideModal"/>
+        </transition>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -44,6 +65,13 @@ export default {
         return [];
       }
     }
+  },
+  data: function() {
+    return {
+      isActive: false,
+      selectedTab: 0,
+      modalOptions: null,
+    };
   },
   computed: {
     isModalActive: {
@@ -72,13 +100,6 @@ export default {
       this.modalOptions = null;
     }
   },
-  data: function() {
-    return {
-      isActive: false,
-      selectedTab: 0,
-      modalOptions: null,
-    };
-  }
 };
 </script>
 

@@ -1,32 +1,34 @@
 <template>
-    <div class="vue-tab" v-show="current">
-        <div class="vue-tab-contents">
-            <slot></slot>
-        </div>
+  <div
+    class="vue-tab"
+    v-show="current">
+    <div class="vue-tab-contents">
+      <slot/>
     </div>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'vue-tab',
-    props: {
-      name: {
-        type: String,
-        required: true,
-      },
-      id: {
-        type: String,
-        default: function() {
-          return this.$foswiki.getUniqueID();
-        },
-      }
+export default {
+  name: 'VueTab',
+  props: {
+    name: {
+      type: String,
+      required: true,
     },
-    data: function() {
-      return {
-        current: false
-      };
+    id: {
+      type: String,
+      default: function() {
+        return this.$foswiki.getUniqueID();
+      },
     }
-  };
+  },
+  data: function() {
+    return {
+      current: false
+    };
+  }
+};
 </script>
 
 <style lang="scss">

@@ -1,12 +1,18 @@
 <template>
-  <button class="sidebar-tab-button" :class="{close: isCloseButton, active: isActive}" :title="tooltip" @click.prevent="click">
-  <i class="fa fa-2x" :class="icon"></i>
-</button>
+  <button
+    class="sidebar-tab-button"
+    :class="{close: isCloseButton, active: isActive}"
+    :title="tooltip"
+    @click.prevent="click">
+    <i
+      class="fa fa-2x"
+      :class="icon"/>
+  </button>
 </template>
 
 <script>
 export default {
-  name: 'sidebar-tab-button',
+  name: 'SidebarTabButton',
   props: ['icon', 'tooltip', 'type', 'isActive'],
   computed: {
     isCloseButton: function() {

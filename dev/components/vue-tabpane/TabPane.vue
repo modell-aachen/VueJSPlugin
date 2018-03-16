@@ -1,29 +1,28 @@
 <template>
-    <div class="flatskin-wrapped vue-tabpane">
-        <div :class="'jqTabPaneFlat'+type">
-            <ul class="vue-tabpane-group">
-                <li
-                    v-for="(tab, index) in tabs"
-                    :key="index"
-                    :class="{current: tab.current}"
-                >
-                    <a
-                        v-html="tab.name"
-                        @click.prevent="selectTab(tab.id)"
-                        href="#"
-                    >
-                    </a>
-                </li>
-            </ul>
-            <span class="clearfix"></span>
-            <slot></slot>
-        </div>
+  <div class="flatskin-wrapped vue-tabpane">
+    <div :class="'jqTabPaneFlat'+type">
+      <ul class="vue-tabpane-group">
+        <li
+          v-for="(tab, index) in tabs"
+          :key="index"
+          :class="{current: tab.current}"
+        >
+          <a
+            v-html="tab.name"
+            @click.prevent="selectTab(tab.id)"
+            href="#"
+          />
+        </li>
+      </ul>
+      <span class="clearfix"/>
+      <slot/>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'vue-tabpane',
+  name: 'VueTabpane',
   props: {
     type: {
       type: String,

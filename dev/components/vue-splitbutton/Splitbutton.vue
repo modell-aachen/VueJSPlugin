@@ -1,32 +1,44 @@
 <template>
-    <div class="split-wrapper" @mouseleave="mouseLeave" @mouseenter="mouseEnter">
-        <span @click.prevent="callAction" class="splitleft button primary">
-            <span>
-                {{titleLeft}}
-            </span>
+  <div
+    class="split-wrapper"
+    @mouseleave="mouseLeave"
+    @mouseenter="mouseEnter">
+    <span
+      @click.prevent="callAction"
+      class="splitleft button primary">
+      <span>
+        {{ titleLeft }}
+      </span>
+    </span>
+    <span
+      @click.stop="toggleSplitOpen"
+      class="splitright button primary">
+      <span
+        class="split-chevron"
+        data-dropdown="drop"
+        @click.stop="toggleSplitOpen">
+        <span>
+          {{ title }}
+          <i class="fa fa-chevron-down"/>
         </span>
-        <span @click.stop="toggleSplitOpen" class="splitright button primary">
-            <span class="split-chevron" data-dropdown="drop" @click.stop="toggleSplitOpen">
-                <span>
-                    {{title}}
-                <i class="fa fa-chevron-down"></i>
-                </span>
-            </span>
-        </span><br>
-        <div class="animation-clipper ma-button-clear-margin-bottom">
-            <transition name="vue-splitbutton-slide">
-            <div v-show="splitOpen" class="f-dropdown">
-                <ul>
-                    <slot>
-                        <li>This is a link</li>
-                        <li>This is another</li>
-                        <li>Yet another</li>
-                    </slot>
-                </ul>
-            </div>
-            </transition>
+      </span>
+    </span><br>
+    <div class="animation-clipper ma-button-clear-margin-bottom">
+      <transition name="vue-splitbutton-slide">
+        <div
+          v-show="splitOpen"
+          class="f-dropdown">
+          <ul>
+            <slot>
+              <li>This is a link</li>
+              <li>This is another</li>
+              <li>Yet another</li>
+            </slot>
+          </ul>
         </div>
+      </transition>
     </div>
+  </div>
 </template>
 
 <script>

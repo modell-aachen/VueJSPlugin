@@ -1,13 +1,27 @@
 <template>
-  <div class="ma-input-group" :class="{'ma-failure': hasError}">
-    <label if="label">{{label}}</label>
-    <input :name="name" v-model="data" v-validate="validate" :class="{'ma-small': isSmall}" type="text" :placeholder="placeholder" v-bind:disabled="isDisabled">
+  <div
+    class="ma-input-group"
+    :class="{'ma-failure': hasError}">
+    <label if="label">{{ label }}</label>
+    <input
+      :name="name"
+      v-model="data"
+      v-validate="validate"
+      :class="{'ma-small': isSmall}"
+      type="text"
+      :placeholder="placeholder"
+      :disabled="isDisabled">
     <template v-if="hasError">
-      <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
-      <small>{{definedErrorMessage}}</small>
+      <i
+        class="fas fa-exclamation-circle"
+        aria-hidden="true"/>
+      <small>{{ definedErrorMessage }}</small>
     </template>
     <template v-else-if="icon">
-      <i v-if="icon" :class="icon" aria-hidden="true"></i>
+      <i
+        v-if="icon"
+        :class="icon"
+        aria-hidden="true"/>
     </template>
   </div>
 </template>

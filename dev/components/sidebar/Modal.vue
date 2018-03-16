@@ -1,24 +1,29 @@
 <template>
-<div class="sidebar-modal">
-  <div class="sidebar-tab-controls">
-    <button class="sidebar-tab-button close" @click.prevent="hideModal">
-      <i class="fa fa-2x fa-times"></i>
-    </button>
+  <div class="sidebar-modal">
+    <div class="sidebar-tab-controls">
+      <button
+        class="sidebar-tab-button close"
+        @click.prevent="hideModal">
+        <i class="fa fa-2x fa-times"/>
+      </button>
+    </div>
+    <div class="modal-content">
+      <component
+        :is="type"
+        :config="contentConfig"
+        @hide-modal="hideModal"/>
+    </div>
   </div>
-  <div class="modal-content">
-    <component :is="type" :config="contentConfig" @hide-modal="hideModal"></component>
-  </div>
-</div>
 </template>
 
 <script>
 import ConfirmModal from './ConfirmModal';
 export default {
-  name: 'sidebar-modal',
-  props: ['type', 'contentConfig'],
+  name: 'SidebarModal',
   components: {
     ConfirmModal
   },
+  props: ['type', 'contentConfig'],
   methods: {
     hideModal() {
       this.$emit("hide-modal");
