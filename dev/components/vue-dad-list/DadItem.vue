@@ -6,6 +6,11 @@
 
 <script>
 export default {
-  props: ['item', 'list', 'index', 'selected', 'selectedItem', 'disable'],
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>

@@ -4,13 +4,14 @@
       <ul :class="ulClass">
         <li :class="getClass('previous')">
           <a
-            @click="triggerPageChange(currentPage-1)"
-            aria-label="Previous">
+            aria-label="Previous"
+            @click="triggerPageChange(currentPage-1)">
             {{ $t('paging_previous') }}
           </a>
         </li>
         <li
           v-for="page in pages"
+          :key="page.number"
           :class="getClass(page.number)"><a
             v-if="page.number"
             @click="triggerPageChange(page.number)">
@@ -18,8 +19,8 @@
         </li>
         <li :class="getClass('next')">
           <a
-            @click="triggerPageChange(currentPage+1)"
-            aria-label="Next">
+            aria-label="Next"
+            @click="triggerPageChange(currentPage+1)">
             {{ $t('paging_next') }}
           </a>
         </li>
@@ -41,6 +42,7 @@ export default {
       type: Number
     },
     ulClass: {
+      type: [String, Object],
       default: 'pagination'
     },
     pageLimit: {

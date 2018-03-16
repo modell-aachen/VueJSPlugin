@@ -4,15 +4,15 @@
     @mouseleave="mouseLeave"
     @mouseenter="mouseEnter">
     <span
-      @click.prevent="callAction"
-      class="splitleft button primary">
+      class="splitleft button primary"
+      @click.prevent="callAction">
       <span>
         {{ titleLeft }}
       </span>
     </span>
     <span
-      @click.stop="toggleSplitOpen"
-      class="splitright button primary">
+      class="splitright button primary"
+      @click.stop="toggleSplitOpen">
       <span
         class="split-chevron"
         data-dropdown="drop"
@@ -45,7 +45,16 @@
 const dropdownGraceTime = 2000;
 
 export default {
-  props: ['title','titleLeft'],
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    titleLeft: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       splitOpen: false,

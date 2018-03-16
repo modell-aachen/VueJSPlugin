@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h3 class="ma-primary-color">{{ this.config.header }}</h3>
+    <h3 class="ma-primary-color">{{ config.header }}</h3>
     <div>
-      <p v-for="descriptionText in description">{{ descriptionText }}</p>
+      <p
+        v-for="descriptionText in description"
+        :key="descriptionText.descriptionText">{{ descriptionText }}</p>
     </div>
     <div class="small button-group float-right">
       <button
@@ -14,15 +16,20 @@
     </div>
     <div class="modal-background-icon">
       <i
-        class="fa"
-        :class="config.backgroundIcon"/>
+        :class="config.backgroundIcon"
+        class="fa"/>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['config'],
+  props: {
+    config: {
+      type: Object,
+      required: true
+    }
+  },
   computed: {
     description() {
       if(typeof this.config.description === "string"){

@@ -8,9 +8,9 @@
           :class="{current: tab.current}"
         >
           <a
-            v-html="tab.name"
-            @click.prevent="selectTab(tab.id)"
             href="#"
+            @click.prevent="selectTab(tab.id)"
+            v-html="tab.name"
           />
         </li>
       </ul>

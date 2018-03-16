@@ -1,16 +1,16 @@
 <template>
   <div
-    class="ma-input-group"
-    :class="{'ma-failure': hasError}">
+    :class="{'ma-failure': hasError}"
+    class="ma-input-group">
     <label if="label">{{ label }}</label>
     <input
+      v-validate="validate"
       :name="name"
       v-model="data"
-      v-validate="validate"
-      :class="{'ma-small': isSmall}"
-      type="text"
       :placeholder="placeholder"
-      :disabled="isDisabled">
+      :class="{'ma-small': isSmall}"
+      :disabled="isDisabled"
+      type="text">
     <template v-if="hasError">
       <i
         class="fas fa-exclamation-circle"

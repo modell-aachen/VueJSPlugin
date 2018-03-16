@@ -1,14 +1,14 @@
 <template>
   <div class="ma-switch">
     <input
-      :type="type"
       :id="id"
       :name="name"
       :value="value"
       :disabled="disabled"
-      @change="onChange"
       :checked="state"
-      :class="{'switch-input': isSwitch}">
+      :type="type"
+      :class="{'switch-input': isSwitch}"
+      @change="onChange">
     <label
       :class="{'switch-paddle': isSwitch}"
       :for="id || value">
@@ -35,9 +35,11 @@ export default {
       default: null,
     },
     value: {
+      type: String,
       default: null,
     },
     modelValue: {
+      type: [Array, Object],
       default: undefined,
     },
     checked: {
@@ -56,7 +58,10 @@ export default {
       type: String,
       default: 'checkbox'
     },
-    model: {}
+    model: {
+      type: [Object, Array],
+      default: undefined
+    }
   },
   computed: {
     state: function() {

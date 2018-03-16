@@ -23,7 +23,16 @@ export default {
   components: {
     ConfirmModal
   },
-  props: ['type', 'contentConfig'],
+  props: {
+    type: {
+      type: String,
+      default: ''
+    },
+    contentConfig: {
+      type: Object,
+      default: undefined
+    }
+  },
   methods: {
     hideModal() {
       this.$emit("hide-modal");

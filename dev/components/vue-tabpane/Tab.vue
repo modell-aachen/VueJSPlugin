@@ -1,7 +1,7 @@
 <template>
   <div
-    class="vue-tab"
-    v-show="current">
+    v-show="current"
+    class="vue-tab">
     <div class="vue-tab-contents">
       <slot/>
     </div>

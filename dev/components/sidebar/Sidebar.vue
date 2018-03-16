@@ -7,8 +7,8 @@
     <transition name="sidebar">
       <div
         v-show="isActive"
-        class="flatskin-wrapped sidebar-container"
         :class="{active: isActive}"
+        class="flatskin-wrapped sidebar-container"
         @click.stop>
 
         <div class="sidebar-tab-controls">
@@ -20,6 +20,7 @@
             <template v-for="(tab,index) in tabs">
               <tab-button
                 ref="sidebar-tab-buttons"
+                :key="tab.index"
                 :icon="tab.icon"
                 :title="tab.tooltip"
                 :is-active="selectedTab === index"

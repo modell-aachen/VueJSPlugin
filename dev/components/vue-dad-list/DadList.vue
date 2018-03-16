@@ -1,18 +1,18 @@
 <template>
   <div>
     <vddl-list
-      class="panel__body--list"
       :list="list"
       :allowed-types="allowedTypes"
-      :horizontal="false">
+      :horizontal="false"
+      class="panel__body--list">
       <template v-for="(item, index) in list">
         <vddl-draggable
-          class="panel__body--item"
           :type="item.type"
           :key="item.id"
           :draggable="item"
           :index="index"
           :wrapper="list"
+          class="panel__body--item"
           effect-allowed="move">
           <slot
             :item="item"
@@ -29,8 +29,8 @@
       </slot>
     </vddl-list>
     <slot
-      name="addArea"
-      :add="addItemEvent">
+      :add="addItemEvent"
+      name="addArea">
       <vue-button
         title="Add"
         @click.native="addItemEvent"/>
@@ -47,11 +47,16 @@ export default {
       default: undefined
     },
     'list':{
+      type: [Array,Object],
+      required: true
     },
     'itemType': {
+      type: String,
+      default: ''
     },
     'allowedTypes': {
       type: Array,
+      default: null
     }
   },
   data: function() {

@@ -1,9 +1,9 @@
 <template>
   <button
     v-once
-    class="button"
+    :disabled="isDisabled"
     :class="[type, color]"
-    :disabled="isDisabled">
+    class="button">
     <i
       v-if="icon"
       :class="icon"
@@ -17,6 +17,7 @@ export default {
   props: {
     'title':{
       type: String,
+      default: ''
     },
     'type':{
       type: String,

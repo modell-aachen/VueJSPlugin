@@ -1,17 +1,17 @@
 <template>
   <div class="vue-wizard">
     <div class="icon"><i
-      class="ma-primary-color fa fa-4x"
-      :class="iconClass"/></div>
+      :class="iconClass"
+      class="ma-primary-color fa fa-4x"/></div>
     <div>
       <h2 class="ma-primary-color">{{ heading }}</h2>
       <span v-if="text">{{ text }}</span>
       <br v-if="text && (buttonHref || buttonCallback) && buttonText" >
       <a
-        class="button primary small"
-        @click="buttonClick"
+        v-if="(buttonCallback || buttonHref) && buttonText"
         :href="buttonHref"
-        v-if="(buttonCallback || buttonHref) && buttonText">{{ buttonText }}</a>
+        class="button primary small"
+        @click="buttonClick">{{ buttonText }}</a>
     </div>
     <span class="vue-wizard-clear"/>
   </div>

@@ -3,8 +3,8 @@
     <div class="ma-collapsible-item">
       <!-- Title Area -->
       <div
-        class="ma-collapsible-item-title grid-x align-justify grid-padding-x"
-        :class="{'ma-collapsed': item.collapsed}">
+        :class="{'ma-collapsed': item.collapsed}"
+        class="ma-collapsible-item-title grid-x align-justify grid-padding-x">
         <div class="cell shrink">
           <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
             <div class="cell shrink align-self-middle handle-container">
@@ -17,8 +17,8 @@
             <div class="cell shrink align-self-middle">
               <h3>{{ item.label }}<i
                 v-if="item.status"
-                class="fas fa-circle ma-status-dot"
-                :class="item.status"/><small v-if="item.subLabel">{{ item.subLabel }}</small></h3>
+                :class="item.status"
+                class="fas fa-circle ma-status-dot"/><small v-if="item.subLabel">{{ item.subLabel }}</small></h3>
             </div>
           </div>
         </div>
@@ -39,15 +39,15 @@
         </div>
         <div class="cell shrink align-self-middle">
           <span @click.prevent="toggleCollapsed"><i
-            class="fas"
-            :class="chevronByCollapsed"/></span>
+            :class="chevronByCollapsed"
+            class="fas"/></span>
         </div>
       </div>
       <div class="ma-collapsible-item-animation-clipper">
         <transition name="collapsible-item-slide-y">
           <div
-            class="ma-collapsible-item-content"
-            v-if="!item.collapsed">
+            v-if="!item.collapsed"
+            class="ma-collapsible-item-content">
             <div class="grid-container fluid">
               <slot/>
             </div>
@@ -61,7 +61,24 @@
 <script>
 export default {
   name: 'CollapsibleDadItem',
-  props: ['item', 'index', 'multiOpen', 'lastOpend'],
+  props: {
+    item:{
+      type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    },
+    multiOpen: {
+      type: Boolean,
+      default: false
+    },
+    lastOpend: {
+      type: [String, Number],
+      default: null
+    }
+  },
   data: function() {
     return {
       dummyDropList: []

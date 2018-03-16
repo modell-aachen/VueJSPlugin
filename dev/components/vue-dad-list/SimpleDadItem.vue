@@ -13,8 +13,8 @@
             <div class="cell shrink align-self-middle">
               <h3>{{ item.label }}<i
                 v-if="item.status"
-                class="fas fa-circle ma-status-dot"
-                :class="item.status"/><small v-if="item.subLabel">{{ item.subLabel }}</small></h3>
+                :class="item.status"
+                class="fas fa-circle ma-status-dot"/><small v-if="item.subLabel">{{ item.subLabel }}</small></h3>
             </div>
           </div>
         </div>
@@ -26,7 +26,16 @@
 <script>
 export default {
   name: 'SimpleItem',
-  props: ['item', 'index'],
+  props: {
+    item: {
+      type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    }
+  },
 };
 </script>
 

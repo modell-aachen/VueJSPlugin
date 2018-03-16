@@ -145,16 +145,16 @@
 
 <template>
   <div
-    class="dropdown v-select"
-    :class="dropdownClasses">
+    :class="dropdownClasses"
+    class="dropdown v-select">
     <div
       ref="toggle"
-      class="dropdown-toggle"
       :class="{multi: multiple}"
+      class="dropdown-toggle"
       @mousedown.prevent="toggleDropdown">
       <span
-        class="form-control"
-        v-if="!searchable && isValueEmpty">
+        v-if="!searchable && isValueEmpty"
+        class="form-control">
         {{ placeholder }}
       </span>
 
@@ -163,17 +163,17 @@
           ref="selectedList"
           style="flex-grow: 1; height:100%; min-height:2.1rem; align-self: center">
           <span
-            class="selected-tag"
-            :class="{multi: multiple}"
             v-for="(option,index) in internalValue"
-            :key="index">
+            :key="index"
+            :class="{multi: multiple}"
+            class="selected-tag">
             <template v-if="!multiple">
               {{ getSelectedOptionLabel(option) }}
             </template>
             <a
               v-if="multiple"
-              @mousedown.stop="select(option)"
-              class="small close button">
+              class="small close button"
+              @mousedown.stop="select(option)">
               {{ getSelectedOptionLabel(option) }}
               <i
                 class="fa fa-times-circle fa-lg close-icon"
@@ -194,8 +194,8 @@
                 aria-hidden="true"/>
               <slot name="spinner">
                 <i
-                  class="fa fa-circle-o-notch fa-spin fa-lg spinner"
-                  v-show="loading"/>
+                  v-show="loading"
+                  class="fa fa-circle-o-notch fa-spin fa-lg spinner"/>
               </slot>
             </a>
           </template>
@@ -215,10 +215,14 @@
     </div>
     <div class="dropdown-menu">
       <input
+        v-show="searchable"
         ref="search"
+        :style="{ width: '100%' }"
         :debounce="debounce"
         v-model="search"
-        v-show="searchable"
+        :placeholder="searchPlaceholder"
+        type="search"
+        class="form-control"
         @keydown.delete="maybeDeleteValue"
         @keyup.esc="onEscape"
         @keydown.up.prevent="typeAheadUp"
@@ -226,22 +230,18 @@
         @keyup.enter.prevent="typeAheadSelect"
         @blur="open = false"
         @focus="open = true"
-        type="search"
-        class="form-control"
-        :placeholder="searchPlaceholder"
-        :style="{ width: '100%' }"
       >
       <ul
-        ref="dropdownMenu"
         v-show="open"
+        ref="dropdownMenu"
         :transition="transition"
-        class="dropdown-menu-list"
-        :style="{ 'max-height': maxHeight }">
+        :style="{ 'max-height': maxHeight }"
+        class="dropdown-menu-list">
         <li
           v-for="(option,index) in filteredOptions"
           :key="index"
-          class="list-item"
           :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }"
+          class="list-item"
           @mouseover="typeAheadPointer = index"
           @mousedown.prevent="select(option)">
           <a>
@@ -289,6 +289,7 @@ export default {
          * @type {Object||String||null}
          */
     initialValue: {
+      type: [Object,String],
       default: null
     },
 
@@ -404,7 +405,10 @@ export default {
  * @type {Function}
  * @default {null}
  */
-    onChange: Function,
+    onChange: {
+      type: Function,
+      default: null
+    },
 
     onGetMoreOptions: {
       type: Function,
