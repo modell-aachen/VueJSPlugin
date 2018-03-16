@@ -74,7 +74,7 @@ export default {
       type: Boolean,
       default: false
     },
-    lastOpend: {
+    lastOpendItemId: {
       type: [String, Number],
       default: null
     }
@@ -95,7 +95,7 @@ export default {
         this.item.fields[0].push(newList[0]);
       }
     },
-    lastOpend: function(lastOpenedItemId) {
+    lastOpendItemId: function(lastOpenedItemId) {
       if(this.multiOpen === null || this.multiOpen === false) {
         if(lastOpenedItemId !== this.item.id) {
           this.item.collapsed = true;
@@ -107,8 +107,15 @@ export default {
     toggleCollapsed: function() {
       this.item.collapsed = !this.item.collapsed;
       if(!this.item.collapsed) {
-        this.$emit('lastOpend', this.item.id);
+        let parentList = this.getListParent();
+        parentList.$emit('lastOpend', this.item.id);
       }
+    },
+    getListParent: function(parent = this.$parent) {
+      while(!parent.DaDList && parent.$parent) {
+        parent = parent.$parent;
+      }
+      return parent;
     }
   }
 };

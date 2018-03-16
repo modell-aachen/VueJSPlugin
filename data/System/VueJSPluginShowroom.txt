@@ -213,7 +213,8 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
    <vue-dad-list :list="list" @addItem="addMetadataBlock" :allowedTypes="['metadataBlock']" itemType="vue-collapsible-dad-item">
      <vue-collapsible-dad-item slot-scope="props"
        :item="props.item"
-       :index="props.index">
+       :index="props.index"
+       :last-opend-item-id="props.lastOpendItemId">
        <div class="grid-x grid-margin-x">
          <div class="cell large-6">
            <vue-input-text :value="props.item.label" @typed="" labell="Name des Staus"></vue-input-text>

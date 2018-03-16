@@ -16,7 +16,8 @@
           effect-allowed="move">
           <slot
             :item="item"
-            :index="index"/>
+            :index="index"
+            :lastOpendItemId="lastOpendItemId"/>
         </vddl-draggable>
       </template>
       <slot name="placeholder">
@@ -65,12 +66,20 @@ export default {
         "id": 5,
         "label": "",
         "collapsed": true
-      }
+      },
+      lastOpendItemId: null,
+      DaDList: true
     };
+  },
+  created: function() {
+    this.$on('lastOpend', this.setLastOpendId);
   },
   methods: {
     addItemEvent: function() {
       this.$emit("addItem");
+    },
+    setLastOpendId: function(newId) {
+      this.lastOpendItemId = newId;
     }
   }
 };
