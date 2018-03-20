@@ -14,11 +14,6 @@ Vue.onDocumentReady(function(){
         data: {
           values: [],
           payment: ''
-        },
-        methods: {
-            getNewValues: function(newValue) {
-               this.values = newValue.value;
-            }
         }
     });
     new Vue({
@@ -29,7 +24,7 @@ Vue.onDocumentReady(function(){
         },
         methods: {
           getNewValue: function(newValue) {
-            this.userInput = newValue.value;
+            this.userInput = newValue;
           }
         }
     });

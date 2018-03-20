@@ -44,7 +44,7 @@ export default {
       }
     },
     'icon':{
-      type: String,
+      type: [String, Array],
       default: undefined
     },
     'isDisabled':{

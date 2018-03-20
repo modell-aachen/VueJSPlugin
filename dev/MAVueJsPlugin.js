@@ -104,6 +104,9 @@ class MAVueJsPlugin {
     Vue.moment = this.moment;
     Vue.VueRouter = VueRouter;
     Vue.validate = Validator;
+    Vue.getUniqueId = function() {
+      return Math.random().toString(36).substring(7);
+    };
 
     //Instance properties/methods
     Vue.prototype.$store = options.store;

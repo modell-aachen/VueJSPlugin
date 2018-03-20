@@ -27,7 +27,7 @@ export default {
     id: {
       type: String,
       default: function () {
-        return 'checkbox-id-' + this._uid;
+        return 'checkbox-id-' + Vue.getUniqueId();
       },
     },
     name: {
@@ -57,10 +57,6 @@ export default {
     type:{
       type: String,
       default: 'checkbox'
-    },
-    model: {
-      type: [Object, Array],
-      default: undefined
     }
   },
   computed: {

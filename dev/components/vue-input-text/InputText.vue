@@ -2,7 +2,7 @@
   <div
     :class="{'ma-failure': hasError}"
     class="ma-input-group">
-    <label if="label">{{ label }}</label>
+    <label v-if="label">{{ label }}</label>
     <input
       v-validate="validate"
       :name="name"
@@ -50,7 +50,7 @@ export default {
       default: undefined
     },
     'icon':{
-      type: String,
+      type: [String, Array],
       default: undefined
     },
     'isSmall':{
@@ -72,7 +72,7 @@ export default {
         return this.value;
       },
       set: function(newValue) {
-        this.$emit('typed', {value: newValue});
+        this.$emit('typed', newValue);
       }
     },
     hasError: function(){
@@ -80,6 +80,13 @@ export default {
     },
     definedErrorMessage: function() {
       return this.errorMessage || this.validationErrors.first(this.name);
+    }
+  },
+  watch: {
+    data: function(value){
+      if(this.name) {
+        this.$validator.validate(this.name, value);
+      }
     }
   }
 };

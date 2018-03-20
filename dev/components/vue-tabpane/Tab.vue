@@ -19,7 +19,7 @@ export default {
     id: {
       type: String,
       default: function() {
-        return this.$foswiki.getUniqueID();
+        return Vue.getUniqueId();
       },
     }
   },
