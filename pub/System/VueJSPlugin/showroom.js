@@ -21,11 +21,6 @@ Vue.onDocumentReady(function(){
         template: '#input-text-template',
         data: {
           userInput: ''
-        },
-        methods: {
-          getNewValue: function(newValue) {
-            this.userInput = newValue;
-          }
         }
     });
     new Vue({
@@ -42,11 +37,6 @@ Vue.onDocumentReady(function(){
         data: {
             page: 2,
             pageCount: 30
-        },
-        methods: {
-            setNewPage: function(newPage) {
-                this.page = newPage;
-            }
         }
     });
     new Vue({

@@ -34,19 +34,19 @@ The following examples provide an overview of its functionality. The correspondi
 %STARTSECTION{"ButtonVueTempalte"}%
 <div>
    Button
-      <vue-button title='Button' @click.native='atClick'></vue-button><br>
+      <vue-button title='Button' @click.native='atClick' /><br>
    Primary Button
-      <vue-button type='primary' title='Button'></vue-button><br>
+      <vue-button type='primary' title='Button' /><br>
    Ghost Button
-      <vue-button type='ghost' title='Button'></vue-button><br>
+      <vue-button type='ghost' title='Button' /><br>
    Delete Button
-      <vue-button type='delete' title='Button'></vue-button><br>
+      <vue-button type='delete' title='Button' /><br>
    Button with icon
-      <vue-button type='primary' icon='far fa-paperclip' title='Button'></vue-button><br>
+      <vue-button type='primary' icon='far fa-paperclip' title='Button' /><br>
    Disabled Button
-      <vue-button type='primary' :isDisabled='true' title='Button'></vue-button><br>
+      <vue-button type='primary' is-disabled title='Button' /><br>
    Icon only Button
-      <vue-button type='icon' icon='fas fa-exclamation-triangle' color="ma-warning-color"></vue-button><br>
+      <vue-button type='icon' icon='fas fa-exclamation-triangle' color="ma-warning-color" /><br>
 </div>
 %ENDSECTION{"ButtonVueTempalte"}%
 </verbatim>
@@ -80,9 +80,9 @@ The following examples provide an overview of its functionality. The correspondi
   </div>
   <div class="cell large-4">
     <h3>Switch</h3>
-    <vue-check-item :isSwitch="true" name="zutaten[]" value="salz" v-model="values" checked>Salz</vue-check-item>
-    <vue-check-item :isSwitch="true" name="zutaten[]" value="zucker" v-model="values">Zucker</vue-check-item>
-    <vue-check-item :isSwitch="true" name="zutaten[]" value="pfeffer" v-model="values" >Pfeffer</vue-check-item><br>
+    <vue-check-item is-switch name="zutaten[]" value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item is-switch name="zutaten[]" value="zucker" v-model="values">Zucker</vue-check-item>
+    <vue-check-item is-switch name="zutaten[]" value="pfeffer" v-model="values" >Pfeffer</vue-check-item><br>
     {{values}}<br>
   </div>
 </div>
@@ -101,12 +101,12 @@ The following examples provide an overview of its functionality. The correspondi
 <verbatim>
 %STARTSECTION{"InputTextVueTempalte"}%
 <div>
-    <vue-input-text :value="userInput" @typed="getNewValue"></vue-input-text>
-    <vue-input-text :value="userInput" @typed="getNewValue" label="Einzeilige Überschrift" data="userInput"></vue-input-text>
-    <vue-input-text :value="userInput" @typed="getNewValue" placeholder="Small" :isSmall="true"data="userInput"></vue-input-text>
-    <vue-input-text :value="userInput" placeholder="Disabled" :isDisabled="true" data="userInput"></vue-input-text>
-    <vue-input-text :value="userInput" @typed="getNewValue" name="Email" validate="email" placeholder="Validate Email"></vue-input-text>
-    <vue-input-text :value="userInput" @typed="getNewValue" name="Feld" validate="alpha_num" placeholder="Validate alphanumerisch"></vue-input-text>
+    <vue-input-text v-model="userInput" />
+    <vue-input-text v-model="userInput" label="Einzeilige Überschrift" />
+    <vue-input-text v-model="userInput" placeholder="Small" is-small />
+    <vue-input-text v-model="userInput" placeholder="Disabled" is-disabled />
+    <vue-input-text v-model="userInput" name="Email" validate="email" placeholder="Validate Email" />
+    <vue-input-text v-model="userInput" name="Feld" validate="alpha_num" placeholder="Validate alphanumerisch" />
 </div>
 %ENDSECTION{"InputTextVueTempalte"}%
 </verbatim>
@@ -183,16 +183,12 @@ The following examples provide an overview of its functionality. The correspondi
 %STARTSECTION{"PaginationVueTempalte"}%
 <div>
    <vue-pagination
-     :pageCount="pageCount"
-     :currentPage="page"
-     @page-changed="setNewPage">
-   </vue-pagination>
+     v-model="page"
+     :pageCount="pageCount" />
    <vue-pagination
+     v-model="page"
      :pageCount="pageCount"
-     :currentPage="page"
-     :pageLimit="15"
-     @page-changed="setNewPage">
-   </vue-pagination>
+     :pageLimit="15" />
 </div>
 %ENDSECTION{"PaginationVueTempalte"}%
 </verbatim>

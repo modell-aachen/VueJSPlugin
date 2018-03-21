@@ -43,10 +43,6 @@
 export default {
   name: 'DadList',
   props: {
-    'label':{
-      type: String,
-      default: undefined
-    },
     'list':{
       type: [Array,Object],
       required: true

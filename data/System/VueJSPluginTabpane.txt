@@ -7,6 +7,7 @@ This component belongs to [[VueJSPlugin]] and creates a tabpane, that uses FlatS
 ---++ Usage
 
    * Create a =vue-tabpane= component
+      * Type defines the css class. The type will be appended to 'jqTabPaneFlat'
    * For each tab, create a =vue-tab= component _inside_ the =vue-tabpane= component
       * No other children are allowed inside =vue-tabpane=
    * Give each tab a _name_ attribute
@@ -16,7 +17,7 @@ This component belongs to [[VueJSPlugin]] and creates a tabpane, that uses FlatS
 
 Example:
 <verbatim>
-<vue-tabpane>
+<vue-tabpane :type="type">
     <vue-tab :name="title for first tab">
         Here is some content for the first tab
     </vue-tab>

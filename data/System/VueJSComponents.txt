@@ -1,0 +1,137 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="" date="1443077395" format="1.1" version="1"}%
+
+%TOC%
+
+---+ Vue Component Documentation
+This is the technical documentation from all global Vue JS Components. For an example how to use see [[System.VueJSPluginShowroom]].
+---++ Sidebar
+<verbatim class="html">
+<sidebar>
+SLOT
+</sidebar>
+</verbatim>
+For a detailed documentation see [[VueJSPluginSidebar]]
+---++ Button
+<verbatim class="html">
+<vue-button />
+</verbatim>
+---+++ Props
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| title | String | | | Name for a button element |
+| type | String ('primary', 'ghost', 'delete', 'icon' or '') | | | Typ of button |
+| color | String | | | Set color for coloring icons |
+| icon | String/Array of Foundation classes | |  | eg. ['fas','fa-papgerclip'] |
+| isDisabled | Boolean | | | Whene true, renders a disabled button |
+---++ Check Item
+<verbatim class="html">
+<vue-check-item />
+</verbatim>
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| id | String | | 'checkbox-id-' + Vue.getUniqueId() | Html id for element |
+| name | String | | | Name mainly for a form |
+| value | String | | | Value for input |
+| v-model | Array, Object, String | | | The data model |
+| checked | Boolean | | false | Set an input as checked |
+| isDisabled | Boolean | | false | Disabel the input element |
+| isSwitch | Boolean | | false | Input styled as switch (see styleguide) |
+| type | String ('checkbox' or 'radio') | | checkbox | Type of input |
+---++ Input Text
+<verbatim class="html">
+<vue-input-text />
+</verbatim>
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| label | String | | | Text on top of the input |
+| name | String | | | For a Form and used for validation errors when no errorMessage is set |
+| validate | String | | | Type of validation. See <a href="http://vee-validate.logaretm.com/validation.html#available-rules">Available Rules</a> |
+| errorMessage | String | | | Overwrites error message from <a href="http://vee-validate.logaretm.com">vee-validate</a> |
+| placeholder | String | | | Input placeholder |
+| icon | String/Array from FontAwsome | | | Icon rendered in input |
+| isSmall | Boolean | | false | Will display a not so heigh input item |
+| isDisabled | Boolean | | false | Renders a disabled input item |
+| v-model | String | | | Data model |
+
+---++ Select
+| *Name* | *Type* | *Required* | *Default* |
+| loading | Boolean | | |
+| onSearch | Function | | |
+| debounce | Number | | |
+| initialValue | undefined | | |
+| options | Array | | function _default() { return []; } |
+| maxHeight | String | | 400px |
+| searchable | Boolean | | true |
+| multiple | Boolean | | |
+| placeholder | String | | |
+| transition | String | | expand |
+| clearSearchOnSelect | Boolean | | true |
+| label | String | | label |
+| getOptionLabel | Function | | function _default(option) { if ((typeof option === 'undefined' ? 'undefined' : _typeof(option)) === 'object') { if (this.label && option[this.label]) { return option[this.label]; } } return option; } |
+| getSelectedOptionLabel | Function | | function _default(option) { return this.getOptionLabel(option); } |
+| onChange | Function | | |
+| onGetMoreOptions | Function | | |
+| onOpen | Function | | |
+| taggable | Boolean | | |
+| pushTags | Boolean | | |
+| createOption | Function | | function _default(newOption) { if (_typeof(this.options[0]) === 'object') { return _defineProperty({}, this.label, newOption); } return newOption; } |
+| resetOnOptionsChange | Boolean | | |
+| preventSearchFilter | Boolean | | |
+| value | Array | | function _default() { return []; } |
+
+---++ Tabpane
+For more inforamtion see [[System.VueJSPluginTabpane]].
+<verbatim class="html">
+<vue-tabpane>
+  <vue-tab>SLOT</vue-tab>
+  <vue-tab>SLOT</vue-tab>
+</vue-tabpane>
+</verbatim>
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| type | String | | | Sets a class name wich will be appendet to 'jqTabPaneFlat' |
+---+++ Tab
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| name | String | yes | | Display name |
+| id | String | | Vue.getUniqueId() | HTML id |
+
+---++ Pagination
+<verbatim class="html">
+<vue-pagination />
+</verbatim>
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| v-model | Number | yes | | Data model. Actual page numer as int |
+| pageCount | Number | yes | | Highest page number |
+| ulClass | String/Array | | pagination | Used css class |
+| pageLimit | Number | | 7 | Pages shown shortened to pageLimit (StyleGuide: it should be 7 or 15) |
+
+---++ Dad (Drag & Drop) List
+<verbatim class="html">
+<vue-dad-list>
+  <vue-collapsible-dad-item>
+    SLOT
+  </vue-collapsible-dad-item>
+</vue-dad-list>
+</verbatim>
+
+Here we use vddl as d&d library: <a href="http://hejx.space/vddl">Vddl</a>
+The List Slot defines how a list item will be rendered. Thes are a <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped Slots</a>
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| list | Array/Object | yes | | Data modell |
+| itemType | String | | | Vue Component type as string. Will be used to render the d&d placeholder. |
+| allowedTypes | Array | | | Allowed types to drop in this list. <a href="http://hejx.space/vddl/#/component/vddl-list">See vddl list documentation.</a> |
+
+Provided variables from Scoped Slot:
+| *Name* | *Type* | *Description* |
+| item | Object | Item from list |
+| index | String | Index number from list item |
+| lastOpenItemId | Int | Id from item wich last emittet 'lastOpend' event. |
+
+---+++ Collapsibel Item
+| *Name* | *Type* | *Required* | *Default* |
+| item | Object | yes | Data model |
+| index | Number | yes | Index number |
+| multiOpen | Boolean | | Use LastOpendItemId to collaps item when an other item is open |
+| lastOpendItemId | undefined | | Id of last opend Item |
+
+---+++ Simple Item
+| *Name* | *Type* | *Required* | *Default* |
+| item | Object | yes | Data mdoel |
+| index | Number | yes | Index number |
+

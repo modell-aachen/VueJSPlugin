@@ -76,12 +76,12 @@ describe("The InputText component", () => {
       wrapper.setData({data: 'eins'});
       wrapper.setData({data: 'zwei'});
       wrapper.setData({data: 'drei'});
-      const events = wrapper.emitted().typed;
+      const events = wrapper.emitted().input;
       expect(events.length).toBe(3);
     });
     it("with correct data", () => {
       wrapper.setData({data: 'neuer Text'});
-      const events = wrapper.emitted().typed;
+      const events = wrapper.emitted().input;
       expect(events[events.length - 1][0]).toBe('neuer Text');
     });
   });

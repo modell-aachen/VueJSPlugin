@@ -72,7 +72,7 @@ export default {
         return this.value;
       },
       set: function(newValue) {
-        this.$emit('typed', newValue);
+        this.$emit('input', newValue);
       }
     },
     hasError: function(){

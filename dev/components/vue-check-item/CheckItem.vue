@@ -4,7 +4,7 @@
       :id="id"
       :name="name"
       :value="value"
-      :disabled="disabled"
+      :disabled="isDisabled"
       :checked="state"
       :type="type"
       :class="{'switch-input': isSwitch}"
@@ -46,7 +46,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    disabled: {
+    isDisabled: {
       type: Boolean,
       default: false,
     },

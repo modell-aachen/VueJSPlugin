@@ -5,7 +5,7 @@ describe("The Pagination component", () => {
   describe("with minimal values", () => {
     const options = {
       propsData: {
-        currentPage: 1,
+        value: 1,
         pageCount: 2
       }
     };
@@ -19,13 +19,13 @@ describe("The Pagination component", () => {
     it("triggers page-changed event at click", () => {
       const pageTwo = wrapper.findAll('a').at(2);
       pageTwo.trigger('click');
-      expect(wrapper.emitted()['page-changed'][0]).toContain(2);
+      expect(wrapper.emitted()['input'][0]).toContain(2);
     });
   });
   describe("list renders correct", () => {
     const options = {
       propsData: {
-        currentPage: 1,
+        value: 1,
         pageCount: 50
       }
     };
@@ -49,7 +49,7 @@ describe("The Pagination component", () => {
       }
     });
     it("when last page is active", () => {
-      wrapper.setProps({currentPage: 50});
+      wrapper.setProps({value: 50});
       const expectations = [
         'clickable',
         'clickable',
@@ -68,7 +68,7 @@ describe("The Pagination component", () => {
       }
     });
     it("when 6th page is active", () => {
-      wrapper.setProps({currentPage: 6});
+      wrapper.setProps({value: 6});
       const expectations = [
         'clickable',
         'clickable',
@@ -87,7 +87,7 @@ describe("The Pagination component", () => {
       }
     });
     it("when last-5 page is active", () => {
-      wrapper.setProps({currentPage: 45});
+      wrapper.setProps({value: 45});
       const expectations = [
         'clickable',
         'clickable',
@@ -106,7 +106,7 @@ describe("The Pagination component", () => {
       }
     });
     it("when last-4 page is active", () => {
-      wrapper.setProps({currentPage: 46});
+      wrapper.setProps({value: 46});
       const expectations = [
         'clickable',
         'clickable',
