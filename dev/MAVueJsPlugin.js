@@ -100,13 +100,14 @@ class MAVueJsPlugin {
       i18next.addResourceBundle(language, namespace, translations);
     };
 
+    Vue.getUniqueId = () => {
+      return Math.random().toString(36).substring(7);
+    };
+
     Vue.foswiki = this.foswiki;
     Vue.moment = this.moment;
     Vue.VueRouter = VueRouter;
     Vue.validate = Validator;
-    Vue.getUniqueId = function() {
-      return Math.random().toString(36).substring(7);
-    };
 
     //Instance properties/methods
     Vue.prototype.$store = options.store;

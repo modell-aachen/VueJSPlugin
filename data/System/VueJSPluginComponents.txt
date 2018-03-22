@@ -1,4 +1,5 @@
 %META:TOPICINFO{author="BaseUserMapping_999" comment="" date="1443077395" format="1.1" version="1"}%
+%META:TOPICPARENT{name="System.VueJSPlugin"}%
 
 %TOC%
 
@@ -10,7 +11,7 @@ This is the technical documentation from all global Vue JS Components. For an ex
 SLOT
 </sidebar>
 </verbatim>
-For a detailed documentation see [[VueJSPluginSidebar]]
+See the [[System.VueJSPluginSidebar][sidebar documentation]] for further details.
 ---++ Button
 <verbatim class="html">
 <vue-button />

@@ -1,4 +1,5 @@
 %META:TOPICINFO{author="BaseUserMapping_999" comment="" date="1443077395" format="1.1" version="1"}%
+%META:TOPICPARENT{name="System.VueJSPlugin"}%
 
 %VUE{VERSION="2"}%
 
