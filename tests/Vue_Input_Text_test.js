@@ -1,6 +1,7 @@
 import Input from '../dev/components/vue-input-text/InputText.vue';
-import {mount} from '@vue/test-utils';
+import TestCase from '../dev/unit-test-library/main';
 
+let mount = TestCase.mount;
 describe("The InputText component", () => {
   describe("with default values", () => {
     const wrapper = mount(Input);

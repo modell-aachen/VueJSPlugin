@@ -6072,6 +6072,10 @@ swap-case@^1.1.0:
     lower-case "^1.1.1"
     upper-case "^1.1.1"
 
+sweetalert2@^6.6.6:
+  version "6.11.5"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-6.11.5.tgz#a1ede34089225eb864898f4b613db4fec5dbe334"
+
 symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
@@ -6544,6 +6548,14 @@ vue-style-loader@^3.0.1:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
+vue-sweetalert@^0.1.18:
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/vue-sweetalert/-/vue-sweetalert-0.1.18.tgz#9c0ed3b5f318b4ba4764d4b07b9f31ef6afc53eb"
+  dependencies:
+    babel-runtime "^6.23.0"
+    sweetalert2 "^6.6.6"
+    vue "^2.2.1"
+
 vue-template-compiler@^2.3.4:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.5.16.tgz#93b48570e56c720cdf3f051cc15287c26fbd04cb"
@@ -6561,7 +6573,7 @@ vue-test-utils@^1.0.0-beta.11:
   dependencies:
     lodash "^4.17.4"
 
-vue@^2.2.0:
+vue@^2.2.0, vue@^2.2.1:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 

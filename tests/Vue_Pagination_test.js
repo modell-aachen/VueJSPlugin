@@ -1,6 +1,7 @@
 import Pagination from '../dev/components/vue-pagination/VueSimplePagination.vue';
-import {mount} from '@vue/test-utils';
+import TestCase from '../dev/unit-test-library/main';
 
+let mount = TestCase.mount;
 describe("The Pagination component", () => {
   describe("with minimal values", () => {
     const options = {

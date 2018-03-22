@@ -1,6 +1,7 @@
 import Button from '../dev/components/vue-button/Button.vue';
-import {mount} from '@vue/test-utils';
+import TestCase from '../dev/unit-test-library/main';
 
+let mount = TestCase.mount;
 describe("The Button component", () => {
   describe("with default values", () => {
     const wrapper = mount(Button);

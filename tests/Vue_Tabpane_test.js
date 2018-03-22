@@ -1,6 +1,7 @@
 import TabPane from '../dev/components/vue-tabpane/TabPane.vue';
-import {mount} from '@vue/test-utils';
+import TestCase from '../dev/unit-test-library/main';
 
+let mount = TestCase.mount;
 describe("The TabPane component", () => {
   beforeEach(() => {
     // Pops default for id in vue-tab is undefined, so we need to define id.
