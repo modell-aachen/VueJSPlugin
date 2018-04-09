@@ -1,13 +1,36 @@
 <template>
-  <button class="sidebar-tab-button" :class="{close: isCloseButton, active: isActive}" :title="tooltip" @click.prevent="click">
-  <i class="fa fa-2x" :class="icon"></i>
-</button>
+  <button
+    :title="tooltip"
+    :class="{close: isCloseButton, active: isActive}"
+    class="sidebar-tab-button"
+    @click.prevent="click">
+    <i
+      :class="icon"
+      class="fa fa-2x"/>
+  </button>
 </template>
 
 <script>
 export default {
-  name: 'sidebar-tab-button',
-  props: ['icon', 'tooltip', 'type', 'isActive'],
+  name: 'SidebarTabButton',
+  props: {
+    icon: {
+      type: String,
+      default: undefined
+    },
+    tooltip: {
+      type: String,
+      default: undefined
+    },
+    type: {
+      type: String,
+      default: undefined
+    },
+    isActive: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
     isCloseButton: function() {
       return this.type === 'close';

@@ -1,40 +1,34 @@
 <template>
-    <div class="vue-tab" v-show="visibleState">
-        <div class="vue-tab-contents">
-            <slot></slot>
-        </div>
+  <div
+    v-show="current"
+    class="vue-tab">
+    <div class="vue-tab-contents">
+      <slot/>
     </div>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'vue-tab',
-    props: {
-      name: {
-        type: String,
-        required: true,
-      },
-      id: {
-        type: String,
-        default: function() {
-          return this.$foswiki.getUniqueID();
-        },
-      },
+export default {
+  name: 'VueTab',
+  props: {
+    name: {
+      type: String,
+      required: true,
     },
-    data() {
-      return {
-        visibleState: false,
-      };
-    },
-    methods: {
-      setVisible(isVisible) {
-        this.visibleState = isVisible;
+    id: {
+      type: String,
+      default: function() {
+        return Vue.getUniqueId();
       },
-      isVisible() { // needs to be a 'method', so we can call it from outside (TabPane)
-        return this.visibleState;
-      },
-    },
-  };
+    }
+  },
+  data: function() {
+    return {
+      current: false
+    };
+  }
+};
 </script>
 
 <style lang="scss">

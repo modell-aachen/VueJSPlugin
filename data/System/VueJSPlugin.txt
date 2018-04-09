@@ -30,7 +30,18 @@ By default the VUE macro loads Vue in version 1.x. To load Vue 2.x + Vuex just p
 <pre>The following only applies when loading Vue 2.x.</pre>
 The VueJSPlugin extends the global Vue instance with some additional plugins and functions.
 
----+++ Validations
+---++ Additional Plugins
+---+++ Internationalization - <a href="https://github.com/panter/vue-i18next">vue-i18next</a>
+Internationalization for vue using the i18next i18n ecosystem. <a href="http://i18next.com/">i18next.com/</a>
+---+++ Global Parameters - <a href="https://github.com/rse/vue-params">vue-params</a>
+Vue plugin for global parameters triggering data-binding updates. E.g. used to update $t in vue-i18next.
+---+++ Routing - <a href="https://router.vuejs.org/en/">vue-router</a>
+Offical router for Vue.js. Helps building Single Page Applications.
+---+++ List modifying with drag & drop - <a href="http://hejx.space/vddl">Vddl</a>
+Vue plugin adds Components for modifying lists with the HTML5 drag & drop API.
+---+++ SweetAlert2 - <a href="https://github.com/lishengzxc/vue-sweetalert">vue-sweetalert</a>
+This VueJS Plugin adds $swal to the Vue instance. See <a href="https://sweetalert2.github.io/">SweetAlert2 Documentation</a>.
+---+++ Validations - <a href="http://vee-validate.logaretm.com/">VeeValidate</a>
 The VueJS Plugin is bundled with the Vee-Validate Plugin for Vue which can be used to define input validations.
 Search for the official Vee-Validate documentation for further information on how to use it.
 
@@ -38,58 +49,58 @@ Search for the official Vee-Validate documentation for further information on ho
 and the fields property name from 'fields' to 'validationFields'.
 
 
----+++ Additional components
+---++ Additional components
+For an overviwe see: [[System.VueJSPluginShowroom]] and for documentation: [[Syste.VueJSPluginComponents]]
+---+++ Vue Sidebar
+---+++ Vue SweetAlert
+---+++ Vue Button
+---+++ Vue Check Item
+---+++ Vue Input Text
+---+++ Vue Select
+---+++ Vue Tabpane
+---+++ Vue Pagination
+---+++ Vue Dad (Drag & Drop ) List
 
-*vue-select*
-
-*vue-pagination*
-
-*sidebar* %BR%
-See the [[System.VueJSPluginSidebar][sidebar documentation]] for further details.
-
-*vue-tabpane*
-See [[VueJSPluginTabpane]].
-
----+++ Additional instance properties
+---++ Additional instance properties
 Every Vue component instance has access to some additional properties/methods.
 
-*$foswiki*
+---+++ $foswiki
 
 The global foswiki object.
 
-*$moment*
+---+++ $moment
 
 A moment.js instance which can be used to manipulate dates and times.
 
-*$store*
+---+++ $store
 
 The global Vuex store which is the same for all components.
 
-*$lang*
+---+++ $lang
 
 Returns the lang attribute set on the html tag.
 
-*$ajax*
+---+++ $ajax
 
 Equivalent to $.ajax
 
----+++ Global helper functions
+---++ Global helper functions
 Some additional helper functions are accessible via the global Vue object.
 
-*onDocumentReady(fn)*
+---+++ onDocumentReady(fn)
 
 This is equivalent to $(fn).
 
-*registerStoreModule(name, store)*
+---+++ registerStoreModule(name, store)
 
 This registers a submodule in the global Vuex store.
 
-*instantiateEach(selector, componentOptions)*
+---+++ instantiateEach(selector, componentOptions)
 
 This instantiates a new component specified in componentOptions on all elements matched by selector.
 Use this only to bootstrap components which have been included via macros.
 
-*getConfigById(id)*
+---+++ getConfigById(id)
 
 This searches for a DOM element which has the css class named id, parses its content as JSON and returns the object.
 It should only be used to retrieve config data from macros. The standard procedure looks like this:
@@ -97,6 +108,14 @@ It should only be used to retrieve config data from macros. The standard procedu
    * The macro writes the config as stringified JSON into a script tag and sets a unique id as a css class.
    * The macro passes the id to the vue component tag as a prop.
    * The component gets its config by calling the getConfigById function with the provided id.
+
+---+++ makeAbsoluteUrl(url)
+
+This adds foswikis scripturl part to the url parameter.
+
+---+++ getUniqueId
+
+Returns a unique id to use as identifier. A seven numbers long String.
 
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="ProjectContributor"}%

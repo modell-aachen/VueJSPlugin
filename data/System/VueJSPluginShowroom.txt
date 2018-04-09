@@ -1,0 +1,268 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="" date="1443077395" format="1.1" version="1"}%
+%META:TOPICPARENT{name="System.VueJSPlugin"}%
+
+%VUE{VERSION="2"}%
+
+%ADDTOZONE{"script" requires="VUEJSPLUGIN" text="<script class='script' type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/showroom.js'></script>"}%
+
+The VueJSPlugin comes with different component. See them all.
+
+%TOC%
+
+---+ Vue Sidebar
+The following examples provide an overview of its functionality. The corresponding code examples can be found in [[%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/sidebarDocs.js][sidebarDocs.js]]
+
+
+<div class="flatskin-wrapped">
+	<div id="sidebarBareExample"></div>
+
+	<div id="sidebarLayoutExample"></div>
+
+	<div id="sidebarTabExample"></div>
+
+	<div id="sidebarTab2Example"></div>
+
+	<div id="sidebarModalExample"></div>
+</div>
+
+---+ Vue Button
+
+<div class="flatskin-wrapped">
+ <div id="button-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"ButtonVueTempalte"}%
+<div>
+   Button
+      <vue-button title='Button' @click.native='atClick' /><br>
+   Primary Button
+      <vue-button type='primary' title='Button' /><br>
+   Ghost Button
+      <vue-button type='ghost' title='Button' /><br>
+   Delete Button
+      <vue-button type='delete' title='Button' /><br>
+   Button with icon
+      <vue-button type='primary' icon='far fa-paperclip' title='Button' /><br>
+   Disabled Button
+      <vue-button type='primary' is-disabled title='Button' /><br>
+   Icon only Button
+      <vue-button type='icon' icon='fas fa-exclamation-triangle' color="ma-warning-color" /><br>
+</div>
+%ENDSECTION{"ButtonVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="button-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="ButtonVueTempalte"}%
+</script>
+
+---+ Vue Check Item
+
+<div class="flatskin-wrapped">
+ <div id="check-item-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"CheckItemVueTempalte"}%
+<div class="grid-x">
+  <div class="cell large-4">
+    <h3>CheckBox</h3>
+    <vue-check-item name="zutaten[]" value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item name="zutaten[]" value="zucker" v-model="values">Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" value="pfeffer" v-model="values" >Pfeffer</vue-check-item><br>
+    {{values}}<br>
+  </div>
+  <div class="cell large-4">
+    <h3>Radio</h3>
+    <vue-check-item name="method" type="radio" value="VISA" v-model="payment" checked>VISA</vue-check-item>
+    <vue-check-item name="method" type="radio" value="PayPall" v-model="payment">PayPall</vue-check-item>
+    <vue-check-item name="method" type="radio" value="Sofortueberweisung" v-model="payment" >Sofort Überweisung</vue-check-item><br>
+    Zahlungsmethode: {{payment}}<br>
+  </div>
+  <div class="cell large-4">
+    <h3>Switch</h3>
+    <vue-check-item is-switch name="zutaten[]" value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item is-switch name="zutaten[]" value="zucker" v-model="values">Zucker</vue-check-item>
+    <vue-check-item is-switch name="zutaten[]" value="pfeffer" v-model="values" >Pfeffer</vue-check-item><br>
+    {{values}}<br>
+  </div>
+</div>
+%ENDSECTION{"CheckItemVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="check-item-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="CheckItemVueTempalte"}%
+</script>
+---+ Vue Input Text
+
+<div class="flatskin-wrapped">
+ <div id="input-text-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"InputTextVueTempalte"}%
+<div>
+    <vue-input-text v-model="userInput" />
+    <vue-input-text v-model="userInput" label="Einzeilige Überschrift" />
+    <vue-input-text v-model="userInput" placeholder="Small" is-small />
+    <vue-input-text v-model="userInput" placeholder="Disabled" is-disabled />
+    <vue-input-text v-model="userInput" name="Email" validate="email" placeholder="Validate Email" />
+    <vue-input-text v-model="userInput" name="Feld" validate="alpha_num" placeholder="Validate alphanumerisch" />
+</div>
+%ENDSECTION{"InputTextVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="input-text-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="InputTextVueTempalte"}%
+</script>
+
+---+ Vue Select
+
+<div class="flatskin-wrapped">
+ <div id="select-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"SelectVueTempalte"}%
+<div>
+<vue-select
+  multiple
+  label="field"
+  placeholder="Search term..."
+  :onSearch="() => {}"
+>
+    <template slot="more-results">Show more results</template>
+</vue-select>
+</div>
+%ENDSECTION{"SelectVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="select-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="SelectVueTempalte"}%
+</script>
+---+ Vue Tabpane
+<div class="flatskin-wrapped">
+ <div id="tabpane-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"TabpaneVueTempalte"}%
+<div>
+   <vue-tabpane>
+      <vue-tab name="Datein und Ansichten">
+         <vue-tabpane type="Sub">
+            <vue-tab name="Basis">
+            </vue-tab>
+            <vue-tab name="Reiter">
+            </vue-tab>
+            <vue-tab name="Tabelle">
+            </vue-tab>
+         </vue-tabpane>
+      </vue-tab>
+      <vue-tab name="Workflow">
+         <span>Here is some content for the second tab</span>
+      </vue-tab>
+      <vue-tab name="Übersicht" id="someId">
+      </vue-tab>
+      <vue-tab name="Übersetzungen">
+      </vue-tab>
+   </vue-tabpane>
+</div>
+%ENDSECTION{"TabpaneVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="tabpane-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="TabpaneVueTempalte"}%
+</script>
+
+---+ Vue Pagination
+<div class="flatskin-wrapped">
+ <div id="pagination-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"PaginationVueTempalte"}%
+<div>
+   <vue-pagination
+     v-model="page"
+     :pageCount="pageCount" />
+   <vue-pagination
+     v-model="page"
+     :pageCount="pageCount"
+     :pageLimit="15" />
+</div>
+%ENDSECTION{"PaginationVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="pagination-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="PaginationVueTempalte"}%
+</script>
+
+---+ Vue Dad (Drag & Drop) List
+We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped Slots</a> to pass a template to our List.
+<div class="flatskin-wrapped">
+ <div id="dad-list-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"DadListVueTempalte"}%
+<div>
+   <vue-dad-list :list="list" @addItem="addMetadataBlock" :allowedTypes="['metadataBlock']" itemType="vue-collapsible-dad-item">
+     <vue-collapsible-dad-item slot-scope="props"
+       :item="props.item"
+       :index="props.index"
+       :last-opend-item-id="props.lastOpendItemId">
+       <div class="grid-x grid-margin-x">
+         <div class="cell large-6">
+           <vue-input-text :value="props.item.label" @typed="" labell="Name des Staus"></vue-input-text>
+           <vue-input-text :value="props.item.label" @typed="" label="Nur bearebeitbar durch folgende Person"></vue-input-text>
+         </div>
+         <div class="cell large-6 align-self-bottom">
+           <vue-input-text :value="props.item.label" @typed="" label="Nur kommentierbar durch folgende Personen und Gruppen" data="userInput"></vue-input-text>
+         </div>
+       </div>
+       <hr>
+       <div class="grid-x grid-margin-x">
+          <div class="cell large-6">
+             <h3>Einsprünge</h3>
+               <vue-dad-list v-if="props.item.fields"
+                 :allowedTypes="['status']"
+                 :list="props.item.fields[0]"
+                 @addItem="addStatusField"
+                 itemType="vue-simple-dad-item">
+                   <vue-simple-dad-item slot-scope="props"
+                     :item="props.item"
+                     :index="props.index">
+                   </vue-simple-dad-item>
+                   <vue-button slot="addArea" slot-scope="props"
+                     type="ghost"
+                     title="Add"
+                     icon="fas fa-plus"
+                     @click.native="props.add">
+                   </vue-button>
+               </vue-dad-list>
+          </div>
+          <div class="cell large-6">
+             <h3>Ausgänge</h3>
+               <vue-dad-list v-if="props.item.fields"
+                 :allowedTypes="['status']"
+                 :list="props.item.fields[1]"
+                 @addItem="addStatusField"
+                 itemType="vue-simple-dad-item">
+                   <vue-simple-dad-item slot-scope="props"
+                     :item="props.item"
+                     :index="props.index">
+                   </vue-simple-dad-item>
+                   <p slot="addArea"></p>
+               </vue-dad-list>
+          </div>
+       </div>
+     </vue-collapsible-dad-item>
+   </vue-dad-list>
+</div>
+%ENDSECTION{"DadListVueTempalte"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="dad-list-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="DadListVueTempalte"}%
+</script>

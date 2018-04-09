@@ -1,39 +1,60 @@
 <template>
-    <div class="split-wrapper" @mouseleave="mouseLeave" @mouseenter="mouseEnter">
-        <span @click.prevent="callAction" class="splitleft button primary">
-            <span>
-                {{titleLeft}}
-            </span>
+  <div
+    class="split-wrapper"
+    @mouseleave="mouseLeave"
+    @mouseenter="mouseEnter">
+    <span
+      class="splitleft button primary"
+      @click.prevent="callAction">
+      <span>
+        {{ titleLeft }}
+      </span>
+    </span>
+    <span
+      class="splitright button primary"
+      @click.stop="toggleSplitOpen">
+      <span
+        class="split-chevron"
+        data-dropdown="drop"
+        @click.stop="toggleSplitOpen">
+        <span>
+          {{ title }}
+          <i class="fa fa-chevron-down"/>
         </span>
-        <span @click.stop="toggleSplitOpen" class="splitright button primary">
-            <span class="split-chevron" data-dropdown="drop" @click.stop="toggleSplitOpen">
-                <span>
-                    {{title}}
-                <i class="fa fa-chevron-down"></i>
-                </span>
-            </span>
-        </span><br>
-        <div class="animation-clipper ma-button-clear-margin-bottom">
-            <transition name="vue-splitbutton-slide">
-            <div v-show="splitOpen" class="f-dropdown">
-                <ul>
-                    <slot>
-                        <li>This is a link</li>
-                        <li>This is another</li>
-                        <li>Yet another</li>
-                    </slot>
-                </ul>
-            </div>
-            </transition>
+      </span>
+    </span><br>
+    <div class="animation-clipper ma-button-clear-margin-bottom">
+      <transition name="vue-splitbutton-slide">
+        <div
+          v-show="splitOpen"
+          class="f-dropdown">
+          <ul>
+            <slot>
+              <li>This is a link</li>
+              <li>This is another</li>
+              <li>Yet another</li>
+            </slot>
+          </ul>
         </div>
+      </transition>
     </div>
+  </div>
 </template>
 
 <script>
 const dropdownGraceTime = 2000;
 
 export default {
-  props: ['title','titleLeft'],
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    titleLeft: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       splitOpen: false,

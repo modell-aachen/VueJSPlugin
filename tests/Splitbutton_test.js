@@ -10,20 +10,20 @@ describe("The Splitbutton component", () => {
     });
 
     it("should appear when the chevron is being clicked (and it is closed)", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {});
+      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
       button.toggleSplitOpen();
       expect(button.splitOpen).toBe(true);
     });
 
     it("should close when the chevron is being clicked (and it is open)", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {});
+      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
       button.splitOpen = true;
       button.toggleSplitOpen();
       expect(button.splitOpen).toBe(false);
     });
 
     it("should emit 'action' when the button text is being pressed", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {});
+      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
       let spy = spyOn(button, '$emit');
       button.callAction();
       let callArgs = spy.calls.allArgs();
@@ -32,7 +32,7 @@ describe("The Splitbutton component", () => {
     });
 
     it("should close when the mouse leaves", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {});
+      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
       button.splitOpen = true;
 
       spyOn(window, 'setTimeout').and.callFake((callBack, timeout) => {
@@ -47,7 +47,7 @@ describe("The Splitbutton component", () => {
     });
 
     it("should not close when the mouse leaves and enters again", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {});
+      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
       button.splitOpen = true;
 
       spyOn(window, 'setTimeout').and.callFake((callBack, timeout) => {
