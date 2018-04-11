@@ -2,68 +2,62 @@ import Splitbutton from '../dev/components/vue-splitbutton/Splitbutton.vue';
 import TestCase from '../dev/unit-test-library/main';
 
 describe("The Splitbutton component", () => {
-  jasmine.clock().install(); // XXX usually you would uninstall the clock after each test, however in conjunction with setTimeout this has a habit to break
-
-  describe("has a dropdown which", () => {
-    beforeEach(() => {
-      jasmine.clock().mockDate();
+  let splitbuttonWrapper;
+  let mainButtonCallback = jasmine.createSpy("main button click");
+  beforeEach(() => {
+    splitbuttonWrapper = TestCase.mount(Splitbutton, {
+      propsData: {
+        mainButtonTitle: "Main button",
+        onMainButtonClick: mainButtonCallback,
+        dropdownButtonTitle: "Dropdown button"
+      },
+      slots: {
+        "dropdown-content": "<div class='slot-content'>Slot content</div>"
+      }
     });
+  });
 
-    it("should appear when the chevron is being clicked (and it is closed)", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
-      button.toggleSplitOpen();
-      expect(button.splitOpen).toBe(true);
-    });
+  it("shows a main button with the main button title", () => {
+    const mainButton = splitbuttonWrapper.find(".main-button");
+    expect(mainButton.text()).toBe("Main button");
+  });
 
-    it("should close when the chevron is being clicked (and it is open)", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
-      button.splitOpen = true;
-      button.toggleSplitOpen();
-      expect(button.splitOpen).toBe(false);
-    });
+  it("calls the main button callback when the main button is clicked", () => {
+    const mainButton = splitbuttonWrapper.find(".main-button");
+    mainButton.trigger('click');
+    expect(mainButtonCallback).toHaveBeenCalled();
+  });
 
-    it("should emit 'action' when the button text is being pressed", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
-      let spy = spyOn(button, '$emit');
-      button.callAction();
-      let callArgs = spy.calls.allArgs();
-      expect(callArgs.length).toBe(1);
-      expect(callArgs[0][0]).toBe('action');
-    });
+  it("starts with a closed dropdown", () => {
+    const dropdown = splitbuttonWrapper.find(".vue-splitbutton-dropdown");
+    expect(dropdown.isVisible()).toBe(false);
+  });
 
-    it("should close when the mouse leaves", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
-      button.splitOpen = true;
+  it("opens and closes the dropdown when clicked on the dropdown button", () => {
+    const dropdownButton = splitbuttonWrapper.find(".dropdown-button");
+    const dropdown = splitbuttonWrapper.find(".vue-splitbutton-dropdown");
 
-      spyOn(window, 'setTimeout').and.callFake((callBack, timeout) => {
-        jasmine.clock().tick(timeout + 5);
-        callBack();
-      });
+    dropdownButton.trigger("click");
+    expect(dropdown.isVisible()).toBe(true);
 
-      button.mouseEnter();
-      button.mouseLeave();
+    dropdownButton.trigger("click");
+    expect(dropdown.isVisible()).toBe(false);
+  });
 
-      expect(button.splitOpen).toBe(false);
-    });
+  it("closes the dropdown when clicking outside", () => {
+    const dropdownButton = splitbuttonWrapper.find(".dropdown-button");
+    const dropdown = splitbuttonWrapper.find(".vue-splitbutton-dropdown");
+    dropdownButton.trigger('click');
 
-    it("should not close when the mouse leaves and enters again", () => {
-      let button = TestCase.createVueComponent(Splitbutton, {propsData: {titleLeft: ''}});
-      button.splitOpen = true;
+    document.documentElement.click();
 
-      spyOn(window, 'setTimeout').and.callFake((callBack, timeout) => {
-        jasmine.clock().tick(timeout / 2);
+    expect(dropdown.isVisible()).toBe(false);
+  });
 
-        button.mouseEnter();
+  it("shows the content provided by the dropdown-content slot inside the dropdown", () => {
+    const dropdownSlotContent = splitbuttonWrapper.find(".vue-splitbutton-dropdown .slot-content");
 
-        jasmine.clock().tick(timeout / 2 + 5);
-        callBack();
-      });
-
-      button.mouseEnter();
-      button.mouseLeave();
-
-      expect(button.splitOpen).toBe(true);
-    });
+    expect(dropdownSlotContent.exists()).toBe(true);
   });
 });
 
