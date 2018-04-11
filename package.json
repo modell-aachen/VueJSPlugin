@@ -9,7 +9,8 @@
     "build-all": "webpack -p --config production.webpack.config.js && webpack -d --config development.webpack.config.js",
     "build-test-library": "webpack -d --config unit-test-library.webpack.config.js --progress",
     "watch": "karma start",
-    "test": "karma start --single-run"
+    "test": "karma start --single-run",
+    "lint": "eslint --ext .js,.vue dev/ tests/"
   },
   "repository": {
     "type": "git",

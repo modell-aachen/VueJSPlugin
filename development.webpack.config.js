@@ -10,15 +10,5 @@ module.exports = merge.smart(baseConfig, {
   },
   output: {
     filename: 'VueJSPlugin.js',
-  },
-  module: {
-    rules: [
-      {
-        enforce: 'pre',
-        test: /.(vue|js)$/,
-        use: 'eslint-loader',
-        exclude: /node_modules/
-      }
-    ]
   }
 });
