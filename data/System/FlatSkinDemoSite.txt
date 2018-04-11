@@ -11,11 +11,167 @@ This topic provides an overview of the FlatSkin styles.
 In general the FlatSkin is build on Foundation for Sites 6.
 For further documentation please have a look at the Foundation docs.
 
+---++ Colors
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #57c9e8"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-primary-color<br />
+        #57c9e8
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #6a7f84"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-dark-grey<br />
+        #6a7f84
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #0069bf"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-colored-text<br/>
+        #0069bf
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #b0c0c4"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-grey<br/>
+        #b0c0c4
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #003764"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-secondary-color<br/>
+        #003764
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #dee4e5"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-light-grey<br/>
+        #dee4e5
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #9dc958"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-success<br/>
+        #9dc958
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #e9eff0"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-pale-grey<br/>
+        #e9eff0
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #e6ba30"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-warning<br/>
+        #e6ba30
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #eff3f4"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-button-grey<br/>
+        #eff3f4
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #d83215"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-failure<br/>
+        #d83215
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #f5f3ef"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-sand<br/>
+        #f5f3ef
+    </div>
+</div>
+<div class="grid-x grid-margin-x">
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #395055"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-darker-grey<br/>
+        #395055
+    </div>
+    <div class="cell shrink">
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #fafafa"></div>
+    </div>
+    <div class="cell small-3">
+        $ma-whiter-grey<br/>
+        #fafafa
+    </div>
+</div>
+---++ Text
+<h1>Seiten-Header h1</h1>
+<h2>First Section-Header h2</h2>
+<h2>First Section-Header h2
+    <small>Ein Untertitel</small>
+</h2>
+<h2 class="ma-text-hr">Section-Header h2</h2>
+<h2 class="ma-text-hr">Section-Header + h2
+    <small>Ein Untertitel</small>
+</h2>
+<h3>First Sub-header h3</h3>
+<h3>First Sub-header + h3
+    <small>Ein Untertitel</small>
+</h3>
+<h3 class="ma-text-hr">First Sub-header h3</h3>
+<h3 class="ma-text-hr">First Sub-header + h3
+    <small>Ein Untertitel</small>
+</h3>
+<p>First Body-Text</p>
+<p class="ma-text-hr">Body-Text</p>
+
+<verbatim class="html">
+    <h1>Seiten-Header h1</h1>
+    <h2>First Section-Header h2</h2>
+    <h2>First Section-Header h2
+        <small>Ein Untertitel</small>
+    </h2>
+    <h2 class="ma-text-hr">Section-Header h2</h2>
+    <h2 class="ma-text-hr">Section-Header + h2
+        <small>Ein Untertitel</small>
+    </h2>
+    <h3>First Sub-header h3</h3>
+    <h3>First Sub-header + h3
+        <small>Ein Untertitel</small>
+    </h3>
+    <h3 class="ma-text-hr">First Sub-header h3</h3>
+    <h3 class="ma-text-hr">First Sub-header + h3
+        <small>Ein Untertitel</small>
+    </h3>
+    <p>First Body-Text</p>
+    <p class="ma-text-hr">Body-Text</p>
+</verbatim>
 ---++ Tables
 ---+++ Standard
 The standard table.
 
-<table style="width:100%;">
+<h2>Tabellen-Überschrift<small>Optionale Tabelleninformation</small></h2>
+<table>
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
   </thead>
@@ -23,11 +179,13 @@ The standard table.
     <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
     <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
     <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+    <tr> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis massa blandit, efficitur ante id, ornare lacus. Mauris enim ante, faucibus et felis lobortis, condimentum ultricies sapien.</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
   </tbody>
 </table>
 
 <verbatim class="html">
-<table style="width:100%;">
+<h2>Tabellen-Überschrift<small>Optionale Tabelleninformation</small></h2>
+<table>
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
   </thead>
@@ -35,14 +193,13 @@ The standard table.
     <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
     <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
     <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+    <tr> <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis massa blandit, efficitur ante id, ornare lacus. Mauris enim ante, faucibus et felis lobortis, condimentum ultricies sapien.</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
   </tbody>
 </table>
 </verbatim>
 
 ---+++ Striped
-To create a striped table just add the *striped* class to the table.
-
-<table class="striped" style="width:100%;">
+<table class="ma-table-striped">
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
   </thead>
@@ -54,7 +211,32 @@ To create a striped table just add the *striped* class to the table.
 </table>
 
 <verbatim class="html">
-<table class="striped" style="width:100%;">
+<table class="ma-table-striped">
+  <thead>
+    <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
+  </thead>
+  <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+</tbody>
+</table>
+</verbatim>
+
+---+++ Hover
+<table class="ma-table-hover">
+  <thead>
+    <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
+  </thead>
+  <tbody> <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Erholungsurlaub</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+  <tr> <td>Gleitzeitausgleich</td> <td>14.09.2015</td> <td>25.09.2015</td> </tr>
+</tbody>
+</table>
+
+<verbatim class="html">
+<table class="ma-table-hover">
   <thead>
     <tr> <th>Art</th> <th>Von</th> <th>Bis</th> </tr>
   </thead>
@@ -68,13 +250,13 @@ To create a striped table just add the *striped* class to the table.
 
 ---++ Grids
 The standard foundation grid can be used to layout elements.
-<div class="row">
-  <div class="small-6 columns" style="background-color: lightgrey;">6 columns</div>
-  <div class="small-6 columns" style="background-color: lightblue;">6 columns</div>
+<div class="grid-x">
+  <div class="small-6 cell" style="background-color: lightgrey;">6 columns</div>
+  <div class="small-6 cell" style="background-color: lightblue;">6 columns</div>
 </div>
-<div class="row">
-  <div class="medium-6 large-4 columns" style="background-color: lightgrey;">12/6/4 columns</div>
-  <div class="medium-6 large-8 columns" style="background-color: lightblue;">12/6/8 columns</div>
+<div class="grid-x">
+  <div class="medium-6 large-4 cell" style="background-color: lightgrey;">12/6/4 columns</div>
+  <div class="medium-6 large-8 cell" style="background-color: lightblue;">12/6/8 columns</div>
 </div>
 
 <verbatim class="html">
@@ -90,53 +272,319 @@ The standard foundation grid can be used to layout elements.
 ---++ Buttons
 The standard foundation button classes are used.
 
-<div class="row">
-<div class="columns"><a class="button">.button</a></div>
-<div class="columns"><a class="primary button">.primary.button</a></div>
-<div class="columns"><a class="warning button">.warning.button</a></div>
-<div class="columns"><a class="alert button">.alert.button</a></div>
+<div class="grid-x">
+<div class="cell large-2">Primary Button</div>
+<div class="cell large-2">Button</div>
+<div class="cell large-2">Ghost Button</div>
+<div class="cell large-2">Icon Button</div>
+<div class="cell large-2">Delete Button</div>
+</div>
+<div class="grid-x">
+    <div class="cell large-2"><a class="button primary">Button</a></div>
+    <div class="cell large-2"><a class="button">Button</a></div>
+    <div class="cell large-2"><a class="button ghost">Button</a></div>
+    <div class="cell large-2"><a class="button"><i class="far fa-paperclip"></i>Button</a></div>
+    <div class="cell large-2"><a class="button delete">Button</a></div>
+    <div class="cell large-2">
+        <a class="button icon"><i class="far fa-times"></i></a>
+        <a class="button icon"><i class="far fa-save"></i></a>
+        <a class="button icon ma-warning-color"><i class="far fa-exclamation-triangle"></i></a>
+    </div>
+</div>
+<div class="grid-x">
+    <div class="cell large-2"><a class="button primary" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button ghost" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button" disabled><i class="far fa-paperclip"></i>Button</a></div>
+    <div class="cell large-2"><a class="button delete" disabled>Button</a></div>
 </div>
 
 <verbatim class="html">
-<div class="row">
-<div class="columns"><a class="button">.button</a></div>
-<div class="columns"><a class="primary button">.primary.button</a></div>
-<div class="columns"><a class="warning button">.warning.button</a></div>
-<div class="columns"><a class="alert button">.alert.button</a></div>
+<div class="grid-x">
+<div class="cell large-2">Primary Button</div>
+<div class="cell large-2">Button</div>
+<div class="cell large-2">Ghost Button</div>
+<div class="cell large-2">Icon Button</div>
+<div class="cell large-2">Delete Button</div>
+</div>
+<div class="grid-x">
+    <div class="cell large-2"><a class="button primary">Button</a></div>
+    <div class="cell large-2"><a class="button">Button</a></div>
+    <div class="cell large-2"><a class="button ghost">Button</a></div>
+    <div class="cell large-2"><a class="button"><i class="far fa-paperclip"></i>Button</a></div>
+    <div class="cell large-2"><a class="button delete">Button</a></div>
+    <div class="cell large-2">
+        <a class="button icon"><i class="far fa-times"></i></a>
+        <a class="button icon"><i class="far fa-save"></i></a>
+        <a class="button icon ma-warning-color"><i class="far fa-exclamation-triangle"></i></a>
+    </div>
+</div>
+<div class="grid-x">
+    <div class="cell large-2"><a class="button primary" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button ghost" disabled>Button</a></div>
+    <div class="cell large-2"><a class="button" disabled><i class="far fa-paperclip"></i>Button</a></div>
+    <div class="cell large-2"><a class="button delete" disabled>Button</a></div>
 </div>
 </verbatim>
 
 ---++ Forms
 
-<form>
-  <div class="row">
-    <div class="small-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".small-6.columns">
-      </label>
-    </div>
-    <div class="small-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".small-6.columns">
-      </label>
-    </div>
+<div class="grid-x">
+  <div class="small-6 cell">
+    <form>
+      <div class="ma-input-group">
+         <input type="text">
+      </div>
+      <div class="ma-input-group">
+         <input type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+         <input type="text" placeholder="Disabled" disabled>
+      </div>
+      <div class="ma-input-group ma-failure">
+         <input type="text" placeholder="Error">
+         <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+         <small>etwas ist schiefgelaufen</small>
+      </div>
+      <div class="ma-input-group">
+         <label for="exampleInputSingle">Einzeilige Überschrift</label>
+         <input type="text" placeholder="Input-Prompt" id="exampleInputSingle">
+      </div>
+      <div class="ma-input-group">
+        <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.</label>
+        <input type="text" placeholder="Input-Prompt">
+        <small>Wir behalten die Daten für uns</small>
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-input-group-field" type="text">
+        <i class="far fa-search" aria-hidden="true"></i>
+      </div>
+    </form>
   </div>
-  <div class="row">
-    <div class="small-6 columns">
-    <div class="input-group">
-      <span class="input-group-label"><i class="fa fa-search" aria-hidden="true"></i></span>
-      <input class="input-group-field" type="text">
-    </div>
-    </div>
-    <div class="small-6 columns">
-      <label>Select Menu
-  <select>
-    <option value="husker">Husker</option>
-    <option value="starbuck">Starbuck</option>
-    <option value="hotdog">Hot Dog</option>
-    <option value="apollo">Apollo</option>
-  </select>
-</label>
-    </div>
+  <div class="small-6 cell">
+    <form>
+      <div class="ma-input-group">
+         <input class="ma-small" type="text">
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text" placeholder="Disabled" disabled>
+      </div>
+      <div class="ma-input-group ma-failure">
+        <input class="ma-small" type="text" placeholder="Error">
+        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+        <small>etwas ist schiefgelaufen</small>
+      </div>
+      <div class="ma-input-group">
+         <label>Einzeilige Überschrift</label>
+           <input class="ma-small" type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+        <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.</label>
+        <input class="ma-small" type="text" placeholder="Input-Prompt">
+        <small>Wir behalten die Daten für uns</small>
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text">
+        <i class="far fa-search" aria-hidden="true"></i>
+      </div>
+    </form>
   </div>
-</form>
+</div>
+<verbatim class="html">
+<div class="grid-x">
+  <div class="small-6 cell">
+    <form>
+      <div class="ma-input-group">
+         <input type="text">
+      </div>
+      <div class="ma-input-group">
+         <input type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+         <input type="text" placeholder="Disabled" disabled>
+      </div>
+      <div class="ma-input-group ma-failure">
+         <input type="text" placeholder="Error">
+         <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+         <small>etwas ist schiefgelaufen</small>
+      </div>
+      <div class="ma-input-group">
+         <label for="exampleInputSingle">Einzeilige Überschrift
+           <input type="text" placeholder="Input-Prompt" id="exampleInputSingle">
+         </label>
+      </div>
+      <div class="ma-input-group">
+        <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.</label>
+        <input type="text" placeholder="Input-Prompt">
+        <small>Wir behalten die Daten für uns</small>
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-input-group-field" type="text">
+        <i class="far fa-search" aria-hidden="true"></i>
+      </div>
+    </form>
+  </div>
+  <div class="small-6 cell">
+    <form>
+      <div class="ma-input-group">
+         <input class="ma-small" type="text">
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text" placeholder="Disabled" disabled>
+      </div>
+      <div class="ma-input-group ma-failure">
+        <input class="ma-small" type="text" placeholder="Error">
+        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+        <small>etwas ist schiefgelaufen</small>
+      </div>
+      <div class="ma-input-group">
+         <label>Einzeilige Überschrift</label>
+           <input class="ma-small" type="text" placeholder="Input-Prompt">
+      </div>
+      <div class="ma-input-group">
+        <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat hendrerit mi, nec molestie metus eleifend nec. Sed sodales lectus non velit consequat feugiat. Vivamus lobortis augue velit, efficitur condimentum tellus luctus ut. Praesent eget purus massa.</label>
+        <input class="ma-small" type="text" placeholder="Input-Prompt">
+        <small>Wir behalten die Daten für uns</small>
+      </div>
+      <div class="ma-input-group">
+        <input class="ma-small" type="text">
+        <i class="far fa-search" aria-hidden="true"></i>
+      </div>
+    </form>
+  </div>
+</div>
+</verbatim>
+---++ Checkbox-Items
+<div class="grid-x">
+   <div class="cell large-4">
+      <form>
+         <input type="checkbox" id="cb-eins">
+         <label for="cb-eins">Checkbox-Item</label><br>
+         <input type="checkbox" id="cb-zwei">
+         <label for="cb-zwei">Checkbox-Item</label><br>
+         <input type="checkbox" id="cb-drei">
+         <label for="cb-drei">Checkbox-Item</label><br>
+      </form>
+   </div>
+   <div class="cell large-4">
+      <form>
+         <input type="radio" name="demo" id="rd-eins">
+         <label for="rd-eins">Radio-Item</label><br>
+         <input type="radio" name="demo" id="rd-zwei">
+         <label for="rd-zwei">Radio-Item</label><br>
+         <input type="radio" name="demo" id="rd-drei">
+         <label for="rd-drei">Radio-Item</label><br>
+      </form>
+   </div>
+   <div class="cell large-4">
+      <form>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-eins" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-eins"></label>Toggle-Input
+         </div>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-zwei" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-zwei"></label>Toggle-Input
+         </div>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-drei" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-drei"></label>Toggle-Input
+         </div>
+      </form>
+   </div>
+</div>
+<verbatim class="html">
+<div class="grid-x">
+   <div class="cell large-4">
+      <form>
+         <input type="checkbox" id="cb-eins">
+         <label for="cb-eins">Checkbox-Item</label><br>
+         <input type="checkbox" id="cb-zwei">
+         <label for="cb-zwei">Checkbox-Item</label><br>
+         <input type="checkbox" id="cb-drei">
+         <label for="cb-drei">Checkbox-Item</label><br>
+      </form>
+   </div>
+   <div class="cell large-4">
+      <form>
+         <input type="radio" name="demo" id="rd-eins">
+         <label for="rd-eins">Radio-Item</label><br>
+         <input type="radio" name="demo" id="rd-zwei">
+         <label for="rd-zwei">Radio-Item</label><br>
+         <input type="radio" name="demo" id="rd-drei">
+         <label for="rd-drei">Radio-Item</label><br>
+      </form>
+   </div>
+   <div class="cell large-4">
+      <form>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-eins" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-eins"></label>Toggle-Input
+         </div>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-zwei" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-zwei"></label>Toggle-Input
+         </div>
+         <div class="ma-switch">
+            <input class="switch-input" id="switch-drei" type="checkbox" name="demo">
+            <label class="switch-paddle" for="switch-drei"></label>Toggle-Input
+         </div>
+      </form>
+   </div>
+</div>
+</verbatim>
+---++ Tabs
+%TABPANE{class="flat"}%
+%TAB{"Daten und Ansichten"}%
+%ENDTAB%
+%TAB{"Workflow"}%
+%ENDTAB%
+%TAB{"Übersicht"}%
+  %TABPANE{class="jqTabPaneFlatSub"}%
+    %TAB{"Basis"}%
+    %ENDTAB%
+    %TAB{"Reiter"}%
+    %ENDTAB%
+    %TAB{"Tabelle"}%
+    %ENDTAB%
+    %TAB{"Filter"}%
+    %ENDTAB%
+  %ENDTABPANE%
+%ENDTAB%
+%TAB{"Übersetzungen"}%
+%ENDTAB%
+%TAB{"Rohdaten"}%
+%ENDTAB%
+%ENDTABPANE%
+<verbatim>
+%TABPANE{class="flat"}%
+%TAB{"Daten und Ansichten"}%
+%ENDTAB%
+%TAB{"Workflow"}%
+%ENDTAB%
+%TAB{"Übersicht"}%
+  %TABPANE{class="jqTabPaneFlatSub"}%
+    %TAB{"Basis"}%
+    %ENDTAB%
+    %TAB{"Reiter"}%
+    %ENDTAB%
+    %TAB{"Tabelle"}%
+    %ENDTAB%
+    %TAB{"Filter"}%
+    %ENDTAB%
+  %ENDTABPANE%
+%ENDTAB%
+%TAB{"Übersetzungen"}%
+%ENDTAB%
+%TAB{"Rohdaten"}%
+%ENDTAB%
+%ENDTABPANE%
+</verbatim>
+

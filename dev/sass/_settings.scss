@@ -2,45 +2,44 @@
 // Modell Aachen Default Colors
 //
 
-$ma-primary: #52cae4;
-$ma-primary-hover: #75d5ea;
-$ma-success: #84bb2e;
-$ma-success-hover: #9dc958;
-$ma-success-light: #e1eecc; // equals rgba($ma-success, 0.3) on white background
-$ma-failure: #d83314;
-$ma-failure-hover: #e05c43;
-$ma-failure-light: #f5cec6; // equals rgba($ma-failure, 0.3) on white background
-$ma-warning: #e2af19;
-$ma-warning-hover: #eecf75;
-$ma-warning-light: #f6e7ba; // equals rgba($ma-warning, 0.3) on white background
-$ma-brown: #7f7b71;
-$ma-sand: #e5e0d5;
-$ma-body-text: #282c2e;
-$ma-darker-grey: #3E4143;
-$ma-dark-grey: #84878a;
-$ma-light-grey: #e2e2e2;
-$ma-medium-grey: #e5e8eb;
-$ma-grey: #a4aeb9;
-$ma-bg-beige: #f5f3ef;
-$ma-bg-beige-dark: #dddad5;
-$ma-bg-light: #f7f7f7;
-$ma-light-border: #f1efea;
-$ma-help-text: #9a9a9a;
+$ma-primary: #57c9e8;
+$ma-colored-text: #0069bf;
+$ma-colored-text-hover: #0069bf;
+$ma-secondary: #003764;
+$ma-success: #9dc958;
+$ma-warning: #e6ba30;
+$ma-failure: #d83215;
+$ma-failure-hover: #f28b79;
+
+$ma-darker-grey: #395055;
+$ma-dark-grey: #6a7f84;
+$ma-grey: #b0c0c4;
+$ma-light-grey: #dee4e5;
+$ma-sand: #f5f3ef;
+$ma-pale-grey: #e9eff0;
+$ma-button-grey: #eff3f4;
+$ma-white-grey: #fafafa;
+
 $ma-white: white;
 $ma-black: black;
-$ma-select-multi-text-color: #8c7b71;
-$ma-data-table-border: #cdd0d3;
+$ma-body-text: rgba(0,0,0,0.87);
+$ma-secondary-text: rgba(0,0,0,0.54);
+$ma-disabled-text: rgba(0,0,0,0.34);
+$ma-akzent-text: $ma-colored-text;
 
-$ma-font-regular: 'Open Sans';
+
+$ma-font-regular: 'Open Sans', sans-serif;
 $ma-font-semibold: $ma-font-regular;
 $ma-font-bold: $ma-font-regular;
 
 $ma-border-radius: 4px;
 
+/*
 $primary-hover: $ma-primary-hover;
 $success-hover: $ma-success-hover;
 $warning-hover: $ma-warning-hover;
 $alert-hover: $ma-failure-hover;
+*/
 
 $breakpoints: (
   small: 0,
@@ -83,6 +82,8 @@ $body-background: white;
 $body-font-color: $ma-body-text;
 $body-font-family: $ma-font-regular;
 
+$switch-paddle-radius: 50%;
+$switch-radius: .5rem;
 //
 // Layout settings
 //

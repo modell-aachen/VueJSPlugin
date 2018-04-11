@@ -4,35 +4,47 @@
 
 .pagination {
   display: inline-block;
-  li {
+  > li {
+    &:first-child a{
+      padding-right: rem-calc(16);
+    }
+    &:last-child a{
+      padding-left: rem-calc(16);
+    }
     display: inline;
-    &.paginationjs-page a {
-      border-radius: $ma-border-radius;
-      padding: 10px 13px;
-      color: $ma-dark-grey;
-      background-color: transparent;
+    span {
+      padding: rem-calc(10 8);
       &:hover {
-        color: $ma-primary;
-        text-decoration: none;
+        background-color: transparent;
       }
     }
+    a {
+      padding: rem-calc(10 8);
+      margin: 0;
+      font-size: 14px;
+      &:hover {
+        color: $ma-body-text;
+        background-color: transparent;
+      }
+    }
+    a:hover {
+      background-color: transparent;
+      color: $ma-body-text;
+    }
     &.active {
-        > a {
+      > a {
         @include ma-font('bold');
-        color: $ma-primary;
-        }
+        background-color: transparent;
+        color: $ma-body-text;
+      }
     }
   }
 }
 
 .ma-pager-prev,
 .ma-pager-next {
-  color: $ma-dark-grey;
-  background-color: $ma-light-grey;
-  border-radius: $ma-border-radius;
-  padding: 10px 13px;
   &:hover {
-    background-color: $ma-medium-grey;
+    color: $ma-body-text;
   }
 }
 
@@ -40,34 +52,34 @@
   ul.pagination li a {
     border: 0px; /* Gray */
     border-radius: $ma-border-radius;
-    color: #A4AEB9;
+    color: $ma-colored-text;
     font-size: 14px;
   }
 
   .pagination > .active > a, .pagination > .active > a:hover {
-    background-color: #FFFFFF;
+    background-color: none;
     border-radius: $ma-border-radius;
-    color: #4AC9E5;
+    color: $ma-black;
   }
 
   ul.pagination li a.active {
-    background-color: #FFFFFF;
+    background-color: none;
     border-radius: $ma-border-radius;
-    color: #4AC9E5;
+    color: $ma-black;
   }
 
   ul.pagination li a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: $ma-colored-text-hover;
   }
 
   .pagination li:first-child a {
     //border: 1px solid #ddd;
-    background-color: #E5E8EB;
+    //background-color: #E5E8EB;
   }
 
   .pagination li:last-child a {
     //border: 1px solid #ddd;
-    background-color: #E5E8EB;
+    //background-color: #E5E8EB;
   }
 }
 

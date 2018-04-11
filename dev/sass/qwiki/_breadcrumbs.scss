@@ -6,46 +6,46 @@
 		display: none;
 	}
 	a {
-		text-decoration: none; 
+		text-decoration: none;
 		padding: 10px 0 10px 45px;
-		position: relative; 
+		position: relative;
 		display: block;
 		float: left;
-		color: $ma-brown !important;
+		color: $ma-grey !important;
 
 		&:link, &:visited, &:hover, &:active {
-			color: $ma-brown;
-			background: $ma-bg-beige;
+			color: $ma-grey;
+			background: $ma-button-grey;
 		}
 
 		&:after {
-			content: " "; 
-			display: block; 
-			width: 0; 
+			content: " ";
+			display: block;
+			width: 0;
 			height: 0;
 			border-top: 50px solid transparent;
 			border-bottom: 50px solid transparent;
-			border-left: 30px solid $ma-bg-beige;
+			border-left: 30px solid $ma-button-grey;
 			position: absolute;
 			top: 50%;
-			margin-top: -50px; 
+			margin-top: -50px;
 			left: 100%;
-			z-index: 2; 
+			z-index: 2;
 		}
 		&:before {
-			content: " "; 
-			display: block; 
-			width: 0; 
+			content: " ";
+			display: block;
+			width: 0;
 			height: 0;
-			border-top: 50px solid transparent;       
+			border-top: 50px solid transparent;
 			border-bottom: 50px solid transparent;
 			border-left: 30px solid white;
 			position: absolute;
 			top: 50%;
-			margin-top: -50px; 
+			margin-top: -50px;
 			margin-left: 3px;
 			left: 100%;
-			z-index: 1; 
+			z-index: 1;
 		}
 		&:first-of-type {
 			padding-left: 10px;

@@ -1,7 +1,7 @@
 .widgetBlockTitle {
   @include ma-font('semibold');
   background: 0;
-  border-bottom: 2px solid $ma-bg-beige;
+  border-bottom: 2px solid $ma-pale-grey;
   color: $primary-color;
   font-size: rem-calc(24);
   line-height: rem-calc(19);
@@ -29,7 +29,7 @@
   }
 }
 .wrapper {
-  background-color: $ma-bg-beige;
+  background-color: $ma-sand;
   & > div {
       background-color: $ma-white;
   }

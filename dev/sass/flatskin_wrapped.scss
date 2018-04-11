@@ -4,7 +4,7 @@
 // Open Sans Font-Face
 //
 $OpenSansPath: '../fonts/opensans';
-@import 'open-sans-fontface/sass/open-sans';
+@import 'open-sans';
 
 .flatskin-wrapped {
     //Resets for the ModacSkin are put here
@@ -15,8 +15,8 @@ $OpenSansPath: '../fonts/opensans';
     // Foundation for Sites 6
     //
     // @import 'util/util';
-    @import 'foundation-sites/scss/foundation';
     @import 'settings';
+    @import 'foundation';
 
     //Here we put all styles foundation sets on html or body.
     //Unfortunately this is copy paste
@@ -43,8 +43,9 @@ $OpenSansPath: '../fonts/opensans';
 
 
     @include foundation-global-styles;
-    @include foundation-flex-classes;
+    @include foundation-xy-grid-classes;
     @include foundation-flex-grid;
+    @include foundation-flex-classes;
     @include foundation-visibility-classes;
     @include foundation-float-classes;
     @include foundation-menu;
@@ -66,5 +67,6 @@ $OpenSansPath: '../fonts/opensans';
     @import 'qwiki/paginator';
     @import 'qwiki/tabs';
     @import 'qwiki/notifications';
-    @import 'qwiki/colors';
+    @import 'qwiki/collapsible_item';
+    //@import 'qwiki/colors';
 }

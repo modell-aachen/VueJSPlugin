@@ -1,41 +1,42 @@
 $form-label-font-size: rem-calc(12);
-$form-label-font-weight: 600;
-$form-label-line-height: 1.4;
+$form-label-font-weight: normal;
+$form-label-line-height: rem-clac(16);
+$form-label-color: $ma-secondary-text;
+$form-spacing: 0;
 $input-radius: $ma-border-radius;
-$input-background: $ma-medium-grey;
-$input-background-focus: $ma-medium-grey;
-$input-border: 0;
-$input-border-focus: 0;
+$input-background: $ma-button-grey;
+$input-background-focus: $ma-white;
+$input-background-disabled: $ma-white-grey;
+$input-border: rem-calc(1) solid $ma-light-grey;
+$input-border-focus: rem-calc(1) solid $ma-primary;
 $input-shadow: 0;
 $input-shadow-focus: 0;
 $input-font-family: $ma-font-regular;
-$input-font-size: rem-calc(13);
-$select-background: $ma-medium-grey;
+$input-font-size: rem-calc(14);
+$input-line-height: 1.5;
+$input-transition: border-color .2s, background-color .2s ease-in-out;
+$input-padding: rem-calc(10 8);
+$input-placeholder-color: $ma-secondary-text;
+$select-background: $ma-button-grey;
 $select-radius: $ma-border-radius;
-$input-prefix-background: $ma-medium-grey;
+$input-prefix-background: $ma-button-grey;
 $input-prefix-border: 0;
-$input-prefix-color: $medium-gray;
-$input-background-disabled: $ma-medium-grey;
+$input-prefix-color: $ma-button-grey;
 
 @include foundation-forms;
 
+form{
+  display: block;
+  padding: rem-calc(8 16 0 0);
+}
 .help-text{
   @include ma-font('semibold');
-  color: $ma-help-text;
+  color: $ma-body-text;
   line-height: 1.4;
 }
 
 select {
   font-size: 1em;
-}
-
-input,input:focus,.v-select {
-  &.ma-success{
-    border: 1px solid $ma-success;
-  }
-  &.ma-failure{
-    border: 1px solid $ma-failure;
-  }
 }
 
 .input-group>:last-child{
@@ -46,11 +47,51 @@ input,input:focus,.v-select {
 .input-group>.input-group-label~.input-group-field {
   padding-left: 0;
 }
+.ma-input-group{
+  &.ma-success{
+    .fas,.far,.fal {
+      color: $ma-success;
+    }
+  }
+  &.ma-failure{
+    .fas,.far,.fal {
+      color: $ma-failure;
+    }
+    small {
+      color: $ma-failure;
+      font-size: rem-calc(12);
+    }
+    input{
+      border: 1px solid $ma-failure;
+    }
+  }
+  position: relative;
+  margin-bottom: rem-calc(16);
+  .fas,.far,.fal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $ma-grey;
+    font-size: 1.45em;
+    height: ($input-font-size * $input-line-height) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
+    padding: $input-padding;
+  }
+  .ma-small{
+    height: rem-calc(32);
+    padding: rem-calc(6 8);
+    & ~ .fas,& ~ .far,& ~ .fal {
+      line-height: rem-calc(19.5);
+      padding: rem-calc(6 8);
+    }
+  }
+  label + input{
+    margin: rem-calc(4 0 0 0);
+  }
+}
 
 @mixin placeholder-style{
   @include ma-font('regular');
   color: $ma-grey;
-  font-style: italic;
 }
 
 ::-webkit-input-placeholder {
@@ -83,26 +124,47 @@ input[type]:disabled {
 }
 
 
+// Used to calculate offset to center inputs.
+  $line-height: 1.428571;
+  $font-size: rem-calc(14);
+  $size: rem-calc(16);
+  $offset: rem-calc(($font-size * $line-height - $size) / 2);
+
+%item-label {
+    @include ma-font('regular');
+    font-size: $font-size;
+    color: $ma-body-text;
+    margin-top: rem-calc(8);
+    margin-left: 0;
+    position: relative;
+    padding-left: rem-calc(16) + $size;
+    line-height: $line-height;
+}
+%item-label-pseudo {
+    content: "";
+    font-family: "Font Awesome\ 5 Pro";
+    font-weight: 900;
+    font-size: .5rem;
+    color: $ma-dark-grey;
+    display: inline-block;
+    width: $size;
+    height: $size;
+    background-color: white;
+    border: 2px solid $ma-grey;
+    vertical-align: middle;
+    position:absolute;
+    top: $offset;
+    left: 0;
+}
 //Checkboxes
 [type="checkbox"]:not(.switch-input) {
   display: none;
   &+label{
-    @include ma-font('regular');
-    font-size: rem-calc(13);
-    color: black;
+    @extend %item-label;
   }
   &+label::before{
-    content: "";
-    font-family: "FontAwesome";
-    color: $ma-primary;
-    display: inline-block;
-    width: rem-calc(21);
-    height: rem-calc(21);
-    background-color: white;
-    border-radius: $ma-border-radius;
-    border: 1px solid $ma-grey;
-    margin-right: rem-calc(13);
-    vertical-align: middle;
+    @extend %item-label-pseudo;
+    border-radius: 2px;
   }
   &:checked,
   &[checked="checked"]{
@@ -116,56 +178,32 @@ input[type]:disabled {
 //Radios
 //Idea: Use :before in the label as the radio background and :after as the checkmark
 [type="radio"]{
-  $radio-dimension: 20;
-  $radio-checkmark-padding: 3;
+  $radio-dimension: 16;
+  $radio-checkmark-padding: 4;
   display: none;
   &+label{
-    @include ma-font('regular');
-    font-size: rem-calc(13);
-    color: black;
-    position: relative;
-    padding-left: rem-calc($radio-dimension + 13);
+    @extend %item-label;
   }
   &+label::before{
-    content: "";
-    font-family: "FontAwesome";
-    display: inline-block;
-    width: rem-calc($radio-dimension);
-    height: rem-calc($radio-dimension);
-    background-color: white;
+    @extend %item-label-pseudo;
     border-radius: 50%;
-    border: 1px solid $ma-primary;
-    vertical-align: middle;
-    position:absolute;
-    top: 0;
-    left: 0;
-  }
-  &:not(:checked)+label::before {
-    border-color: $ma-grey;
   }
 
   &+label::after{
-    content: "";
-    font-family: "FontAwesome";
-    color: $ma-primary;
-    display: inline-block;
-    width: rem-calc($radio-dimension);
-    height: rem-calc($radio-dimension);
+    @extend %item-label-pseudo;
     border-radius: 50%;
+    border: 0;
     background-color: $ma-primary;
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
   &:checked+label::after{
     $radio-checkmark-dimension: $radio-dimension - 2 * $radio-checkmark-padding;
     display: inline-block;
     width: rem-calc($radio-checkmark-dimension);
     height: rem-calc($radio-checkmark-dimension);
-    top: rem-calc($radio-checkmark-padding);
+    top: rem-calc($radio-checkmark-padding) + $offset;
     left: rem-calc($radio-checkmark-padding);
-    }
+  }
 }
 
 textarea{
@@ -181,4 +219,22 @@ textarea{
   }
   background-color: $ma-light-grey;
   box-shadow: none;
+}
+
+//Switches
+.ma-switch{
+  @include switch-container;
+  @include switch-size(rem-calc(14), $switch-radius * 2, rem-calc(1));
+  @include ma-font('regular');
+  margin: rem-calc(8 16 0 0);
+  height: rem-calc(20);
+  .switch-input {
+    margin-bottom: 0;
+  }
+  .switch-paddle {
+    position: relative;
+    top: 2px;
+    margin-left: 0;
+    margin-right: rem-calc(16);
+  }
 }

@@ -1,120 +1,27 @@
+@mixin color-definition($color) {
+    color: $color;
+    &.hoverable:hover {
+        color: rgba($color, 0.7);
+    }
+}
+@mixin bg-definition($color) {
+    background-color: $color;
+}
+
+$color-list: $ma-primary, $ma-colored-text, $ma-colored-text-hover, $ma-secondary, $ma-success, $ma-warning, $ma-failure, $ma-failure-hover, $ma-darker-grey, $ma-dark-grey, $ma-grey, $ma-light-grey, $ma-sand, $ma-pale-grey, $ma-button-grey, $ma-white-grey, $ma-white, $ma-black, $ma-body-text;
+
+@each $color in $color-list {
+  .ma-#{$color}-color {
+    @include color-definition(#{$color});
+  }
+  .ma-#{$color}-bg {
+    @include bg-definition($ma-#{$color});
+  }
+  .ma-hover-#{$color}-color:hover {
+    color: $ma-#{$color};
+  }
+}
+
 .ma-primary-color {
-    color: $ma-primary;
-    &.hoverable:hover {
-        color: $ma-primary-hover;
-    }
-}
-.ma-hover-primary-color:hover {
-    color: $ma-primary;
-}
-.ma-success-color {
-    color: $ma-success;
-    &.hoverable:hover {
-        color: $ma-success-hover;
-    }
-    &.light {
-        color: $ma-success-light;
-    }
-}
-.ma-hover-success-color:hover {
-    color: $ma-success;
-}
-.ma-failure-color {
-    color: $ma-failure;
-    &.hoverable:hover {
-        color: $ma-failure-hover;
-    }
-    &.light {
-        color: $ma-failure-light;
-    }
-}
-.ma-hover-failure-color:hover {
-    color: $ma-failure;
-}
-.ma-warning-color {
-    color: $ma-warning;
-    &.hoverable:hover {
-        color: $ma-warning-hover;
-    }
-    &.light {
-        color: $ma-warning-light;
-    }
-}
-.ma-hover-primary-color:hover {
-    color: $ma-primary;
-}
-.ma-brown-color {
-    color: $ma-brown;
-}
-.ma-sand-color {
-    color: $ma-sand;
-}
-.ma-grey-color {
-    color: $ma-grey;
-    &.light {
-        color: $ma-light-grey;
-    }
-    &.dark {
-        color: $ma-dark-grey;
-    }
-    &.darker {
-        color: $ma-darker-grey;
-    }
-    &.medium {
-        color: $ma-medium-grey;
-    }
-}
-.ma-black-color {
-    color: $ma-black;
-}
-.ma-white-color {
-    color: $ma-white;
-}
-.ma-bg-white-color {
-    background-color: $ma-white;
-}
-.ma-bg-beige-color {
-    background-color: $ma-bg-beige;
-    &.dark {
-        background-color: $ma-bg-beige-dark;
-    }
-}
-.ma-beige-border-color {
-    border-color: $ma-bg-beige;
-    &.dark {
-        border-color: $ma-bg-beige-dark;
-    }
-}
-.ma-hover-beige-border-color:hover {
-    border-color: $ma-bg-beige;
-    &.dark {
-        border-color: $ma-bg-beige-dark;
-    }
-}
-.ma-grey-border-color:hover,
-.ma-grey-border-color {
-    border-color: $ma-grey;
-}
-.ma-light-grey-border-color:hover,
-.ma-light-grey-border-color {
-    border-color: $ma-light-grey;
-}
-.ma-dark-grey-border-color:hover,
-.ma-dark-grey-border-color {
-    border-color: $ma-dark-grey;
-}
-.ma-primary-border-color {
-    border-color: $ma-primary;
-}
-.ma-hover-primary-border-color:hover {
-    border-color: $ma-primary;
-}
-.ma-bg-light-color {
-    background-color: $ma-bg-light;
-}
-.ma-bg-light-border-color {
-    border-color: $ma-light-border;
-}
-.ma-help-color {
-    color: $ma-help-text;
+
 }

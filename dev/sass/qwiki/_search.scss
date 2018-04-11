@@ -20,7 +20,7 @@
 
 //Search header style
 .solrHeader .patternBorder {
-  background-color: $ma-bg-beige;
+  background-color: $ma-sand;
   border: 0;
   border-radius: $ma-border-radius;
   padding: 15px;
@@ -81,7 +81,7 @@
 }
 
 .right-bar-wrapper {
-  background-color: $ma-bg-beige;
+  background-color: $ma-sand;
   border-radius: $ma-border-radius;
   padding: 15px;
 }
@@ -97,7 +97,7 @@ a.jqSerialPagerPrev,
 a.jqSerialPagerNext {
   background-image: none !important;
   &::before {
-    color: $ma-brown;
+    color: $ma-sand;
     font-family: 'FontAwesome';
     font-size: 2em;
   }
