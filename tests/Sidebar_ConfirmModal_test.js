@@ -3,14 +3,19 @@ import TestCase from '../dev/unit-test-library/main';
 
 describe("The ConfirmModal component", () => {
   describe("onButtonClick method", () => {
+    const options = {
+      propsData: {
+        config: {}
+      }
+    };
     it("should emit the hide modal event.", () => {
-      let modal = TestCase.createVueComponent(ConfirmModal, {});
+      let modal = TestCase.createVueComponent(ConfirmModal, options);
       spyOn(modal, '$emit');
       modal.onButtonClick({onClick: () => {}});
       expect(modal.$emit).toHaveBeenCalledWith("hide-modal");
     });
     it("should execute the button callback.", () => {
-      let modal = TestCase.createVueComponent(ConfirmModal, {});
+      let modal = TestCase.createVueComponent(ConfirmModal, options);
       let onClickSpy = jasmine.createSpy('onClick');
       modal.onButtonClick({onClick: onClickSpy});
       expect(onClickSpy).toHaveBeenCalled();

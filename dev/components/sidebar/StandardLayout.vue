@@ -1,12 +1,12 @@
 <template>
-<div>
-  <div class="sidebar-header">
-    <slot name="header"></slot>
+  <div>
+    <div class="sidebar-header">
+      <slot name="header"/>
+    </div>
+    <div class="sidebar-content">
+      <slot name="content"/>
+    </div>
   </div>
-  <div class="sidebar-content">
-   <slot name="content"></slot>
-  </div>
-</div>
 </template>
 
 <style lang="scss">

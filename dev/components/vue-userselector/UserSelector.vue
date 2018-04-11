@@ -1,18 +1,39 @@
 <template>
-  <div class="dropdown v-userselector" :class="dropdownClasses">
-      <div ref="toggle" type="text" class="dropdown-toggle" :style="multiple ? {height: 'initial', margin: 0} : {}" v-bind:class="{multi: multiple}" @mousedown.prevent="toggleDropdown">
-      <span class="form-control" v-if="!searchable && isValueEmpty && !open">
+  <div
+    :class="dropdownClasses"
+    class="dropdown v-userselector">
+    <div
+      ref="toggle"
+      :style="multiple ? {height: 'initial', margin: 0} : {}"
+      :class="{multi: multiple}"
+      type="text"
+      class="dropdown-toggle"
+      @mousedown.prevent="toggleDropdown">
+      <span
+        v-if="!searchable && isValueEmpty && !open"
+        class="form-control">
         {{ placeholder }}
       </span>
       <div class="input-area">
-        <div ref="selectedList" class="selected-list">
-          <span class="selected-tag" v-bind:class="{multi: multiple}" v-for="(option,index) in internalValue" v-bind:key="index">
+        <div
+          ref="selectedList"
+          class="selected-list">
+          <span
+            v-for="(option,index) in internalValue"
+            :class="{multi: multiple}"
+            :key="index"
+            class="selected-tag">
             <template v-if="!multiple && !open">
               <span class="single-tag">{{ getSelectedOptionLabel(option) }}</span>
             </template>
-            <a v-if="multiple" @mousedown.stop="select(option)" class="small close button">
+            <a
+              v-if="multiple"
+              class="small close button"
+              @mousedown.stop="select(option)">
               {{ getSelectedOptionLabel(option) }}
-              <i class="fa fa-times-circle fa-lg close-icon" aria-hidden="true"></i>
+              <i
+                class="fa fa-times-circle fa-lg close-icon"
+                aria-hidden="true"/>
             </a>
           </span>
           <span class="form-control__wrapper">
@@ -20,38 +41,84 @@
               v-show="open || multiple"
               ref="search"
               v-model="search"
+              :class="{ 'form-control': true, multi: multiple }"
+              :placeholder="searchPlaceholder"
+              type="text"
               @keyup.esc="onEscape"
               @keydown.up.prevent="typeAheadUp"
               @keydown.down.prevent="typeAheadDown"
               @keyup.enter.prevent="typeAheadSelect"
               @blur="inputHasFocus = false"
               @focus="inputHasFocus = true;"
-              type="text"
-              :class="{ 'form-control': true, multi: multiple }"
-              :placeholder="searchPlaceholder"
-              />
+            >
           </span>
         </div>
-        <div class="open-indicator" v-if="!multiple" style="min-width: 30px; max-width:30px; align-self: center; text-align:right;">
-          <i class="fa fa-caret-down" aria-hidden="true" style="margin-right: 10px;"></i>
+        <div
+          v-if="!multiple"
+          class="open-indicator"
+          style="min-width: 30px; max-width:30px; align-self: center; text-align:right;">
+          <i
+            class="fa fa-caret-down"
+            aria-hidden="true"
+            style="margin-right: 10px;"/>
         </div>
       </div>
     </div>
     <div class="dropdown-menu">
-      <div class="vue-userselector__dropdown__filter" @click="focusOnSearch" @mousedown="checkBoxHasFocus = true">
-          <input type="checkbox" ref="useUsers" v-model="internalUseUsers" v-if="usersOption" :id="_uid + '_useUsers'" /><label class="vue-userselector__dropdown__filter__item" :for="_uid + '_useUsers'">{{$t('users')}}</label>
-          <input type="checkbox" ref="useGroups" v-model="internalUseGroups" v-if="groupsOption" :id="_uid + '_useGroups'" /><label class="vue-userselector__dropdown__filter__item" :for="_uid + '_useGroups'">{{$t('groups')}}</label>
-          <input type="checkbox" ref="useMetadata" v-model="internalUseMetadata" v-if="metadataOption" :id="_uid + '_useMetadata'" /><label class="vue-userselector__dropdown__filter__item" :for="_uid + '_useMetadata'">{{$t('metadata')}}</label>
+      <div
+        class="vue-userselector__dropdown__filter"
+        @click="focusOnSearch"
+        @mousedown="checkBoxHasFocus = true">
+        <input
+          v-if="usersOption"
+          ref="useUsers"
+          :id="_uid + '_useUsers'"
+          v-model="internalUseUsers"
+          type="checkbox"><label
+            :for="_uid + '_useUsers'"
+            class="vue-userselector__dropdown__filter__item">{{ $t('users') }}</label>
+        <input
+          v-if="groupsOption"
+          ref="useGroups"
+          :id="_uid + '_useGroups'"
+          v-model="internalUseGroups"
+          type="checkbox"><label
+            :for="_uid + '_useGroups'"
+            class="vue-userselector__dropdown__filter__item">{{ $t('groups') }}</label>
+        <input
+          v-if="metadataOption"
+          ref="useMetadata"
+          :id="_uid + '_useMetadata'"
+          v-model="internalUseMetadata"
+          type="checkbox"><label
+            :for="_uid + '_useMetadata'"
+            class="vue-userselector__dropdown__filter__item">{{ $t('metadata') }}</label>
       </div>
-      <v-infinite-scroll class="infinite-scroll" :loading="isLoading" @bottom="loadNextPage" :style="{ 'max-height': maxHeight }">
-          <ul ref="dropdownMenu" v-show="open" :transition="transition" class="dropdown-menu-list">
-            <li v-for="(option,index) in filteredOptions" v-bind:key="index" class="list-item" :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }" @mouseover="typeAheadPointer = index" @mousedown.prevent="select(option)">
-              <a>
-                <span>{{ getOptionLabel(option) }}</span><span v-if="option.type" class="ma-grey-color">&nbsp;({{$t(option.type_label || option.type)}})</span>
-              </a>
-            </li>
-          </ul>
-          <vue-spinner v-if="isLoading"></vue-spinner>
+      <v-infinite-scroll
+        :loading="isLoading"
+        :style="{ 'max-height': maxHeight }"
+        class="infinite-scroll"
+        @bottom="loadNextPage">
+        <ul
+          v-show="open"
+          ref="dropdownMenu"
+          :transition="transition"
+          class="dropdown-menu-list">
+          <li
+            v-for="(option,index) in filteredOptions"
+            :key="index"
+            :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }"
+            class="list-item"
+            @mouseover="typeAheadPointer = index"
+            @mousedown.prevent="select(option)">
+            <a>
+              <span>{{ getOptionLabel(option) }}</span><span
+                v-if="option.type"
+                class="ma-grey-color">&nbsp;({{ $t(option.type_label || option.type) }})</span>
+            </a>
+          </li>
+        </ul>
+        <vue-spinner v-if="isLoading"/>
       </v-infinite-scroll>
     </div>
   </div>
@@ -220,7 +287,10 @@ export default {
      * @type {Function}
      * @default {null}
      */
-    onChange: Function,
+    onChange: {
+      type: Function,
+      default: null
+    },
 
     /**
      * When false, updating the options will not reset the select value
@@ -258,7 +328,64 @@ export default {
       ajaxQueryNr: 0, // Id for the ajax request. Changes, when the query term etc. changes, but does not change for paging. This will prevent any delayed (obsolete) responses from being displayed.
     };
   },
+  computed: {
+    open() {
+      return this.inputHasFocus || this.checkBoxHasFocus;
+    },
 
+    /**
+     * Classes to be output on .dropdown
+     * @return {Object}
+     */
+    dropdownClasses() {
+      return {
+        open: this.open,
+        searchable: this.searchable,
+        loading: this.loading,
+        multi: this.multiple
+      };
+    },
+
+    /**
+     * Return the placeholder string if it's set
+     * & there is no value selected.
+     * @return {String} Placeholder text
+     */
+    searchPlaceholder() {
+      if (this.placeholder) {
+        return this.placeholder;
+      }
+    },
+
+
+    /**
+     * The currently displayed options, filtered
+     * by the search elements value. If tagging
+     * true, the search text will be prepended
+     * if it doesn't already exist.
+     *
+     * @return {array}
+     */
+    filteredOptions() {
+      let options = this.options || [];
+      return options;
+    },
+
+    /**
+     * Check if there aren't any options selected.
+     * @return {Boolean}
+     */
+    isValueEmpty() {
+      if (this.internalValue) {
+        if (typeof this.internalValue === 'object') {
+          return !Object.keys(this.internalValue).length;
+        }
+        return !this.internalValue.length;
+      }
+
+      return true;
+    }
+  },
   watch: {
     value() {
       this.internalValue = this.value;
@@ -291,6 +418,9 @@ export default {
     internalUseMetadata() {
       this.updateDropdown();
     },
+  },
+  created() {
+    this.internalValue = this.value;
   },
 
   methods: {
@@ -552,69 +682,6 @@ export default {
       return exists;
     },
   },
-
-  computed: {
-    open() {
-      return this.inputHasFocus || this.checkBoxHasFocus;
-    },
-
-    /**
-     * Classes to be output on .dropdown
-     * @return {Object}
-     */
-    dropdownClasses() {
-      return {
-        open: this.open,
-        searchable: this.searchable,
-        loading: this.loading,
-        multi: this.multiple
-      };
-    },
-
-    /**
-     * Return the placeholder string if it's set
-     * & there is no value selected.
-     * @return {String} Placeholder text
-     */
-    searchPlaceholder() {
-      if (this.placeholder) {
-        return this.placeholder;
-      }
-    },
-
-
-    /**
-     * The currently displayed options, filtered
-     * by the search elements value. If tagging
-     * true, the search text will be prepended
-     * if it doesn't already exist.
-     *
-     * @return {array}
-     */
-    filteredOptions() {
-      let options = this.options || [];
-      return options;
-    },
-
-    /**
-     * Check if there aren't any options selected.
-     * @return {Boolean}
-     */
-    isValueEmpty() {
-      if (this.internalValue) {
-        if (typeof this.internalValue === 'object') {
-          return !Object.keys(this.internalValue).length;
-        }
-        return !this.internalValue.length;
-      }
-
-      return true;
-    }
-  },
-  created() {
-    this.internalValue = this.value;
-  }
-
 };
 </script>
 

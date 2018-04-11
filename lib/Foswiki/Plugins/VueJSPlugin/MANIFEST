@@ -3,6 +3,8 @@ data/System/VueJSPlugin.txt 0644
 data/System/VarVUE.txt 0644
 data/System/VueJSPluginSidebar.txt 0644
 data/System/VueJSPluginTabpane.txt 0644
+data/System/VueJSPluginShowroom.txt 0644
+data/System/VueJSPluginComponents.txt 0644
 lib/Foswiki/Plugins/VueJSPlugin.pm 0644
 lib/Foswiki/Plugins/VueJSPlugin/Config.spec 0644
 lib/Foswiki/Plugins/VueJSPlugin/DEPENDENCIES 0644
@@ -14,3 +16,4 @@ pub/System/VueJSPlugin/VueJSPlugin.min.js.gz 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.js.map 0644
 pub/System/VueJSPlugin/sidebarDocs.js 0644
 pub/System/VueJSPlugin/sidebarDocs.js.gz 0644
+pub/System/VueJSPlugin/showroom.js 0644

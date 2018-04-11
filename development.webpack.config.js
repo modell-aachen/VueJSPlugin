@@ -16,7 +16,7 @@ module.exports = merge.smart(baseConfig, {
       {
         enforce: 'pre',
         test: /.(vue|js)$/,
-        loader: 'eslint-loader',
+        use: 'eslint-loader',
         exclude: /node_modules/
       }
     ]

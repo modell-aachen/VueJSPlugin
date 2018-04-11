@@ -57,7 +57,7 @@ describe("The UserSelector component's", () => {
     });
 
     it("returns only metadata, if there is no search string", (done) => {
-      userselector.updateDropdown().then((x) => {
+      userselector.updateDropdown().then(() => {
         expect(userselector.options).toEqual(mockMetadata);
         done();
       }).catch(e => fail(e));
@@ -76,7 +76,7 @@ describe("The UserSelector component's", () => {
       userselector.internalUseUsers = false;
 
       userselector.updateDropdown().then(() => {
-        expect(userselector.makeAjaxRequest).toHaveBeenCalled()
+        expect(userselector.makeAjaxRequest).toHaveBeenCalled();
         userselector.makeAjaxRequest.calls.reset();
 
         userselector.updateDropdown().then(() => {
@@ -84,17 +84,17 @@ describe("The UserSelector component's", () => {
 
           userselector.search = 'b';
           userselector.updateDropdown().then(() => {
-            expect(userselector.makeAjaxRequest).toHaveBeenCalled()
+            expect(userselector.makeAjaxRequest).toHaveBeenCalled();
             userselector.makeAjaxRequest.calls.reset();
 
             userselector.internalUseUsers = true;
             userselector.updateDropdown().then(() => {
-              expect(userselector.makeAjaxRequest).toHaveBeenCalled()
+              expect(userselector.makeAjaxRequest).toHaveBeenCalled();
               userselector.makeAjaxRequest.calls.reset();
 
               userselector.internalUseGroups = false;
               userselector.updateDropdown().then(() => {
-                expect(userselector.makeAjaxRequest).toHaveBeenCalled()
+                expect(userselector.makeAjaxRequest).toHaveBeenCalled();
                 done();
               });
             });
