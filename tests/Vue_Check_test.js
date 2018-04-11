@@ -31,16 +31,6 @@ describe("The CheckItem component", () => {
       this.wrapper.setProps({modelValue: []});
       expect(this.wrapper.vm.state).toBe(false);
     });
-    xit("with user interaction", () => {
-      const input = this.wrapper.find('input');
-      expect(this.wrapper.vm.state).toBe(true);
-      expect(this.wrapper.vm.modelValue).toContain('Foo');
-      //input.element.value=true;
-      input.trigger('click');
-      //this.wrapper.trigger('click');
-      expect(this.wrapper.vm.state).toBe(false);
-      expect(this.wrapper.vm.modelValue).not.toContain('Foo');
-    });
   });
 });
 
