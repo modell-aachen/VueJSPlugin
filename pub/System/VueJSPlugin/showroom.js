@@ -110,4 +110,13 @@ Vue.onDocumentReady(function(){
             ]
         }
     });
+    new Vue({
+        el: '#splitbutton-examples',
+        template: '#splitbutton-template',
+        methods: {
+            boom: function() {
+             alert("Boom!");
+            }
+        }
+    });
 });
