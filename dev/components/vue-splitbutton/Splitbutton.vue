@@ -33,7 +33,7 @@
 </template>
 
 <script>
-const DROPDWON_OFFSET = 4;
+const DROPDOWN_OFFSET = 4;
 export default {
   props: {
     'mainButtonTitle': {
@@ -84,7 +84,7 @@ export default {
       const buttonWidth = dropdownButtonElement.offsetWidth;
       const contentWidth = dropdownContentElement.offsetWidth;
 
-      const dropdownTop = `${buttonTop + buttonHeight + DROPDWON_OFFSET}px`;
+      const dropdownTop = `${buttonTop + buttonHeight + DROPDOWN_OFFSET}px`;
       const dropdownLeft = `${buttonLeft + buttonWidth - contentWidth}px`;
 
       this.dropdownPosition = {
