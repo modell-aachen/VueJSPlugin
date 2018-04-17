@@ -39,7 +39,7 @@ export default {
       default: null,
     },
     modelValue: {
-      type: [Array, Object, String],
+      type: [Array, Object, String, Boolean],
       default: undefined,
     },
     checked: {

@@ -55,6 +55,7 @@ import TabButton from './TabButton';
 import Modal from './Modal';
 
 export default {
+  inject: ['$validator'],
   components: {
     TabButton,
     Modal,
