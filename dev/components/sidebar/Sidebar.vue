@@ -151,8 +151,6 @@ export default {
   top: 0;
   left: 0;
   bottom: 0;
-
-  background-color: $ma-medium-grey;
   border-left: $sidebar-highlight-border-width solid $ma-medium-grey;
   width: calc(#{$sidebar-width} - #{$sidebar-content-width});
 
