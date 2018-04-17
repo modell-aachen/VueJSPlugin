@@ -1,8 +1,10 @@
 <template>
-  <div class="vue-wizard">
-    <div class="icon"><i
-      :class="iconClass"
-      class="ma-primary-color fa fa-4x"/></div>
+  <div class="vue-wizard grid-x">
+
+    <div class="icon">
+      <i :class="iconClass" class="ma-primary-color fa fa-4x"/>
+    </div>
+
     <div>
       <h2 class="ma-primary-color">{{ heading }}</h2>
       <p v-if="text">{{ text }}</p>
@@ -14,7 +16,9 @@
         @click.native="buttonCallback"
       />
     </div>
+
     <span class="vue-wizard-clear"/>
+
   </div>
 </template>
 
@@ -77,12 +81,6 @@ export default {
 
 <style lang="scss">
   .vue-wizard {
-    & > div {
-      float: left;
-    }
-    h2 {
-      max-width: 370px;
-    }
     .button {
       margin-top: 20px;
     }
