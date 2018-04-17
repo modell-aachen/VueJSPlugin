@@ -2,7 +2,9 @@
   <div class="vue-wizard grid-x">
 
     <div class="icon">
-      <i :class="iconClass" class="ma-primary-color fa fa-4x"/>
+      <i
+        :class="iconClass"
+        class="ma-primary-color fa fa-4x"/>
     </div>
 
     <div>
@@ -16,7 +18,6 @@
         @click.native="buttonCallback"
       />
     </div>
-
     <span class="vue-wizard-clear"/>
 
   </div>
