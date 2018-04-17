@@ -6,7 +6,7 @@
     @click.prevent="click">
     <i
       :class="icon"
-      class="fa fa-2x"/>
+      class="far fa-2x"/>
   </button>
 </template>
 
