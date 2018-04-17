@@ -6,11 +6,11 @@
     <div>
       <h2 class="ma-primary-color">{{ heading }}</h2>
       <p v-if="text">{{ text }}</p>
-      <vue-button 
-        type='primary' 
-        :title='buttonText' 
+      <vue-button
         v-if="( buttonCallback || buttonHref) && buttonText"
+        :title="buttonText"
         :href="buttonHref"
+        type="primary"
         @click.native="buttonCallback"
       />
     </div>

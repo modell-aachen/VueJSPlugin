@@ -1,10 +1,10 @@
 <template>
   <a
-    @click="handleClick"
     :disabled="isDisabled"
     :href="href"
     :class="[type, color]"
-    class="button">
+    class="button"
+    @click="handleClick">
     <i
       v-if="icon"
       :class="icon"
@@ -60,7 +60,7 @@ export default {
   methods: {
     handleClick: function( event ) {
       if( this.isDisabled || this.href.length <= 0 ) {
-       event.preventDefault();
+        event.preventDefault();
       }
     }
   }
