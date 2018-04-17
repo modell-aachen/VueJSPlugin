@@ -66,6 +66,7 @@ export default {
       default: ''
     }
   },
+  inject: ['$validator'],
   computed: {
     data: {
       get: function() {
