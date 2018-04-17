@@ -1,6 +1,5 @@
 <template>
   <button
-    v-once
     :disabled="isDisabled"
     :class="[type, color]"
     class="button">
