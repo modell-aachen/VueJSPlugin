@@ -15,3 +15,7 @@
     font-weight: bold;
   }
 }
+
+@mixin disable-anchor-hover() {
+  color: $body-font-color;
+}
