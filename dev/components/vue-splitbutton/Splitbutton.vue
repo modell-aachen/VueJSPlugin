@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="vue-splitbutton">
+    <div class="ma-splitbutton">
       <vue-button
         :title="mainButtonTitle"
         class="main-button"
@@ -22,7 +22,7 @@
       v-show="isDropdownOpen"
       ref="dropdownContent"
       :style="dropdownPosition"
-      class="vue-splitbutton-dropdown">
+      class="ma-splitbutton-dropdown">
       <ul
         class="dropdown-content-list"
         @click="isDropdownOpen=false">

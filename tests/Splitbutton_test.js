@@ -29,13 +29,13 @@ describe("The Splitbutton component", () => {
   });
 
   it("starts with a closed dropdown", () => {
-    const dropdown = splitbuttonWrapper.find(".vue-splitbutton-dropdown");
+    const dropdown = splitbuttonWrapper.find(".ma-splitbutton-dropdown");
     expect(dropdown.isVisible()).toBe(false);
   });
 
   it("opens and closes the dropdown when clicked on the dropdown button", () => {
     const dropdownButton = splitbuttonWrapper.find(".dropdown-button");
-    const dropdown = splitbuttonWrapper.find(".vue-splitbutton-dropdown");
+    const dropdown = splitbuttonWrapper.find(".ma-splitbutton-dropdown");
 
     dropdownButton.trigger("click");
     expect(dropdown.isVisible()).toBe(true);
@@ -46,7 +46,7 @@ describe("The Splitbutton component", () => {
 
   it("closes the dropdown when clicking outside", () => {
     const dropdownButton = splitbuttonWrapper.find(".dropdown-button");
-    const dropdown = splitbuttonWrapper.find(".vue-splitbutton-dropdown");
+    const dropdown = splitbuttonWrapper.find(".ma-splitbutton-dropdown");
     dropdownButton.trigger('click');
 
     document.documentElement.click();
@@ -55,7 +55,7 @@ describe("The Splitbutton component", () => {
   });
 
   it("shows the content provided by the dropdown-content slot inside the dropdown", () => {
-    const dropdownSlotContent = splitbuttonWrapper.find(".vue-splitbutton-dropdown .slot-content");
+    const dropdownSlotContent = splitbuttonWrapper.find(".ma-splitbutton-dropdown .slot-content");
 
     expect(dropdownSlotContent.exists()).toBe(true);
   });

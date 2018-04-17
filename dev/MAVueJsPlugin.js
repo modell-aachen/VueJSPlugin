@@ -55,7 +55,7 @@ class MAVueJsPlugin {
     //Component registrations
     Vue.component('vue-select', VueSelect);
     Vue.component('vue-userselector', VueUserSelector);
-    Vue.component('vue-splitbutton', VueSplitbutton);
+    Vue.component('splitbutton', VueSplitbutton);
     Vue.component('vue-button', VueButton);
     Vue.component('vue-check-item', VueCheckItem);
     Vue.component('vue-input-text', VueInputText);

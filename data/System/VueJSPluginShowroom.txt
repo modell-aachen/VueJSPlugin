@@ -274,12 +274,12 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
 %TWISTY%
 <verbatim>
 %STARTSECTION{"SplitbuttonVueTemplate"}%
-<vue-splitbutton main-button-title="Do the main thing" dropdown-button-title="more" :on-main-button-click="boom">
+<splitbutton main-button-title="Do the main thing" dropdown-button-title="more" :on-main-button-click="boom">
   <template slot="dropdown-content">
     <li @click="boom"><a>Do another thing</a></li>
     <li @click="boom"><a>Do yet another thing</a></li>
   </template>
-</vue-splitbutton>
+</splitbutton>
 %ENDSECTION{"SplitbuttonVueTemplate"}%
 </verbatim>
 %ENDTWISTY%
