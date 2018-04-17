@@ -1,4 +1,4 @@
-.vue-splitbutton {
+.ma-splitbutton {
     @include button-group($buttongroup-child-selector, 1px);
     .main-button {
         border-top-right-radius: 0;
@@ -16,7 +16,7 @@
     }
 }
 
-.vue-splitbutton-dropdown {
+.ma-splitbutton-dropdown {
     position: absolute;
     background: white;
     border: 1px solid #E2E2E2;
