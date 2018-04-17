@@ -5,13 +5,14 @@
       class="ma-primary-color fa fa-4x"/></div>
     <div>
       <h2 class="ma-primary-color">{{ heading }}</h2>
-      <span v-if="text">{{ text }}</span>
-      <br v-if="text && (buttonHref || buttonCallback) && buttonText" >
-      <a
-        v-if="(buttonCallback || buttonHref) && buttonText"
+      <p v-if="text">{{ text }}</p>
+      <vue-button 
+        type='primary' 
+        :title='buttonText' 
+        v-if="( buttonCallback || buttonHref) && buttonText"
         :href="buttonHref"
-        class="button primary small"
-        @click="buttonClick">{{ buttonText }}</a>
+        @click.native="buttonCallback"
+      />
     </div>
     <span class="vue-wizard-clear"/>
   </div>
@@ -50,14 +51,6 @@ export default {
     this.setParams();
   },
   methods:{
-    buttonClick: function(event) {
-      if(this.buttonCallback) {
-        let result = this.buttonCallback(event);
-        if(!(this.buttonHref && result)) {
-          event.preventDefault();
-        }
-      }
-    },
     setParams: function(){
       if(this.params[0]) {
         this.heading = this.params[0];

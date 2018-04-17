@@ -1,6 +1,8 @@
 <template>
-  <button
+  <a
+    @click="handleClick"
     :disabled="isDisabled"
+    :href="href"
     :class="[type, color]"
     class="button">
     <i
@@ -8,13 +10,17 @@
       :class="icon"
       aria-hidden="true"/>
     {{ title }}
-  </button>
+  </a>
 </template>
 
 <script>
 export default {
   props: {
     'title':{
+      type: String,
+      default: ''
+    },
+    'href': {
       type: String,
       default: ''
     },
@@ -49,6 +55,13 @@ export default {
     'isDisabled':{
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    handleClick: function( event ) {
+      if( this.isDisabled || this.href.length <= 0 ) {
+       event.preventDefault();
+      }
     }
   }
 };
