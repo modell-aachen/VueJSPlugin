@@ -39,8 +39,6 @@ Vue plugin for global parameters triggering data-binding updates. E.g. used to u
 Offical router for Vue.js. Helps building Single Page Applications.
 ---+++ List modifying with drag & drop - <a href="http://hejx.space/vddl">Vddl</a>
 Vue plugin adds Components for modifying lists with the HTML5 drag & drop API.
----+++ SweetAlert2 - <a href="https://github.com/lishengzxc/vue-sweetalert">vue-sweetalert</a>
-This VueJS Plugin adds $swal to the Vue instance. See <a href="https://sweetalert2.github.io/">SweetAlert2 Documentation</a>.
 ---+++ Validations - <a href="http://vee-validate.logaretm.com/">VeeValidate</a>
 The VueJS Plugin is bundled with the Vee-Validate Plugin for Vue which can be used to define input validations.
 Search for the official Vee-Validate documentation for further information on how to use it.
@@ -48,11 +46,9 @@ Search for the official Vee-Validate documentation for further information on ho
 *Important*: The Plugin has been reconfigured to change the errors property name from 'errors' to 'validationErrors'
 and the fields property name from 'fields' to 'validationFields'.
 
-
 ---++ Additional components
-For an overviwe see: [[System.VueJSPluginShowroom]] and for documentation: [[Syste.VueJSPluginComponents]]
+For an overviwe see: [[System.VueJSPluginShowroom]] and for documentation: [[System.VueJSPluginComponents]]
 ---+++ Vue Sidebar
----+++ Vue SweetAlert
 ---+++ Vue Button
 ---+++ Vue Check Item
 ---+++ Vue Input Text
@@ -60,6 +56,7 @@ For an overviwe see: [[System.VueJSPluginShowroom]] and for documentation: [[Sys
 ---+++ Vue Tabpane
 ---+++ Vue Pagination
 ---+++ Vue Dad (Drag & Drop ) List
+---+++ Vue Splitbutton
 
 ---++ Additional instance properties
 Every Vue component instance has access to some additional properties/methods.
@@ -83,6 +80,9 @@ Returns the lang attribute set on the html tag.
 ---+++ $ajax
 
 Equivalent to $.ajax
+
+---+++ $showAlert
+A function to display configurable alerts. See the [[System.VueJSPluginShowroom][showroom]] for details.
 
 ---++ Global helper functions
 Some additional helper functions are accessible via the global Vue object.

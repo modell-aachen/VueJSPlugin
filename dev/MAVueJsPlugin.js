@@ -28,7 +28,7 @@ import VueResource from 'vue-resource';
 import InfiniteScroll from 'v-infinite-scroll';
 import 'v-infinite-scroll/dist/v-infinite-scroll.css';
 import VueClickOutside from 'vue-click-outside';
-
+import AlertPlugin from './alert/AlertPlugin';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
 
@@ -51,6 +51,7 @@ class MAVueJsPlugin {
       fieldsBagName: 'validationFields'
     };
     Vue.use(VeeValidate, veeValidateConfig);
+    Vue.use(new AlertPlugin());
 
     //Component registrations
     Vue.component('vue-select', VueSelect);
