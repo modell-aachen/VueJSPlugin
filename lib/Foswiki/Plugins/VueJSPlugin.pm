@@ -53,12 +53,8 @@ sub loadDependencies {
     }
 
     Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
+    Foswiki::Contrib::FontAwesomeContrib::addToZone();
     Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT');
-    Foswiki::Func::addToZone(
-      'head',
-      'FONTAWESOME',
-      "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome.min.css\" />"
-    );
 
     my $scripts = "";
     my $return = "";

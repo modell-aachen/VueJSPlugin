@@ -27,6 +27,7 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import InfiniteScroll from 'v-infinite-scroll';
 import 'v-infinite-scroll/dist/v-infinite-scroll.css';
+import VueClickOutside from 'vue-click-outside';
 
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
@@ -54,7 +55,7 @@ class MAVueJsPlugin {
     //Component registrations
     Vue.component('vue-select', VueSelect);
     Vue.component('vue-userselector', VueUserSelector);
-    Vue.component('vue-splitbutton', VueSplitbutton);
+    Vue.component('splitbutton', VueSplitbutton);
     Vue.component('vue-button', VueButton);
     Vue.component('vue-check-item', VueCheckItem);
     Vue.component('vue-input-text', VueInputText);
@@ -70,6 +71,7 @@ class MAVueJsPlugin {
     Vue.component('sidebar-standard-layout', SidebarStandardLayout);
     Vue.component('vue-wizard', VueWizard);
     Vue.directive('tooltip', VTooltip);
+    Vue.directive('click-outside', VueClickOutside);
 
     //Global functions
     Vue.registerStoreModule = (name, module) => {
