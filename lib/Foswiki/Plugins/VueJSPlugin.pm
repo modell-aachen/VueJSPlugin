@@ -53,6 +53,7 @@ sub loadDependencies {
     }
 
     Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
+    Foswiki::Contrib::FontAwesomeContrib::addToZone();
     Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT');
 
     my $scripts = "";

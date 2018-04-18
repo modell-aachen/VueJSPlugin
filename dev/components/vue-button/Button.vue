@@ -1,21 +1,26 @@
 <template>
-  <button
-    v-once
+  <a
     :disabled="isDisabled"
+    :href="href"
     :class="[type, color]"
-    class="button">
+    class="button"
+    @click="handleClick">
     <i
       v-if="icon"
       :class="icon"
       aria-hidden="true"/>
     {{ title }}
-  </button>
+  </a>
 </template>
 
 <script>
 export default {
   props: {
     'title':{
+      type: String,
+      default: ''
+    },
+    'href': {
       type: String,
       default: ''
     },
@@ -50,6 +55,13 @@ export default {
     'isDisabled':{
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    handleClick: function( event ) {
+      if( this.isDisabled || this.href.length <= 0 ) {
+        event.preventDefault();
+      }
     }
   }
 };

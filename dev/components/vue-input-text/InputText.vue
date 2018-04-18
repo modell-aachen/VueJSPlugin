@@ -1,28 +1,33 @@
 <template>
   <div
-    :class="{'ma-failure': hasError}"
+    :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}"
     class="ma-input-group">
     <label v-if="label">{{ label }}</label>
-    <input
-      v-validate="validate"
-      :name="name"
-      v-model="data"
-      :placeholder="placeholder"
-      :class="{'ma-small': isSmall}"
-      :disabled="isDisabled"
-      type="text">
-    <template v-if="hasError">
-      <i
-        class="fas fa-exclamation-circle"
-        aria-hidden="true"/>
-      <small>{{ definedErrorMessage }}</small>
-    </template>
-    <template v-else-if="icon">
-      <i
-        v-if="icon"
-        :class="icon"
-        aria-hidden="true"/>
-    </template>
+    <div class="ma-input--wrapper">
+      <input
+        v-validate="validate"
+        :name="name"
+        v-model="data"
+        :placeholder="placeholder"
+        :class="{'ma-small': isSmall}"
+        :disabled="isDisabled"
+        type="text">
+
+      <template v-if="hasError">
+        <i
+          class="fas fa-exclamation-circle"
+          aria-hidden="true"/>
+        <small>{{ definedErrorMessage }}</small>
+      </template>
+
+      <template v-else-if="icon">
+        <i
+          v-if="icon"
+          :class="icon"
+          aria-hidden="true"/>
+      </template>
+
+    </div>
   </div>
 </template>
 
@@ -66,6 +71,7 @@ export default {
       default: ''
     }
   },
+  inject: ['$validator'],
   computed: {
     data: {
       get: function() {
@@ -93,4 +99,9 @@ export default {
 </script>
 
 <style lang="scss">
+
+.ma-input--wrapper {
+  position: relative;
+}
+
 </style>
