@@ -65,7 +65,9 @@ describe("The Sidebar component", () => {
 });
 
 function createSidebar (props){
-  return TestCase.createVueComponent(Sidebar, {
+  delete Sidebar.inject;
+  const wrapper = TestCase.mount(Sidebar, {
     propsData: props
   });
+  return wrapper.vm;
 }
