@@ -1,271 +1,139 @@
-<style lang="scss">
-    .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1000;
-        display: none;
-        float: left;
-        min-width: 160px;
-        padding: 5px 0;
-        margin: 2px 0 0;
-        font-size: 14px;
-        text-align: left;
-        background-color: #fff;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-        border: 1px solid #ccc;
-        border: 1px solid rgba(0,0,0,.15);
-        border-radius: 4px;
-        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-        box-shadow: 0 6px 12px rgba(0,0,0,.175);
-        .dropdown-menu-list {
-            list-style: none;
-            list-style-image: none !important;
-            padding: 0;
-            .list-item {
-                border-bottom: 1px solid lightgrey;
-                padding: 0 0 10px 0;
-                cursor: pointer;
-                &.highlight,
-                &.active {
-                    background-color: lightgrey;
-                }
-                a {
-                    margin: 5px;
-                }
-            }
-        }
-        .divider {
-            height: 1px;
-            margin: 9px 0;
-            overflow: hidden;
-            background-color: #e5e5e5;
-        }
-    }
-    .open>.dropdown-menu {
-        display: block;
-    }
-    .v-select {
-        position: relative;
-        margin: 0 0 1rem;
-        border: 1px solid #e5e8eb;
-        border-radius: 4px;
-        height: 100%;
-        &.multi {
-            border: 2px solid #e5e8eb;
-        }
-    }
-
-    .v-select .open-indicator {
-        vertical-align: middle;
-        width: 1%;
-        white-space: nowrap;
-        .button {
-            margin: 0;
-            width: 30px;
-            height: 30px;
-        }
-    }
-
-    .v-select .dropdown-toggle {
-        padding: 0;
-        white-space: normal;
-        min-height: 2.4375rem;
-        width: 100%;
-        background-color: #e5e8eb;
-        border-radius: 4px;
-        &.multi{
-            background-color: white;
-        }
-    }
-
-    .v-select.searchable .dropdown-toggle {
-        cursor: text;
-    }
-
-    .v-select.open .dropdown-toggle {
-        border-bottom: none;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    .v-select > .dropdown-menu {
-        margin: 0;
-        width: 100%;
-        overflow-y: auto;
-        border-top: none;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-
-    .v-select .selected-tag {
-        margin: 2px;
-        float: left;
-        .close-icon {
-            margin-left: 3px;
-        }
-        .button {
-            margin: 0px;
-        }
-        &:not(.multi) {
-            margin-left: 5px;
-            margin-top: 5px;
-        }
-    }
-
-    .v-select input[type=search],
-    .v-select input[type=search]:focus {
-        display: inline-block;
-        border: none;
-        outline: none;
-        margin: 0;
-        padding: 0 .5em;
-        width: 10em;
-        max-width: 100%;
-        background: none;
-        position: relative;
-        box-shadow: none;
-        clear: none;
-    }
-
-    .v-select input[type=search]:disabled {
-        cursor: pointer;
-    }
-
-    .v-select li a {
-        cursor: pointer;
-    }
-
-    .v-select .selected-list {
-        height: 100%;
-    }
-
-</style>
-
 <template>
   <div
     :class="dropdownClasses"
     class="dropdown v-select">
+    <label v-if="label">{{ label }}</label>
+    <input
+      v-if="name.length"
+      :name="name"
+      :value="stringifiedValue"
+      type="hidden"
+    >
     <div
       ref="toggle"
-      :class="{multi: multiple}"
+      :class="{multi: multiple, open: open}"
       class="dropdown-toggle"
+      type="text"
       @mousedown.prevent="toggleDropdown">
-      <span
-        v-if="!searchable && isValueEmpty"
-        class="form-control">
-        {{ placeholder }}
-      </span>
-
-      <div style="display: flex; flex-flow: row no-wrap; width:100%; min-height:2.25rem; height:100%; padding: 2px;">
+      <div class="input-area">
         <div
           ref="selectedList"
-          style="flex-grow: 1; height:100%; min-height:2.1rem; align-self: center">
+          class="selected-list">
+          <input
+            v-show="!multiple && isValueEmpty && !open"
+            :placeholder="searchPlaceholder"
+            type="text">
+
           <span
             v-for="(option,index) in internalValue"
-            :key="index"
             :class="{multi: multiple}"
+            :key="index"
             class="selected-tag">
-            <template v-if="!multiple">
-              {{ getSelectedOptionLabel(option) }}
+            <template v-if="!multiple && !open">
+              <span
+                class="single-tag"
+                type="text"
+              >
+                {{ getOptionLabel(option) }}
+              </span>
+              <div
+                v-if="allowClear === true || allowClear === '1'"
+                class="close-icon"
+                aria-hidden="true"
+                @mousedown.stop
+                @click.stop="deselect(internalValue)"
+              >
+                <i class="far fa-times" />
+              </div>
             </template>
             <a
               v-if="multiple"
-              class="small close button"
-              @mousedown.stop="select(option)">
-              {{ getSelectedOptionLabel(option) }}
+            >
+              {{ getOptionLabel(option) }}
               <i
-                class="fa fa-times-circle fa-lg close-icon"
-                aria-hidden="true"/>
+                class="far fa-times close-icon"
+                aria-hidden="true"
+                @mousedown.stop="deselect(option)"
+              />
             </a>
+          </span>
+          <span class="form-control__wrapper">
+            <input
+              v-show="open || multiple"
+              ref="search"
+              v-model="search"
+              :class="{ 'form-control': true, multi: multiple }"
+              :placeholder="isValueEmpty ? searchPlaceholder : ''"
+              type="text"
+              @keyup.esc="onEscape"
+              @keydown.up.prevent="typeAheadUp"
+              @keydown.down.prevent="typeAheadDown"
+              @keydown.enter.prevent
+              @keyup.enter.prevent="typeAheadSelect"
+              @blur="inputHasFocus = false"
+              @focus="inputHasFocus = true;"
+            >
           </span>
         </div>
         <div
+          v-if="!multiple"
           class="open-indicator"
           style="min-width: 30px; max-width:30px; align-self: center; text-align:right;">
-          <template v-if="multiple">
-            <a
-              ref="openIndicator"
-              class="tiny primary button">
-              <i
-                v-show="!loading"
-                class="fa fa-plus"
-                aria-hidden="true"/>
-              <slot name="spinner">
-                <i
-                  v-show="loading"
-                  class="fa fa-circle-o-notch fa-spin fa-lg spinner"/>
-              </slot>
-            </a>
-          </template>
-          <template v-else>
-            <i
-              class="fa fa-caret-down"
-              aria-hidden="true"
-              style="margin-right: 10px;"/>
-          </template>
+          <i
+            class="fa fa-caret-down"
+            aria-hidden="true"
+            style="margin-right: 10px;"/>
         </div>
       </div>
-
-
-
-
-
     </div>
-    <div class="dropdown-menu">
-      <input
-        v-show="searchable"
-        ref="search"
-        :style="{ width: '100%' }"
-        :debounce="debounce"
-        v-model="search"
-        :placeholder="searchPlaceholder"
-        type="search"
-        class="form-control"
-        @keydown.delete="maybeDeleteValue"
-        @keyup.esc="onEscape"
-        @keydown.up.prevent="typeAheadUp"
-        @keydown.down.prevent="typeAheadDown"
-        @keyup.enter.prevent="typeAheadSelect"
-        @blur="open = false"
-        @focus="open = true"
-      >
-      <ul
-        v-show="open"
-        ref="dropdownMenu"
-        :transition="transition"
+    <div
+      v-show="open"
+      class="dropdown-menu">
+      <div
+        v-if="internalFilterOptions.length"
+        class="vue-select__dropdown__filter"
+        @click="focusOnSearch"
+        @mousedown="checkBoxHasFocus = true">
+        <span
+          v-for="item in internalFilterOptions"
+          :key="item.name">
+          <input
+            :id="_uid + item.name"
+            v-model="checkedFilterOptions[item.name]"
+            type="checkbox">
+          <label
+            :for="_uid + item.name"
+            class="vue-select__dropdown__filter__item">
+            {{ item.label || '?' }}
+          </label>
+        </span>
+      </div>
+      <v-infinite-scroll
+        :loading="isLoading"
         :style="{ 'max-height': maxHeight }"
-        class="dropdown-menu-list">
-        <li
-          v-for="(option,index) in filteredOptions"
-          :key="index"
-          :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }"
-          class="list-item"
-          @mouseover="typeAheadPointer = index"
-          @mousedown.prevent="select(option)">
-          <a>
-            {{ getOptionLabel(option) }}
-          </a>
-        </li>
-        <li
-          v-if="!filteredOptions.length"
-          class="divider"/>
-        <li
-          v-if="!filteredOptions.length"
-          style="text-align: center;"
-          class="text-center">
-          <slot name="no-options">Sorry, no matching options.</slot>
-        </li>
-        <li
-          v-if="onGetMoreOptions && filteredOptions.length"
-          style="text-align: center;"
-          class="text-center">
-          <a @mousedown.prevent="addMoreOptions">
-            <slot name="more-results">Click to get more results.</slot>
-          </a>
-        </li>
-      </ul>
+        class="infinite-scroll"
+        @bottom="loadNextPage">
+        <ul
+          v-show="open"
+          ref="dropdownMenu"
+          :transition="transition"
+          class="dropdown-menu-list">
+          <li
+            v-for="(option,index) in filteredOptions"
+            :key="option.optionLabel"
+            :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }"
+            class="list-item"
+            @mouseover="typeAheadPointer = index"
+            @mousedown.prevent="toggle(option)">
+            <a>
+              <span>{{ getOptionLabel(option) }}</span><span
+                v-if="option.type"
+                class="ma-grey-color">&nbsp;({{ $t(option.type_label || option.type) }})</span>
+            </a>
+          </li>
+        </ul>
+        <vue-spinner v-if="isLoading"/>
+      </v-infinite-scroll>
     </div>
   </div>
 </template>
@@ -275,268 +143,212 @@
 import pointerScroll from '../mixins/pointerScroll';
 import typeAheadPointer from '../mixins/typeAheadPointer';
 import ajax from '../mixins/ajax';
+import slotOptions from '../mixins/slotOptions';
+import debounce from 'lodash/debounce';
+
+const numRows = 10;
+const debounceMillis = 150;
 
 export default {
-  mixins: [pointerScroll, typeAheadPointer, ajax],
+  mixins: [pointerScroll, typeAheadPointer, ajax, slotOptions],
+  i18nextNamespace: 'VueJSPlugin',
 
   props: {
-    /**
-         * Contains the currently selected value. Very similar to a
-         * `value` attribute on an <input>. In most cases, you'll want
-         * to set this as a two-way binding, using :value.sync. However,
-         * this will not work with Vuex, in which case you'll need to use
-         * the onChange callback property.
-         * @type {Object||String||null}
-         */
-    initialValue: {
-      type: [Object,String],
-      default: null
+    label: {
+      type: String,
+      default: undefined
     },
-
     /**
- * An array of strings or objects to be used as dropdown choices.
- * If you are using an array of objects, vue-select will look for
- * a `label` key (ex. [{label: 'This is Foo', value: 'foo'}]). A
- * custom label key can be set with the `label` prop.
- * @type {Object}
- */
-    options: {
-      type: Array,
-      default() {
-        return [];
-      },
+     * If set, this component will create an input element with this name and
+     * the value synchronized to the selection. Meaning this element can be
+     * submitted in a form.
+     */
+    name: {
+      type: String,
+      default: '',
     },
-
     /**
- * Sets the max-height property on the dropdown list.
- * @deprecated
- * @type {String}
- */
+     * Sets the max-height property on the dropdown list.
+     * @deprecated
+     */
     maxHeight: {
       type: String,
-      default: '400px'
+      default: '40vh'
     },
 
     /**
- * Enable/disable filtering the options.
- * @type {Boolean}
- */
-    searchable: {
-      type: Boolean,
-      default: true
-    },
-
-    /**
- * Equivalent to the `multiple` attribute on a `<select>` input.
- * @type {Object}
- */
+     * Equivalent to the `multiple` attribute on a `<select>` input.
+     */
     multiple: {
       type: Boolean,
       default: false
     },
 
     /**
- * Equivalent to the `placeholder` attribute on an `<input>`.
- * @type {Object}
- */
+     * Equivalent to the `placeholder` attribute on an `<input>`.
+     */
     placeholder: {
       type: String,
       default: ''
     },
 
     /**
- * Sets a Vue transition property on the `.dropdown-menu`. vue-select
- * does not include CSS for transitions, you'll need to add them yourself.
- * @type {String}
- */
+     * Sets a Vue transition property on the `.dropdown-menu`. vue-select
+     * does not include CSS for transitions, you'll need to add them yourself.
+     */
     transition: {
       type: String,
       default: 'expand'
     },
 
     /**
- * Enables/disables clearing the search text when an option is selected.
- * @type {Boolean}
- */
+     * Enables/disables clearing the search text when an option is selected.
+     */
     clearSearchOnSelect: {
       type: Boolean,
       default: true
     },
 
     /**
- * Tells vue-select what key to use when generating option
- * labels when each `option` is an object.
- * @type {String}
- */
-    label: {
+     * Tells vue-select what key to use when generating option
+     * optionLabels when each `option` is an object.
+     */
+    optionLabel: {
       type: String,
       default: 'label'
     },
 
     /**
- * Callback to generate the label text. If {option}
- * is an object, returns option[this.label] by default.
- * @param  {Object || String} option
- * @return {String}
- */
+     * Callback to generate the label text. If {option}
+     * is an object, returns option[this.optionLabel] by default.
+     * @return {String}
+     */
     getOptionLabel: {
       type: Function,
       default(option) {
         if (typeof option === 'object') {
-          if (this.label && option[this.label]) {
-            return option[this.label];
+          if (this.optionLabel && option[this.optionLabel]) {
+            return option[this.optionLabel];
           }
         }
         return option;
       }
     },
 
-    getSelectedOptionLabel: {
-      type: Function,
-      default(option) {
-        return this.getOptionLabel(option);
-      }
-    },
-
     /**
- * An optional callback function that is called each time the selected
- * value(s) change. When integrating with Vuex, use this callback to trigger
- * an action, rather than using :value.sync to retreive the selected value.
- * @type {Function}
- * @default {null}
- */
+     * An optional callback function that is called each time the selected
+     * value(s) change. When integrating with Vuex, use this callback to trigger
+     * an action, rather than using :value.sync to retreive the selected value.
+     */
     onChange: {
       type: Function,
       default: null
     },
 
-    onGetMoreOptions: {
-      type: Function,
-      default: null
-    },
-
-    onOpen: {
-      type: Function,
-      default: null
-    },
-
     /**
- * Enable/disable creating options from searchInput.
- * @type {Boolean}
- */
-    taggable: {
-      type: Boolean,
-      default: false
-    },
-
-    /**
- * When true, newly created tags will be added to
- * the options list.
- * @type {Boolean}
- */
-    pushTags: {
-      type: Boolean,
-      default: false
-    },
-
-    /**
- * User defined function for adding Options
- * @type {Function}
- */
-    createOption: {
-      type: Function,
-      default: function (newOption) {
-        if (typeof this.options[0] === 'object') {
-          return {[this.label]: newOption};
-        }
-        return newOption;
-      }
-    },
-
-    /**
- * When false, updating the options will not reset the select value
- * @type {Boolean}
- */
+     * When false, updating the options will not reset the select value
+     */
     resetOnOptionsChange: {
       type: Boolean,
       default: false
     },
 
-    preventSearchFilter: {
-      type: Boolean,
-      default: false
+    dataLimit: {
+      type: String,
+      default: '10',
     },
-    value: {
-      type: Array,
-      default(){
-        return [];
-      }
-    }
+    /**
+     * Set to true/1, if the select may be reset to "no selection".
+     * Only applies to non-multi selects.
+     */
+    allowClear: {
+      type: [Boolean, String],
+      default: false,
+    },
+    /**
+     * Set to true/1, if the user should be able to create new tags.
+     */
+    dataTags: {
+      type: [Boolean, String],
+      default: false,
+    },
   },
 
   data() {
+    let internalFilterOptions = this.getFilterOptions() || [];
+    let checkedFilterOptions = {};
+    for(let filter of internalFilterOptions) {
+      checkedFilterOptions[filter.name] = filter.unchecked ? 0 : 1;
+    }
+
+    let internalValue;
+    let slotOptions;
+    ({internalValue, slotOptions} = this.getSlotOptions());
+
+    let taggable = (this.dataTags === true || this.dataTags === '1') ? true : false;
+
     return {
+      options: [],
       search: '',
-      open: false,
-      internalValue: []
+      taggable,
+      inputHasFocus: false,
+      checkBoxHasFocus: false,
+      internalFilterOptions,
+      checkedFilterOptions,
+      internalValue,
+      stringifiedValue: this.stringifyValue(internalValue),
+      isLoading: false,
+      slotOptions,
+      numRows,
+      ajaxQueryNr: 0, // Id for the ajax request. Changes, when the query term etc. changes, but does not change for paging. This will prevent any delayed (obsolete) responses from being displayed.
     };
   },
-
   computed: {
+    open() {
+      return this.inputHasFocus || this.checkBoxHasFocus;
+    },
 
     /**
-           * Classes to be output on .dropdown
-           * @return {Object}
-           */
+     * Classes to be output on .dropdown
+     * @return {Object}
+     */
     dropdownClasses() {
       return {
         open: this.open,
-        searchable: this.searchable,
         loading: this.loading,
         multi: this.multiple
       };
     },
 
     /**
- * Return the placeholder string if it's set
- * & there is no value selected.
- * @return {String} Placeholder text
- */
+     * Return the placeholder string if it's set
+     * & there is no value selected.
+     * @return {String} Placeholder text
+     */
     searchPlaceholder() {
       if (this.placeholder) {
         return this.placeholder;
       }
     },
 
+
     /**
- * The currently displayed options, filtered
- * by the search elements value. If tagging
- * true, the search text will be prepended
- * if it doesn't already exist.
- *
- * @return {array}
- */
+     * The currently displayed options, filtered
+     * by the search elements value. If tagging
+     * true, the search text will be prepended
+     * if it doesn't already exist.
+     *
+     * @return {array}
+     */
     filteredOptions() {
-      let options;
-      let self = this;
-      if(this.preventSearchFilter) {
-        options = this.options;
-      } else {
-        options = this.options.filter(function(option) {
-          return option.indexOf(self.search) !== -1;
-        });
-      }
-      // options = this.$options.filters.filterBy(this.options, this.search)
-      if (this.taggable && this.search.length && !this.optionExists(this.search)) {
-        options.unshift(this.search);
-      }
+      let options = this.options || [];
       return options;
     },
 
     /**
- * Check if there aren't any options selected.
- * @return {Boolean}
- */
+     * Check if there aren't any options selected.
+     * @return {Boolean}
+     */
     isValueEmpty() {
       if (this.internalValue) {
         if (typeof this.internalValue === 'object') {
@@ -546,50 +358,157 @@ export default {
       }
 
       return true;
-    }
-  },
-
-  watch: {
-    value() {
-      this.internalValue = this.value;
     },
+  },
+  watch: {
     internalValue(val) {
+      if(this.name.length) {
+        this.stringifiedValue = this.stringifyValue(this.internalValue);
+      }
       this.$emit('input', val);
     },
     options() {
-      if (!this.taggable && this.resetOnOptionsChange) {
+      if (this.resetOnOptionsChange) {
         this.$set('internalValue', []);
       }
     },
-    open(){
-      if(this.open && this.onOpen){
-        this.onOpen(this.search, this.loading);
+    open() {
+      if(!this.open) {
+        this.search = '';
+        return;
       }
-    }
+      this.updateDropdown();
+    },
+    search: debounce(function() {
+      this.updateDropdown();
+    }, debounceMillis),
   },
   created() {
-    this.internalValue = this.value;
+    let internalFilterOptions = this.internalFilterOptions || this.getFilterOptions() || [];
+    for(let filter of internalFilterOptions) {
+      this.$watch('checkedFilterOptions.' + filter.name, () => {
+        this.updateDropdown();
+      });
+    }
   },
 
   methods: {
+    stringifyValue(val) {
+      if(!val) {
+        return '';
+      }
+      if(typeof(val) === 'string') {
+        return val;
+      }
+      let valueMapped = val.map(item => typeof(item) === 'string' ? item : item.value);
+      return valueMapped.join(',');
+    },
 
-    /**
-           * Select a given option.
-           * @param  {Object||String} option
-           * @return {void}
-           */
-    select(option) {
-      if (this.isOptionSelected(option)) {
-        this.deselect(option);
+    getFilterOptions() {
+      return [];
+    },
+
+    loadNextPage() {
+      this.isLoading = true;
+      this.updateDropdown(true);
+    },
+
+    getFilteredData(checkedFilterOptions, offsets) {
+      return [this.getSlotData(offsets[0])];
+    },
+
+
+    updateDropdown(loadNextPage) {
+      if(loadNextPage) {
+        // we are loading another page, leave params as they are
       } else {
-        if (this.taggable && !this.optionExists(option)) {
-          option = this.createOption(option);
-
-          if (this.pushTags) {
-            this.options.push(option);
-          }
+        this.pageIndex = [];
+        this.ajaxQueryNr++;
+      }
+      let pageIndex = this.pageIndex ? this.pageIndex.slice() : [];
+      let ajaxQueryNr = this.ajaxQueryNr || 0;
+      return Promise.all(this.getFilteredData(this.checkedFilterOptions, pageIndex)).then(collectedData => {
+        if(ajaxQueryNr !== this.ajaxQueryNr) {
+          // another request was triggered, while we were waiting for our response
+          return;
         }
 
+        let result = [];
+        let tmpPageIndex = [];
+        for(let i = 0; i < collectedData.length; i++) {
+          if(typeof(pageIndex[i]) === 'undefined') {
+            pageIndex[i] = 0;
+          }
+          tmpPageIndex[i] = 0;
+        }
+
+        // Merge metadata and users/groups without changing the order of each source (backend might order differently than the browser).
+        for(let i = 0; i < numRows; i++) {
+          let selectedSource = undefined;
+          let selectedItem;
+          for(let source = 0; source < collectedData.length; source++) {
+            let sourceIndex = tmpPageIndex[source];
+            if(collectedData[source].length <= sourceIndex) {
+              continue;
+            }
+            if(selectedSource === undefined) {
+              selectedSource = source;
+              selectedItem = collectedData[source][sourceIndex];
+              continue;
+            }
+            if(collectedData[source][sourceIndex][this.optionLabel].toLocaleLowerCase().localeCompare(selectedItem[this.optionLabel].toLocaleLowerCase()) < 0) {
+              selectedSource = source;
+              selectedItem = collectedData[source][sourceIndex];
+            }
+          }
+          if(selectedSource === undefined) {
+            break;
+          }
+          result.push(selectedItem);
+          pageIndex[selectedSource]++;
+          tmpPageIndex[selectedSource]++;
+        }
+
+        if(loadNextPage) {
+          this.options = this.options.concat(result);
+        } else {
+          this.options = result;
+        }
+
+        this.isLoading = false;
+        this.pageIndex = pageIndex;
+      });
+    },
+
+    /**
+     * Select a given option.
+     * @param  {Object||String} option
+     * @return {void}
+     */
+    select(option) {
+      this._selectOrToggle(option);
+    },
+    /**
+     * Toggle a given option.
+     * @param  {Object||String} option
+     * @return {void}
+     */
+    toggle(option) {
+      this._selectOrToggle(option, true);
+    },
+    _selectOrToggle(option, toggle) {
+      if(typeof(option) === 'string' && this.taggable) {
+        option = {
+          value: option,
+          label: option,
+        };
+      }
+      if (this.isOptionSelected(option)) {
+        if(!toggle) {
+          return;
+        }
+        this.deselect(option);
+      } else {
         if (this.multiple) {
           if (!this.internalValue) {
             this.internalValue = [option];
@@ -605,15 +524,15 @@ export default {
     },
 
     /**
- * De-select a given option.
- * @param  {Object||String} option
- * @return {void}
- */
+     * De-select a given option.
+     * @param  {Object||String} option
+     * @return {void}
+     */
     deselect(option) {
       if (this.multiple) {
         let ref = -1;
         this.internalValue.forEach((val) => {
-          if (val === option || typeof val === 'object' && val[this.label] === option[this.label]) {
+          if (val === option || typeof val === 'object' && val[this.optionLabel] === option[this.optionLabel]) {
             ref = val;
           }
         });
@@ -625,13 +544,12 @@ export default {
     },
 
     /**
- * Called from this.select after each selection.
- * @param  {Object||String} option
- * @return {void}
- */
+     * Called from this.select after each selection.
+     * @param  {Object||String} option
+     * @return {void}
+     */
     onAfterSelect() {
       if (!this.multiple) {
-        this.open = !this.open;
         this.$refs.search.blur();
       }
 
@@ -640,16 +558,22 @@ export default {
       }
     },
 
+    focusOnSearch() {
+      this.$refs.search.focus();
+      this.checkBoxHasFocus = false;
+    },
+
     /**
- * Toggle the visibility of the dropdown menu.
- * @param  {Event} e
- * @return {void}
- */
+     * Toggle the visibility of the dropdown menu.
+     * @param  {Event} e
+     * @return {void}
+     */
     toggleDropdown() {
       if (this.open) {
         this.$refs.search.blur(); // dropdown will close on blur
       } else {
-        this.open = true;
+        this.inputHasFocus = true;
+        this.search = ''; // or insert the old display value?
         this.$nextTick(function() {
           //This only works when the search field is visible.
           //That's why we wait for the next tick.
@@ -659,15 +583,15 @@ export default {
     },
 
     /**
- * Check if the given option is currently selected.
- * @param  {Object||String}  option
- * @return {Boolean}         True when selected || False otherwise
- */
+     * Check if the given option is currently selected.
+     * @param  {Object||String}  option
+     * @return {Boolean}         True when selected || False otherwise
+     */
     isOptionSelected(option) {
       if (this.multiple && this.internalValue) {
         let selected = false;
         this.internalValue.forEach(opt => {
-          if (typeof opt === 'object' && opt[this.label] === option[this.label]) {
+          if (typeof opt === 'object' && opt[this.optionLabel] === option[this.optionLabel]) {
             selected = true;
           } else if (opt === option) {
             selected = true;
@@ -680,10 +604,10 @@ export default {
     },
 
     /**
- * If there is any text in the search input, remove it.
- * Otherwise, blur the search input to close the dropdown.
- * @return {[type]} [description]
- */
+     * If there is any text in the search input, remove it.
+     * Otherwise, blur the search input to close the dropdown.
+     * @return {[type]} [description]
+     */
     onEscape() {
       if (!this.search.length) {
         this.$refs.search.blur();
@@ -693,28 +617,17 @@ export default {
     },
 
     /**
- * Delete the value on Delete keypress when there is no
- * text in the search input, & there's tags to delete
- * @return {this.internalValue}
- */
-    maybeDeleteValue() {
-    // if (!this.$refs.search.value.length && this.internalValue) {
-      // 	return this.multiple ? this.internalValue.pop() : this.$set('internalValue', null)
-    // }
-    },
-
-    /**
- * Determine if an option exists
- * within this.options array.
- *
- * @param  {Object || String} option
- * @return {boolean}
- */
+     * Determine if an option exists
+     * within this.options array.
+     *
+     * @param  {Object || String} option
+     * @return {boolean}
+     */
     optionExists(option) {
       let exists = false;
 
       this.options.forEach(opt => {
-        if (typeof opt === 'object' && opt[this.label] === option) {
+        if (typeof opt === 'object' && opt[this.optionLabel] === option) {
           exists = true;
         } else if (opt === option) {
           exists = true;
@@ -723,10 +636,218 @@ export default {
 
       return exists;
     },
-    addMoreOptions() {
-      this.onGetMoreOptions(this.search, this.toggleLoading);
-    }
   },
-
 };
 </script>
+
+<style lang="scss">
+.v-select {
+    position: relative;
+    margin: 0 0 1rem;
+
+    > .dropdown-menu {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        overflow-y: auto;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        float: left;
+        min-width: 160px;
+        padding: 0;
+        margin: 2px 0 0 0;
+        font-size: 14px;
+        text-align: left;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        .dropdown-menu-list {
+            list-style: none;
+            list-style-image: none !important;
+            padding: 0;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            .list-item {
+                border: none;
+                padding: 3px 5px;
+                cursor: pointer;
+                &.highlight,
+                &.active {
+                    background-color: #eff3f4;
+                }
+                a {
+                    margin: 5px;
+                }
+            }
+        }
+    }
+
+    .open > .dropdown-menu {
+        display: block;
+    }
+
+    .open-indicator {
+        padding: 0.85em 1em; /* XXX copied from flatskin */
+        vertical-align: middle;
+        width: 1%;
+        white-space: nowrap;
+        .button {
+            margin: 0;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .dropdown-toggle {
+        padding: 0;
+        white-space: normal;
+        min-height: 2.4375rem;
+        width: 100%;
+        cursor: text;
+
+        &.open {
+            background-color:transparent;
+            border-color: #52cae4;
+        }
+
+        &.multi {
+            height: initial;
+            margin: 0;
+        }
+    }
+
+    .selected-tag {
+        &.multi {
+            padding: 2px 4px;
+            background-color: #e5e8eb;
+            border-radius: 4px;
+            border: 1px solid #b0c0c4;
+            height: 20px;
+            margin-top: 10px;
+            margin-right: 4px;
+        }
+        &, &:hover {
+            color: rgba(0, 0, 0, .54);
+        }
+        a:hover {
+            color: inherit;
+        }
+        font-size: 12px;
+        white-space: nowrap;
+        flex: initial;
+        float: left;
+        .close-icon {
+            margin-left: 3px;
+        }
+        .button {
+            margin: 0px;
+        }
+    }
+
+    .single-tag {
+        display: inline-block;
+        border: none;
+        background-color: transparent;
+        &[type="text"] {
+            width: initial;
+        }
+    }
+
+    .close-icon {
+        cursor: pointer;
+    }
+    div.close-icon {
+        display: inline-block;
+    }
+
+    [type="text"] {
+        height: auto;
+    }
+
+    input[type=text] {
+        &, &:focus, &:active {
+            border: none;
+            background-color: transparent;
+        }
+    }
+
+    input[type=search],
+    input[type=search]:focus {
+        display: inline-block;
+        border: none;
+        outline: none;
+        margin: 0;
+        padding: 0 .5em;
+        width: 10em;
+        max-width: 100%;
+        background: none;
+        position: relative;
+        box-shadow: none;
+        clear: none;
+    }
+
+    input[type=search]:disabled {
+        cursor: pointer;
+    }
+
+    li a {
+        cursor: pointer;
+    }
+
+    .selected-list {
+        height: 100%;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .form-control__wrapper {
+        display:block;
+        flex: 1 1 auto;
+    }
+
+    .form-control {
+        margin-bottom: 0px;
+        min-width: 100px;
+        width: 100%,
+        &:not(.multi) {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    }
+
+    .input-area {
+        display: flex;
+        flex-flow: row no-wrap;
+        width:100%;
+    }
+
+    .selected-list {
+        display: flex;
+        flex-grow: 1;
+        flex-wrap: wrap;
+        height:100%;
+        align-self: center;
+    }
+
+    .infinite-scroll {
+        overflow-y: auto;
+    }
+
+    .vue-select__dropdown__filter {
+        margin: 8px 0px 12px 16px;
+    }
+
+    label.vue-select__dropdown__filter__item {
+        margin-right: 24px;
+    }
+}
+</style>
+

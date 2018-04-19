@@ -1,5 +1,8 @@
 {
-    "paging_previous": "Zur\u00fcck",
+    "groups": "Gruppen",
+    "metadata": "Metadaten",
     "paging_next": "Weiter",
+    "paging_previous": "Zur\u00fcck",
+    "users": "Nutzer",
     "dummy": "dummy"
 }

@@ -10,7 +10,8 @@
     "build-test-library": "webpack -d --config unit-test-library.webpack.config.js --progress",
     "watch": "karma start",
     "test": "karma start --single-run",
-    "lint": "eslint --ext .js,.vue dev/ tests/"
+    "lint": "eslint --ext .js,.vue dev/ tests/",
+    "lint:watch": "watch --color 'eslint --color --ext .js,.vue dev/ tests/'"
   },
   "repository": {
     "type": "git",

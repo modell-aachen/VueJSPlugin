@@ -56,24 +56,25 @@ describe("The UserSelector component's", () => {
       });
     });
 
-    it("returns only metadata, if there is no search string", (done) => {
+    it("returns just metadata, if there is no search string and metadata is available", (done) => {
+      userselector.checkedFilterOptions.metadata = 1;
       userselector.updateDropdown().then(() => {
         expect(userselector.options).toEqual(mockMetadata);
         done();
       }).catch(e => fail(e));
     });
 
-    it("returns nothing, if there is no search string and metadata is disabled", (done) => {
-      userselector.internalUseMetadata = false;
+    it("returns users/groups, if there is no search string and metadata is disabled", (done) => {
+      userselector.checkedFilterOptions.metadata = 0;
       userselector.updateDropdown().then(() => {
-        expect(userselector.options).toEqual([]);
+        expect(userselector.options).toEqual(mockUsers.slice(0, userselector.numRows));
         done();
       }).catch(e => fail(e));
     });
 
     it("uses a cached response, only if the parameters did not change", (done) => {
       userselector.search = 'a';
-      userselector.internalUseUsers = false;
+      userselector.checkedFilterOptions.users = 1;
 
       userselector.updateDropdown().then(() => {
         expect(userselector.makeAjaxRequest).toHaveBeenCalled();
@@ -87,12 +88,12 @@ describe("The UserSelector component's", () => {
             expect(userselector.makeAjaxRequest).toHaveBeenCalled();
             userselector.makeAjaxRequest.calls.reset();
 
-            userselector.internalUseUsers = true;
+            userselector.checkedFilterOptions.users = 0;
             userselector.updateDropdown().then(() => {
               expect(userselector.makeAjaxRequest).toHaveBeenCalled();
               userselector.makeAjaxRequest.calls.reset();
 
-              userselector.internalUseGroups = false;
+              userselector.checkedFilterOptions.users = 1;
               userselector.updateDropdown().then(() => {
                 expect(userselector.makeAjaxRequest).toHaveBeenCalled();
                 done();
