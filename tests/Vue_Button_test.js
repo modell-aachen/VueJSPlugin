@@ -6,7 +6,7 @@ describe("The Button component", () => {
   describe("with default values", () => {
     const wrapper = mount(Button);
     it("renders an empty Button", () => {
-      expect(wrapper.contains('a')).toBe(true);
+      expect(wrapper.classes()).toContain('button');
       expect(wrapper.attributes().disabled).not.toBe('disabled');
       expect(wrapper.find('i').exists()).toBe(false);
     });
