@@ -50,20 +50,6 @@ $button-margin-right: rem-calc(8);
         @include button-hover-active($button-background, 3%, $ma-secondary-text);
     }
 }
-/*
-a.button {
-    &:link:focus,
-    &:visited:focus,
-    &:link,
-    &:visited,
-    &:link:active,
-    &:visited:active 
-    &:link:hover,
-    &:visited:hover {
-        @include button-hover-active($button-background, 3%, $ma-secondary-text);
-    }
-}
-*/
 
 .button, a.button {
     &.primary {
