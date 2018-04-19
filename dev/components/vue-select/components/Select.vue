@@ -154,6 +154,10 @@ export default {
   i18nextNamespace: 'VueJSPlugin',
 
   props: {
+    value: {
+      type: Array,
+      default: () => [],
+    },
     label: {
       type: String,
       default: undefined
@@ -207,6 +211,15 @@ export default {
     clearSearchOnSelect: {
       type: Boolean,
       default: true
+    },
+
+    /**
+     * These options are available initially. They may be replaced later on
+     * (eg. ajax) and are not reactive.
+     */
+    initialOptions: {
+      type: Array,
+      default: () => [],
     },
 
     /**
@@ -281,9 +294,9 @@ export default {
       checkedFilterOptions[filter.name] = filter.unchecked ? 0 : 1;
     }
 
-    let internalValue;
+    let internalValue = [];
     let slotOptions;
-    ({internalValue, slotOptions} = this.getSlotOptions());
+    slotOptions = this.getSlotOptions();
 
     let taggable = (this.dataTags === true || this.dataTags === '1') ? true : false;
 
@@ -367,11 +380,6 @@ export default {
       }
       this.$emit('input', val);
     },
-    options() {
-      if (this.resetOnOptionsChange) {
-        this.$set('internalValue', []);
-      }
-    },
     open() {
       if(!this.open) {
         this.search = '';
@@ -383,6 +391,11 @@ export default {
       this.updateDropdown();
     }, debounceMillis),
   },
+  mounted() {
+    this.value.forEach(item => {
+      this.select(item);
+    });
+  },
   created() {
     let internalFilterOptions = this.internalFilterOptions || this.getFilterOptions() || [];
     for(let filter of internalFilterOptions) {
@@ -390,6 +403,11 @@ export default {
         this.updateDropdown();
       });
     }
+    this.$watch('options', function() {
+      if (this.resetOnOptionsChange) {
+        this.$set('internalValue', []);
+      }
+    });
   },
 
   methods: {

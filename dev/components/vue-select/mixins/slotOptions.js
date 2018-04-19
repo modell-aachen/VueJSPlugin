@@ -27,32 +27,59 @@ module.exports = {
       type: String,
       default: '',
     },
+
+    /**
+     * Like slot options these are available from the start and will be
+     * replaced when ajax requests occur.
+     * (Yet) They are not reactive.
+     */
+    initialOptions: {
+      type: Array,
+      default: () => [],
+    },
   },
 
   methods: {
     getSlotOptions() {
       let slotOptions = this.$slots.default ? this.$slots.default : [];
 
+      let values = {};
+      this.value.forEach(item => {
+        values[item.value] = 1;
+      });
+
       slotOptions = slotOptions.filter(element => element.tag === 'option');
 
       let count = 0;
-      let internalValue = [];
       slotOptions = slotOptions.map(node => {
         let children = node.children || [];
 
         let label = getText(children);
 
         let option = {
-          label,
           compare: label.toLocaleLowerCase(),
           value: (node.data && node.data.attrs && node.data.attrs.value !== undefined ? node.data.attrs.value : node.text),
           id: 'slot' + count++,
         };
+        option[this.optionLabel] = label;
 
-        if(node.data && node.data.attrs && node.data.attrs.selected) {
-          internalValue.push(option);
+        if(node.data && node.data.attrs && node.data.attrs.selected && !values[option.value]) {
+          this.value.push(option);
         }
+
         return option;
+      });
+
+      this.initialOptions.forEach(option => {
+        label = option[this.optionLabel];
+        let formattedOption = {
+          value: option.value,
+          compare: label.toLocaleLowerCase(),
+          id: 'slot' + count++,
+        };
+        formattedOption[this.optionLabel] = label;
+        count++;
+        slotOptions.push(formattedOption);
       });
 
       if(this.sortSlotOptions && this.sortSlotOptions !== '0') {
@@ -61,7 +88,7 @@ module.exports = {
         });
       }
 
-      return {slotOptions, internalValue};
+      return slotOptions;
     },
 
     getSlotData(offset) {
