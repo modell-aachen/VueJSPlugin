@@ -1,25 +1,25 @@
 <template>
   <div class="vue-wizard grid-x">
 
-    <div class="icon">
+    <div class="cell shrink icon">
       <i
         :class="iconClass"
-        class="ma-primary-color fa fa-4x"/>
+        class="ma-primary-color fas fa-4x"/>
     </div>
 
-    <div>
-      <h2 class="ma-primary-color">{{ heading }}</h2>
-      <p v-if="text">{{ text }}</p>
-      <vue-button
-        v-if="( buttonCallback || buttonHref) && buttonText"
-        :title="buttonText"
-        :href="buttonHref"
-        type="primary"
-        @click.native="buttonCallback"
-      />
+    <div class="cell auto grid-y">
+      <h2 class="cell ma-primary-color">{{ heading }}</h2>
+      <div class="cell">
+        <p v-if="text">{{ text }}</p>
+        <vue-button
+          v-if="( buttonCallback || buttonHref) && buttonText"
+          :title="buttonText"
+          :href="buttonHref"
+          type="primary"
+          @click.native="buttonCallback"
+        />
+      </div>
     </div>
-    <span class="vue-wizard-clear"/>
-
   </div>
 </template>
 
@@ -87,11 +87,6 @@ export default {
     }
     .icon {
       padding: 30px;
-    }
-    .vue-wizard-clear::after {
-      content: "";
-      clear: left;
-      display: table;
     }
   }
 </style>
