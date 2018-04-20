@@ -1,5 +1,8 @@
 {
-    "paging_previous": "Back",
+    "groups": "Groups",
+    "metadata": "Metadata",
     "paging_next": "Next",
+    "paging_previous": "Back",
+    "users": "Users",
     "dummy": "dummy"
 }
