@@ -119,4 +119,23 @@ Vue.onDocumentReady(function(){
             }
         }
     });
+    new Vue({
+        el: '#alert-examples',
+        template: '#alert-template',
+        methods: {
+            alert: function() {
+             this.$showAlert({
+              type: "warning",
+              title: "Do you really want to destroy everything?",
+              text: "This might be dangerous!",
+              confirmButtonText: "Destroy!",
+              cancelButtonText: "Run"
+             }).then(() => {
+                //Handle confirm action here
+             }).catch(() => {
+                //Handle cancel action here
+             });
+            }
+        }
+    });
 });
