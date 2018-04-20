@@ -88,10 +88,5 @@ export default {
     .icon {
       padding: 30px;
     }
-    .vue-wizard-clear::after {
-      content: "";
-      clear: left;
-      display: table;
-    }
   }
 </style>
