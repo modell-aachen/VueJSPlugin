@@ -1,10 +1,15 @@
 import Input from '../dev/components/vue-input-text/InputText.vue';
 import TestCase from '../dev/unit-test-library/main';
 
-let mount = TestCase.mount;
+
+const createInput = (options) => {
+  delete Input.inject;
+  return TestCase.mount(Input, options);
+};
+
 describe("The InputText component", () => {
   describe("with default values", () => {
-    const wrapper = mount(Input);
+    const wrapper = createInput();
     it("has correct html structure", () => {
       expect(wrapper.contains('.ma-input-group')).toBe(true);
       expect(wrapper.contains('label')).toBe(false);
@@ -23,7 +28,7 @@ describe("The InputText component", () => {
         isDisabled: true,
       }
     };
-    const wrapper = mount(Input, options);
+    const wrapper = createInput(options);
     it("label", () => {
       expect(wrapper.contains('label')).toBe(true);
       expect(wrapper.find('label').html()).toContain(options.propsData.label);
@@ -52,7 +57,7 @@ describe("The InputText component", () => {
         errorMessage: 'FEHLER'
       }
     };
-    const wrapper = mount(Input, options);
+    const wrapper = createInput(options);
     it("and show error on validation error", () => {
       wrapper.setProps({value: 'no email'});
       return Vue.nextTick()
@@ -71,7 +76,7 @@ describe("The InputText component", () => {
         validate: 'email'
       }
     };
-    const wrapper = mount(Input, options);
+    const wrapper = createInput(options);
     it("every time data changes", () => {
       wrapper.setData({data: 'eins'});
       wrapper.setData({data: 'zwei'});

@@ -1,0 +1,21 @@
+pipeline:
+  run tests:
+    image: node
+    commands:
+      - yarn
+      - yarn run test
+      - yarn run lint
+  notify:
+    image: drillster/drone-email
+    host: smtp.sendgrid.net
+    port: 2525
+    username: apikey
+    from: drone@modell-aachen.de
+    secrets: [EMAIL_PASSWORD]
+    recipients:
+      - entwickler@modell-aachen.de
+    recipients_only: true
+    when:
+      success: false
+      change: true
+      failure: true

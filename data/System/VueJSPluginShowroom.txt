@@ -286,3 +286,19 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
 <script type="text/x-template" id="splitbutton-template">
 %INCLUDE{"%WEB%.%TOPIC%" section="SplitbuttonVueTemplate"}%
 </script>
+
+---+ Alerts
+Alerts can be triggered by calling the $showAlert function. See the [[%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/showroom.js][showroom.js]] for configuration examples.
+<div class="flatskin-wrapped">
+  <div id="alert-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"AlertTemplate"}%
+<vue-button title="Warning" @click.native="alert"/>
+%ENDSECTION{"AlertTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="alert-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="AlertTemplate"}%
+</script>
