@@ -11,7 +11,6 @@ describe("The InputText component", () => {
   describe("with default values", () => {
     const wrapper = createInput();
     it("has correct html structure", () => {
-      expect(wrapper.contains('.ma-input-group')).toBe(true);
       expect(wrapper.contains('label')).toBe(false);
       expect(wrapper.contains('input')).toBe(true);
       expect(wrapper.attributes().disabled).not.toBe('disabled');

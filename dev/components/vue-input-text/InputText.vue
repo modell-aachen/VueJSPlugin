@@ -3,11 +3,11 @@
     :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}">
     <label v-if="label">{{ label }}</label>
     <div class="ma-input--wrapper">
-        <i
-          v-if="icon"
-          :class="icon"
-          class="ma-input-text-icon"
-          aria-hidden="true"/>
+      <i
+        v-if="icon"
+        :class="icon"
+        class="ma-input-text-icon"
+        aria-hidden="true"></i>
 
       <input
         v-validate="validate"
