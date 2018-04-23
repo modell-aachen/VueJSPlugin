@@ -15,7 +15,6 @@ $ma-warning-hover: #eecf75;
 $ma-warning-light: #f6e7ba; // equals rgba($ma-warning, 0.3) on white background
 $ma-brown: #7f7b71;
 $ma-sand: #e5e0d5;
-$ma-body-text: #282c2e;
 $ma-darker-grey: #3E4143;
 $ma-dark-grey: #84878a;
 $ma-light-grey: #e2e2e2;
@@ -26,10 +25,15 @@ $ma-bg-beige-dark: #dddad5;
 $ma-bg-light: #f7f7f7;
 $ma-light-border: #f1efea;
 $ma-help-text: #9a9a9a;
-$ma-white: white;
-$ma-black: black;
 $ma-select-multi-text-color: #8c7b71;
 $ma-data-table-border: #cdd0d3;
+
+$ma-white: white;
+$ma-black: black;
+$ma-body-text: rgba(0,0,0,0.87);
+$ma-secondary-text: rgba(0,0,0,0.64);
+$ma-disabled-text: rgba(0,0,0,0.34);
+
 
 $ma-font-regular: 'Open Sans';
 $ma-font-semibold: $ma-font-regular;
