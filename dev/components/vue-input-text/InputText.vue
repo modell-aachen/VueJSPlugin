@@ -1,15 +1,20 @@
 <template>
   <div
-    :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}"
-    class="ma-input-group">
+    :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}">
     <label v-if="label">{{ label }}</label>
     <div class="ma-input--wrapper">
+        <i
+          v-if="icon"
+          :class="icon"
+          class="ma-input-text-icon"
+          aria-hidden="true"/>
+
       <input
         v-validate="validate"
         :name="name"
         v-model="data"
         :placeholder="placeholder"
-        :class="{'ma-small': isSmall}"
+        :class="{'ma-small': isSmall, 'ma-input-text-indent': (icon!=undefined)}"
         :disabled="isDisabled"
         type="text">
 
@@ -18,13 +23,6 @@
           class="fas fa-exclamation-circle"
           aria-hidden="true"/>
         <small>{{ definedErrorMessage }}</small>
-      </template>
-
-      <template v-else-if="icon">
-        <i
-          v-if="icon"
-          :class="icon"
-          aria-hidden="true"/>
       </template>
 
     </div>
@@ -102,6 +100,14 @@ export default {
 
 .ma-input--wrapper {
   position: relative;
+}
+.ma-input-text-icon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+.ma-input-text-indent {
+  text-indent: 30px;
 }
 
 </style>
