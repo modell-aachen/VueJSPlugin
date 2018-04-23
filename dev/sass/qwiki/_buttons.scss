@@ -18,7 +18,7 @@ $button-margin-right: rem-calc(8);
 @mixin button-hover-active($bg-color, $color-effect, $text-color) {
     background-color: $bg-color;
     color: $text-color;
-    &:hover, &:focus {
+    &:hover {
         background-color: lighten($bg-color, $color-effect);
         color: $text-color;
     }
@@ -45,6 +45,7 @@ $button-margin-right: rem-calc(8);
     .fa,.far,.fal {
         margin-right: rem-calc(16);
         font-size: 1.33333333em;
+        vertical-align: text-bottom;
     }
     &, &:link, &:visited {
         @include button-hover-active($button-background, 3%, $ma-secondary-text);
