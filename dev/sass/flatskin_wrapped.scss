@@ -57,6 +57,7 @@ $OpenSansPath: '../fonts/opensans';
     @include foundation-switch;
     @include foundation-dropdown;
     @import 'qwiki/mixins';
+    @import 'qwiki/globals';
     @import 'qwiki/base';
     @import 'qwiki/typography';
     @import 'qwiki/links';

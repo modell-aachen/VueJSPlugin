@@ -52,6 +52,12 @@ $breakpoints: (
 );
 $breakpoint-classes: (small medium large xlarge xxlarge xxxlarge xxxxlarge);
 
+$spacings: (
+  small: 8px,
+  medium: 16px,
+  large: 24px,
+);
+
 //
 // Override of Foundation Globals
 // See 'node_modules/foundation-sites/scss/_global.scss' for a full list of

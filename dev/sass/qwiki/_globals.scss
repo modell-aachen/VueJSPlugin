@@ -1,0 +1,6 @@
+// generate .ma-margin-top-small etc.
+@each $name, $size in $spacings {
+  .ma-margin-top-#{$name} {
+    margin-top: $size;
+  }
+}
