@@ -4,13 +4,13 @@
     <div class="cell shrink icon">
       <i
         :class="iconClass"
-        class="ma-primary-color fas fa-4x"/>
+      />
     </div>
 
     <div class="cell auto grid-y">
       <h2 class="cell ma-primary-color">{{ heading }}</h2>
       <div class="cell">
-        <p v-if="text">{{ text }}</p>
+        <div v-if="text">{{ text }}</div>
         <vue-button
           v-if="( buttonCallback || buttonHref) && buttonText"
           :title="buttonText"
@@ -24,6 +24,17 @@
 </template>
 
 <script>
+const normalizeIconClass = iconClass => {
+  if(!/(?:^|\s)fa\w?(?:$|\s)/.test(iconClass)) {
+    iconClass = `far ${iconClass}`;
+  }
+  if(!/(?:^|\s)fa-\d+x(?:$|\s)/.test(iconClass)) {
+    iconClass = `${iconClass} fa-2x`;
+  }
+  return iconClass;
+};
+const defaultIcon = normalizeIconClass("fa-magic");
+
 export default {
   props: {
     params: {
@@ -33,7 +44,7 @@ export default {
   },
   data: function() {
     return {
-      iconClass: "fa-magic",
+      iconClass: defaultIcon,
       text: "",
       heading: "",
       buttonHref: "",
@@ -43,7 +54,7 @@ export default {
   },
   watch: {
     params: function() {
-      this.iconClass = "fa-magic";
+      this.iconClass = defaultIcon;
       this.text = "";
       this.heading = "";
       this.buttonHref = "";
@@ -61,7 +72,7 @@ export default {
         this.heading = this.params[0];
       }
       if(this.params[1]) {
-        this.iconClass = this.params[1];
+        this.iconClass = normalizeIconClass(this.params[1]);
       }
       if(this.params[2]) {
         this.text = this.params[2];
@@ -81,12 +92,24 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../../sass/settings.scss';
+
   .vue-wizard {
+    background-color: $ma-bg-beige;
+    border-radius: $ma-border-radius;
+    color: $ma-secondary-text;
     .button {
-      margin-top: 20px;
+      margin-top: map-get($spacings, large);
+    }
+    h2 {
+      margin: map-get($spacings, medium) 0;
     }
     .icon {
-      padding: 30px;
+      margin: map-get($spacings, medium);
+      color: $ma-primary;
+      &:hover {
+        color:$ma-primary-hover;
+      }
     }
   }
 </style>

@@ -9,3 +9,4 @@ import './Vue_Input_Text_test.js';
 import './Vue_Check_test.js';
 import './Vue_Tabpane_test.js';
 import './Vue_Pagination_test.js';
+import './Vue_Wizard_test.js';
