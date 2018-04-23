@@ -35,7 +35,7 @@ $button-margin-right: rem-calc(8);
     }
 }
 
-.button {
+.button, a.button {
     @include ma-font('semibold');
     @include button-hover-active($button-background, 3%, $ma-secondary-text);
     line-height: rem-calc(36);
@@ -46,8 +46,12 @@ $button-margin-right: rem-calc(8);
         margin-right: rem-calc(16);
         font-size: 1.33333333em;
     }
+    &, &:link, &:visited {
+        @include button-hover-active($button-background, 3%, $ma-secondary-text);
+    }
 }
-.button {
+
+.button, a.button {
     &.primary {
         @include button-hover-active($ma-primary, 10%, $ma-white);
     }
