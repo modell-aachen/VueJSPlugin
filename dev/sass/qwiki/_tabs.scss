@@ -1,3 +1,5 @@
+$ma-boarder-size: 2px;
+
 .flatskin-wrapped > .jqTabPaneFlat {
   margin: .5em;
 }
@@ -10,11 +12,13 @@
     a {
       background: $ma-white-grey;
       border: 0;
+      border-top: $ma-boarder-size solid $ma-white-grey;
       border-top-left-radius: $ma-border-radius;
       border-top-right-radius: $ma-border-radius;
       color: $ma-secondary-text;
       line-height: 100%;
-      padding: rem-calc(16 24);
+      padding: rem-calc(16 24 8);
+      font-size: rem-calc(14);
 
       &:hover {
         color: $ma-primary;
@@ -27,8 +31,8 @@
 
       &.current a {
         background: $ma-white;
-        border: 2px solid $ma-primary;
-        border-bottom: 2px solid $ma-white;
+        border: $ma-boarder-size solid $ma-primary;
+        border-bottom: $ma-boarder-size solid $ma-white;
         color: $ma-body-text;
       }
     }
@@ -37,7 +41,7 @@
   .vue-tab.current,
   .jqTab.current {
     border: 0;
-    border-top: 2px solid $ma-light-grey;
+    border-top: $ma-boarder-size solid $ma-light-grey;
   }
 
   .vue-tab-contents,
@@ -57,12 +61,12 @@
       border: 0;
       color: $ma-secondary-text;
       font-weight: 600;
-      border-bottom: 2px solid transparent;
+      border-bottom: $ma-boarder-size solid transparent;
       padding: rem-calc(6 0);
       margin: rem-calc(0 16);
 
       &:hover {
-        border-bottom: 2px solid $ma-primary;
+        border-bottom: $ma-boarder-size solid $ma-primary;
       }
     }
     li {
