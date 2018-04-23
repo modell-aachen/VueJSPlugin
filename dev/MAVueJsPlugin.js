@@ -31,6 +31,7 @@ import VueClickOutside from 'vue-click-outside';
 import AlertPlugin from './alert/AlertPlugin';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
+import VueSlideUpDown from 'vue-slide-up-down';
 
 class MAVueJsPlugin {
   constructor(options) {
@@ -71,6 +72,7 @@ class MAVueJsPlugin {
     Vue.component('sidebar', Sidebar);
     Vue.component('sidebar-standard-layout', SidebarStandardLayout);
     Vue.component('vue-wizard', VueWizard);
+    Vue.component('vue-slide-up-down', VueSlideUpDown);
     Vue.directive('tooltip', VTooltip);
     Vue.directive('click-outside', VueClickOutside);
 

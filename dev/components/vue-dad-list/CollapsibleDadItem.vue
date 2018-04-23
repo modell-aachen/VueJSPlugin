@@ -42,19 +42,17 @@
             :class="chevronByCollapsed"
             class="fas"/></span>
         </div>
-      </div>
-      <div class="ma-collapsible-item-animation-clipper">
-        <transition name="collapsible-item-slide-y">
-          <div
-            v-if="!item.collapsed"
-            class="ma-collapsible-item-content">
-            <div class="grid-container fluid">
-              <slot/>
+        </div>
+        <vue-slide-up-down
+            :active="!item.collapsed"
+            :duration="300">
+            <div class="ma-collapsible-item-content">
+                <div class="grid-container fluid">
+                    <slot/>
+                </div>
             </div>
-          </div>
-        </transition>
+            </vue-slide-up-down>
       </div>
-    </div>
   </vddl-nodrag>
 </template>
 
@@ -126,19 +124,5 @@ export default {
 .handle {
   cursor: move;
 }
-.ma-collapsible-item-animation-clipper {
-    overflow: hidden;
-}
-.collapsible-item-slide-y-enter-active,
-.collapsible-item-slide-y-leave-active {
-    transition: all .3s;
-}
-.collapsible-item-slide-y-enter,
-.collapsible-item-slide-y-leave-to {
-    transform: translate(0, -100%);
-    /*
-      unfortunately this will not look good, because browsers make too few reflows
-      height: 0px;
-     */
-}
+
 </style>

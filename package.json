@@ -61,6 +61,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "vue-slide-up-down": "git://github.com/da-snap/vue-slide-up-down",
     "@vue/test-utils": "^1.0.0-beta.13",
     "i18next": "^10.2.1",
     "jsdom": "^11.7.0",
