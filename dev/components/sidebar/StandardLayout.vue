@@ -27,6 +27,11 @@ export default {
     padding: $sidebar-content-padding;
   }
 
+  .sidebar-content h2 {
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+  }
+
   .sidebar-header{
     display: flex;
     flex-wrap: nowrap;
