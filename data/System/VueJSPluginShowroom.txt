@@ -108,6 +108,7 @@ The following examples provide an overview of its functionality. The correspondi
     <vue-input-text v-model="userInput" placeholder="Disabled" is-disabled />
     <vue-input-text v-model="userInput" name="Email" validate="email" placeholder="Validate Email" />
     <vue-input-text v-model="userInput" name="Feld" validate="alpha_num" placeholder="Validate alphanumerisch" />
+    <vue-input-text v-model="userInput" label="Search" icon="fa fa-search" placeholder="Search" />
 </div>
 %ENDSECTION{"InputTextVueTempalte"}%
 </verbatim>
