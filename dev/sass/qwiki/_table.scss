@@ -21,7 +21,7 @@ table.ma-table-short {
     word-wrap: break-word;
   }
 }
-thead.ma-table-short {
+thead {
   th, td {
     border-bottom: 2px solid $ma-light-grey;
     font-size: rem-calc(12);
@@ -34,7 +34,7 @@ th.ma-table-short {
     color: $ma-secondary-text;
 }
 
-tr.ma-table-short {
+tr {
   &:last-child {
     td {
       border-bottom: 2px solid $ma-light-grey;
