@@ -5,6 +5,7 @@ $table-border: 0;
 $table-is-striped: "none"; //Disable foundation default stripes
 $table-head-font-color: $ma-secondary-text;
 $table-padding: rem-calc(12 48 12 0);
+$table-background: transparent;
 
 @include foundation-table;
 

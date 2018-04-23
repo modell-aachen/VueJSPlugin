@@ -38,7 +38,7 @@ $button-margin-right: rem-calc(8);
 .button, a.button {
     @include ma-font('semibold');
     @include button-hover-active($button-background, 3%, $ma-secondary-text);
-    line-height: rem-calc(36);
+    line-height: ($input-font-size * unitless-calc($input-line-height)) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
     border: 0;
     margin-right: $button-margin-right;
     margin-bottom: $button-margin-bottom;
