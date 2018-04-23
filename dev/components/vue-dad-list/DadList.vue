@@ -78,7 +78,7 @@ export default {
       this.$emit("addItem");
     },
     setLastOpendId: function(newId) {
-      this.lastOpendItemId = newId;
+      this.$emit("triggerOpend", newId);
     }
   }
 };
