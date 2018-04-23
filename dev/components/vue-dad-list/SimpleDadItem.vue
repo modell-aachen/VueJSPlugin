@@ -11,7 +11,7 @@
                 class="fal fa-bars handle"/>
             </div>
             <div class="cell shrink align-self-middle">
-              <h3>{{ item.label }}<i
+              <h3>{{ item.label || item.description }}<i
                 v-if="item.status"
                 :class="item.status"
                 class="fas fa-circle ma-status-dot"/><small v-if="item.subLabel">{{ item.subLabel }}</small></h3>

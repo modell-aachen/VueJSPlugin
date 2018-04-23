@@ -54,6 +54,10 @@ export default {
     'allowedTypes': {
       type: Array,
       default: null
+    },
+    'lastOpendItemId': {
+      type: [String, Number],
+      default: null
     }
   },
   data: function() {
@@ -63,7 +67,6 @@ export default {
         "label": "",
         "collapsed": true
       },
-      lastOpendItemId: null,
       DaDList: true
     };
   },
@@ -75,7 +78,7 @@ export default {
       this.$emit("addItem");
     },
     setLastOpendId: function(newId) {
-      this.lastOpendItemId = newId;
+      this.$emit("triggerOpend", newId);
     }
   }
 };
