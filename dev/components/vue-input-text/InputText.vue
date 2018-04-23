@@ -7,7 +7,7 @@
         v-if="icon"
         :class="icon"
         class="ma-input-text-icon"
-        aria-hidden="true"></i>
+        aria-hidden="true"/>
 
       <input
         v-validate="validate"
