@@ -25,6 +25,69 @@ The following examples provide an overview of its functionality. The correspondi
 	<div id="sidebarModalExample"></div>
 </div>
 
+---+ Vue Header
+
+<div class="flatskin-wrapped">
+ <div id="header-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"HeaderVueTemplate"}%
+<div>
+  <table>
+    <tr>
+      <th>
+        plain header
+      </th>
+      <th>
+        with ruler
+      </th>
+      <th>
+        with sublabel
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <vue-header>Header 1</vue-header>
+      </td>
+      <td>
+      </td>
+      <td>
+        <vue-header sublabel="sublabel">Header 1</vue-header3>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <vue-header2>Header 2</vue-header2>
+      </td>
+      <td>
+        <vue-header2 ruler>Header 2</vue-header2>
+      </td>
+      <td>
+        <vue-header2 sublabel="sublabel">Header 2</vue-header2>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <vue-header3>Header 3</vue-header3>
+      </td>
+      <td>
+        <vue-header3 ruler>Header 3</vue-header3>
+      </td>
+      <td>
+        <vue-header3 sublabel="sublabel">Header 3</vue-header3>
+      </td>
+    </tr>
+  </table>
+</div>
+%ENDSECTION{"HeaderVueTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="header-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="HeaderVueTemplate"}%
+</script>
+
+
 ---+ Vue Button
 
 <div class="flatskin-wrapped">

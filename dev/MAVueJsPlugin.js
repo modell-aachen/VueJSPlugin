@@ -13,6 +13,10 @@ import VueDadItem from './components/vue-dad-list/DadItem.vue';
 import VueCollapsibleDadItem from './components/vue-dad-list/CollapsibleDadItem.vue';
 import VueSimpleDadItem from './components/vue-dad-list/SimpleDadItem.vue';
 import VueWizard from './components/vue-wizard/VueWizard.vue';
+import VueHeader from './components/vue-header/VueHeader.vue';
+import VueHeader1 from './components/vue-header/VueHeader1.vue';
+import VueHeader2 from './components/vue-header/VueHeader2.vue';
+import VueHeader3 from './components/vue-header/VueHeader3.vue';
 import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
 import Base64 from 'js-base64';
@@ -73,6 +77,10 @@ class MAVueJsPlugin {
     Vue.component('sidebar-standard-layout', SidebarStandardLayout);
     Vue.component('vue-wizard', VueWizard);
     Vue.component('vue-slide-up-down', VueSlideUpDown);
+    Vue.component('vue-header', VueHeader);
+    Vue.component('vue-header1', VueHeader1);
+    Vue.component('vue-header2', VueHeader2);
+    Vue.component('vue-header3', VueHeader3);
     Vue.directive('tooltip', VTooltip);
     Vue.directive('click-outside', VueClickOutside);
 

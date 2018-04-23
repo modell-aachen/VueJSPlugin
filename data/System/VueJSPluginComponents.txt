@@ -5,6 +5,21 @@
 
 ---+ Vue Component Documentation
 This is the technical documentation from all global Vue JS Components. For an example how to use see [[System.VueJSPluginShowroom]].
+---++ Header
+<verbatim class="html">
+<vue-header>SLOT</vue-header>
+<vue-header1>SLOT</vue-header>
+<vue-header2>SLOT</vue-header2>
+<vue-header3>SLOT</vue-header3>
+</verbatim>
+
+---+++ Props
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| _SLOT_ | | | | This will be used as the content of the heading. |
+| level | =String= / =Number= | | =1= | Corresponds to the number of a =h1= / =h2= / =h3= tag. Must be one of =1=, =2= or =3=. %BR% As a shortcut, you can also use =vue-header1=, =vue-header2= or =vue-header3=. |
+| ruler | =Boolean= | | false | Adds a small separator above the heading. Only for level 1 and 2. |
+| sublabbel | =String= | | | Add a sublabel below the heading. |
+
 ---++ Sidebar
 <verbatim class="html">
 <sidebar>

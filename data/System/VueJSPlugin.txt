@@ -48,6 +48,7 @@ and the fields property name from 'fields' to 'validationFields'.
 
 ---++ Additional components
 For an overviwe see: [[System.VueJSPluginShowroom]] and for documentation: [[System.VueJSPluginComponents]]
+---+++ Vue Header
 ---+++ Vue Sidebar
 ---+++ Vue Button
 ---+++ Vue Check Item

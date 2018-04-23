@@ -1,5 +1,9 @@
 Vue.onDocumentReady(function(){
     new Vue({
+        el: '#header-examples',
+        template: '#header-template',
+    });
+    new Vue({
         el: '#button-examples',
         template: '#button-template',
         methods: {
