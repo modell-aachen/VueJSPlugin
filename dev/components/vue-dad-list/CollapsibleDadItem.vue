@@ -26,7 +26,7 @@
           <!-- Dummy Drop List -->
           <vue-dad-list
             v-if="item.fields && item.collapsed"
-            :allowed-types="['status']"
+            :allowed-types="allowedTypes"
             :list="dummyDropList"
             item-type="vue-simple-dad-item">
             <vddl-placeholder slot="placeholder">
@@ -42,17 +42,17 @@
             :class="chevronByCollapsed"
             class="fas"/></span>
         </div>
-        </div>
-        <vue-slide-up-down
-            :active="!item.collapsed"
-            :duration="300">
-            <div class="ma-collapsible-item-content">
-                <div class="grid-container fluid">
-                    <slot/>
-                </div>
-            </div>
-            </vue-slide-up-down>
       </div>
+      <vue-slide-up-down
+        :active="!item.collapsed"
+        :duration="300">
+        <div class="ma-collapsible-item-content">
+          <div class="grid-container fluid">
+            <slot/>
+          </div>
+        </div>
+      </vue-slide-up-down>
+    </div>
   </vddl-nodrag>
 </template>
 
@@ -75,6 +75,12 @@ export default {
     lastOpendItemId: {
       type: [String, Number],
       default: null
+    },
+    allowedTypes: {
+      type: Array,
+      default: function() {
+        return [];
+      }
     }
   },
   data: function() {
