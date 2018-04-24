@@ -3,13 +3,13 @@
     <div class="ma-collapsible-item">
       <!-- Title Area -->
       <div
-        :class="{'ma-collapsed': item.collapsed}"
+        :class="{'ma-collapsed': collapsed}"
         class="ma-collapsible-item-title grid-x align-justify grid-padding-x">
         <div class="cell shrink">
           <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
             <div class="cell shrink align-self-middle handle-container">
               <vddl-handle
-                v-if="item.collapsed"
+                v-if="collapsed"
                 :handle-left="0"
                 :handle-top="0"
                 class="fal fa-bars handle"/>
@@ -25,7 +25,7 @@
         <div class="cell auto align-self-middle">
           <!-- Dummy Drop List -->
           <vue-dad-list
-            v-if="item.fields && item.collapsed"
+            v-if="item.fields && collapsed"
             :allowed-types="allowedTypes"
             :list="dummyDropList"
             item-type="vue-simple-dad-item">
@@ -44,13 +44,13 @@
         </div>
       </div>
       <vue-slide-up-down
-        :active="!item.collapsed"
-        :duration="300">
-        <div class="ma-collapsible-item-content">
-          <div class="grid-container fluid">
-            <slot/>
+            :active="!collapsed"
+            :duration="300">
+          <div class="ma-collapsible-item-content">
+              <div class="grid-container fluid">
+                  <slot/>
+              </div>
           </div>
-        </div>
       </vue-slide-up-down>
     </div>
   </vddl-nodrag>
@@ -85,12 +85,13 @@ export default {
   },
   data: function() {
     return {
-      dummyDropList: []
+      dummyDropList: [],
+      collapsed: true
     };
   },
   computed: {
     chevronByCollapsed: function() {
-      return this.item.collapsed ? 'fa-chevron-right' : 'fa-chevron-down';
+      return this.collapsed ? 'fa-chevron-right' : 'fa-chevron-down';
     }
   },
   watch: {
@@ -102,15 +103,18 @@ export default {
     lastOpendItemId: function(lastOpenedItemId) {
       if(this.multiOpen === null || this.multiOpen === false) {
         if(lastOpenedItemId !== this.item.id) {
-          this.item.collapsed = true;
+          this.collapsed = true;
+        } else {
+          this.collapsed = false;
         }
+
       }
     }
   },
   methods: {
     toggleCollapsed: function() {
-      this.item.collapsed = !this.item.collapsed;
-      if(!this.item.collapsed) {
+      this.collapsed = !this.collapsed;
+      if(!this.collapsed) {
         let parentList = this.getListParent();
         parentList.$emit('lastOpend', this.item.id);
       }
