@@ -1,6 +1,5 @@
 <template>
-  <div
-    :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}">
+  <div class="ma-input" :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}">
     <label v-if="label">{{ label }}</label>
     <div class="ma-input--wrapper">
       <i
@@ -98,7 +97,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+.ma-input {
+  margin: 0 0 1rem;
+}
 .ma-input--wrapper {
   position: relative;
 }

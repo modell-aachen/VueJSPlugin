@@ -32,6 +32,10 @@ export default {
     margin-bottom: 1.5rem;
   }
 
+  .sidebar-content h3 {
+    margin-bottom: .5rem;
+  }
+
   .sidebar-header{
     display: flex;
     flex-wrap: nowrap;
