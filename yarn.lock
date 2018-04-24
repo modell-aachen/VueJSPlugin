@@ -6763,9 +6763,9 @@ vue-router@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
 
-"vue-slide-up-down@git://github.com/da-snap/vue-slide-up-down":
+"vue-slide-up-down@git://github.com/modell-aachen/vue-slide-up-down.git":
   version "1.2.0"
-  resolved "git://github.com/da-snap/vue-slide-up-down#4e5d21a1184f8dc6ac286828a4e67ed4fa636f8d"
+  resolved "git://github.com/modell-aachen/vue-slide-up-down.git#46364974053a81e718de78efae705217ef189148"
 
 vue-style-loader@^3.0.0:
   version "3.0.3"

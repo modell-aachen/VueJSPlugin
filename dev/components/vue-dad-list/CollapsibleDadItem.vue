@@ -42,17 +42,17 @@
             :class="chevronByCollapsed"
             class="fas"/></span>
         </div>
-      </div>
-      <vue-slide-up-down
-        :active="!item.collapsed"
-        :duration="300">
-        <div class="ma-collapsible-item-content">
-          <div class="grid-container fluid">
-            <slot/>
-          </div>
         </div>
-      </vue-slide-up-down>
-    </div>
+        <vue-slide-up-down
+            :active="!item.collapsed"
+            :duration="300">
+            <div class="ma-collapsible-item-content">
+                <div class="grid-container fluid">
+                    <slot/>
+                </div>
+            </div>
+        </vue-slide-up-down>
+      </div>
   </vddl-nodrag>
 </template>
 
