@@ -38,7 +38,8 @@ export default {
     },
     'name': {
       type: String,
-      default: ''
+      default: '',
+      required: true
     },
     'validate': {
       type: String,
