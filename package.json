@@ -8,6 +8,7 @@
   },
   "scripts": {
     "postinstall": "grunt build",
+    "build": "grunt build",
     "watch": "grunt watch"
   },
   "repository": {
