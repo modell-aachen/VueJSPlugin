@@ -1,5 +1,7 @@
 <template>
-  <div class="ma-input" :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}">
+  <div
+    :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}"
+    class="ma-input">
     <label v-if="label">{{ label }}</label>
     <div class="ma-input--wrapper">
       <i
@@ -37,8 +39,7 @@ export default {
     },
     'name': {
       type: String,
-      default: '',
-      required: true
+      default: ''
     },
     'validate': {
       type: String,
@@ -88,9 +89,14 @@ export default {
   },
   watch: {
     data: function(value){
-      if(this.name) {
+      if( this.name ) {
         this.$validator.validate(this.name, value);
       }
+    }
+  },
+  mounted() {
+    if( this.validate.length > 0 && this.name.length<= 0) {
+      window.console.warn("[vue-input-text] validation requires the name attribute to be set. Currently no validation is performed. Input label '" + this.label + "'");
     }
   }
 };
@@ -111,5 +117,4 @@ export default {
 .ma-input-text-indent {
   text-indent: 30px;
 }
-
 </style>
