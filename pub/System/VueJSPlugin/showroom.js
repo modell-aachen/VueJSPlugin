@@ -35,6 +35,19 @@ Vue.onDocumentReady(function(){
           userInput: ''
         }
     });
+    try {
+        let pagedSelectorJson = $('#paged-selector-json').text();
+        let pagedSelectorOptions = JSON.parse(pagedSelectorJson);
+        new Vue({
+            el: '#paged-selector-examples',
+            template: '#paged-selector-template',
+            data: {
+                options: pagedSelectorOptions
+            }
+        });
+    } catch(e) {
+        window.console && console.log(e);
+    }
     new Vue({
         el: '#tabpane-examples',
         template: '#tabpane-template'

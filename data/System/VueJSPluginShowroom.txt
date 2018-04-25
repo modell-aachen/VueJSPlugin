@@ -190,6 +190,45 @@ The following examples provide an overview of its functionality. The correspondi
 %INCLUDE{"%WEB%.%TOPIC%" section="CheckItemVueTemplate2"}%
 </script>
 
+---+ Paged Selector
+
+<div class="flatskin-wrapped" style="max-width: 500px;">
+ <div id="paged-selector-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"PagedSelectorTemplateData"}%
+[
+    { "value":"01", "label":"January", "description":"Acacia" },
+    { "value":"02", "label":"February", "description":"Acacia, Cedar, Juniper, Olive, Pine" },
+    { "value":"03", "label":"March", "description":"Birch, Cedar, Juniper, Cottonwood, Elm, Maple, Mesquite, Oak, Olive, Pine" },
+    { "value":"04", "label":"April", "description":"Acacia, Ash, Birch, Cedar, Juniper, Cottonwood, Elm, Maple, Mesquite, Oak, Olive, Pecan, Pine, Sycamore" },
+    { "value":"05", "label":"May", "description":"Acacia, Ash, Cottonwood, Elm, Mesquite, Oak, Olive, Pecan, Sycamore, Walnut, Black" },
+    { "value":"06", "label":"June", "description":"Walnut, Black" },
+    { "value":"07", "label":"July", "description":"Cedar, Juniper, Walnut, Black" },
+    { "value":"08", "label":"August", "description":"Cedar, Juniper, Elm" },
+    { "value":"09", "label":"September", "description":"Bottlebrush, Cedar, Juniper, Elm" },
+    { "value":"10", "label":"October"},
+    { "value":"11", "label":"November"},
+    { "value":"12", "label":"December"}
+]
+%ENDSECTION{"PagedSelectorTemplateData"}%
+%STARTSECTION{"PagedSelectorTemplate"}%
+<vue-paged-selector
+    filterLabel="filter options"
+    filterPlaceholder="type here to filter"
+    :options="options"
+></vue-paged-selector>
+%ENDSECTION{"PagedSelectorTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="paged-selector-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="PagedSelectorTemplate"}%
+</script>
+<script type="application/json" id="paged-selector-json">
+%INCLUDE{"%WEB%.%TOPIC%" section="PagedSelectorTemplateData"}%
+</script>
+
 ---+ Vue Input Text
 
 <div class="flatskin-wrapped">

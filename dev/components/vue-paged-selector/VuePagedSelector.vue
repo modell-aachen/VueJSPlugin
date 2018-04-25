@@ -1,38 +1,31 @@
 <template>
   <div class="vue-paged-selector">
     <vue-input-text
-      v-model="search"
-      :label="label"
-      :placeholder="placeholder" />
-    <div>
+      v-model="filter"
+      :label="filterLabel"
+      :placeholder="filterPlaceholder"
+      name="filterOptions"
+    />
+
+    <div class="grid-container fluid">
+      <div
+        v-for="option in displayedOptions"
+        :key="option.key"
+      >
+        <vue-check-item
+          :value="option.value"
+          :description="option.description"
+          :badge="option.badge"
+          v-model="internalValue"
+          type="radio"
+        >
+          {{ option.label }}
+        </vue-check-item>
+      </div>
       <vue-pagination
         v-model="page"
         :page-count="pageCount"
-      >
-        <div
-          v-for="option in filteredOptions"
-          :key="option.value"
-          class="grid-x"
-        >
-          <div class="cell auto">
-            <vue-check-item
-              v-model="internalValue"
-              :value="option.value"
-              type="radio">
-              <b>{{ option.label }}</b>
-              <div
-                v-if="option.description"
-                class="ma-margin-top-small"
-              >
-                {{ option.description }}
-              </div>
-            </vue-check-item>
-          </div>
-          <div class="cell shrink">
-            <span v-if="option.badge">{{ option.badge }}</span>
-          </div>
-        </div>
-      </vue-pagination>
+      />
     </div>
   </div>
 </template>
@@ -42,11 +35,11 @@ const itemsPerPage = 5;
 
 export default {
   props: {
-    label: {
+    filterLabel: {
       type: String,
       default: undefined,
     },
-    placeholder: {
+    filterPlaceholder: {
       type: String,
       default: undefined,
     },
@@ -61,45 +54,55 @@ export default {
     },
   },
   data() {
+    let serial = 0;
     let internalOptions = this.options.map(option => {
       let compare = (option.label || '').toLocaleLowerCase();
       return {
+        key: ++serial,
         value: option.value,
         label: option.label,
         badge: option.badge,
-        description: option.description && option.description.length ? option.description : undefined,
+        description: option.description !== undefined ? option.description : '',
         compare: compare,
       };
     });
     return {
-      search: '',
-      page: 0,
+      filter: '',
+      page: 1,
       internalOptions,
       internalValue: this.value,
+      filteredOptions: internalOptions,
     };
   },
   computed: {
-    filteredOptions() {
-      let search = this.search.toLocaleLowerCase();
-      let options = this.internalOptions.filter(option => option.compare.indexOf(search) !== -1);
-      return options;
-    },
     pageCount() {
       return Math.ceil(this.filteredOptions.length / itemsPerPage);
+    },
+    displayedOptions() {
+      let start = Math.min((this.page - 1) * itemsPerPage, this.filteredOptions.length);
+      let end = Math.min(start + itemsPerPage, this.filteredOptions.length);
+      return this.filteredOptions.slice(start, end);
     },
   },
   watch: {
     internalValue() {
       this.$emit('input', this.internalValue);
     },
+    filter() {
+      this.page = 1;
+      let filter = this.filter.toLocaleLowerCase();
+      let options = this.internalOptions.filter(option => option.compare.indexOf(filter) !== -1);
+      this.filteredOptions = options;
+    },
   },
-  methods: {
-  }
 };
 </script>
 
 <style lang="scss">
 @import '../../sass/settings.scss';
+
+.vue-paged-selector {
+}
 </style>
 
 

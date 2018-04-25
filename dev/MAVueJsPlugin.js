@@ -17,6 +17,7 @@ import VueHeader from './components/vue-header/VueHeader.vue';
 import VueHeader1 from './components/vue-header/VueHeader1.vue';
 import VueHeader2 from './components/vue-header/VueHeader2.vue';
 import VueHeader3 from './components/vue-header/VueHeader3.vue';
+import VuePagedSelector from './components/vue-paged-selector/VuePagedSelector.vue';
 import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
 import Base64 from 'js-base64';
@@ -81,6 +82,7 @@ class MAVueJsPlugin {
     Vue.component('vue-header1', VueHeader1);
     Vue.component('vue-header2', VueHeader2);
     Vue.component('vue-header3', VueHeader3);
+    Vue.component('vue-paged-selector', VuePagedSelector);
     Vue.directive('tooltip', VTooltip);
     Vue.directive('click-outside', VueClickOutside);
 

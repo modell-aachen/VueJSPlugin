@@ -54,6 +54,24 @@ See the [[System.VueJSPluginSidebar][sidebar documentation]] for further details
 | type | String ('checkbox' or 'radio') | | checkbox | Type of input |
 | badge | String | | | Display a badge with this text next to the label |
 | description | String%BR%or%BR% _slot named description_ | | | Display this description below the label and bold the label%BR%Can be a property or given as a slot (when you need markup). Since empty slots are (as of writing) indistinguishable from non-existing slots, you may want to also define the property for the bold-effect. |
+
+---++ Paged Selector
+
+<verbatim class="html">
+<vue-paged-selector options="..."/>
+</verbatim>
+
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| options | Array | yes | | Array of options to be selectable%BR%Each item supports a value, label and description:<verbatim>
+[
+    { "value":"...", "label":"...", "description":"..." },
+    ...
+]
+</verbatim> |
+| filter-label | String | | | Label to be shown above the _filter_ input field. |
+| filter-placeholder | String | | | Placeholder for the _filter_ input field. |
+| v-model | String | | | The data model |
+
 ---++ Input Text
 <verbatim class="html">
 <vue-input-text />
