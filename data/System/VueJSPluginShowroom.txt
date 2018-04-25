@@ -53,7 +53,7 @@ The following examples provide an overview of its functionality. The correspondi
       <td>
       </td>
       <td>
-        <vue-header sublabel="sublabel">Header 1</vue-header3>
+        <vue-header3 sublabel="sublabel">Header 1</vue-header3>
       </td>
     </tr>
     <tr>
