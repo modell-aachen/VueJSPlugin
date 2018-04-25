@@ -1,15 +1,24 @@
 <template>
   <div class="vue-paged-selector">
-    <vue-input-text v-model="search" :label="label" :placeholder="placeholder"></vue-input-text>
-
+    <vue-input-text
+      v-model="search"
+      :label="label"
+      :placeholder="placeholder" />
     <div>
       <vue-pagination
         v-model="page"
-        :pageCount="pageCount"
+        :page-count="pageCount"
       >
-        <div v-for="option in filteredOptions" class="grid-x">
+        <div
+          v-for="option in filteredOptions"
+          :key="option.value"
+          class="grid-x"
+        >
           <div class="cell auto">
-            <vue-check-item type="radio" :value="option.value" v-model="internalValue">
+            <vue-check-item
+              v-model="internalValue"
+              :value="option.value"
+              type="radio">
               <b>{{ option.label }}</b>
               <div
                 v-if="option.description"
@@ -47,7 +56,7 @@ export default {
       required: true,
     },
     value: {
-      String,
+      type: String,
       default: '',
     },
   },
@@ -69,11 +78,6 @@ export default {
       internalValue: this.value,
     };
   },
-  watch: {
-    internalValue() {
-      this.$emit('input', this.internalValue);
-    },
-  },
   computed: {
     filteredOptions() {
       let search = this.search.toLocaleLowerCase();
@@ -84,6 +88,11 @@ export default {
       return Math.ceil(this.filteredOptions.length / itemsPerPage);
     },
   },
+  watch: {
+    internalValue() {
+      this.$emit('input', this.internalValue);
+    },
+  },
   methods: {
   }
 };
@@ -91,9 +100,6 @@ export default {
 
 <style lang="scss">
 @import '../../sass/settings.scss';
-
-.vue-paged-selector {
-}
 </style>
 
 
