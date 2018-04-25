@@ -5,6 +5,10 @@ pipeline:
       - yarn
       - yarn run test
       - yarn run lint
+  sonar:
+    image: ypcloud/sonar-runner
+    sources: "dev/,pub/"
+    language: "js"
   notify:
     image: drillster/drone-email
     host: smtp.sendgrid.net
