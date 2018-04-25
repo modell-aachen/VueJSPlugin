@@ -344,18 +344,18 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
 <verbatim>
 %STARTSECTION{"DadListVueTemplate"}%
 <div>
-   <vue-dad-list :list="list" @addItem="addMetadataBlock" :allowedTypes="['metadataBlock']" itemType="vue-collapsible-dad-item">
+   <vue-dad-list v-model="list" @add-item="addMetadataBlock" :allowed-types="['metadataBlock']" item-type="vue-collapsible-dad-item">
      <vue-collapsible-dad-item slot-scope="props"
        :item="props.item"
        :index="props.index"
        :last-opend-item-id="props.lastOpendItemId">
        <div class="grid-x grid-margin-x">
          <div class="cell large-6">
-           <vue-input-text :value="props.item.label" @typed="" labell="Name des Staus"></vue-input-text>
-           <vue-input-text :value="props.item.label" @typed="" label="Nur bearebeitbar durch folgende Person"></vue-input-text>
+           <vue-input-text v-model="props.item.label" label="Name des Staus"></vue-input-text>
+           <vue-input-text v-model="props.item.label" label="Nur bearebeitbar durch folgende Person"></vue-input-text>
          </div>
          <div class="cell large-6 align-self-bottom">
-           <vue-input-text :value="props.item.label" @typed="" label="Nur kommentierbar durch folgende Personen und Gruppen" data="userInput"></vue-input-text>
+           <vue-input-text v-model="props.item.label" label="Nur kommentierbar durch folgende Personen und Gruppen" data="userInput"></vue-input-text>
          </div>
        </div>
        <hr>
@@ -363,10 +363,10 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
           <div class="cell large-6">
              <h3>Einsprünge</h3>
                <vue-dad-list v-if="props.item.fields"
-                 :allowedTypes="['status']"
-                 :list="props.item.fields[0]"
-                 @addItem="addStatusField"
-                 itemType="vue-simple-dad-item">
+                 :allowed-types="['status']"
+                 v-model="props.item.fields[0]"
+                 @add-item="addStatusField"
+                 item-type="vue-simple-dad-item">
                    <vue-simple-dad-item slot-scope="props"
                      :item="props.item"
                      :index="props.index">
@@ -382,10 +382,10 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
           <div class="cell large-6">
              <h3>Ausgänge</h3>
                <vue-dad-list v-if="props.item.fields"
-                 :allowedTypes="['status']"
-                 :list="props.item.fields[1]"
-                 @addItem="addStatusField"
-                 itemType="vue-simple-dad-item">
+                 :allowed-types="['status']"
+                 v-model="props.item.fields[1]"
+                 @add-item="addStatusField"
+                 item-type="vue-simple-dad-item">
                    <vue-simple-dad-item slot-scope="props"
                      :item="props.item"
                      :index="props.index">

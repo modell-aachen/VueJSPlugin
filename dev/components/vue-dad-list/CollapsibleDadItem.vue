@@ -27,7 +27,7 @@
           <vue-dad-list
             v-if="item.fields && collapsed"
             :allowed-types="allowedTypes"
-            :list="dummyDropList"
+            v-model="dummyDropList"
             item-type="vue-simple-dad-item">
             <vddl-placeholder slot="placeholder">
               <div class="ma-simple-dad-item-drop-area">

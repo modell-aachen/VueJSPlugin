@@ -73,7 +73,6 @@ Vue.onDocumentReady(function(){
                "id": 5,
                "label": "New Item A1",
                "type": "metadataBlock",
-               "collapsed": false
             });
           },
           addStatusField: function() {
@@ -81,7 +80,6 @@ Vue.onDocumentReady(function(){
                "id": 5,
                "label": "New Status A3",
                "type": "status",
-               "collapsed": false
             });
           }
         },
@@ -92,7 +90,6 @@ Vue.onDocumentReady(function(){
                     "type": "metadataBlock",
                     "label": "Item A1",
                     "subLabel": "Caption",
-                    "collapsed": false,
                     "status": 'warning',
                     fields: [
                         [
@@ -107,14 +104,19 @@ Vue.onDocumentReady(function(){
                             "type": "status"
                           }
                         ],
-                        []
+                        [
+                          {
+                            "id": 11,
+                            "label": "SubItem B",
+                            "type": "status"
+                          },
+                        ]
                     ]
                 },
                 {
                     "id": 2,
                     "type": "metadataBlock",
                     "label": "Item A2",
-                    "collapsed": true,
                     "status": 'warning',
                     fields: [
                         [
