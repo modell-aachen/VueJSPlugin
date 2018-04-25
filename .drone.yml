@@ -11,6 +11,8 @@ pipeline:
     language: "js"
     environment:
       - PLUGIN_ALLOWED_BRANCH_REGEX=.*
+    when:
+      branch: notYetAvailable
   notify:
     image: drillster/drone-email
     host: smtp.sendgrid.net
