@@ -8,11 +8,38 @@
       :checked="state"
       :type="type"
       :class="{'switch-input': isSwitch}"
-      @change="onChange">
+      @change="onChange"
+    >
     <label
       :class="{'switch-paddle': isSwitch}"
       :for="id || value">
-      <slot v-if="!isSwitch"/>
+      <span
+        v-if="!isSwitch"
+        class="grid-x"
+      >
+        <component
+          :is="$slots.description !== undefined || description !== undefined ? 'b' : 'span'"
+          class="cell auto"
+        >
+          <slot/>
+        </component>
+        <span
+          v-if="badge"
+          class="cell shrink badge"
+        >
+          {{ badge }}
+        </span>
+      </span>
+      <span
+        v-if="!isSwitch && ($slots.description || description)"
+        class="grid-x"
+      >
+        <template v-if="description">{{ description }}</template>
+        <slot
+          v-if="$slots.description"
+          name="description"
+        />
+      </span>
     </label><slot v-if="isSwitch"/><br>
   </div>
 </template>
@@ -57,7 +84,15 @@ export default {
     type:{
       type: String,
       default: 'checkbox'
-    }
+    },
+    description: {
+      type: String,
+      default: undefined,
+    },
+    badge: {
+      type: String,
+      default: undefined,
+    },
   },
   computed: {
     state: function() {
@@ -113,4 +148,17 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../sass/settings.scss';
+
+.ma-switch {
+    .badge {
+        background-color: $ma-light-grey;
+        border-radius: $ma-border-radius;
+        border: 1px solid #B0C0C4;
+        color: $ma-secondary-text;
+    }
+    & > label {
+        width: 100%;
+    }
+}
 </style>

@@ -21,6 +21,14 @@ Vue.onDocumentReady(function(){
         }
     });
     new Vue({
+        el: '#check-item-examples-2',
+        template: '#check-item-template-2',
+        data: {
+          values: [],
+          payment: ''
+        }
+    });
+    new Vue({
         el: '#input-text-examples',
         template: '#input-text-template',
         data: {

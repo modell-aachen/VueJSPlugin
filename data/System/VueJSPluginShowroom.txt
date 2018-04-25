@@ -116,17 +116,19 @@ The following examples provide an overview of its functionality. The correspondi
 </verbatim>
 %ENDTWISTY%
 <script type="text/x-template" id="button-template">
-%INCLUDE{"%WEB%.%TOPIC%" section="ButtonVueTempalte"}%
+%INCLUDE{"%WEB%.%TOPIC%" section="ButtonVueTemplate"}%
 </script>
 
 ---+ Vue Check Item
+
+---++ Plain check items
 
 <div class="flatskin-wrapped">
  <div id="check-item-examples"></div>
 </div>
 %TWISTY%
 <verbatim>
-%STARTSECTION{"CheckItemVueTempalte"}%
+%STARTSECTION{"CheckItemVueTemplate"}%
 <div class="grid-x">
   <div class="cell large-4">
     <h3>CheckBox</h3>
@@ -138,7 +140,7 @@ The following examples provide an overview of its functionality. The correspondi
   <div class="cell large-4">
     <h3>Radio</h3>
     <vue-check-item name="method" type="radio" value="VISA" v-model="payment" checked>VISA</vue-check-item>
-    <vue-check-item name="method" type="radio" value="PayPall" v-model="payment">PayPall</vue-check-item>
+    <vue-check-item name="method" type="radio" value="PayPal" v-model="payment">PayPal</vue-check-item>
     <vue-check-item name="method" type="radio" value="Sofortueberweisung" v-model="payment" >Sofort Überweisung</vue-check-item><br>
     Zahlungsmethode: {{payment}}<br>
   </div>
@@ -150,12 +152,44 @@ The following examples provide an overview of its functionality. The correspondi
     {{values}}<br>
   </div>
 </div>
-%ENDSECTION{"CheckItemVueTempalte"}%
+%ENDSECTION{"CheckItemVueTemplate"}%
 </verbatim>
 %ENDTWISTY%
 <script type="text/x-template" id="check-item-template">
-%INCLUDE{"%WEB%.%TOPIC%" section="CheckItemVueTempalte"}%
+%INCLUDE{"%WEB%.%TOPIC%" section="CheckItemVueTemplate"}%
 </script>
+
+---++ With description and badges
+
+<div class="flatskin-wrapped" style="max-width: 800px;">
+ <div id="check-item-examples-2"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"CheckItemVueTemplate2"}%
+<div class="grid-x grid-margin-x">
+  <div class="cell large-4">
+    <h3>CheckBox</h3>
+    <vue-check-item name="zutaten[]" description="NaCl" badge="salty" value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item name="zutaten[]" description badge="sweet"  value="zucker" v-model="values"><template slot="description"><span>C<sub>12</sub>H<sub>22</sub>O<sub>11</sub></span></template>Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" description badge="hot"  value="pfeffer" v-model="values" >Pfeffer</vue-check-item><br>
+    {{values}}<br>
+  </div>
+  <div class="cell large-4">
+    <h3>Radio</h3>
+    <vue-check-item name="method" description badge="card" type="radio" value="VISA" v-model="payment" checked><template slot="description"><a href="http://visa.de">visa.de</a></template>VISA</vue-check-item>
+    <vue-check-item name="method" description="www.paypal.de" badge="online"  type="radio" value="PayPal" v-model="payment">PayPal</vue-check-item>
+    <vue-check-item name="method" description badge="3rd party"  type="radio" value="Sofortueberweisung" v-model="payment" >Sofort Überweisung</vue-check-item><br>
+    Zahlungsmethode: {{payment}}<br>
+  </div>
+</div>
+%ENDSECTION{"CheckItemVueTemplate2"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="check-item-template-2">
+%INCLUDE{"%WEB%.%TOPIC%" section="CheckItemVueTemplate2"}%
+</script>
+
 ---+ Vue Input Text
 
 <div class="flatskin-wrapped">
