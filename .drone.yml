@@ -10,7 +10,7 @@ pipeline:
     sources: "dev/,pub/"
     language: "js"
     environment:
-      - PLUGIN_ALLOWED_BRANCH_REGEX=`(^master$|^develop$|^release\/+|^feature\/+)`
+      - PLUGIN_ALLOWED_BRANCH_REGEX=.*
   notify:
     image: drillster/drone-email
     host: smtp.sendgrid.net
