@@ -95,7 +95,7 @@ The following examples provide an overview of its functionality. The correspondi
 </div>
 %TWISTY%
 <verbatim>
-%STARTSECTION{"ButtonVueTempalte"}%
+%STARTSECTION{"ButtonVueTemplate"}%
 <div>
    Button
       <vue-button title='Button' @click.native='atClick' /><br>
@@ -112,7 +112,7 @@ The following examples provide an overview of its functionality. The correspondi
    Icon only Button
       <vue-button type='icon' icon='fas fa-exclamation-triangle' color="ma-warning-color" /><br>
 </div>
-%ENDSECTION{"ButtonVueTempalte"}%
+%ENDSECTION{"ButtonVueTemplate"}%
 </verbatim>
 %ENDTWISTY%
 <script type="text/x-template" id="button-template">
@@ -236,7 +236,7 @@ The following examples provide an overview of its functionality. The correspondi
 </div>
 %TWISTY%
 <verbatim>
-%STARTSECTION{"InputTextVueTempalte"}%
+%STARTSECTION{"InputTextVueTemplate"}%
 <div>
     <vue-input-text v-model="userInput" />
     <vue-input-text v-model="userInput" label="Einzeilige Überschrift" />
@@ -246,11 +246,11 @@ The following examples provide an overview of its functionality. The correspondi
     <vue-input-text v-model="userInput" name="Feld" validate="alpha_num" placeholder="Validate alphanumerisch" />
     <vue-input-text v-model="userInput" label="Search" icon="fa fa-search" placeholder="Search" />
 </div>
-%ENDSECTION{"InputTextVueTempalte"}%
+%ENDSECTION{"InputTextVueTemplate"}%
 </verbatim>
 %ENDTWISTY%
 <script type="text/x-template" id="input-text-template">
-%INCLUDE{"%WEB%.%TOPIC%" section="InputTextVueTempalte"}%
+%INCLUDE{"%WEB%.%TOPIC%" section="InputTextVueTemplate"}%
 </script>
 
 ---+ Vue Select
@@ -260,7 +260,7 @@ The following examples provide an overview of its functionality. The correspondi
 </div>
 %TWISTY%
 <verbatim>
-%STARTSECTION{"SelectVueTempalte"}%
+%STARTSECTION{"SelectVueTemplate"}%
 <div>
 <vue-select
   multiple
@@ -271,11 +271,11 @@ The following examples provide an overview of its functionality. The correspondi
     <template slot="more-results">Show more results</template>
 </vue-select>
 </div>
-%ENDSECTION{"SelectVueTempalte"}%
+%ENDSECTION{"SelectVueTemplate"}%
 </verbatim>
 %ENDTWISTY%
 <script type="text/x-template" id="select-template">
-%INCLUDE{"%WEB%.%TOPIC%" section="SelectVueTempalte"}%
+%INCLUDE{"%WEB%.%TOPIC%" section="SelectVueTemplate"}%
 </script>
 ---+ Vue Tabpane
 <div class="flatskin-wrapped">
@@ -283,7 +283,7 @@ The following examples provide an overview of its functionality. The correspondi
 </div>
 %TWISTY%
 <verbatim>
-%STARTSECTION{"TabpaneVueTempalte"}%
+%STARTSECTION{"TabpaneVueTemplate"}%
 <div>
    <vue-tabpane>
       <vue-tab name="Datein und Ansichten">
@@ -305,11 +305,11 @@ The following examples provide an overview of its functionality. The correspondi
       </vue-tab>
    </vue-tabpane>
 </div>
-%ENDSECTION{"TabpaneVueTempalte"}%
+%ENDSECTION{"TabpaneVueTemplate"}%
 </verbatim>
 %ENDTWISTY%
 <script type="text/x-template" id="tabpane-template">
-%INCLUDE{"%WEB%.%TOPIC%" section="TabpaneVueTempalte"}%
+%INCLUDE{"%WEB%.%TOPIC%" section="TabpaneVueTemplate"}%
 </script>
 
 ---+ Vue Pagination
@@ -318,7 +318,7 @@ The following examples provide an overview of its functionality. The correspondi
 </div>
 %TWISTY%
 <verbatim>
-%STARTSECTION{"PaginationVueTempalte"}%
+%STARTSECTION{"PaginationVueTemplate"}%
 <div>
    <vue-pagination
      v-model="page"
@@ -328,11 +328,11 @@ The following examples provide an overview of its functionality. The correspondi
      :pageCount="pageCount"
      :pageLimit="15" />
 </div>
-%ENDSECTION{"PaginationVueTempalte"}%
+%ENDSECTION{"PaginationVueTemplate"}%
 </verbatim>
 %ENDTWISTY%
 <script type="text/x-template" id="pagination-template">
-%INCLUDE{"%WEB%.%TOPIC%" section="PaginationVueTempalte"}%
+%INCLUDE{"%WEB%.%TOPIC%" section="PaginationVueTemplate"}%
 </script>
 
 ---+ Vue Dad (Drag & Drop) List
@@ -342,7 +342,7 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
 </div>
 %TWISTY%
 <verbatim>
-%STARTSECTION{"DadListVueTempalte"}%
+%STARTSECTION{"DadListVueTemplate"}%
 <div>
    <vue-dad-list :list="list" @addItem="addMetadataBlock" :allowedTypes="['metadataBlock']" itemType="vue-collapsible-dad-item">
      <vue-collapsible-dad-item slot-scope="props"
@@ -397,11 +397,11 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
      </vue-collapsible-dad-item>
    </vue-dad-list>
 </div>
-%ENDSECTION{"DadListVueTempalte"}%
+%ENDSECTION{"DadListVueTemplate"}%
 </verbatim>
 %ENDTWISTY%
 <script type="text/x-template" id="dad-list-template">
-%INCLUDE{"%WEB%.%TOPIC%" section="DadListVueTempalte"}%
+%INCLUDE{"%WEB%.%TOPIC%" section="DadListVueTemplate"}%
 </script>
 ---+ Vue Splitbutton
 
