@@ -37,6 +37,7 @@ import AlertPlugin from './alert/AlertPlugin';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
 import VueSlideUpDown from 'vue-slide-up-down';
+import {mapState} from 'vuex';
 
 class MAVueJsPlugin {
   constructor(options) {
@@ -130,6 +131,7 @@ class MAVueJsPlugin {
     Vue.moment = this.moment;
     Vue.VueRouter = VueRouter;
     Vue.validate = Validator;
+    Vue.mapState = mapState;
 
     //Instance properties/methods
     Vue.prototype.$store = options.store;
