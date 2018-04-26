@@ -11,3 +11,4 @@ import './Vue_Tabpane_test.js';
 import './Vue_Pagination_test.js';
 import './Vue_Wizard_test.js';
 import './Vue_Paged_Selector_test.js';
+import './Vue_SimpleDataItem_test.js';
