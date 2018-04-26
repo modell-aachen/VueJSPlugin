@@ -19,7 +19,7 @@
           </div>
         </div>
         <div v-if="itemRemoveable" class="cell small-2 align-self-middle">
-          <vue-button type='icon' @click.native.prevent="$emit('removeItem', item)" icon="far fa-times"/>
+          <vue-button type='icon' @click.native.prevent="$emit('remove-item', item)" icon="far fa-times"/>
         </div>
       </div>
     </div>
@@ -41,7 +41,8 @@ export default {
   },
   computed: {
     itemRemoveable: function() {
-      return this.$listeners && this.$listeners.removeItem
+      console.log( this.$listeners );
+      return this.$listeners && this.$listeners['remove-item'];
     }
   }
 };

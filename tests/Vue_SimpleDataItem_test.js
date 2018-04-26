@@ -72,13 +72,13 @@ describe("The SimpleDadItem component", () => {
         }
       });
 
-      it('exists if `removeItem` callback is given', () => {
-          options.listeners.removeItem = jasmine.createSpy('removeItem');
+      it('exists if `remove-item` callback is given', () => {
+          options.listeners['remove-item'] = jasmine.createSpy('remove-item');
           const wrapper = createItem(options);
           expect(wrapper.contains('a.button')).toBe(true);
       });
 
-      it('does not exsits if `removeItem` callback is unset', () => {
+      it('does not exsits if `remove-item` callback is unset', () => {
         const wrapper = createItem(options);
         expect(wrapper.contains('a.button')).toBe(false);
       });
