@@ -161,11 +161,12 @@ Provided variables from Scoped Slot:
 | lastOpenItemId | Int | Id from item wich last emittet 'lastOpend' event. |
 
 ---+++ Collapsibel Item
-| *Name* | *Type* | *Required* | *Default* |
-| item | Object | yes | Data model |
-| index | Number | yes | Index number |
-| multiOpen | Boolean | | Use LastOpendItemId to collaps item when an other item is open |
-| lastOpendItemId | undefined | | Id of last opend Item |
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| item | Object | yes | Data model | |
+| index | Number | yes | Index number | |
+| multiOpen | Boolean | | Use LastOpendItemId to collaps item when an other item is open | |
+| lastOpendItemId | undefined | | Id of last opend Item | |
+| removeOptions | Object | false | null | An object to provide the name and the callback for the item delete handle *{name: String, onRemove: function}*. The callback gets the index and the element that should be removed from the list |
 
 ---+++ Simple Item
 | *Name* | *Type* | *Required* | *Default* |

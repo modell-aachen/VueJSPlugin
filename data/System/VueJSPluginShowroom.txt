@@ -348,7 +348,9 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
      <vue-collapsible-dad-item slot-scope="props"
        :item="props.item"
        :index="props.index"
-       :last-opend-item-id="props.lastOpendItemId">
+       :last-opend-item-id="props.lastOpendItemId"
+       :remove-options="{name: 'Löschen', onRemove: onRemoveItem}"
+       >
        <div class="grid-x grid-margin-x">
          <div class="cell large-6">
            <vue-input-text v-model="props.item.label" label="Name des Staus"></vue-input-text>

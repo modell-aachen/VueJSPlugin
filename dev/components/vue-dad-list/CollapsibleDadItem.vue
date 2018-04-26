@@ -37,6 +37,9 @@
             <div slot="addArea"/>
           </vue-dad-list>
         </div>
+        <div v-if="removeOptions" class="cell shrink align-self-middle">
+          <a class="remove-item-handle" @click="removeOptions.onRemove(item, index)">{{removeOptions.name}}</a>
+        </div>
         <div class="cell shrink align-self-middle">
           <span @click.prevent="toggleCollapsed"><i
             :class="chevronByCollapsed"
@@ -81,6 +84,10 @@ export default {
       default: function() {
         return [];
       }
+    },
+    removeOptions: {
+      type: Object,
+      default: null
     }
   },
   data: function() {

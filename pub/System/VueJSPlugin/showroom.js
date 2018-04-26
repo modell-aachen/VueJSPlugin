@@ -70,17 +70,20 @@ Vue.onDocumentReady(function(){
         methods: {
           addMetadataBlock: function() {
             this.list.push({
-               "id": 5,
+               "id": Vue.getUniqueId(),
                "label": "New Item A1",
                "type": "metadataBlock",
             });
           },
           addStatusField: function() {
             this.list[0].fields[0].push({
-               "id": 5,
+               "id": Vue.getUniqueId(),
                "label": "New Status A3",
                "type": "status",
             });
+          },
+          onRemoveItem: function(item, index) {
+            this.list.splice(index, 1);
           }
         },
         data: {
