@@ -52,6 +52,10 @@ $breakpoints: (
 );
 $breakpoint-classes: (small medium large xlarge xxlarge xxxlarge xxxxlarge);
 
+$limited-width: (
+  large: 600px,
+);
+
 $spacings: (
   small: 8px,
   medium: 16px,

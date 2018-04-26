@@ -4,3 +4,18 @@
     margin-top: $size;
   }
 }
+
+@each $name, $size in $limited-width {
+  .flatskin-wrapped .ma-width-#{name} table,
+  .ma-width-#{$name} {
+    width: $size;
+  }
+  .flatskin-wrapped .ma-max-width-#{name} table,
+  .ma-max-width-#{$name} {
+    max-width: $size;
+  }
+  .flatskin-wrapped .ma-min-width-#{name} table,
+  .ma-min-width-#{$name} {
+    min-width: $size;
+  }
+}
