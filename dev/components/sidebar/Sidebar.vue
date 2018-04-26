@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vue-sidebar">
     <div
       v-show="isActive"
       class="sidebar-overlay"
@@ -109,64 +109,66 @@ export default {
 @import './sass/settings';
 @import '../../sass/settings';
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .5s
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0
-}
-.sidebar-overlay {
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+.vue-sidebar {
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0
+  }
+  .sidebar-overlay {
+      top: 0px;
+      left: 0px;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      z-index: 99;
+  }
+
+  .sidebar-enter, .sidebar-leave-to {
+    transform: translate3d(100%,0,0);
+  }
+  .sidebar-enter-active, .sidebar-leave-active {
+    transition: transform .3s ease-in-out;
+  }
+
+  .sidebar-container {
     position: fixed;
-    z-index: 99;
-}
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: $sidebar-width;
+    z-index: $sidebar-z-index;
 
-.sidebar-enter, .sidebar-leave-to {
-  transform: translate3d(100%,0,0);
-}
-.sidebar-enter-active, .sidebar-leave-active {
-  transition: transform .3s ease-in-out;
-}
-
-.sidebar-container {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: $sidebar-width;
-  z-index: $sidebar-z-index;
-
-  *:focus {
-    outline:none;
+    *:focus {
+      outline:none;
+    }
   }
-}
 
-.sidebar-tab-controls {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background-color: $ma-medium-grey;
-  border-left: $sidebar-highlight-border-width solid $ma-medium-grey;
-  width: calc(#{$sidebar-width} - #{$sidebar-content-width});
-
-  &.highlight {
-    border-left-color: $sidebar-highlight-border-color;
-  }
-}
-
-.sidebar-tab-contents {
-  @include sidebar-content;
-  hr {
-    margin: 12px -#{$sidebar-content-padding-horizontal};
-    height: 2px;
+  .sidebar-tab-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
     background-color: $ma-medium-grey;
+    border-left: $sidebar-highlight-border-width solid $ma-medium-grey;
+    width: calc(#{$sidebar-width} - #{$sidebar-content-width});
+
+    &.highlight {
+      border-left-color: $sidebar-highlight-border-color;
+    }
+  }
+
+  .sidebar-tab-contents {
+    @include sidebar-content;
+    hr {
+      margin: 12px -#{$sidebar-content-padding-horizontal};
+      height: 2px;
+      background-color: $ma-medium-grey;
+    }
   }
 }
 </style>
