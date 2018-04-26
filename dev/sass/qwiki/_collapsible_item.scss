@@ -22,6 +22,10 @@
         position: absolute;
         padding-left: rem-calc(8);
     }
+    .remove-item-handle {
+        color: $ma-failure;
+        cursor: pointer
+    }
 }
 i.ma-status-dot {
     $dot-size: .5em;
