@@ -54,18 +54,7 @@ export default {
     },
   },
   data() {
-    let serial = 0;
-    let internalOptions = this.options.map(option => {
-      let compare = (option.label || '').toLocaleLowerCase();
-      return {
-        key: ++serial,
-        value: option.value,
-        label: option.label,
-        badge: option.badge,
-        description: option.description !== undefined ? option.description : '',
-        compare: compare,
-      };
-    });
+    let internalOptions = this.transformOptionsToFilterList(this.options);
     return {
       filter: '',
       page: 1,
@@ -88,11 +77,31 @@ export default {
     internalValue() {
       this.$emit('input', this.internalValue);
     },
+    options() {
+      this.internalOptions = this.transformOptionsToFilterList(this.options);
+      this.filteredOptions = this.internalOptions;
+    },
     filter() {
       this.page = 1;
       let filter = this.filter.toLocaleLowerCase();
       let options = this.internalOptions.filter(option => option.compare.indexOf(filter) !== -1);
       this.filteredOptions = options;
+    },
+  },
+  methods: {
+    transformOptionsToFilterList(options) {
+      let serial = 0;
+      return options.map(option => {
+        let compare = (option.label || '').toLocaleLowerCase();
+        return {
+          key: ++serial,
+          value: option.value,
+          label: option.label,
+          badge: option.badge,
+          description: option.description !== undefined ? option.description : '',
+          compare: compare,
+        };
+      });
     },
   },
 };
