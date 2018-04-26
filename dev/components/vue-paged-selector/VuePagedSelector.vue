@@ -4,6 +4,7 @@
       v-model="filter"
       :label="filterLabel"
       :placeholder="filterPlaceholder"
+      icon="far fa-search"
       name="filterOptions"
     />
 
