@@ -41,7 +41,6 @@ export default {
   },
   computed: {
     itemRemoveable: function() {
-      console.log( this.$listeners );
       return this.$listeners && this.$listeners['remove-item'];
     }
   }
