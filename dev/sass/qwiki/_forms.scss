@@ -134,11 +134,13 @@ input[type]:disabled {
     @include ma-font('regular');
     font-size: $font-size;
     color: $ma-body-text;
-    margin-top: rem-calc(8);
     margin-left: 0;
     position: relative;
     padding-left: rem-calc(16) + $size;
     line-height: $line-height;
+    &:not(.ma-switch > label) {
+        margin-top: rem-calc(8);
+    }
 }
 %item-label-pseudo {
     content: "";
@@ -226,8 +228,8 @@ textarea{
   @include switch-container;
   @include switch-size(rem-calc(14), $switch-radius * 2, rem-calc(1));
   @include ma-font('regular');
+  height: initial;
   margin: rem-calc(8 16 0 0);
-  height: rem-calc(20);
   .switch-input {
     margin-bottom: 0;
   }
