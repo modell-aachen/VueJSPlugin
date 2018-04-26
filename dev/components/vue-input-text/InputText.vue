@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}"
-    class="ma-input">
+    class="ma-input ma-input-group">
     <label v-if="label">{{ label }}</label>
     <div class="ma-input--wrapper">
       <i
