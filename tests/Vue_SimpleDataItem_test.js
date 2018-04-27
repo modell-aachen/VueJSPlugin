@@ -55,33 +55,33 @@ describe("The SimpleDadItem component", () => {
       options.propsData.item['status'] = true;
       const wrapper = createItem(options);
       expect(wrapper.contains('i.ma-status-dot')).toBe(true);
-    })
-  })
+    });
+  });
 
   describe("remove button", () => {
 
-      let options = {};
+    let options = {};
 
-      beforeEach(() => {
-        options = {
-          propsData: {
-            item: {},
-            index: 0,
-          },
-          listeners: {}
-        }
-      });
+    beforeEach(() => {
+      options = {
+        propsData: {
+          item: {},
+          index: 0,
+        },
+        listeners: {}
+      };
+    });
 
-      it('exists if `remove-item` callback is given', () => {
-          options.listeners['remove-item'] = jasmine.createSpy('remove-item');
-          const wrapper = createItem(options);
-          expect(wrapper.contains('a.button')).toBe(true);
-      });
+    it('exists if `remove-item` callback is given', () => {
+      options.listeners['remove-item'] = jasmine.createSpy('remove-item');
+      const wrapper = createItem(options);
+      expect(wrapper.contains('a.button')).toBe(true);
+    });
 
-      it('does not exsits if `remove-item` callback is unset', () => {
-        const wrapper = createItem(options);
-        expect(wrapper.contains('a.button')).toBe(false);
-      });
+    it('does not exsits if `remove-item` callback is unset', () => {
+      const wrapper = createItem(options);
+      expect(wrapper.contains('a.button')).toBe(false);
+    });
 
   });
 

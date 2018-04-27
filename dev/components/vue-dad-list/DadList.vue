@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     handleDrop: function(data) {
-      const { index, list, item} = data;
+      const { index, item} = data;
       const external = item.__listId !== this.listId;
       if(external){
         const value = this.internalValue.slice();
@@ -106,7 +106,7 @@ export default {
       }
     },
     handleMoved: function(data){
-      const { index, list} = data;
+      const { index } = data;
       if(this.hasDropped){
         this.hasDropped = false;
         Vue.nextTick(() => {
