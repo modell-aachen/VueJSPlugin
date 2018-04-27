@@ -24,7 +24,7 @@
         </div>
         <div
           v-if="itemRemoveable"
-          class="cell small-2 align-self-middle">
+          class="cell small-2 align-self-middle ma-simple-item-button">
           <vue-button
             type="icon"
             icon="far fa-times"
