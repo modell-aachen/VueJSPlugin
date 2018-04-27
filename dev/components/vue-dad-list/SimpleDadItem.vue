@@ -2,7 +2,9 @@
   <vddl-nodrag class="ma-block">
     <div class="ma-simple-item">
       <div class="ma-simple-item-title grid-x align-justify grid-padding-x">
-        <div :class="{itemRemoveable: 'small-10'}" class="cell shrink">
+        <div
+          :class="{itemRemoveable: 'small-10'}"
+          class="cell shrink">
           <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
             <div class="cell shrink align-self-middle handle-container">
               <vddl-handle
@@ -18,8 +20,13 @@
             </div>
           </div>
         </div>
-        <div v-if="itemRemoveable" class="cell small-2 align-self-middle">
-          <vue-button type='icon' @click.native.prevent="$emit('remove-item', item)" icon="far fa-times"/>
+        <div
+          v-if="itemRemoveable"
+          class="cell small-2 align-self-middle">
+          <vue-button
+            type="icon"
+            icon="far fa-times"
+            @click.native.prevent="$emit('remove-item', item)" />
         </div>
       </div>
     </div>

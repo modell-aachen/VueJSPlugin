@@ -37,8 +37,12 @@
             <div slot="addArea"/>
           </vue-dad-list>
         </div>
-        <div v-if="removeOptions" class="cell shrink align-self-middle">
-          <a class="remove-item-handle" @click="removeOptions.onRemove(item, index)">{{removeOptions.name}}</a>
+        <div
+          v-if="removeOptions"
+          class="cell shrink align-self-middle">
+          <a
+            class="remove-item-handle"
+            @click="removeOptions.onRemove(item, index)">{{ removeOptions.name }}</a>
         </div>
         <div class="cell shrink align-self-middle">
           <span @click.prevent="toggleCollapsed"><i
@@ -47,13 +51,13 @@
         </div>
       </div>
       <vue-slide-up-down
-            :active="!collapsed"
-            :duration="300">
-          <div class="ma-collapsible-item-content">
-              <div class="grid-container fluid">
-                  <slot/>
-              </div>
+        :active="!collapsed"
+        :duration="300">
+        <div class="ma-collapsible-item-content">
+          <div class="grid-container fluid">
+            <slot/>
           </div>
+        </div>
       </vue-slide-up-down>
     </div>
   </vddl-nodrag>
