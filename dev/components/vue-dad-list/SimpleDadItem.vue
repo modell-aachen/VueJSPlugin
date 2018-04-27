@@ -2,9 +2,11 @@
   <vddl-nodrag class="ma-block">
     <div class="ma-simple-item">
       <div
-      :class="{'ma-simple-item--removeable': itemRemoveable}"
-      class="cell grid-x align-justify grid-padding-x" >
-        <div :class="{'small-10': itemRemoveable}" class="cell ma-simple-item-title">
+        :class="{'ma-simple-item--removeable': itemRemoveable}"
+        class="cell grid-x align-justify grid-padding-x" >
+        <div
+          :class="{'small-10': itemRemoveable}"
+          class="cell ma-simple-item-title">
           <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
             <div class="cell shrink align-self-middle handle-container">
               <vddl-handle
