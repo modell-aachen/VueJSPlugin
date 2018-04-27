@@ -94,6 +94,7 @@ Vue.onDocumentReady(function(){
                     "label": "Item A1",
                     "subLabel": "Caption",
                     "status": 'warning',
+                    "icon": 'fas fa-camera-retro',
                     fields: [
                         [
                           {

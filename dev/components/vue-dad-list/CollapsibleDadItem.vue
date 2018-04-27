@@ -4,15 +4,23 @@
       <!-- Title Area -->
       <div
         :class="{'ma-collapsed': collapsed}"
-        class="ma-collapsible-item-title grid-x align-justify grid-padding-x">
+        class="ma-collapsible-item-title grid-x align-justify">
         <div class="cell shrink">
-          <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
+          <div class="grid-x ma-collapsible-item-title-left">
             <div class="cell shrink align-self-middle handle-container">
               <vddl-handle
                 v-if="collapsed"
                 :handle-left="0"
                 :handle-top="0"
-                class="fal fa-bars handle"/>
+                class="fal fa-bars fa-fw handle"/>
+            </div>
+            <div class="cell shrink align-self-middle handle-spacer" />
+            <div
+              v-if="item.icon"
+              class="cell shrink align-self-middle">
+              <i
+                :class="item.icon"
+                class="ma-type-icon"/>
             </div>
             <div class="cell shrink align-self-middle">
               <h3>{{ item.label }}<i
@@ -22,7 +30,7 @@
             </div>
           </div>
         </div>
-        <div class="cell auto align-self-middle">
+        <div class="cell auto align-self-middle ma-collapsible-header-drop-zone">
           <!-- Dummy Drop List -->
           <vue-dad-list
             v-if="item.fields && collapsed"
@@ -38,16 +46,16 @@
           </vue-dad-list>
         </div>
         <div
-          v-if="removeOptions"
-          class="cell shrink align-self-middle">
+          v-if="removeOptions && !collapsed"
+          class="cell shrink align-self-middle ma-remove-cell">
           <a
             class="remove-item-handle"
             @click="removeOptions.onRemove(item, index)">{{ removeOptions.name }}</a>
         </div>
-        <div class="cell shrink align-self-middle">
+        <div class="cell shrink align-self-middle ma-toggle-cell">
           <span @click.prevent="toggleCollapsed"><i
             :class="chevronByCollapsed"
-            class="fas"/></span>
+            class="fas fa-fw"/></span>
         </div>
       </div>
       <vue-slide-up-down
