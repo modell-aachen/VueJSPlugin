@@ -1,10 +1,10 @@
 <template>
   <vddl-nodrag class="ma-block">
     <div class="ma-simple-item">
-      <div class="ma-simple-item-title grid-x align-justify grid-padding-x">
-        <div
-          :class="{itemRemoveable: 'small-10'}"
-          class="cell shrink">
+      <div
+      :class="{'ma-simple-item--removeable': itemRemoveable}"
+      class="cell grid-x align-justify grid-padding-x" >
+        <div :class="{'small-10': itemRemoveable}" class="cell ma-simple-item-title">
           <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
             <div class="cell shrink align-self-middle handle-container">
               <vddl-handle
@@ -58,5 +58,15 @@ export default {
 <style lang="scss">
 .handle {
   cursor: move;
+}
+
+.ma-simple-item h3 {
+  margin-bottom: 0;
+}
+
+.ma-simple-item--removeable .cell.ma-simple-item-button {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: right;
 }
 </style>
