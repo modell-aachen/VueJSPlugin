@@ -67,20 +67,26 @@ export default {
   },
   methods: {
     getFilterOptions() {
-      return [
-        {
+      const filterOptions = [];
+      if(this.useUsers){
+        filterOptions.push({
           label: this.$t('users'),
           name: 'users',
-        },
-        {
+        });
+      }
+      if(this.useGroups) {
+        filterOptions.push({
           label: this.$t('groups'),
           name: 'groups',
-        },
-        {
+        });
+      }
+      if(this.useMetadata) {
+        filterOptions.push({
           label: this.$t('metadata'),
           name: 'metadata',
-        },
-      ];
+        });
+      }
+      return filterOptions;
     },
 
     getFilteredData(checkedFilterOptions, offsets) {
