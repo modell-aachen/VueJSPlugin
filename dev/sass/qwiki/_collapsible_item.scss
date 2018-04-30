@@ -5,6 +5,12 @@
 }
 .ma-collapsible-header-drop-zone {
     min-height: rem-calc(50);
+    .ma-simple-dad-item-drop-area {
+        text-align: center;
+        h3 {
+            line-height: rem-calc(50);
+        }
+    }
 }
 .ma-simple-item-title,
 .ma-collapsible-item-title {
@@ -16,6 +22,7 @@
     .ma-remove-cell,
     .ma-toggle-cell {
         padding: rem-calc(0 4 0 4);
+        cursor: pointer;
     }
     h3 {
         margin-top: 0;
