@@ -33,7 +33,7 @@
         <div class="cell auto align-self-middle ma-collapsible-header-drop-zone">
           <!-- Dummy Drop List -->
           <vue-dad-list
-            v-if="item.fields && collapsed"
+            v-if="canDropInTitle && collapsed"
             :allowed-types="allowedTypes"
             v-model="dummyDropList"
             item-type="vue-simple-dad-item">
@@ -75,6 +75,10 @@
 export default {
   name: 'CollapsibleDadItem',
   props: {
+    canDropInTitle: {
+      type: Boolean,
+      default: false
+    },
     item:{
       type: Object,
       required: true
@@ -115,8 +119,9 @@ export default {
   },
   watch: {
     dummyDropList: function(newList) {
-      if(this.item.fields[0]) {
-        this.item.fields[0].push(newList[0]);
+      if(this.dummyDropList.length > 0) {
+        this.$emit('dropped-item', {dummyList: newList, index: this.index});
+        this.dummyDropList = [];
       }
     },
     lastOpendItemId: function(lastOpenedItemId) {

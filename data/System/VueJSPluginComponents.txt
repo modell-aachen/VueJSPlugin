@@ -164,9 +164,14 @@ Provided variables from Scoped Slot:
 | *Name* | *Type* | *Required* | *Default* | *Description* |
 | item | Object | yes | Data model | |
 | index | Number | yes | Index number | |
+| allowedTypes | Array | | [] | types which are allowed to drop into title drop list |
+| canDropInTitle | Boolean | | false | defines if there will be a drop list in the title |
 | multiOpen | Boolean | | Use LastOpendItemId to collaps item when an other item is open | |
 | lastOpendItemId | undefined | | Id of last opend Item | |
 | removeOptions | Object | false | null | An object to provide the name and the callback for the item delete handle *{name: String, onRemove: function}*. The callback gets the index and the element that should be removed from the list |
+
+When there is a item dropped to the title drop list an event ("dropped-item") will be fired. It contains the index numer of the item it was dropped to and the dropped item.
+ -> eventFunction: function({dummyList, index}){
 
 ---+++ Simple Item
 | *Name* | *Type* | *Required* | *Default* |

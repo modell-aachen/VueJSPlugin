@@ -348,6 +348,9 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
      <vue-collapsible-dad-item slot-scope="props"
        :item="props.item"
        :index="props.index"
+       :can-drop-in-title="true"
+       @dropped-item="addItemFromDummyList"
+       :allowed-types="['status']"
        :last-opend-item-id="props.lastOpendItemId"
        :remove-options="{name: 'Löschen', onRemove: onRemoveItem}"
        >

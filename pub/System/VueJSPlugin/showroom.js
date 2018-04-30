@@ -68,7 +68,10 @@ Vue.onDocumentReady(function(){
         el: '#dad-list-examples',
         template: '#dad-list-template',
         methods: {
-          addMetadataBlock: function() {
+            addItemFromDummyList: function({dummyList, index}){
+                this.list[index].fields[0].push(dummyList[0]);
+            },
+            addMetadataBlock: function() {
             this.list.push({
                "id": Vue.getUniqueId(),
                "label": "New Item A1",
@@ -125,12 +128,12 @@ Vue.onDocumentReady(function(){
                     fields: [
                         [
                           {
-                            "id": 1,
+                            "id": 101,
                             "label": "SubItem 1",
                             "type": "status"
                           },
                           {
-                            "id": 2,
+                            "id": 102,
                             "label": "SubItem 2",
                             "type": "status"
                           }
