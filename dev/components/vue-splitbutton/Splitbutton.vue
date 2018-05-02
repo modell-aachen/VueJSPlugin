@@ -13,11 +13,11 @@
         {{ dropdownButtonTitle }}
         <div
           class="icon-wrapper"
-          >
-            <i
-              :class="splitButtonIconClass"
-              class="dropdown-icon far"
-              aria-hidden="true"/>
+        >
+          <i
+            :class="splitButtonIconClass"
+            class="dropdown-icon far"
+            aria-hidden="true"/>
         </div>
       </a>
     </div>
