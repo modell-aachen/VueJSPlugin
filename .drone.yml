@@ -9,6 +9,8 @@ pipeline:
     image: ypcloud/sonar-runner
     sources: "dev/,pub/"
     language: "js"
+    host: "http://sonar.int.modac.eu"
+    debug: true
     environment:
       - PLUGIN_ALLOWED_BRANCH_REGEX=.*
   notify:
