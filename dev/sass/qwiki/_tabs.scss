@@ -1,6 +1,6 @@
 $ma-boarder-size: 2px;
 
-.flatskin-wrapped > .jqTabPaneFlat {
+.flatskin-wrapped:not(.vue-tabpane) > .jqTabPaneFlat {
   margin: .5em;
 }
 
