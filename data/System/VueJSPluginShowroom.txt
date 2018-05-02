@@ -377,7 +377,6 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
                      :index="props.index">
                    </vue-simple-dad-item>
                    <vue-button slot="addArea" slot-scope="props"
-                     type="ghost"
                      title="Add"
                      icon="fas fa-plus"
                      @click.native="props.add">
