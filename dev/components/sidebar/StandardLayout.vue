@@ -37,14 +37,16 @@ export default {
     width: 100%;
     border-bottom: $sidebar-header-bottom-border solid $light-gray;
   }
+
+  .sidebar-content h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-content h3 {
+    margin-bottom: .5rem;
+  }
+
 }
 
-.sidebar-content h2 {
-  margin-top: .5rem;
-  margin-bottom: 1.5rem;
-}
 
-.sidebar-content h3 {
-  margin-bottom: .5rem;
-}
 </style>
