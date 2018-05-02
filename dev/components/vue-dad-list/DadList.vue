@@ -35,7 +35,7 @@
       :add="addItemEvent"
       name="addArea">
       <vue-button
-        title="Add"
+        :title="buttonTitle"
         @click.native="addItemEvent"/>
     </slot>
   </div>
@@ -56,6 +56,10 @@ export default {
     'allowedTypes': {
       type: Array,
       default: null
+    },
+    'buttonTitle': {
+      type: String,
+      default: 'Add'
     }
   },
   data: function() {
