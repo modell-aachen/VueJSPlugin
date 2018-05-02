@@ -2,14 +2,28 @@
   <a
     :disabled="isDisabled"
     :href="href"
-    :class="[type, color]"
-    class="button"
+    :class="[type, color, title ? 'has-text' : 'no-text']"
+    class="button vue-button"
     @click="handleClick">
-    <i
+    <div
       v-if="icon"
-      :class="icon"
-      aria-hidden="true"/>
-    {{ title }}
+      class="icon-wrapper"
+    >
+      <i
+        :class="icon"
+        class="button-icon"
+        aria-hidden="true"/>
+    </div>
+    <span
+      v-if="title && title.length"
+      class="button-text"
+    >
+      <span
+        v-if="icon"
+        class="icon-spacer"
+      />
+      {{ title }}
+    </span>
   </a>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vue-splitbutton">
     <div class="ma-splitbutton">
       <vue-button
         :title="mainButtonTitle"
@@ -8,13 +8,17 @@
         @click.native="onMainButtonClick"/>
       <a
         ref="dropdownButton"
-        class="dropdown-button primary button"
+        class="dropdown-button primary button vue-button"
         @click="toggleDropdown">
         {{ dropdownButtonTitle }}
-        <i
-          :class="splitButtonIconClass"
-          class="dropdown-icon far"
-          aria-hidden="true"/>
+        <div
+          class="icon-wrapper"
+          >
+            <i
+              :class="splitButtonIconClass"
+              class="dropdown-icon far"
+              aria-hidden="true"/>
+        </div>
       </a>
     </div>
     <div
@@ -103,3 +107,10 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.flatskin-wrapped .vue-splitbutton {
+    .ma-splitbutton .button {
+        margin-bottom: 0; // undo flatskin's splitbutton
+    }
+}
+</style>
