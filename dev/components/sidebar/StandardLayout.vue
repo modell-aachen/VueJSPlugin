@@ -39,11 +39,11 @@ export default {
   }
 
   .sidebar-content h2 {
-    margin-bottom: 1.5rem;
+    margin-bottom: map-get($spacings, large);
   }
 
   .sidebar-content h3 {
-    margin-bottom: .5rem;
+    margin-bottom: map-get($spacings, small);
   }
 
 }
