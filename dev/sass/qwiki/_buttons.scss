@@ -35,17 +35,68 @@ $button-margin-right: rem-calc(8);
     }
 }
 
+$icon-font-size: 1.45em;
+
 .button, a.button {
     @include ma-font('semibold');
     @include button-hover-active($button-background, 3%, $ma-secondary-text);
-    line-height: ($input-font-size * unitless-calc($input-line-height)) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
+    $button-icon-width: 1.25em; // copied from FontAwesome;
+    $button-padding: rem-calc(16);
+    $button-height: rem-calc(32);
+
+    line-height: $button-height;
     border: 0;
     margin-right: $button-margin-right;
     margin-bottom: $button-margin-bottom;
-    .fa,.far,.fal {
-        margin-right: rem-calc(16);
-        font-size: 1.33333333em;
+    &.vue-button {
+        position: relative;
+        .icon-spacer {
+            width: $button-icon-width;
+            display: inline-block;
+        }
+        &.icon.has-text,
+        &.dropdown-button {
+            .icon-wrapper { // this will prevent the text from repositioning
+                            // unfortunately it also removes some flexibility
+                            // (fixed width for the icon)
+                position: absolute;
+                top: 0px;
+                width: $button-icon-width;
+                .button-icon {
+                    margin: 0px;
+                }
+            }
+
+            .button-text {
+                margin-left: $button-padding;
+            }
+        }
+        &.dropdown-button {
+            padding-right: 36px;
+        }
+        .icon-wrapper {
+            display: inline-block;
+        }
+    }
+    &.vue-button {
+        font-size: rem-calc(14);
+        min-width: $button-height;
+        min-height: $button-height;
+
+        .button-icon {
+            margin-right: initial;
+        }
+    }
+    .button-icon, i {
+        margin-right: $button-padding;
         vertical-align: text-bottom;
+        &:not(.vue-button) {
+            font-size: 1.33333333em;
+        }
+    }
+    .dropdown-icon {
+        line-height: inherit;
+        font-size: 130%;
     }
     &, &:link, &:visited {
         @include button-hover-active($button-background, 3%, $ma-secondary-text);
@@ -70,14 +121,31 @@ $button-margin-right: rem-calc(8);
         }
     }
     &.icon {
-      padding: rem-calc(8) rem-calc(5);
-      width: rem-calc(36);
-      .fa,.far,.fal {
-        margin-right: 0px;
-        font-size: 1.45em;
-      }
-      &.ma-warning-color {
-        color: $ma-warning;
-      }
+        &.vue-button {
+            &.no-text {
+                padding: unset;
+                .button-icon {
+                    line-height: inherit;
+                    margin-right: 0px;
+                }
+            }
+            &.has-text {
+                .button-icon {
+                    line-height: inherit;
+                    margin-right: $button-padding;
+                }
+            }
+        }
+        &:not(.vue-button) {
+            padding: rem-calc(8) rem-calc(5);
+            width: rem-calc(36);
+        }
+        i {
+            margin-right: 0px;
+            font-size: $icon-font-size;
+        }
+        &.ma-warning-color {
+            color: $ma-warning;
+        }
     }
 }
