@@ -9,7 +9,8 @@ pipeline:
     image: ypcloud/sonar-runner
     sources: "dev/,pub/"
     language: "js"
-    secrets: [SONAR_HOST,SONAR_LOGIN]
+    debug: true
+    secrets: [SONAR_HOST, SONAR_LOGIN]
     environment:
       - PLUGIN_ALLOWED_BRANCH_REGEX=.*
   notify:
