@@ -5,7 +5,7 @@
         :class="{'ma-simple-item--removeable': itemRemoveable}"
         class="cell grid-x align-justify grid-padding-x" >
         <div
-          :class="{'small-10': itemRemoveable}"
+          :class="{'auto': itemRemoveable}"
           class="cell ma-simple-item-title">
           <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
             <div class="cell shrink align-self-middle handle-container">
@@ -24,7 +24,7 @@
         </div>
         <div
           v-if="itemRemoveable"
-          class="cell small-2 align-self-middle ma-simple-item-button">
+          class="cell shrink align-self-middle ma-simple-item-button">
           <vue-button
             type="icon"
             icon="far fa-times"
@@ -58,6 +58,7 @@ export default {
 
 
 <style lang="scss">
+@import '../../sass/settings.scss';
 .handle {
   cursor: move;
 }
@@ -70,5 +71,9 @@ export default {
     padding-left: 0;
     padding-right: 0;
     text-align: right;
+
+    a.button {
+      margin-left: map-get($spacings, small);
+    }
 }
 </style>
