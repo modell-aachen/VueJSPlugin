@@ -53,11 +53,24 @@ export default {
      */
     metadata: {
       default: () => [],
-      type: Array,
+      type: [Object, Array],
     },
   },
   data() {
-    let internalMetadata = this.metadata.map(meta => {
+    let metadataArray;
+    if (this.metadata instanceof Object) {
+      let self = this;
+      metadataArray = Object.keys(this.metadata).map(function(k){
+        let tempData = self.metadata[k];
+        if(tempData.description && !tempData.label) {
+          tempData.label = tempData.description;
+        }
+        return tempData;
+      });
+    } else {
+      metadataArray = this.metadata;
+    }
+    let internalMetadata = metadataArray.map(meta => {
       let internal = Object.assign(meta);
       internal.lowerLabel = internal.label.toLocaleLowerCase();
       return internal;
