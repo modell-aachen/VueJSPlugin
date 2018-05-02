@@ -13,6 +13,8 @@ pipeline:
     secrets: [SONAR_HOST, SONAR_LOGIN]
     environment:
       - PLUGIN_ALLOWED_BRANCH_REGEX=.*
+    when:
+      branch: notYetAvailable
   notify:
     image: drillster/drone-email
     host: smtp.sendgrid.net
