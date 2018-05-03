@@ -59,9 +59,8 @@ export default {
   data() {
     let metadataArray;
     if (this.metadata instanceof Object) {
-      let self = this;
-      metadataArray = Object.keys(this.metadata).map(function(k){
-        let tempData = self.metadata[k];
+      metadataArray = Object.values(this.metadata).map(function(value){
+        let tempData = Object.assign({}, value);
         if(tempData.description && !tempData.label) {
           tempData.label = tempData.description;
         }

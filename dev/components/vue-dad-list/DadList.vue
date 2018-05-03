@@ -46,7 +46,7 @@ export default {
   name: 'DadList',
   props: {
     'value':{
-      type: [Array,Object],
+      type: Array,
       required: true
     },
     'itemType': {
@@ -121,6 +121,7 @@ export default {
               to--;
             }
             const value = this.internalValue.slice();
+            //Swap: Delete element at index 'from' and insert on index 'to'.
             value.splice(to, 0, value.splice(from, 1)[0]);
             this.internalValue = value;
           });
