@@ -103,18 +103,22 @@ export default {
 </script>
 
 <style lang="scss">
-.ma-input {
-  margin: 0 0 1rem;
-}
-.ma-input--wrapper {
-  position: relative;
-}
-.ma-input-text-icon {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-}
-.ma-input-text-indent {
-  text-indent: 30px;
+@import '../../sass/settings.scss';
+.ma-input.ma-input-group {
+  margin: 0 0 rem-calc(map-get($spacings, 'small'));
+
+  .ma-input--wrapper {
+    position: relative;
+  }
+
+  .ma-input-text-icon {
+    position: absolute;
+    left: 1px; // border-width
+    pointer-events: none;
+  }
+
+  .ma-input-text-indent {
+    text-indent: map-get($spacings, 'small') + 20px + 1px; // margin-left + icon-width + border-width
+  }
 }
 </style>
