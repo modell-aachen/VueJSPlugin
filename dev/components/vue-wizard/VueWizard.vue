@@ -8,16 +8,20 @@
     </div>
 
     <div class="cell auto grid-y">
-      <h2 class="cell ma-primary-color">{{ heading }}</h2>
-      <div class="cell">
+      <vue-header3>{{ heading }}</vue-header3>
+      <div class="cell ma-margin-top-medium">
         <div v-if="text">{{ text }}</div>
-        <vue-button
+        <div
           v-if="( buttonCallback || buttonHref) && buttonText"
-          :title="buttonText"
-          :href="buttonHref"
-          type="primary"
-          @click.native="buttonCallback"
-        />
+          class="ma-margin-top-large"
+        >
+          <vue-button
+            :title="buttonText"
+            :href="buttonHref"
+            type="primary"
+            @click.native="buttonCallback"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -94,22 +98,15 @@ export default {
 <style lang="scss">
   @import '../../sass/settings.scss';
 
-  .vue-wizard {
+  .flatskin-wrapped .vue-wizard {
     background-color: $ma-bg-beige;
     border-radius: $ma-border-radius;
-    color: $ma-secondary-text;
-    .button {
-      margin-top: map-get($spacings, large);
-    }
-    h2 {
-      margin: map-get($spacings, medium) 0;
+    &, & h3 {
+      color: $ma-secondary-text;
     }
     .icon {
       margin: map-get($spacings, medium);
       color: $ma-primary;
-      &:hover {
-        color:$ma-primary-hover;
-      }
     }
   }
 </style>
