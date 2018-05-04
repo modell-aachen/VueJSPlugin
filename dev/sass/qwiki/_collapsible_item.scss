@@ -1,3 +1,4 @@
+$ma-grid-padding: rem-calc(0 4 0 4);
 .ma-collapsible-item,
 .ma-simple-item{
     border-radius: $ma-border-radius;
@@ -14,14 +15,14 @@
 }
 .ma-simple-item-title,
 .ma-collapsible-item-title {
-    padding: rem-calc(0 4 0 4);
+    padding: $ma-grid-padding;
     background-color: $ma-sand;
     border-top-left-radius: $ma-border-radius;
     border-top-right-radius: $ma-border-radius;
     height: rem-calc(56);
     .ma-remove-cell,
     .ma-toggle-cell {
-        padding: rem-calc(0 4 0 4);
+        padding: $ma-grid-padding;
         cursor: pointer;
     }
     h3 {
