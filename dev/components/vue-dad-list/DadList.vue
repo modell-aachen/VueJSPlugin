@@ -19,7 +19,7 @@
           <slot
             :item="item"
             :index="index"
-            :lastOpendItemId="lastOpendItemId"/>
+            :lastOpenedItemId="lastOpenedItemId"/>
         </vddl-draggable>
       </template>
       <slot name="placeholder">
@@ -69,7 +69,7 @@ export default {
         "label": ""
       },
       DaDList: true,
-      lastOpendItemId: null,
+      lastOpenedItemId: null,
       hasDropped: false,
       hasDroppedExtern: false,
       droppedIndex: -1,
@@ -93,7 +93,7 @@ export default {
     }
   },
   created: function() {
-    this.$on('lastOpend', this.setLastOpendId);
+    this.$on('lastOpened', this.setLastOpenedId);
   },
   methods: {
     handleDrop: function(data) {
@@ -135,8 +135,8 @@ export default {
     addItemEvent: function() {
       this.$emit("add-item");
     },
-    setLastOpendId: function(newId) {
-      this.lastOpendItemId = newId;
+    setLastOpenedId: function(newId) {
+      this.lastOpenedItemId = newId;
     }
   }
 };
