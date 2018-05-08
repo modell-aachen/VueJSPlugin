@@ -407,7 +407,7 @@ export default {
       this.select(item);
     });
     //check if component should be disabled (already)
-    if( this.disabled ) this._disable();
+    if( this.isDisabled ) this._disable();
   },
   created() {
     let internalFilterOptions = this.internalFilterOptions || this.getFilterOptions() || [];
@@ -615,7 +615,7 @@ export default {
      */
     toggleDropdown() {
       //ignore toggle if component is disabled
-      if( this.disabled ) return;
+      if( this.isDisabled ) return;
       if (this.open) {
         this.$refs.search.blur(); // dropdown will close on blur
       } else {
