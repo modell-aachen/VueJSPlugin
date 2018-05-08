@@ -250,23 +250,33 @@ The standard table.
 
 ---++ Grids
 The standard foundation grid can be used to layout elements.
-<div class="grid-x">
-  <div class="small-6 cell" style="background-color: lightgrey;">6 columns</div>
-  <div class="small-6 cell" style="background-color: lightblue;">6 columns</div>
-</div>
-<div class="grid-x">
-  <div class="medium-6 large-4 cell" style="background-color: lightgrey;">12/6/4 columns</div>
-  <div class="medium-6 large-8 cell" style="background-color: lightblue;">12/6/8 columns</div>
+<div class="grid-container">
+   <div class="grid-x grid-margin-x grid-margin-y">
+     <div class="large-8 medium-12 cell" style="background-color: lightgrey;">Default Text</div>
+     <div class="medium-8 small-12 cell" style="background-color: lightgrey;">Primary Content</div>
+     <div class="medium-4 small-12 cell" style="background-color: lightblue;">Secondary Contetn</div>
+     <div class="medium-6 small-12 cell" style="background-color: lightgrey;">2 Column Content</div>
+     <div class="medium-6 small-12 cell" style="background-color: lightblue;">2 Column Contetn</div>
+     <div class="medium-4 small-12 cell" style="background-color: lightgrey;">3 Column Content</div>
+     <div class="medium-4 small-12 cell" style="background-color: lightblue;">3 Column Contetn</div>
+     <div class="medium-4 small-12 cell" style="background-color: lightgrey;">3 Column Contetn</div>
+     <div class="small-12 cell" style="background-color: lightgrey;">Large Contetn</div>
+   </div>
 </div>
 
 <verbatim class="html">
-<div class="row">
-  <div class="small-6 columns" style="background-color: lightgrey;">6 columns</div>
-  <div class="small-6 columns" style="background-color: lightblue;">6 columns</div>
-</div>
-<div class="row">
-  <div class="medium-6 large-4 columns" style="background-color: lightgrey;">12/6/4 columns</div>
-  <div class="medium-6 large-8 columns" style="background-color: lightblue;">12/6/8 columns</div>
+<div class="grid-container">
+   <div class="grid-x grid-margin-x grid-margin-y">
+     <div class="large-8 medium-12 cell" style="background-color: lightgrey;">Default Text</div>
+     <div class="medium-8 small-12 cell" style="background-color: lightgrey;">Primary Content</div>
+     <div class="medium-4 small-12 cell" style="background-color: lightblue;">Secondary Contetn</div>
+     <div class="medium-6 small-12 cell" style="background-color: lightgrey;">2 Column Content</div>
+     <div class="medium-6 small-12 cell" style="background-color: lightblue;">2 Column Contetn</div>
+     <div class="medium-4 small-12 cell" style="background-color: lightgrey;">3 Column Content</div>
+     <div class="medium-4 small-12 cell" style="background-color: lightblue;">3 Column Contetn</div>
+     <div class="medium-4 small-12 cell" style="background-color: lightgrey;">3 Column Contetn</div>
+     <div class="small-12 cell" style="background-color: lightgrey;">Large Contetn</div>
+   </div>
 </div>
 </verbatim>
 ---++ Buttons

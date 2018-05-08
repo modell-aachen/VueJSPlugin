@@ -41,9 +41,16 @@ $warning-hover: $ma-warning-hover;
 $alert-hover: $ma-failure-hover;
 */
 
+$global-width: 920px;
+$grid-margin-gutters: (
+  small: 16px,
+  medium: 24px,
+  large: 40px,
+);
+
 $breakpoints: (
   small: 0,
-  medium: 640px,
+  medium: 360px,
   large: 1024px,
   xlarge: 1200px,
   xxlarge: 1440px,
