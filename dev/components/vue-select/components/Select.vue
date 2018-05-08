@@ -832,6 +832,7 @@ export default {
     }
 
     .form-control {
+        line-height: 18.8px;
         margin-bottom: 0px;
         min-width: 100px;
         width: 100%,
