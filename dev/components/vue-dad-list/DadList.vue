@@ -19,7 +19,7 @@
           <slot
             :item="item"
             :index="index"
-            :lastOpenedItemId="lastOpenedItemId"/>
+            :last-opened-item-id="lastOpenedItemId"/>
         </vddl-draggable>
       </template>
       <slot name="placeholder">
