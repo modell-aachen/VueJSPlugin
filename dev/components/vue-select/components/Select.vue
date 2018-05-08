@@ -580,7 +580,7 @@ export default {
      _disable() {
       // Add attribute `disabled` to all inputs
       [...this.$el.querySelectorAll('input')].map( (node) => {
-        node.setAttribute('disabled', this.isDisabled);
+        (this.isDisabled) ? node.setAttribute('disabled', this.isDisabled) : node.removeAttribute('disabled');
       });
       // Add/Remove class `disabled` on all divs
       [...this.$el.querySelectorAll('div')].map( (node) => {
