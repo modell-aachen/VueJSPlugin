@@ -6,6 +6,9 @@
 $OpenSansPath: '../fonts/opensans';
 @import 'open-sans';
 
+html {
+    font-size: 14px;
+}
 .flatskin-wrapped {
     //Resets for the ModacSkin are put here
     label {
