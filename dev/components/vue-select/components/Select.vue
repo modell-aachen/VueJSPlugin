@@ -289,7 +289,7 @@ export default {
     /**
      * Set to true, if this component/input should be disabled
      */
-     disabled: {
+     isDisabled: {
        type: Boolean,
        default: false,
      }
@@ -398,7 +398,7 @@ export default {
     search: debounce(function() {
       this.updateDropdown();
     }, debounceMillis),
-    disabled() {
+    isDisabled() {
       this._disable();
     },
   },
@@ -580,11 +580,11 @@ export default {
      _disable() {
       // Add attribute `disabled` to all inputs
       [...this.$el.querySelectorAll('input')].map( (node) => {
-        node.setAttribute('disabled', this.disabled);
+        node.setAttribute('disabled', this.isDisabled);
       });
       // Add/Remove class `disabled` on all divs
       [...this.$el.querySelectorAll('div')].map( (node) => {
-        (this.disabled) ? node.classList.add('disabled') : node.classList.remove('disabled');
+        (this.isDisabled) ? node.classList.add('disabled') : node.classList.remove('disabled');
       });
      },
 

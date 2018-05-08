@@ -275,7 +275,7 @@ The following examples provide an overview of its functionality. The correspondi
   label="Disabled Select"
   placeholder="Disabled .."
   :onSearch="() => {}"
-  :disabled="true"
+  :isDisabled="true"
 >
     <template slot="more-results">Show more results</template>
 </vue-select>
