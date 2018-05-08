@@ -285,6 +285,14 @@ export default {
       type: [Boolean, String],
       default: false,
     },
+
+    /**
+     * Set to true, if this component/input should be disabled
+     */
+     disabled: {
+       type: Boolean,
+       default: false,
+     }
   },
 
   data() {
@@ -390,11 +398,17 @@ export default {
     search: debounce(function() {
       this.updateDropdown();
     }, debounceMillis),
+    disabled() {
+      this._disable();
+    },
   },
   mounted() {
     this.value.forEach(item => {
       this.select(item);
     });
+    console.log( this.disabled );
+    //check if component should be disabled (already)
+    if( this.disabled ) this._disable();
   },
   created() {
     let internalFilterOptions = this.internalFilterOptions || this.getFilterOptions() || [];
@@ -562,6 +576,20 @@ export default {
     },
 
     /**
+     * Disable whole component and prevent user input
+     */
+     _disable() {
+      // Add attribute `disabled` to all inputs
+      [...this.$el.querySelectorAll('input')].map( (node) => {
+        node.setAttribute('disabled', this.disabled);
+      });
+      // Add/Remove class `disabled` on all divs
+      [...this.$el.querySelectorAll('div')].map( (node) => {
+        (this.disabled) ? node.classList.add('disabled') : node.classList.remove('disabled');
+      });
+     },
+
+    /**
      * Called from this.select after each selection.
      * @param  {Object||String} option
      * @return {void}
@@ -587,6 +615,8 @@ export default {
      * @return {void}
      */
     toggleDropdown() {
+      //ignore toggle if component is disabled
+      if( this.disabled ) return;
       if (this.open) {
         this.$refs.search.blur(); // dropdown will close on blur
       } else {
@@ -659,6 +689,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../../sass/settings.scss';
 .v-select {
     position: relative;
     margin: 0 0 1rem;
@@ -739,6 +770,12 @@ export default {
         &.multi {
             height: initial;
             margin: 0;
+        }
+
+        &.disabled {
+          cursor: not-allowed;
+          background-color: #fafafa;
+          color: $ma-disabled-text;
         }
     }
 
@@ -835,7 +872,7 @@ export default {
         line-height: 18.8px;
         margin-bottom: 0px;
         min-width: 100px;
-        width: 100%,
+        width: 100%;
         &:not(.multi) {
             padding-top: 0px;
             padding-bottom: 0px;

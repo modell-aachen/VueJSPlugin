@@ -270,6 +270,15 @@ The following examples provide an overview of its functionality. The correspondi
 >
     <template slot="more-results">Show more results</template>
 </vue-select>
+
+<vue-select
+  label="Disabled Select"
+  placeholder="Disabled .."
+  :onSearch="() => {}"
+  :disabled="true"
+>
+    <template slot="more-results">Show more results</template>
+</vue-select>
 </div>
 %ENDSECTION{"SelectVueTemplate"}%
 </verbatim>
