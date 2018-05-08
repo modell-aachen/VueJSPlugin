@@ -406,7 +406,6 @@ export default {
     this.value.forEach(item => {
       this.select(item);
     });
-    console.log( this.disabled );
     //check if component should be disabled (already)
     if( this.disabled ) this._disable();
   },
