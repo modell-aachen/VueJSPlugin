@@ -67,7 +67,7 @@ i.ma-status-dot {
     }
 }
 .ma-collapsible-item-content {
-    padding: rem-calc(24 24 - map-get($grid-container-padding,medium)/2);
+    padding: rem-calc(24 0);
     border: solid $ma-sand;
     border-width: rem-calc(1 8 16 8);
     border-bottom-left-radius: $ma-border-radius;
