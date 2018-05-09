@@ -38,6 +38,10 @@ export default {
     border-bottom: $sidebar-header-bottom-border solid $light-gray;
   }
 
+  .sidebar-content {
+    margin-bottom: map-get($spacings, small);
+  }
+
   .sidebar-content h2 {
     margin-bottom: map-get($spacings, large);
   }
