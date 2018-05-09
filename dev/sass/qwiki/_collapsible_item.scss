@@ -43,6 +43,23 @@ $ma-grid-padding: rem-calc(0 4 0 4);
         cursor: pointer
     }
 }
+
+/**
+ * Inner DaD-Items should be a bit smaller than it's parent, i.e. parent height 56px, child height 48px
+ * Apply style to nested items and items with an additional class
+ */
+// nested elements
+.ma-collapsible-item .ma-simple-item .ma-simple-item-title,
+.ma-collapsible-item .ma-collapsible-item > .ma-collapsible-item-title, // take only direct childs
+// modified elements (BEM moodifier class)
+.ma-simple-item-title.ma-simple-item-title--small,
+.ma-collapsible-item-title.ma-collapsible-item-title--small {
+    height: rem-calc(48);
+    h3 {
+        font-size: rem-calc(14); //TBD: should we place this one here?
+    }
+}
+
 i.ma-status-dot {
     $dot-size: .5em;
     padding-left: rem-calc(8);
