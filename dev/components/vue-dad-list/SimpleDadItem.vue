@@ -75,6 +75,11 @@ export default {
 
     a.button {
       margin-left: map-get($spacings, small);
+      background-color: transparent;
+      color: $ma-failure;
+      &:hover {
+        color: $ma-failure-hover;
+      }
     }
 }
 </style>
