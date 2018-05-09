@@ -5,9 +5,10 @@
 //
 $OpenSansPath: '../fonts/opensans';
 @import 'open-sans';
+@import 'settings';
 
 html {
-    font-size: 14px;
+    font-size: $global-font-size;
 }
 .flatskin-wrapped {
     //Resets for the ModacSkin are put here
@@ -18,7 +19,6 @@ html {
     // Foundation for Sites 6
     //
     // @import 'util/util';
-    @import 'settings';
     @import 'foundation';
 
     //Here we put all styles foundation sets on html or body.
