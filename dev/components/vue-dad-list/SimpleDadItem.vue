@@ -5,7 +5,7 @@
         :class="{'ma-simple-item--removeable': itemRemoveable}"
         class="cell grid-x align-justify grid-padding-x" >
         <div
-          :class="{'auto': itemRemoveable}"
+          :class="{'auto': itemRemoveable, 'ma-simple-item-title--small': isSmallItem}"
           class="cell ma-simple-item-title">
           <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
             <div class="cell shrink align-self-middle handle-container">
@@ -44,6 +44,10 @@ export default {
       type: Number,
       required: true
     },
+    isSmallItem: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     itemRemoveable: function() {
