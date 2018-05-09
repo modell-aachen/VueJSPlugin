@@ -60,7 +60,8 @@ $icon-font-size: 1.45em;
                             // unfortunately it also removes some flexibility
                             // (fixed width for the icon)
                 position: absolute;
-                top: 0px;
+                top: rem-calc(-1);
+                right: rem-calc(20);
                 width: $button-icon-width;
                 .button-icon {
                     margin: 0px;

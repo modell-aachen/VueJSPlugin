@@ -27,7 +27,11 @@ $ma-grid-padding: rem-calc(0 4 0 4);
     .ma-remove-cell,
     .ma-toggle-cell {
         padding: $ma-grid-padding;
+        margin-right: rem-calc(16);
         cursor: pointer;
+        .fa-fw {
+          width: rem-calc(20);
+        }
     }
     h3 {
         margin-top: 0;
