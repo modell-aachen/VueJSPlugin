@@ -289,10 +289,10 @@ export default {
     /**
      * Set to true, if this component/input should be disabled
      */
-     isDisabled: {
-       type: Boolean,
-       default: false,
-     }
+    isDisabled: {
+      type: Boolean,
+      default: false,
+    }
   },
 
   data() {
@@ -407,7 +407,9 @@ export default {
       this.select(item);
     });
     //check if component should be disabled (already)
-    if( this.isDisabled ) this._disable();
+    if( this.isDisabled ){
+      this._disable();
+    }
   },
   created() {
     let internalFilterOptions = this.internalFilterOptions || this.getFilterOptions() || [];
@@ -577,7 +579,7 @@ export default {
     /**
      * Disable whole component and prevent user input
      */
-     _disable() {
+    _disable() {
       // Add attribute `disabled` to all inputs
       [...this.$el.querySelectorAll('input')].map( (node) => {
         (this.isDisabled) ? node.setAttribute('disabled', this.isDisabled) : node.removeAttribute('disabled');
@@ -586,7 +588,7 @@ export default {
       [...this.$el.querySelectorAll('div')].map( (node) => {
         (this.isDisabled) ? node.classList.add('disabled') : node.classList.remove('disabled');
       });
-     },
+    },
 
     /**
      * Called from this.select after each selection.
@@ -615,7 +617,10 @@ export default {
      */
     toggleDropdown() {
       //ignore toggle if component is disabled
-      if( this.isDisabled ) return;
+      if( this.isDisabled ) {
+        return;
+      }
+
       if (this.open) {
         this.$refs.search.blur(); // dropdown will close on blur
       } else {
