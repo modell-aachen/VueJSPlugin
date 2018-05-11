@@ -113,19 +113,15 @@ export default {
       const { index } = data;
       if(this.hasDropped){
         this.hasDropped = false;
-        Vue.nextTick(() => {
-          Vue.nextTick(() => {
-            let to = this.droppedIndex;
-            const from = index;
-            if(from < to){
-              to--;
-            }
-            const value = this.internalValue.slice();
-            //Swap: Delete element at index 'from' and insert on index 'to'.
-            value.splice(to, 0, value.splice(from, 1)[0]);
-            this.internalValue = value;
-          });
-        });
+        let to = this.droppedIndex;
+        const from = index;
+        if(from < to){
+          to--;
+        }
+        const value = this.internalValue.slice();
+        //Swap: Delete element at index 'from' and insert on index 'to'.
+        value.splice(to, 0, value.splice(from, 1)[0]);
+        this.internalValue = value;
       } else {
         const value = this.internalValue.slice();
         value.splice(index, 1);
