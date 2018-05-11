@@ -56,26 +56,27 @@ export default {
       type: [Object, Array],
     },
   },
-  data() {
-    let metadataArray;
-    if (this.metadata instanceof Object) {
-      metadataArray = Object.values(this.metadata).map(function(value){
-        let tempData = Object.assign({}, value);
-        if(tempData.description && !tempData.label) {
-          tempData.label = tempData.description;
-        }
-        return tempData;
-      });
-    } else {
-      metadataArray = this.metadata;
-    }
-    let internalMetadata = metadataArray.map(meta => {
-      let internal = Object.assign(meta);
-      internal.lowerLabel = internal.label.toLocaleLowerCase();
-      return internal;
-    });
-    internalMetadata = internalMetadata.sort((a, b) => a.lowerLabel.localeCompare(b.lowerLabel));
-    return {internalMetadata};
+  computed: {
+      internalMetadata(){
+          let metadataArray;
+          if (this.metadata instanceof Object) {
+            metadataArray = Object.values(this.metadata).map(function(value){
+              let tempData = Object.assign({}, value);
+              if(tempData.description && !tempData.label) {
+                tempData.label = tempData.description;
+              }
+              return tempData;
+            });
+          } else {
+            metadataArray = this.metadata;
+          }
+          let internalMetadata = metadataArray.map(meta => {
+            let internal = Object.assign(meta);
+            internal.lowerLabel = internal.label.toLocaleLowerCase();
+            return internal;
+          });
+          return internalMetadata.sort((a, b) => a.lowerLabel.localeCompare(b.lowerLabel));
+      }
   },
   methods: {
     getFilterOptions() {
