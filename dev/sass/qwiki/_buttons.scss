@@ -18,9 +18,13 @@ $button-margin-right: rem-calc(8);
 @mixin button-hover-active($bg-color, $color-effect, $text-color) {
     background-color: $bg-color;
     color: $text-color;
-    &:hover, &:focus {
-        background-color: lighten($bg-color, $color-effect);
+    &, &:focus {
+        background-color: $bg-color;
         color: $text-color;
+        &:hover {
+            background-color: lighten($bg-color, $color-effect);
+            color: $text-color;
+        }
     }
     &:active {
         background-color: darken($bg-color, $color-effect);
