@@ -6785,7 +6785,7 @@ vue-router@^3.0.1:
 
 "vue-slide-up-down@git://github.com/modell-aachen/vue-slide-up-down.git":
   version "1.2.0"
-  resolved "git://github.com/modell-aachen/vue-slide-up-down.git#3f0f3111a9b0576d4cd3ee5aa4a81dbf8541c1ba"
+  resolved "git://github.com/modell-aachen/vue-slide-up-down.git#4325a7402908673d0ee0c5c7e09b6a39bd76660f"
 
 vue-style-loader@^3.0.0:
   version "3.0.3"
