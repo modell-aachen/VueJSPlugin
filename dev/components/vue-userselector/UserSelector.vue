@@ -102,6 +102,13 @@ export default {
       return filterOptions;
     },
 
+    getHideOptionsValue() {
+      if( this.groupsOption || this.usersOption || this.metadataOption ){
+        return false;
+      }
+      return true;
+    },
+
     getFilteredData(checkedFilterOptions, offsets) {
       return [
         this.getUsersAndGroups(offsets[0] || 0, checkedFilterOptions),

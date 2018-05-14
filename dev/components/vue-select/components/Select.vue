@@ -90,7 +90,7 @@
       v-show="open"
       class="dropdown-menu">
       <div
-        v-if="internalFilterOptions.length"
+        v-if="!hideOptions && internalFilterOptions.length"
         class="vue-select__dropdown__filter"
         @click="focusOnSearch"
         @mousedown="checkBoxHasFocus = true">
@@ -302,6 +302,8 @@ export default {
       checkedFilterOptions[filter.name] = filter.unchecked ? 0 : 1;
     }
 
+    let hideOptions = typeof this.getHideOptionsValue === "function" ? this.getHideOptionsValue() : false;
+
     let internalValue = [];
     let slotOptions;
     slotOptions = this.getSlotOptions();
@@ -316,6 +318,7 @@ export default {
       checkBoxHasFocus: false,
       internalFilterOptions,
       checkedFilterOptions,
+      hideOptions,
       internalValue,
       stringifiedValue: this.stringifyValue(internalValue),
       isLoading: false,
