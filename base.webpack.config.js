@@ -7,7 +7,8 @@ let includeDirs = [
 ];
 
 let babelLoaderOptions = {
-  presets: [['env', {"modules": false}]]
+  presets: [['env', {"modules": false}]],
+  plugins: ["transform-es2017-object-entries"]
 };
 
 module.exports = {

@@ -31,33 +31,6 @@ describe("The SimpleDadItem component", () => {
     });
   });
 
-  describe("status dot ", () => {
-
-    let options = {
-      propsData: {
-        item: {},
-        index: 0,
-      },
-    };
-
-    it("is hidden by default", () => {
-      const wrapper = createItem(options);
-      expect(wrapper.contains('i.ma-status-dot')).toBe(false);
-    });
-
-    it("is hidden when item's status is set to false", () => {
-      options.propsData.item['status'] = false;
-      const wrapper = createItem(options);
-      expect(wrapper.contains('i.ma-status-dot')).toBe(false);
-    });
-
-    it("is display when item's status is set to true", () => {
-      options.propsData.item['status'] = true;
-      const wrapper = createItem(options);
-      expect(wrapper.contains('i.ma-status-dot')).toBe(true);
-    });
-  });
-
   describe("remove button", () => {
 
     let options = {};
