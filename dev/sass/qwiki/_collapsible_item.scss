@@ -31,7 +31,7 @@ $ma-grid-padding: rem-calc(0 4 0 4);
         margin-right: rem-calc(16);
         cursor: pointer;
         .fa-fw {
-          width: rem-calc(20);
+            width: rem-calc(20);
         }
     }
     h3 {
@@ -76,20 +76,20 @@ i.ma-status-dot {
     vertical-align: middle;
     height: rem-calc(1em / 2 + $dot-size /2);
     &.warning {
-      color: $ma-warning;
+        color: $ma-warning;
     }
     &.error {
-      color: $ma-failure;
+        color: $ma-failure;
     }
 }
 .ma-collapsible-item-title-left,
 .ma-simple-item-title-left {
     height: 100%;
     .handle-spacer {
-      padding-left: rem-calc(19);
+        padding-left: rem-calc(19);
     }
     .ma-type-icon {
-      padding-left: rem-calc(8);
+        padding-left: rem-calc(8);
     }
 }
 .ma-collapsible-item-content {
@@ -99,7 +99,7 @@ i.ma-status-dot {
     border-bottom-left-radius: $ma-border-radius;
     border-bottom-right-radius: $ma-border-radius;
     hr {
-      height: rem-calc(1);
-      background: $ma-light-grey;
+        height: rem-calc(1);
+        background: $ma-light-grey;
     }
 }
