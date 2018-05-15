@@ -31,7 +31,7 @@ module.exports = {
     /**
      * Like slot options these are available from the start and will be
      * replaced when ajax requests occur.
-     * (Yet) They are not reactive.
+     * Now they are reactive.
      */
     initialOptions: {
       type: Array,
@@ -39,8 +39,8 @@ module.exports = {
     },
   },
 
-  methods: {
-    getSlotOptions() {
+  computed: {
+    slotOptions() {
       let slotOptions = this.$slots.default ? this.$slots.default : [];
 
       let values = {};
@@ -89,8 +89,10 @@ module.exports = {
       }
 
       return slotOptions;
-    },
 
+    }
+  },
+  methods: {
     getSlotData(offset) {
       if(this.dataUrl === '') {
         let filteredOptions = this.slotOptions.filter(item => item.compare.indexOf(this.search) !== -1);

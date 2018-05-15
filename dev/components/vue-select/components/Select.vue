@@ -146,7 +146,6 @@ import ajax from '../mixins/ajax';
 import slotOptions from '../mixins/slotOptions';
 import debounce from 'lodash/debounce';
 
-const numRows = 10;
 const debounceMillis = 150;
 
 export default {
@@ -267,8 +266,8 @@ export default {
     },
 
     dataLimit: {
-      type: String,
-      default: '10',
+      type: Number,
+      default: 10,
     },
     /**
      * Set to true/1, if the select may be reset to "no selection".
@@ -305,8 +304,6 @@ export default {
     let hideOptions = typeof this.getHideOptionsValue === "function" ? this.getHideOptionsValue() : false;
 
     let internalValue = [];
-    let slotOptions;
-    slotOptions = this.getSlotOptions();
 
     let taggable = (this.dataTags === true || this.dataTags === '1') ? true : false;
 
@@ -322,8 +319,6 @@ export default {
       internalValue,
       stringifiedValue: this.stringifyValue(internalValue),
       isLoading: false,
-      slotOptions,
-      numRows,
       ajaxQueryNr: 0, // Id for the ajax request. Changes, when the query term etc. changes, but does not change for paging. This will prevent any delayed (obsolete) responses from being displayed.
     };
   },
@@ -479,7 +474,7 @@ export default {
         }
 
         // Merge metadata and users/groups without changing the order of each source (backend might order differently than the browser).
-        for(let i = 0; i < numRows; i++) {
+        for(let i = 0; i < this.dataLimit; i++) {
           let selectedSource = undefined;
           let selectedItem;
           for(let source = 0; source < collectedData.length; source++) {
