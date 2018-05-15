@@ -121,7 +121,9 @@ export default {
         return Promise.resolve([]);
       }
 
-      let filteredMetadata = this.internalMetadata.filter(item => item.lowerLabel.indexOf(this.search) !== -1);
+        let filteredMetadata = this.internalMetadata.filter((item) => {
+            return item.lowerLabel.indexOf(this.search.toLowerCase()) !== -1;
+        });
       if(metadataOffset) {
         filteredMetadata = filteredMetadata.slice(metadataOffset);
       }
