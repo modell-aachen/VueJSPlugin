@@ -156,7 +156,7 @@ export default {
         term: this.search,
         offset: queryUsersGroupsOffset,
         type: type,
-        limit: this.numRows,
+        limit: this.dataLimit,
         header: '{$quotdata$quot:[',
         separator: ',',
         footer: '],$quotcount$quot:$quot$count$quot}',

@@ -67,7 +67,7 @@ describe("The UserSelector component's", () => {
     it("returns users/groups, if there is no search string and metadata is disabled", (done) => {
       userselector.checkedFilterOptions.metadata = 0;
       userselector.updateDropdown().then(() => {
-        expect(userselector.options).toEqual(mockUsers.slice(0, userselector.numRows));
+        expect(userselector.options).toEqual(mockUsers.slice(0, userselector.dataLimit));
         done();
       }).catch(e => fail(e));
     });
