@@ -57,26 +57,26 @@ export default {
     },
   },
   computed: {
-      internalMetadata(){
-          let metadataArray;
-          if (this.metadata instanceof Object) {
-            metadataArray = Object.values(this.metadata).map(function(value){
-              let tempData = Object.assign({}, value);
-              if(tempData.description && !tempData.label) {
-                tempData.label = tempData.description;
-              }
-              return tempData;
-            });
-          } else {
-            metadataArray = this.metadata;
+    internalMetadata(){
+      let metadataArray;
+      if (this.metadata instanceof Object) {
+        metadataArray = Object.values(this.metadata).map(function(value){
+          let tempData = Object.assign({}, value);
+          if(tempData.description && !tempData.label) {
+            tempData.label = tempData.description;
           }
-          let internalMetadata = metadataArray.map(meta => {
-            let internal = Object.assign(meta);
-            internal.lowerLabel = internal.label.toLocaleLowerCase();
-            return internal;
-          });
-          return internalMetadata.sort((a, b) => a.lowerLabel.localeCompare(b.lowerLabel));
+          return tempData;
+        });
+      } else {
+        metadataArray = this.metadata;
       }
+      let internalMetadata = metadataArray.map(meta => {
+        let internal = Object.assign(meta);
+        internal.lowerLabel = internal.label.toLocaleLowerCase();
+        return internal;
+      });
+      return internalMetadata.sort((a, b) => a.lowerLabel.localeCompare(b.lowerLabel));
+    }
   },
   methods: {
     getFilterOptions() {
@@ -121,9 +121,9 @@ export default {
         return Promise.resolve([]);
       }
 
-        let filteredMetadata = this.internalMetadata.filter((item) => {
-            return item.lowerLabel.indexOf(this.search.toLowerCase()) !== -1;
-        });
+      let filteredMetadata = this.internalMetadata.filter((item) => {
+        return item.lowerLabel.indexOf(this.search.toLowerCase()) !== -1;
+      });
       if(metadataOffset) {
         filteredMetadata = filteredMetadata.slice(metadataOffset);
       }
