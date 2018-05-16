@@ -13,6 +13,7 @@ import VueDadItem from './components/vue-dad-list/DadItem.vue';
 import VueCollapsibleDadItem from './components/vue-dad-list/CollapsibleDadItem.vue';
 import VueSimpleDadItem from './components/vue-dad-list/SimpleDadItem.vue';
 import VueWizard from './components/vue-wizard/VueWizard.vue';
+import VueSpacer from './components/vue-spacer/Spacer.vue';
 import VueHeader from './components/vue-header/VueHeader.vue';
 import VueHeader1 from './components/vue-header/VueHeader1.vue';
 import VueHeader2 from './components/vue-header/VueHeader2.vue';
@@ -79,6 +80,7 @@ class MAVueJsPlugin {
     Vue.component('sidebar-standard-layout', SidebarStandardLayout);
     Vue.component('vue-wizard', VueWizard);
     Vue.component('vue-slide-up-down', VueSlideUpDown);
+    Vue.component('vue-spacer', VueSpacer);
     Vue.component('vue-header', VueHeader);
     Vue.component('vue-header1', VueHeader1);
     Vue.component('vue-header2', VueHeader2);
