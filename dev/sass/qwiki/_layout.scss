@@ -37,3 +37,10 @@
   width: calc(100% - #{$ma-left-width});
   height: calc(100% - #{$ma-top-height});
 }
+
+.ma-spacer {
+  min-height: 8px;
+  min-width: 8px;
+  height: auto;
+  width: auto;
+}
