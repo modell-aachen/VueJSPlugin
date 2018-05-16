@@ -1,6 +1,7 @@
 {
     "groups": "Groups",
     "metadata": "Metadata",
+    "metadata-item": "Metadata",
     "paging_next": "Next",
     "paging_previous": "Back",
     "users": "Users",
