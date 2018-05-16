@@ -23,4 +23,4 @@ pipeline:
       - entwickler@modell-aachen.de
     recipients_only: true
     when:
-      status: [ changed, failure, success ]
+      status: [ changed, failure ]
