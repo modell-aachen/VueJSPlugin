@@ -694,7 +694,7 @@ export default {
 @import '../../../sass/settings.scss';
 .v-select {
     position: relative;
-    margin: 0 0 1rem;
+    margin: 0 0 1.143rem;
 
     > .dropdown-menu {
         width: 100%;
