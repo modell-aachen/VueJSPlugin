@@ -2,8 +2,8 @@
   <a
     :disabled="isDisabled"
     :href="href"
-    :class="[type, color, title ? 'has-text' : 'no-text']"
-    class="button vue-button"
+    :class="[type, color]"
+    class="button"
     @click="handleClick">
     <div
       v-if="icon"
@@ -18,10 +18,6 @@
       v-if="title && title.length"
       class="button-text"
     >
-      <span
-        v-if="icon"
-        class="icon-spacer"
-      />
       {{ title }}
     </span>
   </a>
