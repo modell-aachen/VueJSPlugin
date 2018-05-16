@@ -1,46 +1,46 @@
 <template>
-  <button
-    :title="tooltip"
-    :class="{close: isCloseButton, active: isActive}"
-    class="sidebar-tab-button"
-    @click.prevent="click">
-    <i
-      :class="icon"
-      class="far fa-2x"/>
-  </button>
+    <button
+        :title="tooltip"
+        :class="{close: isCloseButton, active: isActive}"
+        class="sidebar-tab-button"
+        @click.prevent="click">
+        <i
+            :class="icon"
+            class="far fa-2x"/>
+    </button>
 </template>
 
 <script>
 export default {
-  name: 'SidebarTabButton',
-  props: {
-    icon: {
-      type: String,
-      default: undefined
+    name: 'SidebarTabButton',
+    props: {
+        icon: {
+            type: String,
+            default: undefined
+        },
+        tooltip: {
+            type: String,
+            default: undefined
+        },
+        type: {
+            type: String,
+            default: undefined
+        },
+        isActive: {
+            type: Boolean,
+            default: false
+        }
     },
-    tooltip: {
-      type: String,
-      default: undefined
+    computed: {
+        isCloseButton: function() {
+            return this.type === 'close';
+        }
     },
-    type: {
-      type: String,
-      default: undefined
-    },
-    isActive: {
-      type: Boolean,
-      default: false
+    methods: {
+        click: function() {
+            this.$emit('click');
+        }
     }
-  },
-  computed: {
-    isCloseButton: function() {
-      return this.type === 'close';
-    }
-  },
-  methods: {
-    click: function() {
-      this.$emit('click');
-    }
-  }
 };
 </script>
 

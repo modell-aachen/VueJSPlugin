@@ -41,120 +41,120 @@ import VueSlideUpDown from 'vue-slide-up-down';
 import {mapState} from 'vuex';
 
 class MAVueJsPlugin {
-  constructor(options) {
-    this.foswiki = options.foswiki;
-    this.moment = options.moment;
-    this.jquery = options.jquery;
-  }
-  install(Vue, options){
-    i18next.init();
-    Vue.use(VueParams);
-    Vue.use(VueI18Next);
-    Vue.use(VueRouter);
-    Vue.use(VueResource);
-    Vue.use(InfiniteScroll);
-    Vue.use(Vddl);
-    const veeValidateConfig = {
-      errorBagName: 'validationErrors',
-      fieldsBagName: 'validationFields'
-    };
-    Vue.use(VeeValidate, veeValidateConfig);
-    Vue.use(new AlertPlugin());
-
-    //Component registrations
-    Vue.component('vue-select', VueSelect);
-    Vue.component('vue-userselector', VueUserSelector);
-    Vue.component('splitbutton', VueSplitbutton);
-    Vue.component('vue-button', VueButton);
-    Vue.component('vue-check-item', VueCheckItem);
-    Vue.component('vue-input-text', VueInputText);
-    Vue.component('vue-pagination', VuePagination);
-    Vue.component('vue-spinner', VueSpinner);
-    Vue.component('vue-tabpane', VueTabpane);
-    Vue.component('vue-tab', VueTab);
-    Vue.component('vue-dad-list', VueDadList);
-    Vue.component('vue-dad-item', VueDadItem);
-    Vue.component('vue-collapsible-dad-item', VueCollapsibleDadItem);
-    Vue.component('vue-simple-dad-item', VueSimpleDadItem);
-    Vue.component('sidebar', Sidebar);
-    Vue.component('sidebar-standard-layout', SidebarStandardLayout);
-    Vue.component('vue-wizard', VueWizard);
-    Vue.component('vue-slide-up-down', VueSlideUpDown);
-    Vue.component('vue-spacer', VueSpacer);
-    Vue.component('vue-header', VueHeader);
-    Vue.component('vue-header1', VueHeader1);
-    Vue.component('vue-header2', VueHeader2);
-    Vue.component('vue-header3', VueHeader3);
-    Vue.component('vue-paged-selector', VuePagedSelector);
-    Vue.directive('tooltip', VTooltip);
-    Vue.directive('click-outside', VueClickOutside);
-
-    //Global functions
-    Vue.registerStoreModule = (name, module) => {
-      options.store.registerModule(name, module);
-    };
-
-    Vue.onDocumentReady = (fn) => {
-      this.jquery(fn);
-    };
-
-    Vue.instantiateEach = (selector, options) => {
-      this.jquery(selector).each((i, element) => {
-        let instanceOptions = Object.assign({}, options);
-        instanceOptions.el = element;
-        new Vue(instanceOptions);
-      });
-    };
-
-    Vue.getConfigById = (id) => {
-      let base64Config = this.jquery('.' + id).html();
-      let config = Base64.Base64.decode(base64Config);
-      return JSON.parse(config);
-    };
-
-    Vue.makeAbsoluteUrl = (url) => {
-      const absoluteBasePath = this.foswiki.getScriptUrl().replace(/bin\/$/,'');
-      if(!url){
-        url = "";
-      }
-      url = url.replace(/^\//,'');
-      return `${absoluteBasePath}${url}`;
-    };
-
-    Vue.addTranslation = (language, namespace, translations) => {
-      i18next.addResourceBundle(language, namespace, translations);
-    };
-
-    Vue.getUniqueId = () => {
-      return Math.random().toString(36).substring(7);
-    };
-
-    Vue.foswiki = this.foswiki;
-    Vue.moment = this.moment;
-    Vue.VueRouter = VueRouter;
-    Vue.validate = Validator;
-    Vue.mapState = mapState;
-
-    //Instance properties/methods
-    Vue.prototype.$store = options.store;
-    Vue.prototype.$foswiki = this.foswiki;
-    Vue.prototype.$moment = this.moment;
-
-    let language = this.jquery("html").attr("lang");
-    if(!language){
-      language = 'en';
+    constructor(options) {
+        this.foswiki = options.foswiki;
+        this.moment = options.moment;
+        this.jquery = options.jquery;
     }
-    Vue.params.i18nextLanguage = language;
-    Vue.prototype.$lang = language;
-    Vue.prototype.$ajax = this.jquery.ajax;
+    install(Vue, options){
+        i18next.init();
+        Vue.use(VueParams);
+        Vue.use(VueI18Next);
+        Vue.use(VueRouter);
+        Vue.use(VueResource);
+        Vue.use(InfiniteScroll);
+        Vue.use(Vddl);
+        const veeValidateConfig = {
+            errorBagName: 'validationErrors',
+            fieldsBagName: 'validationFields'
+        };
+        Vue.use(VeeValidate, veeValidateConfig);
+        Vue.use(new AlertPlugin());
 
-    Vue.addTranslation('en', 'VueJSPlugin', translationsEn);
-    Vue.addTranslation('de', 'VueJSPlugin', translationsDe);
-    Validator.localize('de', {
-      messages: VeeValidateTranslationDe.messages
-    });
-    Validator.localize(language);
-  }
+        //Component registrations
+        Vue.component('vue-select', VueSelect);
+        Vue.component('vue-userselector', VueUserSelector);
+        Vue.component('splitbutton', VueSplitbutton);
+        Vue.component('vue-button', VueButton);
+        Vue.component('vue-check-item', VueCheckItem);
+        Vue.component('vue-input-text', VueInputText);
+        Vue.component('vue-pagination', VuePagination);
+        Vue.component('vue-spinner', VueSpinner);
+        Vue.component('vue-tabpane', VueTabpane);
+        Vue.component('vue-tab', VueTab);
+        Vue.component('vue-dad-list', VueDadList);
+        Vue.component('vue-dad-item', VueDadItem);
+        Vue.component('vue-collapsible-dad-item', VueCollapsibleDadItem);
+        Vue.component('vue-simple-dad-item', VueSimpleDadItem);
+        Vue.component('sidebar', Sidebar);
+        Vue.component('sidebar-standard-layout', SidebarStandardLayout);
+        Vue.component('vue-wizard', VueWizard);
+        Vue.component('vue-slide-up-down', VueSlideUpDown);
+        Vue.component('vue-spacer', VueSpacer);
+        Vue.component('vue-header', VueHeader);
+        Vue.component('vue-header1', VueHeader1);
+        Vue.component('vue-header2', VueHeader2);
+        Vue.component('vue-header3', VueHeader3);
+        Vue.component('vue-paged-selector', VuePagedSelector);
+        Vue.directive('tooltip', VTooltip);
+        Vue.directive('click-outside', VueClickOutside);
+
+        //Global functions
+        Vue.registerStoreModule = (name, module) => {
+            options.store.registerModule(name, module);
+        };
+
+        Vue.onDocumentReady = (fn) => {
+            this.jquery(fn);
+        };
+
+        Vue.instantiateEach = (selector, options) => {
+            this.jquery(selector).each((i, element) => {
+                let instanceOptions = Object.assign({}, options);
+                instanceOptions.el = element;
+                new Vue(instanceOptions);
+            });
+        };
+
+        Vue.getConfigById = (id) => {
+            let base64Config = this.jquery('.' + id).html();
+            let config = Base64.Base64.decode(base64Config);
+            return JSON.parse(config);
+        };
+
+        Vue.makeAbsoluteUrl = (url) => {
+            const absoluteBasePath = this.foswiki.getScriptUrl().replace(/bin\/$/,'');
+            if(!url){
+                url = "";
+            }
+            url = url.replace(/^\//,'');
+            return `${absoluteBasePath}${url}`;
+        };
+
+        Vue.addTranslation = (language, namespace, translations) => {
+            i18next.addResourceBundle(language, namespace, translations);
+        };
+
+        Vue.getUniqueId = () => {
+            return Math.random().toString(36).substring(7);
+        };
+
+        Vue.foswiki = this.foswiki;
+        Vue.moment = this.moment;
+        Vue.VueRouter = VueRouter;
+        Vue.validate = Validator;
+        Vue.mapState = mapState;
+
+        //Instance properties/methods
+        Vue.prototype.$store = options.store;
+        Vue.prototype.$foswiki = this.foswiki;
+        Vue.prototype.$moment = this.moment;
+
+        let language = this.jquery("html").attr("lang");
+        if(!language){
+            language = 'en';
+        }
+        Vue.params.i18nextLanguage = language;
+        Vue.prototype.$lang = language;
+        Vue.prototype.$ajax = this.jquery.ajax;
+
+        Vue.addTranslation('en', 'VueJSPlugin', translationsEn);
+        Vue.addTranslation('de', 'VueJSPlugin', translationsDe);
+        Validator.localize('de', {
+            messages: VeeValidateTranslationDe.messages
+        });
+        Validator.localize(language);
+    }
 }
 
 export default MAVueJsPlugin;

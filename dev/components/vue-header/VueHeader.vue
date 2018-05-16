@@ -1,59 +1,59 @@
 <template>
-  <div class="vue-header">
-    <component
-      :is="'h' + scrubbedLevel"
-      :class="headerClass"
-    >
-      <slot/>
-      <small
-        v-if="sublabel"
-        class="sublabel"
-      >
-        {{ sublabel }}
-      </small>
-    </component>
-  </div>
+    <div class="vue-header">
+        <component
+            :is="'h' + scrubbedLevel"
+            :class="headerClass"
+        >
+            <slot/>
+            <small
+                v-if="sublabel"
+                class="sublabel"
+            >
+                {{ sublabel }}
+            </small>
+        </component>
+    </div>
 </template>
 
 <script>
 export default {
-  props: {
-    level: {
-      type: [Number, String],
-      default: 1,
-      validator: this.levelValidator,
+    props: {
+        level: {
+            type: [Number, String],
+            default: 1,
+            validator: this.levelValidator,
+        },
+        ruler: {
+            type: Boolean,
+            default: false,
+        },
+        sublabel: {
+            type: String,
+            default: undefined,
+        },
     },
-    ruler: {
-      type: Boolean,
-      default: false,
+    computed: {
+        scrubbedLevel() {
+            // validator only emits a warning
+            if(this.levelValidator(this.level)) {
+                return this.level;
+            } else {
+                return 1;
+            }
+        },
+        headerClass() {
+            let headerClass = {
+                'ma-text-hr': this.ruler,
+            };
+            headerClass['ma-margin-top-' + (this.level === 3 ? 'medium' : 'large')] = true;
+            return headerClass;
+        },
     },
-    sublabel: {
-      type: String,
-      default: undefined,
-    },
-  },
-  computed: {
-    scrubbedLevel() {
-      // validator only emits a warning
-      if(this.levelValidator(this.level)) {
-        return this.level;
-      } else {
-        return 1;
-      }
-    },
-    headerClass() {
-      let headerClass = {
-        'ma-text-hr': this.ruler,
-      };
-      headerClass['ma-margin-top-' + (this.level === 3 ? 'medium' : 'large')] = true;
-      return headerClass;
-    },
-  },
-  methods: {
-    levelValidator: value => {
-      return /^[123]$/.test(value);
-    },
-  }
+    methods: {
+        levelValidator: value => {
+            return /^[123]$/.test(value);
+        },
+    }
 };
 </script>
 

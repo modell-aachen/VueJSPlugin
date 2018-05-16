@@ -1,50 +1,50 @@
 <template>
-  <div class="flatskin-wrapped vue-tabpane">
-    <div :class="'jqTabPaneFlat'+type">
-      <ul class="vue-tabpane-group">
-        <li
-          v-for="(tab, index) in tabs"
-          :key="index"
-          :class="{current: tab.current}"
-        >
-          <a
-            href="#"
-            @click.prevent="selectTab(tab.id)"
-            v-html="tab.name"
-          />
-        </li>
-      </ul>
-      <span class="clearfix"/>
-      <slot/>
+    <div class="flatskin-wrapped vue-tabpane">
+        <div :class="'jqTabPaneFlat'+type">
+            <ul class="vue-tabpane-group">
+                <li
+                    v-for="(tab, index) in tabs"
+                    :key="index"
+                    :class="{current: tab.current}"
+                >
+                    <a
+                        href="#"
+                        @click.prevent="selectTab(tab.id)"
+                        v-html="tab.name"
+                    />
+                </li>
+            </ul>
+            <span class="clearfix"/>
+            <slot/>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'VueTabpane',
-  props: {
-    type: {
-      type: String,
-      default: ''
+    name: 'VueTabpane',
+    props: {
+        type: {
+            type: String,
+            default: ''
+        },
     },
-  },
-  data: () => ({
-    tabs: [],
-  }),
-  mounted() {
-    if(this.$children.length) {
-      this.tabs = this.$children;
-      this.selectTab(this.tabs[0].id);
-    }
-  },
-  methods: {
-    selectTab(selectedTabId) {
-      this.$children.forEach(tab => {
-        tab.current = (tab.id === selectedTabId);
-      });
+    data: () => ({
+        tabs: [],
+    }),
+    mounted() {
+        if(this.$children.length) {
+            this.tabs = this.$children;
+            this.selectTab(this.tabs[0].id);
+        }
     },
-  },
+    methods: {
+        selectTab(selectedTabId) {
+            this.$children.forEach(tab => {
+                tab.current = (tab.id === selectedTabId);
+            });
+        },
+    },
 };
 </script>
 

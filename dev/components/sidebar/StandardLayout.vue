@@ -1,20 +1,20 @@
 <template>
-  <div class="siderbar grid-y">
-    <div class="sidebar-header grid-x">
-      <slot name="header"/>
+    <div class="siderbar grid-y">
+        <div class="sidebar-header grid-x">
+            <slot name="header"/>
+        </div>
+        <div class="sidebar-content grid-x">
+            <slot name="content"/>
+        </div>
+        <div class="sidebar-actions grid-x">
+            <slot name="actions"/>
+        </div>
     </div>
-    <div class="sidebar-content grid-x">
-      <slot name="content"/>
-    </div>
-    <div class="sidebar-actions grid-x">
-      <slot name="actions"/>
-    </div>
-  </div>
 </template>
 
 <script>
 export default {
-  inject: ['$validator']
+    inject: ['$validator']
 };
 </script>
 

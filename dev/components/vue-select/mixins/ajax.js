@@ -1,16 +1,16 @@
 module.exports = {
-  props: {
+    props: {
     /**
      * Toggles the adding of a 'loading' class to the main
      * .v-select wrapper. Useful to control UI state when
      * results are being processed through AJAX.
      */
-    loading: {
-      type: Boolean,
-      default: false
-    },
+        loading: {
+            type: Boolean,
+            default: false
+        },
 
-    /**
+        /**
      * Accept a callback function that will be
      * run when the search text changes.
      *
@@ -21,35 +21,35 @@ module.exports = {
      * @param {search}  String          Current search text
      * @param {loading} Function(bool)  Toggle loading class
      */
-    onSearch: {
-      type: Function,
-      default: () => false
-    },
+        onSearch: {
+            type: Function,
+            default: () => false
+        },
 
-    /**
+        /**
      * The number of milliseconds to wait before
      * invoking this.onSearch(). Used to prevent
      * sending an AJAX request until input is complete.
      */
-    debounce: {
-      type: Number,
-      default: 0
-    }
-  },
+        debounce: {
+            type: Number,
+            default: 0
+        }
+    },
 
-  watch: {
+    watch: {
     /**
      * If a callback & search text has been provided,
      * invoke the onSearch callback.
      */
-    search() {
-      if (this.onSearch) {
-        this.onSearch(this.search, this.toggleLoading);
-      }
+        search() {
+            if (this.onSearch) {
+                this.onSearch(this.search, this.toggleLoading);
+            }
+        },
     },
-  },
 
-  methods: {
+    methods: {
     /**
      * Toggle this.loading. Optionally pass a boolean
      * value. If no value is provided, this.loading
@@ -57,13 +57,13 @@ module.exports = {
      * @param toggle Boolean
      * @returns {*}
      */
-    toggleLoading(toggle = null) {
-      if (toggle === null) {
-        this.loading = !this.loading;
-      } else {
-        this.loading = toggle;
-      }
-      return this.loading;
+        toggleLoading(toggle = null) {
+            if (toggle === null) {
+                this.loading = !this.loading;
+            } else {
+                this.loading = toggle;
+            }
+            return this.loading;
+        }
     }
-  }
 };
