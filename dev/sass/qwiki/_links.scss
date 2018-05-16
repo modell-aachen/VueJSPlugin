@@ -2,7 +2,7 @@
   @include ma-font('semibold');
   border: 0;
   color: $ma-failure !important;
-  font-size: rem-calc(13);
+  font-size: rem-calc(14);
   line-height: rem-calc(21);
 
   &:link {
@@ -27,7 +27,6 @@
 .foswikiTopic a {
   @include ma-font('semibold');
   color: $ma-primary;
-  font-size: rem-calc(13);
   line-height: rem-calc(21);
 
   &:hover,
@@ -40,7 +39,6 @@
 .foswikiTopicUnvisited a {
   @include ma-font('semibold');
   color: $ma-primary;
-  font-size: rem-calc(13);
   line-height: rem-calc(21);
 
   &:hover,
@@ -53,7 +51,6 @@
 :visited {
   @include ma-font('semibold');
   color: $ma-primary;
-  font-size: rem-calc(13);
   line-height: rem-calc(21);
 
   &:active,
