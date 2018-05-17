@@ -16,17 +16,16 @@ export default {
             default: '1'
         }
     },
-    data() {
-        let factorVertical = this.factorVertical === 'auto' ? 'auto' : this.factorVertical*8+"px";
-        let factorHorizontal = this.factorHorizontal === 'auto' ? 'auto' : this.factorHorizontal*8+"px";
+    computed: {
+        styleObject: function () {
+            let factorVertical = this.factorVertical === 'auto' ? 'auto' : this.factorVertical*8+"px";
+            let factorHorizontal = this.factorHorizontal === 'auto' ? 'auto' : this.factorHorizontal*8+"px";
 
-        let styleObject = {
-            height: factorVertical,
-            width: factorHorizontal,
-        };
-        return {
-            styleObject
-        };
+            return {
+                height: factorVertical,
+                width: factorHorizontal,
+            };
+        }
     }
 };
 </script>
