@@ -8,6 +8,7 @@ import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
 import VueTabpane from './components/vue-tabpane/TabPane.vue';
 import VueTab from './components/vue-tabpane/Tab.vue';
+import VueTextBlock from './components/vue-text-block/VueTextBlock.vue';
 import VueDadList from './components/vue-dad-list/DadList.vue';
 import VueDadItem from './components/vue-dad-list/DadItem.vue';
 import VueCollapsibleDadItem from './components/vue-dad-list/CollapsibleDadItem.vue';
@@ -72,6 +73,7 @@ class MAVueJsPlugin {
         Vue.component('vue-spinner', VueSpinner);
         Vue.component('vue-tabpane', VueTabpane);
         Vue.component('vue-tab', VueTab);
+        Vue.component('vue-text-block', VueTextBlock);
         Vue.component('vue-dad-list', VueDadList);
         Vue.component('vue-dad-item', VueDadItem);
         Vue.component('vue-collapsible-dad-item', VueCollapsibleDadItem);
