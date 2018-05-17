@@ -81,5 +81,15 @@ small, .small-text, .foswikiSmallish {
 
 hr {
   margin-top: rem-calc(8);
-  margin-bottom: rem-calc(24);
+  margin-bottom: 0;
+}
+
+.ma-secondary-text {
+  color: $ma-secondary-text;
+}
+.ma-disabled-text {
+  color: $ma-secondary-text;
+}
+.ma-akzent-text {
+  color: $ma-secondary-text;
 }
