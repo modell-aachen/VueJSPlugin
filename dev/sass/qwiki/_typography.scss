@@ -85,11 +85,20 @@ hr {
 }
 
 .ma-secondary-text {
+  h1, h2, h3, h4 {
+    color: $ma-secondary-text;
+  }
   color: $ma-secondary-text;
 }
 .ma-disabled-text {
-  color: $ma-secondary-text;
+  h1, h2, h3, h4 {
+    color: $ma-disabled-text;
+  }
+  color: $ma-disabled-text;
 }
 .ma-akzent-text {
-  color: $ma-secondary-text;
+  h1, h2, h3, h4 {
+    color: $ma-akzent-text;
+  }
+  color: $ma-akzent-text;
 }
