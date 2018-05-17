@@ -4,6 +4,10 @@ Vue.onDocumentReady(function(){
         template: '#header-template',
     });
     new Vue({
+        el: '#text-block-examples',
+        template: '#text-block-template',
+    });
+    new Vue({
         el: '#button-examples',
         template: '#button-template',
         methods: {

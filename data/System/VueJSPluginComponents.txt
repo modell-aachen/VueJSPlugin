@@ -20,6 +20,17 @@ This is the technical documentation from all global Vue JS Components. For an ex
 | ruler | =Boolean= | | false | Adds a small separator above the heading. Only for level 1 and 2. |
 | sublabbel | =String= | | | Add a sublabel below the heading. |
 
+---++ Text Block
+<verbatim class="html">
+<vue-text-block>
+  text-slot
+</vue-text-block>
+</verbatim>
+
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| type | String ('primary', 'secondary', 'disabled', 'akzent') | | | Typ of button |
+| isFullWidth | Boolean | | | Whene true, renders text with 100% width |
+
 ---++ Sidebar
 <verbatim class="html">
 <sidebar>

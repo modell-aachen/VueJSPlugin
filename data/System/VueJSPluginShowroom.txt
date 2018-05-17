@@ -88,6 +88,39 @@ The following examples provide an overview of its functionality. The correspondi
 </script>
 
 
+---+ Vue Text Block
+
+<div class="flatskin-wrapped">
+ <div id="text-block-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"TextBlockVueTemplate"}%
+<div>
+    <vue-text-block>
+        <vue-header2>Primary</vue-header2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+    </vue-text-block>
+    <vue-text-block is-full-width type='secondary'>
+        <vue-header2>Secndary - full width</vue-header2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    </vue-text-block>
+    <vue-text-block type='disabled'>
+        <vue-header2>Disabled</vue-header2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    </vue-text-block>
+    <vue-text-block type='akzent'>
+       <vue-header2>Akzent</vue-header2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    </vue-text-block>
+ </div>
+%ENDSECTION{"TextBlockVueTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="text-block-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="TextBlockVueTemplate"}%
+</script>
 ---+ Vue Button
 
 <div class="flatskin-wrapped">
