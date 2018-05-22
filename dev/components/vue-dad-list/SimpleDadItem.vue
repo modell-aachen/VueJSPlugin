@@ -10,6 +10,7 @@
                     <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
                         <div class="cell shrink align-self-middle handle-container">
                             <vddl-handle
+                                v-if="isDraggable"
                                 :handle-left="0"
                                 :handle-top="0"
                                 class="fal fa-bars handle"/>
@@ -47,6 +48,10 @@ export default {
         isSmallItem: {
             type: Boolean,
             default: false
+        },
+        isDraggable: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {
