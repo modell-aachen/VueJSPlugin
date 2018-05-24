@@ -1,3 +1,5 @@
+@import 'util/util';
+
 //
 // Modell Aachen Default Colors
 //
@@ -105,13 +107,24 @@ $body-font-family: $ma-font-regular;
 
 $switch-paddle-radius: 50%;
 $switch-radius: .5rem;
+
 //
 // Layout settings
 //
-
 $ma-left-width: rem-calc(180);
 $ma-top-height: rem-calc(60);
 $ma-common-spacing: rem-calc(14);
 
 // headers
 $ma-h3-margin-bottom: rem-calc(3);
+
+//
+// table settings
+//
+$table-head-background: $ma-white;
+$table-background: $ma-white;
+$table-border: 0;
+$table-is-striped: "none"; //Disable foundation default stripes
+$table-head-font-color: $ma-secondary-text;
+$table-padding: rem-calc(12 48 12 0);
+$table-inner-border: 0;

@@ -1,17 +1,3 @@
-//Foundation overwrites
-$table-head-background: $ma-white;
-$table-background: $ma-white;
-$table-border: 0;
-$table-is-striped: "none"; //Disable foundation default stripes
-$table-head-font-color: $ma-secondary-text;
-$table-padding: rem-calc(12 48 12 0);
-$table-background: transparent;
-
-@include foundation-table;
-
-//New variables
-$table-inner-border: 0;
-
 table.ma-table-short {
   margin-top: rem-calc(16);
   font-size: rem-calc(14);
