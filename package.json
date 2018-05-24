@@ -6,7 +6,6 @@
   "scripts": {
     "build": "webpack -d --watch --config development.webpack.config.js --progress",
     "build-production": "webpack -p --config production.webpack.config.js",
-    "postinstall": "webpack -p --config development.webpack.config.js",
     "build-all": "webpack -p --config production.webpack.config.js && webpack -d --config development.webpack.config.js",
     "build-test-library": "webpack -d --config unit-test-library.webpack.config.js --progress",
     "watch": "karma start",

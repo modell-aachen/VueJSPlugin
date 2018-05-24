@@ -1,9 +1,10 @@
 <template>
     <div
-        :class="dropdownClasses"
+        :class="{dropdownClasses, 'ma-failure': hasError}"
         class="dropdown v-select">
         <label v-if="label">{{ label }}</label>
         <input
+            v-validate="validate"
             v-if="name.length"
             :name="name"
             :value="stringifiedValue"
@@ -11,7 +12,7 @@
         >
         <div
             ref="toggle"
-            :class="{multi: multiple, open: open}"
+            :class="{multi: multiple, open: open, 'ma-failure': hasError}"
             class="dropdown-toggle"
             type="text"
             @mousedown.prevent="toggleDropdown">
@@ -135,7 +136,13 @@
                 <vue-spinner v-if="isLoading"/>
             </v-infinite-scroll>
         </div>
+        <template
+            v-if="hasError"
+            class="ma-failure">
+            <small>{{ definedErrorMessage }}</small>
+        </template>
     </div>
+
 </template>
 
 
@@ -286,12 +293,27 @@ export default {
         },
 
         /**
-     * Set to true, if this component/input should be disabled
-     */
+         * Set to true, if this component/input should be disabled
+        */
         isDisabled: {
             type: Boolean,
             default: false,
-        }
+        },
+        /**
+        * Set validation according to vee-validate, e.g. 'required'.
+        * Validation requires name to be set.
+        */
+        validate: {
+            type: String,
+            default: ''
+        },
+        /**
+        * Set validation error message
+        */
+        errorMessage: {
+            type: String,
+            default: ''
+        },
     },
 
     data() {
@@ -322,9 +344,16 @@ export default {
             ajaxQueryNr: 0, // Id for the ajax request. Changes, when the query term etc. changes, but does not change for paging. This will prevent any delayed (obsolete) responses from being displayed.
         };
     },
+    inject: ['$validator'],
     computed: {
         open() {
             return this.inputHasFocus || this.checkBoxHasFocus;
+        },
+        hasError: function(){
+            return this.validationErrors.has(this.name);
+        },
+        definedErrorMessage: function() {
+            return this.errorMessage || this.validationErrors.first(this.name);
         },
 
         /**
@@ -380,6 +409,11 @@ export default {
         },
     },
     watch: {
+        stringifiedValue(value){
+            if( this.name ) {
+                this.validateValue(value);
+            }
+        },
         internalValue(val) {
             if(this.name.length) {
                 this.stringifiedValue = this.stringifyValue(this.internalValue);
@@ -389,6 +423,7 @@ export default {
         open() {
             if(!this.open) {
                 this.search = '';
+                this.validateValue(this.stringifiedValue);
                 return;
             }
             this.updateDropdown();
@@ -434,7 +469,16 @@ export default {
             let valueMapped = val.map(item => typeof(item) === 'string' ? item : item.value);
             return valueMapped.join(',');
         },
-
+        validateValue(value){
+            if( this.name ) {
+                return this.$validator.validate(this.name, value);
+            }
+        },
+        reset(){
+            if(this.internalValue){
+                this.internalValue = [];
+            }
+        },
         getFilterOptions() {
             return [];
         },
@@ -700,6 +744,15 @@ export default {
         width: 100%;
     }
 
+    &.ma-failure {
+        .fas,.far,.fal {
+            color: $ma-failure;
+        }
+        small {
+            color: $ma-failure;
+        }
+    }
+
     .dropdown-menu {
         overflow-y: auto;
         position: absolute;
@@ -779,6 +832,11 @@ export default {
           background-color: #fafafa;
           color: $ma-disabled-text;
         }
+
+        &.ma-failure {
+            border: 1px solid $ma-failure;
+        }
+
     }
 
     .selected-tag {
