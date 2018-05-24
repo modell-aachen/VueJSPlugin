@@ -593,6 +593,7 @@ export default {
                         this.internalValue = [option];
                     } else {
                         this.internalValue.push(option);
+                        this.$emit('input', this.internalValue);
                     }
                 } else {
                     this.internalValue = [option];
@@ -617,8 +618,9 @@ export default {
                 });
                 let index = this.internalValue.indexOf(ref);
                 this.internalValue.splice(index, 1);
+                this.$emit('input', this.internalValue);
             } else {
-                this.internalValue = null;
+                this.internalValue = [];
             }
         },
 
