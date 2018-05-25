@@ -18,7 +18,6 @@ html {
     //
     // Foundation for Sites 6
     //
-    // @import 'util/util';
     @import 'foundation';
 
     //Here we put all styles foundation sets on html or body.
@@ -44,7 +43,6 @@ html {
       -moz-osx-font-smoothing: grayscale;
     }
 
-
     @include foundation-global-styles;
     @include foundation-xy-grid-classes;
     @include foundation-flex-grid;
@@ -58,6 +56,7 @@ html {
     @include foundation-accordion;
     @include foundation-accordion-menu;
     @include foundation-switch;
+    @include foundation-table(true);
     @include foundation-dropdown;
     @import 'qwiki/mixins';
     @import 'qwiki/globals';
