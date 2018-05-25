@@ -146,7 +146,7 @@
 </template>
 
 
-<script type="text/babel">
+<script>
 import pointerScroll from '../mixins/pointerScroll';
 import typeAheadPointer from '../mixins/typeAheadPointer';
 import ajax from '../mixins/ajax';
@@ -325,8 +325,6 @@ export default {
 
         let hideOptions = typeof this.getHideOptionsValue === "function" ? this.getHideOptionsValue() : false;
 
-        let internalValue = [];
-
         let taggable = (this.dataTags === true || this.dataTags === '1') ? true : false;
 
         return {
@@ -338,14 +336,21 @@ export default {
             internalFilterOptions,
             checkedFilterOptions,
             hideOptions,
-            internalValue,
-            stringifiedValue: this.stringifyValue(internalValue),
+            stringifiedValue: "",
             isLoading: false,
             ajaxQueryNr: 0, // Id for the ajax request. Changes, when the query term etc. changes, but does not change for paging. This will prevent any delayed (obsolete) responses from being displayed.
         };
     },
     inject: ['$validator'],
     computed: {
+        internalValue: {
+            get() {
+                return this.value.slice();
+            },
+            set(internalValue){
+                this.$emit('input', internalValue);
+            }
+        },
         open() {
             return this.inputHasFocus || this.checkBoxHasFocus;
         },
@@ -418,7 +423,6 @@ export default {
             if(this.name.length) {
                 this.stringifiedValue = this.stringifyValue(this.internalValue);
             }
-            this.$emit('input', val);
         },
         open() {
             if(!this.open) {
@@ -589,6 +593,7 @@ export default {
                         this.internalValue = [option];
                     } else {
                         this.internalValue.push(option);
+                        this.$emit('input', this.internalValue);
                     }
                 } else {
                     this.internalValue = [option];
@@ -613,8 +618,9 @@ export default {
                 });
                 let index = this.internalValue.indexOf(ref);
                 this.internalValue.splice(index, 1);
+                this.$emit('input', this.internalValue);
             } else {
-                this.internalValue = null;
+                this.internalValue = [];
             }
         },
 

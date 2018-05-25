@@ -16,10 +16,23 @@
                     :moved="handleMoved"
                     class="panel__body--item"
                     effect-allowed="move">
-                    <slot
-                        :item="item"
-                        :index="index"
-                        :last-opened-item-id="lastOpenedItemId"/>
+                    <template>
+                        <slot
+                            v-if="useSlot"
+                            :item="item"
+                            :index="index"
+                            :is-draggable="isDraggable"
+                            :last-opened-item-id="lastOpenedItemId"/>
+                        <div
+                            v-else
+                            :is="itemType"
+                            :item="item"
+                            :index="index"
+                            :is-draggable="isDraggable"
+                            :last-opened-item-id="lastOpenedItemId"
+                            @click.native="clickItemEvent(item)"/>
+                    </template>
+
                 </vddl-draggable>
             </template>
             <slot name="placeholder">
@@ -60,6 +73,14 @@ export default {
         'buttonTitle': {
             type: String,
             default: 'Add'
+        },
+        'isDraggable': {
+            type: Boolean,
+            default: true
+        },
+        'useSlot': {
+            type: Boolean,
+            default: true
         }
     },
     data: function() {
@@ -130,6 +151,9 @@ export default {
         },
         addItemEvent: function() {
             this.$emit("add-item");
+        },
+        clickItemEvent(item) {
+            this.$emit("click-item", item);
         },
         setLastOpenedId: function(newId) {
             this.lastOpenedItemId = newId;

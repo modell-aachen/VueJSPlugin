@@ -6690,9 +6690,9 @@ vddl@^0.7.1:
   dependencies:
     vue "^2.4.2"
 
-vee-validate@^2.0.0-rc.26:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-2.0.8.tgz#5fe52e1158d418736fe65807517ef5a0998d9c87"
+"vee-validate@git://github.com/modell-aachen/vee-validate.git#hotfix":
+  version "2.0.9"
+  resolved "git://github.com/modell-aachen/vee-validate.git#c253813a79ddfa2260d297065d82e23fe7f12342"
 
 vendors@^1.0.0:
   version "1.0.1"
