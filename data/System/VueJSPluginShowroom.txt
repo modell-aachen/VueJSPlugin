@@ -45,15 +45,22 @@ The following examples provide an overview of its functionality. The correspondi
       <th>
         with sublabel
       </th>
+      <th>
+        with status
+      </th>
     </tr>
     <tr>
       <td>
         <vue-header>Header 1</vue-header>
       </td>
       <td>
+        <vue-header ruler>Header 1</vue-header>
       </td>
       <td>
-        <vue-header3 sublabel="sublabel">Header 1</vue-header3>
+        <vue-header sublabel="sublabel">Header 1</vue-header>
+      </td>
+      <td>
+        <vue-header status="warning">Header 1</vue-header>
       </td>
     </tr>
     <tr>
@@ -66,6 +73,9 @@ The following examples provide an overview of its functionality. The correspondi
       <td>
         <vue-header2 sublabel="sublabel">Header 2</vue-header2>
       </td>
+      <td>
+        <vue-header2 status="warning">Header 2</vue-header2>
+      </td>
     </tr>
     <tr>
       <td>
@@ -76,6 +86,9 @@ The following examples provide an overview of its functionality. The correspondi
       </td>
       <td>
         <vue-header3 sublabel="sublabel">Header 3</vue-header3>
+      </td>
+      <td>
+        <vue-header3 status="warning">Header 3</vue-header3>
       </td>
     </tr>
   </table>

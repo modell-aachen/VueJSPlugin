@@ -23,10 +23,7 @@
                                 class="ma-type-icon"/>
                         </div>
                         <div class="cell shrink align-self-middle">
-                            <h3>{{ item.label }}<i
-                                v-if="item.status"
-                                :class="item.status"
-                                class="fas fa-circle ma-status-dot"/><small v-if="item.subLabel">{{ item.subLabel }}</small></h3>
+                            <vue-header3 :sublabel="item.subLabel" :status="item.status">{{ item.label || item.description }}</vue-header3>
                         </div>
                     </div>
                 </div>
