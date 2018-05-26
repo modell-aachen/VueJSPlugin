@@ -5,7 +5,8 @@
                 :title="mainButtonTitle"
                 class="main-button"
                 type="primary"
-                @click.native="onMainButtonClick"/>
+                @click.native="onMainButtonClick"
+                :is-disabled="isMainButtonDisabled" />
             <a
                 ref="dropdownButton"
                 class="dropdown-button primary button vue-button"
@@ -51,6 +52,10 @@ export default {
         'dropdownButtonTitle': {
             type: String,
             required: true
+        },
+        'isMainButtonDisabled': {
+            type: Boolean,
+            default: false
         }
     },
     data() {
