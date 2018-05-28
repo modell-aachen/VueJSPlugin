@@ -23,7 +23,9 @@
                                 class="ma-type-icon"/>
                         </div>
                         <div class="cell shrink align-self-middle">
-                            <vue-header3 :sublabel="item.subLabel" :status="item.status">{{ item.label || item.description }}</vue-header3>
+                            <vue-header3
+                                :sublabel="item.subLabel"
+                                :status="item.status">{{ item.label || item.description }}</vue-header3>
                         </div>
                     </div>
                 </div>

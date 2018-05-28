@@ -1,21 +1,21 @@
 <template>
-        <component
-            :is="'h' + scrubbedLevel"
-            :class="headerClass"
-            class="vue-header"
+    <component
+        :is="'h' + scrubbedLevel"
+        :class="headerClass"
+        class="vue-header"
+    >
+        <slot/>
+        <i
+            v-if="status"
+            :class="status"
+            class="fas fa-circle ma-status-dot"/>
+        <small
+            v-if="sublabel"
+            class="sublabel"
         >
-            <slot/>
-            <i
-                v-if="status"
-                :class="status"
-                class="fas fa-circle ma-status-dot"/>
-            <small
-                v-if="sublabel"
-                class="sublabel"
-            >
-                {{ sublabel }}
-            </small>
-        </component>
+            {{ sublabel }}
+        </small>
+    </component>
 </template>
 
 <script>

@@ -3,10 +3,10 @@
         <div class="ma-splitbutton">
             <vue-button
                 :title="mainButtonTitle"
+                :is-disabled="isMainButtonDisabled"
                 class="main-button"
                 type="primary"
-                @click.native="onMainButtonClick"
-                :is-disabled="isMainButtonDisabled" />
+                @click.native="onMainButtonClick" />
             <a
                 ref="dropdownButton"
                 class="dropdown-button primary button vue-button"
