@@ -3,9 +3,10 @@
         <div class="ma-splitbutton">
             <vue-button
                 :title="mainButtonTitle"
+                :is-disabled="isMainButtonDisabled"
                 class="main-button"
                 type="primary"
-                @click.native="onMainButtonClick"/>
+                @click.native="onMainButtonClick" />
             <a
                 ref="dropdownButton"
                 class="dropdown-button primary button vue-button"
@@ -51,6 +52,10 @@ export default {
         'dropdownButtonTitle': {
             type: String,
             required: true
+        },
+        'isMainButtonDisabled': {
+            type: Boolean,
+            default: false
         }
     },
     data() {

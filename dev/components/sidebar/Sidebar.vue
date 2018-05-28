@@ -1,12 +1,12 @@
 <template>
     <div class="vue-sidebar">
         <div
-            v-show="isActive"
+            v-if="isActive"
             class="sidebar-overlay"
             @click="hide"/>
         <transition name="sidebar">
             <div
-                v-show="isActive"
+                v-if="isActive"
                 :class="{active: isActive}"
                 class="flatskin-wrapped sidebar-container"
                 @click.stop>
@@ -87,6 +87,7 @@ export default {
             this.isActive = true;
         },
         hide(){
+            this.$emit('hide');
             this.isActive = false;
         },
         selectTab(index){

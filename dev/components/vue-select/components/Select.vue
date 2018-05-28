@@ -419,7 +419,7 @@ export default {
                 this.validateValue(value);
             }
         },
-        internalValue(val) {
+        internalValue() {
             if(this.name.length) {
                 this.stringifiedValue = this.stringifyValue(this.internalValue);
             }

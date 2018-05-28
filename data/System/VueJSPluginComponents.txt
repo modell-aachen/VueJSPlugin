@@ -19,6 +19,8 @@ This is the technical documentation from all global Vue JS Components. For an ex
 | level | =String= / =Number= | | =1= | Corresponds to the number of a =h1= / =h2= / =h3= tag. Must be one of =1=, =2= or =3=. %BR% As a shortcut, you can also use =vue-header1=, =vue-header2= or =vue-header3=. |
 | ruler | =Boolean= | | false | Adds a small separator above the heading. Only for level 1 and 2. |
 | sublabbel | =String= | | | Add a sublabel below the heading. |
+| status | =String= | | "" | Add a status indicator to the heading e.g. "warning" |
+
 
 ---++ Text Block
 <verbatim class="html">

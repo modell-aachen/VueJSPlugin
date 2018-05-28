@@ -1,18 +1,21 @@
 <template>
-    <div class="vue-header">
-        <component
-            :is="'h' + scrubbedLevel"
-            :class="headerClass"
+    <component
+        :is="'h' + scrubbedLevel"
+        :class="headerClass"
+        class="vue-header"
+    >
+        <slot/>
+        <i
+            v-if="status"
+            :class="status"
+            class="fas fa-circle ma-status-dot"/>
+        <small
+            v-if="sublabel"
+            class="sublabel"
         >
-            <slot/>
-            <small
-                v-if="sublabel"
-                class="sublabel"
-            >
-                {{ sublabel }}
-            </small>
-        </component>
-    </div>
+            {{ sublabel }}
+        </small>
+    </component>
 </template>
 
 <script>
@@ -31,6 +34,10 @@ export default {
             type: String,
             default: undefined,
         },
+        status: {
+            type: String,
+            default: ""
+        }
     },
     computed: {
         scrubbedLevel() {
