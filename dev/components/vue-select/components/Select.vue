@@ -879,6 +879,7 @@ export default {
         background-color: transparent;
         &[type="text"] {
             width: initial;
+            padding: 0.5714rem;
         }
     }
 
@@ -887,10 +888,6 @@ export default {
     }
     div.close-icon {
         display: inline-block;
-    }
-
-    [type="text"] {
-        height: auto;
     }
 
     input[type=text] {
