@@ -3925,8 +3925,8 @@ lodash.memoize@^4.1.2:
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
 
 lodash.merge@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
 
 lodash.mergewith@^4.6.0:
   version "4.6.0"
@@ -4917,8 +4917,8 @@ pn@^1.1.0:
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
 popper.js@^1.12.9:
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.1.tgz#b8815e5cda6f62fc2042e47618649f75866e6753"
+  version "1.14.3"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.3.tgz#1438f98d046acf7b4d78cd502bf418ac64d4f095"
 
 postcss-calc@^5.2.0:
   version "5.3.1"
@@ -6670,8 +6670,8 @@ v-infinite-scroll@^1.0.4:
   resolved "https://registry.yarnpkg.com/v-infinite-scroll/-/v-infinite-scroll-1.0.4.tgz#56aad33b3d89759abd23702d7960763aeb8e0fc7"
 
 v-tooltip@^2.0.0-rc.1:
-  version "2.0.0-rc.31"
-  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-2.0.0-rc.31.tgz#be3b1ed847e8309518d41dc9915b3bfdff0c0482"
+  version "2.0.0-rc.32"
+  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-2.0.0-rc.32.tgz#85271476c191598ac59361d0660d5da92dc88bf6"
   dependencies:
     lodash.merge "^4.6.0"
     popper.js "^1.12.9"
@@ -6776,8 +6776,8 @@ vue-params@^0.9.2:
   resolved "https://registry.yarnpkg.com/vue-params/-/vue-params-0.9.2.tgz#d2a01cd56a8c2c18afc9ac63dadbf1b15c8ce240"
 
 vue-resize@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/vue-resize/-/vue-resize-0.4.3.tgz#5bdfd1cd60eb2bf1ebc08dff1517754af69e4886"
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/vue-resize/-/vue-resize-0.4.4.tgz#dee9b8dd1b189e7e3f6ec47f86c60694a241bb17"
 
 vue-resource@^1.5.0:
   version "1.5.0"
