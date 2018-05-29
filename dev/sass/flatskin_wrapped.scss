@@ -6,6 +6,7 @@
 $OpenSansPath: '../fonts/opensans';
 @import 'open-sans';
 @import 'settings';
+@import 'qwiki/tooltip';
 
 html {
     font-size: $global-font-size;
