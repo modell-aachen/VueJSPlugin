@@ -1,5 +1,7 @@
 <template>
-    <component :is="wrapperByStatus" class="ma-block">
+    <component
+        :is="wrapperByStatus"
+        class="ma-block">
         <div class="ma-collapsible-item">
             <!-- Title Area -->
             <div

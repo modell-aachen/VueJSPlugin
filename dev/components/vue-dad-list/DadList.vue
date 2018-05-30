@@ -14,8 +14,8 @@
                     :index="index"
                     :wrapper="internalValue"
                     :moved="handleMoved"
-                    class="panel__body--item"
                     :disable-if="item.id === lastOpenedItemId"
+                    class="panel__body--item"
                     effect-allowed="move">
                     <template>
                         <slot
