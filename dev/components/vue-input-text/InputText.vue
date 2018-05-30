@@ -39,7 +39,7 @@ export default {
         },
         'name': {
             type: String,
-            default: ''
+            default: 'noname'
         },
         'validate': {
             type: String,
