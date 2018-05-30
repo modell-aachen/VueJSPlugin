@@ -15,6 +15,7 @@
                     :wrapper="internalValue"
                     :moved="handleMoved"
                     class="panel__body--item"
+                    :disable-if="item.id === lastOpenedItemId"
                     effect-allowed="move">
                     <template>
                         <slot
