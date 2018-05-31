@@ -104,6 +104,7 @@ export default {
     &, & h3 {
       color: $ma-secondary-text;
     }
+    padding-right: map-get($spacings, large);
     .icon {
       margin: map-get($spacings, medium);
       color: $ma-primary;
