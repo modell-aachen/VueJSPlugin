@@ -1,3 +1,7 @@
+$tooltip-margin: rem-calc(8);
+$tooltip-arrow-size: 8;
+$color: $ma-darker-grey;
+
 .tooltip {
   display: block !important;
   z-index: 10000;
@@ -5,8 +9,8 @@
 
   .tooltip-inner {
     color: white;
-    border-radius: 16px;
-    padding: 5px 10px 4px;
+    border-radius: $ma-border-radius;
+    padding: rem-calc(5 10 4);
   }
 
   .tooltip-arrow {
@@ -14,80 +18,79 @@
     height: 0;
     border-style: solid;
     position: absolute;
-    margin: 5px;
+    margin: $tooltip-margin;
     border-color: black;
     z-index: 1;
   }
 
   &[x-placement^="top"] {
-    margin-bottom: 5px;
+    margin-bottom: rem-calc($tooltip-arrow-size);
 
     .tooltip-arrow {
-      border-width: 5px 5px 0 5px;
+      border-width: rem-calc($tooltip-arrow-size $tooltip-arrow-size 0 $tooltip-arrow-size);
       border-left-color: transparent !important;
       border-right-color: transparent !important;
       border-bottom-color: transparent !important;
-      bottom: -5px;
-      left: calc(50% - 5px);
+      bottom: rem-calc(-$tooltip-arrow-size);
+      left: rem-calc(50% - $tooltip-arrow-size);
       margin-top: 0;
       margin-bottom: 0;
     }
   }
 
   &[x-placement^="bottom"] {
-    margin-top: 5px;
+    margin-top: $tooltip-margin;
 
     .tooltip-arrow {
-      border-width: 0 5px 5px 5px;
+      border-width: rem-calc(0 $tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size);
       border-left-color: transparent !important;
       border-right-color: transparent !important;
       border-top-color: transparent !important;
-      top: -5px;
-      left: calc(50% - 5px);
+      top: rem-calc(-$tooltip-arrow-size);
+      left: rem-calc(50% - $tooltip-arrow-size);
       margin-top: 0;
       margin-bottom: 0;
     }
   }
 
   &[x-placement^="right"] {
-    margin-left: 5px;
+    margin-left: rem-calc($tooltip-arrow-size);
 
     .tooltip-arrow {
-      border-width: 5px 5px 5px 0;
+      border-width: rem-calc($tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size 0);
       border-left-color: transparent !important;
       border-top-color: transparent !important;
       border-bottom-color: transparent !important;
-      left: -5px;
-      top: calc(50% - 5px);
+      left: rem-calc(-$tooltip-arrow-size);
+      top: rem-calc(50% - $tooltip-arrow-size);
       margin-left: 0;
       margin-right: 0;
     }
   }
 
   &[x-placement^="left"] {
-    margin-right: 5px;
+    margin-right: rem-calc($tooltip-arrow-size);
 
     .tooltip-arrow {
-      border-width: 5px 0 5px 5px;
+      border-width: rem-calc($tooltip-arrow-size 0 $tooltip-arrow-size $tooltip-arrow-size);
       border-top-color: transparent !important;
       border-right-color: transparent !important;
       border-bottom-color: transparent !important;
-      right: -5px;
-      top: calc(50% - 5px);
+      right: rem-calc(-$tooltip-arrow-size);
+      top: rem-calc(50% - $tooltip-arrow-size);
       margin-left: 0;
       margin-right: 0;
     }
   }
 
   &.popover {
-    $color: #f9f9f9;
 
     .popover-inner {
       background: $color;
       color: black;
-      padding: 24px;
-      border-radius: 5px;
-      box-shadow: 0 5px 30px rgba(black, .1);
+      padding: rem-calc(24);
+      border-radius: $ma-border-radius;
+      box-shadow: 0 rem-calc(5) rem-calc(30) rgba(black, .1);
     }
 
     .popover-arrow {
