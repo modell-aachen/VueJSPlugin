@@ -137,6 +137,12 @@ export default {
                 }
 
             }
+        },
+        collapsed() {
+            this.getListParent().$emit("drag-status-change", {
+                id: this.item.id,
+                isDraggable: this.collapsed
+            });
         }
     },
     methods: {

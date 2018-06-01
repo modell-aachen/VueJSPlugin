@@ -14,7 +14,7 @@
                     :index="index"
                     :wrapper="internalValue"
                     :moved="handleMoved"
-                    :disable-if="item.id === lastOpenedItemId"
+                    :disable-if="itemStates.noDrag[item.id]"
                     class="panel__body--item"
                     effect-allowed="move">
                     <template>
@@ -95,7 +95,10 @@ export default {
             hasDropped: false,
             hasDroppedExtern: false,
             droppedIndex: -1,
-            listId: Vue.getUniqueId()
+            listId: Vue.getUniqueId(),
+            itemStates: {
+                noDrag: {}
+            }
         };
     },
     computed: {
@@ -116,6 +119,7 @@ export default {
     },
     created: function() {
         this.$on('lastOpened', this.setLastOpenedId);
+        this.$on('drag-status-change', this.onItemDragStatusChanged);
     },
     methods: {
         handleDrop: function(data) {
@@ -158,7 +162,15 @@ export default {
         },
         setLastOpenedId: function(newId) {
             this.lastOpenedItemId = newId;
+        },
+        onItemDragStatusChanged({id, isDraggable}) {
+            if(isDraggable){
+                Vue.delete(this.itemStates.noDrag, id);
+            } else {
+                Vue.set(this.itemStates.noDrag, id, true);
+            }
         }
+
     }
 };
 </script>
