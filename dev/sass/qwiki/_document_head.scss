@@ -1,69 +1,36 @@
 .ma-documenthead {
-    background: $ma-button-grey;
-    border-radius: rem-calc(7);
+  border-radius: $ma-border-radius;
+  padding: map-get($spacings, xsmall) 0;
+  background-color:$ma-sand;
+  table{
+      width:auto;
+      margin: 0;
 
-   .ma-documenthead-container{
-        &.left {
-          width: auto;
-          float: left;
-        }
-        &.toggle {
-          width: 2%;
-          float: right;
-          padding-top: rem-calc(22);
-        }
-    }
-}
-.ma-documenthead-table {
-    @include ma-font('bold');
-    border: 0;
+      tbody {
+          background-color:transparent;
 
-    tr:first-child {
-      td, th {
-        padding: rem-calc(9 0 9 10);
+          td{
+              padding: map-get($spacings, xsmall) map-get($spacings, large) map-get($spacings, xsmall) map-get($spacings, medium);
+              span {
+                  display: inherit;
+              }
+              span:empty {
+                  display: none;
+              }
+          }
+          tr:last-child td {
+              border-bottom-width: 0;
+          }
       }
-    }
-
-    td, th {
-      padding: rem-calc(0 0 10 10);
-    }
-}
-
-.ma-documenthead-content {
-  padding: rem-calc(5);
-  margin: rem-calc(5);
-  border-radius: rem-calc(7);
-
-  &.value {
-    background: $white;
   }
-  &.approved {
-    background: $ma-success;
-    color: $white;
+  .head-key {
+      line-height: 16px;
+      color: $ma-black;
+      font-weight: $ma-font-weight;
   }
-  &.discussion {
-    background: $ma-failure;
-    color: $white;
-
+  .head-value {
+      padding: map-get($spacings, xsmall) map-get($spacings, small);
+      border-radius: $ma-border-radius;
+      background-color: $ma-white;
   }
-}
-
-.expand-transition {
-    max-height: rem-calc(100);
-    transition: max-height .2s ease;
-    overflow: hidden;
-}
-
-.expand-enter, .expand-leave {
-    max-height: 0;
-}
-
-.patternTop-callout {
-   @include callout($ma-warning);
-   border: rem-calc(1) solid #D83314;
-   border-radius: rem-calc(4);
-   color: $white;
-   background: $ma-warning;
-   padding: rem-calc(10);
-   margin: rem-calc(0 0 12 0);
 }

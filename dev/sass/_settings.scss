@@ -33,6 +33,7 @@ $ma-akzent-text: $ma-colored-text;
 $ma-font-regular: 'Open Sans', sans-serif;
 $ma-font-semibold: $ma-font-regular;
 $ma-font-bold: $ma-font-regular;
+$ma-font-weight: 600;
 
 $ma-border-radius: 4px;
 
@@ -66,6 +67,7 @@ $limited-width: (
 );
 
 $spacings: (
+  xsmall: 4px,
   small: 8px,
   medium: 16px,
   large: 24px,
