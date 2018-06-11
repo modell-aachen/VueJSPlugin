@@ -33,12 +33,10 @@
                             v-model="item.value"
                             class="text-input"
                             type="text"
+                            @keydown="onTextInput(index, $event)"
                             @mousedown.stop="() => {}"
                             @focus="onItemFocus(index)"
-                            @blur="onItemBlur"
-                            @keydown.delete="onDeleteCurrentInput(index, $event)"
-                            @keydown.left="onKeyNavigation(index, $event)"
-                            @keydown.right="onKeyNavigation(index, $event)">
+                            @blur="onItemBlur">
                     </span>
                 </div>
             </div>
@@ -68,6 +66,12 @@
 
 
 <script>
+const KEY_CODES = {
+    "Backspace": 8,
+    "Delete": 46,
+    "ArrowLeft": 37,
+    "ArrowRight": 39
+};
 
 export default {
     props: {
@@ -129,6 +133,18 @@ export default {
         }
     },
     methods: {
+        onTextInput(index, event) {
+            switch(event.keyCode) {
+                case KEY_CODES.Backspace:
+                case KEY_CODES.Delete:
+                    this.onDeleteCurrentInput(index, event);
+                    break;
+                case KEY_CODES.ArrowLeft:
+                case KEY_CODES.ArrowRight:
+                    this.onKeyNavigation(index, event);
+                    break;
+            }
+        },
         toInternalValue(value) {
             const internalValue = [];
             value.forEach((item) => {
@@ -186,12 +202,12 @@ export default {
         onKeyNavigation(index, event) {
             const element = this.getItemRef(index);
             const item = this.internalSelectedItems[index];
-            if(event.key === "ArrowLeft" && index > 0 && element.selectionStart === 0) {
+            if(event.keyCode === KEY_CODES.ArrowLeft && index > 0 && element.selectionStart === 0) {
                 const prevIndex = index - 2;
                 const prevItem = this.internalSelectedItems[prevIndex];
                 this.focusItem(prevIndex, prevItem.value.length);
                 event.preventDefault();
-            } else if(event.key === "ArrowRight" && index < this.internalSelectedItems.length - 1 && element.selectionStart === item.value.length) {
+            } else if(event.keyCode === KEY_CODES.ArrowRight && index < this.internalSelectedItems.length - 1 && element.selectionStart === item.value.length) {
                 this.focusItem(index + 2);
                 event.preventDefault();
             }
@@ -270,14 +286,14 @@ export default {
         onDeleteCurrentInput(index, event) {
             const item = this.internalSelectedItems[index];
             const input = this.getItemRef(index);
-            if(index > 0 && input.selectionStart === 0 && event.key === 'Backspace') {
+            if(index > 0 && input.selectionStart === 0 && event.keyCode === KEY_CODES.Backspace) {
                 const prevItem = this.internalSelectedItems[index -2];
                 const prevItemLength = prevItem.value.length;
                 item.value = prevItem.value + item.value;
                 this.internalSelectedItems.splice(index - 2, 2);
                 this.focusItem(index - 2, prevItemLength);
                 event.preventDefault();
-            } else if(event.key === 'Delete' && input.selectionStart === item.value.length && this.internalSelectedItems[index + 1]) {
+            } else if(event.keyCode === KEY_CODES.Delete && input.selectionStart === item.value.length && this.internalSelectedItems[index + 1]) {
                 const nextItem = this.internalSelectedItems[index + 2];
                 const itemLength = item.value.length;
                 item.value = item.value + nextItem.value;
