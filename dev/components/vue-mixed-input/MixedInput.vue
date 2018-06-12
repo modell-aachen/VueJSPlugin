@@ -38,6 +38,13 @@
                                 @blur="onItemBlur">
                         </span>
                     </template>
+                    <span
+                        class="form-control__wrapper vertical-spacer">
+                        <input
+                            type="text"
+                            class="form-control-multi"
+                        >
+                    </span>
                 </div>
             </div>
         </div>
@@ -315,8 +322,6 @@ $spacing: 3px;
         margin: 0 $spacing;
         margin-top: 10px;
         position: relative;
-        border: 1px dotted black;
-        border-radius: 4px;
         padding: 0 $inputMinWidth;
     }
     .text-placeholder {
@@ -331,6 +336,10 @@ $spacing: 3px;
         height: auto;
         padding: 0;
         margin: 0;
+    }
+    .vertical-spacer {
+        visibility: hidden;
+        width: 0px;
     }
 }
 </style>
