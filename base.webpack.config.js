@@ -3,7 +3,7 @@ let projectRoot = path.resolve(__dirname);
 
 let includeDirs = [
   projectRoot + '/dev',
-  projectRoot + '/tests'
+  projectRoot + '/frontend-tests'
 ];
 
 let babelLoaderOptions = {
