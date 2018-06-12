@@ -946,6 +946,7 @@ export default {
         display: flex;
         flex-flow: row no-wrap;
         width:100%;
+        min-height: 40px;
     }
 
     .selected-list {

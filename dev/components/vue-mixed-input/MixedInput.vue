@@ -1,43 +1,43 @@
 <template>
     <div
-        :class="{dropdownClasses}"
+        :class="{open}"
         class="dropdown v-select">
         <label v-if="label">{{ label }}</label>
         <div
             :class="{multi: true, open: open}"
-            class="dropdown-toggle"
+            class="dropdown-toggle multi"
             type="text"
-            @mousedown="toggleDropdown">
+            @click="toggleDropdown">
             <div
-                class="input-area"
-                style="height: 40px;">
+                class="input-area">
                 <div
                     ref="selectedList"
                     class="selected-list">
-
-                    <span
-                        v-for="(item,index) in internalSelectedItems"
-                        :class="{
-                            'selected-tag': item.type == 'option',
-                            'option-item': item.type == 'option',
-                            'text-item': item.type == 'text',
-                        }"
-                        :key="index">
-                        <a
-                            v-if="item.type ==='text'"
-                            :class="{'text-placeholder': item.type === 'text'}">{{ item.value }}</a>
-                        <a v-else>{{ item.label }}</a>
-                        <input
-                            v-if="item.type == 'text'"
-                            ref="inputs"
-                            v-model="item.value"
-                            class="text-input"
-                            type="text"
-                            @keydown="onTextInput(index, $event)"
-                            @mousedown.stop="() => {}"
-                            @focus="onItemFocus(index)"
-                            @blur="onItemBlur">
-                    </span>
+                    <template v-for="(item,index) in internalSelectedItems">
+                        <span
+                            v-if="item.type === 'option'"
+                            :key="index"
+                            class="selected-tag option-item"
+                            @click.stop="onSelectedOptionClick(index)">
+                            <a>{{ item.label }}</a>
+                        </span>
+                        <span
+                            v-else
+                            :key="index"
+                            class="text-item">
+                            <a
+                                class="text-placeholder">{{ item.value }}</a>
+                            <input
+                                ref="inputs"
+                                v-model="item.value"
+                                class="text-input"
+                                type="text"
+                                @keydown="onTextInput(index, $event)"
+                                @click.stop="() => {}"
+                                @focus="onItemFocus(index)"
+                                @blur="onItemBlur">
+                        </span>
+                    </template>
                 </div>
             </div>
         </div>
@@ -100,17 +100,6 @@ export default {
     computed: {
         open() {
             return this.focusedItemIndex !== null;
-        },
-        /**
-     * Classes to be output on .dropdown
-     * @return {Object}
-     */
-        dropdownClasses() {
-            return {
-                open: this.open,
-                loading: this.loading,
-                multi: true
-            };
         }
     },
     watch: {
@@ -133,6 +122,9 @@ export default {
         }
     },
     methods: {
+        onSelectedOptionClick(index) {
+            this.focusItem(index + 1);
+        },
         onTextInput(index, event) {
             switch(event.keyCode) {
                 case KEY_CODES.Backspace:
@@ -200,7 +192,7 @@ export default {
             });
         },
         onKeyNavigation(index, event) {
-            const element = this.getItemRef(index);
+            const element = this.getTextItemRef(index);
             const item = this.internalSelectedItems[index];
             if(event.keyCode === KEY_CODES.ArrowLeft && index > 0 && element.selectionStart === 0) {
                 const prevIndex = index - 2;
@@ -220,7 +212,7 @@ export default {
         },
         focusItem(index, cursorPosition = 0) {
             Vue.nextTick(() => {
-                const itemRef = this.getItemRef(index);
+                const itemRef = this.getTextItemRef(index);
                 itemRef.focus();
                 itemRef.setSelectionRange(cursorPosition, cursorPosition);
                 this.focusedItemIndex = index;
@@ -240,15 +232,15 @@ export default {
                 this.internalSelectedItems.splice(this.focusedItemIndex + 1, 0, newOptionItem, this.getNewInputItem());
                 newSelectedIndex = this.focusedItemIndex + 2;
             } else {
-                const splitItems = this.splitItem(this.focusedItemIndex);
+                const splitItems = this.splitTextItem(this.focusedItemIndex);
                 this.internalSelectedItems.splice(this.focusedItemIndex, 1, splitItems[0], newOptionItem, splitItems[1]);
                 newSelectedIndex = this.focusedItemIndex + 2;
             }
             this.focusItem(newSelectedIndex, newCursorPosition);
         },
-        splitItem(index) {
+        splitTextItem(index) {
             const item = this.internalSelectedItems[index];
-            const element = this.getItemRef(index);
+            const element = this.getTextItemRef(index);
             const splitPosition = element.selectionStart;
             return [{
                 type: "text",
@@ -258,7 +250,7 @@ export default {
                 value: item.value.substring(splitPosition)
             }];
         },
-        getItemRef(index) {
+        getTextItemRef(index) {
             index = Math.ceil(index / 2);
             return this.$refs["inputs"][index];
         },
@@ -269,12 +261,12 @@ export default {
             };
         },
         hasFocusOnStringStart(index) {
-            const element = this.getItemRef(index);
+            const element = this.getTextItemRef(index);
             return element.selectionStart === 0;
         },
         hasFocusOnStringEnd(index) {
             const item = this.internalSelectedItems[index];
-            const element = this.getItemRef(index);
+            const element = this.getTextItemRef(index);
             return (item.value.length === element.selectionStart);
         },
 
@@ -285,7 +277,7 @@ export default {
         },
         onDeleteCurrentInput(index, event) {
             const item = this.internalSelectedItems[index];
-            const input = this.getItemRef(index);
+            const input = this.getTextItemRef(index);
             if(index > 0 && input.selectionStart === 0 && event.keyCode === KEY_CODES.Backspace) {
                 const prevItem = this.internalSelectedItems[index -2];
                 const prevItemLength = prevItem.value.length;
@@ -307,10 +299,17 @@ export default {
 </script>
 
 <style lang="scss">
-
 $inputMinWidth: 2px;
 $spacing: 3px;
 .v-select {
+    .option-item {
+        padding: 2px 4px;
+        background-color: #e5e8eb;
+        border-radius: 4px;
+        border: 1px solid #b0c0c4;
+        height: 20px;
+        margin-top: 10px;
+    }
     .text-item {
         height: 20px;
         margin: 0 $spacing;
@@ -332,14 +331,6 @@ $spacing: 3px;
         height: auto;
         padding: 0;
         margin: 0;
-    }
-    .option-item {
-        padding: 2px 4px;
-        background-color: #e5e8eb;
-        border-radius: 4px;
-        border: 1px solid #b0c0c4;
-        height: 20px;
-        margin-top: 10px;
     }
 }
 </style>
