@@ -34,7 +34,10 @@
                 v-if="!isSwitch && ($slots.description || description)"
                 class="grid-x"
             >
-                <template v-if="description">{{ description }}</template>
+                <template v-if="description">
+                    <vue-spacer/>
+                    {{ description }}
+                </template>
                 <slot
                     v-if="$slots.description"
                     name="description"

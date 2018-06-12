@@ -32,6 +32,11 @@ class AlertPlugin {
                 baseConfig.showCancelButton = true;
                 baseConfig.confirmButtonClass = "delete button";
                 break;
+            case 'success':
+                baseConfig.type = 'success';
+                baseConfig.showCancelButton = false;
+                baseConfig.confirmButtonClass = "primary button";
+                break;
             default:
                 throw(new Error(`Type '${type}' is not implemented for alerts.`));
         }
