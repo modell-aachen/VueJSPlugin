@@ -175,7 +175,7 @@ export default {
      */
         name: {
             type: String,
-            default: '',
+            default: 'noname',
         },
         /**
      * Sets the max-height property on the dropdown list.
