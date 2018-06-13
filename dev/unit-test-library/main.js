@@ -26,5 +26,12 @@ export default {
     shallow(component, options = {}) {
         options.localVue = localVue;
         return shallow(component, options);
+    },
+    wrapAsync(runAsync) {
+        return (done) => {
+            runAsync().then(done, e => {
+                fail(e); done();
+            });
+        };
     }
 };

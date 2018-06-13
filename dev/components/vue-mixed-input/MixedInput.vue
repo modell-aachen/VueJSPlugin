@@ -4,6 +4,7 @@
         class="dropdown v-select">
         <label v-if="label">{{ label }}</label>
         <div
+            ref="input-root"
             :class="{multi: true, open: open}"
             class="dropdown-toggle multi"
             type="text"
@@ -50,6 +51,7 @@
         </div>
         <div
             v-show="open"
+            ref="dropdown"
             class="dropdown-menu"
             style="max-height:40vh">
             <ul
@@ -58,11 +60,12 @@
                 class="dropdown-menu-list">
                 <li
                     v-for="option in options"
+                    ref="option-clickers"
                     :key="option.label"
                     class="list-item"
                     @mousedown.prevent="select(option)">
                     <a>
-                        <span>{{ option.label }}</span>
+                        <span ref="option-labels">{{ option.label }}</span>
                     </a>
                 </li>
             </ul>
