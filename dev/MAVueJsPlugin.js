@@ -102,9 +102,21 @@ class MAVueJsPlugin {
 
         Vue.instantiateEach = (selector, options) => {
             this.jquery(selector).each((i, element) => {
-                let instanceOptions = Object.assign({}, options);
-                instanceOptions.el = element;
-                new Vue(instanceOptions);
+                //check if client registered herself through by the VueJSPlugin
+                let vueClientId = this.jquery(element).attr('data-vue-client-id');
+                let vueClientToken = this.jquery(element).attr('data-vue-client-token');
+                let tokenElement = this.jquery('[data-vue-client-id="' + vueClientId + '"]');
+                if( tokenElement ) {
+                    let tokenDef = JSON.parse(tokenElement.html());
+                    if( vueClientToken === tokenDef.token ) {
+                        // received valid token
+                        let instanceOptions = Object.assign({}, options);
+                        instanceOptions.el = element;
+                        new Vue(instanceOptions);
+                    }else{
+                        console.warn("Prevented Vue instantiation for " + selector + " due to missing or invalid token.\nEach usage of Vue needs to be registered beforehand." ); // eslint-disable-line no-console
+                    }
+                }
             });
         };
 

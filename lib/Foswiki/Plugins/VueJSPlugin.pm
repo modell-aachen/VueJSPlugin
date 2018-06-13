@@ -11,6 +11,7 @@ Container for Vue.JS
 
 use Foswiki::Func ();
 use Foswiki::Plugins ();
+use Digest::MD5 qw(md5_hex);
 
 our $VERSION = '0.00_001';
 our $RELEASE = '0.1';
@@ -71,6 +72,17 @@ LOAD
     }
 
     return $return . $scripts;
+}
+
+sub registerClient {
+    my ($clientId) = @_;
+    my $clientToken = md5_hex(rand);
+    # render token directly instead of using afterCommonTagsHandler
+    # for more read developer supplement at Foswiki:Development.AddToZoneFromPluginHandlers
+    Foswiki::Func::addToZone( 'script', $clientId,
+        "<script type=\"application/json\" data-vue-client-id=\"$clientId\">{\"token\": \"$clientToken\"}</script>"
+    );
+    return $clientToken;
 }
 
 sub _loadTemplate {
