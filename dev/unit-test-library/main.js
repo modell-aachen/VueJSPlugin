@@ -28,5 +28,8 @@ export default {
     shallow(component, options = {}) {
         options.localVue = localVue;
         return shallow(component, options);
+    },
+    registerStoreModule(name, module) {
+        window.Vue.registerStoreModule(name, module);
     }
 };

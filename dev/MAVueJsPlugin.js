@@ -93,6 +93,9 @@ class MAVueJsPlugin {
 
         //Global functions
         Vue.registerStoreModule = (name, module) => {
+            if(options.store.state[name]) {
+                options.store.unregisterModule(name);
+            }
             options.store.registerModule(name, module);
         };
 
