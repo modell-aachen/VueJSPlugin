@@ -18,13 +18,22 @@ export default {
     },
     computed: {
         styleObject: function () {
-            let factorVertical = this.factorVertical === 'auto' ? 'auto' : this.factorVertical*8+"px";
-            let factorHorizontal = this.factorHorizontal === 'auto' ? 'auto' : this.factorHorizontal*8+"px";
-
+            let factorVertical = this.getStyleValue(this.factorVertical);
+            let factorHorizontal = this.getStyleValue(this.factorHorizontal);
             return {
                 height: factorVertical,
                 width: factorHorizontal,
             };
+        }
+    },
+    methods: {
+        getStyleValue: function (value){
+            if ( value === 'full' ) {
+                return '100%';
+            } else if ( value === 'auto' ) {
+                return 'auto';
+            }
+            return value*8+"px";
         }
     }
 };
