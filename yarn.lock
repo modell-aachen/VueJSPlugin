@@ -3898,7 +3898,7 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
-lodash.clonedeep@^4.3.2:
+lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
@@ -6694,9 +6694,9 @@ vddl@^0.7.1:
   dependencies:
     vue "^2.4.2"
 
-"vee-validate@git://github.com/modell-aachen/vee-validate.git#hotfix":
-  version "2.0.9"
-  resolved "git://github.com/modell-aachen/vee-validate.git#c253813a79ddfa2260d297065d82e23fe7f12342"
+vee-validate@^2.1.0-beta.1:
+  version "2.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-2.1.0-beta.1.tgz#4909d74bb22df7f188217a7bd5384610bc2d757c"
 
 vendors@^1.0.0:
   version "1.0.1"

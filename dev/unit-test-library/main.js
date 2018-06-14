@@ -1,5 +1,6 @@
 import Frontend from '../Frontend';
 import FoswikiMock from './FoswikiMock.js';
+import AlertPluginMock from './AlertPluginMock.js';
 import moment from 'moment';
 import jquery from 'jquery';
 import { mount, shallow, createLocalVue } from '@vue/test-utils';
@@ -9,7 +10,8 @@ const frontend = new Frontend({
     vue: localVue,
     foswiki: FoswikiMock,
     moment: moment,
-    jquery: jquery
+    jquery: jquery,
+    alertPlugin: AlertPluginMock,
 });
 
 frontend.setup();
@@ -33,5 +35,8 @@ export default {
                 fail(e); done();
             });
         };
+    },
+    registerStoreModule(name, module) {
+        window.Vue.registerStoreModule(name, module);
     }
 };

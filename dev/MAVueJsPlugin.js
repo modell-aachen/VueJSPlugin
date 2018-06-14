@@ -36,18 +36,19 @@ import VueResource from 'vue-resource';
 import InfiniteScroll from 'v-infinite-scroll';
 import 'v-infinite-scroll/dist/v-infinite-scroll.css';
 import VueClickOutside from 'vue-click-outside';
-import AlertPlugin from './alert/AlertPlugin';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
 import VueSlideUpDown from 'vue-slide-up-down';
 import {mapState} from 'vuex';
 import isEqual from 'lodash.isequal';
+import cloneDeep from 'lodash.clonedeep';
 
 class MAVueJsPlugin {
     constructor(options) {
         this.foswiki = options.foswiki;
         this.moment = options.moment;
         this.jquery = options.jquery;
+        this.alertPlugin = options.alertPlugin;
     }
     install(Vue, options){
         i18next.init();
@@ -62,7 +63,7 @@ class MAVueJsPlugin {
             fieldsBagName: 'validationFields'
         };
         Vue.use(VeeValidate, veeValidateConfig);
-        Vue.use(new AlertPlugin());
+        Vue.use(new this.alertPlugin);
 
         //Component registrations
         Vue.component('vue-select', VueSelect);
@@ -96,6 +97,9 @@ class MAVueJsPlugin {
 
         //Global functions
         Vue.registerStoreModule = (name, module) => {
+            if(options.store.state[name]) {
+                options.store.unregisterModule(name);
+            }
             options.store.registerModule(name, module);
         };
 
@@ -136,6 +140,10 @@ class MAVueJsPlugin {
 
         Vue.isEqual = (value, other) => {
             return isEqual(value, other);
+        };
+
+        Vue.cloneDeep = (value) => {
+            return cloneDeep(value);
         };
 
         Vue.foswiki = this.foswiki;
