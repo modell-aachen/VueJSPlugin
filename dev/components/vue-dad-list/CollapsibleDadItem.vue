@@ -27,8 +27,7 @@
                         <div class="cell shrink">
                             <vue-spacer
                                 factor-vertical="auto"
-                                factor-horizontal="2"
-                            />
+                                factor-horizontal="2"/>
                         </div>
                         <div class="cell shrink align-self-middle">
                             <vue-header3
