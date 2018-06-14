@@ -4,7 +4,7 @@ $button-padding: 0 rem-calc(16);
 $button-color: $ma-white;
 //$button-background-hover: scale-color($button-background, $lightness: $lightness);
 $buttongroup-spacing: 5px;
-$button-margin-bottom: 1rem;
+$button-margin-bottom: rem-calc(16);
 $button-margin-right: rem-calc(8);
 
 @include foundation-button;
