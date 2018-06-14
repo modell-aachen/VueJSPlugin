@@ -332,6 +332,23 @@ The following examples provide an overview of its functionality. The correspondi
 <script type="text/x-template" id="select-template">
 %INCLUDE{"%WEB%.%TOPIC%" section="SelectVueTemplate"}%
 </script>
+
+---+ Mixed input field
+Mixed input fields are used to input a mixture of text and options.
+<div class="flatskin-wrapped">
+  <div id="mixed-input-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"MixedInputTemplate"}%
+<vue-mixed-input label="Set your message" v-model="value" :options="options"/>
+%ENDSECTION{"MixedInputTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="mixed-input-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="MixedInputTemplate"}%
+</script>
+
 ---+ Vue Tabpane
 <div class="flatskin-wrapped">
  <div id="tabpane-examples"></div>

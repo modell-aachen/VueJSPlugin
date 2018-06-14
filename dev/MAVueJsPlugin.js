@@ -20,6 +20,7 @@ import VueHeader1 from './components/vue-header/VueHeader1.vue';
 import VueHeader2 from './components/vue-header/VueHeader2.vue';
 import VueHeader3 from './components/vue-header/VueHeader3.vue';
 import VuePagedSelector from './components/vue-paged-selector/VuePagedSelector.vue';
+import VueMixedInput from './components/vue-mixed-input/MixedInput';
 import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
 import Base64 from 'js-base64';
@@ -39,6 +40,7 @@ import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
 import VueSlideUpDown from 'vue-slide-up-down';
 import {mapState} from 'vuex';
+import isEqual from 'lodash.isequal';
 import cloneDeep from 'lodash.clonedeep';
 
 class MAVueJsPlugin {
@@ -89,6 +91,7 @@ class MAVueJsPlugin {
         Vue.component('vue-header2', VueHeader2);
         Vue.component('vue-header3', VueHeader3);
         Vue.component('vue-paged-selector', VuePagedSelector);
+        Vue.component('vue-mixed-input', VueMixedInput);
         Vue.directive('tooltip', VTooltip);
         Vue.directive('click-outside', VueClickOutside);
 
@@ -133,6 +136,10 @@ class MAVueJsPlugin {
 
         Vue.getUniqueId = () => {
             return Math.random().toString(36).substring(7);
+        };
+
+        Vue.isEqual = (value, other) => {
+            return isEqual(value, other);
         };
 
         Vue.cloneDeep = (value) => {

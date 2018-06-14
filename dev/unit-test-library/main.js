@@ -29,6 +29,13 @@ export default {
         options.localVue = localVue;
         return shallow(component, options);
     },
+    wrapAsync(runAsync) {
+        return (done) => {
+            runAsync().then(done, e => {
+                fail(e); done();
+            });
+        };
+    },
     registerStoreModule(name, module) {
         window.Vue.registerStoreModule(name, module);
     }
