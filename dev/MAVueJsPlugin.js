@@ -39,6 +39,7 @@ import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
 import VueSlideUpDown from 'vue-slide-up-down';
 import {mapState} from 'vuex';
+import cloneDeep from 'lodash.clonedeep';
 
 class MAVueJsPlugin {
     constructor(options) {
@@ -132,6 +133,10 @@ class MAVueJsPlugin {
 
         Vue.getUniqueId = () => {
             return Math.random().toString(36).substring(7);
+        };
+
+        Vue.cloneDeep = (value) => {
+            return cloneDeep(value);
         };
 
         Vue.foswiki = this.foswiki;
