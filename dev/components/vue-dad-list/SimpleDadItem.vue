@@ -15,6 +15,10 @@
                                 :handle-top="0"
                                 class="fal fa-bars handle"/>
                         </div>
+                        <vue-spacer
+                            factor-vertical="auto"
+                            factor-horizontal="2"
+                        />
                         <div class="cell shrink align-self-middle">
                             <vue-header3
                                 :sublabel="item.subLabel"
