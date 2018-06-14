@@ -17,14 +17,14 @@
                     <template v-for="(item,index) in internalSelectedItems">
                         <span
                             v-if="item.type === 'option'"
-                            :key="index"
+                            :key="item.id"
                             class="selected-tag option-item"
                             @click.stop="onSelectedOptionClick(index)">
                             <a>{{ item.label }}</a>
                         </span>
                         <span
                             v-else
-                            :key="index"
+                            :key="item.id"
                             class="text-item">
                             <a
                                 class="text-placeholder">{{ item.value }}</a>
@@ -43,8 +43,7 @@
                         class="form-control__wrapper vertical-spacer">
                         <input
                             type="text"
-                            class="form-control-multi"
-                        >
+                            class="form-control-multi">
                     </span>
                 </div>
             </div>
@@ -61,7 +60,7 @@
                 <li
                     v-for="option in options"
                     ref="option-clickers"
-                    :key="option.label"
+                    :key="option.id"
                     class="list-item"
                     @mousedown.prevent="select(option)">
                     <a>
@@ -98,15 +97,12 @@ export default {
             default: () => []
         }
     },
-
     data() {
-
         return {
-            internalSelectedItems: [],
+            internalSelectedItems: this.toInternalValue([]),
             focusedItemIndex: null
         };
     },
-    inject: ['$validator'],
     computed: {
         open() {
             return this.focusedItemIndex !== null;
@@ -115,9 +111,9 @@ export default {
     watch: {
         value: {
             handler(newValue) {
-                const newInternalValue = this.toInternalValue(newValue);
-                if(!Vue.isEqual(this.internalSelectedItems, newInternalValue)){
-                    this.internalSelectedItems = newInternalValue;
+                const currentValue = this.toValue(this.internalSelectedItems);
+                if(!Vue.isEqual(currentValue, newValue)){
+                    this.internalSelectedItems = this.toInternalValue(newValue);
                 }
             },
             deep: true,
@@ -152,14 +148,13 @@ export default {
             value.forEach((item) => {
                 const currentInternalValueIndex = internalValue.length;
                 if(currentInternalValueIndex % 2 === 0 && item.type !== 'text') {
-                    internalValue.push(this.getNewInputItem());
+                    internalValue.push(this.getInternalTextItem());
                 }
                 switch(item.type){
                     case "text":
-                        internalValue.push({
-                            type: "text",
-                            value: item.value
-                        });
+                        const textItem = this.getInternalTextItem();
+                        textItem.value = item.value;
+                        internalValue.push(textItem);
                         break;
                     case "option":
                         internalValue.push({
@@ -171,10 +166,10 @@ export default {
                 }
             });
             if(internalValue.length === 0){
-                internalValue.unshift(this.getNewInputItem());
+                internalValue.unshift(this.getInternalTextItem());
             }
             if(internalValue[internalValue.length - 1].type !== "text") {
-                internalValue.push(this.getNewInputItem());
+                internalValue.push(this.getInternalTextItem());
             }
             return internalValue;
         },
@@ -236,10 +231,10 @@ export default {
                 type: "option"
             };
             if(this.hasFocusOnStringStart(this.focusedItemIndex)) {
-                this.internalSelectedItems.splice(this.focusedItemIndex, 0, this.getNewInputItem(), newOptionItem);
+                this.internalSelectedItems.splice(this.focusedItemIndex, 0, this.getInternalTextItem(), newOptionItem);
                 newSelectedIndex = this.focusedItemIndex + 2;
             } else if(this.hasFocusOnStringEnd(this.focusedItemIndex)) {
-                this.internalSelectedItems.splice(this.focusedItemIndex + 1, 0, newOptionItem, this.getNewInputItem());
+                this.internalSelectedItems.splice(this.focusedItemIndex + 1, 0, newOptionItem, this.getInternalTextItem());
                 newSelectedIndex = this.focusedItemIndex + 2;
             } else {
                 const splitItems = this.splitTextItem(this.focusedItemIndex);
@@ -264,10 +259,11 @@ export default {
             index = Math.ceil(index / 2);
             return this.$refs["inputs"][index];
         },
-        getNewInputItem() {
+        getInternalTextItem() {
             return {
                 value: "",
-                type: "text"
+                type: "text",
+                id: Vue.getUniqueId()
             };
         },
         hasFocusOnStringStart(index) {

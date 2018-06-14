@@ -1,8 +1,6 @@
 import MixedInput from '../dev/components/vue-mixed-input/MixedInput';
 import TestCase from '../dev/unit-test-library/main';
 
-
-
 describe("The mixed input component", () => {
     let mixedInput;
     const options = [{
@@ -70,6 +68,11 @@ describe("The mixed input component", () => {
             }
         });
     });
+
+    afterEach(() => {
+        mixedInput.destroy();
+    });
+
     it("does not show its dropdown when initialized", () => {
         expect(getDropdown().isVisible()).toBe(false);
     });
