@@ -8,8 +8,7 @@
             v-if="name.length"
             :name="name"
             :value="stringifiedValue"
-            type="hidden"
-        >
+            type="hidden">
         <div
             ref="toggle"
             :class="{multi: multiple, open: open, 'ma-failure': hasError}"
@@ -33,8 +32,7 @@
                         <template v-if="!multiple && !open">
                             <span
                                 class="single-tag"
-                                type="text"
-                            >
+                                type="text">
                                 {{ getOptionLabel(option) }}
                             </span>
                             <div
@@ -42,20 +40,17 @@
                                 class="close-icon"
                                 aria-hidden="true"
                                 @mousedown.stop
-                                @click.stop="deselect(internalValue)"
-                            >
+                                @click.stop="deselect(internalValue)">
                                 <i class="far fa-times" />
                             </div>
                         </template>
                         <a
-                            v-if="multiple"
-                        >
+                            v-if="multiple">
                             {{ getOptionLabel(option) }}
                             <i
                                 class="far fa-times close-icon"
                                 aria-hidden="true"
-                                @mousedown.stop="deselect(option)"
-                            />
+                                @mousedown.stop="deselect(option)"/>
                         </a>
                     </span>
                     <span class="form-control__wrapper">
@@ -72,8 +67,7 @@
                             @keydown.enter.prevent
                             @keyup.enter.prevent="typeAheadSelect"
                             @blur="inputHasFocus = false"
-                            @focus="inputHasFocus = true;"
-                        >
+                            @focus="inputHasFocus = true;">
                     </span>
                 </div>
                 <div
@@ -175,7 +169,7 @@ export default {
      */
         name: {
             type: String,
-            default: '',
+            default: 'noname',
         },
         /**
      * Sets the max-height property on the dropdown list.
@@ -946,6 +940,7 @@ export default {
         display: flex;
         flex-flow: row no-wrap;
         width:100%;
+        min-height: 40px;
     }
 
     .selected-list {

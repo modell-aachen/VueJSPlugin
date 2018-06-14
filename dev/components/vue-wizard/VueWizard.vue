@@ -3,8 +3,7 @@
 
         <div class="cell shrink icon">
             <i
-                :class="iconClass"
-            />
+                :class="iconClass"/>
         </div>
 
         <div class="cell auto grid-y">
@@ -13,14 +12,12 @@
                 <div v-if="text">{{ text }}</div>
                 <div
                     v-if="( buttonCallback || buttonHref) && buttonText"
-                    class="ma-margin-top-large"
-                >
+                    class="ma-margin-top-large">
                     <vue-button
                         :title="buttonText"
                         :href="buttonHref"
                         type="primary"
-                        @click.native="buttonCallback"
-                    />
+                        @click.native="buttonCallback"/>
                 </div>
             </div>
         </div>
