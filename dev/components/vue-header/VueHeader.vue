@@ -2,8 +2,7 @@
     <component
         :is="'h' + scrubbedLevel"
         :class="headerClass"
-        class="vue-header"
-    >
+        class="vue-header">
         <slot/>
         <i
             v-if="status"
@@ -11,8 +10,7 @@
             class="fas fa-circle ma-status-dot"/>
         <small
             v-if="sublabel"
-            class="sublabel"
-        >
+            class="sublabel">
             {{ sublabel }}
         </small>
     </component>

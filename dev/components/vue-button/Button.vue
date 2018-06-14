@@ -6,9 +6,7 @@
         class="button"
         @click="handleClick">
         <div
-            v-if="icon"
-            class="icon-wrapper"
-        >
+            v-if="icon">
             <i
                 :class="icon"
                 class="button-icon"
@@ -16,8 +14,7 @@
         </div>
         <span
             v-if="title && title.length"
-            class="button-text"
-        >
+            class="button-text">
             {{ title }}
         </span>
     </a>
