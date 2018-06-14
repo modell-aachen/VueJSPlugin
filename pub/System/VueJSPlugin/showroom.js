@@ -176,4 +176,30 @@ Vue.onDocumentReady(function(){
             }
         }
     });
+    new Vue({
+        el: '#mixed-input-examples',
+        template: '#mixed-input-template',
+        data: {
+          options:[{
+            id: 'option-1',
+            label: "Snes"
+          },{
+            id: 'option-2',
+            label: "N64"
+          },{
+            id: 'option-3',
+            label: "Gamecube"
+          }],
+          value: [{
+            type: "text",
+            value: "The "
+          },{
+            type: "option",
+            id: "option-2"
+          },{
+            type: "text",
+            value: " is the best console."
+          }]
+        }
+    });
 });
