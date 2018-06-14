@@ -17,14 +17,14 @@
                     <template v-for="(item,index) in internalSelectedItems">
                         <span
                             v-if="item.type === 'option'"
-                            :key="item.id"
+                            :key="index"
                             class="selected-tag option-item"
                             @click.stop="onSelectedOptionClick(index)">
                             <a>{{ item.label }}</a>
                         </span>
                         <span
                             v-else
-                            :key="item.id"
+                            :key="index"
                             class="text-item">
                             <a
                                 class="text-placeholder">{{ item.value }}</a>
@@ -151,18 +151,16 @@ export default {
                     internalValue.push(this.getInternalTextItem());
                 }
                 switch(item.type){
-                    case "text":
-                        const textItem = this.getInternalTextItem();
-                        textItem.value = item.value;
+                    case "text": {
+                        const textItem = this.getInternalTextItem(item.value);
                         internalValue.push(textItem);
                         break;
-                    case "option":
-                        internalValue.push({
-                            type: "option",
-                            id: item.id,
-                            label: this.options.find(element => element.id === item.id).label
-                        });
+                    }
+                    case "option": {
+                        const optionItem = this.getInternalOptionItem(item.id);
+                        internalValue.push(optionItem);
                         break;
+                    }
                 }
             });
             if(internalValue.length === 0){
@@ -226,10 +224,7 @@ export default {
         select(option) {
             let newSelectedIndex = null;
             let newCursorPosition = 0;
-            const newOptionItem = {
-                id: option.id,
-                type: "option"
-            };
+            const newOptionItem = this.getInternalOptionItem(option.id);
             if(this.hasFocusOnStringStart(this.focusedItemIndex)) {
                 this.internalSelectedItems.splice(this.focusedItemIndex, 0, this.getInternalTextItem(), newOptionItem);
                 newSelectedIndex = this.focusedItemIndex + 2;
@@ -247,23 +242,26 @@ export default {
             const item = this.internalSelectedItems[index];
             const element = this.getTextItemRef(index);
             const splitPosition = element.selectionStart;
-            return [{
-                type: "text",
-                value: item.value.substring(0, splitPosition)
-            }, {
-                type: "text",
-                value: item.value.substring(splitPosition)
-            }];
+            return [
+                this.getInternalTextItem(item.value.substring(0, splitPosition)),
+                this.getInternalTextItem(item.value.substring(splitPosition))
+            ];
         },
         getTextItemRef(index) {
             index = Math.ceil(index / 2);
             return this.$refs["inputs"][index];
         },
-        getInternalTextItem() {
+        getInternalTextItem(value = "") {
             return {
-                value: "",
-                type: "text",
-                id: Vue.getUniqueId()
+                value,
+                type: "text"
+            };
+        },
+        getInternalOptionItem(optionId) {
+            return {
+                type: "option",
+                id: optionId,
+                label: this.options.find(element => element.id === optionId).label
             };
         },
         hasFocusOnStringStart(index) {
