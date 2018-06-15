@@ -1,5 +1,6 @@
 .ma-splitbutton {
     @include button-group($buttongroup-child-selector, 1px);
+    margin-bottom: 16px;
     .main-button {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
