@@ -6,7 +6,8 @@
         class="button"
         @click="handleClick">
         <div
-            v-if="icon">
+            v-if="icon"
+            class="icon-wrapper">
             <i
                 :class="icon"
                 class="button-icon"
