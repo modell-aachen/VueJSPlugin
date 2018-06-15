@@ -126,6 +126,13 @@ See the [[System.VueJSPluginSidebar][sidebar documentation]] for further details
 | preventSearchFilter | Boolean | | |
 | value | Array | | function _default() { return []; } |
 
+---++ Mixed Input
+See the Showroom and the corresponding JS for an example.
+| *Name* | *Type* | *Required* | *Default* | *Description* |
+| label | String | | | Text on top of the input |
+| v-model | Array | | [] | Will hold the input result |
+| options | Array | | [] | Array of option objects to be selectable |
+
 ---++ Tabpane
 For more inforamtion see [[System.VueJSPluginTabpane]].
 <verbatim class="html">

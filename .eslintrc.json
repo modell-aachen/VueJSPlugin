@@ -37,8 +37,9 @@
     "one-var":                      [2, "never"],
     "semi":                         [2, "always"],
     "vue/html-indent":              ["error", 4],
-    "no-var": [1],
-    "brace-style": [1]
+    "no-var":                       [1],
+    "brace-style":                  [1],
+    "vue/html-closing-bracket-newline": ["error", { "singleline": "never", "multiline": "never" }]
   }
 
 }

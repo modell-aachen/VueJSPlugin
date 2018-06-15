@@ -5,28 +5,24 @@
             :label="filterLabel"
             :placeholder="filterPlaceholder"
             icon="far fa-search"
-            name="filterOptions"
-        />
+            name="filterOptions"/>
 
         <div class="grid-container fluid">
             <div
                 v-for="option in displayedOptions"
-                :key="option.key"
-            >
+                :key="option.key">
                 <vue-check-item
                     :value="option.value"
                     :description="option.description"
                     :badge="option.badge"
                     v-model="internalValue"
-                    type="radio"
-                >
+                    type="radio">
                     {{ option.label }}
                 </vue-check-item>
             </div>
             <vue-pagination
                 v-model="page"
-                :page-count="pageCount"
-            />
+                :page-count="pageCount"/>
         </div>
     </div>
 </template>

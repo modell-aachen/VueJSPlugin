@@ -99,7 +99,7 @@ export default {
         allowedTypes: {
             type: Array,
             default: function() {
-                return [];
+                return null;
             }
         },
         removeOptions: {

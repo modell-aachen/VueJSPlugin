@@ -5,13 +5,11 @@
                 <li
                     v-for="(tab, index) in tabs"
                     :key="index"
-                    :class="{current: tab.current}"
-                >
+                    :class="{current: tab.current}">
                     <a
                         href="#"
                         @click.prevent="selectTab(tab.id)"
-                        v-html="tab.name"
-                    />
+                        v-html="tab.name"/>
                 </li>
             </ul>
             <span class="clearfix"/>
