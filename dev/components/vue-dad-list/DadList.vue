@@ -50,6 +50,7 @@
             name="addArea">
             <vue-button
                 :title="buttonTitle"
+                icon="far fa-plus"
                 @click.native="addItemEvent"/>
         </slot>
     </div>
