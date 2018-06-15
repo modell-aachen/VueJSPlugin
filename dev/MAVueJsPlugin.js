@@ -13,6 +13,7 @@ import VueDadList from './components/vue-dad-list/DadList.vue';
 import VueDadItem from './components/vue-dad-list/DadItem.vue';
 import VueCollapsibleDadItem from './components/vue-dad-list/CollapsibleDadItem.vue';
 import VueSimpleDadItem from './components/vue-dad-list/SimpleDadItem.vue';
+import VueCollapsibleFrame from './components/vue-collapsible-frame/CollapsibleFrame.vue';
 import VueWizard from './components/vue-wizard/VueWizard.vue';
 import VueSpacer from './components/vue-spacer/Spacer.vue';
 import VueHeader from './components/vue-header/VueHeader.vue';
@@ -91,6 +92,7 @@ class MAVueJsPlugin {
         Vue.component('vue-header2', VueHeader2);
         Vue.component('vue-header3', VueHeader3);
         Vue.component('vue-paged-selector', VuePagedSelector);
+        Vue.component('vue-collapsible-frame', VueCollapsibleFrame);
         Vue.component('vue-mixed-input', VueMixedInput);
         Vue.directive('tooltip', VTooltip);
         Vue.directive('click-outside', VueClickOutside);
