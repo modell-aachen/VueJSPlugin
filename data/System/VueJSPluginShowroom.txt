@@ -157,6 +157,18 @@ The following examples provide an overview of its functionality. The correspondi
       <vue-button type='primary' is-disabled title='Button' /><br>
    Icon only Button
       <vue-button type='icon' icon='fas fa-exclamation-triangle' color="ma-warning-color" /><br>
+    <div>
+      Button alignment left<br/>
+        <vue-button type='primary' title='Button' alignment='left' style="width: 45%" /><br>
+    </div>
+    <div>
+      Button alignment center (default)<br/>
+        <vue-button type='primary' title='Button'  style="width: 45%" /><br>
+    </div>
+    <div>
+      Button alignment right<br/>
+        <vue-button type='primary' title='Button' alignment='right' style="width: 45%" /><br>
+    </div>
 </div>
 %ENDSECTION{"ButtonVueTemplate"}%
 </verbatim>

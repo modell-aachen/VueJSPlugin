@@ -2,7 +2,7 @@
     <a
         :disabled="isDisabled"
         :href="href"
-        :class="[type, color]"
+        :class="[type, color, textAligment]"
         class="button"
         @click="handleClick">
         <div
@@ -60,10 +60,25 @@ export default {
             type: [String, Array],
             default: undefined
         },
+        'alignment': {
+            type: String,
+            default: 'center',
+            validator: function(value) {
+                let types = [
+                    'center',
+                    'left',
+                    'right'
+                ];
+                return types.includes(value);
+            }
+        },
         'isDisabled':{
             type: Boolean,
             default: false
         }
+    },
+    data: function(){
+        return { textAligment: 'text-' + this.alignment };
     },
     methods: {
         handleClick: function( event ) {
