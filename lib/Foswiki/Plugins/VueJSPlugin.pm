@@ -80,7 +80,7 @@ sub registerClient {
     # render token directly instead of using afterCommonTagsHandler
     # for more read developer supplement at Foswiki:Development.AddToZoneFromPluginHandlers
     Foswiki::Func::addToZone( 'script', $clientId,
-        "<script type=\"application/json\" data-vue-client-id=\"$clientId\">{\"token\": \"$clientToken\"}</script>"
+        "<script type=\"application/json\" data-vue-token-for-client==\"$clientId\">{\"token\": \"$clientToken\"}</script>"
     );
     return $clientToken;
 }

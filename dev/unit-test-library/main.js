@@ -28,5 +28,6 @@ export default {
     shallow(component, options = {}) {
         options.localVue = localVue;
         return shallow(component, options);
-    }
+    },
+    vue: localVue
 };
