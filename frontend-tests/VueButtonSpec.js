@@ -34,6 +34,7 @@ describe("The Button component", () => {
         it("icon", () => {
             const icon = wrapper.find('i');
             expect(icon.classes()).toContain(options.propsData.icon[1]);
+            expect(wrapper.contains('.icon-wrapper')).toBe(true);
         });
         it("isDisabled", () => {
             expect(wrapper.attributes().disabled).toBe('disabled');
