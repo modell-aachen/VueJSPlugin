@@ -170,6 +170,7 @@ input[type]:disabled {
     font-size: 1.1rem;
     font-weight: 400;
     color: $ma-dark-grey;
+    top: 0;
     content: "\f0c8";
   }
   &:checked,
