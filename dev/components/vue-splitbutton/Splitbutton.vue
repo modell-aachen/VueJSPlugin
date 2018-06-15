@@ -13,8 +13,7 @@
                 @click="toggleDropdown">
                 {{ dropdownButtonTitle }}
                 <div
-                    class="icon-wrapper"
-                >
+                    class="icon-wrapper">
                     <i
                         :class="splitButtonIconClass"
                         class="dropdown-icon far"

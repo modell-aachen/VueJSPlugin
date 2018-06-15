@@ -8,40 +8,34 @@
             :checked="state"
             :type="type"
             :class="{'switch-input': isSwitch}"
-            @change="onChange"
-        >
+            @change="onChange">
         <label
             :class="{'switch-paddle': isSwitch}"
             :for="id || value">
             <span
                 v-if="!isSwitch"
-                class="grid-x"
-            >
+                class="grid-x">
                 <component
                     :is="$slots.description !== undefined || description !== undefined ? 'b' : 'span'"
-                    class="cell auto"
-                >
+                    class="cell auto">
                     <slot/>
                 </component>
                 <span
                     v-if="badge"
-                    class="cell shrink badge"
-                >
+                    class="cell shrink badge">
                     {{ badge }}
                 </span>
             </span>
             <span
                 v-if="!isSwitch && ($slots.description || description)"
-                class="grid-x"
-            >
+                class="grid-x">
                 <template v-if="description">
                     <vue-spacer/>
                     {{ description }}
                 </template>
                 <slot
                     v-if="$slots.description"
-                    name="description"
-                />
+                    name="description"/>
             </span>
         </label><slot v-if="isSwitch"/><br>
     </div>
