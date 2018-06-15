@@ -12,8 +12,12 @@ $OpenSansPath: '../fonts/opensans';
 @import 'util/util';
 @import 'settings';
 @import 'foundation';
+// Text alignment classes
+@import 'typography/alignment';
+
 @include foundation-global-styles;
 @include foundation-xy-grid-classes;
+@include foundation-text-alignment;
 //@include foundation-flex-grid;
 @include foundation-callout;
 @include foundation-forms;
