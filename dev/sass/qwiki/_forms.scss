@@ -166,13 +166,16 @@ input[type]:disabled {
   }
   &+label::before{
     @extend %item-label-pseudo;
-    border-radius: 2px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: $ma-dark-grey;
+    content: "\f0c8";
   }
   &:checked,
   &[checked="checked"]{
     &+label::before{
-    content: "\f00c";
-    text-align: center;
+      content: "\f14a";
     }
   }
 }
