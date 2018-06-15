@@ -7,7 +7,7 @@
         <i
             v-if="status"
             :class="status"
-            class="fas fa-circle ma-status-dot"/>
+            class="fas fa-exclamation-triangle ma-status-triangle"/>
         <small
             v-if="sublabel"
             class="sublabel">
