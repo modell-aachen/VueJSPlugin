@@ -68,18 +68,27 @@ $ma-grid-padding: rem-calc(0 4 0 4);
     }
 }
 
-i.ma-status-dot {
-    $dot-size: .5em;
-    padding-left: rem-calc(8);
-    font-size: $dot-size;
-    vertical-align: middle;
-    height: rem-calc(1em / 2 + $dot-size /2);
+%ma-status {
     &.warning {
         color: $ma-warning;
     }
     &.error {
         color: $ma-failure;
     }
+}
+
+i.ma-status-dot {
+    @extend %ma-status;
+    $dot-size: .5em;
+    padding-left: rem-calc(8);
+    font-size: $dot-size;
+    vertical-align: middle;
+    height: rem-calc(1em / 2 + $dot-size /2);
+}
+
+i.ma-status-triangle {
+    @extend %ma-status;
+    font-size: 1rem;
 }
 .ma-collapsible-item-title-left,
 .ma-simple-item-title-left {
