@@ -11,7 +11,7 @@ describe("The Button component", () => {
             expect(wrapper.find('i').exists()).toBe(false);
         });
     });
-    describe("use propertie", () => {
+    describe("use properties", () => {
         const options = {
             propsData: {
                 title: 'TEST',
@@ -51,6 +51,46 @@ describe("The Button component", () => {
             expect(wrapper.vm.$options.props.color.validator('no color')).toBe(false);
             expect(wrapper.vm.$options.props.color.validator('ma-warning-color')).toBe(true);
             expect(wrapper.vm.$options.props.color.validator('')).toBe(true);
+        });
+        it("for alignment", () => {
+            expect(wrapper.vm.$options.props.alignment.validator('wrong alignment')).toBe(false);
+            expect(wrapper.vm.$options.props.alignment.validator('')).toBe(false);
+            expect(wrapper.vm.$options.props.alignment.validator('center')).toBe(true);
+            expect(wrapper.vm.$options.props.alignment.validator('left')).toBe(true);
+            expect(wrapper.vm.$options.props.alignment.validator('right')).toBe(true);
+        });
+    });
+
+    describe("property is corretly rendered", () => {
+
+        let options = {
+            propsData: {
+                title: 'TEST',
+                type: 'primary',
+            }
+        };
+
+        it("for alignment default/none", () => {
+            const wrapper = mount(Button, options);
+            expect(wrapper.classes()).toContain('text-center');
+        });
+
+        it("for alignment center", () => {
+            options.propsData.alignment = 'center';
+            const wrapper = mount(Button, options);
+            expect(wrapper.classes()).toContain('text-center');
+        });
+
+        it("for alignment left", () => {
+            options.propsData.alignment = 'left';
+            const wrapper = mount(Button, options);
+            expect(wrapper.classes()).toContain('text-left');
+        });
+
+        it("for alignment right", () => {
+            options.propsData.alignment = 'right';
+            const wrapper = mount(Button, options);
+            expect(wrapper.classes()).toContain('text-right');
         });
     });
 });
