@@ -19,7 +19,7 @@ module.exports = {
   entry: {
     "flatskin": path.join(devDir, 'sass', 'flatskin.scss'),
     "flatskin_wrapped": path.join(devDir, 'sass', 'flatskin_wrapped.scss'),
-   // "modacskin": path.join(devDir, 'sass', 'modacskin.scss'),
+    "flatskin": path.join(devDir, 'js', 'flatskin.js'),
   },
   output: {
     path: path.join(destDir, 'css'),
