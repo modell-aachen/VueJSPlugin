@@ -117,7 +117,7 @@ class MAVueJsPlugin {
                 let valid = !!vueClientId && !!vueClientToken;
 
                 if( valid ) {
-                    let tokenElement = this.jquery('[data-vue-token-for-client="' + vueClientId + '"]');
+                    let tokenElement = this.jquery('head > script[data-vue-token-for-client="' + vueClientId + '"]');
                     if( tokenElement.length ) {
                         let tokenDef = JSON.parse(tokenElement.html());
                         if( vueClientToken === tokenDef.token ) {
