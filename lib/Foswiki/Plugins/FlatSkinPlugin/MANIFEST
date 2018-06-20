@@ -23,8 +23,10 @@ lib/Foswiki/Plugins/SafeWikiPlugin/Signatures/FlatSkin.pm 0644
 locale/FlatSkinPlugin/de.po 0644
 pub/System/FlatSkin/css/flatskin.css 0644
 pub/System/FlatSkin/css/flatskin.min.css 0644
+pub/System/FlatSkin/css/flatskin.min.css.map 0644
 pub/System/FlatSkin/css/flatskin_wrapped.css 0644
 pub/System/FlatSkin/css/flatskin_wrapped.min.css 0644
+pub/System/FlatSkin/css/flatskin_wrapped.min.css.map 0644
 pub/System/FlatSkin/fonts/opensans/OpenSans-Bold.eot 0644
 pub/System/FlatSkin/fonts/opensans/OpenSans-Bold.svg 0644
 pub/System/FlatSkin/fonts/opensans/OpenSans-Bold.ttf 0644
@@ -65,8 +67,10 @@ pub/System/FlatSkin/images/ma-logo.png 0644
 pub/System/FlatSkin/images/qwiki-logo.png 0644
 pub/System/FlatSkin/js/flatskin.js 0644
 pub/System/FlatSkin/js/flatskin.min.js 0644
+pub/System/FlatSkin/js/flatskin.min.js.map 0644
 pub/System/FlatSkin/js/foundation.js 0644
 pub/System/FlatSkin/js/foundation.min.js 0644
+pub/System/FlatSkin/js/foundation.min.js.map 0644
 templates/attachtables.flat.tmpl 0644
 templates/css.flat.tmpl 0644
 templates/edit.flat.tmpl 0644
