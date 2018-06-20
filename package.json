@@ -15,7 +15,6 @@
   "scripts": {
     "postinstall": "webpack -p --config webpack.config.js",
     "lint": "stylelint 'dev/sass/**/*.scss'; exit 0;",
-    "lint:watch": "watch --color 'eslint --color --ext .js,.vue dev/ tests/'",
     "watch": "webpack -d --watch --progress --config webpack.config.js"
   },
   "devDependencies": {
