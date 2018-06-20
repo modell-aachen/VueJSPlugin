@@ -4,6 +4,7 @@ const zip = require('compression-webpack-plugin');
 const CssEntryPlugin = require("css-entry-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const babelOpts = {
   presets: ['latest'],
@@ -35,6 +36,7 @@ module.exports = [{
         include: [/\.(?:js|css)$/]
       }),
       new ExtractTextPlugin('[name].css'),
+      new ProgressBarPlugin()
     ],
     module: {
       rules: [
@@ -94,8 +96,8 @@ module.exports = [{
   {
     devtool: 'source-map',
     entry: {
-      "js/flatskin": path.join(devDir, 'js', 'flatskin.js'),
-      "js/foundation": path.join(devDir, 'js', 'foundation.js'),
+      "flatskin": path.join(devDir, 'js', 'flatskin.js'),
+      "foundation": path.join(devDir, 'js', 'foundation.js'),
     },
     output: {
       path: path.join(destDir, 'js'),
@@ -110,7 +112,8 @@ module.exports = [{
       new zip({
         minRation: 1,
         include: [/\.(?:js|css)$/]
-      })
+      }),
+      new ProgressBarPlugin()
     ],
     module: {
       rules: [{

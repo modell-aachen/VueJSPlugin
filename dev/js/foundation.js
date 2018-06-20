@@ -1,1 +1,1 @@
-import './../../node_modules/foundations-sites/dist/js/foundation.js'
+import '../../node_modules/foundation-sites/dist/js/foundation.min.js'
