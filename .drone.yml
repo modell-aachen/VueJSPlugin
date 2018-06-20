@@ -3,7 +3,6 @@ pipeline:
     image: node
     commands:
       - yarn
-      - yarn run test
       - yarn run lint
   sonar:
     image: mmoscher/sonar-runner
