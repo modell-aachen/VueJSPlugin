@@ -13,7 +13,7 @@
     "test": "test"
   },
   "scripts": {
-    "postinstall": "webpack -p --config webpack.config.js",
+    "postinstall": "webpack -p --config webpack.config.js; node create-none-min-files.js",
     "lint": "stylelint 'dev/sass/**/*.scss'; exit 0;",
     "watch": "webpack -d --watch --progress --config webpack.config.js"
   },
@@ -25,7 +25,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-latest": "^6.0.0",
     "compression-webpack-plugin": "^1.1.11",
-    "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.2.0",
     "css-entry-webpack-plugin": "^1.0.0-beta.4",
     "css-loader": "^0.28.11",

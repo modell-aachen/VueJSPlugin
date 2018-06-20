@@ -19,7 +19,7 @@ module.exports = [{
     },
     output: {
       path: path.join(destDir, 'css'),
-      filename: '[name].css',
+      filename: '[name].min.css',
     },
     watchOptions: {
       aggregateTimeout: 250,
@@ -31,7 +31,7 @@ module.exports = [{
         minRation: 1,
         include: [/\.(?:js|css)$/]
       }),
-      new ExtractTextPlugin('[name].css'),
+      new ExtractTextPlugin('[name].min.css'),
       new ProgressBarPlugin()
     ],
     module: {
@@ -97,7 +97,7 @@ module.exports = [{
     },
     output: {
       path: path.join(destDir, 'js'),
-      filename: '[name].js',
+      filename: '[name].min.js',
     },
     watchOptions: {
       aggregateTimeout: 250,
