@@ -1,10 +1,7 @@
 const path = require('path');
-const webpack = require('webpack');
 const zip = require('compression-webpack-plugin');
-const CssEntryPlugin = require("css-entry-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-var ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const babelOpts = {
   presets: ['latest'],
@@ -13,7 +10,6 @@ const babelOpts = {
 const devDir = path.join(__dirname, 'dev');
 const testDir = path.join(__dirname, 'tests');
 const destDir = path.join(__dirname, 'pub/System/FlatSkin');
-const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
 module.exports = [{
     devtool: 'source-map',
