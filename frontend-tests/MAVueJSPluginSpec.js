@@ -7,9 +7,9 @@ describe("The MAVueJSPlugin ", () => {
         beforeEach(function(){
             container = document.createElement('div');
             container.setAttribute('id', "test");
-            tokenTag = document.createElement('div');
+            tokenTag = document.createElement('script');
             document.querySelector('body').appendChild( container );
-            document.querySelector('body').appendChild( tokenTag );
+            document.querySelector('head').appendChild( tokenTag );
             console.warn = jasmine.createSpy("warn");
         });
 
