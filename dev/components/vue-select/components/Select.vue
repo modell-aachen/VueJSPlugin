@@ -15,7 +15,9 @@
             class="dropdown-toggle"
             type="text"
             @mousedown.prevent="toggleDropdown">
-            <div class="input-area">
+            <div
+                :class="{ 'input-area-small': isSmall }"
+                class="input-area">
                 <div
                     ref="selectedList"
                     class="selected-list">
@@ -58,7 +60,7 @@
                             v-show="open || multiple"
                             ref="search"
                             v-model="search"
-                            :class="{ 'form-control': true, multi: multiple }"
+                            :class="{ 'form-control': true, multi: multiple, 'input-area-small': isSmall }"
                             :placeholder="isValueEmpty ? searchPlaceholder : ''"
                             type="text"
                             @keyup.esc="onEscape"
@@ -154,6 +156,10 @@ export default {
     i18nextNamespace: 'VueJSPlugin',
 
     props: {
+        isSmall: {
+            type: Boolean,
+            default: false,
+        },
         value: {
             type: Array,
             default: () => [],
@@ -940,7 +946,10 @@ export default {
         display: flex;
         flex-flow: row no-wrap;
         width:100%;
-        min-height: 40px;
+        height: 40px;
+    }
+    .input-area-small {
+        height: 32px;
     }
 
     .selected-list {
