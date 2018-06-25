@@ -4,7 +4,8 @@
 // Open Sans Font-Face
 //
 $OpenSansPath: '../fonts/opensans';
-@import 'open-sans';
+@import '~open-sans-fontface/open-sans.css';
+@import 'foundation_libs';
 @import 'settings';
 @import 'qwiki/tooltip';
 
@@ -19,9 +20,9 @@ html {
     //
     // Foundation for Sites 6
     //
-    @import 'foundation';
+    @import '~foundation-sites/scss/foundation';
     // Text alignment classes
-    @import 'typography/alignment';
+    @import '~foundation-sites/scss/typography/alignment';
 
     //Here we put all styles foundation sets on html or body.
     //Unfortunately this is copy paste
