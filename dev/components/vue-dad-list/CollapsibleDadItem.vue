@@ -1,5 +1,7 @@
 <template>
-    <vddl-nodrag class="ma-block">
+    <component
+        :is="wrapperByStatus"
+        class="ma-block">
         <div class="ma-collapsible-item">
             <!-- Title Area -->
             <div @click.prevent="toggleCollapsed">
@@ -67,7 +69,7 @@
                 </div>
             </vue-slide-up-down>
         </div>
-    </vddl-nodrag>
+    </component>
 </template>
 
 <script>
@@ -114,6 +116,9 @@ export default {
     computed: {
         chevronByCollapsed: function() {
             return this.collapsed ? 'fa-chevron-right' : 'fa-chevron-down';
+        },
+        wrapperByStatus: function() {
+            return this.collapsed ? 'vddl-nodrag' : 'div';
         }
     },
     watch: {
