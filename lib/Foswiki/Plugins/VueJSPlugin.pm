@@ -75,12 +75,11 @@ LOAD
 }
 
 sub registerClient {
-    my ($clientId) = @_;
     my $clientToken = md5_hex(rand);
     # render token directly instead of using afterCommonTagsHandler
     # for more read developer supplement at Foswiki:Development.AddToZoneFromPluginHandlers
-    Foswiki::Func::addToZone( 'script', $clientId,
-        "<script type=\"application/json\" data-vue-token-for-client=\"$clientId\">{\"token\": \"$clientToken\"}</script>"
+    Foswiki::Func::addToZone( 'script',
+      "<script type=\"application/json\" class=\"vue-client-registrations\">{\"token\": \"$clientToken\"}</script>"
     );
     return $clientToken;
 }

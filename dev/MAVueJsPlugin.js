@@ -110,23 +110,27 @@ class MAVueJsPlugin {
         Vue.instantiateEach = (selector, options) => {
             this.jquery(selector).each((i, element) => {
 
-                //check if client registered herself through by the VueJSPlugin
-                let vueClientId = this.jquery(element).attr('data-vue-client-id');
                 let vueClientToken = this.jquery(element).attr('data-vue-client-token');
-                //check if both values are given
-                let valid = !!vueClientId && !!vueClientToken;
+                let valid = !!vueClientToken;
 
                 if( valid ) {
-                    let tokenElement = this.jquery('head > script[data-vue-token-for-client="' + vueClientId + '"]');
-                    if( tokenElement.length ) {
-                        let tokenDef = JSON.parse(tokenElement.html());
-                        if( vueClientToken === tokenDef.token ) {
-                            // received valid token
+                    let tokenElements = this.jquery('head > script.vue-client-registrations');
+
+                    if( tokenElements.length ) {
+                        let tokens = [];
+                        tokenElements.each( (i,e) => {
+                            let tokenDef = JSON.parse( this.jquery(e).html());
+                            tokens.push( tokenDef.token );
+                        });
+
+                        valid = tokens.filter( t =>  {
+                            return t === vueClientToken;
+                        }).length === 1;
+
+                        if( valid ) {
                             let instanceOptions = Object.assign({}, options);
                             instanceOptions.el = element;
                             new Vue(instanceOptions);
-                        }else{
-                            valid = false;
                         }
                     }else{
                         valid = false;

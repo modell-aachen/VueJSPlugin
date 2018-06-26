@@ -8,6 +8,7 @@ describe("The MAVueJSPlugin ", () => {
             container = document.createElement('div');
             container.setAttribute('id', "test");
             tokenTag = document.createElement('script');
+            tokenTag.classList.add('vue-client-registrations');
             document.querySelector('body').appendChild( container );
             document.querySelector('head').appendChild( tokenTag );
             console.warn = jasmine.createSpy("warn");
@@ -24,13 +25,7 @@ describe("The MAVueJSPlugin ", () => {
         });
 
         it("warns on wrong token", () => {
-
-            let clientId = "vueTest";
-
-            tokenTag.setAttribute('data-vue-token-for-client', clientId );
             tokenTag.innerHTML = '{ "token" : "xxxx" }';
-
-            container.setAttribute('data-vue-client-id', clientId );
             container.setAttribute('data-vue-client-token', 'token');
 
             TestCase.vue.instantiateEach('#test');
@@ -39,12 +34,7 @@ describe("The MAVueJSPlugin ", () => {
 
         it("warns _not_ with correct attributes and token", () => {
 
-            let clientId = "vueTest";
-
-            tokenTag.setAttribute('data-vue-token-for-client', clientId );
             tokenTag.innerHTML = '{ "token" : "token" }';
-
-            container.setAttribute('data-vue-client-id', clientId );
             container.setAttribute('data-vue-client-token', "token");
 
             TestCase.vue.instantiateEach('#test');
