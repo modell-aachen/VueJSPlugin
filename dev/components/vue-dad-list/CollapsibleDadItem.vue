@@ -1,63 +1,60 @@
 <template>
-    <component
-        :is="wrapperByStatus"
-        class="ma-block">
+    <div class="ma-block">
         <div class="ma-collapsible-item">
             <!-- Title Area -->
-            <div @click.prevent="toggleCollapsed">
-                <vddl-handle
-                    :class="{'ma-collapsed': collapsed}"
-                    class="ma-draggable ma-collapsible-item-title grid-x align-justify">
-                    <div class="cell shrink">
-                        <div class="grid-x ma-collapsible-item-title-left">
-                            <div class="cell shrink align-self-middle handle-spacer" />
-                            <div
-                                v-if="item.icon"
-                                class="cell shrink align-self-middle">
-                                <i
-                                    :class="item.icon"
-                                    class="ma-type-icon"/>
-                            </div>
-                            <div class="cell shrink">
-                                <vue-spacer
-                                    factor-vertical="auto"
-                                    factor-horizontal="2"/>
-                            </div>
-                            <div class="cell shrink align-self-middle">
-                                <vue-header3
-                                    :sublabel="item.subLabel"
-                                    :status="item.status">{{ item.label || item.description }}</vue-header3>
-                            </div>
+            <div
+                :class="{'ma-collapsed': collapsed}"
+                class="ma-draggable ma-collapsible-item-title grid-x align-justify"
+                @click.prevent="toggleCollapsed">
+                <div class="cell shrink">
+                    <div class="grid-x ma-collapsible-item-title-left">
+                        <div class="cell shrink align-self-middle handle-spacer" />
+                        <div
+                            v-if="item.icon"
+                            class="cell shrink align-self-middle">
+                            <i
+                                :class="item.icon"
+                                class="ma-type-icon"/>
+                        </div>
+                        <div class="cell shrink">
+                            <vue-spacer
+                                factor-vertical="auto"
+                                factor-horizontal="2"/>
+                        </div>
+                        <div class="cell shrink align-self-middle">
+                            <vue-header3
+                                :sublabel="item.subLabel"
+                                :status="item.status">{{ item.label || item.description }}</vue-header3>
                         </div>
                     </div>
-                    <div class="cell auto align-self-middle ma-collapsible-header-drop-zone">
-                        <!-- Dummy Drop List -->
-                        <vue-dad-list
-                            v-if="canDropInTitle && collapsed"
-                            :allowed-types="allowedTypes"
-                            v-model="dummyDropList"
-                            item-type="vue-simple-dad-item">
-                            <vddl-placeholder slot="placeholder">
-                                <div class="ma-simple-dad-item-drop-area">
-                                    <h3>Feld in diesen Inhaltsblock verschieben</h3>
-                                </div>
-                            </vddl-placeholder>
-                            <div slot="addArea"/>
-                        </vue-dad-list>
-                    </div>
-                    <div
-                        v-if="removeOptions && !collapsed"
-                        class="cell shrink align-self-middle ma-remove-cell">
-                        <a
-                            class="remove-item-handle"
-                            @click="removeOptions.onRemove(item, index)">{{ removeOptions.name }}</a>
-                    </div>
-                    <div class="cell shrink align-self-middle ma-toggle-cell">
-                        <span ><i
-                            :class="chevronByCollapsed"
-                            class="fas fa-fw"/></span>
-                    </div>
-                </vddl-handle>
+                </div>
+                <div class="cell auto align-self-middle ma-collapsible-header-drop-zone">
+                    <!-- Dummy Drop List -->
+                    <vue-dad-list
+                        v-if="canDropInTitle && collapsed"
+                        :allowed-types="allowedTypes"
+                        v-model="dummyDropList"
+                        item-type="vue-simple-dad-item">
+                        <vddl-placeholder slot="placeholder">
+                            <div class="ma-simple-dad-item-drop-area">
+                                <h3>Feld in diesen Inhaltsblock verschieben</h3>
+                            </div>
+                        </vddl-placeholder>
+                        <div slot="addArea"/>
+                    </vue-dad-list>
+                </div>
+                <div
+                    v-if="removeOptions && !collapsed"
+                    class="cell shrink align-self-middle ma-remove-cell">
+                    <a
+                        class="remove-item-handle"
+                        @click="removeOptions.onRemove(item, index)">{{ removeOptions.name }}</a>
+                </div>
+                <div class="cell shrink align-self-middle ma-toggle-cell">
+                    <span ><i
+                        :class="chevronByCollapsed"
+                        class="fas fa-fw"/></span>
+                </div>
             </div>
             <vue-slide-up-down
                 :active="!collapsed"
@@ -69,7 +66,7 @@
                 </div>
             </vue-slide-up-down>
         </div>
-    </component>
+    </div>
 </template>
 
 <script>
@@ -116,9 +113,6 @@ export default {
     computed: {
         chevronByCollapsed: function() {
             return this.collapsed ? 'fa-chevron-right' : 'fa-chevron-down';
-        },
-        wrapperByStatus: function() {
-            return this.collapsed ? 'vddl-nodrag' : 'div';
         }
     },
     watch: {

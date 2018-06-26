@@ -1,10 +1,10 @@
 <template>
-    <vddl-nodrag class="ma-block">
+    <div class="ma-block">
         <div class="ma-simple-item">
             <div
                 :class="{'ma-simple-item--removeable': itemRemoveable}"
                 class="cell grid-x align-justify grid-padding-x ma-draggable" >
-                <vddl-handle
+                <div
                     :class="{'auto': itemRemoveable, 'ma-simple-item-title--small': isSmallItem}"
                     class="cell ma-simple-item-title">
                     <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
@@ -20,7 +20,7 @@
                                 :status="item.status">{{ item.label || item.description }}</vue-header3>
                         </div>
                     </div>
-                </vddl-handle>
+                </div>
                 <div
                     v-if="itemRemoveable"
                     class="cell shrink align-self-middle ma-simple-item-button">
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-    </vddl-nodrag>
+    </div>
 </template>
 
 <script>
