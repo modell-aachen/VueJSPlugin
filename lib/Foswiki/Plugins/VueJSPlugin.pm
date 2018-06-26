@@ -78,7 +78,7 @@ sub getClientToken {
     my $clientToken = md5_hex(rand);
     # render token directly instead of using afterCommonTagsHandler
     # for more read developer supplement at Foswiki:Development.AddToZoneFromPluginHandlers
-    Foswiki::Func::addToZone( 'script',
+    Foswiki::Func::addToZone( 'head', 'VUEJS::TOKEN::' . substr($clientToken, - 8),
       "<script type=\"application/json\" class=\"vue-client-registrations\">{\"token\": \"$clientToken\"}</script>"
     );
     return $clientToken;
