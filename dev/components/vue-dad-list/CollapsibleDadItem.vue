@@ -59,7 +59,10 @@
             <vue-slide-up-down
                 :active="!collapsed"
                 :duration="300">
-                <div class="ma-collapsible-item-content">
+                <div
+                    class="ma-collapsible-item-content"
+                    @mouseenter="markItemDraggable(false)"
+                    @mouseleave="markItemDraggable(true)">
                     <div class="grid-container fluid">
                         <slot/>
                     </div>
@@ -133,10 +136,7 @@ export default {
             }
         },
         collapsed() {
-            this.getListParent().$emit("drag-status-change", {
-                id: this.item.id,
-                isDraggable: this.collapsed
-            });
+            //this.markItemDraggable( this.collapsed );
         }
     },
     created() {
@@ -159,6 +159,12 @@ export default {
                 parent = parent.$parent;
             }
             return parent;
+        },
+        markItemDraggable( draggable ) {
+            this.getListParent().$emit("drag-status-change", {
+                id: this.item.id,
+                isDraggable: draggable
+            });
         },
         onItemDragStarted: function() {
             //placeholder for further interaction

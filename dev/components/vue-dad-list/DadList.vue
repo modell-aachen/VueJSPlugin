@@ -14,6 +14,7 @@
                     :index="index"
                     :wrapper="internalValue"
                     :moved="handleMoved"
+                    :disable-if="itemStates.noDrag[item.id]"
                     :dragstart="(data) => { onItemDragStart(item.id); }"
                     class="panel__body--item"
                     effect-allowed="move">
