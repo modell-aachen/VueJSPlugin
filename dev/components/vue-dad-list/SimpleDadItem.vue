@@ -3,17 +3,13 @@
         <div class="ma-simple-item">
             <div
                 :class="{'ma-simple-item--removeable': itemRemoveable}"
-                class="cell grid-x align-justify grid-padding-x" >
+                class="cell grid-x align-justify grid-padding-x ma-draggable" >
                 <vddl-handle
                     :class="{'auto': itemRemoveable, 'ma-simple-item-title--small': isSmallItem}"
                     class="cell ma-simple-item-title">
                     <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
                         <div class="cell shrink align-self-middle handle-container">
-                            <vddl-handle
-                                v-if="isDraggable"
-                                :handle-left="0"
-                                :handle-top="0"
-                                class="fal fa-bars handle"/>
+                            <span class="fal fa-bars"/>
                         </div>
                         <vue-spacer
                             factor-vertical="auto"

@@ -4,9 +4,8 @@
             <!-- Title Area -->
             <div @click.prevent="toggleCollapsed">
                 <vddl-handle
-                    ref="dragHandle"
                     :class="{'ma-collapsed': collapsed}"
-                    class="ma-collapsible-item-title grid-x align-justify">
+                    class="ma-draggable ma-collapsible-item-title grid-x align-justify">
                     <div class="cell shrink">
                         <div class="grid-x ma-collapsible-item-title-left">
                             <div class="cell shrink align-self-middle handle-spacer" />
