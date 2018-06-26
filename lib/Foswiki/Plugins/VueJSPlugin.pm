@@ -74,7 +74,7 @@ LOAD
     return $return . $scripts;
 }
 
-sub registerClient {
+sub getClientToken {
     my $clientToken = md5_hex(rand);
     # render token directly instead of using afterCommonTagsHandler
     # for more read developer supplement at Foswiki:Development.AddToZoneFromPluginHandlers
