@@ -65,8 +65,15 @@ pub/System/FlatSkin/fonts/opensans/OpenSans-SemiboldItalic.eot 0644
 pub/System/FlatSkin/fonts/opensans/OpenSans-SemiboldItalic.svg 0644
 pub/System/FlatSkin/fonts/opensans/OpenSans-SemiboldItalic.ttf 0644
 pub/System/FlatSkin/fonts/opensans/OpenSans-SemiboldItalic.woff 0644
-pub/System/FlatSkin/images/ma-logo.png 0644
-pub/System/FlatSkin/images/qwiki-logo.png 0644
+pub/System/FlatSkin/images/ajax-loader.gif
+pub/System/FlatSkin/images/border.png
+pub/System/FlatSkin/images/bullet.gif
+pub/System/FlatSkin/images/file.png
+pub/System/FlatSkin/images/portal-break.png
+pub/System/FlatSkin/images/sort_asc.gif
+pub/System/FlatSkin/images/sort_bg.gif
+pub/System/FlatSkin/images/sort_desc.gif
+pub/System/FlatSkin/images/user.png
 pub/System/FlatSkin/js/flatskin.js 0644
 pub/System/FlatSkin/js/flatskin.min.js 0644
 pub/System/FlatSkin/js/flatskin.min.js.gz 0644

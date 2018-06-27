@@ -15,7 +15,7 @@
 
   .tasks-table {
     th.header {
-      background-image: url(../../TasksAPIPlugin/assets/sort_bg.gif);
+      background-image: url(../assets/images/TasksAPI/sort_bg.gif);
       background-position: center right;
       background-repeat: no-repeat;
       cursor: pointer;
@@ -25,12 +25,12 @@
       }
 
       &.headerSortDown {
-        background-image: url(../../TasksAPIPlugin/assets/sort_desc.gif);
+        background-image: url(../assets/images/TasksAPI/sort_desc.gif);
         color: #333;
       }
 
       &.headerSortUp {
-        background-image: url(../../TasksAPIPlugin/assets/sort_asc.gif);
+        background-image: url(../assets/images/TasksAPI/sort_asc.gif);
         color: #333;
       }
     }
@@ -75,18 +75,6 @@
     &:active {
       background-color: darken(#f3f3f3, 5%);
       text-decoration: none;
-    }
-
-    &.next {
-      background-image: url('../../TasksAPIPlugin/assets/next.png');
-      background-position: center right;
-      padding-right: 18px;
-    }
-
-    &.prev {
-      background-image: url('../../TasksAPIPlugin/assets/prev.png');
-      background-position: center left;
-      padding-left: 18px;
     }
   }
 }
@@ -206,17 +194,17 @@ table.task-attachments {
 
 .tasks-table {
   th.sortable {
-    background-image: url('../../TasksAPIPlugin/assets/sort_bg.gif');
+    background-image: url('../assets/images/TasksAPI/sort_bg.gif');
     background-position: center right;
     background-repeat: no-repeat;
     cursor: pointer;
 
     &.asc {
-      background-image: url('../../TasksAPIPlugin/assets/sort_asc.gif');
+      background-image: url('../assets/images/TasksAPI/sort_asc.gif');
     }
 
     &.desc {
-      background-image: url('../../TasksAPIPlugin/assets/sort_desc.gif');
+      background-image: url('../assets/images/TasksAPI/sort_desc.gif');
     }
   }
 }
