@@ -84,6 +84,18 @@ module.exports = [{
               publicPath: '../fonts/opensans'
             }
           }]
+        },
+        {
+          test: /\.(png|gif)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [{
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: '../images',
+              useRelativePath: false,
+              publicPath: '../images'
+            }
+          }]
         }
       ]
     }

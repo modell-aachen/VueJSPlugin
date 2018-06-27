@@ -12,7 +12,19 @@ $OpenSansPath: '../fonts/opensans';
 html {
     font-size: $global-font-size;
 }
-.flatskin-wrapped {
+.flatskin-wrapped{
+    .no-flat {
+        box-sizing: unset;
+        @import "no-flat/base";
+        @import "qwiki/modacskin_style";
+        @import "no-flat/date_picker";
+        @import "no-flat/tasksapi/settings";
+        @import "no-flat/tasksapi/base";
+        @import "no-flat/tasksapi/filter";
+        @import "no-flat/tasksapi/tasks";
+        @import "no-flat/tasksapi/panel";
+        @import "no-flat/tasksapi/viewer";
+    }
     //Resets for the ModacSkin are put here
     label {
         padding: 0;
