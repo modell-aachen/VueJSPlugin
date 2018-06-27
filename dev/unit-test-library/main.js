@@ -38,5 +38,6 @@ export default {
     },
     registerStoreModule(name, module) {
         window.Vue.registerStoreModule(name, module);
-    }
+    },
+    vue: localVue
 };
