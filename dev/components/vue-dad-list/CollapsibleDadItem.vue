@@ -135,13 +135,6 @@ export default {
             }
         },
     },
-    created() {
-        this.getListParent().$on('drag-started', (id) => {
-            if( this.item.id === id && !this.collapsed ) {
-                this.onItemDragStarted();
-            }
-        });
-    },
     methods: {
         toggleCollapsed: function() {
             this.collapsed = !this.collapsed;
