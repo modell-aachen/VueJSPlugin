@@ -16,6 +16,10 @@ export default {
             type: String,
             required: true,
         },
+        hasSub: {
+            type: Boolean,
+            default: false
+        },
         id: {
             type: String,
             default: function() {

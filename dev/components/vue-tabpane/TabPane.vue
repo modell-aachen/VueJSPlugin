@@ -7,6 +7,7 @@
                     :key="index"
                     :class="{current: tab.current}">
                     <a
+                        :class="{'hasSubMenu': tab.hasSub}"
                         href="#"
                         @click.prevent="selectTab(tab.id)"
                         v-html="tab.name"/>
@@ -48,6 +49,10 @@ export default {
 
 <style lang="scss">
 @import '../../sass/settings';
+.flatskin-wrapped .jqTabPaneFlat>.vue-tabpane-group li.current a.hasSubMenu {
+    background: #eff3f4;
+    border-bottom: 2px solid #eff3f4;
+}
 ul.vue-tabpane-group,
 #modacWrapper ul.vue-tabpane-group {
     margin: 0;
