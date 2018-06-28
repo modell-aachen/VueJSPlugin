@@ -872,6 +872,17 @@ export default {
             margin: 0px;
         }
     }
+    .input-area-small{
+        .selected-tag {
+            &.multi {
+                margin-top: 6px;
+            }
+        }
+        .v-select .selected-list {
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+    }
 
     .single-tag {
         display: inline-block;
@@ -946,10 +957,17 @@ export default {
         display: flex;
         flex-flow: row no-wrap;
         width:100%;
-        height: 40px;
+        min-height: 40px;
     }
-    .input-area-small {
-        height: 32px;
+    .input-area.input-area-small {
+        min-height: 32px;
+        .form-control__wrapper{
+            height: 32px;
+            width: 10px;
+        }
+        input.input-area-small{
+            height: 32px;
+        }
     }
 
     .selected-list {
