@@ -132,12 +132,8 @@ export default {
                 } else {
                     this.collapsed = false;
                 }
-
             }
         },
-        collapsed() {
-            //this.markItemDraggable( this.collapsed );
-        }
     },
     created() {
         this.getListParent().$on('drag-started', (id) => {
@@ -165,10 +161,6 @@ export default {
                 id: this.item.id,
                 isDraggable: draggable
             });
-        },
-        onItemDragStarted: function() {
-            //placeholder for further interaction
-            //function is called when element is drag
         }
     }
 };
