@@ -1,21 +1,13 @@
 <template>
-    <component
-        :is="wrapperByStatus"
-        class="ma-block">
+    <div class="ma-block">
         <div class="ma-collapsible-item">
             <!-- Title Area -->
             <div
                 :class="{'ma-collapsed': collapsed}"
-                class="ma-collapsible-item-title grid-x align-justify">
+                class="ma-draggable ma-collapsible-item-title grid-x align-justify"
+                @click.prevent="toggleCollapsed">
                 <div class="cell shrink">
                     <div class="grid-x ma-collapsible-item-title-left">
-                        <div class="cell shrink align-self-middle handle-container">
-                            <vddl-handle
-                                v-if="collapsed"
-                                :handle-left="0"
-                                :handle-top="0"
-                                class="fal fa-bars fa-fw handle"/>
-                        </div>
                         <div class="cell shrink align-self-middle handle-spacer" />
                         <div
                             v-if="item.icon"
@@ -59,7 +51,7 @@
                         @click="removeOptions.onRemove(item, index)">{{ removeOptions.name }}</a>
                 </div>
                 <div class="cell shrink align-self-middle ma-toggle-cell">
-                    <span @click.prevent="toggleCollapsed"><i
+                    <span ><i
                         :class="chevronByCollapsed"
                         class="fas fa-fw"/></span>
                 </div>
@@ -67,14 +59,17 @@
             <vue-slide-up-down
                 :active="!collapsed"
                 :duration="300">
-                <div class="ma-collapsible-item-content">
+                <div
+                    class="ma-collapsible-item-content"
+                    @mouseenter="markItemDraggable(false)"
+                    @mouseleave="markItemDraggable(true)">
                     <div class="grid-container fluid">
                         <slot/>
                     </div>
                 </div>
             </vue-slide-up-down>
         </div>
-    </component>
+    </div>
 </template>
 
 <script>
@@ -121,9 +116,6 @@ export default {
     computed: {
         chevronByCollapsed: function() {
             return this.collapsed ? 'fa-chevron-right' : 'fa-chevron-down';
-        },
-        wrapperByStatus: function() {
-            return this.collapsed ? 'vddl-nodrag' : 'div';
         }
     },
     watch: {
@@ -140,15 +132,8 @@ export default {
                 } else {
                     this.collapsed = false;
                 }
-
             }
         },
-        collapsed() {
-            this.getListParent().$emit("drag-status-change", {
-                id: this.item.id,
-                isDraggable: this.collapsed
-            });
-        }
     },
     methods: {
         toggleCollapsed: function() {
@@ -163,6 +148,12 @@ export default {
                 parent = parent.$parent;
             }
             return parent;
+        },
+        markItemDraggable( draggable ) {
+            this.getListParent().$emit("drag-status-change", {
+                id: this.item.id,
+                isDraggable: draggable
+            });
         }
     }
 };

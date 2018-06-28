@@ -15,6 +15,7 @@
                     :wrapper="internalValue"
                     :moved="handleMoved"
                     :disable-if="itemStates.noDrag[item.id]"
+                    :dragstart="(data) => { onItemDragStart(item.id); }"
                     class="panel__body--item"
                     effect-allowed="move">
                     <template>
@@ -33,7 +34,6 @@
                             :last-opened-item-id="lastOpenedItemId"
                             @click.native="clickItemEvent(item)"/>
                     </template>
-
                 </vddl-draggable>
             </template>
             <slot name="placeholder">
@@ -170,8 +170,10 @@ export default {
             } else {
                 Vue.set(this.itemStates.noDrag, id, true);
             }
+        },
+        onItemDragStart: function( itemId ) {
+            this.$emit('drag-started', itemId );
         }
-
     }
 };
 </script>
