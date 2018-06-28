@@ -1,5 +1,5 @@
 & {
-    font-size: unset;
+    font-size: small;
     box-sizing: unset;
     padding: unset;
     margin: unset;
@@ -12,7 +12,6 @@
     -moz-osx-font-smoothing: unset;
     font-family: arial,verdana,sans-serif;
     line-height: 1.5em;
-    font-size: 100%;
     min-width: 1080px;
 }
 
@@ -70,7 +69,7 @@ select {
     height: unset;
     margin: unset;
     padding: unset;
-    appearance: unset;
+    appearance: menulist;
     border: unset;
     border-radius: unset;
     background-color: unset;
