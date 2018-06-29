@@ -84,3 +84,7 @@ select {
     background-size: unset;
     transition: unset;
 }
+
+[type=checkbox]:not(.switch-input) {
+    display: unset;
+}
