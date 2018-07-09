@@ -1,0 +1,14 @@
+%META:TOPICPARENT{name="Macros"}%
+---+ VUETOOLTIP -- includes the vue tooltip component
+
+---++ Parameters
+   | *Parameter* | *Description* | *Default* |
+   | =text= | tooltip text | =""= |
+
+---++ Example Code
+<verbatim class="tml">
+%VUETOOLTIP{text="Hello world"}%
+</verbatim>
+%VUETOOLTIP{text="Hello world"}%
+---++ Related
+[[VueJSPlugin][VueJSPlugin]]
