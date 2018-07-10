@@ -3,6 +3,13 @@ $tooltip-arrow-size: 8;
 $color: $ma-darker-grey;
 $bg-size: 20;
 
+h3, label {
+  > .vue-container {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}
+
 .circle-bg-tooltip {
   border-radius: 50%;
   width: rem-calc($bg-size);
