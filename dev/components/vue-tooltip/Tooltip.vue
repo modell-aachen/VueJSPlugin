@@ -4,6 +4,7 @@
             v-tooltip="{
                 content: text,
                 placement: 'right',
+                html: false,
                 classes: 'info-tooltip'}"
             :class="icon"
             class="tooltip-icon fa-fw fa-sm"
