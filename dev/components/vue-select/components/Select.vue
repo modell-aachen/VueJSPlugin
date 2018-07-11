@@ -440,9 +440,7 @@ export default {
         },
     },
     mounted() {
-        this.value.forEach(item => {
-            this.select(item);
-        });
+        this.$emit('input', this.internalValue);
         //check if component should be disabled (already)
         if( this.isDisabled ){
             this._disable();
