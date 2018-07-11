@@ -72,11 +72,9 @@ module.exports = {
 
             this.initialOptions.forEach(option => {
                 label = option[this.optionLabel];
-                let formattedOption = {
-                    value: option.value,
-                    compare: label.toLocaleLowerCase(),
-                    id: 'slot' + count++,
-                };
+                let formattedOption = Object.assign({}, option);
+                formattedOption.compare = label.toLocaleLowerCase();
+                formattedOption.id = 'slot' + count++;
                 formattedOption[this.optionLabel] = label;
                 count++;
                 slotOptions.push(formattedOption);
