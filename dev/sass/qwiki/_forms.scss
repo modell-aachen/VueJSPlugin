@@ -159,7 +159,7 @@ input[type]:disabled {
     left: 0;
 }
 //Checkboxes
-[type="checkbox"]:not(.switch-input) {
+[type="checkbox"]:not(.switch-input):not(.foswikiCheckbox) {
   display: none;
   &+label{
     @extend %item-label;
