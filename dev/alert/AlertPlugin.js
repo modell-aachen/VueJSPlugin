@@ -13,7 +13,9 @@ class AlertPlugin {
         const swalConfig = this._getSwalBaseConfigBy(config.type);
 
         swalConfig.title = config.title;
+        swalConfig.titleText = config.titleText;
         swalConfig.text = config.text;
+        swalConfig.html = config.html;
         swalConfig.confirmButtonText = config.confirmButtonText;
         swalConfig.cancelButtonText = config.cancelButtonText;
 
@@ -27,6 +29,11 @@ class AlertPlugin {
         };
 
         switch(type) {
+            case 'error':
+                baseConfig.type = 'error';
+                baseConfig.showCancelButton = false;
+                baseConfig.confirmButtonClass = "delete button";
+                break;
             case 'warning':
                 baseConfig.type = 'warning';
                 baseConfig.showCancelButton = true;

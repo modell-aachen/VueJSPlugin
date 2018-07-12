@@ -12,6 +12,7 @@ Container for Vue.JS
 use Foswiki::Func ();
 use Foswiki::Plugins ();
 use Digest::MD5 qw(md5_hex);
+use JSON;
 
 our $VERSION = '0.00_001';
 our $RELEASE = '0.1';
@@ -28,8 +29,16 @@ sub initPlugin {
         return 0;
     }
     Foswiki::Func::registerTagHandler('VUE', \&loadDependencies);
+    Foswiki::Func::registerTagHandler('VUEATTACHMENTS', \&tagVUEATTACHMENTS);
 
-  return 1;
+    if ($Foswiki::cfg{Plugins}{SolrPlugin}{Enabled}) {
+        require Foswiki::Plugins::SolrPlugin;
+        Foswiki::Plugins::SolrPlugin::registerIndexAttachmentHandler(
+            \&indexAttachmentHandler
+        );
+    }
+
+    return 1;
 }
 
 ###############################################################################
@@ -92,6 +101,78 @@ sub _loadTemplate {
         $snippet .= "<script id='$component' type='x-template'>\n%TMPL:P{\"$component\"}%\n</script>\n";
     }
     return $snippet;
+}
+
+sub tagVUEATTACHMENTS {
+    my($session, $params, $topic, $web, $meta) = @_;
+
+    my $block = $params->{_DEFAULT} || '';
+    my @attachments = $meta->find('FILEATTACHMENT');
+    if($block) {
+        @attachments = grep{ defined $_->{block} && $_->{block} eq $block } @attachments;
+    }
+    @attachments = sort{$a->{date} <=> $b->{date}} @attachments;
+
+    my $readonly = $params->{readonly};
+    $readonly ||= (Foswiki::Func::checkAccessPermission('CHANGE', $session->{user}, undef, $topic, $web) ? 0 : 1);
+
+    my $json = to_json(\@attachments);
+    $json =~ s#&#&amp;#g;
+    $json =~ s#"#&quot;#g;
+
+    my $attachmentNameFilter = $Foswiki::cfg{AttachmentNameFilter};
+    $attachmentNameFilter =~ s#&#&amp;#g;
+    $attachmentNameFilter =~ s#"#&quot;#g;
+
+    my $wlaIntegration = '';
+    if($Foswiki::cfg{Plugins}{WhitelistAttachmentPlugin}{Enabled}) {
+        $wlaIntegration = $Foswiki::cfg{Plugins}{WhitelistAttachmentPlugin}{AllowedExtensions};
+        $wlaIntegration =~ s#\.##g;
+        $attachmentNameFilter =~ s#&#&amp;#g;
+        $attachmentNameFilter =~ s#"#&quot;#g;
+        $wlaIntegration = "extensions=\"$wlaIntegration\"";
+    }
+
+    my $vueClientToken = getClientToken();
+    return "<literal><div class=\"flatskin-wrapped vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-attachments attachments-json=\"$json\" web=\"$web\" topic=\"$topic\" block=\"$block\" readonly=\"$readonly\" attachment-name-filter=\"$attachmentNameFilter\" $wlaIntegration></vue-attachments></div></literal>";
+}
+
+sub beforeAttachHandler {
+    my ($web, $topic, $attachmentName, $opts) = @_;
+    return beforeUploadHandler($opts, $topic, $web);
+}
+
+sub beforeUploadHandler {
+    my( $attrHashRef, $topic, $web ) = @_;
+
+    my $query = Foswiki::Func::getCgiQuery();
+
+    my $block = $query->param('block');
+    $attrHashRef->{block} = $block if $block;
+
+    my $presentedName = $query->param('presented_name');
+    $attrHashRef->{presented_name} = $presentedName if $presentedName;
+}
+
+sub indexAttachmentHandler {
+    my ($indexer, $doc, $web, $topic, $attachment) = @_;
+
+    if($attachment->{presented_name}) {
+        my $title = $attachment->{presented_name};
+
+        # emulate SolrPlugins behaviour with the title
+        if ($title =~ /^(.+)\.(\w+?)$/) {
+            $title = $1;
+        }
+        $title =~ s/_+/ /g;
+        $doc->change_or_add_value('title', $title);
+        $doc->change_or_add_value('title_escaped_s', $indexer->escapeHtml($title));
+
+        $doc->add_fields(
+            'presented_name_s' => $attachment->{presented_name},
+            'presented_name_escaped_s' => $indexer->escapeHtml($attachment->{presented_name}),
+        );
+    }
 }
 
 1;

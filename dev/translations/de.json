@@ -7,5 +7,12 @@
     "paging_previous": "Zur\u00fcck",
     "users": "Nutzer",
     "user": "Nutzer",
+    "upload_error_title": "Fehler beim Hochladen einer Datei",
+    "upload_error_start": "Leider konnte die Datei nicht hochgeladen werden.",
+    "upload_error_end": "Das Problem trat bei folgender Datei auf: {{0}}",
+    "upload_file": "Datei hochladen",
+    "upload_dnd": "oder Dateien hierher ziehen",
+    "upload_navigate": "Achtung, wenn Sie die Seite verlassen werden diese Dateitransfers abgebrochen: {{0}}",
+    "ok": "Ok",
     "dummy": "dummy"
 }

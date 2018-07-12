@@ -19,7 +19,9 @@ $ma-darker-grey: #3E4143;
 $ma-dark-grey: #84878a;
 $ma-light-grey: #dee4e5;
 $ma-medium-grey: #e5e8eb;
-$ma-grey: #a4aeb9;
+$ma-pale-grey: #e9eff0;
+$ma-grey: #b0c0c4;
+$ma-button-grey: #eff3f4;
 $ma-bg-beige: #f5f3ef;
 $ma-bg-beige-dark: #dddad5;
 $ma-bg-light: #f7f7f7;
@@ -61,6 +63,9 @@ $spacings: (
   small: 8px,
   medium: 16px,
   large: 24px,
+  xlarge: 32px,
+  xxlarge: 40px,
+  xxxlarge: 48px,
 );
 
 //
