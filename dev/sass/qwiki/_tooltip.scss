@@ -1,8 +1,82 @@
 $tooltip-margin: rem-calc(8);
 $tooltip-arrow-size: 8;
 $color: $ma-darker-grey;
+$bg-size: 20;
+
+h3, label {
+  > .vue-container {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}
+
+.circle-bg-tooltip {
+  border-radius: 50%;
+  width: rem-calc($bg-size);
+  height: rem-calc($bg-size);
+  border: 1px solid $ma-light-grey;
+  background: $ma-button-grey;
+}
+
+.tooltip-icon {
+  color: $ma-secondary-text;
+}
 
 .tooltip {
+  &.popover {
+    .popover-inner {
+      background: $color;
+      color: black;
+      padding: rem-calc(24);
+      border-radius: $ma-border-radius;
+      box-shadow: 0 rem-calc(5) rem-calc(30) rgba(black, .1);
+    }
+    .popover-arrow {
+      border-color: $color;
+    }
+  }
+
+  &[aria-hidden='true'] {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .15s, visibility .15s;
+  }
+
+  &[aria-hidden='false'] {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .15s;
+  }
+
+}
+
+.tooltip.info-tooltip {
+  display: block !important;
+  z-index: 10000;
+  border-radius: $ma-border-radius;
+  margin: rem-calc($tooltip-arrow-size);
+
+  .tooltip-inner {
+    color: black;
+    background: $ma-white;
+    border: 1px solid $ma-light-grey;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    border-radius: $ma-border-radius;
+    max-width: rem-calc(220);
+    padding: rem-calc(16);
+  }
+
+  .tooltip-arrow {
+    width: 0;
+    height: 0;
+    border-style: none;
+    position: absolute;
+    margin: $tooltip-margin;
+    z-index: 1;
+  }
+}
+
+.tooltip.v-tooltip-success {
   display: block !important;
   z-index: 10000;
   border-radius: $ma-border-radius;
@@ -81,32 +155,5 @@ $color: $ma-darker-grey;
       margin-left: 0;
       margin-right: 0;
     }
-  }
-
-  &.popover {
-
-    .popover-inner {
-      background: $color;
-      color: black;
-      padding: rem-calc(24);
-      border-radius: $ma-border-radius;
-      box-shadow: 0 rem-calc(5) rem-calc(30) rgba(black, .1);
-    }
-
-    .popover-arrow {
-      border-color: $color;
-    }
-  }
-
-  &[aria-hidden='true'] {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .15s, visibility .15s;
-  }
-
-  &[aria-hidden='false'] {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .15s;
   }
 }
