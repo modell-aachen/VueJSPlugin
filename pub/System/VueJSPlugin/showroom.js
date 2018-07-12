@@ -177,6 +177,10 @@ Vue.onDocumentReady(function(){
         }
     });
     new Vue({
+        el: '#tooltip-examples',
+        template: '#tooltip-template',
+    });
+    new Vue({
         el: '#mixed-input-examples',
         template: '#mixed-input-template',
         data: {

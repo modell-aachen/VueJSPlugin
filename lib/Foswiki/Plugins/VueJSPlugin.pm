@@ -29,6 +29,7 @@ sub initPlugin {
         return 0;
     }
     Foswiki::Func::registerTagHandler('VUE', \&loadDependencies);
+    Foswiki::Func::registerTagHandler('VUETOOLTIP', \&renderTooltip);
     Foswiki::Func::registerTagHandler('VUEATTACHMENTS', \&tagVUEATTACHMENTS);
 
     if ($Foswiki::cfg{Plugins}{SolrPlugin}{Enabled}) {
@@ -42,6 +43,28 @@ sub initPlugin {
 }
 
 ###############################################################################
+
+sub renderTooltip {
+    my ( $session, $params, $topic, $web, $topicObject ) = @_;
+    my $instatiateVueContainerScript = <<SCRIPT;
+        <script type='text/javascript'>
+            \$(document).ready( function () {
+            Vue.instantiateEach('.vue-container');
+            });
+         </script>
+SCRIPT
+    Foswiki::Func::addToZone( 'script', 'MOREFORMFIELDS::LOAD::VUE', $instatiateVueContainerScript , 'VUEJSPLUGIN');
+    my %vueVersion = (
+        VERSION => 2
+    );
+    loadDependencies($session, \%vueVersion, $topic, $web, $topicObject);
+    my $vueClientToken = getClientToken();
+    return <<HTML;
+        <div class=\"flatskin-wrapped vue-container\" data-vue-client-token=\"$vueClientToken\">
+            <vue-tooltip text=\"$params->{text}\"/>
+        </div>
+HTML
+}
 
 sub loadDependencies {
 
