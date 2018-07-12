@@ -5,5 +5,12 @@
     "paging_next": "Next",
     "paging_previous": "Back",
     "users": "Users",
+    "upload_error_title": "Error while uploading a file",
+    "upload_error_start": "Unfortunately the file could not be uploaded.",
+    "upload_error_end": "The issue occurred with the following file: {{0}}",
+    "upload_file": "Upload file",
+    "upload_dnd": "or drag files here",
+    "upload_navigate": "Attention, leaving this page will cancel the following uploads: {{0}}",
+    "ok": "Ok",
     "dummy": "dummy"
 }

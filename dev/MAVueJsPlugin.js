@@ -25,6 +25,7 @@ import VuePagedSelector from './components/vue-paged-selector/VuePagedSelector.v
 import VueMixedInput from './components/vue-mixed-input/MixedInput';
 import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
+import VueAttachments from './components/vue-attachments/Attachments.vue';
 import Base64 from 'js-base64';
 import { VTooltip } from 'v-tooltip';
 import i18next from 'i18next';
@@ -41,6 +42,7 @@ import VueClickOutside from 'vue-click-outside';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
 import VueSlideUpDown from 'vue-slide-up-down';
+import VueUpload from '@websanova/vue-upload';
 import {mapState} from 'vuex';
 import isEqual from 'lodash.isequal';
 import cloneDeep from 'lodash.clonedeep';
@@ -59,6 +61,7 @@ class MAVueJsPlugin {
         Vue.use(VueRouter);
         Vue.use(VueResource);
         Vue.use(InfiniteScroll);
+        Vue.use(VueUpload);
         Vue.use(Vddl);
         const veeValidateConfig = {
             errorBagName: 'validationErrors',
@@ -68,6 +71,7 @@ class MAVueJsPlugin {
         Vue.use(new this.alertPlugin);
 
         //Component registrations
+        Vue.component('vue-attachments', VueAttachments);
         Vue.component('vue-select', VueSelect);
         Vue.component('vue-userselector', VueUserSelector);
         Vue.component('splitbutton', VueSplitbutton);
@@ -178,6 +182,32 @@ class MAVueJsPlugin {
             return cloneDeep(value);
         };
 
+        const $getStrikeOneToken = async function(form) {
+            if(!window.StrikeOne) {
+                return Promise.resolve(null);
+            }
+            let $form;
+            if(form === undefined) {
+                let url = this.$foswiki.getScriptUrl('rest', 'RenderPlugin', 'expand', {
+                    text: "<form method='post'></form>",
+                });
+                let validation_key = await this.$http.get(url).then((response) => {
+                    let $remoteForm = jQuery(response.body);
+                    return $remoteForm.find('[name="validation_key"]').val();
+                });
+                if(!validation_key) {
+                    return Promise.reject('Could not get validation_key from wiki');
+                }
+                $form = $(`<form method='post'><input type='hidden' name='validation_key' value='${validation_key}' /></form>`);
+                $('body').append($form);
+                form = $form.get(0);
+            } else {
+                $form = $(form);
+            }
+            window.StrikeOne.submit(form);
+            return Promise.resolve($form.find('[name="validation_key"]').val());
+        };
+
         Vue.foswiki = this.foswiki;
         Vue.moment = this.moment;
         Vue.VueRouter = VueRouter;
@@ -188,6 +218,7 @@ class MAVueJsPlugin {
         Vue.prototype.$store = options.store;
         Vue.prototype.$foswiki = this.foswiki;
         Vue.prototype.$moment = this.moment;
+        Vue.prototype.$getStrikeOneToken = $getStrikeOneToken;
 
         let language = this.jquery("html").attr("lang");
         if(!language){

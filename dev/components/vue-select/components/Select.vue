@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="{dropdownClasses, 'ma-failure': hasError}"
+        :class="getClasses"
         class="dropdown v-select">
         <label v-if="label">{{ label }}</label>
         <input
@@ -11,7 +11,7 @@
             type="hidden">
         <div
             ref="toggle"
-            :class="{multi: multiple, open: open, 'ma-failure': hasError}"
+            :class="getToggleClasses"
             class="dropdown-toggle"
             type="text"
             @mousedown.prevent="toggleDropdown">
@@ -77,9 +77,8 @@
                     class="open-indicator"
                     style="min-width: 30px; max-width:30px; align-self: center; text-align:right;">
                     <i
-                        class="fa fa-caret-down"
-                        aria-hidden="true"
-                        style="margin-right: 10px;"/>
+                        class="select-arrow fa fa-caret-down"
+                        aria-hidden="true"/>
                 </div>
             </div>
         </div>
@@ -159,6 +158,10 @@ export default {
         isSmall: {
             type: Boolean,
             default: false,
+        },
+        width: {
+            type: String,
+            default: "",
         },
         value: {
             type: Array,
@@ -360,16 +363,17 @@ export default {
         definedErrorMessage: function() {
             return this.errorMessage || this.validationErrors.first(this.name);
         },
-
-        /**
-     * Classes to be output on .dropdown
-     * @return {Object}
-     */
-        dropdownClasses() {
+        getClasses() {
             return {
-                open: this.open,
-                loading: this.loading,
-                multi: this.multiple
+                ['width-'+this.width]: this.width
+            };
+        },
+        getToggleClasses() {
+            return {
+                'open': this.open,
+                'loading': this.loading,
+                'multi': this.multiple,
+                'ma-failure': this.hasError
             };
         },
 
@@ -440,9 +444,7 @@ export default {
         },
     },
     mounted() {
-        this.value.forEach(item => {
-            this.select(item);
-        });
+        this.$emit('input', this.internalValue);
         //check if component should be disabled (already)
         if( this.isDisabled ){
             this._disable();
@@ -988,6 +990,34 @@ export default {
 
     label.vue-select__dropdown__filter__item {
         margin-right: 24px;
+    }
+}
+
+.select-arrow {
+    margin-right: 10px;
+}
+
+.width-xs {
+    .select-arrow {
+        margin-right: 21px;
+    }
+    .form-control {
+        width: 40px;
+        min-width: 40px;
+    }
+    .dropdown-menu {
+        width: 75px;
+        min-width: 75px;
+    }
+    .dropdown-toggle {
+        width: 75px;
+
+        .selected-tag {
+            min-width: 40px;
+        }
+        .open-indicator {
+            padding: 0;
+        }
     }
 }
 </style>
