@@ -11,3 +11,7 @@ const frontend = new Frontend({
 });
 
 frontend.setup();
+
+jQuery(function ($) {
+    Vue.instantiateEach('.vue-container');
+});
