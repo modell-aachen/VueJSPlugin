@@ -159,7 +159,7 @@ export default {
             type: Boolean,
             default: false,
         },
-        width: {
+        widthClass: {
             type: String,
             default: "",
         },
@@ -365,7 +365,7 @@ export default {
         },
         getClasses() {
             return {
-                ['width-'+this.width]: this.width
+                ['width-'+this.widthClass]: this.widthClass
             };
         },
         getToggleClasses() {
