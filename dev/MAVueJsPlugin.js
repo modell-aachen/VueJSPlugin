@@ -171,7 +171,7 @@ class MAVueJsPlugin {
         };
 
         Vue.getUniqueId = () => {
-            return Math.random().toString(36).substring(7);
+            return String.fromCharCode(Math.floor( Math.random() * 24 ) + 65) + Math.random().toString(36).substring(7);
         };
 
         Vue.isEqual = (value, other) => {
