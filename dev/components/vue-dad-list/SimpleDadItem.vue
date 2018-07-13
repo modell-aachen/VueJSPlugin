@@ -11,9 +11,6 @@
                         <div class="cell shrink align-self-middle handle-container">
                             <span class="fal fa-bars"/>
                         </div>
-                        <vue-spacer
-                            factor-vertical="auto"
-                            factor-horizontal="2"/>
                         <div class="cell shrink align-self-middle">
                             <vue-header3
                                 :sublabel="item.subLabel"
