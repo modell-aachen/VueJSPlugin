@@ -46,14 +46,6 @@ sub initPlugin {
 
 sub renderTooltip {
     my ( $session, $params, $topic, $web, $topicObject ) = @_;
-    my $instatiateVueContainerScript = <<SCRIPT;
-        <script type='text/javascript'>
-            \$(document).ready( function () {
-            Vue.instantiateEach('.vue-container');
-            });
-         </script>
-SCRIPT
-    Foswiki::Func::addToZone( 'script', 'MOREFORMFIELDS::LOAD::VUE', $instatiateVueContainerScript , 'VUEJSPLUGIN');
     my %vueVersion = (
         VERSION => 2
     );
