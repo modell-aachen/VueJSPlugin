@@ -1,6 +1,7 @@
 import Frontend from '../Frontend';
 import FoswikiMock from './FoswikiMock.js';
 import AlertPluginMock from './AlertPluginMock.js';
+import DebounceMock from './DebounceMock.js';
 import moment from 'moment';
 import jquery from 'jquery';
 import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
@@ -12,6 +13,7 @@ const frontend = new Frontend({
     moment: moment,
     jquery: jquery,
     alertPlugin: AlertPluginMock,
+    debounce: DebounceMock
 });
 
 frontend.setup();

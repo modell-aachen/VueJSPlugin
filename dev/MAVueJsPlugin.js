@@ -53,6 +53,7 @@ class MAVueJsPlugin {
         this.moment = options.moment;
         this.jquery = options.jquery;
         this.alertPlugin = options.alertPlugin;
+        this.debounce = options.debounce;
     }
     install(Vue, options){
         i18next.init();
@@ -181,6 +182,10 @@ class MAVueJsPlugin {
         Vue.cloneDeep = (value) => {
             return cloneDeep(value);
         };
+
+        Vue.debounce = (func, time) => {
+            return this.debounce(func, time);
+        }
 
         const $getStrikeOneToken = async function(form) {
             if(!window.StrikeOne) {

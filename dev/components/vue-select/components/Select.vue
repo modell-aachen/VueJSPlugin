@@ -146,7 +146,6 @@ import pointerScroll from '../mixins/pointerScroll';
 import typeAheadPointer from '../mixins/typeAheadPointer';
 import ajax from '../mixins/ajax';
 import slotOptions from '../mixins/slotOptions';
-import debounce from 'lodash/debounce';
 
 const debounceMillis = 150;
 
@@ -436,9 +435,11 @@ export default {
             }
             this.updateDropdown();
         },
-        search: debounce(function() {
-            this.updateDropdown();
-        }, debounceMillis),
+        search() {
+            Vue.debounce(() => {
+                this.updateDropdown();
+            }, debounceMillis)();
+        },
         isDisabled() {
             this._disable();
         },

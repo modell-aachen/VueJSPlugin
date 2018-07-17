@@ -5,9 +5,8 @@ describe("The UserSelector component's", () => {
     let userselector;
     describe("toggleDropdown", () => {
         beforeEach(() => {
-            userselector = TestCase.createVueComponent(UserSelector, {});
+            userselector = TestCase.mount(UserSelector, {}).vm;
             spyOn(userselector, 'updateDropdown').and.returnValue();
-            userselector.$mount();
         });
 
         it("should open/close the dropdown", (done) => {
@@ -45,12 +44,11 @@ describe("The UserSelector component's", () => {
         const expected = mockUsers.concat(mockMetadata).sort((a, b) => a.label.localeCompare(b.label));
 
         beforeEach(() => {
-            userselector = TestCase.createVueComponent(UserSelector, {
+            userselector = TestCase.mount(UserSelector, {
                 propsData: {
                     metadata: mockMetadata.slice(),
                 },
-            });
-            userselector.$mount();
+            }).vm;
             spyOn(userselector, 'makeAjaxRequest').and.callFake(params => {
                 return Promise.resolve({ data: mockUsers.slice(params.offset, params.offset + params.limit), count: mockUsersCount});
             });

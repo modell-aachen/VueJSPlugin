@@ -8,6 +8,7 @@ describe("The MAVueJSPlugin ", () => {
             container = document.createElement('div');
             container.setAttribute('id', "test");
             tokenTag = document.createElement('script');
+            tokenTag.setAttribute("type", "application/json");
             tokenTag.classList.add('vue-client-registrations');
             document.querySelector('body').appendChild( container );
             document.querySelector('head').appendChild( tokenTag );
