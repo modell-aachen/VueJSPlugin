@@ -3,16 +3,6 @@ $ma-grid-padding: rem-calc(0 4 0 4);
 .ma-simple-item{
     border-radius: $ma-border-radius;
     margin-bottom: rem-calc(16);
-
-    h3 {
-        font-size: rem-calc(14);
-        font-weight: semibold;
-        line-height: rem-calc(19);
-        small {
-            font-weight: regular;
-            line-height: rem-calc(19);
-        }
-    }
 }
 .ma-simple-item-title,
 .ma-collapsed {
@@ -46,6 +36,13 @@ $ma-grid-padding: rem-calc(0 4 0 4);
     }
     h3 {
         margin-top: 0;
+        font-size: rem-calc(14);
+        font-weight: semibold;
+        line-height: rem-calc(19);
+        small {
+            font-weight: regular;
+            line-height: rem-calc(19);
+        }
     }
     i {
         color: $ma-dark-grey;
