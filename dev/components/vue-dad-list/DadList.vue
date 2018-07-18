@@ -51,6 +51,7 @@
             <vue-button
                 :title="buttonTitle"
                 icon="far fa-plus"
+                type="primary"
                 @click.native="addItemEvent"/>
         </slot>
     </div>
