@@ -21,6 +21,7 @@
             <div
                 v-for="attachment in internalAttachments"
                 :key="attachment.name"
+                :attachment="attachment.name"
                 class="attachments-tile-and-label cell shrink">
                 <a
                     :href="$foswiki.getPubUrl(internalWeb, internalTopic, attachment.name, {mode: 'attachment'})">
@@ -171,7 +172,7 @@ export default {
     data() {
         let internalAttachments = [];
         if(this.attachments && this.attachments.length) {
-            internalAttachments.push(...attachments);
+            internalAttachments.push(...this.attachments);
         }
         if(this.attachmentsJson && this.attachmentsJson.length) {
             try {
@@ -185,9 +186,9 @@ export default {
                 window.console.warn("error parsing json", e);
             }
         }
-        let internalWeb = this.web !== '' ? this.web : this.$foswiki.getPreference('WEB');
-        let internalTopic = this.topic !== '' ? this.topic : this.$foswiki.getPreference('TOPIC');
-        let uploadId = `vue-attachments ${this.internalWeb}.${this.internalTopic}#${this.block}`;
+        let internalWeb = this.web ? this.web : this.$foswiki.getPreference('WEB');
+        let internalTopic = this.topic ? this.topic : this.$foswiki.getPreference('TOPIC');
+        let uploadId = `vue-attachments ${internalWeb}.${internalTopic}#${this.block}`;
         let dropzoneId = 'dropzone' + Vue.getUniqueId();
         let canUpload = !(this.readonly === true || this.readonly === "1" || this.readonly === 1);
         return {
@@ -200,8 +201,6 @@ export default {
         };
     },
     created() {
-        let self = this;
-
         // note: a beforeUnloadHandler interferes with the browser's cache, thus we only install it when needed
         this.beforeUnloadHandler = (event) => {
             if(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queued.length) {
@@ -209,105 +208,29 @@ export default {
             }
         };
 
-        let attachmentNameFilterRegexp;
         if(this.attachmentNameFilter) {
             try {
-                attachmentNameFilterRegexp = new RegExp(this.attachmentNameFilter, 'g'); // note: this can fail because the regexp is perlish
+                this.attachmentNameFilterRegexp = new RegExp(this.attachmentNameFilter, 'g'); // note: this can fail because the regexp is perlish
             } catch(e) {
                 window.console.warn('Could not filter attachment name using NAMEFILTER', foswikiNameFilter, e);
             }
         }
 
-        const filterQueueFromAttachments = queue => {
-            let filtered = this.internalAttachments;
-            queue.forEach(item => {
-                let name = this.prefixFile(item);
-                let filteredName;
-                if(attachmentNameFilterRegexp) {
-                    filteredName = name.replace(attachmentNameFilterRegexp, '');
-                }
-                filtered = filtered.filter(attachment => {
-                    return name !== attachment.name && filteredName !== attachment.name;
-                });
-            });
-            if(this.internalAttachments.length !== filtered.length) {
-                this.internalAttachments = filtered;
-            }
-            return true;
-        };
-
         // https://github.com/websanova/vue-upload
         this.$upload.new(this.uploadId, {
             url: this.$foswiki.getScriptUrl('upload', this.internalWeb, this.internalTopic),
-            maxSizePerFile: foswiki.getPreference('ATTACHFILESIZELIMIT') || 0,
+            maxSizePerFile: this.$foswiki.getPreference('ATTACHFILESIZELIMIT') || 0,
             extensions: this.extensions ? this.extensions.replace(/\s/g, '').split(/,/) : false,
             async: false,
-            onQueue() {
-                filterQueueFromAttachments(this.$upload.files(this.uploadId).queued);
-                window.addEventListener("beforeunload", self.beforeUnloadHandler);
-            },
-            onStart() {
-                filterQueueFromAttachments(this.$upload.files(this.uploadId).progress);
-                window.addEventListener("beforeunload", self.beforeUnloadHandler);
-            },
-            onSuccess(res, file) {
-                if(!(self.$upload.files(this.uploadId).progress.length || self.$upload.files(this.uploadId).queued.length)) {
-                    window.removeEventListener("beforeunload", self.beforeUnloadHandler);
-                }
-
-                let check = /^OK:\s(.*)\suploaded$/.exec(res.bodyText);
-                if(!check) {
-                    check = new RegExp('^' + escapeRegExp(`OK: OopsException(attention/upload_name_changed web=>${self.web} topic=>${self.topic} params=>[${self.prefixFile(file)},`) + '(.*)\\]').exec(res.bodyText);
-                }
-                if(check && check[1].length) {
-                    let name = check[1];
-                    self.internalAttachments = self.internalAttachments.filter(attachment => attachment.name !== name);
-                    self.internalAttachments.push({name, presented_name: file.name});
-                }
-            },
-            onError(error, file) {
-                if(!(self.$upload.files(this.uploadId).progress.length || self.$upload.files(this.uploadId).queued.length)) {
-                    window.removeEventListener("beforeunload", self.beforeUnloadHandler);
-                }
-
-                let text = [this.$t('upload_error_start')];
-                if(error) {
-                    let oops = /^ERROR: OopsException\(wlaplugin .* params=>\[(.*),(.*),'(.*)'\]/.exec(error.bodyText);
-                    if(oops) {
-                        text.push(oops[2]);
-                    } else {
-                        window.console.log('error while uploading', error);
-                    }
-                }
-                text.push(this.$t('upload_error_end', [file.name]));
-                let html = text.map(part => part.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')).join('<br><br>');
-
-                let titleText = this.$t('upload_error_title');
-
-                self.$showAlert({
-                    titleText,
-                    html,
-                    type: 'error',
-                    confirmButtonText: this.$t('ok'),
-                }).then(this.$showAlert.noop).catch(this.$showAlert.noop);
-            },
+            http: this.uploadHttp,
+            name: 'filepath',
+            onError: this.uploadOnError,
+            onSuccess: this.uploadOnSuccess,
+            onStart: this.uploadOnStart,
+            onQueue: this.uploadOnQueue,
             body: {
                 noredirect: 1,
                 block: this.block,
-            },
-            http(data) {
-                return self.$getStrikeOneToken().then(validationKey => {
-                    if(validationKey) {
-                        data.body.set('validation_key', validationKey);
-                    }
-
-                    let file = data.body.get('file');
-                    data.body.delete('file');
-                    data.body.set('filename', self.prefixFile(file));
-                    data.body.set('presented_name', file.name);
-                    data.body.set('filepath', file);
-                    return this.Vue.http.post(data.url, data.body, {progress: data.progress}).then(data.success, data.error);
-                });
             },
         });
     },
@@ -351,6 +274,94 @@ export default {
                 size: `${tileSize}x${tileSize}^m`,
                 crop: 'NorthWest',
             });
+        },
+        filterQueueFromAttachments(queue) {
+            let filtered = this.internalAttachments;
+            queue.forEach(item => {
+                let name = this.prefixFile(item);
+                let filteredName;
+                if(this.attachmentNameFilterRegexp) {
+                    filteredName = name.replace(this.attachmentNameFilterRegexp, '');
+                }
+                filtered = filtered.filter(attachment => {
+                    return name !== attachment.name && filteredName !== attachment.name;
+                });
+            });
+            if(this.internalAttachments.length !== filtered.length) {
+                this.internalAttachments = filtered;
+            }
+            return true;
+        },
+        uploadOnQueue() {
+            this.filterQueueFromAttachments(this.$upload.files(this.uploadId).queued);
+            window.addEventListener("beforeunload", this.beforeUnloadHandler);
+        },
+        uploadOnStart() {
+            this.filterQueueFromAttachments(this.$upload.files(this.uploadId).progress);
+            window.addEventListener("beforeunload", this.beforeUnloadHandler);
+        },
+        uploadOnSuccess(res, file) {
+            if(!(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queued.length)) {
+                window.removeEventListener("beforeunload", this.beforeUnloadHandler);
+            }
+
+            let check = /^OK:\s(.*)\suploaded$/.exec(res.bodyText);
+            if(!check) {
+                check = new RegExp('^' + escapeRegExp(`OK: OopsException(attention/upload_name_changed web=>${this.web} topic=>${this.topic} params=>[${this.prefixFile(file)},`) + '(.*)\\]').exec(res.bodyText);
+            }
+            if(check && check[1].length) {
+                let name = check[1];
+                this.internalAttachments = this.internalAttachments.filter(attachment => attachment.name !== name);
+                /* eslint-disable camelcase */ // metadata is usually not camelcase in foswiki
+                this.internalAttachments.push({name, presented_name: file.name});
+                /* eslint-enable camelcase */
+            }
+        },
+        uploadOnError(error, file) {
+            window.console.log('error', error, file);
+            if(!(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queued.length)) {
+                window.removeEventListener("beforeunload", this.beforeUnloadHandler);
+            }
+
+            let text = [this.$t('upload_error_start')];
+            if(error) {
+                let oops = /^ERROR: OopsException\(wlaplugin .* params=>\[(.*),(.*),'(.*)'\]/.exec(error.bodyText);
+                if(oops) {
+                    text.push(oops[2]);
+                } else {
+                    window.console.log('error while uploading', error);
+                }
+            }
+            if(file) {
+                text.push(this.$t('upload_error_end', [file.name]));
+            }
+            let html = text.map(part => part.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')).join('<br><br>');
+
+            let titleText = this.$t('upload_error_title');
+
+            this.$showAlert({
+                titleText,
+                html,
+                type: 'error',
+                confirmButtonText: this.$t('ok'),
+            }).then(this.$showAlert.noop).catch(this.$showAlert.noop);
+        },
+        uploadHttp(data) {
+            return this.$getStrikeOneToken().then(validationKey => {
+                if(validationKey) {
+                    data.body.set('validation_key', validationKey);
+                }
+
+                let filepath = data.body.get('filepath');
+                data.body.set('filename', this.prefixFile(filepath));
+                data.body.set('presented_name', filepath.name);
+                return this.post(data.url, data.body, {progress: data.progress}).then(data.success).catch(data.error);
+            }).catch(this.uploadOnError);
+        },
+        post() {
+            // Ok, admittedly this method is pointless, and when anybody has
+            // the nerve to fix those spies in the tests, feel free to remove it
+            return this.$http.post(...arguments);
         },
     },
 };
@@ -412,6 +423,7 @@ $tile-size: 114px;
     .upload-label {
         color: $ma-dark-grey;
         cursor: pointer;
+        text-align: center;
     }
     .progress-bar {
         margin-left: map-get($spacings, small);

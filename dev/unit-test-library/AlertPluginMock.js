@@ -17,6 +17,8 @@ class AlertPluginMock {
     }
     _getSwalBaseConfigBy(type) {
         switch(type) {
+            case 'error':
+                break;
             case 'warning':
                 break;
             case 'success':
