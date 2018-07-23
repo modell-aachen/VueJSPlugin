@@ -33,6 +33,13 @@ Vue.onDocumentReady(function(){
         }
     });
     new Vue({
+        el: '#check-item-examples-3',
+        template: '#check-item-template-3',
+        data: {
+          values: [],
+        }
+    });
+    new Vue({
         el: '#input-text-examples',
         template: '#input-text-template',
         data: {

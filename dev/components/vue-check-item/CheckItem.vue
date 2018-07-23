@@ -1,43 +1,56 @@
 <template>
-    <div class="ma-switch">
-        <input
-            :id="id"
-            :name="name"
-            :value="value"
-            :disabled="isDisabled"
-            :checked="state"
-            :type="type"
-            :class="{'switch-input': isSwitch}"
-            @change="onChange">
+    <div
+        :class="{'ma-switch': true, 'has-label': label || labelDummy, 'is-small': isSmall}">
         <label
-            :class="{'switch-paddle': isSwitch}"
-            :for="id || value">
-            <span
-                v-if="!isSwitch"
-                class="grid-x">
-                <component
-                    :is="$slots.description !== undefined || description !== undefined ? 'b' : 'span'"
-                    class="cell auto">
-                    <slot/>
-                </component>
+            v-if="labelDummy && !label"
+            class="description-label label-dummy">
+            &nbsp;
+        </label>
+        <label
+            v-if="label"
+            class="description-label">
+            {{ label }}
+        </label>
+        <div class="input-elements">
+            <input
+                :id="id"
+                :name="name"
+                :value="value"
+                :disabled="isDisabled"
+                :checked="state"
+                :type="type"
+                :class="{'switch-input': isSwitch}"
+                @change="onChange">
+            <label
+                :class="{'switch-paddle': isSwitch}"
+                :for="id || value">
                 <span
-                    v-if="badge"
-                    class="cell shrink badge">
-                    {{ badge }}
+                    v-if="!isSwitch"
+                    class="grid-x">
+                    <component
+                        :is="$slots.description !== undefined || description !== undefined ? 'b' : 'span'"
+                        class="cell auto">
+                        <slot/>
+                    </component>
+                    <span
+                        v-if="badge"
+                        class="cell shrink badge">
+                        {{ badge }}
+                    </span>
                 </span>
-            </span>
-            <span
-                v-if="!isSwitch && ($slots.description || description)"
-                class="grid-x">
-                <template v-if="description">
-                    <vue-spacer/>
-                    {{ description }}
-                </template>
-                <slot
-                    v-if="$slots.description"
-                    name="description"/>
-            </span>
-        </label><slot v-if="isSwitch"/><br>
+                <span
+                    v-if="!isSwitch && ($slots.description || description)"
+                    class="grid-x">
+                    <template v-if="description">
+                        <vue-spacer/>
+                        {{ description }}
+                    </template>
+                    <slot
+                        v-if="$slots.description"
+                        name="description"/>
+                </span>
+            </label><slot v-if="isSwitch"/><br>
+        </div>
     </div>
 </template>
 
@@ -57,6 +70,18 @@ export default {
         name: {
             type: String,
             default: null,
+        },
+        label: {
+            type: String,
+            default: undefined
+        },
+        labelDummy: { // reserve space for the label, even if we have none
+            type: Boolean,
+            default: false
+        },
+        isSmall: {
+            type: Boolean,
+            default: false
         },
         value: {
             type: String,
@@ -148,6 +173,10 @@ export default {
 @import '../../sass/settings.scss';
 
 .ma-switch {
+    &.has-label {
+        margin-top: 0px;
+        margin-bottom: map-get($spacings, medium)
+    }
     .badge {
         background-color: $ma-light-grey;
         border-radius: $ma-border-radius;
@@ -156,6 +185,18 @@ export default {
     }
     & > label {
         width: 100%;
+    }
+    .input-elements {
+        min-height: rem(40px);
+    }
+    &.is-small { // align with vue-input-text
+        .input-elements {
+            min-height: rem(32px);
+
+            label {
+                margin-top: rem(6px);
+            }
+        }
     }
 }
 </style>

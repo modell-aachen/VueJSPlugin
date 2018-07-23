@@ -746,7 +746,7 @@ export default {
 @import '../../../sass/settings.scss';
 .v-select {
     position: relative;
-    margin: 0 0 1.143rem;
+    margin: 0 0 map-get($spacings, medium);
 
     > .dropdown-menu {
         width: 100%;
@@ -821,9 +821,9 @@ export default {
     .dropdown-toggle {
         padding: 0;
         white-space: normal;
-        min-height: 2.4375rem;
         width: 100%;
         cursor: text;
+        height: unset;
 
         &.open {
             background-color:transparent;
@@ -854,7 +854,7 @@ export default {
             border-radius: 4px;
             border: 1px solid #b0c0c4;
             height: 20px;
-            margin-top: 10px;
+            margin-top: rem(9px);
             margin-right: 4px;
         }
         &, &:hover {
@@ -875,14 +875,22 @@ export default {
         }
     }
     .input-area-small{
+        .open-indicator {
+            padding: rem(8px) 1em; // 8px = 32 - 2*border - 14px(icon)
+        }
         .selected-tag {
             &.multi {
-                margin-top: 6px;
+                margin-top: rem(5px);
             }
         }
         .v-select .selected-list {
             padding-left: 4px;
             padding-right: 4px;
+        }
+        .single-tag[type="text"] {
+            padding: rem(7px) rem(8px);
+            height: rem(30px);
+            line-height: rem(16px); // 32 - 2*border - 2*margin
         }
     }
 
@@ -892,7 +900,9 @@ export default {
         background-color: transparent;
         &[type="text"] {
             width: initial;
-            padding: 0.5714rem;
+            padding: rem(7px) rem(8px);
+            height: rem(38px);
+            line-height: rem(24px); // 40 - 2*border - 2*margin
         }
     }
 
@@ -904,6 +914,9 @@ export default {
     }
 
     input[type=text] {
+        height: rem(38px);
+        padding-top: rem(9px);
+        padding-bottom: rem(9px);
         &, &:focus, &:active {
             border: none;
             background-color: transparent;
@@ -959,16 +972,16 @@ export default {
         display: flex;
         flex-flow: row no-wrap;
         width:100%;
-        min-height: 40px;
+        min-height: rem(38px);
     }
     .input-area.input-area-small {
-        min-height: 32px;
+        min-height: rem(30px);
         .form-control__wrapper{
-            height: 32px;
-            width: 10px;
+            height: rem(30px);
+            width: rem(10px);
         }
         input.input-area-small{
-            height: 32px;
+            height: rem(30px);
         }
     }
 

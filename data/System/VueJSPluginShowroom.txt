@@ -248,6 +248,44 @@ The following examples provide an overview of its functionality. The correspondi
 %INCLUDE{"%WEB%.%TOPIC%" section="CheckItemVueTemplate2"}%
 </script>
 
+---++ With description label or placeholder
+
+<div class="flatskin-wrapped" style="max-width: 800px;">
+ <div id="check-item-examples-3"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"CheckItemVueTemplate3"}%
+<div class="grid-x grid-margin-x">
+  <div class="cell large-4">
+    <h3>With label</h3>
+    <vue-check-item name="zutaten[]" label="salty" value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item name="zutaten[]" label="sweet" value="zucker">Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" label="hot"  value="pfeffer" v-model="values" >Pfeffer</vue-check-item>
+    {{values}}<br>
+  </div>
+  <div class="cell large-4">
+    <h3>With dummy</h3>
+    <vue-check-item name="zutaten[]" label-dummy value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item name="zutaten[]" label-dummy value="zucker">Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" label-dummy value="pfeffer" v-model="values" >Pfeffer</vue-check-item>
+    {{values}}<br>
+  </div>
+  <div class="cell large-4">
+    <h3>without label or dummy</h3>
+    <vue-check-item name="zutaten[]" value="salz" v-model="values" checked>Salz</vue-check-item>
+    <vue-check-item name="zutaten[]" value="zucker">Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" value="pfeffer" v-model="values" >Pfeffer</vue-check-item>
+    {{values}}<br>
+  </div>
+</div>
+%ENDSECTION{"CheckItemVueTemplate3"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="check-item-template-3">
+%INCLUDE{"%WEB%.%TOPIC%" section="CheckItemVueTemplate3"}%
+</script>
+
 ---+ Paged Selector
 
 <div class="flatskin-wrapped" style="max-width: 500px;">

@@ -32,5 +32,21 @@ describe("The CheckItem component", () => {
             expect(this.wrapper.vm.state).toBe(false);
         });
     });
+    describe("label", () => {
+        describe("dummy", () => {
+            it("is generated, when asked for", () => {
+                let wrapper = TestCase.mount(CheckItem, {propsData: { labelDummy: true }});
+                expect(wrapper.contains('.description-label.label-dummy')).toBe(true);
+            });
+            it("is not generated, when no label-dummy", () => {
+                let wrapper = TestCase.mount(CheckItem, {});
+                expect(wrapper.contains('.label-dummy')).toBe(false);
+            });
+            it("is not generated, when label-dummy but label-property is provided as well", () => {
+                let wrapper = TestCase.mount(CheckItem, {propsData: { labelDummy: true, label: 'a checkbox' }});
+                expect(wrapper.contains('.label-dummy')).toBe(false);
+            });
+        });
+    });
 });
 
