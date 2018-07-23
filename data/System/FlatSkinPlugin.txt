@@ -33,5 +33,5 @@ Dependencies (or "you need to update also"):
 |  Copyright: | 2015, Modell Aachen GmbH, All Rights Reserved |
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
 |  Dependencies: | <table border="1" class="foswikiTable"><tr><th>Name</th><th>Version</th><th>Description</th></tr><tr><td align="left">Foswiki::Plugins::JQueryPlugin</td><td align="left">&gt;=4.33</td><td align="left">JQueryPlugin required.</td></tr></table> |
-|  Version: | 0.1 |
-|  Release: | 8 Jul 2016 |
+|  Release: | %$RELEASE% |
+|  Version: | %$VERSION% |
