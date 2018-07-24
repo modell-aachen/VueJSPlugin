@@ -8,7 +8,9 @@
                 @click.prevent="toggleCollapsed">
                 <div class="cell shrink">
                     <div class="grid-x ma-collapsible-item-title-left">
-                        <div class="cell shrink align-self-middle handle-spacer" />
+                        <div
+                            v-if="item.icon"
+                            class="cell shrink align-self-middle handle-spacer" />
                         <div
                             v-if="item.icon"
                             class="cell shrink align-self-middle">
@@ -18,8 +20,8 @@
                         </div>
                         <div class="cell shrink">
                             <vue-spacer
-                                factor-vertical="auto"
-                                factor-horizontal="2"/>
+                                :factor-horizontal="(item.icon) ? 2 : 3"
+                                factor-vertical="auto"/>
                         </div>
                         <div class="cell shrink align-self-middle">
                             <vue-header3
