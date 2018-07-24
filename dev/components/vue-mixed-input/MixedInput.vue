@@ -176,7 +176,7 @@ export default {
             const clonedValue = Vue.cloneDeep(value);
             const result = [];
             clonedValue.forEach((currentItem) => {
-                if(result.length == 0){
+                if(result.length === 0){
                     result.push(currentItem);
                 } else {
                     const lastItem = result[result.length - 1];
