@@ -50,8 +50,8 @@
             name="addArea">
             <vue-button
                 :title="buttonTitle"
+                :type="buttonType"
                 icon="far fa-plus"
-                type="primary"
                 @click.native="addItemEvent"/>
         </slot>
     </div>
@@ -84,6 +84,10 @@ export default {
         'useSlot': {
             type: Boolean,
             default: true
+        },
+        'buttonType': {
+            type: String,
+            default: ''
         }
     },
     data: function() {
