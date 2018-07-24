@@ -51,11 +51,10 @@ sub renderTooltip {
     );
     loadDependencies($session, \%vueVersion, $topic, $web, $topicObject);
     my $vueClientToken = getClientToken();
-    return <<HTML;
-        <div class=\"flatskin-wrapped vue-container\" data-vue-client-token=\"$vueClientToken\">
-            <vue-tooltip text=\"$params->{text}\"/>
-        </div>
-HTML
+    my $html = "<div class=\"flatskin-wrapped vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-tooltip text=\"$params->{text}\"";
+    $html .= " icon=\"$params->{icon}\"" if $params->{icon};
+    $html .= "/></div>";
+    return $html;
 }
 
 sub loadDependencies {
