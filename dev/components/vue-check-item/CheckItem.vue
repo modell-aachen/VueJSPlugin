@@ -29,7 +29,7 @@
                     class="grid-x">
                     <component
                         :is="$slots.description !== undefined || description !== undefined ? 'b' : 'span'"
-                        class="cell auto">
+                        class="cell">
                         <slot/>
                     </component>
                     <span
