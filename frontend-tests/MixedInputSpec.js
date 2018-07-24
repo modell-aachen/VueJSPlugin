@@ -120,4 +120,19 @@ describe("The mixed input component", () => {
         await clickOnOption(2);
         expect(getLastEmittedModel()).toEqual([{type: "text", value: "test"}, {type: "option", id: "option-3"}, {type: "text", value: "123"}]);
     }));
+    it("automatically merges text input data when provided from outside", TestCase.wrapAsync(async () => {
+        mixedInput.setProps({
+            value: [{
+                type: "text",
+                value: "ab"
+            },{
+                type: "text",
+                value: "cd"
+            },{
+                type: "text",
+                value: "ef"
+            }]
+        });
+        expect(getLastEmittedModel()).toEqual([{type: "text", value: "abcdef"}]);
+    }));
 });
