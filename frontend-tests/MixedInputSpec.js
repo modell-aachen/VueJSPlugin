@@ -126,6 +126,9 @@ describe("The mixed input component", () => {
                 type: "text",
                 value: "ab"
             },{
+                type: "option",
+                id: "option-3"
+            },{
                 type: "text",
                 value: "cd"
             },{
@@ -133,6 +136,15 @@ describe("The mixed input component", () => {
                 value: "ef"
             }]
         });
-        expect(getLastEmittedModel()).toEqual([{type: "text", value: "abcdef"}]);
+        expect(getLastEmittedModel()).toEqual([{
+            type: "text",
+            value: "ab"
+        },{
+            type: "option",
+            id: "option-3"
+        },{
+            type: "text",
+            value: "cdef"
+        }]);
     }));
 });
