@@ -8,11 +8,11 @@
 export default {
     props: {
         'factorVertical':{
-            type: String,
+            type: [String,Number],
             default: '1'
         },
         'factorHorizontal': {
-            type: String,
+            type: [String,Number],
             default: '1'
         }
     },
