@@ -145,6 +145,7 @@ export default {
         },
         toInternalValue(value) {
             const internalValue = [];
+            value = this.mergeTextInputNeighbours(value);
             value.forEach((item) => {
                 const currentInternalValueIndex = internalValue.length;
                 if(currentInternalValueIndex % 2 === 0 && item.type !== 'text') {
@@ -170,6 +171,23 @@ export default {
                 internalValue.push(this.getInternalTextItem());
             }
             return internalValue;
+        },
+        mergeTextInputNeighbours(value) {
+            const clonedValue = Vue.cloneDeep(value);
+            const result = [];
+            clonedValue.forEach((currentItem) => {
+                if(result.length === 0){
+                    result.push(currentItem);
+                } else {
+                    const lastItem = result[result.length - 1];
+                    if(lastItem.type === "text" && currentItem.type === "text"){
+                        lastItem.value = lastItem.value + currentItem.value;
+                    } else {
+                        result.push(currentItem);
+                    }
+                }
+            });
+            return result;
         },
         toValue(internalValue) {
             const nonEmptyValues = internalValue.filter((item) => {
