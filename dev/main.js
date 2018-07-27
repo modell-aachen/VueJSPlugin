@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Frontend from './Frontend';
 import AlertPlugin from './alert/AlertPlugin';
+import debounce from 'lodash/debounce';
 
 const frontend = new Frontend({
     vue: Vue,
@@ -8,6 +9,7 @@ const frontend = new Frontend({
     moment: window.moment,
     jquery: window.$,
     alertPlugin: AlertPlugin,
+    debounce: debounce
 });
 
 frontend.setup();
