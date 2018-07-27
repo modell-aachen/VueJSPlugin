@@ -2,12 +2,22 @@ import UserSelector from '../dev/components/vue-userselector/UserSelector.vue';
 import TestCase from '../dev/unit-test-library/main';
 
 describe("The UserSelector component's", () => {
+    let wrapper;
     let userselector;
+
+    const clickOnInput = () => {
+        wrapper.find({ref: "toggle"}).trigger('mousedown');
+    };
+
+    const getNumberOfShownFilters = () => {
+        return wrapper.findAll({ref: "filterItems"}).length;
+    };
+
     describe("toggleDropdown", () => {
         beforeEach(() => {
-            userselector = TestCase.createVueComponent(UserSelector, {});
+            wrapper = TestCase.mount(UserSelector, {});
+            userselector = wrapper.vm;
             spyOn(userselector, 'updateDropdown').and.returnValue();
-            userselector.$mount();
         });
 
         it("should open/close the dropdown", (done) => {
@@ -32,6 +42,20 @@ describe("The UserSelector component's", () => {
                 done();
             });
         });
+
+        it("shows filters for all data sources", () => {
+            clickOnInput();
+            expect(getNumberOfShownFilters()).toBe(3);
+        });
+
+        it("shows no filters when only one data source is activated", () => {
+            wrapper.setProps({
+                useMetadata: false,
+                useGroups: false
+            });
+            clickOnInput();
+            expect(getNumberOfShownFilters()).toBe(0);
+        });
     });
 
     describe("updateDropdown", () => {
@@ -45,12 +69,11 @@ describe("The UserSelector component's", () => {
         const expected = mockUsers.concat(mockMetadata).sort((a, b) => a.label.localeCompare(b.label));
 
         beforeEach(() => {
-            userselector = TestCase.createVueComponent(UserSelector, {
+            userselector = TestCase.mount(UserSelector, {
                 propsData: {
                     metadata: mockMetadata.slice(),
                 },
-            });
-            userselector.$mount();
+            }).vm;
             spyOn(userselector, 'makeAjaxRequest').and.callFake(params => {
                 return Promise.resolve({ data: mockUsers.slice(params.offset, params.offset + params.limit), count: mockUsersCount});
             });

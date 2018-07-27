@@ -14,13 +14,6 @@ export default {
             type: Boolean,
         },
         /**
-     * Whether the user is presented with the 'metadata' checkbox.
-     */
-        metadataOption: {
-            default: true,
-            type: Boolean,
-        },
-        /**
      * Whether 'groups' should be in the options.
      */
         useGroups: {
@@ -28,23 +21,9 @@ export default {
             type: Boolean,
         },
         /**
-     * Whether the user is presented with the 'groups' checkbox.
-     */
-        groupsOption: {
-            default: true,
-            type: Boolean,
-        },
-        /**
      * Whether 'users' should be in the options.
      */
         useUsers: {
-            default: true,
-            type: Boolean,
-        },
-        /**
-     * Whether the user is presented with the 'users' checkbox.
-     */
-        usersOption: {
             default: true,
             type: Boolean,
         },
@@ -76,6 +55,18 @@ export default {
                 return internal;
             });
             return internalMetadata.sort((a, b) => a.lowerLabel.localeCompare(b.lowerLabel));
+        },
+        numberOfActivatedSources() {
+            return [this.useGroups, this.useUsers, this.useMetadata].reduce((accumulator, currentValue) => {
+                if(currentValue){
+                    return accumulator + 1;
+                } else {
+                    return accumulator;
+                }
+            }, 0);
+        },
+        hideOptions() {
+            return this.numberOfActivatedSources <= 1;
         }
     },
     methods: {
@@ -100,13 +91,6 @@ export default {
                 });
             }
             return filterOptions;
-        },
-
-        getHideOptionsValue() {
-            if( this.groupsOption || this.usersOption || this.metadataOption ){
-                return false;
-            }
-            return true;
         },
 
         getFilteredData(checkedFilterOptions, offsets) {

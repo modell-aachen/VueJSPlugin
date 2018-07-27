@@ -4,7 +4,7 @@
             v-if="isActive"
             class="sidebar-overlay"
             @click="hide"/>
-        <transition name="sidebar">
+        <vue-transition name="sidebar">
             <div
                 v-if="isActive"
                 :class="{active: isActive}"
@@ -38,15 +38,15 @@
                     </slot>
                 </div>
 
-                <transition name="fade">
+                <vue-transition name="fade">
                     <modal
                         v-if="isModalActive"
                         :type="modalOptions.type"
                         :content-config="modalOptions.contentConfig"
                         @hide-modal="hideModal"/>
-                </transition>
+                </vue-transition>
             </div>
-        </transition>
+        </vue-transition>
     </div>
 </template>
 

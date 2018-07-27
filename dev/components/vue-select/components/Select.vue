@@ -92,6 +92,7 @@
                 @mousedown="checkBoxHasFocus = true">
                 <span
                     v-for="item in internalFilterOptions"
+                    ref="filterItems"
                     :key="item.name">
                     <input
                         :id="_uid + item.name"
@@ -146,7 +147,6 @@ import pointerScroll from '../mixins/pointerScroll';
 import typeAheadPointer from '../mixins/typeAheadPointer';
 import ajax from '../mixins/ajax';
 import slotOptions from '../mixins/slotOptions';
-import debounce from 'lodash/debounce';
 
 const debounceMillis = 150;
 
@@ -326,8 +326,6 @@ export default {
             checkedFilterOptions[filter.name] = filter.unchecked ? 0 : 1;
         }
 
-        let hideOptions = typeof this.getHideOptionsValue === "function" ? this.getHideOptionsValue() : false;
-
         let taggable = (this.dataTags === true || this.dataTags === '1') ? true : false;
 
         return {
@@ -338,7 +336,6 @@ export default {
             checkBoxHasFocus: false,
             internalFilterOptions,
             checkedFilterOptions,
-            hideOptions,
             stringifiedValue: "",
             isLoading: false,
             ajaxQueryNr: 0, // Id for the ajax request. Changes, when the query term etc. changes, but does not change for paging. This will prevent any delayed (obsolete) responses from being displayed.
@@ -353,6 +350,9 @@ export default {
             set(internalValue){
                 this.$emit('input', internalValue);
             }
+        },
+        hideOptions() {
+            return true;
         },
         open() {
             return this.inputHasFocus || this.checkBoxHasFocus;
@@ -436,9 +436,11 @@ export default {
             }
             this.updateDropdown();
         },
-        search: debounce(function() {
-            this.updateDropdown();
-        }, debounceMillis),
+        search() {
+            Vue.debounce(() => {
+                this.updateDropdown();
+            }, debounceMillis)();
+        },
         isDisabled() {
             this._disable();
         },

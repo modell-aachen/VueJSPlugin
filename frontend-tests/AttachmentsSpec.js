@@ -38,8 +38,6 @@ describe("The Attachment component's", () => {
             attachmentNameFilter: '[()]',
         }
     };
-    const uploadId = 'websanova-upload-vueAttachmentsTestWeb.TestTopic#TestBlock';
-    const uploadSelector = '#' + uploadId.replace(/([.#])/g, '\\$1');
     const optionsClone = () => JSON.parse(JSON.stringify(options));
     beforeEach(() => {
         wrapper = TestCase.mount(Attachments, options);
@@ -116,7 +114,6 @@ describe("The Attachment component's", () => {
         });
         it("recognises a renamed upload", () => {
             wrapper.vm.uploadOnSuccess({bodyText: 'OK: OopsException(attention/upload_name_changed web=>TestWeb topic=>TestTopic params=>[TestBlock_21316.htm,TestBlock_21316.htm.txt])'}, {name: '21316.htm'});
-            window.console.log(JSON.stringify(wrapper.vm.internalAttachments));
             let filtered = wrapper.vm.internalAttachments.filter(item => item.name === 'TestBlock_21316.htm.txt' && item.presented_name === '21316.htm');
             expect(filtered.length).toBe(1);
         });

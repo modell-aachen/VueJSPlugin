@@ -41,7 +41,6 @@ import 'v-infinite-scroll/dist/v-infinite-scroll.css';
 import VueClickOutside from 'vue-click-outside';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
-import VueSlideUpDown from 'vue-slide-up-down';
 import VueUpload from '@websanova/vue-upload';
 import {mapState} from 'vuex';
 import isEqual from 'lodash.isequal';
@@ -53,6 +52,9 @@ class MAVueJsPlugin {
         this.moment = options.moment;
         this.jquery = options.jquery;
         this.alertPlugin = options.alertPlugin;
+        this.debounce = options.debounce;
+        this.slideUpDown = options.slideUpDown;
+        this.vueTransition = options.vueTransition;
     }
     install(Vue, options){
         i18next.init();
@@ -91,7 +93,7 @@ class MAVueJsPlugin {
         Vue.component('sidebar', Sidebar);
         Vue.component('sidebar-standard-layout', SidebarStandardLayout);
         Vue.component('vue-wizard', VueWizard);
-        Vue.component('vue-slide-up-down', VueSlideUpDown);
+        Vue.component('vue-slide-up-down', this.slideUpDown);
         Vue.component('vue-spacer', VueSpacer);
         Vue.component('vue-header', VueHeader);
         Vue.component('vue-header1', VueHeader1);
@@ -100,6 +102,7 @@ class MAVueJsPlugin {
         Vue.component('vue-paged-selector', VuePagedSelector);
         Vue.component('vue-collapsible-frame', VueCollapsibleFrame);
         Vue.component('vue-mixed-input', VueMixedInput);
+        Vue.component('vue-transition', this.vueTransition);
         Vue.directive('tooltip', VTooltip);
         Vue.directive('click-outside', VueClickOutside);
 
@@ -180,6 +183,10 @@ class MAVueJsPlugin {
 
         Vue.cloneDeep = (value) => {
             return cloneDeep(value);
+        };
+
+        Vue.debounce = (func, time) => {
+            return this.debounce(func, time);
         };
 
         const $getStrikeOneToken = async function(form) {
