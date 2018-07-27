@@ -1,4 +1,3 @@
-import VueTestUtils from '@vue/test-utils';
 import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
 import Frontend from '../Frontend';
 import FoswikiMock from './FoswikiMock.js';

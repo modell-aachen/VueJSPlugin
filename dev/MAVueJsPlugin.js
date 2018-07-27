@@ -41,7 +41,6 @@ import 'v-infinite-scroll/dist/v-infinite-scroll.css';
 import VueClickOutside from 'vue-click-outside';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
-import VueSlideUpDown from 'vue-slide-up-down';
 import VueUpload from '@websanova/vue-upload';
 import {mapState} from 'vuex';
 import isEqual from 'lodash.isequal';
@@ -188,7 +187,7 @@ class MAVueJsPlugin {
 
         Vue.debounce = (func, time) => {
             return this.debounce(func, time);
-        }
+        };
 
         const $getStrikeOneToken = async function(form) {
             if(!window.StrikeOne) {

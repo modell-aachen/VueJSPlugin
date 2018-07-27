@@ -1,4 +1,4 @@
-export default (func, time) => {
+export default (func) => {
     return () => {
         func();
     };

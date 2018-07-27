@@ -9,9 +9,10 @@ export default {
     inject: ['$validator'],
     props: {
         name: {
-            type: String
+            type: String,
+            default: ""
         }
     }
-}
+};
 </script>
 

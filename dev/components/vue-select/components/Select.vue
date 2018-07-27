@@ -92,8 +92,8 @@
                 @mousedown="checkBoxHasFocus = true">
                 <span
                     v-for="item in internalFilterOptions"
-                    :key="item.name"
-                    ref="filterItems">
+                    ref="filterItems"
+                    :key="item.name">
                     <input
                         :id="_uid + item.name"
                         v-model="checkedFilterOptions[item.name]"
