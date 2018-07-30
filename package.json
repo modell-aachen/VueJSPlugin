@@ -63,7 +63,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@vue/test-utils": "^1.0.0-beta.21",
+    "@vue/test-utils": "^1.0.0-beta.22",
     "babel-plugin-transform-es2017-object-entries": "^0.0.4",
     "i18next": "^10.2.1",
     "jsdom": "^11.7.0",

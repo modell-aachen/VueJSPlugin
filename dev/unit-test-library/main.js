@@ -4,7 +4,6 @@ import FoswikiMock from './FoswikiMock.js';
 import AlertPluginMock from './AlertPluginMock.js';
 import DebounceMock from './DebounceMock.js';
 import SlideUpDownMock from './SlideUpDownMock.vue';
-import VueTransitionMock from './VueTransitionMock.vue';
 import moment from 'moment';
 
 import jquery from 'jquery';
@@ -19,7 +18,6 @@ const frontend = new Frontend({
     alertPlugin: AlertPluginMock,
     debounce: DebounceMock,
     slideUpDown: SlideUpDownMock,
-    vueTransition: VueTransitionMock
 });
 
 frontend.setup();
