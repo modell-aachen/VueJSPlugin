@@ -2,6 +2,7 @@ package Foswiki::Plugins::VueJSPlugin;
 
 use strict;
 use warnings;
+use Digest::MD5 qw(md5_hex);
 
 =begin TML
 ---+ package Foswiki::Plugins::VueJSPlugin
