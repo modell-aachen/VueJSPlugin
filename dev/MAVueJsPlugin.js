@@ -54,7 +54,6 @@ class MAVueJsPlugin {
         this.alertPlugin = options.alertPlugin;
         this.debounce = options.debounce;
         this.slideUpDown = options.slideUpDown;
-        this.vueTransition = options.vueTransition;
     }
     install(Vue, options){
         i18next.init();
@@ -102,7 +101,6 @@ class MAVueJsPlugin {
         Vue.component('vue-paged-selector', VuePagedSelector);
         Vue.component('vue-collapsible-frame', VueCollapsibleFrame);
         Vue.component('vue-mixed-input', VueMixedInput);
-        Vue.component('vue-transition', this.vueTransition);
         Vue.directive('tooltip', VTooltip);
         Vue.directive('click-outside', VueClickOutside);
 
