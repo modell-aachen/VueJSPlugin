@@ -85,6 +85,6 @@ select {
     transition: unset;
 }
 
-[type=checkbox]:not(.switch-input) {
+[type=checkbox]:not(.switch-input):not(.foswikiCheckbox) {
     display: unset;
 }
