@@ -2676,6 +2676,10 @@ form-data@~2.3.1:
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
 
+formdata-polyfill@^3.0.11:
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/formdata-polyfill/-/formdata-polyfill-3.0.11.tgz#c82b4b4bea3356c0a6752219e54ce1edb2a7fb5b"
+
 from2@^2.1.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/from2/-/from2-2.3.0.tgz#8bfb5502bde4a4d36cfdeea007fcca21d7e382af"
