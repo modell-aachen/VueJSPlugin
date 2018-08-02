@@ -108,12 +108,12 @@ describe("The Attachment component's", () => {
             expect(wrapper.vm.internalAttachments.filter(item => item.name === 'TestBlock_TextFile.txt').length).toBe(0);
         });
         it("recognises a successful upload", () => {
-            wrapper.vm.uploadOnSuccess({bodyText: 'OK: TestBlock_NewFile.png uploaded'}, {name: '(New)File.png'});
+            wrapper.vm.uploadOnSuccess({name: '(New)File.png'}, {bodyText: 'OK: TestBlock_NewFile.png uploaded'});
             let filtered = wrapper.vm.internalAttachments.filter(item => item.name === 'TestBlock_NewFile.png' && item.presented_name === '(New)File.png');
             expect(filtered.length).toBe(1);
         });
         it("recognises a renamed upload", () => {
-            wrapper.vm.uploadOnSuccess({bodyText: 'OK: OopsException(attention/upload_name_changed web=>TestWeb topic=>TestTopic params=>[TestBlock_21316.htm,TestBlock_21316.htm.txt])'}, {name: '21316.htm'});
+            wrapper.vm.uploadOnSuccess({name: '21316.htm'}, {bodyText: 'OK: OopsException(attention/upload_name_changed web=>TestWeb topic=>TestTopic params=>[TestBlock_21316.htm,TestBlock_21316.htm.txt])'});
             let filtered = wrapper.vm.internalAttachments.filter(item => item.name === 'TestBlock_21316.htm.txt' && item.presented_name === '21316.htm');
             expect(filtered.length).toBe(1);
         });
