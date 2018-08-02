@@ -50,11 +50,15 @@ export default {
         isDraggable: {
             type: Boolean,
             default: true
+        },
+        showDeleteButton: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {
         itemRemoveable: function() {
-            return this.$listeners && this.$listeners['remove-item'];
+            return this.showDeleteButton && this.$listeners && this.$listeners['remove-item'];
         }
     }
 };
