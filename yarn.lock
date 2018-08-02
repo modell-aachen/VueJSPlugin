@@ -12,9 +12,9 @@
   dependencies:
     lodash "^4.17.4"
 
-"@websanova/vue-upload@^0.2.14-beta":
-  version "0.2.14-beta"
-  resolved "https://registry.yarnpkg.com/@websanova/vue-upload/-/vue-upload-0.2.14-beta.tgz#eacf6f9506b720a435b60882fab0e6b6666b612a"
+"@websanova/vue-upload@^1.0.2-beta":
+  version "1.0.2-beta"
+  resolved "https://registry.yarnpkg.com/@websanova/vue-upload/-/vue-upload-1.0.2-beta.tgz#6a747cc9c058918289aec7bca0acae49c8091ccd"
 
 "FrontendUnitTestLibrary@git://github.com/modell-aachen/FrontendUnitTestLibrary.git":
   version "1.0.4"

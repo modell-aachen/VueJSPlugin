@@ -45,6 +45,28 @@
                 </a>
             </div>
             <div
+                v-for="attachment in $upload.files(uploadId).success"
+                :key="getUniqueId(attachment)"
+                class="attachments-tile-and-label cell shrink">
+                <div
+                    class="attachment-tile">
+                    <div class="thumbnail">
+                        <i
+                            :class="getIconFor(attachment)"
+                            class="far fa-3x"/>
+                    </div>
+
+                    <img
+                        v-if="isPreviewAvailableFor(attachment)"
+                        :src="getPreviewFor(attachment)">
+                </div>
+                <div
+                    class="attachment-label">
+                    <template
+                        v-for="(word, idx) in splitWordParts(attachment.presented_name || attachment.name)"><template v-if="idx !== 0">&#8203;</template>{{ word }}</template>
+                </div>
+            </div>
+            <div
                 v-for="attachment in $upload.files(uploadId).progress"
                 :key="getUniqueId(attachment)"
                 class="attachments-tile-and-label cell shrink">
@@ -64,7 +86,7 @@
                 </div>
             </div>
             <div
-                v-for="(attachment, idx) in $upload.files(uploadId).queued"
+                v-for="(attachment, idx) in $upload.files(uploadId).queue"
                 :key="idx"
                 class="attachments-tile-and-label cell shrink">
                 <div
@@ -203,7 +225,7 @@ export default {
     created() {
         // note: a beforeUnloadHandler interferes with the browser's cache, thus we only install it when needed
         this.beforeUnloadHandler = (event) => {
-            if(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queued.length) {
+            if(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queue.length) {
                 event.preventDefault();
             }
         };
@@ -217,7 +239,7 @@ export default {
         }
 
         // https://github.com/websanova/vue-upload
-        this.$upload.new(this.uploadId, {
+        this.$upload.on(this.uploadId, {
             url: this.$foswiki.getScriptUrl('upload', this.internalWeb, this.internalTopic),
             maxSizePerFile: this.$foswiki.getPreference('ATTACHFILESIZELIMIT') || 0,
             extensions: this.extensions ? this.extensions.replace(/\s/g, '').split(/,/) : false,
@@ -228,6 +250,7 @@ export default {
             onSuccess: this.uploadOnSuccess,
             onStart: this.uploadOnStart,
             onQueue: this.uploadOnQueue,
+            dropzoneId: this.dropzoneId,
             body: {
                 noredirect: 1,
                 block: this.block,
@@ -238,6 +261,9 @@ export default {
         this.$upload.reset(this.uploadId, {
             dropzoneId: this.dropzoneId,
         });
+    },
+    beforeDestroy() {
+        this.$upload.off(this.uploadId);
     },
     methods: {
         prefixFile(attachment) {
@@ -276,6 +302,7 @@ export default {
             });
         },
         filterQueueFromAttachments(queue) {
+            window.console.log('queue: ', queue );
             let filtered = this.internalAttachments;
             queue.forEach(item => {
                 let name = this.prefixFile(item);
@@ -293,7 +320,7 @@ export default {
             return true;
         },
         uploadOnQueue() {
-            this.filterQueueFromAttachments(this.$upload.files(this.uploadId).queued);
+            this.filterQueueFromAttachments(this.$upload.files(this.uploadId).queue);
             window.addEventListener("beforeunload", this.beforeUnloadHandler);
         },
         uploadOnStart() {
@@ -301,7 +328,7 @@ export default {
             window.addEventListener("beforeunload", this.beforeUnloadHandler);
         },
         uploadOnSuccess(res, file) {
-            if(!(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queued.length)) {
+            if(!(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queue.length)) {
                 window.removeEventListener("beforeunload", this.beforeUnloadHandler);
             }
 
@@ -319,7 +346,7 @@ export default {
         },
         uploadOnError(error, file) {
             window.console.log('error', error, file);
-            if(!(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queued.length)) {
+            if(!(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queue.length)) {
                 window.removeEventListener("beforeunload", this.beforeUnloadHandler);
             }
 
@@ -329,7 +356,10 @@ export default {
                 if(oops) {
                     text.push(oops[2]);
                 } else {
-                    window.console.log('error while uploading', error);
+                    window.console.log('Error(s) while uploading ');
+                    if( this.$upload.errors(this.uploadId).length) {
+                        this.$upload.errors(this.uploadId).map( (e) => window.console.log('Code: ', e.code, ' Msg: ', e.msg) );
+                    }
                 }
             }
             if(file) {
