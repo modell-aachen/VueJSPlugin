@@ -237,7 +237,8 @@ export default {
                 window.console.warn('Could not filter attachment name using NAMEFILTER', foswikiNameFilter, e);
             }
         }
-
+    },
+    mounted() {
         // https://github.com/websanova/vue-upload
         this.$upload.on(this.uploadId, {
             url: this.$foswiki.getScriptUrl('upload', this.internalWeb, this.internalTopic),
@@ -255,11 +256,6 @@ export default {
                 noredirect: 1,
                 block: this.block,
             },
-        });
-    },
-    mounted() {
-        this.$upload.reset(this.uploadId, {
-            dropzoneId: this.dropzoneId,
         });
     },
     beforeDestroy() {
