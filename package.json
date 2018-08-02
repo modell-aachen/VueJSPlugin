@@ -80,6 +80,7 @@
     "vue-resource": "^1.5.0",
     "vue-router": "^3.0.1",
     "vue-slide-up-down": "git://github.com/modell-aachen/vue-slide-up-down.git",
-    "vue-sweetalert": "^0.1.18"
+    "vue-sweetalert": "^0.1.18",
+    "vue-visible": "^1.0.2"
   }
 }

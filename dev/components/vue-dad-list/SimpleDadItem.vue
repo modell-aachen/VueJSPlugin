@@ -22,6 +22,7 @@
                     v-if="itemRemoveable"
                     class="cell shrink align-self-middle ma-simple-item-button">
                     <vue-button
+                        v-visible="showDeleteButton"
                         type="icon"
                         icon="far fa-times"
                         @click.native.prevent="$emit('remove-item', item)" />
@@ -58,7 +59,7 @@ export default {
     },
     computed: {
         itemRemoveable: function() {
-            return this.showDeleteButton && this.$listeners && this.$listeners['remove-item'];
+            return this.$listeners && this.$listeners['remove-item'];
         }
     }
 };
