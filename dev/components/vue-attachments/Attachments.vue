@@ -5,6 +5,15 @@
             :id="dropzoneId"
             class="dropzone-wrapper grid-x grid-margin-x grid-margin-y patternEditTopic">
             <div
+                :class="{'dropzone-overlay--active': $upload.dropzone(uploadId).active }"
+                class="dropzone-overlay">
+                <p>
+                    <i class="fas fa-upload"/>
+                    <br>
+                    {{ $t('upload_dnd_area') }}
+                </p>
+            </div>
+            <div
                 v-if="canUpload"
                 class="attachments-tile-and-label cell shrink"
                 @click="$upload.select(uploadId)">
@@ -43,28 +52,6 @@
                             v-for="(word, idx) in splitWordParts(attachment.presented_name || attachment.name)"><template v-if="idx !== 0">&#8203;</template>{{ word }}</template>
                     </div>
                 </a>
-            </div>
-            <div
-                v-for="attachment in $upload.files(uploadId).success"
-                :key="getUniqueId(attachment)"
-                class="attachments-tile-and-label cell shrink">
-                <div
-                    class="attachment-tile">
-                    <div class="thumbnail">
-                        <i
-                            :class="getIconFor(attachment)"
-                            class="far fa-3x"/>
-                    </div>
-
-                    <img
-                        v-if="isPreviewAvailableFor(attachment)"
-                        :src="getPreviewFor(attachment)">
-                </div>
-                <div
-                    class="attachment-label">
-                    <template
-                        v-for="(word, idx) in splitWordParts(attachment.presented_name || attachment.name)"><template v-if="idx !== 0">&#8203;</template>{{ word }}</template>
-                </div>
             </div>
             <div
                 v-for="attachment in $upload.files(uploadId).progress"
@@ -237,14 +224,23 @@ export default {
                 window.console.warn('Could not filter attachment name using NAMEFILTER', foswikiNameFilter, e);
             }
         }
+
+        document.documentElement.addEventListener("dragover", (e) => {
+            if (e.target.id !== this.dropzoneId) {
+                e.preventDefault();
+                e.dataTransfer.effectAllowed = "none";
+                e.dataTransfer.dropEffect = "none";
+            }
+        });
     },
     mounted() {
         // https://github.com/websanova/vue-upload
         this.$upload.on(this.uploadId, {
             url: this.$foswiki.getScriptUrl('upload', this.internalWeb, this.internalTopic),
-            maxSizePerFile: this.$foswiki.getPreference('ATTACHFILESIZELIMIT') || 0,
+            maxSizePerFile: parseInt(this.$foswiki.getPreference('ATTACHFILESIZELIMIT')) * 1024 || 0,  //ATTACHFILESIZELIMIT comes as kb, however we need bytes here
             extensions: this.extensions ? this.extensions.replace(/\s/g, '').split(/,/) : false,
             async: false,
+            maxFilesSelect: 20,
             http: this.uploadHttp,
             name: 'filepath',
             onError: this.uploadOnError,
@@ -298,7 +294,6 @@ export default {
             });
         },
         filterQueueFromAttachments(queue) {
-            window.console.log('queue: ', queue );
             let filtered = this.internalAttachments;
             queue.forEach(item => {
                 let name = this.prefixFile(item);
@@ -323,7 +318,7 @@ export default {
             this.filterQueueFromAttachments(this.$upload.files(this.uploadId).progress);
             window.addEventListener("beforeunload", this.beforeUnloadHandler);
         },
-        uploadOnSuccess(res, file) {
+        uploadOnSuccess(file, res) {
             if(!(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queue.length)) {
                 window.removeEventListener("beforeunload", this.beforeUnloadHandler);
             }
@@ -332,6 +327,7 @@ export default {
             if(!check) {
                 check = new RegExp('^' + escapeRegExp(`OK: OopsException(attention/upload_name_changed web=>${this.web} topic=>${this.topic} params=>[${this.prefixFile(file)},`) + '(.*)\\]').exec(res.bodyText);
             }
+
             if(check && check[1].length) {
                 let name = check[1];
                 this.internalAttachments = this.internalAttachments.filter(attachment => attachment.name !== name);
@@ -340,7 +336,7 @@ export default {
                 /* eslint-enable camelcase */
             }
         },
-        uploadOnError(error, file) {
+        uploadOnError(file, error) {
             window.console.log('error', error, file);
             if(!(this.$upload.files(this.uploadId).progress.length || this.$upload.files(this.uploadId).queue.length)) {
                 window.removeEventListener("beforeunload", this.beforeUnloadHandler);
@@ -354,7 +350,10 @@ export default {
                 } else {
                     window.console.log('Error(s) while uploading ');
                     if( this.$upload.errors(this.uploadId).length) {
-                        this.$upload.errors(this.uploadId).map( (e) => window.console.log('Code: ', e.code, ' Msg: ', e.msg) );
+                        this.$upload.errors(this.uploadId).map((e) => {
+                            window.console.log('Code: ', e.code, ' Msg: ', e.msg);
+                            text.push(e.msg);
+                        });
                     }
                 }
             }
@@ -478,6 +477,46 @@ $tile-size: 114px;
             flex-direction: column;
             i {
                 margin-top: auto;
+            }
+        }
+    }
+    .dropzone-wrapper {
+        position: relative;
+        .dropzone-overlay {
+            $border-width: 2px;
+            position: absolute;
+            width: calc(100% - 2*#{map-get($spacings, medium)} - 2*#{$border-width} );
+            height: calc(100% - 2*#{map-get($spacings, medium)} - 2*#{$border-width});
+            border: $border-width dashed $ma-light-grey;
+            border-radius: $ma-border-radius;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 100;
+            margin: map-get($spacings, medium);
+            margin-left: map-get($spacings, medium) + $border-width;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+
+            p {
+                color: $ma-dark-grey;
+                text-align: center;
+                font-size: 33px;
+                line-height: 45px;
+                i {
+                    font-size: 64px;
+                    line-height: 64px;
+                }
+            }
+
+            &.dropzone-overlay--active {
+                display: flex;
+            }
+        }
+
+        &.dropzone-drag-active {
+            .dropzone-overlay{
+                display: flex;
             }
         }
     }
