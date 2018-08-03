@@ -5,7 +5,7 @@
             :id="dropzoneId"
             class="dropzone-wrapper grid-x grid-margin-x grid-margin-y patternEditTopic">
             <div
-                :class="{'dropzone-overlay--active': $upload.dropzone(uploadId).active }"
+                :class="{'dropzone-overlay--active': $upload.dropzone(uploadId).active && canUpload }"
                 class="dropzone-overlay">
                 <p>
                     <i class="fas fa-upload"/>
@@ -225,8 +225,8 @@ export default {
             }
         }
 
-        document.documentElement.addEventListener("dragover", (e) => {
-            if (e.target.id !== this.dropzoneId) {
+        document.addEventListener("dragover", (e) => {
+            if (!this.canUpload || e.target.id !== this.dropzoneId) {
                 e.preventDefault();
                 e.dataTransfer.effectAllowed = "none";
                 e.dataTransfer.dropEffect = "none";
@@ -234,25 +234,28 @@ export default {
         });
     },
     mounted() {
-        // https://github.com/websanova/vue-upload
-        this.$upload.on(this.uploadId, {
-            url: this.$foswiki.getScriptUrl('upload', this.internalWeb, this.internalTopic),
-            maxSizePerFile: parseInt(this.$foswiki.getPreference('ATTACHFILESIZELIMIT')) * 1024 || 0,  //ATTACHFILESIZELIMIT comes as kb, however we need bytes here
-            extensions: this.extensions ? this.extensions.replace(/\s/g, '').split(/,/) : false,
-            async: false,
-            maxFilesSelect: 20,
-            http: this.uploadHttp,
-            name: 'filepath',
-            onError: this.uploadOnError,
-            onSuccess: this.uploadOnSuccess,
-            onStart: this.uploadOnStart,
-            onQueue: this.uploadOnQueue,
-            dropzoneId: this.dropzoneId,
-            body: {
-                noredirect: 1,
-                block: this.block,
-            },
-        });
+        //only init upload component if user can upload in current state
+        if( canUpload ) {
+            // https://github.com/websanova/vue-upload
+            this.$upload.on(this.uploadId, {
+                url: this.$foswiki.getScriptUrl('upload', this.internalWeb, this.internalTopic),
+                maxSizePerFile: parseInt(this.$foswiki.getPreference('ATTACHFILESIZELIMIT')) * 1024 || 0,  //ATTACHFILESIZELIMIT comes as kb, however we need bytes here
+                extensions: this.extensions ? this.extensions.replace(/\s/g, '').split(/,/) : false,
+                async: false,
+                maxFilesSelect: 20,
+                http: this.uploadHttp,
+                name: 'filepath',
+                onError: this.uploadOnError,
+                onSuccess: this.uploadOnSuccess,
+                onStart: this.uploadOnStart,
+                onQueue: this.uploadOnQueue,
+                dropzoneId: this.dropzoneId,
+                body: {
+                    noredirect: 1,
+                    block: this.block,
+                },
+            });
+        }
     },
     beforeDestroy() {
         this.$upload.off(this.uploadId);
