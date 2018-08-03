@@ -235,7 +235,7 @@ export default {
     },
     mounted() {
         //only init upload component if user can upload in current state
-        if( canUpload ) {
+        if( this.canUpload ) {
             // https://github.com/websanova/vue-upload
             this.$upload.on(this.uploadId, {
                 url: this.$foswiki.getScriptUrl('upload', this.internalWeb, this.internalTopic),
