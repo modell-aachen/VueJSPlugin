@@ -414,7 +414,7 @@ $tile-size: 114px;
         width: $tile-size;
         height: $tile-size;
         border-radius: $ma-border-radius;
-        line-height: $tile-size;
+        line-height: 1.5rem;
         text-align: center;
         margin-left: map-get($spacings, xxxlarge);
         &:first-child {
