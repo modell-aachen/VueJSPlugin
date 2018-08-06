@@ -325,19 +325,21 @@ $inputMinWidth: 2px;
 $spacing: 3px;
 .v-select {
     .option-item {
-        padding: 2px 4px;
+        padding: 0px 4px;
         background-color: #e5e8eb;
         border-radius: 4px;
         border: 1px solid #b0c0c4;
-        height: 20px;
-        margin-top: 10px;
+        min-height: 20px;
+        margin: 4px 0;
     }
     .text-item {
         height: 20px;
-        margin: 0 $spacing;
-        margin-top: 10px;
+        margin: 5px $spacing;
         position: relative;
         padding: 0 $inputMinWidth;
+        input[type=text]{
+           padding-top: 0px;
+        }
     }
     .text-placeholder {
         visibility: hidden;

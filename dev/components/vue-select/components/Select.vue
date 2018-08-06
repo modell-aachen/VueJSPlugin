@@ -825,7 +825,7 @@ export default {
         white-space: normal;
         width: 100%;
         cursor: text;
-        height: unset;
+        height: auto;
 
         &.open {
             background-color:transparent;
@@ -833,7 +833,7 @@ export default {
         }
 
         &.multi {
-            height: initial;
+            height: auto;
             margin: 0;
         }
 
@@ -851,13 +851,12 @@ export default {
 
     .selected-tag {
         &.multi {
-            padding: 2px 4px;
+            padding: 0 rem(4px);
             background-color: #e5e8eb;
             border-radius: 4px;
             border: 1px solid #b0c0c4;
-            height: 20px;
-            margin-top: rem(9px);
-            margin-right: 4px;
+            min-height: rem(20px);
+            margin: rem(4px);
         }
         &, &:hover {
             color: rgba(0, 0, 0, .54);
@@ -866,7 +865,6 @@ export default {
             color: inherit;
         }
         font-size: 12px;
-        white-space: nowrap;
         flex: initial;
         float: left;
         .close-icon {
@@ -880,19 +878,16 @@ export default {
         .open-indicator {
             padding: rem(8px) 1em; // 8px = 32 - 2*border - 14px(icon)
         }
-        .selected-tag {
-            &.multi {
-                margin-top: rem(5px);
-            }
-        }
         .v-select .selected-list {
-            padding-left: 4px;
-            padding-right: 4px;
+            padding: rem(2px);
         }
         .single-tag[type="text"] {
-            padding: rem(7px) rem(8px);
-            height: rem(30px);
+            padding: rem(2px) rem(8px);
+            height: rem(20px);
             line-height: rem(16px); // 32 - 2*border - 2*margin
+        }
+        .form-control__wrapper {
+            height: rem(20px);
         }
     }
 
@@ -916,9 +911,9 @@ export default {
     }
 
     input[type=text] {
-        height: rem(38px);
-        padding-top: rem(9px);
-        padding-bottom: rem(9px);
+        min-height: rem(20px);
+        padding-top: 0px;
+        padding-bottom: 0px;
         &, &:focus, &:active {
             border: none;
             background-color: transparent;
@@ -950,8 +945,10 @@ export default {
 
     .selected-list {
         height: 100%;
-        padding-left: 8px;
-        padding-right: 8px;
+        padding: rem(4px) rem(8px);
+        .form-control-multi{
+            height: rem(30px);
+        }
     }
 
     .form-control__wrapper {
@@ -968,6 +965,9 @@ export default {
             padding-top: 0px;
             padding-bottom: 0px;
         }
+        &.multi {
+            height: rem(30px);
+        }
     }
 
     .input-area {
@@ -979,11 +979,12 @@ export default {
     .input-area.input-area-small {
         min-height: rem(30px);
         .form-control__wrapper{
-            height: rem(30px);
+            height: rem(20px);
             width: rem(10px);
+            padding: rem(2px);
         }
         input.input-area-small{
-            height: rem(30px);
+            height: rem(20px);
         }
     }
 
