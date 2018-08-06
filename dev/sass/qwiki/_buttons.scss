@@ -121,7 +121,7 @@ $icon-font-size: 1.45em;
         }
     }
     &.icon {
-       padding: unset;
+       padding: inherit;
        .button-icon {
            line-height: inherit;
            margin-right: 0px;

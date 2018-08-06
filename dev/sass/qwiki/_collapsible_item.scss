@@ -69,9 +69,11 @@ $ma-grid-padding: rem-calc(0 4 0 4);
 // modified elements (BEM moodifier class)
 .ma-simple-item-title.ma-simple-item-title--small,
 .ma-collapsible-item-title.ma-collapsible-item-title--small {
-    height: rem-calc(48);
+    min-height: rem-calc(48);
+    height: auto;
     h3 {
         font-size: rem-calc(14); //TBD: should we place this one here?
+        padding: rem-calc(8) 0;
     }
 }
 
