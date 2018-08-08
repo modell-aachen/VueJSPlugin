@@ -148,7 +148,7 @@ sub tagVUEATTACHMENTS {
     }
 
     my $vueClientToken = getClientToken();
-    return "<literal><div class=\"flatskin-wrapped vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-attachments attachments-json=\"$json\" web=\"$web\" topic=\"$topic\" block=\"$block\" readonly=\"$readonly\" attachment-name-filter=\"$attachmentNameFilter\" $wlaIntegration></vue-attachments></div></literal>";
+    return "<literal><div class=\"flatskin-wrapped vue-container vue-attachments-wrapper\" data-vue-client-token=\"$vueClientToken\"><vue-attachments attachments-json=\"$json\" web=\"$web\" topic=\"$topic\" block=\"$block\" readonly=\"$readonly\" attachment-name-filter=\"$attachmentNameFilter\" $wlaIntegration></vue-attachments></div></literal>";
 }
 
 sub beforeAttachHandler {
