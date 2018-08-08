@@ -851,7 +851,7 @@ export default {
 
     .selected-tag {
         &.multi {
-            padding: 0 rem(4px);
+            padding: rem(2px) rem(4px);
             background-color: #e5e8eb;
             border-radius: 4px;
             border: 1px solid #b0c0c4;
@@ -897,9 +897,9 @@ export default {
         background-color: transparent;
         &[type="text"] {
             width: initial;
-            padding: rem(7px) rem(8px);
-            height: rem(38px);
-            line-height: rem(24px); // 40 - 2*border - 2*margin
+            padding: rem(4px) rem(8px);
+            height: rem(20px);
+            line-height: rem(12px); // 40 - 2*border - 2*margin
         }
     }
 
@@ -945,7 +945,7 @@ export default {
 
     .selected-list {
         height: 100%;
-        padding: rem(4px) rem(8px);
+        padding: rem(3px) rem(8px);
         .form-control-multi{
             height: rem(30px);
         }
