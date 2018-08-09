@@ -851,12 +851,17 @@ export default {
 
     .selected-tag {
         &.multi {
-            padding: rem(2px) rem(4px);
+            padding: 0 rem(4px);
+            &, & a {
+                display: inline-block;
+                line-height: rem(20px);
+                font-size: rem(12px);
+            }
             background-color: #e5e8eb;
             border-radius: 4px;
             border: 1px solid #b0c0c4;
-            min-height: rem(20px);
-            margin: rem(4px);
+            height: rem(20px);
+            margin: rem(5px) rem(4px);
         }
         &, &:hover {
             color: rgba(0, 0, 0, .54);
@@ -878,8 +883,11 @@ export default {
         .open-indicator {
             padding: rem(8px) 1em; // 8px = 32 - 2*border - 14px(icon)
         }
-        .v-select .selected-list {
-            padding: rem(2px);
+        .selected-list {
+            margin-top: rem(-1px);
+            margin-bottom: rem(-1px);
+            padding-top: 0;
+            padding-bottom: 0;
         }
         .single-tag[type="text"] {
             padding: rem(2px) rem(8px);
@@ -888,6 +896,9 @@ export default {
         }
         .form-control__wrapper {
             height: rem(20px);
+            .multi {
+                margin-top: rem(5px);
+            }
         }
     }
 
@@ -962,6 +973,7 @@ export default {
         min-width: 100px;
         width: 100%;
         &:not(.multi) {
+            height: rem(21px);
             padding-top: 0px;
             padding-bottom: 0px;
         }
@@ -981,7 +993,7 @@ export default {
         .form-control__wrapper{
             height: rem(20px);
             width: rem(10px);
-            padding: rem(2px);
+            padding: 0 rem(2px);
         }
         input.input-area-small{
             height: rem(20px);
