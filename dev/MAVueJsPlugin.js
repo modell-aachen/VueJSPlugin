@@ -45,6 +45,7 @@ import VueUpload from '@websanova/vue-upload';
 import {mapState} from 'vuex';
 import isEqual from 'lodash.isequal';
 import cloneDeep from 'lodash.clonedeep';
+import VueVisible from 'vue-visible';
 
 class MAVueJsPlugin {
     constructor(options) {
@@ -70,6 +71,7 @@ class MAVueJsPlugin {
         };
         Vue.use(VeeValidate, veeValidateConfig);
         Vue.use(new this.alertPlugin);
+        Vue.use(VueVisible);
 
         //Component registrations
         Vue.component('vue-attachments', VueAttachments);
