@@ -30,7 +30,7 @@
                     class="grid-x">
                     <component
                         :is="$slots.description !== undefined || description !== undefined ? 'b' : 'span'"
-                        class="cell">
+                        class="cell auto">
                         <slot/>
                     </component>
                     <span
@@ -43,7 +43,6 @@
                     v-if="!isSwitch && ($slots.description || description)"
                     class="grid-x">
                     <template v-if="description">
-                        <vue-spacer/>
                         {{ description }}
                     </template>
                     <slot
