@@ -23,7 +23,8 @@
                 @change="onChange">
             <label
                 :class="{'switch-paddle': isSwitch}"
-                :for="id || value">
+                :for="id || value"
+                class="ma-switch-label">
                 <span
                     v-if="!isSwitch"
                     class="grid-x">
@@ -183,7 +184,7 @@ export default {
         border: 1px solid #B0C0C4;
         color: $ma-secondary-text;
     }
-    & > label {
+    .ma-switch-label {
         width: 100%;
     }
     .input-elements {
