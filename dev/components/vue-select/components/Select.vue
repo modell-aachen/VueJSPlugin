@@ -860,7 +860,7 @@ export default {
             background-color: #e5e8eb;
             border-radius: 4px;
             border: 1px solid #b0c0c4;
-            height: rem(20px);
+            min-height: rem(20px);
             margin: rem(5px) rem(4px);
         }
         &, &:hover {
