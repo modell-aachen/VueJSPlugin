@@ -11,7 +11,7 @@
                         <div class="cell shrink align-self-middle handle-container">
                             <span class="fal fa-bars"/>
                         </div>
-                        <div class="cell shrink align-self-middle">
+                        <div class="cell auto align-self-middle">
                             <vue-header3
                                 :sublabel="item.subLabel"
                                 :status="item.status">{{ item.label || item.description }}</vue-header3>
@@ -22,6 +22,7 @@
                     v-if="itemRemoveable"
                     class="cell shrink align-self-middle ma-simple-item-button">
                     <vue-button
+                        v-visible="showDeleteButton"
                         type="icon"
                         icon="far fa-times"
                         @click.native.prevent="$emit('remove-item', item)" />
@@ -48,6 +49,10 @@ export default {
             default: false
         },
         isDraggable: {
+            type: Boolean,
+            default: true
+        },
+        showDeleteButton: {
             type: Boolean,
             default: true
         }

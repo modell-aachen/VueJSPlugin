@@ -39,6 +39,10 @@ class AlertPlugin {
                 baseConfig.showCancelButton = true;
                 baseConfig.confirmButtonClass = "delete button";
                 break;
+            case 'confirm':
+                baseConfig.showCancelButton = true;
+                baseConfig.confirmButtonClass = "primary button";
+                break;
             case 'success':
                 baseConfig.type = 'success';
                 baseConfig.showCancelButton = false;

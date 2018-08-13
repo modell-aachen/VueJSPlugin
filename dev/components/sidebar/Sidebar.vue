@@ -130,13 +130,14 @@ export default {
   }
 
   .sidebar-enter, .sidebar-leave-to {
-    transform: translate3d(100%,0,0);
+    transform: translateX(100%);
   }
   .sidebar-enter-active, .sidebar-leave-active {
     transition: transform .3s ease-in-out;
   }
 
   .sidebar-container {
+    animation-fill-mode: forwards;
     position: fixed;
     top: 0;
     bottom: 0;

@@ -14,6 +14,7 @@
                     v-if="( buttonCallback || buttonHref) && buttonText"
                     class="ma-margin-top-large">
                     <vue-button
+                        ref="actionButton"
                         :title="buttonText"
                         :href="buttonHref"
                         type="primary"

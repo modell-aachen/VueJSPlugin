@@ -4,7 +4,9 @@
             <slot name="header"/>
         </div>
         <div class="sidebar-content grid-x">
-            <slot name="content"/>
+            <div class="cell">
+                <slot name="content"/>
+            </div>
         </div>
         <div class="sidebar-actions grid-x">
             <slot name="actions"/>

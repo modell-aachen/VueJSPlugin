@@ -399,6 +399,10 @@ export default {
 @import '../../sass/settings.scss';
 $tile-size: 114px;
 
+.flatskin-wrapped.vue-attachments-wrapper {
+    background-color: transparent;
+}
+
 .vue-attachments,
 .flatskin-wrapped .vue-attachments {
     flex-wrap: wrap;

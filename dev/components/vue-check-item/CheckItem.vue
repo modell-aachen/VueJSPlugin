@@ -23,13 +23,14 @@
                 @change="onChange">
             <label
                 :class="{'switch-paddle': isSwitch}"
-                :for="id || value">
+                :for="id || value"
+                class="ma-switch-label">
                 <span
                     v-if="!isSwitch"
                     class="grid-x">
                     <component
                         :is="$slots.description !== undefined || description !== undefined ? 'b' : 'span'"
-                        class="cell">
+                        class="cell auto">
                         <slot/>
                     </component>
                     <span
@@ -42,7 +43,6 @@
                     v-if="!isSwitch && ($slots.description || description)"
                     class="grid-x">
                     <template v-if="description">
-                        <vue-spacer/>
                         {{ description }}
                     </template>
                     <slot
@@ -183,7 +183,7 @@ export default {
         border: 1px solid #B0C0C4;
         color: $ma-secondary-text;
     }
-    & > label {
+    .ma-switch-label {
         width: 100%;
     }
     .input-elements {
