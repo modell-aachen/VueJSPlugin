@@ -12,9 +12,9 @@
   dependencies:
     lodash "^4.17.4"
 
-"@websanova/vue-upload@^0.2.14-beta":
-  version "0.2.14-beta"
-  resolved "https://registry.yarnpkg.com/@websanova/vue-upload/-/vue-upload-0.2.14-beta.tgz#eacf6f9506b720a435b60882fab0e6b6666b612a"
+"@websanova/vue-upload@^1.0.2-beta":
+  version "1.0.2-beta"
+  resolved "https://registry.yarnpkg.com/@websanova/vue-upload/-/vue-upload-1.0.2-beta.tgz#6a747cc9c058918289aec7bca0acae49c8091ccd"
 
 "FrontendUnitTestLibrary@git://github.com/modell-aachen/FrontendUnitTestLibrary.git":
   version "1.0.4"
@@ -2675,6 +2675,10 @@ form-data@~2.3.1:
     asynckit "^0.4.0"
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
+
+formdata-polyfill@^3.0.11:
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/formdata-polyfill/-/formdata-polyfill-3.0.11.tgz#c82b4b4bea3356c0a6752219e54ce1edb2a7fb5b"
 
 from2@^2.1.1:
   version "2.3.0"

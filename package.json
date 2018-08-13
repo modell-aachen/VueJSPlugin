@@ -20,7 +20,6 @@
   "author": "Modell Aachen GmbH",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@websanova/vue-upload": "^0.2.14-beta",
     "FrontendUnitTestLibrary": "git://github.com/modell-aachen/FrontendUnitTestLibrary.git",
     "babel-core": "^6.3.17",
     "babel-eslint": "^7.1.1",
@@ -64,7 +63,9 @@
   },
   "dependencies": {
     "@vue/test-utils": "^1.0.0-beta.22",
+    "@websanova/vue-upload": "^1.0.2-beta",
     "babel-plugin-transform-es2017-object-entries": "^0.0.4",
+    "formdata-polyfill": "^3.0.11",
     "i18next": "^10.2.1",
     "jsdom": "^11.7.0",
     "karma-jsdom-launcher": "^6.1.3",

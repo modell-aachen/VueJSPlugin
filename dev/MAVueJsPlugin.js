@@ -42,6 +42,7 @@ import VueClickOutside from 'vue-click-outside';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
 import VueUpload from '@websanova/vue-upload';
+import 'formdata-polyfill';
 import {mapState} from 'vuex';
 import isEqual from 'lodash.isequal';
 import cloneDeep from 'lodash.clonedeep';

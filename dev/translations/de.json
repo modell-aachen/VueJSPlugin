@@ -12,6 +12,7 @@
     "upload_error_end": "Das Problem trat bei folgender Datei auf: {{0}}",
     "upload_file": "Datei hochladen",
     "upload_dnd": "oder Dateien hierher ziehen",
+    "upload_dnd_area": "Dateien zum Hochladen hier ablegen",
     "upload_navigate": "Achtung, wenn Sie die Seite verlassen werden diese Dateitransfers abgebrochen: {{0}}",
     "ok": "Ok",
     "dummy": "dummy"

@@ -10,6 +10,7 @@
     "upload_error_end": "The issue occurred with the following file: {{0}}",
     "upload_file": "Upload file",
     "upload_dnd": "or drag files here",
+    "upload_dnd_area": "Place files here for upload",
     "upload_navigate": "Attention, leaving this page will cancel the following uploads: {{0}}",
     "ok": "Ok",
     "dummy": "dummy"
