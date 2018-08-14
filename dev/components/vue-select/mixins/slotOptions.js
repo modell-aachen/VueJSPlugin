@@ -93,7 +93,7 @@ module.exports = {
     methods: {
         getSlotData(offset) {
             if(this.dataUrl === '') {
-                let filteredOptions = this.slotOptions.filter(item => item.compare.indexOf(this.search) !== -1);
+                let filteredOptions = this.slotOptions.filter(item => item.compare.indexOf(this.search.toLocaleLowerCase()) !== -1);
                 filteredOptions = filteredOptions.slice(offset);
                 return Promise.resolve(filteredOptions);
             }
