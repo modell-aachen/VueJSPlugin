@@ -598,3 +598,34 @@ The standard foundation button classes are used.
 %ENDTABPANE%
 </verbatim>
 
+---++ Select2
+
+---+++ Single-Select
+
+%JQREQUIRE{"select2"}%
+
+<div class="grid-x">
+<div class="cell medium-4">
+<select class='jqSelect2 {placeholder: "Select a burger", width: "element"}'>
+<option>Hamburger</option>
+<option>Hamburger deluxe with gold plating</option>
+<option>Cheeseburger</option>
+<option>Joppiburger</option>
+</select>
+</div>
+</div>
+
+---+++ Multi-Select
+
+%JQREQUIRE{"select2"}%
+<div class="grid-x">
+<div class="cell medium-4">
+<select class='jqSelect2 {placeholder: "Select a burger", width: "element", multiple: true}'>
+<option>Hamburger</option>
+<option>Hamburger deluxe with gold plating</option>
+<option>Cheeseburger</option>
+<option>Joppiburger</option>
+<option>A Royale with cheese (a Quarter Pounder with cheese) with a le Big-Mac (Big Mac); extra bacon, large fries and slaw</option>
+</select>
+</div>
+</div>
