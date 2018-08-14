@@ -242,7 +242,8 @@ export default {
                 maxSizePerFile: parseInt(this.$foswiki.getPreference('ATTACHFILESIZELIMIT')) * 1024 || 0,  //ATTACHFILESIZELIMIT comes as kb, however we need bytes here
                 extensions: this.extensions ? this.extensions.replace(/\s/g, '').split(/,/) : false,
                 async: false,
-                maxFilesSelect: 20,
+                maxFilesInProgress: 1,
+                maxFilesSelect: 40,
                 http: this.uploadHttp,
                 name: 'filepath',
                 onError: this.uploadOnError,
