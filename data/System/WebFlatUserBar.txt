@@ -1,4 +1,0 @@
-<ul>%IF{"istopic '%WIKIUSERNAME%'"
-  then="<li>[[%WIKIUSERNAME%][%MAKETEXT{"MyPage"}%]]</li>"}%%IF{"$ LOGOUT != ''"
-  then='<li>%LOGOUT%</li>'}% %IF{"$ LOGIN != ''"
-  then='<li>%LOGIN%</li>'}%</ul>

@@ -1,2 +1,0 @@
-%ADDTOZONE{"head" text="<link rel='stylesheet' type='text/css' media='all' href='%PUBURLPATH%/%SYSTEMWEB%/FlatSkin/css/flatskin.min.css' />"}%
-%INCLUDE{"FlatSkinDemoSite"}%

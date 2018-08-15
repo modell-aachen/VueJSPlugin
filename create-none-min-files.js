@@ -13,10 +13,7 @@ const path = require('path');
 const destDir = path.join(__dirname, 'pub/System/FlatSkin');
 
 const fileCopyMap = [
-    { from: 'css/flatskin.min.css', to: 'css/flatskin.css' },
     { from: 'css/flatskin_wrapped.min.css', to: 'css/flatskin_wrapped.css' },
-    { from: 'js/flatskin.min.js', to: 'js/flatskin.js' },
-    { from: 'js/foundation.min.js', to: 'js/foundation.js' },
 ]
 
 for( let f of fileCopyMap ) {

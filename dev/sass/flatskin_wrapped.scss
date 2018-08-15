@@ -33,8 +33,6 @@ html {
     // Foundation for Sites 6
     //
     @import '~foundation-sites/scss/foundation';
-    // Text alignment classes
-    @import '~foundation-sites/scss/typography/alignment';
 
     //Here we put all styles foundation sets on html or body.
     //Unfortunately this is copy paste
@@ -66,14 +64,7 @@ html {
     @include foundation-flex-classes;
     @include foundation-visibility-classes;
     @include foundation-float-classes;
-    @include foundation-menu;
-    @include foundation-label;
-    @include foundation-callout;
-    @include foundation-accordion;
-    @include foundation-accordion-menu;
-    @include foundation-switch;
     @include foundation-table(true);
-    @include foundation-dropdown;
     @import 'qwiki/mixins';
     @import 'qwiki/globals';
     @import 'qwiki/base';

@@ -1,10 +1,17 @@
 %META:TOPICPARENT{name="FlatSkinPlugin"}%
+
+---+ Switch to FlatSkin-Wrapped
+
+Please use flatskin-wrapped instead of skin=flat.
+
+Find the showroom here: [[FlatSkinWrappedOverview]]
+
+<div style="display: none">
+%STARTINCLUDE%
 %JQREQUIRE{"chili"}%
 ---+ FlatSkin Overview
 
 %TOC%
-
-%ADDTOZONE{"head" text="<link rel='stylesheet' type='text/css' media='all' href='%PUBURLPATH%/%SYSTEMWEB%/FontAwesomeContrib/css/font-awesome.min.css' />"}%
 
 ---++ About this Topic
 This topic provides an overview of the FlatSkin styles.
@@ -493,22 +500,6 @@ The standard foundation button classes are used.
          <label for="rd-drei">Radio-Item</label><br>
       </form>
    </div>
-   <div class="cell large-4">
-      <form>
-         <div class="ma-switch">
-            <input class="switch-input" id="switch-eins" type="checkbox" name="demo">
-            <label class="switch-paddle" for="switch-eins"></label>Toggle-Input
-         </div>
-         <div class="ma-switch">
-            <input class="switch-input" id="switch-zwei" type="checkbox" name="demo">
-            <label class="switch-paddle" for="switch-zwei"></label>Toggle-Input
-         </div>
-         <div class="ma-switch">
-            <input class="switch-input" id="switch-drei" type="checkbox" name="demo">
-            <label class="switch-paddle" for="switch-drei"></label>Toggle-Input
-         </div>
-      </form>
-   </div>
 </div>
 <verbatim class="html">
 <div class="grid-x">
@@ -530,22 +521,6 @@ The standard foundation button classes are used.
          <label for="rd-zwei">Radio-Item</label><br>
          <input type="radio" name="demo" id="rd-drei">
          <label for="rd-drei">Radio-Item</label><br>
-      </form>
-   </div>
-   <div class="cell large-4">
-      <form>
-         <div class="ma-switch">
-            <input class="switch-input" id="switch-eins" type="checkbox" name="demo">
-            <label class="switch-paddle" for="switch-eins"></label>Toggle-Input
-         </div>
-         <div class="ma-switch">
-            <input class="switch-input" id="switch-zwei" type="checkbox" name="demo">
-            <label class="switch-paddle" for="switch-zwei"></label>Toggle-Input
-         </div>
-         <div class="ma-switch">
-            <input class="switch-input" id="switch-drei" type="checkbox" name="demo">
-            <label class="switch-paddle" for="switch-drei"></label>Toggle-Input
-         </div>
       </form>
    </div>
 </div>
@@ -628,4 +603,6 @@ The standard foundation button classes are used.
 <option>A Royale with cheese (a Quarter Pounder with cheese) with a le Big-Mac (Big Mac); extra bacon, large fries and slaw</option>
 </select>
 </div>
+</div>
+%STOPINCLUDE%
 </div>

@@ -14,7 +14,6 @@ const destDir = path.join(__dirname, 'pub/System/FlatSkin');
 module.exports = [{
     devtool: 'source-map',
     entry: {
-      "flatskin": path.join(devDir, 'sass', 'flatskin.scss'),
       "flatskin_wrapped": path.join(devDir, 'sass', 'flatskin_wrapped.scss'),
     },
     output: {
@@ -100,35 +99,4 @@ module.exports = [{
       ]
     }
   },
-  {
-    devtool: 'source-map',
-    entry: {
-      "flatskin": path.join(devDir, 'js', 'flatskin.js'),
-      "foundation": path.join(devDir, 'js', 'foundation.js'),
-    },
-    output: {
-      path: path.join(destDir, 'js'),
-      filename: '[name].min.js',
-    },
-    watchOptions: {
-      aggregateTimeout: 250,
-      ignored: '/node_modules/',
-      poll: 1000
-    },
-    plugins: [
-      new zip({
-        minRation: 1,
-        include: [/\.(?:js|css)$/]
-      }),
-      new ProgressBarPlugin()
-    ],
-    module: {
-      rules: [{
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [devDir, testDir],
-        options: babelOpts
-      }]
-    }
-  }
 ]
