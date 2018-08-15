@@ -8,9 +8,6 @@
                     :class="{'auto': itemRemoveable, 'ma-simple-item-title--small': isSmallItem}"
                     class="cell ma-simple-item-title">
                     <div class="grid-x ma-collapsible-item-title-left grid-padding-x">
-                        <div class="cell shrink align-self-middle handle-container">
-                            <span class="fal fa-bars"/>
-                        </div>
                         <div class="cell auto align-self-middle">
                             <vue-header3
                                 :sublabel="item.subLabel"
