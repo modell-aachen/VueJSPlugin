@@ -69,7 +69,7 @@ export default {
   cursor: move;
 }
 
-.ma-simple-item h3 {
+.ma-simple-wfapp-list .ma-block .ma-simple-item h3 {
   margin-bottom: 0;
 }
 
