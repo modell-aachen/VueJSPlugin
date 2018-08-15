@@ -68,7 +68,6 @@ html {
     @include foundation-float-classes;
     @include foundation-menu;
     @include foundation-label;
-    @include foundation-badge;
     @include foundation-callout;
     @include foundation-accordion;
     @include foundation-accordion-menu;
@@ -92,5 +91,5 @@ html {
     @import 'qwiki/content';
     @import 'qwiki/document_head';
     @import 'qwiki/select2skin';
-    //@import 'qwiki/colors';
+    @import 'qwiki/badge';
 }
