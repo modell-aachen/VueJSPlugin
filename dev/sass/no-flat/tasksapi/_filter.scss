@@ -127,6 +127,7 @@
       min-width: 118px;
       width: 118px;
       padding: 3px;
+      box-sizing: content-box; //IE height fix
     }
 
     select {
