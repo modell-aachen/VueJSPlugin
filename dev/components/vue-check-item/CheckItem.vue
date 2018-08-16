@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="{'ma-switch': true, 'has-label': label || labelDummy, 'is-small': isSmall}">
+        :class="{'ma-switch': true, 'has-label': label || labelDummy, 'is-small': isSmall, 'has-badge': badge}">
         <label
             v-if="labelDummy && !label"
             class="description-label label-dummy">
@@ -174,24 +174,32 @@ export default {
 
 .ma-switch {
     &.has-label {
-        margin-top: 0px;
-        margin-bottom: map-get($spacings, medium)
+        margin-top: map-get($spacings, medium);
+    }
+    &.has-badge {
+        margin-top: map-get($spacings, medium);
     }
     .badge {
         background-color: $ma-light-grey;
         border-radius: $ma-border-radius;
         border: 1px solid #B0C0C4;
         color: $ma-secondary-text;
+        min-height: 24px;
+        line-height: 16px;
+        padding: 3px 5px;
+        font-size: 12px;
+        display: inline-table;
     }
     .ma-switch-label {
         width: 100%;
+        margin-top: 0px;
     }
     .input-elements {
-        min-height: rem(40px);
+        min-height: rem(20px);
     }
     &.is-small { // align with vue-input-text
         .input-elements {
-            min-height: rem(32px);
+            min-height: rem(20px);
 
             label {
                 margin-top: rem(6px);

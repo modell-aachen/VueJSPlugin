@@ -260,21 +260,21 @@ The following examples provide an overview of its functionality. The correspondi
   <div class="cell large-4">
     <h3>With label</h3>
     <vue-check-item name="zutaten[]" label="salty" value="salz" v-model="values" checked>Salz</vue-check-item>
-    <vue-check-item name="zutaten[]" label="sweet" value="zucker">Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" label="sweet" value="zucker" v-model="values">Zucker</vue-check-item>
     <vue-check-item name="zutaten[]" label="hot"  value="pfeffer" v-model="values" >Pfeffer</vue-check-item>
     {{values}}<br>
   </div>
   <div class="cell large-4">
     <h3>With dummy</h3>
     <vue-check-item name="zutaten[]" label-dummy value="salz" v-model="values" checked>Salz</vue-check-item>
-    <vue-check-item name="zutaten[]" label-dummy value="zucker">Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" label-dummy value="zucker" v-model="values">Zucker</vue-check-item>
     <vue-check-item name="zutaten[]" label-dummy value="pfeffer" v-model="values" >Pfeffer</vue-check-item>
     {{values}}<br>
   </div>
   <div class="cell large-4">
     <h3>without label or dummy</h3>
     <vue-check-item name="zutaten[]" value="salz" v-model="values" checked>Salz</vue-check-item>
-    <vue-check-item name="zutaten[]" value="zucker">Zucker</vue-check-item>
+    <vue-check-item name="zutaten[]" value="zucker" v-model="values">Zucker</vue-check-item>
     <vue-check-item name="zutaten[]" value="pfeffer" v-model="values" >Pfeffer</vue-check-item>
     {{values}}<br>
   </div>
