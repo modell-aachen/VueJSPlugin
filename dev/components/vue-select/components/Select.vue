@@ -766,7 +766,6 @@ export default {
     .dropdown-menu {
         overflow-y: auto;
         position: absolute;
-        top: 100%;
         left: 0;
         z-index: 1000;
         float: left;
@@ -959,6 +958,10 @@ export default {
         padding: rem(3px) rem(8px);
         .form-control-multi{
             height: rem(30px);
+        }
+
+        > input[type=text] {
+            margin: -1*rem(4px) 0;
         }
     }
 
