@@ -184,10 +184,10 @@ export default {
         border-radius: $ma-border-radius;
         border: 1px solid #B0C0C4;
         color: $ma-secondary-text;
-        min-height: 24px;
-        line-height: 16px;
-        padding: 3px 5px;
-        font-size: 12px;
+        min-height: rem(24px);
+        line-height: rem(16px);
+        padding: rem(3px) rem(5px);
+        font-size: rem(12px);
         display: inline-table;
     }
     .ma-switch-label {
