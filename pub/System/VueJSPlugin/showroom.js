@@ -29,7 +29,8 @@ Vue.onDocumentReady(function(){
         template: '#check-item-template-2',
         data: {
           values: [],
-          payment: ''
+          payment: '',
+          payment_no_badge: ''
         }
     });
     new Vue({

@@ -33,15 +33,17 @@
                         class="cell auto">
                         <slot/>
                     </component>
-                    <span
+                    <div
                         v-if="badge"
-                        class="cell shrink badge">
-                        {{ badge }}
-                    </span>
+                        class="cell shrink badge-container">
+                        <div class="badge">
+                            {{ badge }}
+                        </div>
+                    </div>
                 </span>
                 <span
                     v-if="!isSwitch && ($slots.description || description)"
-                    class="grid-x">
+                    class="grid-x ma-margin-top-small">
                     <template v-if="description">
                         {{ description }}
                     </template>
@@ -176,26 +178,16 @@ export default {
     &.has-label {
         margin-top: map-get($spacings, medium);
     }
-    &.has-badge {
-        margin-top: map-get($spacings, medium);
-    }
-    .badge {
-        background-color: $ma-light-grey;
-        border-radius: $ma-border-radius;
-        border: 1px solid #B0C0C4;
-        color: $ma-secondary-text;
-        min-height: rem(24px);
-        line-height: rem(16px);
-        padding: rem(3px) rem(5px);
-        font-size: rem(12px);
-        display: inline-table;
-    }
     .ma-switch-label {
         width: 100%;
         margin-top: 0px;
     }
     .input-elements {
         min-height: rem(20px);
+    }
+    .badge-container {
+        height: 20px;
+        overflow: show;
     }
     &.is-small { // align with vue-input-text
         margin-top: 0px;

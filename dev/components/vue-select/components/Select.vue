@@ -28,7 +28,7 @@
 
                     <span
                         v-for="(option,index) in internalValue"
-                        :class="{multi: multiple}"
+                        :class="{multi: multiple, badge: multiple}"
                         :key="index"
                         class="selected-tag">
                         <template v-if="!multiple && !open">
@@ -834,6 +834,10 @@ export default {
         &.multi {
             height: auto;
             margin: 0;
+            .selected-list {
+                margin-left: -4px;
+                margin-right: -4px;
+            }
         }
 
         &.disabled {
@@ -850,17 +854,10 @@ export default {
 
     .selected-tag {
         &.multi {
-            padding: 0 rem(4px);
+            margin: rem(4px);
             &, & a {
                 display: inline-block;
-                line-height: rem(20px);
-                font-size: rem(12px);
             }
-            background-color: #e5e8eb;
-            border-radius: 4px;
-            border: 1px solid #b0c0c4;
-            min-height: rem(20px);
-            margin: rem(5px) rem(4px);
         }
         &, &:hover {
             color: rgba(0, 0, 0, .54);
@@ -868,7 +865,7 @@ export default {
         a:hover {
             color: inherit;
         }
-        font-size: 12px;
+        font-size: rem(12px);
         flex: initial;
         float: left;
         .close-icon {
@@ -878,7 +875,7 @@ export default {
             margin: 0px;
         }
     }
-    .input-area-small{
+    .input-area-small {
         .open-indicator {
             padding: rem(8px) 1em; // 8px = 32 - 2*border - 14px(icon)
         }
@@ -889,15 +886,13 @@ export default {
             padding-bottom: 0;
         }
         .single-tag[type="text"] {
-            padding: rem(2px) rem(8px);
-            height: rem(20px);
-            line-height: rem(16px); // 32 - 2*border - 2*margin
+            padding: 0;
+            height: rem(30px);
+            line-height: rem(30px);
         }
         .form-control__wrapper {
-            height: rem(20px);
-            .multi {
-                margin-top: rem(5px);
-            }
+            min-height: rem(32px);
+            line-height: rem(32px);
         }
     }
 
@@ -907,9 +902,9 @@ export default {
         background-color: transparent;
         &[type="text"] {
             width: initial;
-            padding: rem(4px) rem(8px);
-            height: rem(20px);
-            line-height: rem(12px); // 40 - 2*border - 2*margin
+            padding: 0;
+            height: rem(38px);
+            line-height: rem(38px); // 40 - 2*border
         }
     }
 
@@ -922,8 +917,7 @@ export default {
 
     input[type=text] {
         min-height: rem(20px);
-        padding-top: 0px;
-        padding-bottom: 0px;
+        padding: 0px;
         &, &:focus, &:active {
             border: none;
             background-color: transparent;
@@ -955,33 +949,28 @@ export default {
 
     .selected-list {
         height: 100%;
-        padding: rem(3px) rem(8px);
-        .form-control-multi{
-            height: rem(30px);
-        }
-
-        > input[type=text] {
-            margin: -1*rem(4px) 0;
-        }
+        padding: rem(0px) rem(7px);
     }
 
     .form-control__wrapper {
         display:block;
         flex: 1 1 auto;
+        min-height: rem(32px);
+        line-height: rem(32px);
+    }
+    .multi .form-control__wrapper {
+        margin-left: rem(4px);
     }
 
     .form-control {
-        line-height: 18.8px;
         margin-bottom: 0px;
         min-width: 100px;
         width: 100%;
         &:not(.multi) {
-            height: rem(21px);
-            padding-top: 0px;
-            padding-bottom: 0px;
+            height: rem(38px);
         }
         &.multi {
-            height: rem(30px);
+            height: rem(32px);
         }
     }
 
@@ -994,21 +983,22 @@ export default {
     .input-area.input-area-small {
         min-height: rem(30px);
         .form-control__wrapper{
-            height: rem(20px);
             width: rem(10px);
-            padding: 0 rem(2px);
         }
         input.input-area-small{
-            height: rem(20px);
+            height: rem(32px);
         }
     }
 
+    .multi .input-area:not(.input-area-small) .selected-list {
+        margin-top: rem(3px);
+        margin-bottom: rem(3px);
+    }
     .selected-list {
         display: flex;
         flex-grow: 1;
         flex-wrap: wrap;
         height:100%;
-        align-self: center;
     }
 
     .infinite-scroll {

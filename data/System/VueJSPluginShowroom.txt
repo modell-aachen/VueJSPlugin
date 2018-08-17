@@ -240,6 +240,13 @@ The following examples provide an overview of its functionality. The correspondi
     <vue-check-item name="method" description badge="3rd party"  type="radio" value="Sofortueberweisung" v-model="payment" >Sofort Überweisung</vue-check-item><br>
     Zahlungsmethode: {{payment}}<br>
   </div>
+  <div class="cell large-4">
+    <h3>Radio without badges</h3>
+    <vue-check-item name="method_no_badge" description type="radio" value="VISA" v-model="payment_no_badge" checked><template slot="description"><a href="http://visa.de">visa.de</a></template>VISA</vue-check-item>
+    <vue-check-item name="method_no_badge" description="www.paypal.de" type="radio" value="PayPal" v-model="payment_no_badge">PayPal</vue-check-item>
+    <vue-check-item name="method_no_badge" description type="radio" value="Sofortueberweisung" v-model="payment_no_badge" >Sofort Überweisung</vue-check-item><br>
+    Zahlungsmethode: {{payment_no_badge}}<br>
+  </div>
 </div>
 %ENDSECTION{"CheckItemVueTemplate2"}%
 </verbatim>

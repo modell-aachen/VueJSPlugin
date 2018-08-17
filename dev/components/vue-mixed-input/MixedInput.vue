@@ -1,7 +1,7 @@
 <template>
     <div
         :class="{open}"
-        class="dropdown v-select">
+        class="dropdown v-select v-mixed-input">
         <label v-if="label">{{ label }}</label>
         <div
             ref="input-root"
@@ -18,14 +18,14 @@
                         <span
                             v-if="item.type === 'option'"
                             :key="index"
-                            class="selected-tag option-item"
+                            class="selected-tag badge multi option-item"
                             @click.stop="onSelectedOptionClick(index)">
                             <a>{{ item.label }}</a>
                         </span>
                         <span
                             v-else
                             :key="index"
-                            class="text-item">
+                            class="selected-tag multi text-item">
                             <a
                                 class="text-placeholder">{{ item.value }}</a>
                             <input
@@ -43,7 +43,7 @@
                         class="form-control__wrapper vertical-spacer">
                         <input
                             type="text"
-                            class="form-control-multi">
+                            class="form-control multi">
                     </span>
                 </div>
             </div>
@@ -323,23 +323,18 @@ export default {
 <style lang="scss">
 $inputMinWidth: 2px;
 $spacing: 3px;
-.v-select {
-    .option-item {
-        padding: 0px 4px;
-        background-color: #e5e8eb;
-        border-radius: 4px;
-        border: 1px solid #b0c0c4;
-        min-height: 20px;
-        margin: 4px 0;
+.v-select.v-mixed-input {
+    .selected-tag.multi {
+        margin-left: 0;
+        margin-right: 0;
     }
     .text-item {
-        height: 20px;
+        height: rem(24px);
+        line-height: rem(24px);
         margin: 5px $spacing;
         position: relative;
         padding: 0 $inputMinWidth;
-        input[type=text]{
-           padding-top: 0px;
-        }
+        font-size: 1rem;
     }
     .text-placeholder {
         visibility: hidden;
@@ -349,7 +344,8 @@ $spacing: 3px;
         position: absolute;
         width: 100%;
         left: $inputMinWidth;
-        top: -2px;
+        line-height: 24px;
+        top: 0px;
         height: auto;
         padding: 0;
         margin: 0;
