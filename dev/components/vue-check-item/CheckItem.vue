@@ -198,6 +198,7 @@ export default {
         min-height: rem(20px);
     }
     &.is-small { // align with vue-input-text
+        margin-top: 0px;
         .input-elements {
             min-height: rem(20px);
 
