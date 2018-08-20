@@ -909,6 +909,8 @@ export default {
         &[type="text"] {
             width: initial;
             padding: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
             height: rem(38px);
             line-height: rem(38px); // 40 - 2*border
         }
