@@ -797,7 +797,9 @@ export default {
                     background-color: #eff3f4;
                 }
                 a {
-                    margin: 5px;
+                    padding-left: 5px;
+                     -webkit-box-decoration-break: clone;
+                    box-decoration-break: clone;
                 }
             }
         }
@@ -853,6 +855,13 @@ export default {
     }
 
     .selected-tag {
+        font-size: rem(12px);
+        flex: initial;
+        float: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
         &.multi {
             margin: rem(4px);
             &, & a {
@@ -865,9 +874,6 @@ export default {
         a:hover {
             color: inherit;
         }
-        font-size: rem(12px);
-        flex: initial;
-        float: left;
         .close-icon {
             margin-left: 3px;
         }
@@ -994,11 +1000,16 @@ export default {
         margin-top: rem(3px);
         margin-bottom: rem(3px);
     }
+
+    .multi .selected-list {
+        flex-wrap: wrap;
+        overflow: initial;
+    }
     .selected-list {
         display: flex;
         flex-grow: 1;
-        flex-wrap: wrap;
         height:100%;
+        overflow: hidden;
     }
 
     .infinite-scroll {
@@ -1035,9 +1046,6 @@ export default {
 
         .selected-tag {
             min-width: 40px;
-        }
-        .open-indicator {
-            padding: 0;
         }
     }
 }
