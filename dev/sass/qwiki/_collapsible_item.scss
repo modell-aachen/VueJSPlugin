@@ -39,6 +39,7 @@ $ma-grid-padding: rem-calc(0 4 0 4);
         font-size: rem-calc(14);
         font-weight: semibold;
         line-height: rem-calc(19);
+        word-wrap: break-word;
         small {
             font-weight: regular;
             line-height: rem-calc(19);
