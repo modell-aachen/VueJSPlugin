@@ -7,7 +7,7 @@
                 html: false,
                 classes: 'info-tooltip'}"
             :class="icon"
-            class="tooltip-icon fa-fw fa-sm"
+            class="tooltip-icon fa-fw"
             aria-hidden="true"/>
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
         },
         'icon':{
             type: [String, Array],
-            default: 'fas fa-question'
+            default: 'fa-sm fas fa-question'
         },
     },
 };
