@@ -907,7 +907,6 @@ export default {
         border: none;
         background-color: transparent;
         &[type="text"] {
-            width: initial;
             padding: 0;
             overflow: hidden;
             text-overflow: ellipsis;
