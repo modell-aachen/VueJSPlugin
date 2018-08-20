@@ -125,10 +125,10 @@ input[type]:disabled {
 
 
 // Used to calculate offset to center inputs.
-  $line-height: 1.428571;
+  $line-height: rem-calc(24);
   $font-size: rem-calc(14);
   $size: rem-calc(16);
-  $offset: rem-calc(($font-size * $line-height - $size) / 2);
+  $offset: rem-calc(($font-size * unitless-calc($line-height) - $size) / 2);
 
 %item-label {
     @include ma-font('regular');
@@ -250,7 +250,7 @@ textarea{
   @include switch-size(rem-calc(14), $switch-radius * 2, rem-calc(1));
   @include ma-font('regular');
   height: initial;
-  margin: rem-calc(6 16 0 0);
+  margin: rem-calc(4 16 0 0);
   .switch-input {
     margin-bottom: 0;
   }
