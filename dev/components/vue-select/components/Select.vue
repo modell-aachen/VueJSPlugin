@@ -924,7 +924,8 @@ export default {
     }
 
     input[type=text] {
-        min-height: rem(20px);
+        height: rem(38px);
+        line-height: rem(38px); // 40 - 2*border
         padding: 0px;
         &, &:focus, &:active {
             border: none;
