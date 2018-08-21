@@ -7,7 +7,7 @@
         </div>
 
         <div class="cell auto grid-y">
-            <vue-header3>{{ heading }}</vue-header3>
+            <vue-header3 v-if="heading">{{ heading }}</vue-header3>
             <div class="cell ma-margin-top-medium">
                 <div v-if="text">{{ text }}</div>
                 <div
