@@ -45,6 +45,25 @@
       }
     }
 
+    .select2-selection--single {
+        .select2-selection__rendered {
+            display: flex;
+            flex-flow: row-reverse;
+            justify-content: space-between;
+
+            .select2-selection__clear {
+                margin-right: 19px;
+                float: none;
+            }
+
+            .select_label {
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+        }
+    }
+
     &.select2 {
       min-width:100%;
       max-width:100%;
