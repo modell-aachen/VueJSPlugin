@@ -70,6 +70,8 @@
   transition: -webkit-transform 0.15s ease-out, opacity 0.15s ease-out, max-height 0s 0.15s, border-width 0s 0.15s;
   transition: transform 0.15s ease-out, opacity 0.15s ease-out, max-height 0s 0.15s, border-width 0s 0.15s;
 }
+
+
 /**
  * The frame and wrap work together to ensure that
  * clicks within the picker don’t reach the holder.
@@ -96,6 +98,21 @@
   transition: -webkit-transform 0.15s ease-out, opacity 0.15s ease-out, max-height 0s, border-width 0s;
   transition: transform 0.15s ease-out, opacity 0.15s ease-out, max-height 0s, border-width 0s;
   box-shadow: 0 6px 18px 1px rgba(0, 0, 0, 0.12);
+}
+
+// Target IE10+ and disable perspective transformation to prevent blurry text
+@mixin IE_BlurryText_Fix() {
+  .picker--opened .picker__holder {
+    transform: translate(0px) scale(1);
+  }
+}
+//Edge ++
+@supports (-ms-ime-align:auto) {
+  @include IE_BlurryText_Fix();
+}
+//IE10, IE11
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @include IE_BlurryText_Fix();
 }
 
 /* ==========================================================================
