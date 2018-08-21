@@ -16,6 +16,11 @@ h3, label {
   height: rem-calc($bg-size);
   border: 1px solid $ma-light-grey;
   background: $ma-button-grey;
+
+  label & {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .tooltip-icon {
