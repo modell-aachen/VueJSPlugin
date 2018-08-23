@@ -181,9 +181,8 @@ input[type]:disabled {
     }
   }
 }
-.foswikiCheckbox {
-  position: relative;
-  left: -16px;
+label > .foswikiCheckbox {
+  margin-right: rem-calc(16);
 }
 .field-acl label {
   padding-left: 16px;
