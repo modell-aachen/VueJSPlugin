@@ -18,6 +18,7 @@ class AlertPlugin {
         swalConfig.html = config.html;
         swalConfig.confirmButtonText = config.confirmButtonText;
         swalConfig.cancelButtonText = config.cancelButtonText;
+        swalConfig.allowOutsideClick = false;
 
         return instance.$swal(swalConfig);
     }
