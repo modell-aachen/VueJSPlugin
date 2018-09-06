@@ -3,6 +3,7 @@ let projectRoot = path.resolve(__dirname);
 
 let includeDirs = [
   projectRoot + '/dev',
+  projectRoot + '/node_modules/nprogress/',
   projectRoot + '/frontend-tests'
 ];
 

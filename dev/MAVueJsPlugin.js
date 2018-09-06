@@ -48,6 +48,7 @@ import isEqual from 'lodash.isequal';
 import cloneDeep from 'lodash.clonedeep';
 import VueVisible from 'vue-visible';
 import VueTable from './components/vue-table/Table.vue';
+import {searchGridInit, Grid} from './components/search-grid/index.js';
 
 class MAVueJsPlugin {
     constructor(options) {
@@ -106,6 +107,7 @@ class MAVueJsPlugin {
         Vue.component('vue-collapsible-frame', VueCollapsibleFrame);
         Vue.component('vue-mixed-input', VueMixedInput);
         Vue.component('vue-table', VueTable);
+        Vue.component('search-grid', Grid);
 
         Vue.directive('tooltip', VTooltip);
         Vue.directive('click-outside', VueClickOutside);
@@ -245,6 +247,8 @@ class MAVueJsPlugin {
             messages: VeeValidateTranslationDe.messages
         });
         Validator.localize(language);
+
+        searchGridInit(Vue);
     }
 }
 
