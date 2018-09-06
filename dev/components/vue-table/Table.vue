@@ -9,6 +9,7 @@
                                 v-for="(column,index) in columns"
                                 :key="index"
                                 :sorted-column-index="sortedColumnIndex"
+                                :sort-order="sortOrder"
                                 :column="column"
                                 :column-index="index"
                                 @sort-changed="onSortChanged"/>
@@ -60,34 +61,32 @@ export default {
         pageCount: {
             type: Number,
             default: () => 0
+        },
+        sortedColumnIndex: {
+            type: Number,
+            default: () => -1
+        },
+        sortOrder: {
+            type: String,
+            default: () => SortStates.NONE
         }
     },
     data() {
         return {
-            sortedColumnIndex: -1,
-            sortOrder: SortStates.NONE,
             currentPage: 0
         };
     },
     watch: {
         currentPage() {
-            this.propagatePageChange();
+            this.$emit("page-changed", this.currentPage);
         }
     },
     methods: {
         onSortChanged({columnIndex, sortOrder}) {
-            this.sortedColumnIndex = columnIndex;
-            this.sortOrder = sortOrder;
-            this.propagateSortChange();
-        },
-        propagateSortChange() {
             this.$emit("sort-changed", {
-                sortedColumnIndex: this.sortedColumnIndex,
-                sortOrder: this.sortOrder
+                sortedColumnIndex: columnIndex,
+                sortOrder: sortOrder
             });
-        },
-        propagatePageChange() {
-            this.$emit("page-changed", this.currentPage);
         }
     }
 };

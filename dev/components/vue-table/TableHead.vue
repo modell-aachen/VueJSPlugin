@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SortStates from './SortStates.js';
+import SortOrder from './SortStates.js';
 
 export default {
     props: {
@@ -31,49 +31,47 @@ export default {
         sortedColumnIndex: {
             type: Number,
             required: true
+        },
+        sortOrder: {
+            type: String,
+            required: true
         }
-    },
-    data() {
-        return {
-            sortState: SortStates.NONE
-        };
     },
     computed: {
         isSorted() {
-            return this.sortState !== SortStates.NONE;
+            return this.sortedColumnIndex === this.columnIndex;
         },
         sortingIconClass: function(){
-            switch(this.sortState){
-                case SortStates["NONE"]:
-                    return 'sort';
-                case SortStates["ASC"]:
-                    return "caret-up";
-                case SortStates["DESC"]:
-                    return "caret-down";
-            }
-        }
-    },
-    watch: {
-        sortedColumnIndex(index) {
-            if(index !== this.columnIndex){
-                this.sortState = SortStates.NONE;
+            if(this.isSorted){
+                switch(this.sortOrder){
+                    case SortOrder["ASC"]:
+                        return "caret-up";
+                    case SortOrder["DESC"]:
+                        return "caret-down";
+                }
+            } else {
+                return 'sort';
             }
         }
     },
     methods: {
         toggleSort() {
-            switch(this.sortState) {
-                case SortStates.NONE:
-                case SortStates.DESC:
-                    this.sortState = SortStates.ASC;
-                    break;
-                case SortStates.ASC:
-                    this.sortState = SortStates.DESC;
-                    break;
+            let newSortOrder;
+            if(!this.isSorted){
+                newSortOrder = SortOrder.ASC;
+            } else {
+                switch(this.sortOrder) {
+                    case SortOrder.DESC:
+                        newSortOrder = SortOrder.ASC;
+                        break;
+                    case SortOrder.ASC:
+                        newSortOrder = SortOrder.DESC;
+                        break;
+                }
             }
             this.$emit("sort-changed", {
                 columnIndex: this.columnIndex,
-                sortOrder: this.sortState
+                sortOrder: newSortOrder
             });
         }
     }

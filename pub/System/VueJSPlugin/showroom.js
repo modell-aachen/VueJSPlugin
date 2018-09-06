@@ -281,12 +281,14 @@ Vue.onDocumentReady(function(){
                 "email": "edoone9@a8.net",
                 "gender": "Female"
               }],
-              currentPage: 1
+              currentPage: 1,
+              sortedColumnIndex: -1,
+              sortOrder: 'none'
         },
         methods: {
-            onSortChanged: function(tableState) {
+            onSortChanged: function({sortedColumnIndex, sortOrder}) {
                 let sortField;
-                switch(tableState.sortedColumnIndex){
+                switch(sortedColumnIndex){
                     case 0:
                         sortField = 'first_name';
                         break;
@@ -298,13 +300,15 @@ Vue.onDocumentReady(function(){
                         break;
                 }
                 Vue.set(this, 'tableData', this.tableData.sort(function(a,b) {
-                    switch(tableState.sortOrder){
+                    switch(sortOrder){
                         case 'asc':
                             return a[sortField].localeCompare(b[sortField]);
                         case 'desc':
                             return b[sortField].localeCompare(a[sortField]);
                     }
                 }));
+                this.sortedColumnIndex = sortedColumnIndex;
+                this.sortOrder = sortOrder;
             },
             onPageChanged: function(page) {
                 this.currentPage = page;
