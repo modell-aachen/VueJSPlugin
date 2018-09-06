@@ -603,6 +603,7 @@ Alerts can be triggered by calling the $showAlert function. See the [[%PUBURLPAT
   :columns="columns"
   :data="tableDataForCurrentPage"
   :page-count="pageCount"
+  :current-page="currentPage"
   :sorted-column-index="sortedColumnIndex"
   :sort-order="sortOrder"
   @sort-changed="onSortChanged"

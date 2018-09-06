@@ -36,7 +36,8 @@
                 <vue-pagination
                     v-if="pageCount > 1"
                     :page-count="pageCount"
-                    v-model="currentPage" />
+                    :value="currentPage"
+                    @input="onCurrentPageChanged" />
             </div>
         </div>
     </div>
@@ -44,7 +45,7 @@
 
 <script>
 import TableHead from './TableHead.vue';
-import SortStates from './SortStates.js';
+import SortOrder from './SortOrder.js';
 export default {
     components: {
         TableHead
@@ -60,7 +61,11 @@ export default {
         },
         pageCount: {
             type: Number,
-            default: () => 0
+            default: () => 1
+        },
+        currentPage: {
+            type: Number,
+            default: () => 1
         },
         sortedColumnIndex: {
             type: Number,
@@ -68,17 +73,7 @@ export default {
         },
         sortOrder: {
             type: String,
-            default: () => SortStates.NONE
-        }
-    },
-    data() {
-        return {
-            currentPage: 0
-        };
-    },
-    watch: {
-        currentPage() {
-            this.$emit("page-changed", this.currentPage);
+            default: () => SortOrder.ASC
         }
     },
     methods: {
@@ -87,6 +82,9 @@ export default {
                 sortedColumnIndex: columnIndex,
                 sortOrder: sortOrder
             });
+        },
+        onCurrentPageChanged(currentPage) {
+            this.$emit("page-changed", currentPage);
         }
     }
 };

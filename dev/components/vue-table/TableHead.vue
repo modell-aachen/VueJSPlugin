@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SortOrder from './SortStates.js';
+import SortOrder from './SortOrder.js';
 
 export default {
     props: {

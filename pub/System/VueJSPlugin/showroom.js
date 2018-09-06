@@ -283,7 +283,7 @@ Vue.onDocumentReady(function(){
               }],
               currentPage: 1,
               sortedColumnIndex: -1,
-              sortOrder: 'none'
+              sortOrder: 'asc'
         },
         methods: {
             onSortChanged: function({sortedColumnIndex, sortOrder}) {
