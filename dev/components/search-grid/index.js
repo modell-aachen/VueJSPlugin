@@ -12,7 +12,7 @@ const searchGridInit = (vue) => {
             vue.component(name, component);
         }
     };
-    
+
     window.SearchGridPlugin = SearchGridPlugin;
 
     vue.onDocumentReady( function () {
@@ -25,7 +25,7 @@ const searchGridInit = (vue) => {
             }
         });
     });
-}
+};
 
-export {searchGridInit, Grid}
+export {searchGridInit, Grid};
 
