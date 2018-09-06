@@ -214,4 +214,111 @@ Vue.onDocumentReady(function(){
           }]
         }
     });
+    new Vue({
+        el: '#table-examples',
+        template: '#table-template',
+        data: {
+            columns: [{
+                headerText: 'First Name',
+                enableSort: true
+            },{
+                headerText: 'Last Name',
+                enableSort: true
+            },{
+                headerText: 'E-Mail'
+            },{
+                headerText: 'Gender',
+                enableSort: true
+            }],
+            tableData: [{
+                "first_name": "Mohammed",
+                "last_name": "Beamish",
+                "email": "mbeamish0@nyu.edu",
+                "gender": "Male"
+              }, {
+                "first_name": "Teodora",
+                "last_name": "Sears",
+                "email": "tsears1@weibo.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Julissa",
+                "last_name": "Nestoruk",
+                "email": "jnestoruk2@joomla.org",
+                "gender": "Female"
+              }, {
+                "first_name": "Karel",
+                "last_name": "Sprackling",
+                "email": "ksprackling3@marketwatch.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Siobhan",
+                "last_name": "Hinrichs",
+                "email": "shinrichs4@disqus.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Thurstan",
+                "last_name": "Bohling",
+                "email": "tbohling5@wiley.com",
+                "gender": "Male"
+              }, {
+                "first_name": "Violette",
+                "last_name": "Paulack",
+                "email": "vpaulack6@ning.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Jerry",
+                "last_name": "Kindley",
+                "email": "jkindley7@umich.edu",
+                "gender": "Male"
+              }, {
+                "first_name": "Shauna",
+                "last_name": "Justun",
+                "email": "sjustun8@deliciousdays.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Elinor",
+                "last_name": "Doone",
+                "email": "edoone9@a8.net",
+                "gender": "Female"
+              }],
+              currentPage: 1
+        },
+        methods: {
+            onSortChanged: function(tableState) {
+                let sortField;
+                switch(tableState.sortedColumnIndex){
+                    case 0:
+                        sortField = 'first_name';
+                        break;
+                    case 1:
+                        sortField = 'last_name';
+                        break;
+                    case 3:
+                        sortField = 'gender';
+                        break;
+                }
+                Vue.set(this, 'tableData', this.tableData.sort(function(a,b) {
+                    switch(tableState.sortOrder){
+                        case 'asc':
+                            return a[sortField].localeCompare(b[sortField]);
+                        case 'desc':
+                            return b[sortField].localeCompare(a[sortField]);
+                    }
+                }));
+            },
+            onPageChanged: function(page) {
+                this.currentPage = page;
+            }
+        },
+        computed: {
+            pageCount: function() {
+                return Math.ceil(this.tableData.length / 5);
+            },
+            tableDataForCurrentPage: function() {
+                const begin = (this.currentPage - 1) * 5;
+                const end = begin + 5;
+                return this.tableData.slice(begin, end);
+            }
+        }
+    });
 });

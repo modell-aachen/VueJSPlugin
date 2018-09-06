@@ -47,6 +47,7 @@ import {mapState} from 'vuex';
 import isEqual from 'lodash.isequal';
 import cloneDeep from 'lodash.clonedeep';
 import VueVisible from 'vue-visible';
+import VueTable from './components/vue-table/Table.vue';
 
 class MAVueJsPlugin {
     constructor(options) {
@@ -104,6 +105,8 @@ class MAVueJsPlugin {
         Vue.component('vue-paged-selector', VuePagedSelector);
         Vue.component('vue-collapsible-frame', VueCollapsibleFrame);
         Vue.component('vue-mixed-input', VueMixedInput);
+        Vue.component('vue-table', VueTable);
+
         Vue.directive('tooltip', VTooltip);
         Vue.directive('click-outside', VueClickOutside);
 
