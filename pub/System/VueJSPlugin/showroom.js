@@ -325,4 +325,72 @@ Vue.onDocumentReady(function(){
             }
         }
     });
+    new Vue({
+        el: '#search-grid-examples',
+        template: '#search-grid-template',
+        data: {
+            gridPreferences: {
+                "mappings": {},
+                "form": "",
+                "addons": [],
+                "wizardConfig": {},
+                "resultsPerPage": "10",
+                "filterHeading": "Filter",
+                "gridField": {
+                    "component": "test-grid-field",
+                    "params": ["title", "url", "createdate"]
+                },
+                "enableExcelExport": true,
+                "facets": [{
+                    "component": "select-2-facet",
+                    "params": ["Bereiche", "web", "10"]
+                }, {
+                    "params": ["Autor", "author"],
+                    "component": "single-select-facet"
+                }, {
+                    "component": "multi-select-facet",
+                    "params": ["Formular", "form"]
+                }],
+                "initialFacetting": 0,
+                "initialFiltering": 1,
+                "language": "de",
+                "hasLiveFilter": true,
+                "q": "type:topic",
+                "initialHideColumn": false,
+                "wizardNoResultsConfig": {
+                    "params": ["Nothing here", "fa-magic", "Unfortunately we could not find anything for these filters"],
+                    "component": "vue-wizard"
+                },
+                "wizardNoEntriesConfig": {
+                    "params": ["Nothing here", "fa-magic", "Unfortunately we could not find anything", "Create some Topic", "ButtonHref"],
+                    "component": "vue-wizard"
+                },
+                "fields": [{
+                    "sortField": "title_sort",
+                    "params": ["title"],
+                    "title": "Titel",
+                    "component": "text-field"
+                }, {
+                    "title": "Url",
+                    "sortField": "url",
+                    "params": ["url", "url"],
+                    "component": "url-field"
+                }, {
+                    "title": "Datum",
+                    "params": ["createdate"],
+                    "sortField": "createdate",
+                    "component": "date-field"
+                }],
+                "filters": [{
+                    "component": "full-text-filter",
+                    "params": ["Titel", "title_search"]
+                }, {
+                    "params": ["Sprache", "language", "en"],
+                    "component": "select-filter"
+                }],
+                "fieldRestriction": "createdate,title,author,url,language,topic,type,web,form",
+                "initialSort": "title_sort desc"
+            }
+        }
+    });
 });

@@ -121,7 +121,7 @@
                                     :filtered-fields="filteredFields"
                                     :initial-sort="prefs.initialSort"/>
                             </div>
-                            <div v-if="hasGridView">
+                            <template v-if="hasGridView">
                                 <div
                                     v-for="(result,index) in results"
                                     v-show="isGridView && results.length > 0"
@@ -132,7 +132,7 @@
                                         :doc="result"
                                         :params="prefs.gridField.params"/>
                                 </div>
-                            </div>
+                            </template>
                             <vue-spacer
                                 v-if="showFacets"
                                 class="cell shrink"
@@ -212,6 +212,10 @@ export default {
         preferencesSelector: {
             type: String,
             default: () => ""
+        },
+        preferences: {
+            type: Object,
+            default: () => null
         }
     },
     data : function () {
@@ -335,15 +339,20 @@ export default {
             };
         }
     },
-    created: function() {
+    created: async function() {
         let self = this;
         this.$store.dispatch('searchGrid/addGridState', {callback: function(gridState){
             self.gridState = gridState;
         }});
-        this.prefs = Vue.getConfigById(this.preferencesSelector);
-        if(this.prefs.result.status === 'error') {
-            this.results = this.prefs.result;
-            return false;
+        if(this.preferences) {
+            this.prefs = Vue.cloneDeep(this.preferences);
+            await this.fetchInitialResults();
+        } else {
+            this.prefs = Vue.getConfigById(this.preferencesSelector);
+            if(this.prefs.result.status === 'error') {
+                this.results = this.prefs.result;
+                return false;
+            }
         }
         this.resultsPerPage = this.prefs.resultsPerPage;
         this.numResults = this.prefs.result.response.numFound;
@@ -378,6 +387,23 @@ export default {
         });
     },
     methods: {
+        async fetchInitialResults() {
+            return new Promise((resolve, reject) => {
+                this.request = this.$ajax({
+                    type: "POST",
+                    url: this.$foswiki.getScriptUrl('rest', 'SearchGridPlugin', 'initialResultSet'),
+                    traditional: true,
+                    data: {
+                        config: JSON.stringify(this.prefs)
+                    }
+                }).done((result) => {
+                    this.prefs.result = JSON.parse(result);
+                    resolve();
+                }).fail(() => {
+                    reject();
+                });
+            });
+        },
         wrappedEntryClickHandler: function(doc){
             if(this.entryClickHandler){
                 this.entryClickHandler(doc);
