@@ -353,7 +353,6 @@ Vue.onDocumentReady(function(){
                 }],
                 "initialFacetting": 0,
                 "initialFiltering": 1,
-                "language": "de",
                 "hasLiveFilter": true,
                 "q": "type:topic",
                 "initialHideColumn": false,

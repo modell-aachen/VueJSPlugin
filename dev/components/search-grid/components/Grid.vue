@@ -519,6 +519,7 @@ export default {
                 "facet.missing": 'on',
                 "facet.sort": "count",
                 "fl" : this.prefs.fieldRestriction,
+                "includeDeletedDocuments": this.prefs.includeDeletedDocuments,
                 form: this.prefs.form
             };
 
