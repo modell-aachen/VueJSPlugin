@@ -49,6 +49,7 @@ import cloneDeep from 'lodash.clonedeep';
 import VueVisible from 'vue-visible';
 import VueTable from './components/vue-table/Table.vue';
 import {searchGridInit, Grid} from './components/search-grid/index.js';
+import SearchGridStandardFields from './components/search-grid/components/StandardFields.js';
 
 class MAVueJsPlugin {
     constructor(options) {
@@ -247,6 +248,10 @@ class MAVueJsPlugin {
             messages: VeeValidateTranslationDe.messages
         });
         Validator.localize(language);
+
+        Vue.SearchGrid = {
+            StandardFields: SearchGridStandardFields
+        };
 
         searchGridInit(Vue);
     }

@@ -16,7 +16,8 @@
                 :is="field.component"
                 :key="index"
                 :doc="item"
-                :params="field.params" />
+                :params="field.params"
+                :api="api" />
         </template>
     </vue-table>
 </template>
@@ -25,33 +26,10 @@
 import GridComponentMixin from './GridComponentMixin.vue';
 import * as mutations from "../store/mutation-types";
 
-import AmpelField from './fields/AmpelField.vue';
-import UrlField from './fields/UrlField.vue';
-import UrlFormatField from './fields/UrlFormatField.vue';
-import TextField from './fields/TextField.vue';
-import UserField from './fields/UserField.vue';
-import ListField from './fields/ListField.vue';
-import BadgesField from './fields/BadgesField.vue';
-import DateField from './fields/DateField.vue';
-import SolrField from './fields/SolrField.vue';
-import ImageField from './fields/ImageField.vue';
-import TestGridField from './fields/TestGridField.vue';
-
+import StandardFields from "./StandardFields.js";
 
 export default {
-    components: {
-        AmpelField,
-        UrlField,
-        UrlFormatField,
-        TextField,
-        UserField,
-        ListField,
-        BadgesField,
-        DateField,
-        SolrField,
-        ImageField,
-        TestGridField
-    },
+    components: StandardFields,
     mixins: [GridComponentMixin],
     props: {
         results: {
@@ -60,6 +38,10 @@ export default {
         },
         filteredFields: {
             type: Array,
+            required: true
+        },
+        api: {
+            type: Object,
             required: true
         }
     },

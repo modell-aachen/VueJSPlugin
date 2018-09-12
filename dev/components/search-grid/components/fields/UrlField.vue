@@ -3,7 +3,8 @@
         <a
             v-for="(item, index) in splitList()"
             :key="index"
-            :href="item.Url">
+            :href="item.Url"
+            :target="openInNewTab ? '_blank' : '_self'">
             {{ item.Title }}<br>
         </a>
     </div>
@@ -20,6 +21,9 @@ export default {
         },
         seperateBySpace(){
             return this.params[1];
+        },
+        openInNewTab(){
+            return this.params[2];
         }
     },
     methods: {

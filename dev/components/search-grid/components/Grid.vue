@@ -119,7 +119,8 @@
                                 <table-controller
                                     :results="results"
                                     :filtered-fields="filteredFields"
-                                    :initial-sort="prefs.initialSort"/>
+                                    :initial-sort="prefs.initialSort"
+                                    :api="api"/>
                             </div>
                             <template v-if="hasGridView">
                                 <div
@@ -335,7 +336,7 @@ export default {
                 showColumns: this.showColumns,
                 hideColumns: this.hideColumns,
                 initialHideColumn: this.initialHideColumn,
-                registerEntryClickHandler: this.registerEntryClickHandler
+                setDocumentValue: this.setDocumentValue
             };
         }
     },
@@ -387,6 +388,9 @@ export default {
         });
     },
     methods: {
+        setDocumentValue(doc, attribute, value) {
+            Vue.set(doc, attribute, value);
+        },
         async fetchInitialResults() {
             return new Promise((resolve, reject) => {
                 this.request = this.$ajax({
