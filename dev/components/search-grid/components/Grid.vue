@@ -350,10 +350,10 @@ export default {
             await this.fetchInitialResults();
         } else {
             this.prefs = Vue.getConfigById(this.preferencesSelector);
-            if(this.prefs.result.status === 'error') {
-                this.results = this.prefs.result;
-                return false;
-            }
+        }
+        if(this.prefs.result.status === 'error') {
+            this.results = this.prefs.result;
+            return false;
         }
         this.resultsPerPage = this.prefs.resultsPerPage;
         this.numResults = this.prefs.result.response.numFound;
