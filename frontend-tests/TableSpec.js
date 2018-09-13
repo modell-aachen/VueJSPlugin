@@ -64,10 +64,6 @@ describe("The table component", () => {
         expect(getWrapperForRow(1).exists()).toBe(true);
     }));
 
-    it('shows the configured amount of table columns per table row', TestCase.wrapAsync(async () => {
-        expect(getWrapperForRow(0).findAll("td").length).toBe(2);
-    }));
-
     it('shows the configured table head texts', TestCase.wrapAsync(async () => {
         expect(getTableHeaderTexts()).toEqual(["First name", "Last name"]);
     }));
