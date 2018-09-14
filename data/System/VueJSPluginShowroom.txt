@@ -169,6 +169,12 @@ The following examples provide an overview of its functionality. The correspondi
       Button alignment right<br/>
         <vue-button type='primary' title='Button' alignment='right' style="width: 45%" /><br>
     </div>
+    <div>
+      Button without margins<br/>
+        ###############<br/>
+        ###<vue-button type='primary' title='Button' no-margins />###<br/>
+        ###############
+    </div>
 </div>
 %ENDSECTION{"ButtonVueTemplate"}%
 </verbatim>

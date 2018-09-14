@@ -2,8 +2,8 @@
     <a
         :disabled="isDisabled"
         :href="href"
-        :class="[type, color, textAligment]"
-        class="button"
+        :class="[type, color, textAligment, {noMargins}]"
+        class="button vue-button"
         @click="handleClick">
         <div
             v-if="icon"
@@ -72,6 +72,10 @@ export default {
                 return types.includes(value);
             }
         },
+        'noMargins':{
+            type: Boolean,
+            default: false
+        },
         'isDisabled':{
             type: Boolean,
             default: false
@@ -91,4 +95,9 @@ export default {
 </script>
 
 <style lang="scss">
+.flatskin-wrapped .button.vue-button {
+    &.noMargins {
+        margin: 0;
+    }
+}
 </style>
