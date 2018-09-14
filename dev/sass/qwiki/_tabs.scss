@@ -1,4 +1,5 @@
 $ma-boarder-size: 2px;
+$tabpane-content-padding: 24px;
 
 .flatskin-wrapped:not(.vue-tabpane) > .jqTabPaneFlat {
   margin: .5em;
@@ -7,6 +8,7 @@ $ma-boarder-size: 2px;
 .jqTabPaneFlat {
   > .vue-tabpane-group,
   > .jqTabGroup {
+    margin: 0;
     background: $ma-white-grey;
     width: 100%;
     a {
@@ -46,16 +48,17 @@ $ma-boarder-size: 2px;
 
   .vue-tab-contents,
   .jqTabContents {
-    padding: 1rem 0;
+    padding: $tabpane-content-padding 0;
   }
 }
 
 .jqTabPaneFlatSub {
-  > .vue-tabpane-group,
+  > ul.vue-tabpane-group,
   > .jqTabGroup {
     background: $ma-button-grey;
     border-bottom: 0 !important;
-    margin-top: -16px !important;
+    margin-top: rem-calc(-$tabpane-content-padding);
+    margin-bottom: 0;
     width: 100%;
     a {
       border: 0;
@@ -87,10 +90,5 @@ $ma-boarder-size: 2px;
   .vue-tab.current,
   .jqTab.current {
     border: 0;
-  }
-
-  .vue-tab-contents,
-  .jqTabContents {
-    padding: 1rem 0;
   }
 }
