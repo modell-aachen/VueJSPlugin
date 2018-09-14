@@ -36,7 +36,11 @@ export default {
 </script>
 
 <style lang="scss">
-.vue-tab {
+@import '../../sass/settings';
+.flatskin-wrapped .jqTabPaneFlat .vue-tab {
     display: inherit;
+    .vue-tab-contents {
+        padding: rem(24px) 0;
+    }
 }
 </style>

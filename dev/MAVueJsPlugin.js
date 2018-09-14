@@ -199,14 +199,14 @@ class MAVueJsPlugin {
                 let url = this.$foswiki.getScriptUrl('rest', 'RenderPlugin', 'expand', {
                     text: "<form method='post'></form>",
                 });
-                let validation_key = await this.$http.get(url).then((response) => {
+                let validationKey = await this.$http.get(url).then((response) => {
                     let $remoteForm = jQuery(response.body);
                     return $remoteForm.find('[name="validation_key"]').val();
                 });
-                if(!validation_key) {
+                if(!validationKey) {
                     return Promise.reject('Could not get validation_key from wiki');
                 }
-                $form = $(`<form method='post'><input type='hidden' name='validation_key' value='${validation_key}' /></form>`);
+                $form = $(`<form method='post'><input type='hidden' name='validation_key' value='${validationKey}' /></form>`);
                 $('body').append($form);
                 form = $form.get(0);
             } else {

@@ -55,8 +55,6 @@ export default {
 }
 ul.vue-tabpane-group,
 #modacWrapper ul.vue-tabpane-group {
-    margin: 0;
-    padding: 0;
     list-style: none;
     display: block;
     float: left;
