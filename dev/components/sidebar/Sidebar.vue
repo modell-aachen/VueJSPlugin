@@ -82,6 +82,9 @@ export default {
             }
         }
     },
+    mounted: function() {
+        document.body.appendChild(this.$el);
+    },
     methods: {
         show(){
             this.isActive = true;
