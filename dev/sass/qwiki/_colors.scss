@@ -1,27 +1,44 @@
 @mixin color-definition($color) {
-    color: $color;
-    &.hoverable:hover {
-        color: rgba($color, 0.7);
-    }
+  color: $color;
 }
 @mixin bg-definition($color) {
-    background-color: $color;
+  background-color: $color;
+}
+@mixin hover-definition($color) {
+  color: $color;
 }
 
-$color-list: $ma-primary, $ma-colored-text, $ma-colored-text-hover, $ma-secondary, $ma-success, $ma-warning, $ma-failure, $ma-failure-hover, $ma-darker-grey, $ma-dark-grey, $ma-grey, $ma-light-grey, $ma-sand, $ma-pale-grey, $ma-button-grey, $ma-white-grey, $ma-white, $ma-black, $ma-body-text;
+$color-list: (
+  'primary': $ma-primary,
+  'colored-text': $ma-colored-text,
+  'colored-text-hover': $ma-colored-text-hover,
+  'secondary': $ma-secondary,
+  'success': $ma-success,
+  'warning': $ma-warning,
+  'failure': $ma-failure,
+  'failure-hover': $ma-failure-hover,
+  'delete': $ma-delete,
+  'delete-hover': $ma-delete-hover,
+  'darker-grey': $ma-darker-grey,
+  'dark-grey': $ma-dark-grey,
+  'grey': $ma-grey,
+  'light-grey': $ma-light-grey,
+  'sand': $ma-sand,
+  'pale-grey': $ma-pale-grey,
+  'button-grey': $ma-button-grey,
+  'white-grey': $ma-white-grey,
+  'white': $ma-white,
+  'black': $ma-black,
+  'body-text': $ma-body-text);
 
-@each $color in $color-list {
-  .ma-#{$color}-color {
+@each $key, $color in $color-list {
+  .ma-#{$key}-color {
     @include color-definition(#{$color});
   }
-  .ma-#{$color}-bg {
-    @include bg-definition($ma-#{$color});
+  .ma-#{$key}-bg {
+    @include bg-definition(#{$color});
   }
-  .ma-hover-#{$color}-color:hover {
-    color: $ma-#{$color};
+  .ma-#{$key}-color-hover:hover {
+    @include hover-definition(#{$color});
   }
-}
-
-.ma-primary-color {
-
 }
