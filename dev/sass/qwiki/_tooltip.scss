@@ -81,7 +81,9 @@ h3, label {
   }
 }
 
-.tooltip.v-tooltip-success {
+.tooltip.v-tooltip-success,
+.tooltip.v-tooltip-failed,
+.tooltip.v-tooltip-info {
   display: block !important;
   z-index: 10000;
   border-radius: $ma-border-radius;
@@ -90,6 +92,7 @@ h3, label {
     color: white;
     border-radius: $ma-border-radius;
     padding: rem-calc(5 10 4);
+    font-size: rem-calc(12);
   }
 
   .tooltip-arrow {
