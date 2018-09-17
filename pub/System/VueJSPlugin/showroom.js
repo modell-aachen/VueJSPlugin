@@ -214,4 +214,182 @@ Vue.onDocumentReady(function(){
           }]
         }
     });
+    new Vue({
+        el: '#table-examples',
+        template: '#table-template',
+        data: {
+            columns: [{
+                headerText: 'First Name',
+                enableSort: true
+            },{
+                headerText: 'Last Name',
+                enableSort: true
+            },{
+                headerText: 'E-Mail'
+            },{
+                headerText: 'Gender',
+                enableSort: true
+            }],
+            tableData: [{
+                "first_name": "Mohammed",
+                "last_name": "Beamish",
+                "email": "mbeamish0@nyu.edu",
+                "gender": "Male"
+              }, {
+                "first_name": "Teodora",
+                "last_name": "Sears",
+                "email": "tsears1@weibo.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Julissa",
+                "last_name": "Nestoruk",
+                "email": "jnestoruk2@joomla.org",
+                "gender": "Female"
+              }, {
+                "first_name": "Karel",
+                "last_name": "Sprackling",
+                "email": "ksprackling3@marketwatch.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Siobhan",
+                "last_name": "Hinrichs",
+                "email": "shinrichs4@disqus.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Thurstan",
+                "last_name": "Bohling",
+                "email": "tbohling5@wiley.com",
+                "gender": "Male"
+              }, {
+                "first_name": "Violette",
+                "last_name": "Paulack",
+                "email": "vpaulack6@ning.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Jerry",
+                "last_name": "Kindley",
+                "email": "jkindley7@umich.edu",
+                "gender": "Male"
+              }, {
+                "first_name": "Shauna",
+                "last_name": "Justun",
+                "email": "sjustun8@deliciousdays.com",
+                "gender": "Female"
+              }, {
+                "first_name": "Elinor",
+                "last_name": "Doone",
+                "email": "edoone9@a8.net",
+                "gender": "Female"
+              }],
+              currentPage: 1,
+              sortedColumnIndex: -1,
+              sortOrder: 'asc'
+        },
+        methods: {
+            onSortChanged: function({sortedColumnIndex, sortOrder}) {
+                let sortField;
+                switch(sortedColumnIndex){
+                    case 0:
+                        sortField = 'first_name';
+                        break;
+                    case 1:
+                        sortField = 'last_name';
+                        break;
+                    case 3:
+                        sortField = 'gender';
+                        break;
+                }
+                Vue.set(this, 'tableData', this.tableData.sort(function(a,b) {
+                    switch(sortOrder){
+                        case 'asc':
+                            return a[sortField].localeCompare(b[sortField]);
+                        case 'desc':
+                            return b[sortField].localeCompare(a[sortField]);
+                    }
+                }));
+                this.sortedColumnIndex = sortedColumnIndex;
+                this.sortOrder = sortOrder;
+            },
+            onPageChanged: function(page) {
+                this.currentPage = page;
+            }
+        },
+        computed: {
+            pageCount: function() {
+                return Math.ceil(this.tableData.length / 5);
+            },
+            tableDataForCurrentPage: function() {
+                const begin = (this.currentPage - 1) * 5;
+                const end = begin + 5;
+                return this.tableData.slice(begin, end);
+            }
+        }
+    });
+    new Vue({
+        el: '#search-grid-examples',
+        template: '#search-grid-template',
+        data: {
+            gridPreferences: {
+                "mappings": {},
+                "form": "",
+                "addons": [],
+                "wizardConfig": {},
+                "resultsPerPage": "10",
+                "filterHeading": "Filter",
+                "gridField": {
+                    "component": "test-grid-field",
+                    "params": ["title", "url", "createdate"]
+                },
+                "enableExcelExport": true,
+                "facets": [{
+                    "component": "select-2-facet",
+                    "params": ["Bereiche", "web", "10"]
+                }, {
+                    "params": ["Autor", "author"],
+                    "component": "single-select-facet"
+                }, {
+                    "component": "multi-select-facet",
+                    "params": ["Formular", "form"]
+                }],
+                "initialFacetting": 0,
+                "initialFiltering": 1,
+                "hasLiveFilter": true,
+                "q": "type:topic",
+                "initialHideColumn": false,
+                "wizardNoResultsConfig": {
+                    "params": ["Nothing here", "fa-magic", "Unfortunately we could not find anything for these filters"],
+                    "component": "vue-wizard"
+                },
+                "wizardNoEntriesConfig": {
+                    "params": ["Nothing here", "fa-magic", "Unfortunately we could not find anything", "Create some Topic", "ButtonHref"],
+                    "component": "vue-wizard"
+                },
+                "fields": [{
+                    "sortField": "title_sort",
+                    "params": ["title"],
+                    "title": "Titel",
+                    "component": "text-field"
+                }, {
+                    "title": "Url",
+                    "sortField": "url",
+                    "params": ["url", "url"],
+                    "component": "url-field"
+                }, {
+                    "title": "Datum",
+                    "params": ["createdate"],
+                    "sortField": "createdate",
+                    "component": "date-field"
+                }],
+                "filters": [{
+                    "component": "full-text-filter",
+                    "params": ["Titel", "title_search"]
+                }, {
+                    "params": ["Sprache", "language", "en"],
+                    "component": "select-filter"
+                }],
+                "fieldRestriction": "createdate,title,author,url,language,topic,type,web,form",
+                "initialSort": "title_sort desc"
+            }
+        }
+    });
 });

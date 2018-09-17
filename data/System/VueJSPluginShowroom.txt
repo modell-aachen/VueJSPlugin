@@ -596,3 +596,49 @@ Alerts can be triggered by calling the $showAlert function. See the [[%PUBURLPAT
 <script type="text/x-template" id="tooltip-template">
 %INCLUDE{"%WEB%.%TOPIC%" section="TooltipTemplate"}%
 </script>
+
+
+---+ Table
+<div class="flatskin-wrapped">
+ <div id="table-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"TableVueTemplate"}%
+<vue-table
+  :columns="columns"
+  :data="tableDataForCurrentPage"
+  :page-count="pageCount"
+  :current-page="currentPage"
+  :sorted-column-index="sortedColumnIndex"
+  :sort-order="sortOrder"
+  @sort-changed="onSortChanged"
+  @page-changed="onPageChanged"
+  >
+  <template slot="column0" slot-scope="{item}">{{ item.first_name }}</template>
+  <template slot="column1" slot-scope="{item}">{{ item.last_name }}</template>
+  <template slot="column2" slot-scope="{item}">{{ item.email }}</template>
+  <template slot="column3" slot-scope="{item}">{{ item.gender }}</template>
+</vue-table>
+%ENDSECTION{"TableVueTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="table-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="TableVueTemplate"}%
+</script>
+
+---+ Search Grid
+<div class="flatskin-wrapped">
+ <div id="search-grid-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"SearchGridTemplate"}%
+<search-grid
+  :preferences="gridPreferences"/>
+%ENDSECTION{"SearchGridTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="search-grid-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="SearchGridTemplate"}%
+</script>
