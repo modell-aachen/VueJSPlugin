@@ -18,6 +18,12 @@ class AlertPlugin {
         swalConfig.html = config.html;
         swalConfig.confirmButtonText = config.confirmButtonText;
         swalConfig.cancelButtonText = config.cancelButtonText;
+        if("allowOutsideClick" in config){
+            swalConfig.allowOutsideClick = config.allowOutsideClick;
+        }
+        if("allowEscapeKey" in config){
+            swalConfig.allowEscapeKey = config.allowEscapeKey;
+        }
 
         return instance.$swal(swalConfig);
     }
