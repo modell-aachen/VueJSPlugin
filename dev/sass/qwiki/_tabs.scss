@@ -48,7 +48,7 @@ $tabpane-content-padding: 24px;
 
   .vue-tab-contents,
   .jqTabContents {
-    padding: $tabpane-content-padding 0;
+    padding: rem-calc($tabpane-content-padding 0);
   }
 }
 
