@@ -17,6 +17,7 @@ class Frontend {
         this.options.vue.use(maVueJsPlugin, {store});
 
         this.options.vue.VuexProxyPlugin = VuexProxyPlugin;
+        this.options.vue.Store = store;
         window.Vue = this.options.vue;
         window.i18next = i18next;
     }

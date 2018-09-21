@@ -5,7 +5,7 @@ export default {
         store.subscribe((mutation, state) => {
             for(const callback of callbacks) {
                 // eslint-disable-next-line callback-return
-                callback(mutation, state);
+                callback(store, mutation, state);
             }
         });
     },
