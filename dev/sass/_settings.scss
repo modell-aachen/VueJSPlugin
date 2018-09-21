@@ -28,15 +28,19 @@ $ma-white-grey: #fafafa;
 
 $ma-white: white;
 $ma-black: black;
-$ma-body-text: rgba(0,0,0,0.87);
+$ma-body-text: #11353D;
 $ma-secondary-text: #56676B;
-$ma-disabled-text: #56676B;
+$ma-disabled-text: #8A979A;
 $ma-akzent-text: $ma-colored-text;
 
 $ma-font-regular: 'Open Sans', sans-serif;
 $ma-font-semibold: $ma-font-regular;
 $ma-font-bold: $ma-font-regular;
-$ma-font-weight: 600;
+
+$ma-font-weight-bold: 600;
+$ma-font-weight-semibold: 600;
+$ma-font-weight-regular: 400;
+$ma-font-weight: $ma-font-weight-bold;
 
 $ma-border-radius: 4px;
 $ma-border-width: 1px;

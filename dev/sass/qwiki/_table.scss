@@ -13,6 +13,9 @@ thead {
     font-size: rem-calc(12);
     padding: rem-calc(8 48 8 0);
   }
+  th.vue-table-head {
+    font-weight: $ma-font-weight-semibold;
+  }
 }
 
 th.ma-table-short {
