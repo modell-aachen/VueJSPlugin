@@ -82,6 +82,14 @@ export default {
             }
         }
     },
+    mounted: function() {
+        //move element to a most outer place in the dom.
+        //e.g. this fixes a bug, that the sidebar is no longer
+        //visible if triggered/opened by a button (or action) of
+        //a splitbutton dropdown component. Problem is, that the splitbutton
+        //dropdown will close after clicking the link/button which triggers the sidebar.
+        document.body.appendChild(this.$el);
+    },
     methods: {
         show(){
             this.isActive = true;

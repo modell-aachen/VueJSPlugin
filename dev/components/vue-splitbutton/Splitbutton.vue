@@ -1,12 +1,14 @@
 <template>
     <div class="vue-splitbutton">
         <div class="ma-splitbutton">
-            <vue-button
-                :title="mainButtonTitle"
-                :is-disabled="isMainButtonDisabled"
-                class="main-button"
-                type="primary"
-                @click.native="onMainButtonClick" />
+            <slot name="mainbutton">
+                <vue-button
+                    :title="mainButtonTitle"
+                    :is-disabled="isMainButtonDisabled"
+                    class="main-button"
+                    type="primary"
+                    @click.native="onMainButtonClick" />
+            </slot>
             <a
                 ref="dropdownButton"
                 class="dropdown-button primary button vue-button"
@@ -42,7 +44,7 @@ export default {
     props: {
         'mainButtonTitle': {
             type: String,
-            required: true
+            default: ""
         },
         'onMainButtonClick': {
             type: Function,
