@@ -43,19 +43,19 @@ h1, h2, h3, h4 {
 
 h1,
 .foswikiTopic h1 {
-  font-size: rem-calc(33);
+  font-size: rem-calc(24);
   margin: rem-calc(24) 0px;
 }
 
 h2,
 .foswikiTopic h2 {
-  font-size: rem-calc(25);
+  font-size: rem-calc(20);
   @include header-hr(24);
 }
 
 h3,
 .foswikiTopic h3 {
-  font-size: rem-calc(19);
+  font-size: rem-calc(16);
   @include ma-font('semibold');
   @include header-hr(16);
 }
