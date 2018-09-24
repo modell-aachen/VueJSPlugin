@@ -99,6 +99,9 @@ $ma-grid-padding: rem-calc(0 4 0 4);
     &.error {
         color: $ma-failure;
     }
+    &.success {
+        color: $ma-success;
+    }
 }
 
 i.ma-status-dot {
