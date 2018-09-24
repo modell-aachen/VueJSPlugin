@@ -4,11 +4,12 @@ $form-label-line-height: rem-clac(16);
 $form-label-color: $ma-secondary-text;
 $form-spacing: 0;
 $input-radius: $ma-border-radius;
-$input-background: $ma-button-grey;
+$input-background: $ma-white-grey;
 $input-background-focus: $ma-white;
-$input-background-disabled: $ma-white-grey;
+$input-background-disabled: $ma-light-grey;
 $input-border: rem-calc(1) solid $ma-light-grey;
 $input-border-focus: rem-calc(1) solid $ma-primary;
+$input-border-failure: rem-calc(1) solid $ma-failure;
 $input-shadow: 0;
 $input-shadow-focus: 0;
 $input-font-family: $ma-font-regular;
@@ -17,7 +18,7 @@ $input-line-height: 1.5;
 $input-transition: border-color .2s, background-color .2s ease-in-out;
 $input-padding: rem-calc(10 8);
 $input-placeholder-color: $ma-secondary-text;
-$select-background: $ma-button-grey;
+$select-background: $ma-white-grey;
 $select-radius: $ma-border-radius;
 $input-prefix-background: $ma-button-grey;
 $input-prefix-border: 0;
@@ -62,7 +63,7 @@ select {
       font-size: rem-calc(12);
     }
     input{
-      border: 1px solid $ma-failure;
+      border: $input-border-failure;
     }
   }
   position: relative;
