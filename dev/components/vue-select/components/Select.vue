@@ -132,10 +132,8 @@
                 <vue-spinner v-if="isLoading"/>
             </v-infinite-scroll>
         </div>
-        <template
-            v-if="hasError"
-            class="ma-failure">
-            <small>{{ definedErrorMessage }}</small>
+        <template v-if="hasError" >
+            <small class="ma-failure" >{{ definedErrorMessage }}</small>
         </template>
     </div>
 
@@ -758,9 +756,9 @@ export default {
         .fas,.far,.fal {
             color: $ma-failure;
         }
-        small {
-            color: $ma-failure;
-        }
+    }
+    small.ma-failure {
+        color: $ma-failure;
     }
 
     .dropdown-menu {
