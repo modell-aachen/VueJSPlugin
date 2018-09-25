@@ -58,6 +58,9 @@ $icon-font-size: 1.45em;
     border: 0;
     margin-right: $button-margin-right;
     margin-bottom: $button-margin-bottom;
+    &.no-margin-bottom {
+        margin-bottom: 0;
+    }
     position: relative;
     .icon-spacer {
         width: $button-icon-width;
