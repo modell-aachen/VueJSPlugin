@@ -135,6 +135,11 @@
         <template v-if="hasError" >
             <small class="ma-failure" >{{ definedErrorMessage }}</small>
         </template>
+        <small
+            v-if="sublabel"
+            class="sublabel ma-grey-color">
+            {{ sublabel }}
+        </small>
     </div>
 
 </template>
@@ -314,6 +319,10 @@ export default {
         errorMessage: {
             type: String,
             default: ''
+        },
+        sublabel: {
+            type: String,
+            default: undefined,
         },
     },
 
