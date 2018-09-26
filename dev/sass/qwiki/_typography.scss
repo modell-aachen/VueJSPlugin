@@ -44,18 +44,26 @@ h1, h2, h3, h4 {
 h1,
 .foswikiTopic h1 {
   font-size: rem-calc(24);
-  margin: rem-calc(24) 0px;
+  margin-top: rem-calc(24);
+  margin-bottom: rem-calc(24);
+  line-height: rem-calc(28);
 }
 
 h2,
 .foswikiTopic h2 {
   font-size: rem-calc(20);
+  margin-top: rem-calc(16);
+  margin-bottom: rem-calc(16);
+  line-height: rem-calc(24);
   @include header-hr(24);
 }
 
 h3,
 .foswikiTopic h3 {
   font-size: rem-calc(16);
+  margin-top: rem-calc(16);
+  margin-bottom: rem-calc(8);
+  line-height: rem-calc(20);
   @include ma-font('semibold');
   @include header-hr(16);
 }
@@ -63,10 +71,15 @@ h3,
 h4,
 .foswikiTopic h4 {
   font-size: rem-calc(14);
+  margin-top: rem-calc(16);
+  margin-bottom: rem-calc(8);
+  line-height: rem-calc(20);
 }
 
 p {
-  margin-bottom: 0px;
+  margin-top: rem-calc(8);
+  margin-bottom: rem-calc(8);
+  line-height: rem-calc(24);
   @include header-hr(8);
 }
 
@@ -101,4 +114,7 @@ hr {
     color: $ma-akzent-text;
   }
   color: $ma-akzent-text;
+}
+b {
+  font-weight: $ma-font-weight-bold;
 }
