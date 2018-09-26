@@ -68,3 +68,14 @@
   color: $ma-dark-grey;
   padding: rem-calc(2 13 2 5);
 }
+
+.ma-delete-link {
+  color: $ma-delete;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    color: $ma-delete;
+  }
+}
