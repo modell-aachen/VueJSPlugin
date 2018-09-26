@@ -875,11 +875,10 @@ export default {
                 display: inline-block;
             }
         }
-        &, &:hover {
-            color: rgba(0, 0, 0, .54);
-        }
-        a:hover {
-            color: inherit;
+        a {
+            &, &:hover {
+                color: $ma-secondary-text;
+            }
         }
         .close-icon {
             margin-left: 3px;
