@@ -22,7 +22,7 @@ class BaseAlertPlugin {
         }
         return this._getSwalInstance(instance, config);
     }
-    _getSwalInstance(instance, config) {
+    _getSwalInstance(/*instance, config*/) {
         throw(new Error("needs to be implemented"));
     }
     _getSwalBaseConfigBy(type) {

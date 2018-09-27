@@ -6,7 +6,7 @@ class AlertPlugin extends BaseAlertPlugin {
         Vue.use(VueSweetAlert);
         super.install(Vue);
     }
-    _getSwalInstance(instance, config) {
+    _getSwalInstance(instance, /*config*/) {
         return instance.$swal(swalConfig);
     }
 }

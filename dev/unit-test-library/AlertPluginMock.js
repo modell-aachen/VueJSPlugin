@@ -16,7 +16,7 @@ class AlertPluginMock extends BaseAlertPlugin {
         Vue.prototype.$showAlert.mock = mock;
     }
     _getSwalInstance(instance, config) {
-        mock.config = config
+        mock.config = config;
         return new Promise(function(resolve, reject) {
             const isConfirmed = (mock.confirmations.shift() !== false);
             if (isConfirmed) {
