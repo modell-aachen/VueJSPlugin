@@ -20,7 +20,7 @@ class BaseAlertPlugin {
         if("allowEscapeKey" in config){
             swalConfig.allowEscapeKey = config.allowEscapeKey;
         }
-        return this._getSwalInstance(instance, config);
+        return this._getSwalInstance(instance, swalConfig);
     }
     _getSwalInstance(/*instance, config*/) {
         throw(new Error("needs to be implemented"));
