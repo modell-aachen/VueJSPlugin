@@ -132,11 +132,14 @@
                 <vue-spinner v-if="isLoading"/>
             </v-infinite-scroll>
         </div>
-        <template
-            v-if="hasError"
-            class="ma-failure">
-            <small>{{ definedErrorMessage }}</small>
+        <template v-if="hasError" >
+            <small class="ma-failure" >{{ definedErrorMessage }}</small>
         </template>
+        <small
+            v-if="sublabel"
+            class="sublabel ma-grey-color">
+            {{ sublabel }}
+        </small>
     </div>
 
 </template>
@@ -316,6 +319,10 @@ export default {
         errorMessage: {
             type: String,
             default: ''
+        },
+        sublabel: {
+            type: String,
+            default: undefined,
         },
     },
 
@@ -758,9 +765,9 @@ export default {
         .fas,.far,.fal {
             color: $ma-failure;
         }
-        small {
-            color: $ma-failure;
-        }
+    }
+    small.ma-failure {
+        color: $ma-failure;
     }
 
     .dropdown-menu {
@@ -868,11 +875,10 @@ export default {
                 display: inline-block;
             }
         }
-        &, &:hover {
-            color: rgba(0, 0, 0, .54);
-        }
-        a:hover {
-            color: inherit;
+        a {
+            &, &:hover {
+                color: $ma-secondary-text;
+            }
         }
         .close-icon {
             margin-left: 3px;
