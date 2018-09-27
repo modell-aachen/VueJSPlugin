@@ -4,6 +4,7 @@ import FoswikiMock from './FoswikiMock.js';
 import AlertPluginMock from './AlertPluginMock.js';
 import DebounceMock from './DebounceMock.js';
 import SlideUpDownMock from './SlideUpDownMock.vue';
+import visualMethods from './VisualMethodsMocker.js';
 import moment from 'moment';
 
 import jquery from 'jquery';
@@ -21,6 +22,7 @@ const frontend = new Frontend({
 });
 
 frontend.setup();
+visualMethods.mock();
 
 export default {
     createVueComponent(componentDefinition, constructionOptions) {

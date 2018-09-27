@@ -17,7 +17,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'frontend-tests/mockVisualMethods.js',
       'frontend-tests/Index.js'
     ],
 
