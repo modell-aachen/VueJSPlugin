@@ -50,7 +50,7 @@ html {
     margin: 0;
     font-family: $body-font-family;
     font-weight: $global-weight-normal;
-    line-height: $global-lineheight;
+    line-height: rem-calc(24);
     color: $body-font-color;
     background: $body-background;
 
