@@ -15,13 +15,16 @@
     </th>
 </template>
 
-<script>
-import SortOrder from './SortOrder.js';
+<script lang="ts">
+import Vue from "vue";
+import { SortOrder } from './SortOrder';
+import { SortChangedEvent } from './SortChangedEvent';
+import { TableColumnDefinition } from './TableColumnDefinition';
 
-export default {
+export default Vue.extend({
     props: {
         column: {
-            type: Object,
+            type: Object as () => TableColumnDefinition,
             required: true
         },
         columnIndex: {
@@ -44,9 +47,9 @@ export default {
         sortingIconClass: function(){
             if(this.isSorted){
                 switch(this.sortOrder){
-                    case SortOrder["ASC"]:
+                    case SortOrder.ASC:
                         return "caret-up";
-                    case SortOrder["DESC"]:
+                    case SortOrder.DESC:
                         return "caret-down";
                 }
             } else {
@@ -69,13 +72,15 @@ export default {
                         break;
                 }
             }
+            
+            
             this.$emit("sort-changed", {
-                columnIndex: this.columnIndex,
+                sortedColumnIndex: this.columnIndex,
                 sortOrder: newSortOrder
             });
         }
     }
-};
+});
 </script>
 
 <style lang="scss">

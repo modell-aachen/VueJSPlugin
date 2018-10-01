@@ -1,6 +1,8 @@
 let path = require('path');
 let projectRoot = path.resolve(__dirname);
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 let includeDirs = [
   projectRoot + '/dev',
   projectRoot + '/node_modules/nprogress/',
@@ -14,7 +16,7 @@ let babelLoaderOptions = {
 
 module.exports = {
   resolve: {
-    extensions: ['.vue', '.js'],
+    extensions: ['.vue', '.js', '.ts'],
     alias: {
       vue: 'vue/dist/vue.js'
     }
@@ -41,6 +43,13 @@ module.exports = {
         }
       },
       {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: { 
+          appendTsSuffixTo: [/\.vue$/]
+        }
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: includeDirs,
@@ -50,15 +59,18 @@ module.exports = {
         test: /\.css$/,
         include: includeDirs,
         use: [
-          "style-loader",
+          "vue-style-loader",
           "css-loader"
         ]
       },
       {
         test: /\.s(a|c)ss$/,
         include: includeDirs,
-        use: ['style-loader','css-loader', 'sass-loader']
+        use: ['vue-style-loader','css-loader', 'sass-loader']
       }
     ]
-  }
+  },
+  plugins: [
+    new VueLoaderPlugin()
+  ]
 };

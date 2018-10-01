@@ -43,10 +43,12 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import TableHead from './TableHead.vue';
-import SortOrder from './SortOrder.js';
-export default {
+import { SortOrder } from './SortOrder';
+import { SortChangedEvent } from './SortChangedEvent';
+export default Vue.extend({
     components: {
         TableHead
     },
@@ -77,15 +79,12 @@ export default {
         }
     },
     methods: {
-        onSortChanged({columnIndex, sortOrder}) {
-            this.$emit("sort-changed", {
-                sortedColumnIndex: columnIndex,
-                sortOrder: sortOrder
-            });
+        onSortChanged(event: SortChangedEvent) {
+            this.$emit("sort-changed", event);
         },
         onCurrentPageChanged(currentPage) {
             this.$emit("page-changed", currentPage);
         }
     }
-};
+});
 </script>

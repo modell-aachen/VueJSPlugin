@@ -1,4 +1,4 @@
-import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
+import { mount, shallowMount, createLocalVue, config } from '@vue/test-utils';
 import Frontend from '../Frontend';
 import FoswikiMock from './FoswikiMock.js';
 import AlertPluginMock from './AlertPluginMock.js';
@@ -8,6 +8,7 @@ import moment from 'moment';
 
 import jquery from 'jquery';
 
+config.logModifiedComponents = false;
 
 const localVue = createLocalVue();
 const frontend = new Frontend({
