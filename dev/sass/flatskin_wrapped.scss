@@ -3,8 +3,7 @@
 //
 // Open Sans Font-Face
 //
-$OpenSansPath: '../fonts/opensans';
-@import '~open-sans-fontface/open-sans.css';
+@import url('~typeface-open-sans/index.css');
 @import 'foundation_libs';
 @import 'settings';
 @import 'qwiki/tooltip';

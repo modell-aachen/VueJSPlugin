@@ -10,42 +10,26 @@ pub/System/FlatSkin/css/flatskin_wrapped.css 0644
 pub/System/FlatSkin/css/flatskin_wrapped.min.css 0644
 pub/System/FlatSkin/css/flatskin_wrapped.min.css.gz 0644
 pub/System/FlatSkin/css/flatskin_wrapped.min.css.map 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Bold.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Bold.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Bold.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Bold.woff 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-BoldItalic.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-BoldItalic.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-BoldItalic.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-BoldItalic.woff 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-ExtraBold.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-ExtraBold.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-ExtraBold.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-ExtraBold.woff 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-ExtraBoldItalic.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-ExtraBoldItalic.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-ExtraBoldItalic.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-ExtraBoldItalic.woff 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Italic.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Italic.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Italic.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Italic.woff 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-LightItalic.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-LightItalic.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-LightItalic.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-LightItalic.woff 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Regular.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Regular.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Regular.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Regular.woff 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Semibold.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Semibold.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Semibold.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-Semibold.woff 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-SemiboldItalic.eot 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-SemiboldItalic.svg 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-SemiboldItalic.ttf 0644
-pub/System/FlatSkin/fonts/opensans/OpenSans-SemiboldItalic.woff 0644
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-700.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-800italic.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-800italic.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-800.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-800.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-700italic.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-700italic.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-700.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-600italic.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-600italic.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-600.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-600.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-400italic.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-400italic.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-400.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-400.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-300italic.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-300italic.woff2
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-300.woff
+pub/System/FlatSkin/fonts/opensans/open-sans-latin-300.woff2
 pub/System/FlatSkin/images/ajax-loader.gif
 pub/System/FlatSkin/images/border.png
 pub/System/FlatSkin/images/bullet.gif
