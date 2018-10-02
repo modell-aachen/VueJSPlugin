@@ -13,7 +13,7 @@
     "test": "test"
   },
   "scripts": {
-    "postinstall": "webpack -p --config webpack.config.js; node create-none-min-files.js",
+    "postinstall": "webpack -p --config webpack.config.js",
     "lint": "stylelint 'dev/sass/**/*.scss'; exit 0;",
     "watch": "webpack -d --watch --progress --config webpack.config.js"
   },
