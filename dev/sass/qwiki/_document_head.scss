@@ -1,0 +1,36 @@
+.ma-documenthead {
+  border-radius: $ma-border-radius;
+  padding: map-get($spacings, xsmall) 0;
+  background-color:$ma-sand;
+  table{
+      width:auto;
+      margin: 0;
+
+      tbody {
+          background-color:transparent;
+
+          td{
+              padding: map-get($spacings, xsmall) map-get($spacings, large) map-get($spacings, xsmall) map-get($spacings, medium);
+              span {
+                  display: inherit;
+              }
+              span:empty {
+                  display: none;
+              }
+          }
+          tr:last-child td {
+              border-bottom-width: 0;
+          }
+      }
+  }
+  .head-key {
+      line-height: 16px;
+      color: $ma-black;
+      font-weight: $ma-font-weight;
+  }
+  .head-value {
+      padding: map-get($spacings, xsmall) map-get($spacings, small);
+      border-radius: $ma-border-radius;
+      background-color: $ma-white;
+  }
+}

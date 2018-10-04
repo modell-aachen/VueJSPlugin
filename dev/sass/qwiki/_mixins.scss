@@ -1,0 +1,20 @@
+@mixin ma-font($type: 'regular') {
+  @if $type == 'regular' {
+    font-family: $ma-font-regular;
+    font-weight: $ma-font-weight-regular;
+  }
+
+  @if $type == 'semibold' {
+    font-family: $ma-font-semibold;
+    font-weight: $ma-font-weight-semibold;
+  }
+
+  @if $type == 'bold' {
+    font-family: $ma-font-bold;
+    font-weight: $ma-font-weight-bold;
+  }
+}
+
+@mixin disable-anchor-hover() {
+  color: $body-font-color;
+}

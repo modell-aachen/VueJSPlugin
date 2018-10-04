@@ -1,0 +1,90 @@
+& {
+    font-size: small;
+    box-sizing: unset;
+    padding: unset;
+    margin: unset;
+    font-family: unset;
+    font-weight: unset;
+    line-height: unset;
+    color: unset;
+    background: unset;
+    -webkit-font-smoothing: unset;
+    -moz-osx-font-smoothing: unset;
+    font-family: arial,verdana,sans-serif;
+    line-height: 1.5em;
+    min-width: 1080px;
+}
+
+select {
+    width: unset;
+}
+
+table tbody {
+    border: unset;
+    background-color: unset;
+}
+
+thead td, thead th {
+    border-bottom: unset;
+    font-size: unset;
+    padding: unset;
+}
+
+table {
+    border-collapse: unset;
+    width: unset;
+    margin-bottom: unset;
+    border-radius: unset;
+}
+
+tr:last-child td {
+    border-bottom: unset;
+}
+
+table caption, table tbody td, table tbody th {
+    padding: unset;
+}
+
+[type=text], [type=password], [type=date], [type=datetime], [type=datetime-local], [type=month], [type=week], [type=email], [type=number], [type=search], [type=tel], [type=time], [type=url], [type=color], textarea {
+    display: unset;
+    box-sizing: unset;
+    width: unset;
+    height: 15px;
+    margin: unset;
+    padding: unset;
+    border: unset;
+    border-radius: unset;
+    background-color: unset;
+    box-shadow: unset;
+    font-family: arial,verdana,sans-serif;
+    font-size: unset;
+    font-weight: unset;
+    line-height: unset;
+    color: unset;
+    transition: unset;
+    appearance: unset;
+}
+
+select {
+    height: unset;
+    margin: unset;
+    padding: unset;
+    appearance: menulist;
+    border: unset;
+    border-radius: unset;
+    background-color: unset;
+    font-family: unset;
+    font-weight: unset;
+    line-height: unset;
+    color: unset;
+    background-image: unset;
+    background-origin: unset;
+    background-position: unset;
+    background-repeat: unset;
+    background-size: unset;
+    transition: unset;
+}
+
+[type=checkbox]:not(.switch-input):not(.foswikiCheckbox) {
+    display: unset;
+}

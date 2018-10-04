@@ -1,0 +1,12 @@
+$vertical-padding: 4px - $ma-border-width;
+.badge {
+    font-size: rem-calc(12px);
+    padding: rem-calc($vertical-padding) rem-calc(8px - $ma-border-width);
+
+    background-color: $ma-light-grey;
+    border-radius: $ma-border-radius;
+    border: $ma-border-width solid $ma-grey;
+    color: $ma-secondary-text;
+    line-height: rem-calc(24px - $vertical-padding * 2 - $ma-border-width * 2);
+    min-height: rem-calc(24px - $vertical-padding * 2 - $ma-border-width * 2);
+}

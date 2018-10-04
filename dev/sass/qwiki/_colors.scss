@@ -1,0 +1,50 @@
+@mixin color-definition($color) {
+  color: $color;
+}
+@mixin bg-definition($color) {
+  background-color: $color;
+}
+@mixin hover-definition($color) {
+  color: $color;
+}
+
+$color-list: (
+  'primary': $ma-primary,
+  'colored-text': $ma-colored-text,
+  'colored-text-hover': $ma-colored-text-hover,
+  'secondary': $ma-secondary,
+  'success': $ma-success,
+  'warning': $ma-warning,
+  'failure': $ma-failure,
+  'failure-hover': $ma-failure-hover,
+  'delete': $ma-delete,
+  'delete-hover': $ma-delete-hover,
+  'darker-grey': $ma-darker-grey,
+  'dark-grey': $ma-dark-grey,
+  'grey': $ma-grey,
+  'light-grey': $ma-light-grey,
+  'sand': $ma-sand,
+  'pale-grey': $ma-pale-grey,
+  'button-grey': $ma-button-grey,
+  'white-grey': $ma-white-grey,
+  'white': $ma-white,
+  'black': $ma-black,
+  'body-text': $ma-body-text);
+
+@each $key, $color in $color-list {
+  .ma-#{$key}-color {
+    @include color-definition(#{$color});
+  }
+  .ma-#{$key}-bg {
+    @include bg-definition(#{$color});
+  }
+  .ma-#{$key}-color-hover:hover {
+    @include hover-definition(#{$color});
+  }
+}
+
+input {
+  &[type=text], &[type=password], &[type=date], &[type=datetime], &[type=datetime-local], &[type=month], &[type=week], &[type=email], &[type=number], &[type=search], &[type=tel], &[type=time], &[type=url], &[type=color], textarea {
+    color: $ma-body-text;
+  }
+}
