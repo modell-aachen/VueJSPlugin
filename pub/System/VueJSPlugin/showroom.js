@@ -326,6 +326,10 @@ Vue.onDocumentReady(function(){
         }
     });
     new Vue({
+        el: '#history-list-examples',
+        template: '#history-list-template',
+    });
+    new Vue({
         el: '#search-grid-examples',
         template: '#search-grid-template',
         data: {

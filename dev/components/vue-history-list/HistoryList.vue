@@ -6,8 +6,7 @@
                 <template v-for="(item, index) in data">
                     <div
                         :key="'1_'+index"
-                        class="cell small-1"
-                        style="font-size: 16px">
+                        class="cell small-1">
                         <div class="grid-y history-list-icon-list">
                             <div class="cell shrink history-list-icon-container">
                                 <i
@@ -73,6 +72,7 @@ export default {
 .history-list-icon-list {
     height: 100%;
     color: $ma-grey;
+    font-size: 16px;
     .history-list-icon-container,
     .history-list-line-container {
         margin-left: auto;
