@@ -14,6 +14,7 @@ lib/Foswiki/Plugins/VueJSPlugin/Config.spec 0644
 lib/Foswiki/Plugins/VueJSPlugin/DEPENDENCIES 0644
 locale/VueJSPlugin/de.po 0644
 pub/System/VueJSPlugin/VueJSPlugin.js 0644
+pub/System/VueJSPlugin/VueJSPlugin.min.css 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.js 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.js.gz 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.js.map 0644
