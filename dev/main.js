@@ -3,6 +3,7 @@ import Frontend from './Frontend';
 import AlertPlugin from './alert/AlertPlugin';
 import debounce from 'lodash/debounce';
 import VueSlideUpDown from 'vue-slide-up-down';
+require('./sass/flatskin_wrapped.scss');
 
 const frontend = new Frontend({
     vue: Vue,

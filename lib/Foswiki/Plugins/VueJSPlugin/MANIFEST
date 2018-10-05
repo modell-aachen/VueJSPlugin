@@ -1,20 +1,53 @@
 !noci
-data/System/VueJSPlugin.txt 0644
+data/System/FlatSkinDemoSite.txt 0644
+data/System/FlatSkinWrappedOverview.txt 0644
+data/System/VarGETVIRTUALWEB.txt 0644
 data/System/VarVUE.txt 0644
 data/System/VarVUETOOLTIP.txt 0644
+data/System/VueJSPlugin.txt 0644
+data/System/VueJSPluginComponents.txt 0644
+data/System/VueJSPluginShowroom.txt 0644
 data/System/VueJSPluginSidebar.txt 0644
 data/System/VueJSPluginTabpane.txt 0644
-data/System/VueJSPluginShowroom.txt 0644
-data/System/VueJSPluginComponents.txt 0644
 lib/Foswiki/Plugins/VueJSPlugin.pm 0644
 lib/Foswiki/Plugins/VueJSPlugin/Config.spec 0644
 lib/Foswiki/Plugins/VueJSPlugin/DEPENDENCIES 0644
-pub/System/VueJSPlugin/vue.v1.js 0644
-pub/System/VueJSPlugin/vue.v1.min.js 0644
+locale/VueJSPlugin/de.po 0644
 pub/System/VueJSPlugin/VueJSPlugin.js 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.js 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.js.gz 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.js.map 0644
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-300.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-300.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-300italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-300italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-400.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-400.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-400italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-400italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-600.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-600.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-600italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-600italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-700.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-700.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-700italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-700italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-800.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-800.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-800italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-800italic.woff2
+pub/System/VueJSPlugin/images/ajax-loader.gif
+pub/System/VueJSPlugin/images/border.png
+pub/System/VueJSPlugin/images/bullet.gif
+pub/System/VueJSPlugin/images/file.png
+pub/System/VueJSPlugin/images/portal-break.png
+pub/System/VueJSPlugin/images/sort_asc.gif
+pub/System/VueJSPlugin/images/sort_bg.gif
+pub/System/VueJSPlugin/images/sort_desc.gif
+pub/System/VueJSPlugin/images/user.png
+pub/System/VueJSPlugin/showroom.js 0644
 pub/System/VueJSPlugin/sidebarDocs.js 0644
 pub/System/VueJSPlugin/sidebarDocs.js.gz 0644
-pub/System/VueJSPlugin/showroom.js 0644
+pub/System/VueJSPlugin/vue.v1.js 0644
+pub/System/VueJSPlugin/vue.v1.min.js 0644

@@ -29,6 +29,11 @@ sub initPlugin {
         );
         return 0;
     }
+
+    Foswiki::Func::addToZone( 'head', 'FLATSKIN_WRAPPED',
+        '<link rel="stylesheet" type="text/css" media="all" href="%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/VueJSPlugin.min.css?version=%QUERYVERSION{"VueJSPlugin"}%" />');
+
+    Foswiki::Func::registerTagHandler('GETVIRTUALWEB', \&tagGETVIRTUALWEB);
     Foswiki::Func::registerTagHandler('VUE', \&loadDependencies);
     Foswiki::Func::registerTagHandler('VUETOOLTIP', \&renderTooltip);
     Foswiki::Func::registerTagHandler('VUEATTACHMENTS', \&tagVUEATTACHMENTS);
@@ -115,6 +120,42 @@ sub _loadTemplate {
         $snippet .= "<script id='$component' type='x-template'>\n%TMPL:P{\"$component\"}%\n</script>\n";
     }
     return $snippet;
+}
+
+sub tagGETVIRTUALWEB {
+    my($session, $params, $topic, $web, $meta) = @_;
+
+    if($params->{_DEFAULT}) {
+        ($web, $topic) = Foswiki::Func::normalizeWebTopicName($web, $params->{_DEFAULT});
+    }
+
+    my $formatYes = $params->{formatYes};
+    $formatYes = '$web' unless defined $formatYes;
+
+    my $formatNo = $params->{formatNo};
+    $formatNo = '' unless defined $formatNo;
+
+    my $resultWeb;
+    my $resultFormat;
+    if($session->{store}->can('getVirtualWeb')) {
+        $resultWeb = $session->{store}->getVirtualWeb($web, $topic);
+        if($web ne $resultWeb) {
+            if($resultWeb =~ m#^_#) {
+                $resultFormat = $params->{formatHidden};
+                $resultFormat = $formatYes unless defined $resultFormat;
+            } else {
+                $resultFormat = $formatYes;
+            }
+        } else {
+            $resultFormat = $formatNo;
+        }
+    } else {
+        $resultWeb = $web;
+        $resultFormat = $formatNo;
+    }
+
+    $resultFormat =~ s#\$web#$resultWeb#g;
+    return Foswiki::Func::decodeFormatTokens($resultFormat);
 }
 
 sub tagVUEATTACHMENTS {
