@@ -1,0 +1,261 @@
+$form-label-font-size: rem-calc(12);
+$form-label-font-weight: normal;
+$form-label-line-height: rem-clac(16);
+$form-label-color: $ma-secondary-text;
+$form-spacing: 0;
+$input-radius: $ma-border-radius;
+$input-background: $ma-white-grey;
+$input-background-focus: $ma-white;
+$input-background-disabled: $ma-light-grey;
+$input-border: rem-calc(1) solid $ma-light-grey;
+$input-border-focus: rem-calc(1) solid $ma-primary;
+$input-border-failure: rem-calc(1) solid $ma-failure;
+$input-shadow: 0;
+$input-shadow-focus: 0;
+$input-font-family: $ma-font-regular;
+$input-font-size: rem-calc(14);
+$input-line-height: 1.5;
+$input-transition: border-color .2s, background-color .2s ease-in-out;
+$input-padding: rem-calc(10 8);
+$input-placeholder-color: $ma-secondary-text;
+$select-background: $ma-white-grey;
+$select-radius: $ma-border-radius;
+$input-prefix-background: $ma-button-grey;
+$input-prefix-border: 0;
+$input-prefix-color: $ma-button-grey;
+
+@include foundation-forms;
+
+form{
+  display: block;
+  padding: rem-calc(8 16 0 0);
+}
+.help-text{
+  @include ma-font('semibold');
+  color: $ma-body-text;
+  line-height: 1.4;
+}
+
+select {
+  font-size: 1em;
+}
+
+.input-group>:last-child{
+    border-top-right-radius: $ma-border-radius;
+    border-bottom-right-radius: $ma-border-radius;
+}
+
+.input-group>.input-group-label~.input-group-field {
+  padding-left: 0;
+}
+.ma-input-group{
+  &.ma-success{
+    .fas,.far,.fal {
+      color: $ma-success;
+    }
+  }
+  &.ma-failure{
+    .fas,.far,.fal {
+      color: $ma-failure;
+    }
+    small {
+      color: $ma-failure;
+      font-size: rem-calc(12);
+    }
+    input{
+      border: $input-border-failure;
+    }
+  }
+  position: relative;
+  margin-bottom: rem-calc(16);
+  .fa,.fas,.far,.fal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $ma-grey;
+    font-size: 1.45em;
+    height: ($input-font-size * $input-line-height) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
+    padding: $input-padding;
+  }
+  .ma-small{
+    height: rem-calc(32);
+    padding: rem-calc(6 8);
+    & ~ .fas,& ~ .far,& ~ .fal {
+      line-height: rem-calc(19.5);
+      padding: rem-calc(6 8);
+    }
+  }
+  label + input{
+    margin: rem-calc(4 0 0 0);
+  }
+}
+
+@mixin placeholder-style{
+  @include ma-font('regular');
+  color: $ma-grey;
+}
+
+::-webkit-input-placeholder {
+  @include placeholder-style;
+}
+::-moz-placeholder {
+  @include placeholder-style;
+}
+:-ms-input-placeholder {
+  @include placeholder-style;
+}
+:-moz-placeholder {
+  @include placeholder-style;
+}
+
+// label input[type],select,textarea{
+//   margin-top:5px;
+// }
+
+input[type]:disabled {
+    @include ma-font('regular');
+    color: $ma-dark-grey;
+    font-size: rem-calc(13);
+    line-height: 1.4;
+}
+
+//Switches
+.switch-input[type="checkbox"]:checked + .switch-paddle {
+  background: $ma-success;
+}
+
+
+// Used to calculate offset to center inputs.
+  $line-height: rem-calc(24);
+  $font-size: rem-calc(14);
+  $size: rem-calc(16);
+  $offset: rem-calc(($font-size * unitless-calc($line-height) - $size) / 2);
+
+%item-label {
+    @include ma-font('regular');
+    font-size: $font-size;
+    color: $ma-body-text;
+    margin-left: 0;
+    position: relative;
+    padding-left: rem-calc(16) + $size;
+    line-height: $line-height;
+    &:not(.ma-switch > label) {
+        margin-top: rem-calc(8);
+    }
+}
+%item-label-pseudo {
+    content: "";
+    font-family: "Font Awesome\ 5 Pro";
+    font-weight: 900;
+    font-size: .5rem;
+    color: $ma-dark-grey;
+    display: inline-block;
+    width: $size;
+    height: $size;
+    background-color: white;
+    border: 2px solid $ma-grey;
+    vertical-align: middle;
+    position:absolute;
+    top: $offset;
+    left: 0;
+}
+//Checkboxes
+[type="checkbox"]:not(.switch-input):not(.foswikiCheckbox) {
+  display: none;
+  &+label{
+    @extend %item-label;
+    margin-top: 0px;
+  }
+  &+label::before{
+    @extend %item-label-pseudo;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: $ma-dark-grey;
+    top: 0;
+    content: "\f0c8";
+  }
+  &:checked,
+  &[checked="checked"]{
+    &+label::before{
+      content: "\f14a";
+    }
+  }
+}
+label > .foswikiCheckbox {
+  margin-right: rem-calc(16);
+}
+.field-acl label {
+  padding-left: 16px;
+  font-family: Open Sans,sans-serif;
+  font-size: 1rem;
+  color: rgba(0,0,0,.87);
+  font-weight: bolder;
+}
+.foswikiCheckboxSub {
+  position: relative;
+  left: 30px;
+}
+
+//Radios
+//Idea: Use :before in the label as the radio background and :after as the checkmark
+[type="radio"]{
+  $radio-dimension: 16;
+  $radio-checkmark-padding: 4;
+  display: none;
+  &+label{
+    @extend %item-label;
+    margin-top: 0px;
+  }
+  &+label::before{
+    @extend %item-label-pseudo;
+    border-radius: 50%;
+  }
+
+  &+label::after{
+    @extend %item-label-pseudo;
+    border-radius: 50%;
+    border: 0;
+    background-color: $ma-primary;
+    display: none;
+  }
+  &:checked+label::after{
+    $radio-checkmark-dimension: $radio-dimension - 2 * $radio-checkmark-padding;
+    display: inline-block;
+    width: rem-calc($radio-checkmark-dimension);
+    height: rem-calc($radio-checkmark-dimension);
+    top: rem-calc($radio-checkmark-padding) + $offset;
+    left: rem-calc($radio-checkmark-padding);
+  }
+}
+
+textarea{
+  min-height: rem-calc(90);
+  color: $ma-body-text;
+  font-size: rem-calc(13);
+}
+.foswikiTextarea {
+  &,
+  &:active,
+  &:focus {
+    border: 1px solid transparent; // 1px transparent vs. none: do not jump when textarea gets failure/success state or becomes active
+  }
+  background-color: $ma-light-grey;
+  box-shadow: none;
+}
+
+//Switches
+.ma-switch{
+  @include ma-font('regular');
+  height: initial;
+  margin: rem-calc(4 16 0 0);
+  .switch-input {
+    margin-bottom: 0;
+  }
+  .switch-paddle {
+    position: relative;
+    top: 2px;
+    margin-left: 0;
+    margin-right: rem-calc(16);
+  }
+}

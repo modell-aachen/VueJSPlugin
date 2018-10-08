@@ -1,0 +1,94 @@
+.pagination-container {
+  padding-left: 10px;
+}
+
+.pagination {
+  display: inline-block;
+  > li {
+    &:first-child a{
+      padding-right: rem-calc(16);
+    }
+    &:last-child a{
+      padding-left: rem-calc(16);
+    }
+    display: inline;
+    span {
+      padding: rem-calc(10 8);
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    a {
+      padding: rem-calc(10 8);
+      margin: 0;
+      font-size: 14px;
+      &:hover {
+        color: $ma-body-text;
+        background-color: transparent;
+      }
+    }
+    a:hover {
+      background-color: transparent;
+      color: $ma-body-text;
+    }
+    &.active {
+      > a {
+        @include ma-font('bold');
+        background-color: transparent;
+        color: $ma-body-text;
+      }
+    }
+  }
+}
+
+.ma-pager-prev,
+.ma-pager-next {
+  &:hover {
+    color: $ma-body-text;
+  }
+}
+
+.ma-pager-new {
+  ul.pagination li a {
+    border: 0px; /* Gray */
+    border-radius: $ma-border-radius;
+    color: $ma-colored-text;
+    font-size: 14px;
+  }
+
+  .pagination > .active > a, .pagination > .active > a:hover {
+    background-color: none;
+    border-radius: $ma-border-radius;
+    color: $ma-black;
+  }
+
+  ul.pagination li a.active {
+    background-color: none;
+    border-radius: $ma-border-radius;
+    color: $ma-black;
+  }
+
+  ul.pagination li a:hover:not(.active) {
+    background-color: $ma-colored-text-hover;
+  }
+
+  .pagination li:first-child a {
+    //border: 1px solid #ddd;
+    //background-color: #E5E8EB;
+  }
+
+  .pagination li:last-child a {
+    //border: 1px solid #ddd;
+    //background-color: #E5E8EB;
+  }
+}
+
+.disabled {
+.ma-pager-prev,
+.ma-pager-next {
+    opacity: 0.2;
+  &:hover {
+    opacity: 0.2;
+  }
+}
+}

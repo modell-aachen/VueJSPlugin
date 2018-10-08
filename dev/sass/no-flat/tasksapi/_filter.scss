@@ -1,0 +1,171 @@
+.tasktracker > .filter {
+  background-color: $filter-bg;
+
+  > div {
+    padding: $filter-padding;
+    padding-top: 0px;
+  }
+
+  .create {
+    float: right;
+    margin-top: 16px;
+  }
+
+  .tasks-btn-create {
+    background-color: $light-blue;
+    border: 1px solid darken($light-blue, 5%);
+    border-radius: 3px;
+    color: $dark-blue;
+    font-weight: bold;
+    padding: 7px 10px;
+    transition: background-color .3s ease-in-out,
+                border-color .3s ease-in-out;
+    &:hover {
+      border-color: darken($light-blue, 10%);
+      background-color: darken($light-blue, 10%);
+      text-decoration: none;
+    }
+
+    &:active {
+      border-color: darken($light-blue, 15%);
+      background-color: darken($light-blue, 15%);
+        div {
+            margin-top: 0px;
+         }
+    }
+
+    i {
+      margin-right: 10px;
+    }
+  }
+
+  .options {
+    display: inline-block;
+    padding: 5px 10px;
+
+    .twistyPlugin {
+      div {
+         &:first-child {
+            margin-top: 10px;
+         }
+      }
+    }
+
+    .title {
+      color: #39526d;
+      display: block;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+
+      &:not(:empty) {
+        border-bottom: 1px solid #f0f0f0;
+      }
+    }
+
+    .foswikiLinkLabel {
+      color: $dark-blue;
+    }
+
+    .hint {
+      color: #777;
+      display: inline-block;
+      font-size: 0.8em;
+      margin-right: 6px;
+      margin-top: 10px;
+      min-width: 75px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .btn-filter-container {
+      margin-top: 10px;
+    }
+
+    .btn-filter {
+      background-color: $light-blue;
+      border-radius: 3px;
+      border: 1px solid darken($light-blue, 5%);
+      color: $dark-blue;
+      display: inline-block;
+      font-size: 1em;
+      font-weight: bold;
+      min-width: 112px;
+      padding: 5px 10px;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        border-color: darken($light-blue, 10%);
+        background-color: darken($light-blue, 10%);
+        text-decoration: none;
+      }
+
+      &:active {
+        border-color: darken($light-blue, 15%);
+        background-color: darken($light-blue, 15%);
+      }
+
+      &.btn-apply {
+        margin-left: 0px;
+      }
+
+      &.btn-reset {
+        margin-left: 8px;
+      }
+    }
+    .fa {
+      margin-right: 10px;
+    }
+
+    .select2-selection--single {
+      background-color: $light-blue;
+      border: 1px solid darken($light-blue, 5%);
+    }
+
+    input {
+      min-width: 118px;
+      width: 118px;
+      padding: 3px;
+      box-sizing: content-box; //IE height fix
+    }
+
+    select {
+      min-width: 125px;
+      width: 125px;
+      padding: 2px;
+    }
+
+    input, select {
+      background-color: $light-blue;
+      border: 1px solid darken($light-blue, 5%);
+      border-radius: 3px;
+      color: $dark-blue;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0;
+      outline: none;
+
+      &:hover {
+        border-color: darken($light-blue, 10%);
+        background-color: darken($light-blue, 10%);
+      }
+    }
+
+    input + span,
+    select + span {
+      text-align: center;
+      padding: 0 4px;
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+      select {
+        padding-right:18px
+      }
+    }
+
+    label {
+      position: relative;
+    }
+  }
+}

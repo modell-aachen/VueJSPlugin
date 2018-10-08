@@ -137,7 +137,7 @@
         </template>
         <small
             v-if="sublabel"
-            class="sublabel ma-grey-color">
+            class="sublabel ma-tertiary-text">
             {{ sublabel }}
         </small>
     </div>

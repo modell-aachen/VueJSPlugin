@@ -12,31 +12,6 @@
     "lint": "eslint --ext .js,.vue dev/ tests/",
     "lint:watch": "watch --color 'eslint --color --ext .js,.vue dev/ tests/'"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue",
-      "ts"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "vue-jest",
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "moduleNameMapper": {
-      "\\.(css|less)$": "identity-obj-proxy",
-      "^vue$": "vue/dist/vue.js"
-    },
-    "testRegex": "Spec\\.js$",
-    "transformIgnorePatterns": [
-      "node_modules/(?!(vue-timers)/)"
-    ],
-    "collectCoverageFrom": [
-      "dev/**/*.{js,vue}",
-      "!**/node_modules/**"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git@git.modac.lan:q-wiki/VueJSPlugin.git"
@@ -54,7 +29,8 @@
     "eslint": "^4.0.0",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-vue": "^4.3.0",
-    "file-loader": "^0.11.2",
+    "file-loader": "^2.0.0",
+    "foundation-sites": "6.4.3",
     "jasmine": "^2.5.2",
     "jasmine-ajax": "^3.2.0",
     "jquery": "^3.2.1",
@@ -62,24 +38,28 @@
     "json-loader": "^0.5.4",
     "moment": "^2.18.1",
     "node-sass": "^4.5.1",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "sass-rem": "^2.0.1",
+    "select2": "4.0.1",
     "style-loader": "^0.23.0",
+    "typeface-open-sans": "^0.0.54",
     "url-loader": "^0.5.7",
     "v-tooltip": "^2.0.0-rc.1",
     "vue": "^2.5.0",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.3.4",
+    "vue-template-compiler": "^2.5.17",
     "vuex": "^2.2.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@vue/test-utils": "^1.0.0-beta.22",
+    "@vue/test-utils": "^1.0.0-beta.25",
     "@websanova/vue-upload": "^1.0.2-beta",
+    "autoprefixer": "^9.1.5",
     "babel-jest": "^23.6.0",
     "babel-plugin-transform-es2017-object-entries": "^0.0.4",
     "formdata-polyfill": "^3.0.11",
@@ -88,7 +68,10 @@
     "jest": "^23.6.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
+    "mini-css-extract-plugin": "^0.4.3",
     "nprogress": "^0.2.0",
+    "postcss-discard-duplicates": "^4.0.2",
+    "postcss-discard-empty": "^4.0.1",
     "ts-jest": "^23.10.2",
     "ts-loader": "^5.2.1",
     "typescript": "^3.0.3",

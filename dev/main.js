@@ -1,3 +1,4 @@
+require('./sass/flatskin_wrapped.scss');
 import Vue from 'vue';
 import Frontend from './Frontend';
 import AlertPlugin from './alert/AlertPlugin';

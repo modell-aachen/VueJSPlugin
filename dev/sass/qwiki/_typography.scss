@@ -1,0 +1,126 @@
+h1, h2, h3, h4 {
+  @include ma-font('semibold');
+  margin-top: rem-calc(24);
+  margin-bottom: 0;
+  border: 0;
+  color: $ma-body-text;
+  small, .small-text {
+    @extend %subtitle;
+  }
+}
+
+@each $name, $color in $foundation-palette {
+  h1.#{$name} { color:$color; }
+}
+
+%subtitle {
+  @include ma-font('regular');
+  display: block;
+  color: $ma-secondary-text;
+  font-size: rem-calc(14);
+}
+
+%hr {
+  border-top: 1px solid $ma-grey;
+  position: relative;
+  &:after {
+      content: "";
+      width: calc(100% - 128px);
+      height: 1.1px; /* slight higher to work around rounding errors(?) on some zoom levels in some browsers. */
+      background-color: $ma-white;
+      position: absolute;
+      right:0;
+      top:-1px;
+  }
+}
+
+@mixin header-hr($spacing: 24) {
+  &.ma-text-hr {
+    @extend %hr;
+    padding-top: rem-calc($spacing);
+  }
+}
+
+h1,
+.foswikiTopic h1 {
+  font-size: rem-calc(24);
+  margin-top: rem-calc(24);
+  margin-bottom: rem-calc(24);
+  line-height: rem-calc(28);
+}
+
+h2,
+.foswikiTopic h2 {
+  font-size: rem-calc(20);
+  margin-top: rem-calc(16);
+  margin-bottom: rem-calc(16);
+  line-height: rem-calc(24);
+  @include header-hr(24);
+}
+
+h3,
+.foswikiTopic h3 {
+  font-size: rem-calc(16);
+  margin-top: rem-calc(16);
+  margin-bottom: rem-calc(8);
+  line-height: rem-calc(20);
+  @include ma-font('semibold');
+  @include header-hr(16);
+}
+
+h4,
+.foswikiTopic h4 {
+  font-size: rem-calc(14);
+  margin-top: rem-calc(16);
+  margin-bottom: rem-calc(8);
+  line-height: rem-calc(20);
+}
+
+p {
+  margin-top: rem-calc(8);
+  margin-bottom: rem-calc(8);
+  line-height: rem-calc(24);
+  @include header-hr(8);
+}
+
+small, .small-text, .foswikiSmallish {
+  font-size: rem-calc(12);
+  line-height: rem-calc(19);
+}
+
+.foswikiPage {
+  font-family: ma-font('regular');
+}
+
+hr {
+  margin-top: rem-calc(8);
+  margin-bottom: 0;
+}
+
+.ma-secondary-text {
+  h1, h2, h3, h4 {
+    color: $ma-secondary-text;
+  }
+  color: $ma-secondary-text;
+}
+.ma-tertiary-text {
+  h1, h2, h3, h4 {
+    color: $ma-tertiary-text;
+  }
+  color: $ma-tertiary-text;
+}
+.ma-disabled-text {
+  h1, h2, h3, h4 {
+    color: $ma-disabled-text;
+  }
+  color: $ma-disabled-text;
+}
+.ma-akzent-text {
+  h1, h2, h3, h4 {
+    color: $ma-akzent-text;
+  }
+  color: $ma-akzent-text;
+}
+b {
+  font-weight: $ma-font-weight-bold;
+}
