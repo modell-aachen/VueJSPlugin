@@ -3,6 +3,7 @@ import VueUserSelector from './components/vue-userselector/UserSelector.vue';
 import VueSplitbutton from './components/vue-splitbutton/Splitbutton.vue';
 import VueButton from './components/vue-button/Button.vue';
 import VueCheckItem from './components/vue-check-item/CheckItem.vue';
+import VueHistoryList from './components/vue-history-list/HistoryList.vue';
 import VueInputText from './components/vue-input-text/InputText.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
@@ -87,6 +88,7 @@ class MAVueJsPlugin {
         Vue.component('vue-button', VueButton);
         Vue.component('vue-check-item', VueCheckItem);
         Vue.component('vue-input-text', VueInputText);
+        Vue.component('vue-history-list', VueHistoryList);
         Vue.component('vue-pagination', VuePagination);
         Vue.component('vue-spinner', VueSpinner);
         Vue.component('vue-tabpane', VueTabpane);

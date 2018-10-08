@@ -627,6 +627,57 @@ Alerts can be triggered by calling the $showAlert function. See the [[%PUBURLPAT
 %INCLUDE{"%WEB%.%TOPIC%" section="TableVueTemplate"}%
 </script>
 
+---+ HistoryList
+<div class="flatskin-wrapped">
+ <div id="history-list-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"HistoryListVueTemplate"}%
+<vue-history-list
+    :is-loading="false"
+    :data="[
+        {
+           date: '14.10.2018, 08:30',
+           action: 'Approved',
+           actor: 'User 2',
+           description: 'hat das Dokument Freigegeben',
+           comment: 'Das sollten wir so leben!',
+           icon: 'fa-check-circle ma-success-color',
+        },
+        {
+           date: '13.10.2018, 16:30',
+           action: 'Added to Approve',
+           actor: 'User 1',
+           description: 'hat um Freigabe gebeten',
+           comment: '',
+           icon: 'fa-question-circle ma-warning-color',
+        },
+        {
+           date: '13.10.2018, 12:30',
+           action: 'Edited',
+           actor: 'User 2',
+           description: 'hat das Dokument bearbeitet',
+           comment: '',
+           icon: 'fa-circle',
+        },
+        {
+           date: '12.10.2018, 12:30',
+           action: '',
+           actor: 'User 2',
+           description: 'hat das Element angelegt',
+           comment: '',
+           icon: 'fa-plus-circle ma-success-color',
+        },
+    ]">
+</vue-history-list>
+%ENDSECTION{"HistoryListVueTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="history-list-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="HistoryListVueTemplate"}%
+</script>
+
 ---+ Search Grid
 <div class="flatskin-wrapped">
  <div id="search-grid-examples"></div>
