@@ -1,0 +1,35 @@
+@import '../../sass/settings.scss';
+
+$sidebar-z-index: 1000;
+$sidebar-width: 500px;
+
+$sidebar-header-height: 60px;
+$sidebar-header-bottom-border: 2px;
+$sidebar-content-width: $sidebar-width - 50px;
+$sidebar-content-padding-vertical: 16px;
+$sidebar-content-padding-horizontal: 32px;
+$sidebar-content-padding: 0 $sidebar-content-padding-vertical $sidebar-content-padding-horizontal;
+$sidebar-highlight-border-color: #cf3004;
+$sidebar-highlight-border-width: 2px;
+$sidebar-toast-opacity: 0.8;
+$sidebar-modal-opacity: 0.9;
+$sidebar-modal-icon-color: #efecec;
+
+div.columns.ma-left-label-sidebar {
+    padding-left: 0;
+    padding-right: 0;
+}
+div.columns.ma-left-label-input-sidebar {
+    padding-right: 0;
+}
+
+@mixin sidebar-content {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(#{$sidebar-width} - #{$sidebar-content-width});
+  background-color: $ma-white;
+  width: $sidebar-content-width;
+  overflow: auto;
+}

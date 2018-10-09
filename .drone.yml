@@ -1,0 +1,26 @@
+pipeline:
+  run tests:
+    image: node
+    commands:
+      - yarn
+      - yarn run test
+      - yarn run lint
+  sonar:
+    image: mmoscher/sonar-runner
+    sources: "dev/,pub/"
+    profile: ""
+    secrets: [SONAR_HOST, SONAR_LOGIN]
+    environment:
+      - PLUGIN_ALLOWED_BRANCH_REGEX=.*
+  notify:
+    image: drillster/drone-email
+    host: smtp.sendgrid.net
+    port: 2525
+    username: apikey
+    from: drone@modell-aachen.de
+    secrets: [EMAIL_PASSWORD]
+    recipients:
+      - entwickler@modell-aachen.de
+    recipients_only: true
+    when:
+      status: [ changed, failure ]

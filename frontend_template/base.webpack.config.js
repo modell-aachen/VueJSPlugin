@@ -1,16 +1,15 @@
-var OUT_PATH = "pub/System/MyPlugin";
-var OUT_FILE = "myplugin.js";
+let OUT_PATH = "pub/System/MyPlugin";
+let OUT_FILE = "myplugin.js";
 
-var path = require('path')
-var projectRoot = path.resolve(__dirname);
-var webpack = require('webpack')
+let path = require('path')
+let projectRoot = path.resolve(__dirname);
 
-var includeDirs = [
+let includeDirs = [
   projectRoot + '/dev',
   projectRoot + '/tests'
 ];
 
-var babelLoaderOptions = {
+let babelLoaderOptions = {
   presets: [['env', {"modules": false}]]
 }
 

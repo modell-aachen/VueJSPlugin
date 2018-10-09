@@ -1,0 +1,146 @@
+$button-background: $ma-button-grey;
+$button-radius: $ma-border-radius;
+$button-padding: 0 rem-calc(16);
+$button-color: $ma-white;
+//$button-background-hover: scale-color($button-background, $lightness: $lightness);
+$buttongroup-spacing: 5px;
+$button-margin-bottom: rem-calc(16);
+$button-margin-right: rem-calc(8);
+
+@include foundation-button;
+@include foundation-button-group;
+
+
+//Unfortunately the button-background-hover only applies
+//if no styling class besides 'button' is set (e.g. alert).
+// Therefore we have to override the background color for styles
+// we want to use.
+@mixin button-hover-active($bg-color, $color-effect, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    &, &:focus {
+        background-color: $bg-color;
+        color: $text-color;
+        &:hover {
+            background-color: lighten($bg-color, $color-effect);
+            color: $text-color;
+        }
+    }
+    &:active {
+        background-color: darken($bg-color, $color-effect);
+        color: $text-color;
+    }
+    &[disabled] {
+        color: $text-color;
+        &:active, &:hover {
+            color: $text-color;
+            background-color: $bg-color;
+        }
+    }
+}
+
+$icon-font-size: 1.45em;
+
+.button, a.button {
+    @include ma-font('semibold');
+    @include button-hover-active($button-background, 3%, $ma-secondary-text);
+    $button-height: rem-calc(32);
+    $button-icon-width: 1.25em; // copied from FontAwesome;
+    $button-padding: rem-calc(16);
+
+    font-size: rem-calc(14);
+    min-width: $button-height;
+    min-height: $button-height;
+    .button-icon {
+        margin-right: initial;
+    }
+    line-height: $button-height;
+    border: 0;
+    margin-right: $button-margin-right;
+    margin-bottom: $button-margin-bottom;
+    &.no-margin-bottom {
+        margin-bottom: 0;
+    }
+    position: relative;
+    .icon-spacer {
+        width: $button-icon-width;
+        display: inline-block;
+    }
+    &.icon.has-text,
+    &.dropdown-button {
+        .icon-wrapper { // this will prevent the text from repositioning
+                        // unfortunately it also removes some flexibility
+                        // (fixed width for the icon)
+            position: absolute;
+            top: rem-calc(-1);
+            right: rem-calc(20);
+            width: $button-icon-width;
+            .button-icon {
+                margin: 0px;
+            }
+        }
+
+        .button-text {
+            margin-left: $button-padding;
+        }
+    }
+    &.dropdown-button {
+        padding-right: 36px;
+    }
+    .icon-wrapper {
+        display: inline-block;
+    }
+    .button-icon, i {
+        margin-right: $button-padding;
+        vertical-align: text-bottom;
+        &:not(.vue-button) {
+            font-size: 1.33333333em;
+        }
+    }
+    .dropdown-icon {
+        line-height: inherit;
+        font-size: 130%;
+    }
+    &, &:link, &:visited {
+        @include button-hover-active($button-background, 3%, $ma-secondary-text);
+    }
+    &.text-left {
+        text-align: left;
+    }
+    &.text-right {
+        text-align: right;
+    }
+}
+
+.button, a.button {
+    &.primary {
+        @include button-hover-active($ma-primary, 10%, $ma-white);
+    }
+    &.delete {
+        @include button-hover-active($ma-failure, 15%, $ma-white);
+    }
+    &.ghost {
+        @include button-hover-active($button-background, 3%, $ma-secondary-text);
+        background-color: $ma-white;
+        &[disabled] {
+            &:active, &:hover {
+                background-color: $ma-white;
+                color: $ma-secondary-text;
+            }
+        }
+    }
+    &.icon {
+       padding: inherit;
+       .button-icon {
+           line-height: inherit;
+           margin-right: 0px;
+        }
+        i {
+            margin-right: 0px;
+            font-size: $icon-font-size;
+        }
+        &.ma-warning-color {
+            color: $ma-warning;
+        }
+    }
+}

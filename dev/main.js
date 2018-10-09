@@ -1,12 +1,22 @@
-import "babel-polyfill";
-
 import Vue from 'vue';
-import Vuex from 'vuex';
-import MAVueJsPlugin from './MAVueJsPlugin.js';
+import Frontend from './Frontend';
+import AlertPlugin from './alert/AlertPlugin';
+import debounce from 'lodash/debounce';
+import VueSlideUpDown from 'vue-slide-up-down';
+require('./sass/flatskin_wrapped.scss');
 
-Vue.use(Vuex);
+const frontend = new Frontend({
+    vue: Vue,
+    foswiki: window.foswiki,
+    moment: window.moment,
+    jquery: window.$,
+    alertPlugin: AlertPlugin,
+    debounce: debounce,
+    slideUpDown: VueSlideUpDown,
+});
 
-let store = new Vuex.Store();
-Vue.use(MAVueJsPlugin, {store});
+frontend.setup();
 
-window.Vue = Vue;
+jQuery(function () {
+    Vue.instantiateEach('.vue-container');
+});
