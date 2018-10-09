@@ -145,8 +145,6 @@ $ma-h3-margin-bottom: rem-calc(3);
 // table settings
 //
 $border-transition: border-color .2s,background-color .2s ease-in-out;
-$table-background: $ma-white;
 $table-border: 0;
-$table-head-background: $ma-white;
 $table-inner-border: 0;
-$table-striped-background: $ma-white;
+$table-padding: rem-calc(8);

@@ -1,3 +1,32 @@
+table {
+    // copied from foundation
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    border-radius: $ma-border-radius;
+    thead {
+        color: $ma-secondary-text;
+        background: transparent;
+        font-weight: $ma-font-weight-bold;
+        th,
+        td {
+            color: $ma-secondary-text;
+            padding: $table-padding;
+            font-weight: $ma-font-weight-bold;
+            text-align: #{$global-left};
+            border-bottom: 2px solid $ma-light-grey;
+            font-size: rem-calc(12);
+        }
+    }
+    tbody {
+        color: $ma-body-text;
+        th,
+        td {
+            padding: $table-padding;
+        }
+    }
+}
+
 table.ma-table-short {
   margin-top: rem-calc(16);
   font-size: rem-calc(14);
@@ -8,11 +37,6 @@ table.ma-table-short {
   }
 }
 thead {
-  th, td {
-    border-bottom: 2px solid $ma-light-grey;
-    font-size: rem-calc(12);
-    padding: rem-calc(8 48 8 0);
-  }
   th.vue-table-head {
     font-weight: $ma-font-weight-semibold;
   }

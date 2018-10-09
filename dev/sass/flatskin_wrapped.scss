@@ -32,6 +32,7 @@ html {
     // Foundation for Sites 6
     //
     @import '~foundation-sites/scss/foundation';
+    @import 'settings'; // import again for rem-calc
 
     //Here we put all styles foundation sets on html or body.
     //Unfortunately this is copy paste
@@ -63,7 +64,6 @@ html {
     @include foundation-flex-classes;
     @include foundation-visibility-classes;
     @include foundation-float-classes;
-    @include foundation-table(true);
     @import 'qwiki/mixins';
     @import 'qwiki/globals';
     @import 'qwiki/base';
