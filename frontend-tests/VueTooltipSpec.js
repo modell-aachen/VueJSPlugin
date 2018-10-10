@@ -19,7 +19,7 @@ describe("The Tooltip component", () => {
         };
         const wrapper = mount(Tooltip, options);
         it("text", () => {
-            expect(wrapper.find('i').classes()).toContain('has-tooltip');
+            expect(wrapper.classes()).toContain('has-tooltip');
         });
         it("icon", () => {
             expect(wrapper.find('i').classes()).toContain(options.propsData.icon[1]);

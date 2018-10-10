@@ -6,7 +6,6 @@
 @import url('~typeface-open-sans/index.css');
 @import 'foundation_libs';
 @import 'settings';
-@import 'qwiki/tooltip';
 
 html {
     font-size: $global-font-size;
@@ -64,6 +63,7 @@ html {
     @include foundation-flex-classes;
     @include foundation-visibility-classes;
     @include foundation-float-classes;
+    @import 'qwiki/tooltip';
     @import 'qwiki/mixins';
     @import 'qwiki/globals';
     @import 'qwiki/base';
