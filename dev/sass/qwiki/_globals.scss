@@ -3,6 +3,9 @@
   .ma-margin-top-#{$name} {
     margin-top: $size;
   }
+  .ma-margin-bottom-#{$name} {
+    margin-bottom: $size;
+  }
 }
 
 @each $name, $size in $limited-width {
