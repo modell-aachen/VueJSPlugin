@@ -59,7 +59,7 @@
 
 <script>
 export default {
-    name: 'DadList',
+    name: 'VueDadList',
     props: {
         'value':{
             type: Array,

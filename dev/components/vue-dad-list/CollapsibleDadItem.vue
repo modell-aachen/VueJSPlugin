@@ -39,7 +39,7 @@
                         item-type="vue-simple-dad-item">
                         <vddl-placeholder slot="placeholder">
                             <div class="ma-simple-dad-item-drop-area">
-                                <h3>Feld in diesen Inhaltsblock verschieben</h3>
+                                <h3>{{ dropTargetDescription !== undefined ? dropTargetDescription : $t('collapsible_dad_item_drop_target') }}</h3>
                             </div>
                         </vddl-placeholder>
                         <div slot="addArea"/>
@@ -77,10 +77,15 @@
 <script>
 export default {
     name: 'CollapsibleDadItem',
+    i18nextNamespace: 'VueJSPlugin',
     props: {
         canDropInTitle: {
             type: Boolean,
             default: false
+        },
+        dropTargetDescription: {
+            type: String,
+            default: undefined,
         },
         item:{
             type: Object,
