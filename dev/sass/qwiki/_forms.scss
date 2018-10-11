@@ -69,6 +69,7 @@ select {
   position: relative;
   margin-bottom: rem-calc(16);
   .fa,.fas,.far,.fal {
+    pointer-events: none;
     position: absolute;
     top: 0;
     right: 0;
