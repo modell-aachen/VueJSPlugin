@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="grid-x">
-            <div class="cell">
+            <div class="cell vue-table-wrapper">
                 <table>
                     <thead>
                         <tr>
@@ -89,10 +89,8 @@ export default {
     }
 };
 </script>
-
-<style scoped lang="scss">
-table{
-    display: block;
-    overflow-x: auto;
+<style lang="scss">
+.vue-table-wrapper{
+    overflow: auto;
 }
 </style>
