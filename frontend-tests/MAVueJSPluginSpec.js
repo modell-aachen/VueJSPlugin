@@ -20,12 +20,13 @@ describe("The MAVueJSPlugin ", () => {
             tokenTag.remove();
         });
 
-        it("warns on missing attributes.", () => {
+        // Tokens are disabled for now
+        xit("warns on missing attributes.", () => {
             TestCase.vue.instantiateEach('#test');
             expect(console.warn).toHaveBeenCalled();
         });
 
-        it("warns on wrong token", () => {
+        xit("warns on wrong token", () => {
             tokenTag.innerHTML = '{ "token" : "xxxx" }';
             container.setAttribute('data-vue-client-token', 'token');
 
