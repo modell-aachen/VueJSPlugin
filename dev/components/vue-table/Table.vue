@@ -89,3 +89,10 @@ export default {
     }
 };
 </script>
+
+<style scoped lang="scss">
+table{
+    display: block;
+    overflow-x: auto;
+}
+</style>
