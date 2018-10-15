@@ -72,7 +72,7 @@
                     <i class="fas fa-times-circle" />
                 </div>
                 <div
-                    v-if="!multiple && isValueEmpty"
+                    v-if="!multiple && (isValueEmpty || (allowClear !== true && allowClear !== '1'):"
                     class="open-indicator"
                     style="min-width: 30px; max-width:30px; align-self: center; text-align:right;">
                     <i
