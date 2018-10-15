@@ -118,6 +118,8 @@ $foundation-palette: (
   alert: $ma-failure,
 );
 
+$input-color: $ma-body-text;
+
 $primary-color: map-get($foundation-palette, 'primary');
 $secondary-color: map-get($foundation-palette, 'secondary');
 $success-color: map-get($foundation-palette, 'success');
