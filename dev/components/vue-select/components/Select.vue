@@ -37,14 +37,6 @@
                                 type="text">
                                 {{ getOptionLabel(option) }}
                             </span>
-                            <div
-                                v-if="allowClear === true || allowClear === '1'"
-                                class="close-icon"
-                                aria-hidden="true"
-                                @mousedown.stop
-                                @click.stop="deselect(internalValue)">
-                                <i class="far fa-times" />
-                            </div>
                         </template>
                         <a
                             v-if="multiple">
@@ -73,7 +65,14 @@
                     </span>
                 </div>
                 <div
-                    v-if="!multiple"
+                    v-if="!isValueEmpty && !multiple && (allowClear === true || allowClear === '1')"
+                    class="close-icon close-icon-single-tag"
+                    @mousedown.stop
+                    @click.stop="deselect(internalValue)">
+                    <i class="fas fa-times-circle" />
+                </div>
+                <div
+                    v-if="!multiple && isValueEmpty"
                     class="open-indicator"
                     style="min-width: 30px; max-width:30px; align-self: center; text-align:right;">
                     <i
@@ -1056,6 +1055,12 @@ export default {
             min-width: 40px;
         }
     }
+}
+.close-icon-single-tag {
+    color: $ma-grey;
+    font-size: rem(16px);
+    padding-top: rem(11px);
+    padding-right: rem(8px - $ma-border-width);
 }
 </style>
 
