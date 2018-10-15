@@ -582,10 +582,27 @@ The standard foundation button classes are used.
 <div class="grid-x">
 <div class="cell medium-4">
 <select class='jqSelect2 {placeholder: "Select a burger", width: "element"}'>
-<option>Hamburger</option>
-<option>Hamburger deluxe with gold plating</option>
-<option>Cheeseburger</option>
-<option>Joppiburger</option>
+<option></option>
+<option value="hamburger">Hamburger</option>
+<option value="hamburgerDeluxe">Hamburger deluxe with gold plating</option>
+<option value="cheeseburger">Cheeseburger</option>
+<option value="joppiburger">Joppiburger</option>
+</select>
+</div>
+</div>
+
+---+++ Single-Select with allowClear
+
+%JQREQUIRE{"select2"}%
+
+<div class="grid-x">
+<div class="cell medium-4">
+<select class='jqSelect2 {placeholder: "Select a burger", width: "element", allowClear: "1"}'>
+<option></option>
+<option value="hamburger">Hamburger</option>
+<option value="hamburgerDeluxe">Hamburger deluxe with gold plating</option>
+<option value="cheeseburger">Cheeseburger</option>
+<option value="joppiburger">Joppiburger</option>
 </select>
 </div>
 </div>
@@ -596,7 +613,52 @@ The standard foundation button classes are used.
 <div class="grid-x">
 <div class="cell medium-4">
 <select class='jqSelect2 {placeholder: "Select a burger", width: "element", multiple: true}'>
-<option>Hamburger</option>
+<option></option>
+<option value="hamburger">Hamburger</option>
+<option value="hamburgerDeluxe">Hamburger deluxe with gold plating</option>
+<option value="cheeseburger">Cheeseburger</option>
+<option value="joppiburger">Joppiburger</option>
+</select>
+</div>
+</div>
+
+---+++ Single-Select with pre-selection
+
+%JQREQUIRE{"select2"}%
+
+<div class="grid-x">
+<div class="cell medium-4">
+<select class='jqSelect2 {placeholder: "Select a burger", width: "element"}'>
+<option selected="selected">Hamburger</option>
+<option>Hamburger deluxe with gold plating</option>
+<option>Cheeseburger</option>
+<option>Joppiburger</option>
+</select>
+</div>
+</div>
+
+---+++ Single-Select with allowClear and pre-selection
+
+%JQREQUIRE{"select2"}%
+
+<div class="grid-x">
+<div class="cell medium-4">
+<select class='jqSelect2 {placeholder: "Select a burger", width: "element", allowClear: "1"}'>
+<option selected="selected">Hamburger</option>
+<option>Hamburger deluxe with gold plating</option>
+<option>Cheeseburger</option>
+<option>Joppiburger</option>
+</select>
+</div>
+</div>
+
+---+++ Multi-Select with pre-selection
+
+%JQREQUIRE{"select2"}%
+<div class="grid-x">
+<div class="cell medium-4">
+<select class='jqSelect2 {placeholder: "Select a burger", width: "element", multiple: true}'>
+<option selected="selected">Hamburger</option>
 <option>Hamburger deluxe with gold plating</option>
 <option>Cheeseburger</option>
 <option>Joppiburger</option>

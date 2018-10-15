@@ -93,20 +93,11 @@ select {
 
 @mixin placeholder-style{
   @include ma-font('regular');
-  color: $ma-grey;
+  color: $ma-secondary-text;
 }
 
-::-webkit-input-placeholder {
-  @include placeholder-style;
-}
 ::-moz-placeholder {
-  @include placeholder-style;
-}
-:-ms-input-placeholder {
-  @include placeholder-style;
-}
-:-moz-placeholder {
-  @include placeholder-style;
+    opacity: 1;
 }
 
 // label input[type],select,textarea{

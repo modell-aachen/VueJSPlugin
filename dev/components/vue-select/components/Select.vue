@@ -24,6 +24,7 @@
                     <input
                         v-show="!multiple && isValueEmpty && !open"
                         :placeholder="searchPlaceholder"
+                        class="single-tag"
                         type="text">
 
                     <span
@@ -850,7 +851,7 @@ export default {
 
         &.disabled {
           cursor: not-allowed;
-          background-color: #fafafa;
+          background-color: $ma-light-grey;
           color: $ma-disabled-text;
         }
 
@@ -1030,37 +1031,39 @@ export default {
     label.vue-select__dropdown__filter__item {
         margin-right: 24px;
     }
-}
-
-.select-arrow {
-    margin-right: 10px;
-}
-
-.width-xs {
     .select-arrow {
-        margin-right: 21px;
+        margin-right: 10px;
     }
-    .form-control {
-        width: 40px;
-        min-width: 40px;
-    }
-    .dropdown-menu {
-        width: 75px;
-        min-width: 75px;
-    }
-    .dropdown-toggle {
-        width: 75px;
 
-        .selected-tag {
+    .width-xs {
+        .select-arrow {
+            margin-right: 21px;
+        }
+        .form-control {
+            width: 40px;
             min-width: 40px;
         }
+        .dropdown-menu {
+            width: 75px;
+            min-width: 75px;
+        }
+        .dropdown-toggle {
+            width: 75px;
+
+            .selected-tag {
+                min-width: 40px;
+            }
+        }
     }
-}
-.close-icon-single-tag {
-    color: $ma-grey;
-    font-size: rem(16px);
-    padding-top: rem(11px);
-    padding-right: rem(8px - $ma-border-width);
+    .close-icon-single-tag {
+        color: $ma-grey;
+        font-size: rem(16px);
+        padding-right: rem(8px - $ma-border-width);
+        padding-top: rem(11px);
+    }
+    .input-area-small .close-icon-single-tag {
+        padding-top: rem(7px);
+    }
 }
 </style>
 

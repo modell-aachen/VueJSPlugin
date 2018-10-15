@@ -66,7 +66,66 @@ Vue.onDocumentReady(function(){
     });
     new Vue({
         el: '#select-examples',
-        template: '#select-template'
+        template: '#select-template',
+        data: {
+            singleSelectValue: [],
+            singleSelectAllowClearValue: [],
+            multiSelectValue: [],
+            singleSelectPreSelectValue: ['darjeeling'],
+            singleSelectAllowClearPreSelectValue: ['darjeeling'],
+            multiSelectPreSelectValue: ['darjeeling'],
+            disabledPreSelectValue: ['darjeeling'],
+            jsOptions: [
+                {
+                    value: 'darjeeling',
+                    label: 'Darjeeling'
+                },
+                {
+                    value: 'assam',
+                    label: 'Assam'
+                },
+                {
+                    value: 'ceylon',
+                    label: 'Ceylon'
+                },
+                {
+                    value: 'dooars',
+                    label: 'Dooars'
+                },
+                {
+                    value: 'earlGrey',
+                    label: 'Earl Grey'
+                },
+                {
+                    value: 'peppermint',
+                    label: 'Peppermint'
+                },
+                {
+                    value: 'camomile',
+                    label: 'Camomile'
+                },
+                {
+                    value: 'hibiscus',
+                    label: 'Hibiscus'
+                },
+                {
+                    value: 'ginger',
+                    label: 'Ginger'
+                },
+                {
+                    value: 'rooibos',
+                    label: 'Rooibos'
+                },
+                {
+                    value: 'almond',
+                    label: 'Almond'
+                },
+                {
+                    value: 'sage',
+                    label: 'Sage'
+                },
+            ],
+        }
     });
     new Vue({
         el: '#pagination-examples',

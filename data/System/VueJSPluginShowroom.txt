@@ -370,24 +370,165 @@ The following examples provide an overview of its functionality. The correspondi
 %TWISTY%
 <verbatim>
 %STARTSECTION{"SelectVueTemplate"}%
-<div>
-<vue-select
-  multiple
-  label="field"
-  placeholder="Search term..."
-  :onSearch="() => {}"
->
-    <template slot="more-results">Show more results</template>
-</vue-select>
-
-<vue-select
-  label="Disabled Select"
-  placeholder="Disabled .."
-  :onSearch="() => {}"
-  :isDisabled="true"
->
-    <template slot="more-results">Show more results</template>
-</vue-select>
+<div class="grid-x grid-margin-x">
+    <div class="cell large-3">
+        <h3>Regular</h3>
+        <vue-select
+            v-model="singleSelectValue"
+            label="single select"
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            v-model="singleSelectAllowClearValue"
+            label="single select with allow clear"
+            allowClear
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            v-model="multiSelectValue"
+            multiple
+            label="multi select"
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            label="Disabled Select"
+            placeholder="Disabled .."
+            :onSearch="() => {}"
+            :isDisabled="true"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+    </div>
+    <div class="cell large-3">
+        <h3>Regular with pre-selection</h3>
+        <vue-select
+            v-model="singleSelectPreSelectValue"
+            label="single select"
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            v-model="singleSelectAllowClearPreSelectValue"
+            label="single select with allow clear"
+            allowClear
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            v-model="multiSelectPreSelectValue"
+            multiple
+            label="multi select"
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            :value="disabledPreSelectValue"
+            label="Disabled Select"
+            placeholder="Disabled .."
+            :onSearch="() => {}"
+            :isDisabled="true"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+    </div>
+    <div class="cell large-3">
+        <h3>Small</h3>
+        <vue-select
+            v-model="singleSelectValue"
+            isSmall
+            label="single select"
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            v-model="singleSelectAllowClearValue"
+            isSmall
+            label="single select with allow clear"
+            allowClear
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            v-model="multiSelectValue"
+            isSmall
+            multiple
+            label="multi select"
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            isSmall
+            label="Disabled Select"
+            placeholder="Disabled .."
+            :onSearch="() => {}"
+            :isDisabled="true"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+    </div>
+    <div class="cell large-3">
+        <h3>Small with pre-selection</h3>
+        <vue-select
+            v-model="singleSelectPreSelectValue"
+            isSmall
+            label="single select"
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            v-model="singleSelectAllowClearPreSelectValue"
+            isSmall
+            label="single select with allow clear"
+            allowClear
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            v-model="multiSelectPreSelectValue"
+            isSmall
+            multiple
+            label="multi select"
+            placeholder="Search term..."
+            :initialOptions="jsOptions"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+        <vue-select
+            :value="disabledPreSelectValue"
+            isSmall
+            label="Disabled Select"
+            placeholder="Disabled .."
+            :onSearch="() => {}"
+            :isDisabled="true"
+        >
+            <template slot="more-results">Show more results</template>
+        </vue-select>
+    </div>
 </div>
 %ENDSECTION{"SelectVueTemplate"}%
 </verbatim>
