@@ -11,11 +11,16 @@ h3, label {
 }
 
 .circle-bg-tooltip {
-  border-radius: 50%;
-  width: rem-calc($bg-size);
-  height: rem-calc($bg-size);
-  border: 1px solid $ma-light-grey;
-  background: $ma-button-grey;
+    border-radius: 50%;
+    width: rem-calc($bg-size);
+    height: rem-calc($bg-size);
+    border: 1px solid $ma-light-grey;
+    background: $ma-button-grey;
+
+    label & {
+        position: absolute;
+        top: -2px;
+    }
 }
 
 .tooltip-icon {
