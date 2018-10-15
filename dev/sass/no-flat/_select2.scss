@@ -1,0 +1,24 @@
+.select2-container--default {
+    padding-right: 8px;
+    min-height: initial;
+    .select2-selection {
+        padding: 0px 20px 0px 8px;
+        overflow: hidden;
+        .select2-selection__rendered {
+            min-height: 28px;
+            display: inline-block;
+            width: 100%;
+            .select2-search__field {
+                margin: 0;
+            }
+        }
+    }
+    .select2-selection--single {
+        .select2-selection__arrow {
+            right: 9px;
+        }
+    }
+    .select2-selection--multiple {
+        min-height: initial;
+    }
+}
