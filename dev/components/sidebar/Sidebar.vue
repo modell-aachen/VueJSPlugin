@@ -170,6 +170,9 @@ export default {
       margin: 12px -#{$sidebar-content-padding-horizontal};
       height: 2px;
       background-color: $ma-medium-grey;
+      &.small {
+        margin: 24px 66% 24px 0px;
+      }
     }
   }
 }
