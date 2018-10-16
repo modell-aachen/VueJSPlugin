@@ -231,6 +231,7 @@ span.label {
   vertical-align: baseline;
   border-radius: .25em;
   word-wrap: break-word;
+  white-space: normal;
 
   &.label-default{
     background-color: #337ab7;
