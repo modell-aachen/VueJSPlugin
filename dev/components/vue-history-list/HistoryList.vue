@@ -6,7 +6,8 @@
                 <template v-for="(item, index) in data">
                     <div
                         :key="'1_'+index"
-                        class="cell small-1">
+                        class="cell small-1"
+                        @click="onClick(index)">
                         <div class="grid-y history-list-icon-list">
                             <div class="cell shrink history-list-icon-container">
                                 <i
@@ -59,6 +60,9 @@ export default {
     methods: {
         isLastItem(index) {
             return index === this.data.length - 1;
+        },
+        onClick(index) {
+            this.$emit('item-clicked', index);
         }
     },
 };
