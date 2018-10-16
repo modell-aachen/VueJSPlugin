@@ -2,44 +2,44 @@
 
 .select2-container--ma {
     &.select2-container--focus .select2-selection--multiple {
-      border: 2px solid $ma-grey;
+        border: 2px solid $ma-grey;
     }
     .select2-selection--multiple{
-      border: 2px solid $ma-grey;
+        border: 2px solid $ma-grey;
 
-      .select2-selection__choice{
-        padding: 10px;
-        background-color: green;
-        border-radius: $ma-border-radius;
-        border: 0;
-        @include ma-font('regular');
-        color: $ma-body-text;
-        font-size: rem-calc(12);
-        line-height: 1.4;
+        .select2-selection__choice{
+            padding: 10px;
+            background-color: green;
+            border-radius: $ma-border-radius;
+            border: 0;
+            @include ma-font('regular');
+            color: $ma-body-text;
+            font-size: rem-calc(12);
+            line-height: 1.4;
 
-        .choice-icon {
-          margin-right: 10px;
+            .choice-icon {
+                margin-right: 10px;
+            }
+
+            .select2-selection__choice__remove {
+                float: right;
+                margin-left: 10px;
+            }
         }
-
-        .select2-selection__choice__remove {
-          float: right;
-          margin-left: 10px;
-        }
-      }
     }
 }
 
-  .select2-container--default {
+.select2-container--default {
     min-height: rem-calc(40);
     .select2-selection{
-      height: auto;
+        height: auto;
     }
     .select2-selection--multiple {
-      min-height: rem-calc(40);
-      .select2-selection__rendered {
-        word-break: break-all;
-        white-space: inherit;
-      }
+        min-height: rem-calc(40);
+        .select2-selection__rendered {
+            word-break: break-all;
+            white-space: inherit;
+        }
     }
 
     .select2-selection--single {
@@ -70,13 +70,13 @@
     }
 
     &.select2 {
-      min-width:100%;
-      max-width:100%;
-      ul.select2-selection__rendered {
-          &, #modacWrapper & {
-              padding: 0;
-          }
-      }
+        min-width:100%;
+        max-width:100%;
+        ul.select2-selection__rendered {
+            &, #modacWrapper & {
+                padding: 0;
+            }
+        }
     }
     &.select2-container--focus, &.select2-container--open {
         .select2-selection, .select2-selection--multiple, .select2-selection--single {
@@ -144,4 +144,4 @@
             margin-right: rem-calc(0);
         }
     }
-  }
+}
