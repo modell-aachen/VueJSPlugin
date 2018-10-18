@@ -45,6 +45,7 @@
     .select2-selection--single {
         .select2-selection__rendered {
             line-height: rem-calc(32px);
+            color: $ma-body-text;
 
             .select2-selection__clear {
                 margin-right: rem-calc(16px);
