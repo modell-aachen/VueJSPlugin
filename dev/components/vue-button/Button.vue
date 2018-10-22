@@ -45,6 +45,10 @@ export default {
                 return types.includes(value);
             }
         },
+        'onClick': {
+            type: Function,
+            default: undefined
+        },
         'color': {
             type: String,
             default: '',
@@ -88,6 +92,9 @@ export default {
         handleClick: function( event ) {
             if( this.isDisabled || this.href.length <= 0 ) {
                 event.preventDefault();
+            }
+            if(!this.isDisabled && this.onClick){
+                this.onClick();
             }
         }
     }
