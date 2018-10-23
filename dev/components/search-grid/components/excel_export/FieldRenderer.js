@@ -43,6 +43,15 @@ class FieldRenderer {
         return solrDocument[fieldParameters[0]].join(',');
     }
 
+    ["user-field"](solrDocument, fieldParamters) {
+        let displayFieldName = fieldParamters[0];
+        let displayName = solrDocument[displayFieldName];
+        if(displayName === undefined || displayName === null) {
+            displayName = '';
+        }
+        return displayName;
+    }
+
     renderFieldForDocument(solrDocument, field) {
         return this[field.component](solrDocument, field.params);
     }
