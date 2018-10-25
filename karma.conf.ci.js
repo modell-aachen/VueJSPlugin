@@ -3,18 +3,24 @@
 
 let baseConfig = require('./karma.conf.js');
 
-module.exports = function(config) {
-  baseConfig(config);
-  config.set({
-    reporters: ['spec', 'coverage'],
+module.exports = function (config) {
+    baseConfig(config);
+    config.set({
+        reporters: ['spec', 'coverage'],
 
-    coverageReporter: {
-      dir: './reports',
-      reporters: [
-        { type: 'lcov', subdir: '.' },
-        { type: 'text-summary' }
-      ]
-      },
-      singleRun: true
-  });
+        coverageReporter: {
+            files: ['dev/**/*.vue'],
+            dir: './reports',
+            reporters: [
+                {
+                    type: 'lcov',
+                    subdir: '.'
+                },
+                {
+                    type: 'text-summary'
+                }
+            ]
+        },
+        singleRun: true
+    });
 };

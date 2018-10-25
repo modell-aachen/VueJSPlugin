@@ -7,12 +7,12 @@ pipeline:
       - yarn run test:coverage
   sonar:
     image: mmoscher/sonar-runner
-    sources: "dev/,pub/"
+    sources: "dev/"
+    lcovpath: "reports/lcov.info"
     profile: ""
     secrets: [SONAR_HOST, SONAR_LOGIN]
     environment:
       - PLUGIN_ALLOWED_BRANCH_REGEX=.*
-      - PLUGIN_LCOVPATH=reports/lcov.info
   notify:
     image: drillster/drone-email
     host: smtp.sendgrid.net
