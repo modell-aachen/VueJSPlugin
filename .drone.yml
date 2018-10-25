@@ -12,7 +12,7 @@ pipeline:
     secrets: [SONAR_HOST, SONAR_LOGIN]
     environment:
       - PLUGIN_ALLOWED_BRANCH_REGEX=.*
-      - PLUGIN_LCOVPATH="reports/lcov.info"
+      - PLUGIN_LCOVPATH=reports/lcov.info
   notify:
     image: drillster/drone-email
     host: smtp.sendgrid.net
