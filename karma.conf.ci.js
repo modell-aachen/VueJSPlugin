@@ -8,8 +8,11 @@ module.exports = function (config) {
     config.set({
         reporters: ['spec', 'coverage'],
 
+        preprocessors: {
+            'dev/**/*.vue': ['coverage'],
+        },
+
         coverageReporter: {
-            files: ['dev/**/*.vue'],
             dir: './reports',
             reporters: [
                 {
