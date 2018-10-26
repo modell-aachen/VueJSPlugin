@@ -13,7 +13,7 @@ pipeline:
     profile: ""
     secrets: [SONAR_HOST, SONAR_LOGIN]
     environment:
-      - PLUGIN_ALLOWED_BRANCH_REGEX=.*
+      - PLUGIN_ALLOWED_BRANCH_REGEX=sprint/riga
       - PLUGIN_LCOVPATH=reports/lcov.info
     when:
       event: push
