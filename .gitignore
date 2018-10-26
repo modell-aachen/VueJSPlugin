@@ -4,3 +4,4 @@ pub
 npm-debug.log.*
 yarn-error.log
 .sass-cache/*
+reports/
