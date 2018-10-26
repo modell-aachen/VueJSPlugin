@@ -125,7 +125,7 @@
                         <a>
                             <span>{{ getOptionLabel(option) }}</span><span
                                 v-if="option.type"
-                                class="ma-grey-color">&nbsp;({{ $t(option.type_label || option.type) }})</span>
+                                class="ma-grey-color">&nbsp;({{ $t(option.typeLabel || option.type) }})</span>
                         </a>
                     </li>
                 </ul>
