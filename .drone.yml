@@ -5,6 +5,8 @@ pipeline:
       - yarn
       - yarn run lint
       - yarn run test:coverage
+    when:
+      event: push
   sonar:
     image: mmoscher/sonar-runner
     sources: "dev/"
@@ -13,6 +15,8 @@ pipeline:
     environment:
       - PLUGIN_ALLOWED_BRANCH_REGEX=.*
       - PLUGIN_LCOVPATH=reports/lcov.info
+    when:
+      event: push
   notify:
     image: drillster/drone-email
     host: smtp.sendgrid.net
@@ -24,4 +28,5 @@ pipeline:
       - entwickler@modell-aachen.de
     recipients_only: true
     when:
+      event: push
       status: changed
