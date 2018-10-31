@@ -10,7 +10,7 @@ pipeline:
   sonar:
     image: newtmitch/sonar-scanner
     commands:
-      - sonar-runner
+      - sonar-scanner
     secrets: [SONAR_HOST, SONAR_LOGIN]
     when:
       event: push
