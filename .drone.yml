@@ -10,7 +10,7 @@ pipeline:
   sonar:
     image: newtmitch/sonar-scanner
     commands:
-      - echo "Basedir: $PWD"
+      - echo $PWD
       - sonar-scanner -Dsonar.projectBaseDir=$PWD
     secrets: [SONAR_HOST, SONAR_LOGIN]
     when:
