@@ -1,5 +1,5 @@
 import TestCase from '../dev/unit-test-library/main';
-import TableComponent from '../dev/components/vue-table/Table.vue'
+import TableComponent from '../dev/components/vue-table/Table.vue';
 
 describe("The table component", () => {
     let table;
@@ -70,9 +70,9 @@ describe("The table component", () => {
 
     it("sends an ascending sort event when a non sorted but sortable header is clicked", TestCase.wrapAsync(async () => {
         await clickOnTableHeader(0);
-        
+
         expect(getLastSortChangedEvent()).toEqual({
-            sortedColumnIndex: 0, 
+            sortedColumnIndex: 0,
             sortOrder: "asc"
         });
     }));
@@ -84,7 +84,7 @@ describe("The table component", () => {
         });
 
         await clickOnTableHeader(0);
-        
+
         expect(getLastSortChangedEvent()).toEqual({
             sortedColumnIndex: 0,
             sortOrder: "desc"
@@ -98,7 +98,7 @@ describe("The table component", () => {
         });
 
         await clickOnTableHeader(0);
-        
+
         expect(getLastSortChangedEvent()).toEqual({
             sortedColumnIndex: 0,
             sortOrder: "asc"

@@ -14,6 +14,7 @@ describe("The CheckItem component", () => {
         });
     });
     describe("model updates", () => {
+        let wrapper;
         beforeEach(() => {
             const options = {
                 propsData: {
@@ -23,13 +24,13 @@ describe("The CheckItem component", () => {
                     modelValue: ['Foo']
                 },
             };
-            this.wrapper = mount(CheckItem, options);
+            wrapper = mount(CheckItem, options);
         });
         it("when changing prop", () => {
-            expect(this.wrapper.vm.state).toBe(true);
-            expect(this.wrapper.vm.modelValue).toContain('Foo');
-            this.wrapper.setProps({modelValue: []});
-            expect(this.wrapper.vm.state).toBe(false);
+            expect(wrapper.vm.state).toBe(true);
+            expect(wrapper.vm.modelValue).toContain('Foo');
+            wrapper.setProps({modelValue: []});
+            expect(wrapper.vm.state).toBe(false);
         });
     });
     describe("label", () => {

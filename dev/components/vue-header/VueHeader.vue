@@ -17,12 +17,13 @@
 </template>
 
 <script>
+import LevelValidator from "./LevelValidator.js";
 export default {
     props: {
         level: {
             type: [Number, String],
             default: 1,
-            validator: this.levelValidator,
+            validator: LevelValidator,
         },
         ruler: {
             type: Boolean,
@@ -40,7 +41,7 @@ export default {
     computed: {
         scrubbedLevel() {
             // validator only emits a warning
-            if(this.levelValidator(this.level)) {
+            if(LevelValidator(this.level)) {
                 return this.level;
             } else {
                 return 1;
@@ -52,11 +53,6 @@ export default {
             };
             headerClass['ma-margin-top-' + (this.level === 3 ? 'medium' : 'large')] = true;
             return headerClass;
-        },
-    },
-    methods: {
-        levelValidator: value => {
-            return /^[123]$/.test(value);
         },
     }
 };

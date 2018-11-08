@@ -1,11 +1,26 @@
 {
     "presets": [
-      ["env", { "modules": false }],
-      "stage-3"
+        [
+            "@babel/preset-env",
+            {
+                "modules": false,
+                "useBuiltIns": "entry"
+            }
+        ]
     ],
     "env": {
-      "coverage": {
-        "plugins": ["istanbul"]
-      }
+        "test": {
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "targets": {
+                            "node": "current"
+                        },
+                    }
+                ]
+            ],
+            "inputSourceMap": true,
+        }
     }
-  }
+}

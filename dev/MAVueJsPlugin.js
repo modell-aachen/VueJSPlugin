@@ -37,7 +37,6 @@ import VeeValidateTranslationDe from 'vee-validate/dist/locale/de';
 import VeeValidate, { Validator } from 'vee-validate';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
-import VueTimers from 'vue-timers';
 import InfiniteScroll from 'v-infinite-scroll';
 import 'v-infinite-scroll/dist/v-infinite-scroll.css';
 import VueClickOutside from 'vue-click-outside';
@@ -61,6 +60,7 @@ class MAVueJsPlugin {
         this.alertPlugin = options.alertPlugin;
         this.debounce = options.debounce;
         this.slideUpDown = options.slideUpDown;
+        this.vueTimers = options.vueTimers;
     }
     install(Vue, options){
         i18next.init();
@@ -69,7 +69,7 @@ class MAVueJsPlugin {
         Vue.use(VueRouter);
         Vue.use(VueResource);
         Vue.use(InfiniteScroll);
-        Vue.use(VueTimers);
+        Vue.use(this.vueTimers);
         Vue.use(VueUpload);
         Vue.use(Vddl);
         const veeValidateConfig = {

@@ -1,5 +1,6 @@
 import TestCase from '../dev/unit-test-library/main';
 
+/* eslint-disable no-console */
 describe("The MAVueJSPlugin ", () => {
     describe("instantiateEach method requires a container", () => {
         let container;
@@ -45,3 +46,4 @@ describe("The MAVueJSPlugin ", () => {
         });
     });
 });
+/* eslint-enable no-console */

@@ -16,9 +16,10 @@
 </template>
 
 <script>
-import SortOrder from './SortOrder.js';
+import Vue from "vue";
+import { SortOrder } from './SortOrder';
 
-export default {
+export default Vue.extend({
     props: {
         column: {
             type: Object,
@@ -44,9 +45,9 @@ export default {
         sortingIconClass: function(){
             if(this.isSorted){
                 switch(this.sortOrder){
-                    case SortOrder["ASC"]:
+                    case SortOrder.ASC:
                         return "caret-up";
-                    case SortOrder["DESC"]:
+                    case SortOrder.DESC:
                         return "caret-down";
                 }
             } else {
@@ -69,13 +70,14 @@ export default {
                         break;
                 }
             }
+
             this.$emit("sort-changed", {
-                columnIndex: this.columnIndex,
+                sortedColumnIndex: this.columnIndex,
                 sortOrder: newSortOrder
             });
         }
     }
-};
+});
 </script>
 
 <style lang="scss">

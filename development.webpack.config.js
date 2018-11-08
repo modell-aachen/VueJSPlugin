@@ -18,12 +18,6 @@ module.exports = merge.smart(baseConfig, {
   },
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'eslint-loader',
-        include:  includeDirs,
-        enforce: "pre"
-      }
     ]
   }
 });

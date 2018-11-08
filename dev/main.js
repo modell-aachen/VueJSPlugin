@@ -1,9 +1,11 @@
+require('./sass/flatskin_wrapped.scss');
+import "@babel/polyfill";
 import Vue from 'vue';
 import Frontend from './Frontend';
 import AlertPlugin from './alert/AlertPlugin';
 import debounce from 'lodash/debounce';
 import VueSlideUpDown from 'vue-slide-up-down';
-require('./sass/flatskin_wrapped.scss');
+import VueTimers from 'vue-timers';
 
 const frontend = new Frontend({
     vue: Vue,
@@ -13,6 +15,7 @@ const frontend = new Frontend({
     alertPlugin: AlertPlugin,
     debounce: debounce,
     slideUpDown: VueSlideUpDown,
+    vueTimers: VueTimers,
 });
 
 frontend.setup();
