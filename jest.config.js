@@ -22,6 +22,8 @@ module.exports = {
         "dev/**/*.{js,vue}",
         "!**/node_modules/**"
     ],
+    "collectCoverage": true,
+    "coverageReporters": ["lcov", "text-summary"],
     "globals": {
         "ts-jest": {
             "diagnostics": {
