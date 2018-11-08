@@ -58,7 +58,6 @@
     "vue-template-compiler": "^2.5.17",
     "vuex": "^3.0.1",
     "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.1",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
@@ -68,6 +67,7 @@
     "@websanova/vue-upload": "^1.2.3-beta",
     "autoprefixer": "^9.3.1",
     "babel-plugin-transform-es2017-object-entries": "^0.0.5",
+    "css-element-queries": "^1.0.5",
     "formdata-polyfill": "^3.0.11",
     "i18next": "^12.0.0",
     "identity-obj-proxy": "^3.0.0",
@@ -93,6 +93,8 @@
     "vue-slide-up-down": "git://github.com/modell-aachen/vue-slide-up-down.git",
     "vue-sweetalert": "^0.1.18",
     "vue-timers": "^1.7.3",
-    "vue-visible": "^1.0.2"
+    "vue-visible": "^1.0.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "3.0.0"
   }
 }
