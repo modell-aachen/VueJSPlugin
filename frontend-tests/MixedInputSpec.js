@@ -59,7 +59,7 @@ describe("The mixed input component", () => {
 
     const moveCursorToPosition = async (pos) => {
         getFocusedElement().element.setSelectionRange(pos, pos);
-    }
+    };
 
     beforeEach(() => {
         mixedInput = TestCase.mount(MixedInput, {

@@ -12,10 +12,7 @@
   "parserOptions": {
     "parser": "babel-eslint",
     "ecmaVersion": 8,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+    "sourceType": "module"
   },
   "rules": {
     "callback-return":              [2, ["callback", "cb", "next", "done", "proceed"]],

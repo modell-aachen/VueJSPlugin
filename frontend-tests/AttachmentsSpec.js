@@ -3,6 +3,7 @@ import TestCase from '../dev/unit-test-library/main';
 
 describe("The Attachment component's", () => {
     let wrapper;
+    /* eslint-disable camelcase */
     const exampleAttachments = [
         {
             attachment: "TestBlock_TextFile.txt",
@@ -29,6 +30,7 @@ describe("The Attachment component's", () => {
             version: "3",
         },
     ];
+    /* eslint-enable camelcase */
     const options = {
         propsData: {
             web: 'TestWeb',

@@ -15,16 +15,14 @@
     </th>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 import { SortOrder } from './SortOrder';
-import { SortChangedEvent } from './SortChangedEvent';
-import { TableColumnDefinition } from './TableColumnDefinition';
 
 export default Vue.extend({
     props: {
         column: {
-            type: Object as () => TableColumnDefinition,
+            type: Object,
             required: true
         },
         columnIndex: {
@@ -72,8 +70,7 @@ export default Vue.extend({
                         break;
                 }
             }
-            
-            
+
             this.$emit("sort-changed", {
                 sortedColumnIndex: this.columnIndex,
                 sortOrder: newSortOrder

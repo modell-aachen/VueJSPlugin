@@ -1,4 +1,4 @@
-import DadListTestComponent from './DadListTestComponent.vue'
+import DadListTestComponent from './DadListTestComponent.vue';
 import TestCase from '../dev/unit-test-library/main';
 
 
