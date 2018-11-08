@@ -4,29 +4,29 @@ module.exports = {
         "json",
         "vue",
         "ts"
-      ],
-      "transform": {
+    ],
+    "transform": {
         ".*\\.(vue)$": "vue-jest",
         "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
         "^.+\\.tsx?$": "ts-jest"
-      },
-      "moduleNameMapper": {
+    },
+    "moduleNameMapper": {
         "\\.(css|less)$": "identity-obj-proxy",
         "^vue$": "vue/dist/vue.js"
-      },
-      "testRegex": "Spec\\.js$",
-      "transformIgnorePatterns": [
+    },
+    "testRegex": "Spec\\.js$",
+    "transformIgnorePatterns": [
         "node_modules/(?!(vue-timers)/)"
-      ],
-      "collectCoverageFrom": [
+    ],
+    "collectCoverageFrom": [
         "dev/**/*.{js,vue}",
         "!**/node_modules/**"
-      ],
-      "globals": {
+    ],
+    "globals": {
         "ts-jest": {
             "diagnostics": {
                 "ignoreCodes": [151001]
             }
-        }
-      }
-}
+        },
+    }
+};

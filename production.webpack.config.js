@@ -12,9 +12,6 @@ module.exports = merge.smart(baseConfig, {
     filename: 'VueJSPlugin.min.js',
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
-    }),
     new webpack.optimize.AggressiveMergingPlugin()
   ]
 });
