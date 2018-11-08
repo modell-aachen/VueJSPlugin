@@ -4,7 +4,7 @@ pipeline:
     commands:
       - yarn
       - yarn run lint
-      - yarn run test
+      - yarn run test --coverage
     when:
       event: push
   sonar:
