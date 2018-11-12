@@ -1,5 +1,4 @@
 import TabPane from '../dev/components/vue-tabpane/TabPane.vue';
-import TabPaneContainer from './TabPaneContainer.vue';
 import TestCase from '../dev/unit-test-library/main';
 
 let mount = TestCase.mount;
@@ -70,21 +69,17 @@ describe("The TabPane component", () => {
         });
     });
     describe("hides tabs dynamically depending on its size:", () => {
-        const getActiveTabName = () => {
-            return tabPaneWrapper.find(".current a").text();
-        };
-
         const clickOnTabInMoreOptions = async (index) => {
             tabPaneWrapper.find(".more-tab").trigger('click');
             await Vue.nextTick();
 
             await tabPaneWrapper.findAll(".hidden-tab-entry")
-            .wrappers[index].trigger('click');
+                .wrappers[index].trigger('click');
         };
 
         const isMoreTabVisible = () => {
             return tabPaneWrapper.find({ref: "moreTab"}).isVisible();
-        }
+        };
 
         const getVisibleTabNames = () => {
             return tabPaneWrapper

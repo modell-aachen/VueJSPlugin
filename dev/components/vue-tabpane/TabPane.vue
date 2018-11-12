@@ -96,10 +96,10 @@ export default {
         }
     },
     mounted() {
-            this.tabs = this.getTabComponentsFromDefaultSlot();
-            if(this.tabs[0]){
-                this.selectTab(this.tabs[0].id);
-            }
+        this.tabs = this.getTabComponentsFromDefaultSlot();
+        if(this.tabs[0]){
+            this.selectTab(this.tabs[0].id);
+        }
         new ResizeSensor(this.$refs["pane"], () => {
             this.recalculateTabsToShow();
         });
@@ -110,6 +110,9 @@ export default {
     },
     methods: {
         getTabComponentsFromDefaultSlot() {
+            if(!this.$slots.default){
+                return [];
+            }
             return this.$slots.default
                 .filter(vnode => {
                     return !!vnode.componentInstance;
@@ -120,7 +123,6 @@ export default {
                 });
         },
         getTabWidths() {
-            const activeTabIndex = this.getActiveTabIndex();
             const shownTabs = this.$refs["shownTab"] || [];
             const hiddenTabs = this.$refs["hiddenTab"] || [];
             return []
