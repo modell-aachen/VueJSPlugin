@@ -1,5 +1,6 @@
 <template>
     <div
+        v-click-outside="onClickOutside"
         v-visible="isVisible"
         :style="style"
         class="dropdown">
@@ -22,6 +23,7 @@ export default {
         return {
             isVisible: false,
             style: {},
+            recentlyShown: true,
         };
     },
     methods: {
@@ -34,20 +36,23 @@ export default {
         },
         show() {
             this.isVisible = true;
+            this.recentlyShown = true;
+            Vue.nextTick(() => {
+                this.recentlyShown = false;
+            });
             this.recalculatePosition();
         },
         hide() {
             this.isVisible = false;
         },
-        onClickOutside() {
-            this.hide();
-        },
         recalculatePosition() {
             const dropdownButtonElement = this.element;
             const dropdownContentElement = this.$el;
 
-            const buttonTop = dropdownButtonElement.offsetTop;
-            const buttonLeft = dropdownButtonElement.offsetLeft;
+            const buttonRect = dropdownButtonElement.getBoundingClientRect();
+
+            const buttonTop = buttonRect.top + document.body.scrollTop;
+            const buttonLeft = buttonRect.left + document.body.scrollLeft;
             const buttonHeight = dropdownButtonElement.offsetHeight;
             const buttonWidth = dropdownButtonElement.offsetWidth;
             const contentWidth = dropdownContentElement.offsetWidth;
@@ -59,6 +64,15 @@ export default {
                 top: dropdownTop,
                 left: dropdownLeft
             };
+        },
+        onClickOutside() {
+            if(this.recentlyShown){
+                return;
+            }
+
+            if(this.isVisible){
+                this.hide();
+            }
         }
     },
 };

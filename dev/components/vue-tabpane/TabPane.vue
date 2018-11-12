@@ -12,6 +12,7 @@
                     :has-sub="tab.hasSub || false"
                     :name="tab.name"
                     :is-current="tab.current || false"
+                    :original-index="tab.originalIndex"
                     class="visible-tab"
                     @select="selectTab"/>
                 <li
@@ -37,27 +38,12 @@
                     :has-sub="tab.hasSub"
                     :name="tab.name"
                     :is-current="tab.current || false"
+                    :original-index="tab.originalIndex"
                     class="hidden-tab" />
             </ul>
             <span class="clearfix"/>
             <slot/>
         </div>
-        <!-- <div
-            v-click-outside="onClickOutside"
-            v-if="showMoreDropdown"
-            :style="moreDropdownStyle"
-            class="ma-splitbutton-dropdown">
-            <ul class="dropdown-content-list">
-                <li
-                    v-for="tab in tabsToHide"
-                    :key="tab.id"
-                    class="hidden-tab-entry"
-                    @click.prevent="selectTabFromMore(tab.id)">
-                    <a
-                        v-html="tab.name" />
-                </li>
-            </ul>
-        </div> -->
         <vue-dropdown
             v-if="tabsToHide.length > 0"
             ref="dropdown"
@@ -128,16 +114,21 @@ export default {
                 .filter(vnode => {
                     return !!vnode.componentInstance;
                 })
-                .map(vnode => {
+                .map((vnode, index) => {
+                    vnode.componentInstance.originalIndex = index;
                     return vnode.componentInstance;
                 });
         },
         getTabWidths() {
+            const activeTabIndex = this.getActiveTabIndex();
             const shownTabs = this.$refs["shownTab"] || [];
             const hiddenTabs = this.$refs["hiddenTab"] || [];
             return []
                 .concat(shownTabs)
                 .concat(hiddenTabs)
+                .sort((a, b) => {
+                    return a.originalIndex - b.originalIndex;
+                })
                 .map(tabComponent => {
                     return this.getWidthWithMargins(tabComponent.$el);
                 });
@@ -238,7 +229,7 @@ export default {
             const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
 
             return width + margin;
-        }
+        },
     }
 };
 </script>
@@ -277,7 +268,6 @@ ul.vue-tabpane-group,
   }
 
   .more-tab {
-      border-right: 1px solid red;
     a {
       color: $ma-tertiary-text !important;
       &:hover {

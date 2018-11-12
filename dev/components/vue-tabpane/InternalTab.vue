@@ -28,6 +28,10 @@ export default {
             type: String,
             default: "",
         },
+        originalIndex: {
+            type: Number,
+            required: true,
+        }
     },
     methods: {
         onSelect() {
