@@ -110,10 +110,10 @@ export default {
         }
     },
     mounted() {
-        if (this.$children.length) {
             this.tabs = this.getTabComponentsFromDefaultSlot();
-            this.selectTab(this.tabs[0].id);
-        }
+            if(this.tabs[0]){
+                this.selectTab(this.tabs[0].id);
+            }
         new ResizeSensor(this.$refs["pane"], () => {
             this.recalculateTabsToShow();
         });

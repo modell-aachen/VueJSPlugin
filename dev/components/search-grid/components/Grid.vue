@@ -347,7 +347,9 @@ export default {
         }});
         if(this.preferences) {
             this.prefs = Vue.cloneDeep(this.preferences);
-            await this.fetchInitialResults();
+            if(!this.prefs.result) {
+                await this.fetchInitialResults();
+            }
         } else {
             this.prefs = Vue.getConfigById(this.preferencesSelector);
         }
