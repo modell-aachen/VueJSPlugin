@@ -21,9 +21,9 @@
                     class="more-tab"
                     @click="toggleMoreDropdown">
                     <a
+                        :class="{active: isDropdownOpen}"
                         href="#"
-                        style="display: inline-block;"
-                        :class="{active: isDropdownOpen}">
+                        style="display: inline-block;">
                         {{ $t('tabpane_more') }}
                         <i
                             :class="moreTabIconClass"
