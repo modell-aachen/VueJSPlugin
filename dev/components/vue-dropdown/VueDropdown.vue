@@ -41,24 +41,26 @@ export default {
                 this.recentlyShown = false;
             });
             this.recalculatePosition();
+            this.$emit("show");
         },
         hide() {
             this.isVisible = false;
+            this.$emit("hide");
         },
         recalculatePosition() {
-            const dropdownButtonElement = this.element;
-            const dropdownContentElement = this.$el;
+            const targetElement = this.element;
+            const dropdownElement = this.$el;
 
-            const buttonRect = dropdownButtonElement.getBoundingClientRect();
+            const targetRect = targetElement.getBoundingClientRect();
 
-            const buttonTop = buttonRect.top + document.body.scrollTop;
-            const buttonLeft = buttonRect.left + document.body.scrollLeft;
-            const buttonHeight = dropdownButtonElement.offsetHeight;
-            const buttonWidth = dropdownButtonElement.offsetWidth;
-            const contentWidth = dropdownContentElement.offsetWidth;
+            const targetTop = targetRect.top + document.body.scrollTop;
+            const targetLeft = targetRect.left + document.body.scrollLeft;
+            const targetHeight = targetElement.offsetHeight;
+            const targetWidth = targetElement.offsetWidth;
+            const dropdownWidth = dropdownElement.offsetWidth;
 
-            const dropdownTop = `${buttonTop + buttonHeight + DROPDOWN_OFFSET}px`;
-            const dropdownLeft = `${buttonLeft + buttonWidth - contentWidth}px`;
+            const dropdownTop = `${targetTop + targetHeight + DROPDOWN_OFFSET}px`;
+            const dropdownLeft = `${targetLeft + targetWidth - dropdownWidth}px`;
 
             this.style = {
                 top: dropdownTop,
@@ -90,27 +92,26 @@ export default {
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
     z-index: 1;
     .dropdown-content-list {
-    list-style: none;
-    list-style-image: none !important;
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    border: none;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    &:hover {
-    background-color: lightgrey;
+        list-style: none;
+        list-style-image: none !important;
+        margin: 0;
+        padding: 0;
+        li {
+            border: none;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            &:hover {
+                background-color: lightgrey;
+            }
+            a {
+                margin: 8px 16px;
+                display: inline-block;
+                &:hover {
+                    @include disable-anchor-hover();
+                }
+            }
+        }
     }
-    a {
-    margin: 8px 16px;
-    display: inline-block;
-    &:hover {
-        @include disable-anchor-hover();
-    }
-    }
-}
 }
 </style>

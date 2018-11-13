@@ -166,15 +166,6 @@ describe("The TabPane component", () => {
 
             expect(getVisibleTabNames()).toEqual(['eins', 'drei']);
         });
-
-        it("A hidden tab thats activated becomes visible", async () => {
-            tabWidths = [200, 200, 200];
-            tabPaneWrapper.vm.recalculateTabsToShow();
-            await Vue.nextTick();
-            await clickOnTabInMoreOptions(0);
-
-            expect(getVisibleTabNames()).toEqual(['eins', 'drei']);
-        });
     });
 });
 

@@ -22,10 +22,11 @@
                     @click="toggleMoreDropdown">
                     <a
                         href="#"
-                        style="display: inline-block;">
+                        style="display: inline-block;"
+                        :class="{active: isDropdownOpen}">
                         {{ $t('tabpane_more') }}
                         <i
-                            :class="splitButtonIconClass"
+                            :class="moreTabIconClass"
                             class="dropdown-icon far"
                             aria-hidden="true"/>
                     </a>
@@ -47,7 +48,9 @@
         <vue-dropdown
             v-if="tabsToHide.length > 0"
             ref="dropdown"
-            :element="$refs['moreTab']">
+            :element="$refs['moreTab']"
+            @show="onDropdownShow"
+            @hide="onDropdownHide">
             <li
                 v-for="tab in tabsToHide"
                 :key="tab.id"
@@ -62,10 +65,8 @@
 
 <script>
 import ResizeSensor from "css-element-queries/src/ResizeSensor";
-import Tab from "./InternalTab.vue";
+import Tab from "./TabPaneTab.vue";
 import VueDropdown from "../vue-dropdown/VueDropdown.vue";
-
-const FITTING_MARGIN = 0;
 
 export default {
     name: "VueTabpane",
@@ -84,14 +85,13 @@ export default {
         tabs: [],
         tabsToShow: [],
         tabsToHide: [],
-        showMoreDropdown: false,
-        moreDropdownStyle: { top: 0, left: 0 }
+        isDropdownOpen: false,
     }),
     computed: {
-        splitButtonIconClass() {
+        moreTabIconClass() {
             return {
-                "fa-angle-down": !this.showMoreDropdown,
-                "fa-angle-up": this.showMoreDropdown
+                "fa-angle-down": !this.isDropdownOpen,
+                "fa-angle-up": this.isDropdownOpen
             };
         }
     },
@@ -149,7 +149,7 @@ export default {
         allTabsFitIntoPane() {
             const paneWidth = this.getPaneWidth();
             const tabWidths = this.getTabWidths();
-            let accumulatedTabsWidth = FITTING_MARGIN;
+            let accumulatedTabsWidth = 0;
             for (let i = 0; i < tabWidths.length; i++) {
                 accumulatedTabsWidth += tabWidths[i];
                 if (accumulatedTabsWidth > paneWidth) {
@@ -164,7 +164,6 @@ export default {
             const activeTabIndex = this.getActiveTabIndex();
 
             let accumulatedTabsWidth =
-                FITTING_MARGIN +
                 this.getMoreTabWidth() +
                 + tabWidths[activeTabIndex];
 
@@ -197,28 +196,8 @@ export default {
             });
         },
         toggleMoreDropdown() {
+            this.isDropdownOpen = !this.isDropdownOpen;
             this.$refs['dropdown'].toggle();
-        },
-        onClickOutside() {
-            this.toggleMoreDropdown();
-        },
-        recalculateMoreDropdownPosition() {
-            const moreTabElement = this.$refs.moreTab;
-
-            const boundingRect = moreTabElement.getBoundingClientRect();
-
-            const buttonHeight = moreTabElement.offsetHeight;
-
-            const buttonTop = boundingRect.top;
-            const buttonLeft = boundingRect.left;
-
-            const dropdownTop = `${buttonTop + buttonHeight}px`;
-            const dropdownLeft = `${buttonLeft}px`;
-
-            this.moreDropdownStyle = {
-                top: dropdownTop,
-                left: dropdownLeft
-            };
         },
         selectTabFromMore(selectedTabId) {
             this.selectTab(selectedTabId);
@@ -232,6 +211,12 @@ export default {
 
             return width + margin;
         },
+        onDropdownShow() {
+            this.isDropdownOpen = true;
+        },
+        onDropdownHide() {
+            this.isDropdownOpen = false;
+        }
     }
 };
 </script>
@@ -272,6 +257,9 @@ ul.vue-tabpane-group,
   .more-tab {
     a {
       color: $ma-tertiary-text !important;
+      &.active {
+        color: $ma-primary !important;
+      }
       &:hover {
         color: $ma-primary !important;
       }
@@ -281,16 +269,10 @@ ul.vue-tabpane-group,
       position: fixed;
     }
   }
+
+  .hidden-tab {
+    visibility: hidden;
+  }
 }
 
-.shadow-pane {
-  position: absolute;
-  top: 100px;
-  opacity: 0.4;
-  visibility: hidden;
-}
-
-.hidden-tab {
-  visibility: hidden;
-}
 </style>
