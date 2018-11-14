@@ -19,7 +19,7 @@
                     v-visible="tabsToHide.length > 0"
                     ref="moreTab"
                     class="more-tab"
-                    @click="toggleMoreDropdown">
+                    @click.prevent="toggleMoreDropdown">
                     <a
                         :class="{active: isDropdownOpen}"
                         href="#"
