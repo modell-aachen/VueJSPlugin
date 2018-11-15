@@ -3,7 +3,7 @@
         <div
             v-if="isActive"
             class="sidebar-overlay"
-            @click="hide"/>
+            @click="!uncancelable && hide()"/>
         <transition name="sidebar">
             <div
                 v-if="isActive"
@@ -13,6 +13,7 @@
 
                 <div class="sidebar-tab-controls">
                     <tab-button
+                        v-if="!uncancelable"
                         icon="fa-times"
                         type="close"
                         @click="hide" />
@@ -66,7 +67,11 @@ export default {
             default() {
                 return [];
             }
-        }
+        },
+        uncancelable: {
+            type: Boolean,
+            default: false,
+        },
     },
     data: function() {
         return {
