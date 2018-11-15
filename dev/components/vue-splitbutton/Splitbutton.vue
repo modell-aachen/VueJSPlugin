@@ -11,6 +11,7 @@
             </slot>
             <a
                 ref="dropdownButton"
+                :class="{disabled: isDropdownDisabled}"
                 class="dropdown-button primary button vue-button"
                 @click="toggleDropdown">
                 {{ dropdownButtonTitle }}
@@ -57,7 +58,11 @@ export default {
         'isMainButtonDisabled': {
             type: Boolean,
             default: false
-        }
+        },
+        'isDropdownDisabled': {
+            type: Boolean,
+            default: false
+        },
     },
     data() {
         return {
@@ -78,6 +83,10 @@ export default {
     },
     methods: {
         toggleDropdown(ev) {
+            if(this.isDropdownDisabled) {
+                this.isDropdownOpen = false;
+                return;
+            }
             this.isDropdownOpen = !this.isDropdownOpen;
             ev.isDropdownToggle = true;
             Vue.nextTick(() => {
