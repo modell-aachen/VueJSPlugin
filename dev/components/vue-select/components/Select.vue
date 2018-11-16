@@ -481,7 +481,7 @@ export default {
             if(typeof(val) === 'string') {
                 return val;
             }
-            let valueMapped = val.map(item => typeof(item) === 'string' ? item : item.value);
+            let valueMapped = val.map(item => typeof(item) === 'string' ? item : "1");
             return valueMapped.join(',');
         },
         validateValue(value){

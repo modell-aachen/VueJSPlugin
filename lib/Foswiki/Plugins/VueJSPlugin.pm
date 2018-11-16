@@ -57,7 +57,7 @@ sub renderTooltip {
     );
     loadDependencies($session, \%vueVersion, $topic, $web, $topicObject);
     my $vueClientToken = getClientToken();
-    my $html = "<div class=\"flatskin-wrapped vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-tooltip text=\"$params->{text}\"";
+    my $html = "<div class=\"vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-tooltip text=\"$params->{text}\"";
     $html .= " icon=\"$params->{icon}\"" if $params->{icon};
     $html .= "/></div>";
     return $html;
