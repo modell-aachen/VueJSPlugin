@@ -2,7 +2,10 @@
     <div
         :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}"
         class="ma-input ma-input-group">
-        <label v-if="label" class="input-label">{{ label }}</label>
+        <label
+            v-if="label"
+            class="input-label">{{ label }}
+        </label>
         <div class="ma-input--wrapper">
             <i
                 v-if="icon"
