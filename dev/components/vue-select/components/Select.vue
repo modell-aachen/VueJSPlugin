@@ -2,7 +2,9 @@
     <div
         :class="getClasses"
         class="dropdown v-select">
-        <label v-if="label">{{ label }}</label>
+        <label
+            v-if="label"
+            class="input-label">{{ label }}</label>
         <input
             v-validate="validate"
             v-if="name.length"
@@ -753,6 +755,8 @@ export default {
 
 <style lang="scss">
 @import '../../../sass/settings.scss';
+@import '../../../sass/qwiki/mixins.scss';
+
 .v-select {
     position: relative;
     margin: 0 0 map-get($spacings, medium);
@@ -768,6 +772,10 @@ export default {
     }
     small.ma-failure {
         color: $ma-failure;
+    }
+
+    .input-label {
+        @include input-label();
     }
 
     .dropdown-menu {

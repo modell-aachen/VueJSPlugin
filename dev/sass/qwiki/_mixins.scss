@@ -18,3 +18,9 @@
 @mixin disable-anchor-hover() {
   color: $body-font-color;
 }
+
+@mixin input-label() {
+  color: $ma-secondary-text;
+  font-weight: $ma-font-weight-bold;
+  margin-bottom: map-get($spacings, 'xsmall');
+}

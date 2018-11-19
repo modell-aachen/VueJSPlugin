@@ -2,7 +2,7 @@
     <div
         :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}"
         class="ma-input ma-input-group">
-        <label v-if="label">{{ label }}</label>
+        <label v-if="label" class="input-label">{{ label }}</label>
         <div class="ma-input--wrapper">
             <i
                 v-if="icon"
@@ -104,8 +104,11 @@ export default {
 
 <style lang="scss">
 @import '../../sass/settings.scss';
+@import '../../sass/qwiki/mixins.scss';
 .ma-input.ma-input-group {
-    margin: 0 0 rem-calc(map-get($spacings, 'small'));
+    .input-label {
+        @include input-label();
+    }
 
     .ma-input--wrapper {
         position: relative;
