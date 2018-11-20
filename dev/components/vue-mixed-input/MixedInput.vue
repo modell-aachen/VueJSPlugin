@@ -2,7 +2,9 @@
     <div
         :class="{open}"
         class="dropdown v-select v-mixed-input">
-        <label v-if="label">{{ label }}</label>
+        <label
+            v-if="label"
+            class="input-label">{{ label }}</label>
         <div
             ref="input-root"
             :class="{multi: true, open: open}"
@@ -321,9 +323,16 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../sass/settings.scss';
+@import '../../sass/qwiki/mixins.scss';
+
 $inputMinWidth: 2px;
 $spacing: 3px;
 .v-select.v-mixed-input {
+    .input-label {
+        @include input-label();
+    }
+
     .selected-tag.multi {
         margin-left: 0;
         margin-right: 0;
