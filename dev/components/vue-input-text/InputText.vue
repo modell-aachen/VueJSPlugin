@@ -48,10 +48,6 @@ export default {
             type: String,
             default: ''
         },
-        'errorMessage': {
-            type: String,
-            default: ''
-        },
         'placeholder':{
             type: String,
             default: undefined
@@ -87,7 +83,7 @@ export default {
             return this.validationErrors.has(this.name);
         },
         definedErrorMessage: function() {
-            return this.errorMessage || this.validationErrors.first(this.name);
+            return this.validationErrors.first(this.name);
         }
     },
     watch: {

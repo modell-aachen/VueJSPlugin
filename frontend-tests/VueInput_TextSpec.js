@@ -53,7 +53,6 @@ describe("The InputText component", () => {
             propsData: {
                 name: 'test-input',
                 validate: 'email',
-                errorMessage: 'FEHLER'
             }
         };
         const wrapper = createInput(options);
@@ -64,7 +63,7 @@ describe("The InputText component", () => {
                     expect(wrapper.classes()).toContain('ma-failure');
                     expect(wrapper.find('input').attributes()['aria-invalid']).toBe('true');
                     expect(wrapper.contains('small')).toBe(true);
-                    expect(wrapper.find('small').text()).toBe(options.propsData.errorMessage);
+                    expect(wrapper.find('small').text()).toBe("The test-input field must be a valid email.");
                 });
         });
     });

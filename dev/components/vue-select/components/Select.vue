@@ -318,10 +318,6 @@ export default {
         /**
         * Set validation error message
         */
-        errorMessage: {
-            type: String,
-            default: ''
-        },
         sublabel: {
             type: String,
             default: undefined,
@@ -370,7 +366,7 @@ export default {
             return this.validationErrors.has(this.name);
         },
         definedErrorMessage: function() {
-            return this.errorMessage || this.validationErrors.first(this.name);
+            return this.validationErrors.first(this.name);
         },
         getClasses() {
             return {
