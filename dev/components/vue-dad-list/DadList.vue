@@ -90,6 +90,7 @@ export default {
             default: ''
         }
     },
+    inject: ['$validator'],
     data: function() {
         return {
             dummyItem: {
