@@ -20,6 +20,7 @@
                 :placeholder="placeholder"
                 :class="{'ma-small': isSmall, 'ma-input-text-indent': (icon!=undefined)}"
                 :disabled="isDisabled"
+                :maxlength="maxLength"
                 type="text">
 
             <template v-if="hasError">
@@ -67,7 +68,11 @@ export default {
         'value':{
             type: String,
             default: ''
-        }
+        },
+        'maxLength':{
+            type: Number,
+            default: 524288,
+        },
     },
     inject: ['$validator'],
     computed: {
