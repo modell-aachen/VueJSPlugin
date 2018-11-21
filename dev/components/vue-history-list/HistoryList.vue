@@ -6,8 +6,7 @@
                 <template v-for="(item, index) in data">
                     <div
                         :key="'1_'+index"
-                        class="cell small-1"
-                        @click="onClick(index)">
+                        class="cell small-1">
                         <div class="grid-y history-list-icon-list">
                             <div class="cell shrink history-list-icon-container">
                                 <i
@@ -24,12 +23,14 @@
                     <div
                         :key="'2_'+index"
                         class="cell small-11">
-                        <div>
-                            <small>{{ item.date }}
+                        <div class="link-to-history grid-x">
+                            <small
+                                @click="onClick(index)">{{ item.date }}
                                 <template v-if="item.action">- </template>
                                 <div
                                     class="inline"
                                     v-html="item.action" />
+                                <i class="history-icon far fa-history"/>
                             </small>
                         </div>
                         <div><b>{{ item.actor }}</b> {{ item.description }}</div>
@@ -88,5 +89,14 @@ export default {
     height: 100%;
     width: 2px;
     background-color: $ma-grey;
+}
+.link-to-history {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+    .history-icon {
+        margin-left: 16px;
+    }
 }
 </style>
