@@ -21,8 +21,8 @@
                 :class="{'ma-small': isSmall, 'ma-input-text-indent': (icon!=undefined)}"
                 :disabled="isDisabled"
                 :maxlength="maxLength"
-                @blur="$emit('blur')"
-                type="text">
+                type="text"
+                @blur="$emit('blur')">
 
             <template v-if="hasError">
                 <i
