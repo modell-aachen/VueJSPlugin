@@ -1,6 +1,6 @@
 <template>
     <div class="facet">
-        <label>{{ title }}</label>
+        <label class="input-label">{{ title }}</label>
         <ul class="facet-list">
             <li>
                 <vue-check-item

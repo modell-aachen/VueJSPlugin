@@ -1,6 +1,8 @@
 <template>
     <div class="search-grid-top-filter">
-        <label :for="id">{{ params[0] }}</label>
+        <label
+            :for="id"
+            class="input-label">{{ params[0] }}</label>
         <vue-select
             :prevent-search-filter="true"
             :options="getOptions"
@@ -74,3 +76,13 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+@import '../../../../sass/settings.scss';
+@import '../../../../sass/qwiki/mixins.scss';
+    .search-grid-top-filter {
+        .input-label {
+            @include input-label();
+        }
+    }
+</style>

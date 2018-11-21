@@ -3,12 +3,12 @@
         :class="{'ma-switch': true, 'has-label': label || labelDummy, 'is-small': isSmall, 'has-badge': badge}">
         <label
             v-if="labelDummy && !label"
-            class="description-label label-dummy">
+            class="input-label label-dummy">
             &nbsp;
         </label>
         <label
             v-if="label"
-            class="description-label">
+            class="input-label">
             {{ label }}
         </label>
         <div class="input-elements">
@@ -173,10 +173,14 @@ export default {
 
 <style lang="scss">
 @import '../../sass/settings.scss';
+@import '../../sass/qwiki/mixins.scss';
 
 .ma-switch {
     &.has-label {
         margin-top: map-get($spacings, medium);
+    }
+    .input-label {
+        @include input-label();
     }
     .ma-switch-label {
         width: 100%;

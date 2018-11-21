@@ -1,6 +1,6 @@
 <template>
     <div class="facet">
-        <label>{{ title }}</label>
+        <label class="input-label">{{ title }}</label>
         <ul class="facet-list">
             <template v-for="(value,index) in facetCharacteristics">
                 <li
@@ -72,3 +72,13 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+@import '../../../../sass/settings.scss';
+@import '../../../../sass/qwiki/mixins.scss';
+.facet {
+    .input-label {
+        @include input-label();
+    }
+}
+</style>

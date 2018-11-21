@@ -1,6 +1,6 @@
 <template>
     <div class="facet">
-        <label>{{ header }}</label>
+        <label class="input-label">{{ header }}</label>
         <div class="facet-select2">
             <vue-select
                 :placeholder="maketext('Search term...')"

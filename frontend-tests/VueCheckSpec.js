@@ -37,7 +37,7 @@ describe("The CheckItem component", () => {
         describe("dummy", () => {
             it("is generated, when asked for", () => {
                 let wrapper = TestCase.mount(CheckItem, {propsData: { labelDummy: true }});
-                expect(wrapper.contains('.description-label.label-dummy')).toBe(true);
+                expect(wrapper.contains('.input-label.label-dummy')).toBe(true);
             });
             it("is not generated, when no label-dummy", () => {
                 let wrapper = TestCase.mount(CheckItem, {});
