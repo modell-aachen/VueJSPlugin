@@ -95,7 +95,7 @@ export default {
     },
 };
 </script>
-<style type="sass">
+<style lang="scss">
 .signal {
     text-align: center;
 }

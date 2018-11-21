@@ -74,6 +74,14 @@ export default {
             type: Number,
             default: 524288,
         },
+        'showError':{
+            type: Boolean,
+            default: false,
+        },
+        'errorMessage': {
+            type: String,
+            default: undefined,
+        }
     },
     inject: ['$validator'],
     computed: {
@@ -86,10 +94,10 @@ export default {
             }
         },
         hasError: function(){
-            return this.validationErrors.has(this.name);
+            return this.validationErrors.has(this.name) || this.showError;
         },
         definedErrorMessage: function() {
-            return this.validationErrors.first(this.name);
+            return this.validationErrors.first(this.name) || this.errorMessage;
         }
     },
     watch: {
