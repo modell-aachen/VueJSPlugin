@@ -23,12 +23,13 @@
                     <div
                         :key="'2_'+index"
                         class="cell small-11">
-                        <div class="link-to-history grid-x">
+                        <div class="grid-x">
                             <small
+                                class="link-to-history"
                                 @click="onClick(index)">{{ item.date }}
                                 <template v-if="item.action">- </template>
                                 <div
-                                    class="inline"
+                                    class="inline link-to-history"
                                     v-html="item.action" />
                                 <i class="history-icon far fa-history"/>
                             </small>
@@ -47,11 +48,11 @@
 
 <script>
 export default {
-    name: 'VueHistoryList',
+    name: "VueHistoryList",
     props: {
         data: {
             type: Array,
-            required: true
+            required: true,
         },
         isLoading: {
             type: Boolean,
@@ -63,14 +64,14 @@ export default {
             return index === this.data.length - 1;
         },
         onClick(index) {
-            this.$emit('item-clicked', index);
-        }
+            this.$emit("item-clicked", index);
+        },
     },
 };
 </script>
 
 <style lang="scss">
-@import '../../sass/settings.scss';
+@import "../../sass/settings.scss";
 .inline {
     display: inline;
 }
