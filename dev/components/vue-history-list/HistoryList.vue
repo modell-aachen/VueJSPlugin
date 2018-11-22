@@ -28,9 +28,7 @@
                                 class="link-to-history"
                                 @click="onClick(index)">{{ item.date }}
                                 <template v-if="item.action">- </template>
-                                <div
-                                    class="inline link-to-history"
-                                    v-html="item.action" />
+                                <span v-html="item.action" />
                                 <i class="history-icon far fa-history"/>
                             </small>
                         </div>
@@ -72,9 +70,6 @@ export default {
 
 <style lang="scss">
 @import "../../sass/settings.scss";
-.inline {
-    display: inline;
-}
 .history-list-icon-list {
     height: 100%;
     color: $ma-grey;
@@ -96,8 +91,13 @@ export default {
     &:hover {
         text-decoration: underline;
     }
+
+    &:hover .history-icon {
+        color: $ma-primary-hover;
+    }
     .history-icon {
         margin-left: 16px;
+
     }
 }
 </style>
