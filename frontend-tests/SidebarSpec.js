@@ -62,6 +62,46 @@ describe("The Sidebar component", () => {
             expect(sidebar.modalOptions.type).toEqual('confirm-modal');
         });
     });
+    describe("close-confirmation dialog", () => {
+        const template = '<div><sidebar ref="sidebar" @before-hide="onBeforeHide"></sidebar></div>';
+
+        it("opens, when a consumer asks for it", () => {
+            let wrapper = TestCase.mount({
+                name: 'TestComponent',
+                template,
+                methods: {
+                    onBeforeHide: callbacks => callbacks.showConfirmDialog(),
+                },
+            });
+            spyOn(wrapper.vm.$refs.sidebar, '$showAlert').and.callThrough();
+            wrapper.vm.$refs.sidebar.hide({allowConfirmation: true});
+            expect(wrapper.vm.$refs.sidebar.$showAlert).toHaveBeenCalled();
+        });
+        it("keeps quiet when nobody asks it to show", () => {
+            let wrapper = TestCase.mount({
+                name: 'TestComponent',
+                template,
+                methods: {
+                    onBeforeHide: () => {},
+                },
+            });
+            spyOn(wrapper.vm.$refs.sidebar, '$showAlert').and.callThrough();
+            wrapper.vm.$refs.sidebar.hide({allowConfirmation: true});
+            expect(wrapper.vm.$refs.sidebar.$showAlert).not.toHaveBeenCalled();
+        });
+        it("requires an option to act", () => {
+            let wrapper = TestCase.mount({
+                name: 'TestComponent',
+                template,
+                methods: {
+                    onBeforeHide: callbacks => expect(callbacks.showConfirmDialog).not.toBeDefined(),
+                },
+            });
+            spyOn(wrapper.vm.$refs.sidebar, '$showAlert').and.callThrough();
+            wrapper.vm.$refs.sidebar.hide();
+            expect(wrapper.vm.$refs.sidebar.$showAlert).not.toHaveBeenCalled();
+        });
+    });
 });
 
 function createSidebar (props){
