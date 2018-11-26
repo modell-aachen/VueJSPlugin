@@ -1,6 +1,7 @@
 import VueSelect from './components/vue-select/index.js';
 import VueUserSelector from './components/vue-userselector/UserSelector.vue';
 import VueSplitbutton from './components/vue-splitbutton/Splitbutton.vue';
+import VueDropdown from './components/vue-dropdown/VueDropdown.vue';
 import VueButton from './components/vue-button/Button.vue';
 import VueCheckItem from './components/vue-check-item/CheckItem.vue';
 import VueHistoryList from './components/vue-history-list/HistoryList.vue';
@@ -85,6 +86,7 @@ class MAVueJsPlugin {
         Vue.component('vue-select', VueSelect);
         Vue.component('vue-userselector', VueUserSelector);
         Vue.component('splitbutton', VueSplitbutton);
+        Vue.component('vue-dropdown', VueDropdown);
         Vue.component('vue-button', VueButton);
         Vue.component('vue-check-item', VueCheckItem);
         Vue.component('vue-input-text', VueInputText);

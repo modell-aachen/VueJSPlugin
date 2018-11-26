@@ -66,14 +66,12 @@
 <script>
 import ResizeSensor from "css-element-queries/src/ResizeSensor";
 import Tab from "./TabPaneTab.vue";
-import VueDropdown from "../vue-dropdown/VueDropdown.vue";
 
 export default {
     name: "VueTabpane",
     i18nextNamespace: "VueJSPlugin",
     components: {
         Tab,
-        VueDropdown,
     },
     props: {
         type: {
