@@ -46,6 +46,11 @@
                     </vue-dad-list>
                 </div>
                 <div
+                    v-if="$slots.rightMenu"
+                    class="cell shrink align-self-middle ma-right-menu">
+                    <slot name="rightMenu"/>
+                </div>
+                <div
                     v-if="removeOptions && !collapsed"
                     class="cell shrink align-self-middle ma-remove-cell">
                     <a

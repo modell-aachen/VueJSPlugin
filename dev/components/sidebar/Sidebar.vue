@@ -3,7 +3,7 @@
         <div
             v-if="isActive"
             class="sidebar-overlay"
-            @click="!uncancelable && hide()"/>
+            @click="!uncancelable && hide({allowConfirmation: true})"/>
         <transition name="sidebar">
             <div
                 v-if="isActive"
@@ -16,7 +16,7 @@
                         v-if="!uncancelable"
                         icon="fa-times"
                         type="close"
-                        @click="hide" />
+                        @click="hide({allowConfirmation: true})" />
                     <div class="controls">
                         <template v-for="(tab,index) in tabs">
                             <tab-button
@@ -56,6 +56,7 @@ import TabButton from './TabButton';
 import Modal from './Modal';
 
 export default {
+    i18nextNamespace: 'VueJSPlugin',
     inject: ['$validator'],
     components: {
         TabButton,
@@ -91,9 +92,39 @@ export default {
         show(){
             this.isActive = true;
         },
-        hide(){
-            this.$emit('hide');
+        hide(options){
+            let allowConfirmation = false;
+            if(options) {
+                allowConfirmation = options.allowConfirmation;
+            }
+            let confirmMessage;
+            const callbacks = {};
+            if(allowConfirmation) {
+                callbacks.showConfirmDialog = message => {
+                    confirmMessage = message || this.$t('sidebar_default_close_message');
+                };
+            }
+            this.$emit('before-hide', callbacks);
+
+            if(confirmMessage) {
+                this.$showAlert({
+                    type: "warning",
+                    title: this.$t('sidebar_close_title'),
+                    text: confirmMessage,
+                    confirmButtonText: this.$t('sidebar_close_confirm'),
+                    cancelButtonText: this.$t('cancel'),
+                }).then(() => {
+                    this.doHide();
+                }).catch(() => {
+                    // noop
+                });
+            } else {
+                this.doHide();
+            }
+        },
+        doHide() {
             this.isActive = false;
+            this.$emit('hide');
         },
         selectTab(index){
             this.selectedTab = index;

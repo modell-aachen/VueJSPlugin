@@ -6,8 +6,7 @@
                 <template v-for="(item, index) in data">
                     <div
                         :key="'1_'+index"
-                        class="cell small-1"
-                        @click="onClick(index)">
+                        class="cell small-1">
                         <div class="grid-y history-list-icon-list">
                             <div class="cell shrink history-list-icon-container">
                                 <i
@@ -24,12 +23,13 @@
                     <div
                         :key="'2_'+index"
                         class="cell small-11">
-                        <div>
-                            <small>{{ item.date }}
+                        <div class="grid-x">
+                            <small
+                                class="link-to-history"
+                                @click="onClick(index)">{{ item.date }}
                                 <template v-if="item.action">- </template>
-                                <div
-                                    class="inline"
-                                    v-html="item.action" />
+                                <span v-html="item.action" />
+                                <i class="history-icon far fa-history"/>
                             </small>
                         </div>
                         <div><b>{{ item.actor }}</b> {{ item.description }}</div>
@@ -46,11 +46,11 @@
 
 <script>
 export default {
-    name: 'VueHistoryList',
+    name: "VueHistoryList",
     props: {
         data: {
             type: Array,
-            required: true
+            required: true,
         },
         isLoading: {
             type: Boolean,
@@ -62,17 +62,14 @@ export default {
             return index === this.data.length - 1;
         },
         onClick(index) {
-            this.$emit('item-clicked', index);
-        }
+            this.$emit("item-clicked", index);
+        },
     },
 };
 </script>
 
 <style lang="scss">
-@import '../../sass/settings.scss';
-.inline {
-    display: inline;
-}
+@import "../../sass/settings.scss";
 .history-list-icon-list {
     height: 100%;
     color: $ma-grey;
@@ -88,5 +85,19 @@ export default {
     height: 100%;
     width: 2px;
     background-color: $ma-grey;
+}
+.link-to-history {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:hover .history-icon {
+        color: $ma-primary-hover;
+    }
+    .history-icon {
+        margin-left: 16px;
+
+    }
 }
 </style>
