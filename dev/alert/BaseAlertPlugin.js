@@ -23,6 +23,9 @@ class BaseAlertPlugin {
         if("showCancelButton" in config){
             swalConfig.showCancelButton = config.showCancelButton;
         }
+        if("confirmButtonClass" in config){
+            swalConfig.confirmButtonClass = config.confirmButtonClass;
+        }
         return this._getSwalInstance(instance, swalConfig);
     }
     _getSwalInstance(/*instance, config*/) {
