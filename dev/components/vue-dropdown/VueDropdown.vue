@@ -35,13 +35,24 @@ export default {
                 this.show();
             }
         },
-        show() {
+        async renderForWidth() {
+            this.style = {
+                top: 0,
+                left: 0,
+                opacity: 0,
+            };
+            return this.$nextTick();
+        },
+        async show() {
             this.isVisible = true;
             this.recentlyShown = true;
+            await this.renderForWidth();
+
             Vue.nextTick(() => {
                 this.recentlyShown = false;
             });
             this.recalculatePosition();
+
             this.$emit("show");
         },
         hide() {
