@@ -1,6 +1,7 @@
 <template>
     <div
         v-click-outside.capture="onClickOutside"
+        v-scroll="onScroll"
         v-visible="isVisible"
         :style="style"
         class="dropdown">
@@ -75,7 +76,12 @@ export default {
             if(this.isVisible){
                 this.hide();
             }
-        }
+        },
+        onScroll() {
+            if(this.isVisible && !this.recentlyShown) {
+                this.recalculatePosition();
+            }
+        },
     },
 };
 </script>

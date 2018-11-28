@@ -119,6 +119,17 @@ class MAVueJsPlugin {
         Vue.directive('tooltip', VTooltip);
         Vue.directive('click-outside', VueClickOutside.directive);
 
+        Vue.directive('scroll', {
+            inserted: function (el, binding) {
+                let f = function (evt) {
+                    if (binding.value(evt, el)) {
+                        window.removeEventListener('scroll', f);
+                    }
+                };
+                window.addEventListener('scroll', f);
+            }
+        });
+
         //Global functions
         Vue.registerStoreModule = (name, module) => {
             if(options.store.state[name]) {
