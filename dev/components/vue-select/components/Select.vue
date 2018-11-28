@@ -237,6 +237,14 @@ export default {
         },
 
         /**
+     * These filter options are available initially.
+     */
+        filterOptions: {
+            type: Array,
+            default: undefined,
+        },
+
+        /**
      * Tells vue-select what key to use when generating option
      * optionLabels when each `option` is an object.
      */
@@ -325,7 +333,7 @@ export default {
     },
 
     data() {
-        let internalFilterOptions = this.getFilterOptions() || [];
+        let internalFilterOptions = this.filterOptions || this.getFilterOptions() || [];
         let checkedFilterOptions = {};
         for(let filter of internalFilterOptions) {
             checkedFilterOptions[filter.name] = filter.unchecked ? 0 : 1;

@@ -118,7 +118,7 @@ export default {
             let search = this.search;
 
             // present only the metadata when search is empty
-            if((!this.search.length && checkedFilterOptions.metadata) || (!checkedFilterOptions.users && !checkedFilterOptions.groups)) {
+            if(!checkedFilterOptions.users && !checkedFilterOptions.groups) {
                 this.lastAjax = null;
                 return Promise.resolve([]);
             }
