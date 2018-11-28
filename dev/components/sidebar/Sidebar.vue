@@ -112,7 +112,7 @@ export default {
                     title: this.$t('sidebar_close_title'),
                     text: confirmMessage,
                     confirmButtonText: this.$t('sidebar_close_confirm'),
-                    cancelButtonText: this.$t('cancel'),
+                    cancelButtonText: this.$t('common_cancel'),
                 }).then(() => {
                     this.doHide();
                 }).catch(() => {
