@@ -1,6 +1,6 @@
 <template>
     <div
-        v-click-outside="onClickOutside"
+        v-click-outside.capture="onClickOutside"
         v-visible="isVisible"
         :style="style"
         class="dropdown">

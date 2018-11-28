@@ -40,7 +40,7 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import InfiniteScroll from 'v-infinite-scroll';
 import 'v-infinite-scroll/dist/v-infinite-scroll.css';
-import VueClickOutside from 'vue-click-outside';
+import * as VueClickOutside from 'v-click-outside-x';
 import translationsEn from './translations/en.json';
 import translationsDe from './translations/de.json';
 import VueUpload from '@websanova/vue-upload';
@@ -117,7 +117,7 @@ class MAVueJsPlugin {
         Vue.component('search-grid', Grid);
 
         Vue.directive('tooltip', VTooltip);
-        Vue.directive('click-outside', VueClickOutside);
+        Vue.directive('click-outside', VueClickOutside.directive);
 
         //Global functions
         Vue.registerStoreModule = (name, module) => {
