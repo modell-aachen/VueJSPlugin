@@ -24,13 +24,16 @@
                         :key="'2_'+index"
                         class="cell small-11">
                         <div class="grid-x">
-                            <small
-                                class="link-to-history"
-                                @click="onClick(index)">{{ item.date }}
-                                <template v-if="item.action">- </template>
-                                <span v-html="item.action" />
-                                <i class="history-icon far fa-history"/>
-                            </small>
+                            <a
+                                :href="item.actionUrl"
+                                target="_blank">
+                                <small
+                                    class="link-to-history"> {{ item.date }}
+                                    <template v-if="item.action">- </template>
+                                    <span v-html="item.action" />
+                                    <i class="history-icon far fa-history"/>
+                                </small>
+                            </a>
                         </div>
                         <div><b>{{ item.actor }}</b> {{ item.description }}</div>
                         <div v-if="item.comment">{{ item.comment }}</div>
@@ -61,9 +64,6 @@ export default {
         isLastItem(index) {
             return index === this.data.length - 1;
         },
-        onClick(index) {
-            this.$emit("item-clicked", index);
-        },
     },
 };
 </script>
@@ -88,15 +88,17 @@ export default {
 }
 .link-to-history {
     cursor: pointer;
+    color: $ma-secondary-text;
     &:hover {
         text-decoration: underline;
     }
 
     &:hover .history-icon {
-        color: $ma-primary-hover;
+        color: $ma-secondary-text;
     }
     .history-icon {
         margin-left: 16px;
+        color: $ma-tertiary-text;
 
     }
 }
