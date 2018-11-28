@@ -1039,7 +1039,7 @@ export default {
         margin-right: 10px;
     }
 
-    .width-xs {
+    &.width-xs {
         .select-arrow {
             margin-right: 21px;
         }
@@ -1048,15 +1048,12 @@ export default {
             min-width: 40px;
         }
         .dropdown-menu {
-            width: 75px;
-            min-width: 75px;
+            width: rem(map-get($input-size, xs));
+            min-width: rem(map-get($input-size, xs));
         }
         .dropdown-toggle {
-            width: 75px;
-
-            .selected-tag {
-                min-width: 40px;
-            }
+            width: rem(map-get($input-size, xs));
+            min-width: rem(map-get($input-size, xs));
         }
     }
     .close-icon-single-tag {

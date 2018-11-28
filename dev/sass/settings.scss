@@ -95,6 +95,14 @@ $spacings: (
   xxxlarge: 48px,
 );
 
+$input-size: (
+    xs: 75px,
+    s: 150px,
+    m: 250px,
+    l: 350px,
+    xl: 500px,
+);
+
 //
 // Override of Foundation Globals
 // See 'node_modules/foundation-sites/scss/_global.scss' for a full list of
