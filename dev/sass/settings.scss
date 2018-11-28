@@ -67,6 +67,8 @@ $alert-hover: $ma-failure-hover;
 $ma-delete: #d83215;
 $ma-delete-hover: #f28b79;
 
+$ma-animation-time: .2s;
+
 $breakpoints: (
   small: 0,
   medium: 640px,
@@ -147,7 +149,7 @@ $ma-h3-margin-bottom: rem-calc(3);
 //
 // table settings
 //
-$border-transition: border-color .2s,background-color .2s ease-in-out;
+$border-transition: border-color $ma-animation-time,background-color $ma-animation-time ease-in-out;
 $table-border: 0;
 $table-inner-border: 0;
 $table-padding: rem-calc(8);
