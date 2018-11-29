@@ -8,12 +8,10 @@
 
         <div class="cell auto grid-y">
             <vue-header3 v-if="heading">{{ heading }}</vue-header3>
-            <div
-                :class="{ 'ma-margin-bottom-medium' : !hasCreateConfigButton }"
-                class="cell ma-margin-top-medium">
+            <div class="cell ma-margin-top-medium">
                 <div v-if="text">{{ text }}</div>
                 <div
-                    v-if="hasCreateConfigButton"
+                    v-if="( buttonCallback || buttonHref) && buttonText"
                     class="ma-margin-top-large">
                     <vue-button
                         ref="actionButton"
@@ -55,11 +53,6 @@ export default {
             buttonText: "",
             buttonCallback: ""
         };
-    },
-    computed: {
-        hasCreateConfigButton() {
-            return (this.buttonCallback || this.buttonHref) && this.buttonText;
-        }
     },
     watch: {
         params: function() {
