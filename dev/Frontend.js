@@ -2,6 +2,7 @@ import Vuex from "vuex";
 import MAVueJsPlugin from "./MAVueJsPlugin.js";
 import i18next from "i18next";
 import VuexProxyPlugin from "./VuexProxyPlugin.js";
+import VueFullscreenLoader from './components/vue-fullscreen-loader/VueFullscreenLoader.vue';
 
 class Frontend {
     constructor(options) {
@@ -20,6 +21,11 @@ class Frontend {
         this.options.vue.Store = store;
         window.Vue = this.options.vue;
         window.i18next = i18next;
+        this.options.jquery(function () {
+            Vue.instantiateEach('.vue-container');
+            const VueFullscreenLoaderClass = Vue.extend(VueFullscreenLoader);
+            new VueFullscreenLoaderClass();
+        });
     }
 }
 

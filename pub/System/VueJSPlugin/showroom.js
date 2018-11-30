@@ -389,6 +389,18 @@ Vue.onDocumentReady(function(){
         template: '#history-list-template',
     });
     new Vue({
+        el: '#loader-examples',
+        template: '#loader-template',
+        methods: {
+            toggleLoaderState() {
+                this.$store.commit("vueLoaderStore/setShowLoader", true);
+                setTimeout(() => {
+                    this.$store.commit("vueLoaderStore/setShowLoader", false);
+                }, 3000)
+            }
+        }
+    });
+    new Vue({
         el: '#search-grid-examples',
         template: '#search-grid-template',
         data: {

@@ -5,6 +5,7 @@ import VueDropdown from './components/vue-dropdown/VueDropdown.vue';
 import VueButton from './components/vue-button/Button.vue';
 import VueCheckItem from './components/vue-check-item/CheckItem.vue';
 import VueHistoryList from './components/vue-history-list/HistoryList.vue';
+import VueLoaderStore from './components/vue-fullscreen-loader/store/index.js';
 import VueInputText from './components/vue-input-text/InputText.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
@@ -138,6 +139,7 @@ class MAVueJsPlugin {
             options.store.registerModule(name, module);
         };
 
+        Vue.registerStoreModule('vueLoaderStore', VueLoaderStore);
         Vue.onDocumentReady = (fn) => {
             this.jquery(fn);
         };
