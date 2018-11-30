@@ -78,8 +78,8 @@ export default {
 
             const targetRect = targetElement.getBoundingClientRect();
 
-            const targetTop = targetRect.top + document.body.scrollTop;
-            const targetLeft = targetRect.left + document.body.scrollLeft;
+            const targetTop = targetRect.top;
+            const targetLeft = targetRect.left;
             const targetHeight = targetElement.offsetHeight;
             const targetWidth = targetElement.offsetWidth;
             const dropdownWidth = dropdownElement.offsetWidth;
