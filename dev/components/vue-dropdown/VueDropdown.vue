@@ -28,11 +28,22 @@ export default {
         };
     },
     methods: {
+        markVisibilityChange() {
+            const ourChange = Date.now();
+            this.recentlyVisibilityChanged = ourChange;
+            setTimeout(() => {
+                if(this.recentlyVisibilityChanged === ourChange) {
+                    this.recentlyVisibilityChanged = 0;
+                }
+            }, 200);
+        },
         toggle() {
-            if(this.isVisible){
-                this.hide();
-            } else {
-                this.show();
+            if(!this.recentlyVisibilityChanged) {
+                if(this.isVisible){
+                    this.hide();
+                } else {
+                    this.show();
+                }
             }
         },
         async renderForWidth() {
@@ -45,6 +56,7 @@ export default {
         },
         async show() {
             this.isVisible = true;
+            this.markVisibilityChange();
             this.recentlyShown = true;
             await this.renderForWidth();
 
@@ -57,6 +69,7 @@ export default {
         },
         hide() {
             this.isVisible = false;
+            this.markVisibilityChange();
             this.$emit("hide");
         },
         recalculatePosition() {
