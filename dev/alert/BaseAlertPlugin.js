@@ -6,14 +6,14 @@ class BaseAlertPlugin {
         };
     }
     _showAlert(instance, config) {
-        const swalConfig = this._getSwalBaseConfigBy(config.type);
-
+        const swalConfig = {};
         swalConfig.title = config.title;
         swalConfig.titleText = config.titleText;
         swalConfig.text = config.text;
         swalConfig.html = config.html;
         swalConfig.confirmButtonText = config.confirmButtonText;
         swalConfig.cancelButtonText = config.cancelButtonText;
+        Object.assign(swalConfig, this._getSwalBaseConfigBy(config.type));
         if("allowOutsideClick" in config){
             swalConfig.allowOutsideClick = config.allowOutsideClick;
         }
@@ -43,6 +43,14 @@ class BaseAlertPlugin {
                 baseConfig.type = 'error';
                 baseConfig.showCancelButton = false;
                 baseConfig.confirmButtonClass = "delete button";
+                break;
+            case 'defaulterror':
+                baseConfig.type = 'error';
+                baseConfig.showCancelButton = false;
+                baseConfig.confirmButtonClass = "delete button";
+                baseConfig.title = Vue.t('default_error_title', {ns: 'VueJSPlugin'});
+                baseConfig.text = Vue.t('default_error_text', {ns: 'VueJSPlugin'});
+                baseConfig.confirmButtonText = Vue.t('ok', {ns: 'VueJSPlugin'});
                 break;
             case 'warning':
                 baseConfig.type = 'warning';
