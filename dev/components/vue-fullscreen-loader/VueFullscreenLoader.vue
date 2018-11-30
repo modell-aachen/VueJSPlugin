@@ -31,7 +31,7 @@ export default {
 <style lang="scss">
 .vue-fullscreen-loader {
     position: fixed;
-    z-index: 1000;
+    z-index: 10002;
     width: 100vw;
     height: 100vh;
     left: 0;
