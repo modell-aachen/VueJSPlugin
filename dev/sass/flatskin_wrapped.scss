@@ -64,6 +64,7 @@ html {
     @include foundation-flex-classes;
     @include foundation-visibility-classes;
     @include foundation-float-classes;
+    @import 'qwiki/alerts';
     @import 'qwiki/tooltip';
     @import 'qwiki/mixins';
     @import 'qwiki/globals';
