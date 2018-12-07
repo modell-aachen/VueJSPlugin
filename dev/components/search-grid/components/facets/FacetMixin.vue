@@ -1,9 +1,9 @@
 <script>
 import GridComponentMixin from "../GridComponentMixin.vue";
-import MaketextMixin from "../MaketextMixin.vue";
 import * as mutations from "../../store/mutation-types";
 export default {
-    mixins: [GridComponentMixin,MaketextMixin],
+    mixins: [GridComponentMixin],
+    i18nextNamespace: "SearchGrid",
     props: {
         params: {
             type: Array,

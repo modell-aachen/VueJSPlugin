@@ -1,0 +1,23 @@
+{
+    "all": "Alle",
+    "and": "und",
+    "apply_filters": "Filter anwenden",
+    "cant_connect_to_solr.": "Es konnte keine Verbindung zu Solr hergestellt werden.",
+    "export_elements": "Alle Elemente gemäß aktueller Filterung exportieren",
+    "facets": "Facetten",
+    "filters": "Filter",
+    "in": "in",
+    "more": "{{0}} weitere",
+    "more_days": "({{0}}) Noch {{1}} Tage",
+    "no_more_results_available": "Keine weiteren Ergebnisse vorhanden",
+    "no_results": "Keine Ergebnisse",
+    "none": "Nicht vergeben",
+    "remove_filters": "Filter aufheben",
+    "reset_all": "Alle zurücksetzen",
+    "search_term": "Suchbegriff...",
+    "show_more_results": "Zeige mehr Ergebnisse",
+    "since_many_days": "({{0}}) Seit {{1}} Tagen",
+    "since_one_day": "({{0}}) Seit einem Tag",
+    "still_one_day": "({{0}}) Noch einen Tag",
+    "today": "({{0}}) Heute"
+}

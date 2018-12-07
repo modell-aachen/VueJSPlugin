@@ -3,7 +3,7 @@
         <label class="input-label">{{ header }}</label>
         <div class="facet-select2">
             <vue-select
-                :placeholder="maketext('Search term...')"
+                :placeholder="$t('search_term')"
                 :sort-slot-options="false"
                 v-model="selectedFacet"
                 :initial-options="options"
@@ -14,7 +14,7 @@
                 :on-get-more-options="onGetMoreOptions"
                 multiple
                 is-small>
-                <template slot="more-results">{{ maketext(moreResultsText) }}</template>
+                <template slot="more-results">{{ $t('show_more_results') }}</template>
             </vue-select>
         </div>
     </div>

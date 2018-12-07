@@ -1,6 +1,7 @@
 import SearchGridStoreModule from "./store/index.js";
 import Grid from './components/Grid.vue';
-
+import translationsEn from './translations/en.json';
+import translationsDe from './translations/de.json';
 
 const searchGridInit = (vue) => {
     vue.registerStoreModule("searchGrid", SearchGridStoreModule);
@@ -16,6 +17,9 @@ const searchGridInit = (vue) => {
     window.SearchGridPlugin = SearchGridPlugin;
 
     vue.onDocumentReady( function () {
+        Vue.addTranslation('en', 'SearchGrid', translationsEn);
+        Vue.addTranslation('de', 'SearchGrid', translationsDe);
+
         vue.instantiateEach('.SearchGridContainer', {
             components: {
                 grid: Grid

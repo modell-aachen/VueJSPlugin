@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import MaketextMixin from "../MaketextMixin.vue";
 import FieldMixin from "./FieldMixin.vue";
 export default {
-    mixins: [MaketextMixin, FieldMixin],
+    i18nextNamespace: "SearchGrid",
+    mixins: [FieldMixin],
     /* params:
         datefield
         show_date (optional)
@@ -30,21 +30,21 @@ export default {
         tooltip(){
             let positivDaysRemaining = this.ampel.daysRemaining;
             if (this.ampel.warnStatus !== 'none'){
-                let text ='([_1]) still [_2] days';
+                let text ='more_days';
                 if(this.ampel.daysRemaining === 1) {
-                    text = '([_1]) still one day';
+                    text = 'still_one_day';
                 }
                 if(this.ampel.daysRemaining === 0) {
-                    text = '([_1]) today';
+                    text = 'today';
                 }
                 if(this.ampel.daysRemaining === -1) {
-                    text = '([_1]) since one day';
+                    text = 'since_one_day';
                 }
                 if(this.ampel.daysRemaining < -1){
                     positivDaysRemaining = positivDaysRemaining * (-1);
-                    text = '([_1]) since [_2] days';
+                    text = 'since_many_days';
                 }
-                return this.maketext(text,[this.$moment(this.ampel.dueDate, "DD.MM.YYYY").add(this.ampel.daysRemaining, 'days').format('D.MM.YYYY'), positivDaysRemaining]);
+                return this.$t(text,[this.$moment(this.ampel.dueDate, "DD.MM.YYYY").add(this.ampel.daysRemaining, 'days').format('D.MM.YYYY'), positivDaysRemaining]);
             }else{
                 return "";
             }

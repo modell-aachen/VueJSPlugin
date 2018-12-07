@@ -6,7 +6,7 @@
                 <vue-check-item
                     v-model="selectedRadio"
                     type="radio"
-                    checked>{{ maketext("All") }}</vue-check-item>
+                    checked>{{ $t("all") }}</vue-check-item>
             </li>
             <template v-for="(value,index) in facetCharacteristics">
                 <li

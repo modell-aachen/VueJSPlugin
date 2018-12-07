@@ -87,7 +87,7 @@
                     <div class="cell small-4 medium-2 large-2 resetFilterButton">
                         <vue-button
                             :is-disabled="!isFilterApplied"
-                            :title="maketext(&quot;Reset all&quot;)"
+                            :title="$t('reset_all')"
                             @click.native="clearFacets()"/>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                             <div
                                 v-if="!wizardConfig || !wizardConfig.component"
                                 v-show="results.length == 0"
-                                class="cell auto"><p>{{ maketext("No results") }}</p></div>
+                                class="cell auto"><p>{{ $t("no_results") }}</p></div>
                             <div
                                 v-else
                                 v-show="wizardConfig.component && results.length == 0"
@@ -112,7 +112,7 @@
                             </div>
                             <div
                                 v-show="results.status == 'error'"
-                                class="cell auto"><p>{{ maketext(results.msg) }}</p></div>
+                                class="cell auto"><p>{{ results.msg }}</p></div>
                             <div
                                 v-show="!isGridView && results.length > 0"
                                 class="columns search-grid-results">
@@ -156,7 +156,7 @@
                         <div class="wrapper">
                             <div>
                                 <h3 class="headlineFacets">
-                                    {{ maketext("Filters") }}
+                                    {{ $t("filters") }}
                                 </h3>
                                 <vue-spacer
                                     factor-vertical="3"/>
@@ -182,7 +182,6 @@
 
 
 <script>
-import MaketextMixin from './MaketextMixin.vue';
 import TableController from './TableController.vue';
 import TestGridField from './fields/TestGridField.vue';
 import FullTextFilter from './filters/FullTextFilter.vue';
@@ -197,6 +196,7 @@ import * as mutations from "../store/mutation-types";
 import debounce from 'lodash/debounce';
 
 export default {
+    i18nextNamespace: "SearchGrid",
     components : {
         TableController,
         TestGridField,
@@ -207,8 +207,6 @@ export default {
         Select2Facet,
         ExcelExport
     },
-    mixins: [MaketextMixin],
-
     props: {
         preferencesSelector: {
             type: String,
@@ -628,7 +626,7 @@ export default {
                 //'__none__ ' is used for empty fields
                 if(!field && facetField){
                     field = '__none__';
-                    displayValue = this.maketext('None');
+                    displayValue = this.$t('none');
                 }
 
                 //Remove empty/whitespace entries to not feel broken

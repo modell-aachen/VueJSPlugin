@@ -12,10 +12,9 @@
 </template>
 
 <script>
-import MaketextMixin from '../MaketextMixin.vue';
 import FacetMixin from '../facets/FacetMixin.vue';
 export default {
-    mixins: [MaketextMixin,FacetMixin],
+    i18nextNamespace: "SearchGrid",
     data:  function () {
         return {
             selectedOption: this.params.length > 2 ? [this.params[2]] : [],
@@ -36,7 +35,7 @@ export default {
             let options = [];
             let noneOpt = {};
             noneOpt.value ="";
-            noneOpt.label = this.maketext('All');
+            noneOpt.label = this.$t('all');
             options.push(noneOpt);
             for(let facetValue of this.facetValues[this.params[1]]){
                 facetValue.value = [facetValue.field];

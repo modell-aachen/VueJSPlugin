@@ -14,13 +14,12 @@
 </template>
 
 <script>
-import MaketextMixin from "../MaketextMixin.vue";
 import FieldRenderer from "./FieldRenderer.js";
 
 const SOLR_ROWS_LIMIT = 2 ** 31 - 1;
 
 export default {
-    mixins: [MaketextMixin],
+    i18nextNamespace: "SearchGrid",
     props: {
         fields: {
             type: Array,
@@ -37,7 +36,7 @@ export default {
             return `${this.$foswiki.getPubUrl()}/System/SearchGridPlugin/excel_logo.png`;
         },
         tooltip() {
-            return this.maketext("Export all elements based on the current filter settings.");
+            return this.$t("export_elements");
         },
         fieldsToExport() {
             return  this.fields.filter((field) => {
