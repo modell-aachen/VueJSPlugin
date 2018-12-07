@@ -36,6 +36,7 @@
                         v-if="canDropInTitle && collapsed"
                         :allowed-types="allowedTypes"
                         v-model="dummyDropList"
+                        class="title-dad-list"
                         item-type="vue-simple-dad-item">
                         <vddl-placeholder slot="placeholder">
                             <div class="ma-simple-dad-item-drop-area">
@@ -176,5 +177,11 @@ export default {
 .handle {
   cursor: move;
 }
-
+.ma-block {
+    .ma-collapsible-header-drop-zone,
+    .title-dad-list,
+    .panel__body--list {
+        height: 100%;
+    }
+}
 </style>
