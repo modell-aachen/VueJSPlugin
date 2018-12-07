@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import FacetMixin from '../facets/FacetMixin.vue';
 export default {
     i18nextNamespace: "SearchGrid",
     data:  function () {
