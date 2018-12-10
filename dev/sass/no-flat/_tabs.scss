@@ -1,0 +1,14 @@
+.jqTabPaneFlat {
+    > .vue-tabpane-group,
+    > .jqTabGroup {
+        li {
+            a {
+                line-height: rem(14px);
+            }
+            &.current {
+                border-bottom: 2px solid $ma-white;
+            }
+        }
+    }
+}
+

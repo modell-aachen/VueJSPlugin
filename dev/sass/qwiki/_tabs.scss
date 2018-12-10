@@ -33,6 +33,10 @@ $tabpane-content-padding: 24px;
       background: $ma-white-grey;
       margin: rem-calc(0 8 -2 0);
 
+      &:not(.current) a {
+          line-height: rem(14px);
+      }
+
       &.current a {
         background: $ma-white;
         border: $ma-boarder-size solid $ma-primary;
