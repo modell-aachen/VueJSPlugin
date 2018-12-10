@@ -309,14 +309,13 @@ export default {
         },
         showTopActionBar: function( ){
             return (
-                this.isFilterApplied || this.results.length > 0 && (
-                    this.hasFilters ||
-            this.hasExcelExport ||
-            this.hasAddons)
+                this.hasFilters ||
+                this.hasExcelExport ||
+                this.hasAddons
             );
         },
         showFacets: function(){
-            return (this.results.length > 0 || this.isFilterApplied) && this.prefs.facets.length > 0;
+            return this.prefs.facets.length > 0;
         },
         isLoading: function() {
             return this.request !== null;
