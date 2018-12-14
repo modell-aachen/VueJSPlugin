@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="3abfa98b-f92b-42ab-986e-872abca52a49" comment="" date="1514368078" format="1.1" version="2"}%
+
+---+ A tabpane for Vue
+
+This component belongs to [[VueJSPlugin]] and creates a tabpane, that uses FlatSkin styles.
+
+---++ Usage
+
+   * Create a =vue-tabpane= component
+      * Type defines the css class. The type will be appended to 'jqTabPaneFlat'
+   * For each tab, create a =vue-tab= component _inside_ the =vue-tabpane= component
+      * No other children are allowed inside =vue-tabpane=
+   * Give each tab a _name_ attribute
+      * It will be displayed as the title of the tab
+   * Put any content inside the =vue-tab=
+   * Optionally give it an id; it will get a temporary random id otherwise
+
+Example:
+<verbatim>
+<vue-tabpane :type="type">
+    <vue-tab :name="title for first tab">
+        Here is some content for the first tab
+    </vue-tab>
+    <vue-tab :name="title for second tab">
+        <span @click="someHandler">Here is some content for the second tab</span>
+    </vue-tab>
+    <vue-tab :name="title for third tab" id="someId">
+        <some-component></some-commponent>
+    </vue-tab>
+</vue-tabpane>
+</verbatim>
+
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Set" value="Vue JS Plugin Tabpane"}%
+

@@ -1,0 +1,6 @@
+html body {
+  @include ma-font();
+
+  background-color: $body-background;
+  color: $body-font-color;
+}

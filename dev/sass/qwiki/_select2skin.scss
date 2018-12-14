@@ -1,0 +1,148 @@
+@import './settings';
+
+.select2-container--ma {
+    &.select2-container--focus .select2-selection--multiple {
+        border: 2px solid $ma-grey;
+    }
+    .select2-selection--multiple{
+        border: 2px solid $ma-grey;
+
+        .select2-selection__choice{
+            padding: 10px;
+            background-color: green;
+            border-radius: $ma-border-radius;
+            border: 0;
+            @include ma-font('regular');
+            color: $ma-body-text;
+            font-size: rem-calc(12);
+            line-height: 1.4;
+
+            .choice-icon {
+                margin-right: 10px;
+            }
+
+            .select2-selection__choice__remove {
+                float: right;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.select2-container--default {
+    min-height: rem-calc(40);
+    .select2-selection{
+        height: auto;
+    }
+    .select2-selection--multiple {
+        min-height: rem-calc(40);
+        .select2-selection__rendered {
+            word-break: break-all;
+            white-space: inherit;
+        }
+    }
+
+    .select2-selection--single {
+        .select2-selection__rendered {
+            line-height: rem-calc(32px);
+            color: $ma-body-text;
+
+            .select2-selection__clear {
+                margin-right: rem-calc(16px);
+                float: none;
+            }
+
+            .select_label {
+                color: $ma-body-text;
+            }
+            .select2-selection__placeholder {
+                color: $ma-secondary-text;
+                .select_label {
+                    color: $ma-secondary-text;
+                }
+            }
+
+            .select_label, .select2-selection__placeholder {
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+        }
+    }
+
+    &.select2 {
+        min-width:100%;
+        max-width:100%;
+        ul.select2-selection__rendered {
+            &, #modacWrapper & {
+                padding: 0;
+            }
+        }
+    }
+    &.select2-container--focus, &.select2-container--open {
+        .select2-selection, .select2-selection--multiple, .select2-selection--single {
+            border: rem-calc(1) solid $ma-primary;
+            background-color: $ma-white;
+            transition: $border-transition;
+            outline:0;
+        }
+    }
+    .select2-selection {
+        background-color: $ma-white-grey;
+        border: rem-calc(1) solid $ma-light-grey;
+        padding: rem-calc(3 7);
+        .select2-selection__arrow {
+            margin-right: rem-calc(7px);
+            width: rem-calc(8px);
+            height: 100%;
+            top: 0;
+        }
+        .select2-selection__rendered {
+            padding: 0;
+            min-height: rem-calc(32);
+            .select2-selection__choice {
+                line-height: rem-calc(14);
+                font-size: rem-calc(12);
+                padding: rem-calc(4) rem-calc(8);
+                margin: rem-calc(4);
+                background-color: $ma-medium-grey;
+                color: $ma-secondary-text;
+            }
+            .select2-search__field {
+                margin-left: rem-calc(4);
+                height: 24px;
+                margin: 4px 0px;
+            }
+            .select2-selection__choice__remove {
+                font-size: rem-calc(20);
+                font-weight: 400;
+                padding-left: rem-calc(8);
+            }
+            .select2-selection__clear i {
+                line-height: inherit;
+                color: $ma-grey;
+                font-size: rem-calc(16);
+                margin-right: 0;
+            }
+            .select2-selection__choice__remove,
+            .select2-selection__clear {
+                float: right;
+            }
+        }
+    }
+
+    .select2-selection--multiple {
+        padding-right: rem-calc(3px); // 8px - border - margin-left
+        .select2-selection__rendered {
+            margin-left: rem-calc(-4);
+            margin-right: rem-calc(-4);
+            .select2-search__field {
+                margin: rem-calc(4px 0px 4px 4px);
+            }
+        }
+        .select2-selection__clear {
+            margin-top: rem-calc(4);
+            margin-right: rem-calc(0);
+        }
+    }
+}

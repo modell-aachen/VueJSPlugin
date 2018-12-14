@@ -1,0 +1,163 @@
+@import "~sass-rem";
+$rem-baseline: 14px;
+$global-font-size: 14px;
+
+//
+// Modell Aachen Default Colors
+//
+
+$ma-primary: #52cae4;
+$ma-primary-hover: #75d5ea;
+$ma-secondary: #003764;
+$ma-tertiary-text: #8a979a;
+$ma-success: #84bb2e;
+$ma-success-hover: #9dc958;
+$ma-success-light: #e1eecc; // equals rgba($ma-success, 0.3) on white background
+$ma-failure: #d83314;
+$ma-failure-hover: #e05c43;
+$ma-failure-light: #f5cec6; // equals rgba($ma-failure, 0.3) on white background
+$ma-warning: #e2af19;
+$ma-warning-hover: #eecf75;
+$ma-warning-light: #f6e7ba; // equals rgba($ma-warning, 0.3) on white background
+$ma-brown: #7f7b71;
+$ma-sand: #f5f3ef;
+$ma-darker-grey: #3E4143;
+$ma-dark-grey: #84878a;
+$ma-light-grey: #dee4e5;
+$ma-medium-grey: #e5e8eb;
+$ma-pale-grey: #e9eff0;
+$ma-grey: #b0c0c4;
+$ma-button-grey: #eff3f4;
+$ma-white-grey: #fafafa;
+$ma-bg-beige: #f5f3ef;
+$ma-bg-beige-dark: #dddad5;
+$ma-bg-light: #f7f7f7;
+$ma-light-border: #f1efea;
+$ma-help-text: #9a9a9a;
+$ma-select-multi-text-color: #8c7b71;
+$ma-data-table-border: #cdd0d3;
+$ma-colored-text: #0069bf;
+$ma-colored-text-hover: #3a93db;
+
+$ma-white: white;
+$ma-black: black;
+$ma-body-text: #11353D;
+$ma-secondary-text: #56676B;
+$ma-disabled-text: $ma-tertiary-text;
+$ma-akzent-text: $ma-colored-text;
+
+
+$ma-font-regular: 'Open Sans';
+$ma-font-semibold: $ma-font-regular;
+$ma-font-bold: $ma-font-regular;
+
+$ma-font-weight-bold: 600;
+$ma-font-weight-semibold: 600;
+$ma-font-weight-regular: 400;
+$ma-font-weight: $ma-font-weight-bold;
+
+$ma-border-radius: 4px;
+$ma-border-width: 1px;
+
+$primary-hover: $ma-primary-hover;
+$success-hover: $ma-success-hover;
+$warning-hover: $ma-warning-hover;
+$alert-hover: $ma-failure-hover;
+
+$ma-delete: #d83215;
+$ma-delete-hover: #f28b79;
+
+$ma-animation-time: .2s;
+
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+  xxxlarge: 1650px,
+  xxxxlarge: 1850px,
+);
+$breakpoint-classes: (small medium large xlarge xxlarge xxxlarge xxxxlarge);
+
+$limited-width: (
+  large: 600px,
+);
+
+$spacings: (
+  none: 0px,
+  xsmall: 4px,
+  small: 8px,
+  medium: 16px,
+  large: 24px,
+  xlarge: 32px,
+  xxlarge: 40px,
+  xxxlarge: 48px,
+);
+
+$input-size: (
+    xs: 75px,
+    s: 150px,
+    m: 250px,
+    l: 350px,
+    xl: 500px,
+);
+
+//
+// Override of Foundation Globals
+// See 'node_modules/foundation-sites/scss/_global.scss' for a full list of
+// variables.
+//
+
+$global-flexbox: true;
+$global-radius: $ma-border-radius;
+
+$global-width: 100%;
+$grid-margin-gutters: (
+  small: 16px,
+  medium: 24px,
+  large: 40px,
+);
+
+
+$foundation-palette: (
+  primary: $ma-primary,
+  secondary: $ma-dark-grey,
+  success: $ma-success,
+  warning: $ma-warning,
+  alert: $ma-failure,
+);
+
+$input-color: $ma-body-text;
+
+$primary-color: map-get($foundation-palette, 'primary');
+$secondary-color: map-get($foundation-palette, 'secondary');
+$success-color: map-get($foundation-palette, 'success');
+$warning-color: map-get($foundation-palette, 'warning');
+$alert-color: map-get($foundation-palette, 'alert');
+
+$light-gray: $ma-light-grey;
+$medium-gray: $ma-grey;
+$dark-gray: $ma-dark-grey;
+$body-background: white;
+$body-font-color: $ma-body-text;
+$body-font-family: $ma-font-regular;
+
+//
+// Layout settings
+//
+
+$ma-left-width: rem-calc(180);
+$ma-top-height: rem-calc(60);
+$ma-common-spacing: rem-calc(14);
+
+// headers
+$ma-h3-margin-bottom: rem-calc(3);
+
+//
+// table settings
+//
+$border-transition: border-color $ma-animation-time,background-color $ma-animation-time ease-in-out;
+$table-border: 0;
+$table-inner-border: 0;
+$table-padding: rem-calc(8);

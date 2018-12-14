@@ -1,0 +1,144 @@
+$ma-grid-padding: rem-calc(0 4 0 4);
+.ma-collapsible-item,
+.ma-simple-item{
+    border-radius: $ma-border-radius;
+    margin-bottom: rem-calc(16);
+}
+.ma-simple-item-title,
+.ma-collapsed {
+    border-bottom-left-radius: $ma-border-radius;
+    border-bottom-right-radius: $ma-border-radius;
+}
+.ma-collapsible-header-drop-zone {
+    min-height: rem-calc(50);
+    .ma-simple-dad-item-drop-area {
+        text-align: center;
+        h3 {
+            line-height: rem-calc(50);
+        }
+    }
+}
+.ma-simple-item-title,
+.ma-collapsible-item-title {
+    padding: $ma-grid-padding;
+    background-color: $ma-sand;
+    border-top-left-radius: $ma-border-radius;
+    border-top-right-radius: $ma-border-radius;
+    height: rem-calc(56);
+    .ma-remove-cell,
+    .ma-toggle-cell {
+        padding: $ma-grid-padding;
+        margin-right: rem-calc(16);
+        cursor: pointer;
+        .fa-fw {
+            width: rem-calc(20);
+        }
+    }
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: rem-calc(14);
+        font-weight: semibold;
+        line-height: rem-calc(19);
+        word-wrap: break-word;
+        small {
+            font-weight: regular;
+            line-height: rem-calc(19);
+        }
+    }
+    i {
+        color: $ma-dark-grey;
+        font-size: 1.5em;
+        height: 100%;
+    }
+    .handle-container {
+        position: absolute;
+        padding-left: rem-calc(8);
+    }
+    .remove-item-handle {
+        color: $ma-failure;
+        cursor: pointer
+    }
+}
+
+/**
+ * Inner DaD-Items should be a bit smaller than it's parent, i.e. parent height 56px, child height 48px
+ * Apply style to nested items and items with an additional class
+ */
+// nested elements
+.ma-collapsible-item .ma-simple-item .ma-simple-item-title,
+.ma-collapsible-item .ma-collapsible-item > .ma-collapsible-item-title, // take only direct childs
+// modified elements (BEM moodifier class)
+.ma-simple-item-title.ma-simple-item-title--small,
+.ma-collapsible-item-title.ma-collapsible-item-title--small {
+    min-height: rem-calc(48);
+    height: auto;
+    h3 {
+        font-size: rem-calc(14); //TBD: should we place this one here?
+        padding: rem-calc(8) 0;
+    }
+}
+
+//inner DaD-Items have other paddings than the defaults
+.ma-collapsible-item .ma-simple-item .ma-simple-item-title {
+
+    > .grid-x {
+        margin-left: -1 * rem-calc(16);
+        margin-right: -1 * rem-calc(16);
+    }
+
+    &, & > .grid-x > .cell {
+        padding-left: rem-calc(16);
+        padding-right: rem-calc(16);
+    }
+}
+
+%ma-status {
+    &.warning {
+        color: $ma-warning;
+    }
+    &.error {
+        color: $ma-failure;
+    }
+    &.success {
+        color: $ma-success;
+    }
+}
+
+i.ma-status-dot {
+    @extend %ma-status;
+    $dot-size: .5em;
+    padding-left: rem-calc(8);
+    font-size: $dot-size;
+    vertical-align: middle;
+    height: rem-calc(1em / 2 + $dot-size /2);
+}
+
+i.ma-status-triangle {
+    @extend %ma-status;
+    font-size: 1rem;
+}
+.ma-collapsible-item-title-left,
+.ma-simple-item-title-left {
+    height: 100%;
+    .handle-spacer {
+        padding-left: rem-calc(19);
+    }
+    .ma-type-icon {
+        padding-left: rem-calc(8);
+    }
+}
+.ma-collapsible-item-content {
+    padding: rem-calc(24 0);
+    border: solid $ma-sand;
+    border-width: rem-calc(1 8 16 8);
+    border-bottom-left-radius: $ma-border-radius;
+    border-bottom-right-radius: $ma-border-radius;
+    hr {
+        height: rem-calc(1);
+        background: $ma-light-grey;
+    }
+}
+.ma-draggable {
+    cursor: move;
+}

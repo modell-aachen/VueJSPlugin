@@ -1,0 +1,183 @@
+$tooltip-margin: rem-calc(8);
+$tooltip-arrow-size: 8;
+$color: $ma-darker-grey;
+$bg-size: 16;
+
+h3, label {
+  > .vue-container {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}
+
+.circle-bg-tooltip {
+    border-radius: 50%;
+    width: rem-calc($bg-size);
+    height: rem-calc($bg-size);
+    border: 1px solid $ma-light-grey;
+    background: $ma-button-grey;
+
+    label & {
+        position: absolute;
+        top: -2px;
+    }
+}
+
+.tooltip-icon {
+  color: $ma-secondary-text;
+}
+
+&.tooltip {
+  &.popover {
+    .popover-inner {
+      background: $color;
+      color: black;
+      padding: rem-calc(24);
+      border-radius: $ma-border-radius;
+      box-shadow: 0 rem-calc(5) rem-calc(30) rgba(black, .1);
+    }
+    .popover-arrow {
+      border-color: $color;
+    }
+  }
+
+  &[aria-hidden='true'] {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .15s, visibility .15s;
+  }
+
+  &[aria-hidden='false'] {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .15s;
+  }
+}
+
+&.tooltip {
+    display: block !important;
+    z-index: 10000;
+    border-radius: $ma-border-radius;
+    margin: rem-calc($tooltip-margin);
+    background: $ma-white;
+    padding: 0;
+    box-shadow: rem-calc(0px 2px 6px) rgba(0, 0, 0, 0.15);
+    border: 1px solid $ma-light-grey;
+
+    .tooltip-inner {
+        color: $ma-secondary-text;
+        max-width: rem-calc(220);
+        padding: rem-calc(16);
+        border: 0;
+    }
+
+    .tooltip-arrow {
+        width: 0;
+        height: 0;
+        border-style: none;
+        position: absolute;
+        margin: $tooltip-margin;
+        border-color: $ma-light-grey;
+        z-index: 1;
+    }
+
+    &[x-placement^="top"] {
+        margin-bottom: rem-calc($tooltip-arrow-size);
+
+        .tooltip-arrow {
+            border-width: rem-calc($tooltip-arrow-size $tooltip-arrow-size 0 $tooltip-arrow-size);
+            border-left-color: transparent !important;
+            border-right-color: transparent !important;
+            border-bottom-color: transparent !important;
+            bottom: rem-calc(-$tooltip-arrow-size);
+            left: rem-calc(50% - $tooltip-arrow-size);
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    &[x-placement^="bottom"] {
+        margin-top: $tooltip-margin;
+
+        .tooltip-arrow {
+            border-width: rem-calc(0 $tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size);
+            border-left-color: transparent !important;
+            border-right-color: transparent !important;
+            border-top-color: transparent !important;
+            top: rem-calc(-$tooltip-arrow-size);
+            left: rem-calc(50% - $tooltip-arrow-size);
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    &[x-placement^="right"] {
+        margin-left: rem-calc($tooltip-arrow-size);
+
+        .tooltip-arrow {
+            border-width: rem-calc($tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size 0);
+            border-left-color: transparent !important;
+            border-top-color: transparent !important;
+            border-bottom-color: transparent !important;
+            left: rem-calc(-$tooltip-arrow-size);
+            top: rem-calc(50% - $tooltip-arrow-size);
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    &[x-placement^="left"] {
+        margin-right: rem-calc($tooltip-arrow-size);
+
+        .tooltip-arrow {
+            border-width: rem-calc($tooltip-arrow-size 0 $tooltip-arrow-size $tooltip-arrow-size);
+            border-top-color: transparent !important;
+            border-right-color: transparent !important;
+            border-bottom-color: transparent !important;
+            right: rem-calc(-$tooltip-arrow-size);
+            top: rem-calc(50% - $tooltip-arrow-size);
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    &.v-tooltip-success{
+        border-color: $success-color;
+        .tooltip-arrow {
+            border-bottom-color: $success-color;
+        }
+        background-color: $success-color;
+    }
+
+    &.v-tooltip-failed{
+        border-color: $alert-color;
+        .tooltip-arrow {
+            border-bottom-color: $alert-color;
+        }
+        background-color: $alert-color;
+    }
+
+    &.v-tooltip-info{
+        border-color: $light-gray;
+        .tooltip-arrow {
+            border-bottom-color: $light-gray;
+        }
+        .tooltip-inner {
+            color: $dark-gray;
+        }
+        background-color: $light-gray;
+    }
+
+    &.v-tooltip-success,
+    &.v-tooltip-failed,
+    &.v-tooltip-info {
+        .tooltip-inner {
+            padding: rem-calc(5 10 4);
+            font-size: rem-calc(12);
+        }
+
+        .tooltip-arrow {
+            border-style: solid;
+        }
+    }
+}

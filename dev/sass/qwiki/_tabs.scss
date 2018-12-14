@@ -1,0 +1,100 @@
+$ma-boarder-size: 2px;
+$tabpane-content-padding: 24px;
+
+.flatskin-wrapped:not(.vue-tabpane) > .jqTabPaneFlat {
+  margin: .5em;
+}
+
+.jqTabPaneFlat {
+  > .vue-tabpane-group,
+  > .jqTabGroup {
+    margin: 0;
+    background: $ma-white-grey;
+    width: 100%;
+    height: 42px;
+    border-bottom: 2px solid $ma-light-grey;
+    a {
+      background: $ma-white-grey;
+      border: 0;
+      border-top: $ma-boarder-size solid $ma-white-grey;
+      border-top-left-radius: $ma-border-radius;
+      border-top-right-radius: $ma-border-radius;
+      color: $ma-secondary-text;
+      line-height: 100%;
+      padding: rem-calc(16 24 8);
+      font-size: rem-calc(14);
+
+      &:hover {
+        color: $ma-primary;
+      }
+    }
+
+    li {
+      background: $ma-white-grey;
+      margin: rem-calc(0 8 -2 0);
+
+      &:not(.current) a {
+          line-height: rem(14px);
+      }
+
+      &.current a {
+        background: $ma-white;
+        border: $ma-boarder-size solid $ma-primary;
+        border-bottom: $ma-boarder-size solid $ma-white;
+        color: $ma-body-text;
+      }
+    }
+  }
+
+  .vue-tab.current,
+  .jqTab.current {
+    border: 0;
+  }
+
+  .vue-tab-contents,
+  .jqTabContents {
+    padding: rem-calc($tabpane-content-padding 0);
+  }
+}
+
+.jqTabPaneFlatSub {
+  > ul.vue-tabpane-group,
+  > .jqTabGroup {
+    background: $ma-button-grey;
+    border-bottom: 0 !important;
+    margin-top: rem-calc(-$tabpane-content-padding);
+    margin-bottom: 0;
+    width: 100%;
+    height: 51px;
+    a {
+      border: 0;
+      color: $ma-secondary-text;
+      font-weight: 600;
+      border-bottom: $ma-boarder-size solid transparent;
+      padding: rem-calc(6 0);
+      margin: rem-calc(0 16);
+
+      &:hover {
+        border-bottom: $ma-boarder-size solid $ma-primary;
+      }
+    }
+    li {
+      padding: rem-calc(8);
+      margin: rem-calc(0 8 0 0);
+
+      &.current a {
+        color: $ma-body-text;
+        padding: rem-calc(6 16);
+        margin: rem-calc(0);
+        border-radius: $ma-border-radius;
+        background: $ma-white;
+        border: 0;
+      }
+    }
+  }
+
+  .vue-tab.current,
+  .jqTab.current {
+    border: 0;
+  }
+}

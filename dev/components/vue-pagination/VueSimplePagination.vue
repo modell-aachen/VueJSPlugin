@@ -1,129 +1,155 @@
 <template>
-   <div class="vue-simple-pagination">
-    <nav v-if="moreThanOnePage">
-        <ul :class="ulClass">
-            <li :class="getClass('previous')">
-                <a @click="triggerPageChange(currentPage-1)" aria-label="Previous">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </a>
-            </li>
-            <li v-for="page in pages" :class="getClass(page.number)"><a v-if="page.number" @click="triggerPageChange(page.number)">
-                {{ page.number }}</a><span v-if="pageNull(page)">...</span>
-            </li>
-            <li :class="getClass('next')">
-                <a @click="triggerPageChange(currentPage+1)" aria-label="Next">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <div class="vue-simple-pagination">
+        <nav v-if="moreThanOnePage">
+            <ul :class="ulClass">
+                <li :class="getClass('previous')">
+                    <a
+                        aria-label="Previous"
+                        @click="triggerPageChange(value-1)">
+                        {{ $t('paging_previous') }}
+                    </a>
+                </li>
+                <li
+                    v-for="page in pages"
+                    :key="page.number"
+                    :class="getClass(page.number)"><a
+                        v-if="page.number"
+                        @click="triggerPageChange(page.number)">
+                        {{ page.number }}</a><span v-if="pageNull(page)">...</span>
+                </li>
+                <li :class="getClass('next')">
+                    <a
+                        aria-label="Next"
+                        @click="triggerPageChange(value+1)">
+                        {{ $t('paging_next') }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 
 <script>
-    export default {
-        props: {
-            currentPage: {
-                required: true,
-                type: Number
-            },
-            pageCount: {
-                required: true,
-                type: Number
-            },
-            ulClass: {
-                default: 'pagination'
-            },
+export default {
+    i18nextNamespace: 'VueJSPlugin',
+    props: {
+        value: {
+            required: true,
+            type: Number
         },
-
-        data: function () {
-            return {
-                pages: []
-            };
+        pageCount: {
+            required: true,
+            type: Number
         },
-
-        watch: {
-            currentPage(){
-                this.buildPageList();
+        ulClass: {
+            type: [String, Object],
+            default: 'pagination'
+        },
+        pageLimit: {
+            default: 7,
+            type: Number,
+            validator: function(limit) {
+                return limit === 7 || limit === 15;
             }
         },
+    },
 
-        computed: {
-            moreThanOnePage() {
-                // Whenever pageCount changes, it triggers the page list to be rebuilt
-                this.buildPageList();
-                return this.pageCount > 1;
-            }
+    data: function () {
+        return {
+            pages: []
+        };
+    },
+
+    computed: {
+        moreThanOnePage() {
+            return this.pageCount > 1;
+        }
+    },
+
+    watch: {
+        value(){
+            this.buildPageList();
         },
+        pageCount(){
+            this.buildPageList();
+        }
+    },
 
-        methods: {
-            buildPageList() {
-                this.pages = [];
-                if (this.pageCount > 10) {
-                    if (this.currentPage >= 7 &&  this.currentPage < this.pageCount - 5) {
-                        this.makePagesRange(1, 2);
-                        this.pages.push({
-                            number: null
-                        });
-                        this.makePagesRange(this.currentPage - 3, this.currentPage + 3);
-                        this.pages.push({
-                            number: null
-                        });
-                        this.makePagesRange(this.pageCount - 1, this.pageCount);
+    mounted() {
+        this.buildPageList();
+    },
 
-                    } else if (this.currentPage < 7) {
-                        this.makePagesRange(1, 8);
-                        this.pages.push({
-                            number: null
-                        });
-                        this.makePagesRange(this.pageCount - 1, this.pageCount);
-
-                    } else if (this.currentPage >= this.pageCount - 5) {
-                        this.makePagesRange(1, 2);
-                        this.pages.push({
-                            number: null
-                        });
-                        this.makePagesRange(this.pageCount - 5, this.pageCount);
-
-                    }
-                } else {
-                    this.makePagesRange(1, this.pageCount);
-                }
-            },
-
-            makePagesRange(x,y) {
-                for (var i=x;i<=y;i++){
+    methods: {
+        buildPageList() {
+            this.pages = [];
+            let offset = (this.pageLimit - 1);
+            let spacing = Math.floor((this.pageLimit - 5)/ 2);
+            if (this.pageCount > this.pageLimit) {
+                if (this.value >= offset &&  this.value < this.pageCount - offset + 2) {
+                    this.makePagesRange(1, 1);
                     this.pages.push({
-                        number: i
+                        number: null
                     });
-                }
-            },
+                    this.makePagesRange(this.value - spacing, this.value + spacing);
+                    this.pages.push({
+                        number: null
+                    });
+                    this.makePagesRange(this.pageCount, this.pageCount);
 
-            getClass(pageNumber) {
-                if (pageNumber == this.currentPage) {
-                    return 'active';
-                } else if (pageNumber == null) {
-                    return 'disabled';
-                } else if (pageNumber == 'previous' && this.currentPage == 1) {
-                    return 'disabled';
-                } else if (pageNumber == 'next' && this.currentPage == this.pageCount) {
-                    return 'disabled';
-                } else {
-                    return 'clickable';
-                }
-            },
+                } else if (this.value < this.pageLimit -1) {
+                    this.makePagesRange(1, offset - 1);
+                    this.pages.push({
+                        number: null
+                    });
+                    this.makePagesRange(this.pageCount, this.pageCount);
 
-            pageNull(page) {
-                return page.number == null;
-            },
+                } else if (this.value >= this.pageCount - offset + 2) {
+                    this.makePagesRange(1, 1);
+                    this.pages.push({
+                        number: null
+                    });
+                    this.makePagesRange(this.pageCount - offset + 2, this.pageCount);
 
-            triggerPageChange(newPage) {
-                if(newPage < 1 || newPage > this.pageCount)
-                    return;
-                if (this.currentPage != newPage) {
-                    this.$emit('page-changed', newPage);
                 }
+            } else {
+                this.makePagesRange(1, this.pageCount);
+            }
+        },
+
+        makePagesRange(x,y) {
+            for (let i=x;i<=y;i++){
+                this.pages.push({
+                    number: i
+                });
+            }
+        },
+
+        getClass(pageNumber) {
+            if (pageNumber === this.value) {
+                return 'active';
+            } else if (pageNumber === null) {
+                return 'disabled';
+            } else if (pageNumber === 'previous' && this.value === 1) {
+                return 'disabled';
+            } else if (pageNumber === 'next' && this.value === this.pageCount) {
+                return 'disabled';
+            } else {
+                return 'clickable';
+            }
+        },
+
+        pageNull(page) {
+            return page.number === null;
+        },
+
+        triggerPageChange(newPage) {
+            if(newPage < 1 || newPage > this.pageCount) {
+                return;
+            }
+            if (this.value !== newPage) {
+                this.$emit('input', newPage);
             }
         }
     }
+};
 </script>

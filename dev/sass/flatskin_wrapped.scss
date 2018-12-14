@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+//
+// Open Sans Font-Face
+//
+@import url('~typeface-open-sans/index.css');
+@import 'foundation_libs';
+@import 'settings';
+
+html {
+    font-size: $global-font-size;
+}
+.flatskin-wrapped{
+    .no-flat {
+        box-sizing: unset;
+        @import "no-flat/base";
+        @import "qwiki/modacskin_style";
+        @import "no-flat/date_picker";
+        @import "no-flat/select2";
+        @import "no-flat/_tabs";
+        @import "no-flat/tasksapi/settings";
+        @import "no-flat/tasksapi/base";
+        @import "no-flat/tasksapi/filter";
+        @import "no-flat/tasksapi/tasks";
+        @import "no-flat/tasksapi/panel";
+        @import "no-flat/tasksapi/viewer";
+    }
+    //Resets for the ModacSkin are put here
+    label {
+        padding: 0;
+    }
+    //
+    // Foundation for Sites 6
+    //
+    @import '~foundation-sites/scss/foundation';
+    @import 'settings'; // import again for rem-calc
+
+    //Here we put all styles foundation sets on html or body.
+    //Unfortunately this is copy paste
+
+    //html styles
+    font-size: $global-font-size;
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+
+    //body styles
+    padding: 0;
+    margin: 0;
+    font-family: $body-font-family;
+    font-weight: $global-weight-normal;
+    line-height: rem-calc(24);
+    color: $body-font-color;
+    background: $body-background;
+
+    @if ($body-antialiased) {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    @include foundation-global-styles;
+    @include foundation-text-alignment;
+    @include foundation-xy-grid-classes;
+    @include foundation-flex-grid;
+    @include foundation-flex-classes;
+    @include foundation-visibility-classes;
+    @include foundation-float-classes;
+    @import 'qwiki/alerts';
+    @import 'qwiki/tooltip';
+    @import 'qwiki/mixins';
+    @import 'qwiki/globals';
+    @import 'qwiki/base';
+    @import 'qwiki/typography';
+    @import 'qwiki/links';
+    @import 'qwiki/buttons';
+    @import 'qwiki/table';
+    @import 'qwiki/widgets';
+    @import 'qwiki/forms';
+    @import 'qwiki/paginator';
+    @import 'qwiki/tabs';
+    @import 'qwiki/notifications';
+    @import 'qwiki/collapsible_item';
+    @import 'qwiki/splitbutton';
+    @import 'qwiki/content';
+    @import 'qwiki/document_head';
+    @import 'qwiki/select2skin';
+    @import 'qwiki/badge';
+    @import 'qwiki/colors';
+}
