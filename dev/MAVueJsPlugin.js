@@ -53,6 +53,7 @@ import VueVisible from 'vue-visible';
 import VueTable from './components/vue-table/Table.vue';
 import {searchGridInit, Grid} from './components/search-grid/index.js';
 import SearchGridStandardFields from './components/search-grid/components/StandardFields.js';
+import VueClipboard from 'vue-clipboard2';
 
 class MAVueJsPlugin {
     constructor(options) {
@@ -74,6 +75,7 @@ class MAVueJsPlugin {
         Vue.use(this.vueTimers);
         Vue.use(VueUpload);
         Vue.use(Vddl);
+        Vue.use(VueClipboard);
         const veeValidateConfig = {
             errorBagName: 'validationErrors',
             fieldsBagName: 'validationFields'
