@@ -5,15 +5,17 @@
             class="input-label">{{ params[0] }}</label>
         <vue-select
             :prevent-search-filter="true"
-            :options="getOptions"
+            :initial-options="getOptions"
             v-model="selectedOption"
             is-small/>
     </div>
 </template>
 
 <script>
+import FacetMixin from '../facets/FacetMixin.vue';
 export default {
     i18nextNamespace: "SearchGrid",
+    mixins: [FacetMixin],
     data:  function () {
         return {
             selectedOption: this.params.length > 2 ? [this.params[2]] : [],
@@ -25,7 +27,7 @@ export default {
             return "";
         },
         isDefault: function(){
-            return this.selectedOption === '';
+            return this.selectedOption === [];
         },
         limit: function(){
             return -1;
@@ -56,20 +58,21 @@ export default {
     methods: {
         watchSelectedOption() {
             this.selectedFacet = [];
-            if(this.selectedOption === '') {
-                return;
-            }
-            for(let i = 0; i < this.facetCharacteristics.length; i++){
-                let currentCharacteristic = this.facetCharacteristics[i];
-                if(currentCharacteristic.field === this.selectedOption){
-                    this.selectedFacet.push(currentCharacteristic);
-                    break;
+            this.selectedOption.forEach(selectedOption => {
+                if(this.selectedFacet.length === 0) {
+                    for(let i = 0; i < this.facetCharacteristics.length; i++){
+                        let currentCharacteristic = this.facetCharacteristics[i];
+                        if(currentCharacteristic.field === selectedOption.field){
+                            this.selectedFacet.push(currentCharacteristic);
+                            break;
+                        }
+                    }
                 }
-            }
+            });
             this.$emit("filter-change");
         },
         reset() {
-            this.selectedOption = "";
+            this.selectedOption = [];
         }
     },
 };
