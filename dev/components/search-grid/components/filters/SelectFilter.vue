@@ -27,7 +27,7 @@ export default {
             return "";
         },
         isDefault: function(){
-            return this.selectedOption === '';
+            return this.selectedOption === [];
         },
         limit: function(){
             return -1;
@@ -58,9 +58,6 @@ export default {
     methods: {
         watchSelectedOption() {
             this.selectedFacet = [];
-            if(this.selectedOption === '') {
-                return;
-            }
             this.selectedOption.forEach(selectedOption => {
                 if(this.selectedFacet.length === 0) {
                     for(let i = 0; i < this.facetCharacteristics.length; i++){
@@ -75,7 +72,7 @@ export default {
             this.$emit("filter-change");
         },
         reset() {
-            this.selectedOption = "";
+            this.selectedOption = [];
         }
     },
 };
