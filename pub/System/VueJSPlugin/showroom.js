@@ -429,7 +429,7 @@ Vue.onDocumentReady(function(){
                 "initialFacetting": 0,
                 "initialFiltering": 1,
                 "hasLiveFilter": true,
-                "q": "type:topic",
+                "q": "",
                 "initialHideColumn": false,
                 "wizardNoResultsConfig": {
                     "params": ["Nothing here", "fa-magic", "Unfortunately we could not find anything for these filters"],
