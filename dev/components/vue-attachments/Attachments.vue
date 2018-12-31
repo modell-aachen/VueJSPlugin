@@ -27,107 +27,28 @@
                     {{ $t('upload_dnd') }}
                 </div>
             </div>
-            <div
+            <attachment-on-server
                 v-for="attachment in internalAttachments"
                 :key="attachment.name"
-                :attachment="attachment.name"
-                class="attachments-tile-and-label cell shrink">
-                <a
-                    :href="$foswiki.getPubUrl(internalWeb, internalTopic, attachment.name, {mode: 'attachment'})">
-                    <div
-                        class="attachment-tile">
-                        <div class="thumbnail">
-                            <i
-                                :class="getIconFor(attachment)"
-                                class="far fa-3x"/>
-                        </div>
-
-                        <img
-                            v-if="isPreviewAvailableFor(attachment)"
-                            :src="getPreviewFor(attachment)">
-                    </div>
-                    <div
-                        class="attachment-label">
-                        <template
-                            v-for="(word, idx) in splitWordParts(attachment.presented_name || attachment.name)"><template v-if="idx !== 0">&#8203;</template>{{ word }}</template>
-                    </div>
-                </a>
-            </div>
-            <div
+                :attachment="attachment"
+                :web="internalWeb"
+                :topic="internalTopic" />
+            <attachment-uploading
                 v-for="attachment in $upload.files(uploadId).progress"
                 :key="getUniqueId(attachment)"
-                class="attachments-tile-and-label cell shrink">
-                <div
-                    class="attachment-tile in-transit">
-                    <div
-                        class="progress-bar">
-                        <div
-                            :style="{width: attachment.percentComplete + '%'}"
-                            class="meter" />
-                    </div>
-                </div>
-                <div
-                    class="attachment-label">
-                    <template
-                        v-for="(word, idx) in splitWordParts(attachment.presented_name || attachment.name)"><template v-if="idx !== 0">&#8203;</template>{{ word }}</template>
-                </div>
-            </div>
-            <div
-                v-for="(attachment, idx) in $upload.files(uploadId).queue"
-                :key="idx"
-                class="attachments-tile-and-label cell shrink">
-                <div
-                    class="attachment-tile in-transit">
-                    <div
-                        class="progress-bar" />
-                </div>
-                <div
-                    class="attachment-label">
-                    <template
-                        v-for="(word, idx) in splitWordParts(attachment.presented_name || attachment.name)"><template v-if="idx !== 0">&#8203;</template>{{ word }}</template>
-                </div>
-            </div>
+                :attachment="attachment" />
+            <attachment-uploading
+                v-for="attachment in $upload.files(uploadId).queue"
+                :key="getUniqueId(attachment)"
+                :attachment="attachment" />
         </div>
     </div>
 </template>
 
 <script>
-const tileSize = 114;
-const thumbnailGeneric = 'fa-file';
-const thumbnails = [
-    {
-        check: /^(?:png|svg|bmp|gif|jpe?g|tiff?|jp2|jpx|eps|ppm|ico|xcf)$/,
-        icon: 'fa-file-image',
-    },
-    {
-        check: /^pdf$/,
-        icon: 'fa-file-pdf',
-    },
-    {
-        check: /^(?:zip|rar|tgz|gz|bz|tar)$/,
-        icon: 'fa-file-archive',
-    },
-    {
-        check: /^(?:do[ct][xm]?|docb)$/,
-        icon: 'fa-file-word',
-    },
-    {
-        check: /^(?:ppt[xm]?|pot[xm]?|ppam|ppsx?|ppsm|sld[xm])$/,
-        icon: 'fa-file-powerpoint',
-    },
-    {
-        check: /^(?:xls[xmb]?|xlt[xm]?|xml|xlam|xla|ods)$/,
-        icon: 'fa-file-excel',
-    },
-    {
-        check: /^(?:aac|aifc|aiff?|ape|flac|m3u|m4a|mp3|ogg|wav|wma)$/,
-        icon: 'fa-file-audio',
-    },
-    {
-        check: /^(?:3g2|3gp|asf|avi|m4p|m4v|mkv|mov|mp4|mpe?g|ogv|rmvb|vob|webm|wmv)$/,
-        icon: 'fa-file-video',
-    },
-];
+import AttachmentOnServer from './AttachmentOnServer';
+import AttachmentUploading from './AttachmentUploading';
+
 
 // see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions?redirectlocale=en-US&redirectslug=JavaScript%2FGuide%2FRegular_Expressions
 const escapeRegExp = function(unescaped) {
@@ -136,6 +57,10 @@ const escapeRegExp = function(unescaped) {
 
 export default {
     i18nextNamespace: 'VueJSPlugin',
+    components: {
+        AttachmentOnServer,
+        AttachmentUploading,
+    },
     props: {
         attachments: {
             type: Array,
@@ -270,32 +195,6 @@ export default {
                 attachment.uniqueId = Vue.getUniqueId();
             }
             return attachment.uniqueId;
-        },
-        splitWordParts(text) {
-            return text.split(/(\d+|[\][\s\\/\u2215\u2044'"*~#´`^°@<>|;:€§$%&=+_,.(){}?!-])/).filter(x => x !== "");
-        },
-        getIconFor(attachment) {
-            let extension = /\.([^.]+)$/.exec(attachment.name);
-            if(extension) {
-                extension =  extension[1].toLowerCase();
-                for (let thumbnail of thumbnails) {
-                    if(thumbnail.check.test(extension)) {
-                        return thumbnail.icon;
-                    }
-                }
-            }
-            return thumbnailGeneric;
-        },
-        isPreviewAvailableFor(attachment) {
-            return /\.(?:svg|png|gif|pdf|bmp|jpe?g)$/i.test(attachment.name);
-        },
-        getPreviewFor(attachment) {
-            return this.$foswiki.getScriptUrl('rest', 'ImagePlugin', 'resize', {
-                topic: this.internalWeb + '.' + this.internalTopic,
-                file: attachment.name,
-                size: `${tileSize}x${tileSize}^m`,
-                crop: 'NorthWest',
-            });
         },
         filterQueueFromAttachments(queue) {
             let filtered = this.internalAttachments;
