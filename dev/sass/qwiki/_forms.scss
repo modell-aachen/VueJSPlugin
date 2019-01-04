@@ -190,10 +190,7 @@ label > .foswikiCheckbox {
 }
 
 //Radios
-//Idea: Use :before in the label as the radio background and :after as the checkmark
 [type="radio"]{
-  $radio-dimension: 16;
-  $radio-checkmark-padding: 4;
   display: none;
   &+label{
     @extend %item-label;
@@ -201,23 +198,19 @@ label > .foswikiCheckbox {
   }
   &+label::before{
     @extend %item-label-pseudo;
-    border-radius: 50%;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: $ma-dark-grey;
+    top: 0;
+    content: "\f111";
   }
 
-  &+label::after{
-    @extend %item-label-pseudo;
-    border-radius: 50%;
-    border: 0;
-    background-color: $ma-primary;
-    display: none;
-  }
-  &:checked+label::after{
-    $radio-checkmark-dimension: $radio-dimension - 2 * $radio-checkmark-padding;
-    display: inline-block;
-    width: rem-calc($radio-checkmark-dimension);
-    height: rem-calc($radio-checkmark-dimension);
-    top: rem-calc($radio-checkmark-padding) + $offset;
-    left: rem-calc($radio-checkmark-padding);
+  &:checked,
+  &[checked="checked"]{
+    &+label::before{
+      content: "\f192";
+    }
   }
 }
 
