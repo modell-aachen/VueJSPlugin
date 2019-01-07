@@ -32,7 +32,9 @@
                 :key="attachment.name"
                 :attachment="attachment"
                 :web="internalWeb"
-                :topic="internalTopic" />
+                :topic="internalTopic"
+                :readonly="!canUpload || attachment.readonly"
+                @delete="deleteAttachment(attachment)"/>
             <attachment-uploading
                 v-for="attachment in $upload.files(uploadId).progress"
                 :key="getUniqueId(attachment)"
@@ -290,6 +292,41 @@ export default {
             // Ok, admittedly this method is pointless, and when anybody has
             // the nerve to fix those spies in the tests, feel free to remove it
             return this.$http.post(...arguments);
+        },
+        deleteAttachment(attachmentToDelete) {
+            let attachment = this.internalAttachments.find(internalAttachment => internalAttachment.name === attachmentToDelete.name);
+            if(!attachment) {
+                window.console.log('Could not find attachment to delete', attachmentToDelete.name);
+                return;
+            }
+            if(attachment.readonly) {
+                window.console.log('Attempted to delete readonly attachment', attachmentToDelete.name);
+                return;
+            }
+            Vue.set(attachment, 'readonly', true);
+            let formData = new FormData();
+            let body = {
+                filename: attachment.name,
+                webtopic: `${this.internalWeb}/${this.internalTopic}`,
+            };
+            for(let [key, value] of Object.entries(body)) {
+                formData.append(key, value);
+            }
+            return this.$getStrikeOneToken().then(validationKey => {
+                if(validationKey) {
+                    formData.append('validation_key', validationKey);
+                }
+
+                return this.post(
+                    this.$foswiki.getScriptUrl('rest', 'VueJSPlugin', 'deleteFromBlock'),
+                    formData,
+                );
+            }).then(() => {
+                this.internalAttachments = this.internalAttachments.filter(internalAttachment => internalAttachment.name != attachment.name);
+            }).catch((e) => {
+                Vue.set(attachment, 'readonly', false);
+                this.uploadOnError(e);
+            });
         },
     },
 };

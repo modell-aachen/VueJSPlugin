@@ -12,6 +12,7 @@ Container for Vue.JS
 
 use Foswiki::Func ();
 use Foswiki::Plugins ();
+use Foswiki::OopsException ();
 use Digest::MD5 qw(md5_hex);
 use JSON;
 
@@ -37,6 +38,10 @@ sub initPlugin {
     Foswiki::Func::registerTagHandler('VUE', \&loadDependencies);
     Foswiki::Func::registerTagHandler('VUETOOLTIP', \&renderTooltip);
     Foswiki::Func::registerTagHandler('VUEATTACHMENTS', \&tagVUEATTACHMENTS);
+
+    Foswiki::Func::registerRESTHandler(
+        'deleteFromBlock', \&_restDeleteFromBlock,
+        authenticate => 1, http_allow => 'POST', validate => 1 );
 
     if ($Foswiki::cfg{Plugins}{SolrPlugin}{Enabled}) {
         require Foswiki::Plugins::SolrPlugin;
@@ -195,6 +200,30 @@ sub tagVUEATTACHMENTS {
 sub beforeAttachHandler {
     my ($web, $topic, $attachmentName, $opts) = @_;
     return beforeUploadHandler($opts, $topic, $web);
+}
+
+sub _restDeleteFromBlock {
+    my ($session) = @_;
+
+    my $query = Foswiki::Func::getCgiQuery();
+
+    my ($web, $topic) = Foswiki::Func::normalizeWebTopicName(undef, $query->param('webtopic'));
+    my $filename = $query->param('filename');
+    my ($meta) = Foswiki::Func::readTopic($web, $topic);
+    my $attachment = $meta->get('FILEATTACHMENT', $filename);
+    unless($attachment) {
+        Foswiki::Func::writeWarning("Attachment not found: '$filename'\@'" . $query->param('webtopic') ."'");
+        throw Foswiki::OopsException(
+            "oopsgeneric",
+            web => $web,
+            topic => $topic,
+            def => 'TopicNotFound',
+            params => [],
+        );
+    }
+    $attachment->{block} = 'deleted';
+    $meta->put('FILEATTACHMENT', $attachment);
+    $meta->saveAs();
 }
 
 sub beforeUploadHandler {

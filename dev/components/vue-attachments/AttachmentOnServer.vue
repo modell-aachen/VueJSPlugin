@@ -2,6 +2,12 @@
     <div
         :attachment="attachment.name"
         class="attachment-on-server attachments-tile-and-label cell shrink">
+        <div
+            v-if="!readonly"
+            class="attachment-delete"
+            @click="deleteAttachment()">
+            <i class="far fa-trash" />
+        </div>
         <a
             :href="$foswiki.getPubUrl(web, topic, attachment.name, {mode: 'attachment'})">
             <div
@@ -47,6 +53,10 @@ export default {
             required: true,
             default: '',
         },
+        readonly: {
+            type: Boolean,
+            required: false,
+            default: false,
         },
     },
     computed: {
@@ -74,5 +84,43 @@ export default {
             });
         },
     },
+    methods: {
+        deleteAttachment() {
+            this.$showAlert({
+                type: "warning",
+                title: this.$t('attachments_delete_title'),
+                text: '',
+                confirmButtonText: this.$t('attachments_delete_delete'),
+                cancelButtonText: this.$t('attachments_delete_keep'),
+            }).then(() => {
+                this.$emit('delete', this.attachment);
+            }).catch(() => {});
+        },
+    },
 };
 </script>
+
+<style lang="scss">
+@import '../../sass/settings.scss';
+.vue-attachments .attachment-on-server {
+    position: relative;
+    .attachment-delete {
+        transition: opacity $ma-animation-time;
+        opacity: 0;
+        position: absolute;
+        z-index: 1;
+        background-color: $ma-button-grey;
+        top: map-get($spacings, small);
+        right: map-get($spacings, small);
+        padding: map-get($spacings, small);
+        border-radius: $ma-border-radius;
+        box-shadow: $ma-shadow-flat;
+        cursor: pointer;
+    }
+    &:hover {
+        .attachment-delete {
+            opacity: 1;
+        }
+    }
+}
+</style>

@@ -1,4 +1,7 @@
 {
+    "attachments_delete_delete": "Anhang löschen",
+    "attachments_delete_keep": "Anhang behalten",
+    "attachments_delete_title": "Möchten Sie diesen Anhang endgültig löschen?",
     "collapsible_dad_item_drop_target": "hierhin verschieben",
     "common_cancel": "Abbrechen",
     "default_error_text": "Durch einen Fehler konnte Ihre Anfrage nicht bearbeitet werden. Bitte versuchen Sie es erneut.",
