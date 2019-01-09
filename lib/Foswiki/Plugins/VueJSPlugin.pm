@@ -21,6 +21,12 @@ our $RELEASE = '0.1';
 our $SHORTDESCRIPTION = 'Plugin to load VueJS dependencies.';
 our $service;
 our $NO_PREFS_IN_TOPIC = 1;
+our $mutations;
+our $loaded;
+
+use constant {
+    STOREPLACEHOLDER => '{"placeholder":"VueJSPlugin::Store::Placeholder::78uilhayfegjlhzt3q"}',
+};
 
 sub initPlugin {
     my ($topic, $web) = @_;
@@ -50,6 +56,9 @@ sub initPlugin {
         );
     }
 
+    $mutations = {};
+    undef $loaded;
+
     return 1;
 }
 
@@ -69,14 +78,17 @@ sub renderTooltip {
 }
 
 sub loadDependencies {
-
     my ( $session, $params, $topic, $web, $topicObject ) = @_;
+
+    my $app = $params->{_DEFAULT} || "";
+
+    return $loaded if defined $loaded && !$app;
+
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
     my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 1;
     my $suffix = $dev ? '' : '.min';
     my $version = $params->{VERSION} || "1";
 
-    my $app = $params->{_DEFAULT} || "";
     my $vueScripts = "";
 
     # Version 2 will become the new default. v1 is just there for compatibility.
@@ -87,8 +99,12 @@ sub loadDependencies {
         $vueScripts = "<script type='text/javascript' src='$pluginURL/vue.v1$suffix.js'></script>"
     }
 
+    my $storeScript = '<script class="$zone $id VueJSPluginStoreData" id="VueJSPluginStoreData" type="text/json">' . STOREPLACEHOLDER . '</script>';
+    Foswiki::Func::addToZone( "script", "VUEJSPLUGIN::STOREDATA", $storeScript );
+
+
     Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
-    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT');
+    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT,VUEJSPLUGIN::STOREDATA');
 
     my $scripts = "";
     my $return = "";
@@ -104,7 +120,25 @@ LOAD
         $return .= _loadTemplate($text);
     }
 
-    return $return . $scripts;
+    unless(defined $loaded) {
+        ($topicObject) = Foswiki::Func::readTopic($web, $topic) unless $topicObject;
+        my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
+        my $topicTitle = $topicObject->get('FIELD', 'TopicTitle');
+        pushToStore('Qwiki/Document/setDocument', {
+            web => $web,
+            topic => $topic,
+            lastEditor => $lastEditor,
+            lastEditDate => $lastEditDate,
+            revision => $revision,
+            text => '',
+            typeData => {
+                TopicTitle => (($topicTitle) ? $topicTitle->{value} : undef),
+            },
+        });
+    }
+
+    $loaded = $return . $scripts;
+    return $loaded;
 }
 
 sub getClientToken {
@@ -224,6 +258,25 @@ sub _restDeleteFromBlock {
     $attachment->{block} = 'deleted';
     $meta->put('FILEATTACHMENT', $attachment);
     $meta->saveAs();
+}
+
+sub pushToStore {
+    my ($mutation, $payload) = @_;
+
+    my $namespace = $mutation =~ s#(.*)/.*#$1#r;
+    $mutations->{$namespace} ||= [];
+    push @{$mutations->{$namespace}}, {mutation => $mutation, payload => $payload};
+}
+
+sub completePageHandler {
+    our $loaded;
+    if(defined $loaded || 1) {
+        my $json = JSON::to_json( $mutations );
+        my $base64 = MIME::Base64::encode($json);
+
+        my $STOREPLACEHOLDER = STOREPLACEHOLDER;
+        $_[0] =~ s#$STOREPLACEHOLDER#$base64#g;
+    }
 }
 
 sub beforeUploadHandler {

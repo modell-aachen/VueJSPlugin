@@ -54,6 +54,17 @@ import VueTable from './components/vue-table/Table.vue';
 import {searchGridInit, Grid} from './components/search-grid/index.js';
 import SearchGridStandardFields from './components/search-grid/components/StandardFields.js';
 import VueClipboard from 'vue-clipboard2';
+import { module as DocumentStore } from './document-store';
+
+let bufferedMutations;
+const getStoreData = (vue) => {
+    bufferedMutations = vue.getConfigById('VueJSPluginStoreData');
+    Object.keys(bufferedMutations).forEach(name => {
+        if(vue.storeExists(vue.Store, name)) {
+            bufferedMutations[name].forEach(transaction => vue.Store.commit(transaction.mutation, transaction.payload));
+        }
+    });
+};
 
 class MAVueJsPlugin {
     constructor(options) {
@@ -134,17 +145,46 @@ class MAVueJsPlugin {
         });
 
         //Global functions
+        Vue.storeExists = (store, name) => {
+            let parts;
+            if(!name.split) {
+                parts = name.splice();
+            } else {
+                parts = name.split('/');
+            }
+            let exists = false;
+            let path = store.state;
+            while(parts.length) {
+                path = path[parts.shift()];
+                exists = path;
+            }
+            return exists;
+        };
         Vue.registerStoreModule = (name, module) => {
-            if(options.store.state[name]) {
+            if(Vue.storeExists(options.store, name)) {
                 options.store.unregisterModule(name);
             }
             options.store.registerModule(name, module);
+            let namespace = name.join ? name.join('/') : name;
+            if(bufferedMutations && bufferedMutations[namespace]) {
+                bufferedMutations[namespace].forEach(transaction => options.store.commit(transaction.mutation, transaction.payload));
+            }
+        };
+
+        Vue.getConfigById = (id) => {
+            let base64Config = this.jquery('script.' + id).html();
+            let config = Base64.Base64.decode(base64Config);
+            return JSON.parse(config);
         };
 
         Vue.registerStoreModule('vueLoaderStore', VueLoaderStore);
+        Vue.registerStoreModule(['Qwiki'], {namespaced: true});
+        Vue.registerStoreModule(['Qwiki', 'Document'], DocumentStore);
         Vue.onDocumentReady = (fn) => {
             this.jquery(fn);
         };
+
+        getStoreData(Vue);
 
         Vue.instantiateEach = (selector, options) => {
             this.jquery(selector).each((i, element) => {
@@ -152,12 +192,6 @@ class MAVueJsPlugin {
                 instanceOptions.el = element;
                 new Vue(instanceOptions);
             });
-        };
-
-        Vue.getConfigById = (id) => {
-            let base64Config = this.jquery('.' + id).html();
-            let config = Base64.Base64.decode(base64Config);
-            return JSON.parse(config);
         };
 
         Vue.makeAbsoluteUrl = (url) => {
