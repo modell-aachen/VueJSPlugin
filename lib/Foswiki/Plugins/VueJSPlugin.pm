@@ -123,17 +123,31 @@ LOAD
     unless(defined $loaded) {
         ($topicObject) = Foswiki::Func::readTopic($web, $topic) unless $topicObject;
         my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
-        my $topicTitle = $topicObject->get('FIELD', 'TopicTitle');
+        my $firstMeta = $topicObject->load(1);
+        my ($creationDate, $creator) = $firstMeta->getRevisionInfo();
+        my %typeData;
+        my $form = Foswiki::Form->new($session, $web, $topicObject->getFormName());
+        my @metaFields = $topicObject->find('FIELD');
+        foreach my $field (@metaFields) {
+            my $formField = $form->getField($field->{name});
+            if($formField->{type} =~ m/user/) {
+                my $users = _getUserObjectsByCuids($session, $field->{value});
+                $typeData{$field->{name}} = $users;
+            } else {
+                $typeData{$field->{name}} = $field->{value};
+            }
+        }
+
         pushToStore('Qwiki/Document/setDocument', {
             web => $web,
             topic => $topic,
-            lastEditor => $lastEditor,
+            creator => _getUserObjectsByCuids($session, $creator),
+            creationDate => $creationDate,
+            lastEditor => _getUserObjectsByCuids($session, $lastEditor),
             lastEditDate => $lastEditDate,
             revision => $revision,
             text => '',
-            typeData => {
-                TopicTitle => (($topicTitle) ? $topicTitle->{value} : undef),
-            },
+            typeData => \%typeData,
         });
     }
 
@@ -141,6 +155,26 @@ LOAD
     return $loaded;
 }
 
+sub _getUserObjectsByCuids {
+    my ($session, $userString) = @_;
+
+    my @userCuids= split(/\s*,\s*/, $userString);
+    my @users;
+    foreach my $userId (@userCuids) {
+        push @users, {
+            displayName => _getUserDisplayName($session, $userId),
+            type => 'user',
+            guid => $userId,
+        };
+    }
+    return \@users;
+}
+
+sub _getUserDisplayName {
+    my ($session, $cuid) = @_;
+    my $mapper = $session->{users}->{mapping};
+    return $mapper->getDisplayName($cuid);
+}
 sub getClientToken {
     my $clientToken = md5_hex(rand);
     # render token directly instead of using afterCommonTagsHandler
