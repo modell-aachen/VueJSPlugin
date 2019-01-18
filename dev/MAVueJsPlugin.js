@@ -11,7 +11,8 @@ import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
 import VueTabpane from './components/vue-tabpane/TabPane.vue';
 import VueTab from './components/vue-tabpane/Tab.vue';
-import VueTooltip from './components/vue-tooltip/Tooltip.vue';
+import VueInformationTooltip from './components/vue-tooltip/InformationTooltip.vue';
+import VueExplanationTooltip from './components/vue-tooltip/ExplanationTooltip.vue';
 import VueTextBlock from './components/vue-text-block/VueTextBlock.vue';
 import VueDadList from './components/vue-dad-list/DadList.vue';
 import VueDadItem from './components/vue-dad-list/DadItem.vue';
@@ -30,7 +31,7 @@ import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
 import VueAttachments from './components/vue-attachments/Attachments.vue';
 import Base64 from 'js-base64';
-import { VTooltip } from 'v-tooltip';
+import { VTooltip, VPopover } from 'v-tooltip';
 import i18next from 'i18next';
 import Vddl from 'vddl';
 import VueParams from 'vue-params';
@@ -109,7 +110,8 @@ class MAVueJsPlugin {
         Vue.component('vue-spinner', VueSpinner);
         Vue.component('vue-tabpane', VueTabpane);
         Vue.component('vue-tab', VueTab);
-        Vue.component('vue-tooltip', VueTooltip);
+        Vue.component('vue-information-tooltip', VueInformationTooltip);
+        Vue.component('vue-explanation-tooltip', VueExplanationTooltip);
         Vue.component('vue-text-block', VueTextBlock);
         Vue.component('vue-dad-list', VueDadList);
         Vue.component('vue-dad-item', VueDadItem);
@@ -129,6 +131,7 @@ class MAVueJsPlugin {
         Vue.component('vue-mixed-input', VueMixedInput);
         Vue.component('vue-table', VueTable);
         Vue.component('search-grid', Grid);
+        Vue.component('v-popover', VPopover);
 
         Vue.directive('tooltip', VTooltip);
         Vue.directive('click-outside', VueClickOutside.directive);
