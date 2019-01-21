@@ -322,7 +322,7 @@ export default {
                     formData,
                 );
             }).then(() => {
-                this.internalAttachments = this.internalAttachments.filter(internalAttachment => internalAttachment.name != attachment.name);
+                this.internalAttachments = this.internalAttachments.filter(internalAttachment => internalAttachment.name !== attachment.name);
             }).catch((e) => {
                 Vue.set(attachment, 'readonly', false);
                 this.uploadOnError(e);

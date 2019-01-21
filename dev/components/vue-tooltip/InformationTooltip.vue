@@ -6,7 +6,7 @@
             popover-class="flatskin-wrapped"
             popover-wrapper-class="">
             <div class="tooltip-description-text grid-x align-middle align-center">
-                {{ text }}
+                {{ hoverText }}
             </div>
             <template slot="popover">
                 <slot />
@@ -18,13 +18,9 @@
 <script>
 export default {
     props: {
-        'text': {
+        'hoverText': {
             type: String,
             default: ''
-        },
-        'icon':{
-            type: [String, Array],
-            default: 'fa-sm fas fa-question'
         },
     },
 };

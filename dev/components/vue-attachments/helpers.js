@@ -39,5 +39,5 @@ export {
     tileSize,
     thumbnailGeneric,
     thumbnails,
-}
+};
 

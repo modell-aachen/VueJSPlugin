@@ -176,6 +176,9 @@ class MAVueJsPlugin {
 
         Vue.getConfigById = (id) => {
             let base64Config = this.jquery('script.' + id).html();
+            if(!base64Config) {
+                return "";
+            }
             let config = Base64.Base64.decode(base64Config);
             return JSON.parse(config);
         };

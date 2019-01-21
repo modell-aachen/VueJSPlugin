@@ -730,7 +730,7 @@ Alerts can be triggered by calling the $showAlert function. See the [[%PUBURLPAT
 %STARTSECTION{"TooltipTemplate"}%
 <div>
   <vue-explanation-tooltip text="Hier wird die Batch-Nummer der Produktion eingetragen"/>
-  <vue-information-tooltip text="Wer darf diese Seite sehen?">
+  <vue-information-tooltip hover-text="Wer darf diese Seite sehen?">
     Gombert<br>
     KeyUserGroup
   </vue-information-tooltip>

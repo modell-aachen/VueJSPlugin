@@ -22,6 +22,6 @@ export default {
             return text.split(/(\d+|[\][\s\\/\u2215\u2044'"*~#´`^°@<>|;:€§$%&=+_,.(){}?!-])/).filter(x => x !== "");
         },
     },
-}
+};
 
 </script>
