@@ -8,8 +8,8 @@ import SlideUpDownMock from './SlideUpDownMock.vue';
 import VueTimersMock from './VueTimersMock.js';
 import visualMethods from './VisualMethodsMocker.js';
 import moment from 'moment';
-
 import jquery from 'jquery';
+import {buildVue} from './localVueBuilder';
 
 config.logModifiedComponents = false;
 
@@ -53,3 +53,4 @@ export default {
     },
     vue: localVue
 };
+export {buildVue, mount};
