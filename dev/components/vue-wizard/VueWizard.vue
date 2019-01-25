@@ -17,6 +17,7 @@
                         ref="actionButton"
                         :title="buttonText"
                         :href="buttonHref"
+                        data-test="actionButton"
                         type="primary"
                         @click.native="buttonCallback"/>
                 </div>

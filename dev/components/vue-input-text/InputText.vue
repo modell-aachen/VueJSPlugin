@@ -21,6 +21,7 @@
                 :class="{'ma-small': isSmall, 'ma-input-text-indent': (icon!=undefined)}"
                 :disabled="isDisabled"
                 :maxlength="maxLength"
+                data-test="inputElement"
                 type="text"
                 @blur="$emit('blur')">
 
