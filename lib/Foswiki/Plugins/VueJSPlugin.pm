@@ -123,7 +123,7 @@ LOAD
     unless(defined $loaded) {
         ($topicObject) = Foswiki::Func::readTopic($web, $topic) unless $topicObject;
         my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
-        my $firstMeta = $topicObject->load(1);
+        my $firstMeta = Foswiki::Meta->load($session, $web, $topic, 1);
         my ($creationDate, $creator) = $firstMeta->getRevisionInfo();
         my %typeData;
         my $form = Foswiki::Form->new($session, $web, $topicObject->getFormName());
