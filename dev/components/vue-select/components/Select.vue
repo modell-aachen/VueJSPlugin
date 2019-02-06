@@ -116,6 +116,7 @@
                     v-show="open"
                     ref="dropdownMenu"
                     :transition="transition"
+                    data-test="vueSelectList"
                     class="dropdown-menu-list">
                     <li
                         v-for="(option,index) in filteredOptions"
@@ -123,7 +124,7 @@
                         :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }"
                         class="list-item"
                         @mouseover="typeAheadPointer = index"
-                        @mousedown.prevent="toggle(option)">
+                        @click="toggle(option)">
                         <a>
                             <span>{{ getOptionLabel(option) }}</span><span
                                 v-if="option.type"
