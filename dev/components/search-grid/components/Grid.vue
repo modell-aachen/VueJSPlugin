@@ -530,9 +530,11 @@ export default {
             params["fq"] = this.collectFilterQueries();
 
             for(let i = 0; i < this.facets.length; i++){
-                params["facet.field"].push(this.facets[i].facetField);
-                if(!this.facets[i].isFilter) {
-                    params[`f.${this.facets[i].field}.facet.limit`] = this.facets[i].limit;
+                if(this.facets[i].limit !== 0) {
+                    params["facet.field"].push(this.facets[i].facetField);
+                    if(!this.facets[i].isFilter) {
+                        params[`f.${this.facets[i].field}.facet.limit`] = this.facets[i].limit;
+                    }
                 }
             }
 
