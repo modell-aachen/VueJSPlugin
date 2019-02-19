@@ -21,6 +21,12 @@ our $RELEASE = '0.1';
 our $SHORTDESCRIPTION = 'Plugin to load VueJS dependencies.';
 our $service;
 our $NO_PREFS_IN_TOPIC = 1;
+our $mutations;
+our $loaded;
+
+use constant {
+    STOREPLACEHOLDER => '{"placeholder":"VueJSPlugin::Store::Placeholder::78uilhayfegjlhzt3q"}',
+};
 
 sub initPlugin {
     my ($topic, $web) = @_;
@@ -50,6 +56,9 @@ sub initPlugin {
         );
     }
 
+    $mutations = {};
+    undef $loaded;
+
     return 1;
 }
 
@@ -62,21 +71,24 @@ sub renderTooltip {
     );
     loadDependencies($session, \%vueVersion, $topic, $web, $topicObject);
     my $vueClientToken = getClientToken();
-    my $html = "<div class=\"vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-tooltip text=\"$params->{text}\"";
+    my $html = "<div class=\"vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-explanation-tooltip text=\"$params->{text}\"";
     $html .= " icon=\"$params->{icon}\"" if $params->{icon};
     $html .= "/></div>";
     return $html;
 }
 
 sub loadDependencies {
-
     my ( $session, $params, $topic, $web, $topicObject ) = @_;
+
+    my $app = $params->{_DEFAULT} || "";
+
+    return $loaded if defined $loaded && !$app;
+
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
     my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 1;
     my $suffix = $dev ? '' : '.min';
     my $version = $params->{VERSION} || "1";
 
-    my $app = $params->{_DEFAULT} || "";
     my $vueScripts = "";
 
     # Version 2 will become the new default. v1 is just there for compatibility.
@@ -87,8 +99,12 @@ sub loadDependencies {
         $vueScripts = "<script type='text/javascript' src='$pluginURL/vue.v1$suffix.js'></script>"
     }
 
+    my $storeScript = '<script class="$zone $id VueJSPluginStoreData" id="VueJSPluginStoreData" type="text/json">' . STOREPLACEHOLDER . '</script>';
+    Foswiki::Func::addToZone( "script", "VUEJSPLUGIN::STOREDATA", $storeScript );
+
+
     Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
-    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT');
+    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT,VUEJSPLUGIN::STOREDATA');
 
     my $scripts = "";
     my $return = "";
@@ -104,9 +120,61 @@ LOAD
         $return .= _loadTemplate($text);
     }
 
-    return $return . $scripts;
+    unless(defined $loaded) {
+        ($topicObject) = Foswiki::Func::readTopic($web, $topic) unless $topicObject;
+        my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
+        my $firstMeta = Foswiki::Meta->load($session, $web, $topic, 1);
+        my ($creationDate, $creator) = $firstMeta->getRevisionInfo();
+        my %typeData;
+        my $form = Foswiki::Form->new($session, $web, $topicObject->getFormName());
+        my @metaFields = $topicObject->find('FIELD');
+        foreach my $field (@metaFields) {
+            my $formField = $form->getField($field->{name});
+            if($formField->{type} =~ m/user/) {
+                my $users = _getUserObjectsByCuids($session, $field->{value});
+                $typeData{$field->{name}} = $users;
+            } else {
+                $typeData{$field->{name}} = $field->{value};
+            }
+        }
+
+        pushToStore('Qwiki/Document/setDocument', {
+            web => $web,
+            topic => $topic,
+            creator => _getUserObjectsByCuids($session, $creator),
+            creationDate => $creationDate,
+            lastEditor => _getUserObjectsByCuids($session, $lastEditor),
+            lastEditDate => $lastEditDate,
+            revision => $revision,
+            text => '',
+            typeData => \%typeData,
+        });
+    }
+
+    $loaded = $return . $scripts;
+    return $loaded;
 }
 
+sub _getUserObjectsByCuids {
+    my ($session, $userString) = @_;
+
+    my @userCuids= split(/\s*,\s*/, $userString);
+    my @users;
+    foreach my $userId (@userCuids) {
+        push @users, {
+            displayName => _getUserDisplayName($session, $userId),
+            type => 'user',
+            guid => $userId,
+        };
+    }
+    return \@users;
+}
+
+sub _getUserDisplayName {
+    my ($session, $cuid) = @_;
+    my $mapper = $session->{users}->{mapping};
+    return $mapper->getDisplayName($cuid);
+}
 sub getClientToken {
     my $clientToken = md5_hex(rand);
     # render token directly instead of using afterCommonTagsHandler
@@ -224,6 +292,25 @@ sub _restDeleteFromBlock {
     $attachment->{block} = 'deleted';
     $meta->put('FILEATTACHMENT', $attachment);
     $meta->saveAs();
+}
+
+sub pushToStore {
+    my ($mutation, $payload) = @_;
+
+    my $namespace = $mutation =~ s#(.*)/.*#$1#r;
+    $mutations->{$namespace} ||= [];
+    push @{$mutations->{$namespace}}, {mutation => $mutation, payload => $payload};
+}
+
+sub completePageHandler {
+    our $loaded;
+    if(defined $loaded || 1) {
+        my $json = JSON::to_json( $mutations );
+        my $base64 = MIME::Base64::encode($json);
+
+        my $STOREPLACEHOLDER = STOREPLACEHOLDER;
+        $_[0] =~ s#$STOREPLACEHOLDER#$base64#g;
+    }
 }
 
 sub beforeUploadHandler {

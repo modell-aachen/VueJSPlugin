@@ -728,7 +728,13 @@ Alerts can be triggered by calling the $showAlert function. See the [[%PUBURLPAT
 %TWISTY%
 <verbatim>
 %STARTSECTION{"TooltipTemplate"}%
-<vue-tooltip text="Hier wird die Batch-Nummer der Produktion eingetragen"/>
+<div>
+  <vue-explanation-tooltip text="Hier wird die Batch-Nummer der Produktion eingetragen"/>
+  <vue-information-tooltip hover-text="Wer darf diese Seite sehen?">
+    Gombert<br>
+    KeyUserGroup
+  </vue-information-tooltip>
+</div>
 %ENDSECTION{"TooltipTemplate"}%
 
 %VUETOOLTIP{text="I am a Macro!"}%

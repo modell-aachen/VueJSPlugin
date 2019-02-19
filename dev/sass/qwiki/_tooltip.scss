@@ -28,19 +28,6 @@ h3, label {
 }
 
 &.tooltip {
-  &.popover {
-    .popover-inner {
-      background: $color;
-      color: black;
-      padding: rem-calc(24);
-      border-radius: $ma-border-radius;
-      box-shadow: 0 rem-calc(5) rem-calc(30) rgba(black, .1);
-    }
-    .popover-arrow {
-      border-color: $color;
-    }
-  }
-
   &[aria-hidden='true'] {
     visibility: hidden;
     opacity: 0;
@@ -66,7 +53,7 @@ h3, label {
 
     .tooltip-inner {
         color: $ma-secondary-text;
-        max-width: rem-calc(220);
+        max-width: rem-calc(320);
         padding: rem-calc(16);
         border: 0;
     }
@@ -147,6 +134,9 @@ h3, label {
             border-bottom-color: $success-color;
         }
         background-color: $success-color;
+        .tooltip-inner {
+            color: $ma-white;
+        }
     }
 
     &.v-tooltip-failed{

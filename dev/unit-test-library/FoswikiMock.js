@@ -15,6 +15,9 @@ let foswiki = {
     },
     getScriptUrl: function() {
         return "http://wiki.de/script";
+    },
+    getScriptUrlPath: function(scriptName) {
+        return "http://wiki.de/bin/"+scriptName;
     }
 };
 
