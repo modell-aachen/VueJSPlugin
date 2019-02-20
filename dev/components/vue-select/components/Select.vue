@@ -124,7 +124,7 @@
                         :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }"
                         class="list-item"
                         @mouseover="typeAheadPointer = index"
-                        @click="toggle(option)">
+                        @mousedown.prevent="toggle(option)">
                         <a>
                             <span>{{ getOptionLabel(option) }}</span><span
                                 v-if="option.type"
