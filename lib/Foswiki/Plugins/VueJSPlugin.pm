@@ -126,6 +126,7 @@ LOAD
         my $firstMeta = Foswiki::Meta->load($session, $web, $topic, 1);
         my ($creationDate, $creator) = $firstMeta->getRevisionInfo();
         my %typeData;
+        return unless $topicObject->getFormName();
         my $form = Foswiki::Form->new($session, $web, $topicObject->getFormName());
         my @metaFields = $topicObject->find('FIELD');
         foreach my $field (@metaFields) {
