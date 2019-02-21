@@ -22,7 +22,6 @@ our $SHORTDESCRIPTION = 'Plugin to load VueJS dependencies.';
 our $service;
 our $NO_PREFS_IN_TOPIC = 1;
 our $mutations;
-our $loaded;
 
 use constant {
     STOREPLACEHOLDER => '{"placeholder":"VueJSPlugin::Store::Placeholder::78uilhayfegjlhzt3q"}',
@@ -30,6 +29,7 @@ use constant {
 
 sub initPlugin {
     my ($topic, $web) = @_;
+
     unless ( $Foswiki::cfg{Plugins}{JQueryPlugin}{Enabled} ) {
         Foswiki::Func::writeWarning(
             "VueJSPlugin is enabled but JQueryPlugin is not. Both must be installed and enabled for vue.js."
@@ -56,9 +56,6 @@ sub initPlugin {
         );
     }
 
-    $mutations = {};
-    undef $loaded;
-
     return 1;
 }
 
@@ -79,10 +76,6 @@ sub renderTooltip {
 
 sub loadDependencies {
     my ( $session, $params, $topic, $web, $topicObject ) = @_;
-
-    if($loaded){
-        return "";
-    }
 
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
     my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 1;
@@ -105,7 +98,25 @@ sub loadDependencies {
     Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
     Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT,VUEJSPLUGIN::STOREDATA');
 
-    ($topicObject) = Foswiki::Func::readTopic($web, $topic);
+    if(_documentIsSet()) {
+        return "";
+    }
+    my $document = _collectDocumentData($session, $web, $topic);
+    pushToStore('Qwiki/Document/setDocument', $document);
+
+    return "";
+}
+
+sub _documentIsSet {
+    if($mutations->{'Qwiki/Document'}) {
+        return 1;
+    }
+    return 0;
+}
+
+sub _collectDocumentData {
+    my ($session, $web, $topic) = @_;
+    my ($topicObject) = Foswiki::Func::readTopic($web, $topic);
 
     my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
     my $firstMeta = Foswiki::Meta->load($session, $web, $topic, 1);
@@ -126,7 +137,7 @@ sub loadDependencies {
         }
     }
 
-    pushToStore('Qwiki/Document/setDocument', {
+    return {
         web => $web,
         topic => $topic,
         creator => _getUserObjectsByCuids($session, $creator),
@@ -136,10 +147,7 @@ sub loadDependencies {
         revision => $revision,
         text => '',
         typeData => \%typeData,
-    });
-
-    $loaded = 1;
-    return "";
+    };
 }
 
 sub _getUserObjectsByCuids {
