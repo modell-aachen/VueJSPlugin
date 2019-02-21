@@ -80,9 +80,9 @@ sub renderTooltip {
 sub loadDependencies {
     my ( $session, $params, $topic, $web, $topicObject ) = @_;
 
-    my $app = $params->{_DEFAULT} || "";
-
-    return $loaded if defined $loaded && !$app;
+    if($loaded){
+        return "";
+    }
 
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
     my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 1;
@@ -102,58 +102,44 @@ sub loadDependencies {
     my $storeScript = '<script class="$zone $id VueJSPluginStoreData" id="VueJSPluginStoreData" type="text/json">' . STOREPLACEHOLDER . '</script>';
     Foswiki::Func::addToZone( "script", "VUEJSPLUGIN::STOREDATA", $storeScript );
 
-
     Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
     Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT,VUEJSPLUGIN::STOREDATA');
 
-    my $scripts = "";
-    my $return = "";
-    if($app){
-        $scripts = <<LOAD;
-<script type='text/javascript' src='$pluginURL/$app$suffix.js'></script>
-<link rel='stylesheet' type='text/css' href='$pluginURL/$app$suffix.css' />
-LOAD
+    ($topicObject) = Foswiki::Func::readTopic($web, $topic);
 
-        my ($meta, $text) = Foswiki::Func::readTopic('System', $app .'VueTemplate');
-        $return .= _loadTemplate($text);
-        ($meta, $text) = Foswiki::Func::readTopic('System', 'VueJSTemplate');
-        $return .= _loadTemplate($text);
-    }
+    my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
+    my $firstMeta = Foswiki::Meta->load($session, $web, $topic, 1);
+    my ($creationDate, $creator) = $firstMeta->getRevisionInfo();
+    my %typeData;
 
-    unless(defined $loaded) {
-        ($topicObject) = Foswiki::Func::readTopic($web, $topic) unless $topicObject;
-        my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
-        my $firstMeta = Foswiki::Meta->load($session, $web, $topic, 1);
-        my ($creationDate, $creator) = $firstMeta->getRevisionInfo();
-        my %typeData;
-        return "" unless $topicObject->getFormName();
-        my $form = Foswiki::Form->new($session, $web, $topicObject->getFormName());
-        my @metaFields = $topicObject->find('FIELD');
-        foreach my $field (@metaFields) {
-            my $formField = $form->getField($field->{name});
-            if($formField->{type} =~ m/user/) {
-                my $users = _getUserObjectsByCuids($session, $field->{value});
-                $typeData{$field->{name}} = $users;
-            } else {
-                $typeData{$field->{name}} = $field->{value};
-            }
+    return "" unless $topicObject->getFormName();
+
+    my $form = Foswiki::Form->new($session, $web, $topicObject->getFormName());
+    my @metaFields = $topicObject->find('FIELD');
+    foreach my $field (@metaFields) {
+        my $formField = $form->getField($field->{name});
+        if($formField->{type} =~ m/user/) {
+            my $users = _getUserObjectsByCuids($session, $field->{value});
+            $typeData{$field->{name}} = $users;
+        } else {
+            $typeData{$field->{name}} = $field->{value};
         }
-
-        pushToStore('Qwiki/Document/setDocument', {
-            web => $web,
-            topic => $topic,
-            creator => _getUserObjectsByCuids($session, $creator),
-            creationDate => $creationDate,
-            lastEditor => _getUserObjectsByCuids($session, $lastEditor),
-            lastEditDate => $lastEditDate,
-            revision => $revision,
-            text => '',
-            typeData => \%typeData,
-        });
     }
 
-    $loaded = $return . $scripts;
-    return $loaded;
+    pushToStore('Qwiki/Document/setDocument', {
+        web => $web,
+        topic => $topic,
+        creator => _getUserObjectsByCuids($session, $creator),
+        creationDate => $creationDate,
+        lastEditor => _getUserObjectsByCuids($session, $lastEditor),
+        lastEditDate => $lastEditDate,
+        revision => $revision,
+        text => '',
+        typeData => \%typeData,
+    });
+
+    $loaded = 1;
+    return "";
 }
 
 sub _getUserObjectsByCuids {
@@ -304,14 +290,11 @@ sub pushToStore {
 }
 
 sub completePageHandler {
-    our $loaded;
-    if(defined $loaded || 1) {
-        my $json = JSON::to_json( $mutations );
-        my $base64 = MIME::Base64::encode($json);
+    my $json = JSON::to_json( $mutations );
+    my $base64 = MIME::Base64::encode($json);
 
-        my $STOREPLACEHOLDER = STOREPLACEHOLDER;
-        $_[0] =~ s#$STOREPLACEHOLDER#$base64#g;
-    }
+    my $STOREPLACEHOLDER = STOREPLACEHOLDER;
+    $_[0] =~ s#$STOREPLACEHOLDER#$base64#g;
 }
 
 sub beforeUploadHandler {
