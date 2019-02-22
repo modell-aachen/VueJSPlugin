@@ -39,7 +39,7 @@ my $this = shift;
 
 local $| = 1;
 print $this->sys_action( qw(npm install) );
-print $this->sys_action( qw(npm run build-all) );
+print $this->sys_action( qw(npm run build-production) );
 }
 
 my $build = VueJSPluginBuild->new();

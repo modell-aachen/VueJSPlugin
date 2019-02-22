@@ -78,19 +78,10 @@ sub loadDependencies {
     my ( $session, $params, $topic, $web, $topicObject ) = @_;
 
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
-    my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 1;
-    my $suffix = $dev ? '' : '.min';
-    my $version = $params->{VERSION} || "1";
 
     my $vueScripts = "";
 
-    # Version 2 will become the new default. v1 is just there for compatibility.
-    if($version eq "2"){
-        $vueScripts = "<script type='text/javascript' src='$pluginURL/VueJSPlugin$suffix.js'></script>";
-    }
-    else {
-        $vueScripts = "<script type='text/javascript' src='$pluginURL/vue.v1$suffix.js'></script>"
-    }
+    $vueScripts = "<script type='text/javascript' src='$pluginURL/VueJSPlugin.js?version=$RELEASE'></script>";
 
     my $storeScript = '<script class="$zone $id VueJSPluginStoreData" id="VueJSPluginStoreData" type="text/json">' . STOREPLACEHOLDER . '</script>';
     Foswiki::Func::addToZone( "script", "VUEJSPLUGIN::STOREDATA", $storeScript );

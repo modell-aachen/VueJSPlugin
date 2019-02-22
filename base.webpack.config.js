@@ -1,6 +1,7 @@
 let path = require('path');
 let projectRoot = path.resolve(__dirname);
 
+const CompressionPlugin = require('compression-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -25,9 +26,14 @@ module.exports = {
     entry: './dev/main.js',
     output: {
         path: path.join(__dirname, 'pub/System/VueJSPlugin/'),
+        filename: 'VueJSPlugin.js',
     },
     devtool: "source-map",
     plugins: [
+        new CompressionPlugin({
+            minRatio: 1,
+            test: [/\.(?:js|css)$/]
+        }),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: 'VueJSPlugin.min.css'
@@ -61,6 +67,9 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+                options: {
+                    "presets": ["@babel/preset-env", ["minify", { "builtIns": false }]],
+                },
                 include: includeDirs,
             },
             {
