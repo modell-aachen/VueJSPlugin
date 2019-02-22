@@ -298,6 +298,7 @@ sub pushToStore {
 }
 
 sub completePageHandler {
+    return unless $mutations;
     my $json = JSON::to_json( $mutations );
     my $base64 = MIME::Base64::encode($json);
 
