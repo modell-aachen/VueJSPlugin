@@ -11,11 +11,6 @@ let includeDirs = [
     projectRoot + '/frontend-tests'
 ];
 
-let babelLoaderOptions = {
-    presets: [['@babel/preset-env', { "modules": false }]],
-    plugins: ["transform-es2017-object-entries"]
-};
-
 module.exports = {
     resolve: {
         extensions: ['.vue', '.js', '.ts'],
@@ -67,9 +62,6 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                options: {
-                    "presets": ["@babel/preset-env", ["minify", { "builtIns": false }]],
-                },
                 include: includeDirs,
             },
             {

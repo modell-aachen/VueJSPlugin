@@ -6,6 +6,12 @@
                 "modules": false,
                 "useBuiltIns": "entry"
             }
+        ],
+        [
+            "minify",
+            {
+                "builtIns": false
+            }
         ]
     ],
     "env": {
