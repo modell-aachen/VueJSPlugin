@@ -19,9 +19,9 @@ use JSON;
 our $VERSION = '0.00_001';
 our $RELEASE = '0.1';
 our $SHORTDESCRIPTION = 'Plugin to load VueJS dependencies.';
-our $service;
 our $NO_PREFS_IN_TOPIC = 1;
 our $mutations;
+our $loaded;
 
 use constant {
     STOREPLACEHOLDER => '{"placeholder":"VueJSPlugin::Store::Placeholder::78uilhayfegjlhzt3q"}',
@@ -41,7 +41,7 @@ sub initPlugin {
         '<link rel="stylesheet" type="text/css" media="all" href="%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/VueJSPlugin.min.css?version=%QUERYVERSION{"VueJSPlugin"}%" />');
 
     Foswiki::Func::registerTagHandler('GETVIRTUALWEB', \&tagGETVIRTUALWEB);
-    Foswiki::Func::registerTagHandler('VUE', \&loadDependencies);
+    Foswiki::Func::registerTagHandler('VUE', \&VUE);
     Foswiki::Func::registerTagHandler('VUETOOLTIP', \&renderTooltip);
     Foswiki::Func::registerTagHandler('VUEATTACHMENTS', \&tagVUEATTACHMENTS);
 
@@ -56,6 +56,8 @@ sub initPlugin {
         );
     }
 
+    $mutations = {};
+    $loaded = 0;
     return 1;
 }
 
@@ -75,8 +77,11 @@ sub renderTooltip {
 }
 
 sub loadDependencies {
-    my ( $session, $params, $topic, $web, $topicObject ) = @_;
+    my ( $session ) = @_;
 
+    if($loaded){
+        return;
+    }
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
 
     my $vueScripts = "";
@@ -89,20 +94,19 @@ sub loadDependencies {
     Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
     Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT,VUEJSPLUGIN::STOREDATA');
 
-    if(_documentIsSet()) {
-        return "";
-    }
+    $loaded = 1;
+}
+
+sub VUE {
+    my ( $session, $params, $topic, $web, $topicObject ) = @_;
+
+    loadDependencies($session);
+
     my $document = _collectDocumentData($session, $web, $topic);
     pushToStore('Qwiki/Document/setDocument', $document);
 
     return "";
-}
 
-sub _documentIsSet {
-    if($mutations->{'Qwiki/Document'}) {
-        return 1;
-    }
-    return 0;
 }
 
 sub _collectDocumentData {
