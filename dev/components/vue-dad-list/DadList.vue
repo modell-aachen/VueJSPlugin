@@ -52,7 +52,7 @@
                 :title="buttonTitle"
                 :type="buttonType"
                 data-test="dadListAddIcon"
-                scon="far fa-plus"
+                icon="far fa-plus"
                 @click.native="addItemEvent"/>
         </slot>
     </div>
