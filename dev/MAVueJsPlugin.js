@@ -195,6 +195,7 @@ class MAVueJsPlugin {
         Vue.instantiateEach = (selector, options) => {
             this.jquery(selector).each((i, element) => {
                 let instanceOptions = Object.assign({}, options);
+                element.className += " GlossaryConditionalTag";
                 instanceOptions.el = element;
                 new Vue(instanceOptions);
             });
