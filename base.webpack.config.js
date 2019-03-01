@@ -111,6 +111,11 @@ module.exports = {
                 ]
             },
             {
+                test: /\.pug$/,
+                include: includeDirs,
+                use: 'pug-plain-loader'
+            },
+            {
                 test: /\.(woff|woff2|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
                     loader: 'file-loader',

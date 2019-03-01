@@ -133,6 +133,7 @@ describe("The Attachment component's", () => {
                 wrapper.vm.deleteAttachment({name: firstAttachmentName});
             });
             it("is unset when deletion failed", async () => {
+                spyOn(window.console, 'log').and.returnValue();
                 spyOn(wrapper.vm, 'post').and.returnValue(Promise.reject('error'));
                 await wrapper.vm.deleteAttachment({name: firstAttachmentName});
                 return Vue.nextTick().then(() => {

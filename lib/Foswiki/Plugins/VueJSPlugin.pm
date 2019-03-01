@@ -148,6 +148,7 @@ sub _collectDocumentData {
 sub _getUserObjectsByCuids {
     my ($session, $userString) = @_;
 
+    return () unless $userString;
     my @userCuids= split(/\s*,\s*/, $userString);
     my @users;
     foreach my $userId (@userCuids) {

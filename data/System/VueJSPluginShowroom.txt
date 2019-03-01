@@ -362,6 +362,27 @@ The following examples provide an overview of its functionality. The correspondi
 %INCLUDE{"%WEB%.%TOPIC%" section="InputTextVueTemplate"}%
 </script>
 
+---+ Vue Input Real Number
+
+<div class="flatskin-wrapped">
+ <div id="input-real-number-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"InputRealNumberVueTemplate"}%
+<div>
+    <vue-input-real-number v-model="userInput" />
+    <vue-input-real-number v-model="userInput" label="Single line label" />
+    <vue-input-real-number v-model="userInput" placeholder="Small" is-small />
+    <vue-input-real-number v-model="userInput" placeholder="Disabled" is-disabled />
+</div>
+%ENDSECTION{"InputRealNumberVueTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="input-real-number-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="InputRealNumberVueTemplate"}%
+</script>
+
 ---+ Vue Select
 
 <div class="flatskin-wrapped">
