@@ -47,6 +47,13 @@ Vue.onDocumentReady(function(){
           userInput: ''
         }
     });
+    new Vue({
+        el: '#input-real-number-examples',
+        template: '#input-real-number-template',
+        data: {
+          userInput: ''
+        }
+    });
     try {
         let pagedSelectorJson = $('#paged-selector-json').text();
         let pagedSelectorOptions = JSON.parse(pagedSelectorJson);

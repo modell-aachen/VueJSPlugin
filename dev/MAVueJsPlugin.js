@@ -7,6 +7,8 @@ import VueCheckItem from './components/vue-check-item/CheckItem.vue';
 import VueHistoryList from './components/vue-history-list/HistoryList.vue';
 import VueLoaderStore from './components/vue-fullscreen-loader/store/index.js';
 import VueInputText from './components/vue-input-text/InputText.vue';
+import VueInputRealNumber from './components/vue-input-real-number/InputRealNumber.vue';
+import VueInputRealNumberFormWrapper from './components/vue-input-real-number/InputRealNumberFormWrapper.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
 import VueTabpane from './components/vue-tabpane/TabPane.vue';
@@ -105,6 +107,8 @@ class MAVueJsPlugin {
         Vue.component('vue-button', VueButton);
         Vue.component('vue-check-item', VueCheckItem);
         Vue.component('vue-input-text', VueInputText);
+        Vue.component('vue-input-real-number', VueInputRealNumber);
+        Vue.component('vue-input-real-number-form-wrapper', VueInputRealNumberFormWrapper);
         Vue.component('vue-history-list', VueHistoryList);
         Vue.component('vue-pagination', VuePagination);
         Vue.component('vue-spinner', VueSpinner);

@@ -1,0 +1,40 @@
+div(
+        :class="{'ma-failure': hasError, 'has-label': (label !== undefined)}"
+        class="ma-input ma-input-group"
+    )
+    label(
+            v-if="label"
+            class="input-label"
+        )
+        | {{ label }}
+    div(class="ma-input--wrapper")
+        i(
+                v-if="icon"
+                :class="icon"
+                class="ma-input-text-icon"
+                aria-hidden="true"
+            )
+
+        - var inputExtraAttributes = {"v-validate": "validate"}
+        block inputExtraAttributes
+        input(
+            ref="input"
+            v-model="data"
+            :placeholder="placeholder"
+            :class="inputClasses"
+            :disabled="isDisabled"
+            :maxlength="maxLength"
+            :name="name"
+            @blur="$emit('blur')"
+            data-test="inputElement"
+            type="text"
+        )&attributes(inputExtraAttributes)
+
+        template(v-if="hasError")
+            i(
+                    class="fas fa-exclamation-circle"
+                    aria-hidden="true"
+                )
+            small
+                | {{ definedErrorMessage }}
+
