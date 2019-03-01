@@ -20,7 +20,7 @@ const displayValueToNumberString = function(input) {
         return '';
     }
     return String(new Number(input));
-}
+};
 
 const escapeCursorPos = function(cursorStart, cursorEnd, newValue) {
     newValue = newValue.replace(/s/g, '_').replace(/e/g, '_');

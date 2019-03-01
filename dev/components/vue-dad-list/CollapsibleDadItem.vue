@@ -152,8 +152,10 @@ export default {
         toggleCollapsed: function() {
             this.collapsed = !this.collapsed;
             if(!this.collapsed) {
-                let parentList = this.getListParent();
-                parentList.$emit('lastOpened', this.item.id);
+                const parentList = this.getListParent();
+                if(parentList !== window) {
+                    parentList.$emit('lastOpened', this.item.id);
+                }
             }
         },
         getListParent: function(parent = this.$parent) {
@@ -163,10 +165,13 @@ export default {
             return parent;
         },
         markItemDraggable( draggable ) {
-            this.getListParent().$emit("drag-status-change", {
-                id: this.item.id,
-                isDraggable: draggable
-            });
+            const parentList = this.getListParent();
+            if(parentList && parentList !== window) {
+                parentList.$emit("drag-status-change", {
+                    id: this.item.id,
+                    isDraggable: draggable
+                });
+            }
         }
     }
 };
