@@ -10,13 +10,13 @@
 <script>
 import InputTextField from '../vue-input-text/InputText';
 
-const isANumber = input => input !== undefined && input !== '' && input !== '-';
+const isNumberEntered = input => input !== undefined && input !== '' && input !== '-';
 
 const displayValueToNumberString = function(input) {
     input = input.replace(/\s/g, '');
     const decimalDelimiter = getDecimalDelimiter(input);
     input = input.replace(decimalDelimiter, '_').replace(/[.,]/g, '').replace('_', '.');
-    if(!isANumber(input)) {
+    if(!isNumberEntered(input)) {
         return '';
     }
     return String(new Number(input));
@@ -42,13 +42,12 @@ const filterDisallowedChars = (newValue) => {
 };
 
 const reduceConsecutiveSeparators = (newValue, delimiter) => {
+    // note: [se] are escapings for the cursor position
     newValue = newValue
         .replace(/\s{2,}/g, ' ')
-        .replace(new RegExp(`([${delimiter}][\\sse]*)[,.]+`, 'g'), '$1')
-        .replace(new RegExp(`[,.]+([\\sse]*[${delimiter}])`, 'g'), '$1')
-        .replace(/([,.]){2,}/, '$1')
-        .replace(new RegExp(`[${delimiter}]\\s[.,]|[.,]\\s${delimiter}`, 'g'), delimiter)
-        .replace(/(\s?[,.]\s?)[,.]+/g, '$1');
+        .replace(new RegExp(`([${delimiter}][\\sse]*)[,.]+`, 'g'), '$1') // ',..' -> ',' filter dots & commas after the delimiter
+        .replace(new RegExp(`[,.]+([\\sse]*[${delimiter}])`, 'g'), '$1') // '.,.' -> ',' prioritize the delimiter
+        .replace(/([,.]){2,}/, '$1'); // '..' -> '.' filter multiple dots / commas when they are not after the delimiter
     return newValue;
 };
 
@@ -107,15 +106,24 @@ const filterInput = (cursorStart, cursorEnd, newValue, oldValue = '') => {
     return {newValue, newCursorStart, newCursorEnd};
 };
 
+const getDecimalDelimiterFromBrowser = () => {
+    const formattedLocaleNumber = new Number(1.2).toLocaleString();
+    return getDecimalDelimiter(formattedLocaleNumber);
+};
+
+const createDisplayValueFromValue = (value) => {
+    const browserDecimalDelimiter = getDecimalDelimiterFromBrowser();
+    let displayValue = isNumberEntered(value) ? new String(new Number(value)) : '';
+    displayValue = displayValue.replace(/\./, browserDecimalDelimiter);
+    ({newValue: displayValue} = filterInput(0, 0, displayValue));
+    return displayValue;
+};
+
 export default {
     props: InputTextField.props,
     inject: InputTextField.inject,
     data() {
-        const formattedLocaleNumber = new Number(1.2).toLocaleString();
-        const delimiter = getDecimalDelimiter(formattedLocaleNumber);
-        let displayValue = isANumber(this.value) ? new String(new Number(this.value)) : '';
-        displayValue = displayValue.replace(/\./, delimiter);
-        ({newValue: displayValue} = filterInput(0, 0, displayValue));
+        const displayValue = createDisplayValueFromValue(this.value);
         return {
             cacheDefeat: Math.random(),
             displayValue,
