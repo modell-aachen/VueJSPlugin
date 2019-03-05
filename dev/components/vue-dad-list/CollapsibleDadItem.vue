@@ -118,6 +118,10 @@ export default {
         removeOptions: {
             type: Object,
             default: null
+        },
+        setLastOpenedId: {
+            type: Function,
+            required: true
         }
     },
     data: function() {
@@ -152,17 +156,8 @@ export default {
         toggleCollapsed: function() {
             this.collapsed = !this.collapsed;
             if(!this.collapsed) {
-                const parentList = this.getListParent();
-                if(parentList !== window) {
-                    parentList.$emit('lastOpened', this.item.id);
-                }
+                this.setLastOpenedId(this.item.id);
             }
-        },
-        getListParent: function(parent = this.$parent) {
-            while(!parent.DaDList && parent.$parent) {
-                parent = parent.$parent;
-            }
-            return parent;
         },
         markItemDraggable( draggable ) {
             const parentList = this.getListParent();

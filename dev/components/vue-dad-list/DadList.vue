@@ -24,6 +24,7 @@
                             :item="item"
                             :index="index"
                             :is-draggable="isDraggable"
+                            :set-last-opened-id="setLastOpenedId"
                             :last-opened-item-id="lastOpenedItemId"/>
                         <div
                             v-else
@@ -41,6 +42,7 @@
                     <div
                         :is="itemType"
                         :item="dummyItem"
+                        :set-last-opened-id="() => {}"
                         :index="99999"/>
                 </vddl-placeholder>
             </slot>
@@ -126,7 +128,6 @@ export default {
         }
     },
     created: function() {
-        this.$on('lastOpened', this.setLastOpenedId);
         this.$on('drag-status-change', this.onItemDragStatusChanged);
     },
     methods: {

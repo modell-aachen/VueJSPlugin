@@ -10,7 +10,8 @@
             :index="props.index"
             :can-drop-in-title="true"
             :allowed-types="allowedTypes"
-            :last-opend-item-id="props.lastOpendItemId"
+            :last-opened-item-id="props.lastOpenedItemId"
+            :set-last-opened-id="props.setLastOpenedId"
             :remove-options="{ name: 'Löschen', onRemove: onRemoveItem }"
             @dropped-item="addItemFromDummyList"/>
     </vue-dad-list>
