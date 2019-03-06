@@ -3,7 +3,10 @@
         <div class="signal">
             <span v-if="ampel.showDate && ampel.warnStatus != 'none'">{{ ampel.dueDate }}</span>
             <img
-                v-tooltip="tooltip"
+                v-tooltip="{
+                    content: tooltip,
+                    classes: 'flatskin-wrapped v-tooltip',
+                }"
                 :src="url">
         </div>
     </div>
@@ -95,36 +98,8 @@ export default {
     },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .signal {
     text-align: center;
-}
-.tooltip {
-  border: 1px solid #e0e0e0;
-  display: block !important;
-  padding: 4px;
-  z-index: 10000;
-  background: white;
-
-  .tooltip-inner {
-    color: #8d8d8d;
-    border-radius: 16px;
-    padding: 5px 10px 4px;
-  }
-
-  .tooltip-arrow {
-    display: block;
-  }
-}
-.tooltip[aria-hidden='true'] {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity .15s, visibility .15s;
-}
-
-.tooltip[aria-hidden='false'] {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity .15s;
 }
 </style>

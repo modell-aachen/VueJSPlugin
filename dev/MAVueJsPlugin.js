@@ -31,7 +31,7 @@ import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
 import VueAttachments from './components/vue-attachments/Attachments.vue';
 import Base64 from 'js-base64';
-import { VTooltip, VPopover } from 'v-tooltip';
+import { VPopover } from 'v-tooltip';
 import i18next from 'i18next';
 import Vddl from 'vddl';
 import VueParams from 'vue-params';
@@ -76,6 +76,7 @@ class MAVueJsPlugin {
         this.debounce = options.debounce;
         this.slideUpDown = options.slideUpDown;
         this.vueTimers = options.vueTimers;
+        this.tooltip = options.tooltip;
     }
     install(Vue, options){
         i18next.init();
@@ -133,7 +134,7 @@ class MAVueJsPlugin {
         Vue.component('search-grid', Grid);
         Vue.component('v-popover', VPopover);
 
-        Vue.directive('tooltip', VTooltip);
+        Vue.directive('tooltip', this.tooltip);
         Vue.directive('click-outside', VueClickOutside.directive);
 
         Vue.directive('scroll', {
@@ -272,6 +273,7 @@ class MAVueJsPlugin {
         if(!language){
             language = 'en';
         }
+        this.moment.locale(language);
         Vue.params.i18nextLanguage = language;
         Vue.prototype.$lang = language;
         Vue.prototype.$ajax = this.jquery.ajax;

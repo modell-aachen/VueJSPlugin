@@ -162,3 +162,18 @@ $border-transition: border-color $ma-animation-time,background-color $ma-animati
 $table-border: 0;
 $table-inner-border: 0;
 $table-padding: rem-calc(8);
+
+
+$sidebar-z-index: 1000;
+$sidebar-width: 500px;
+$sidebar-header-height: 60px;
+$sidebar-header-bottom-border: 2px;
+$sidebar-content-width: $sidebar-width - 50px;
+$sidebar-content-padding-vertical: 16px;
+$sidebar-content-padding-horizontal: 32px;
+$sidebar-content-padding: 0 $sidebar-content-padding-vertical $sidebar-content-padding-horizontal;
+$sidebar-highlight-border-color: #cf3004;
+$sidebar-highlight-border-width: 2px;
+$sidebar-toast-opacity: 0.8;
+$sidebar-modal-opacity: 0.9;
+$sidebar-modal-icon-color: #efecec;
