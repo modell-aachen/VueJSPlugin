@@ -1,5 +1,5 @@
 import "@babel/polyfill";
-import { mount, shallowMount, createLocalVue, config } from '@vue/test-utils';
+import { mount, shallowMount, config } from '@vue/test-utils';
 import visualMethods from './VisualMethodsMocker.js';
 import {buildVue} from './localVueBuilder';
 
