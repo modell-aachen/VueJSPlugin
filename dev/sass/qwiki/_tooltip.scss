@@ -43,7 +43,7 @@ h3, label {
 
 &.tooltip {
     display: block !important;
-    z-index: 10000;
+    z-index: $sidebar-z-index - 1;
     border-radius: $ma-border-radius;
     margin: rem-calc($tooltip-margin);
     background: $ma-white;
@@ -144,6 +144,9 @@ h3, label {
         .tooltip-arrow {
             border-bottom-color: $alert-color;
         }
+        .tooltip-inner {
+            color: $ma-white;
+        }
         background-color: $alert-color;
     }
 
@@ -169,5 +172,9 @@ h3, label {
         .tooltip-arrow {
             border-style: solid;
         }
+    }
+
+    &.in-sidebar {
+        z-index: $sidebar-z-index * 1.5;
     }
 }

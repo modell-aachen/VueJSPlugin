@@ -6,6 +6,8 @@ import AlertPlugin from './alert/AlertPlugin';
 import debounce from 'lodash/debounce';
 import VueSlideUpDown from 'vue-slide-up-down';
 import VueTimers from 'vue-timers';
+import { VTooltip } from 'v-tooltip';
+
 
 const frontend = new Frontend({
     vue: Vue,
@@ -16,6 +18,7 @@ const frontend = new Frontend({
     debounce: debounce,
     slideUpDown: VueSlideUpDown,
     vueTimers: VueTimers,
+    tooltip: VTooltip,
 });
 
 frontend.setup();

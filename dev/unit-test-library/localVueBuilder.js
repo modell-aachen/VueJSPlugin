@@ -5,6 +5,7 @@ import AlertPluginMock from './AlertPluginMock.js';
 import DebounceMock from './DebounceMock.js';
 import SlideUpDownMock from './SlideUpDownMock.vue';
 import VueTimersMock from './VueTimersMock.js';
+import TooltipMock from './TooltipMock.js';
 import moment from 'moment';
 import jquery from 'jquery';
 
@@ -19,6 +20,7 @@ const buildVue = () => {
         debounce: DebounceMock,
         slideUpDown: SlideUpDownMock,
         vueTimers: VueTimersMock,
+        tooltip: TooltipMock,
     });
 
     frontend.setup();
