@@ -650,6 +650,7 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
        :allowed-types="['status']"
        :last-opened-item-id="props.lastOpenedItemId"
        :set-last-opened-id="props.setLastOpenedId"
+       :set-drag-status="props.setDragStatus"
        :remove-options="{name: 'Löschen', onRemove: onRemoveItem}"
        >
        <div class="grid-x grid-margin-x">

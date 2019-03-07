@@ -122,6 +122,10 @@ export default {
         setLastOpenedId: {
             type: Function,
             required: true
+        },
+        setDragStatus: {
+            type: Function,
+            required: true
         }
     },
     data: function() {
@@ -160,13 +164,10 @@ export default {
             }
         },
         markItemDraggable( draggable ) {
-            const parentList = this.getListParent();
-            if(parentList && parentList !== window) {
-                parentList.$emit("drag-status-change", {
-                    id: this.item.id,
-                    isDraggable: draggable
-                });
-            }
+            this.setDragStatus( {
+                id: this.item.id,
+                isDraggable: draggable
+            });
         }
     }
 };

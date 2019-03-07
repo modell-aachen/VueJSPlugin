@@ -25,7 +25,8 @@
                             :index="index"
                             :is-draggable="isDraggable"
                             :set-last-opened-id="setLastOpenedId"
-                            :last-opened-item-id="lastOpenedItemId"/>
+                            :last-opened-item-id="lastOpenedItemId"
+                            :set-drag-status="onItemDragStatusChanged"/>
                         <div
                             v-else
                             :is="itemType"
@@ -43,6 +44,7 @@
                         :is="itemType"
                         :item="dummyItem"
                         :set-last-opened-id="() => {}"
+                        :set-drag-status="() => {}"
                         :index="99999"/>
                 </vddl-placeholder>
             </slot>
@@ -126,9 +128,6 @@ export default {
                 this.$emit('input', newValue);
             }
         }
-    },
-    created: function() {
-        this.$on('drag-status-change', this.onItemDragStatusChanged);
     },
     methods: {
         handleDrop: function(data) {

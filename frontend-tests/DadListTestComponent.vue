@@ -12,6 +12,7 @@
             :allowed-types="allowedTypes"
             :last-opened-item-id="props.lastOpenedItemId"
             :set-last-opened-id="props.setLastOpenedId"
+            :set-drag-status="props.setDragStatus"
             :remove-options="{ name: 'Löschen', onRemove: onRemoveItem }"
             @dropped-item="addItemFromDummyList"/>
     </vue-dad-list>
