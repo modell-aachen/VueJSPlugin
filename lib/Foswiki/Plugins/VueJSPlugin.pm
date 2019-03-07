@@ -102,8 +102,10 @@ sub VUE {
 
     loadDependencies($session);
 
-    my $document = _collectDocumentData($session, $web, $topic);
-    pushToStore('Qwiki/Document/setDocument', $document);
+    unless(Foswiki::Func::isGuest()){
+        my $document = _collectDocumentData($session, $web, $topic);
+        pushToStore('Qwiki/Document/setDocument', $document);
+    }
 
     return "";
 
