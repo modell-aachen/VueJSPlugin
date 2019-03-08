@@ -207,12 +207,16 @@ class MAVueJsPlugin {
         };
 
         Vue.makeAbsoluteUrl = (url) => {
-            const absoluteBasePath = this.foswiki.getScriptUrl().replace(/bin\/$/,'');
+            const absoluteBasePath = Vue.baseUrl();
             if(!url){
                 url = "";
             }
             url = url.replace(/^\//,'');
-            return `${absoluteBasePath}${url}`;
+            return `${absoluteBasePath}/${url}`;
+        };
+
+        Vue.baseUrl = () => {
+            return this.foswiki.getScriptUrl().replace(/\/bin\/$/,'');
         };
 
         Vue.addTranslation = (language, namespace, translations) => {
