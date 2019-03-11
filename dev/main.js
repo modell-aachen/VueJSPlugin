@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce';
 import VueSlideUpDown from 'vue-slide-up-down';
 import VueTimers from 'vue-timers';
 import { VTooltip } from 'v-tooltip';
-
+import * as Sentry from '@sentry/browser';
 
 const frontend = new Frontend({
     vue: Vue,
@@ -21,4 +21,16 @@ const frontend = new Frontend({
     tooltip: VTooltip,
 });
 
+if(process.env.NODE_ENV === 'production') {
+    Sentry.init({
+        dsn: 'https://d6949e25bfe04f5b965ac8304eef2f09@sentry.io/1411026',
+        integrations: [new Sentry.Integrations.Vue({
+            Vue,
+        })],
+        beforeSend: (event, hint) => {
+            window.console.error(hint.originalException || hint.syntheticException);
+            return event;
+        }
+    });
+}
 frontend.setup();
