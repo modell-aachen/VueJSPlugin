@@ -3,6 +3,7 @@ const module = {
     state: {
         version: '',
         customer: '',
+        userId: '',
     },
     mutations: {
         setVersion(state, version) {
@@ -10,6 +11,9 @@ const module = {
         },
         setCustomer(state, customer) {
             state.customer = customer;
+        },
+        setUserId(state, userId) {
+            state.userId = userId;
         },
     },
 };

@@ -38,6 +38,7 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 Sentry.configureScope((scope) => {
+    scope.setUser({id: Vue.Store.state.Qwiki.userId});
     scope.setExtra("qwiki_version", Vue.Store.state.Qwiki.version);
     scope.setExtra("customer", Vue.Store.state.Qwiki.customer);
 });
