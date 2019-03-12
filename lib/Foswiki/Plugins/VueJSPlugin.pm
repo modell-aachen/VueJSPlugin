@@ -113,6 +113,8 @@ sub VUE {
     my $customer = $1;
     pushToStore('Qwiki/setCustomer', $customer);
 
+    pushToStore('Qwiki/setUserId', Foswiki::Func::getCanonicalUserID());
+
     return "";
 }
 
