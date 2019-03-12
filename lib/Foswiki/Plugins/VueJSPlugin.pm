@@ -105,8 +105,15 @@ sub VUE {
     my $document = _collectDocumentData($session, $web, $topic);
     pushToStore('Qwiki/Document/setDocument', $document);
 
-    return "";
+    my $qwikiVersion = Foswiki::Func::expandCommonVariables('%QUERYVERSION{"QwikiContrib"}%');
+    pushToStore('Qwiki/setVersion', $qwikiVersion);
 
+    my $repositoryString = $Foswiki::cfg{ExtensionsRepositories};
+    $repositoryString =~ /pub\/,(.*?),/;
+    my $customer = $1;
+    pushToStore('Qwiki/setCustomer', $customer);
+
+    return "";
 }
 
 sub _collectDocumentData {

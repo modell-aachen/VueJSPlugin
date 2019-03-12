@@ -58,6 +58,7 @@ import {searchGridInit, Grid} from './components/search-grid/index.js';
 import SearchGridStandardFields from './components/search-grid/components/StandardFields.js';
 import VueClipboard from 'vue-clipboard2';
 import { module as DocumentStore } from './document-store';
+import { module as QwikiStore} from './qwiki-store';
 
 let bufferedMutations;
 const getStoreData = (vue) => {
@@ -189,7 +190,7 @@ class MAVueJsPlugin {
         };
 
         Vue.registerStoreModule('vueLoaderStore', VueLoaderStore);
-        Vue.registerStoreModule(['Qwiki'], {namespaced: true});
+        Vue.registerStoreModule(['Qwiki'], QwikiStore);
         Vue.registerStoreModule(['Qwiki', 'Document'], DocumentStore);
         Vue.onDocumentReady = (fn) => {
             this.jquery(fn);

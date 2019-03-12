@@ -21,6 +21,8 @@ const frontend = new Frontend({
     tooltip: VTooltip,
 });
 
+frontend.setup();
+
 if(process.env.NODE_ENV === 'production') {
     Sentry.init({
         dsn: 'https://d6949e25bfe04f5b965ac8304eef2f09@sentry.io/1411026',
@@ -32,5 +34,10 @@ if(process.env.NODE_ENV === 'production') {
             return event;
         }
     });
+
 }
-frontend.setup();
+
+Sentry.configureScope((scope) => {
+    scope.setExtra("qwiki_version", Vue.Store.state.Qwiki.version);
+    scope.setExtra("customer", Vue.Store.state.Qwiki.customer);
+});
