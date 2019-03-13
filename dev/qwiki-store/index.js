@@ -4,6 +4,7 @@ const module = {
         version: '',
         customer: '',
         userId: '',
+        environment: '',
     },
     mutations: {
         setVersion(state, version) {
@@ -14,6 +15,9 @@ const module = {
         },
         setUserId(state, userId) {
             state.userId = userId;
+        },
+        setEnvironment(state, environment) {
+            state.environment = environment;
         },
     },
 };

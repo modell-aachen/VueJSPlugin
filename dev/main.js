@@ -29,6 +29,7 @@ if(process.env.NODE_ENV === 'production') {
         integrations: [new Sentry.Integrations.Vue({
             Vue,
         })],
+        environment: Vue.Store.state.Qwiki.environment,
         beforeSend: (event, hint) => {
             window.console.error(hint.originalException || hint.syntheticException);
             return event;

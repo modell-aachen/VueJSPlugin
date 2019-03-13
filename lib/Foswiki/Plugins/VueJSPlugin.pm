@@ -15,6 +15,7 @@ use Foswiki::Plugins ();
 use Foswiki::OopsException ();
 use Digest::MD5 qw(md5_hex);
 use JSON;
+use Encode;
 
 our $VERSION = '0.00_001';
 our $RELEASE = '0.1';
@@ -114,6 +115,8 @@ sub VUE {
     pushToStore('Qwiki/setCustomer', $customer);
 
     pushToStore('Qwiki/setUserId', Foswiki::Func::getCanonicalUserID());
+
+    pushToStore('Qwiki/setEnvironment', $Foswiki::cfg{ModacHelpersPlugin}{Environment});
 
     return "";
 }
@@ -295,7 +298,7 @@ sub pushToStore {
 sub completePageHandler {
     return unless $mutations;
     my $json = JSON::to_json( $mutations );
-    my $base64 = MIME::Base64::encode($json);
+    my $base64 = MIME::Base64::encode(encode('UTF-8', $json));
 
     my $STOREPLACEHOLDER = STOREPLACEHOLDER;
     $_[0] =~ s#$STOREPLACEHOLDER#$base64#g;
