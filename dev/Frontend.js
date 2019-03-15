@@ -13,7 +13,6 @@ class Frontend {
 
         let store = new Vuex.Store({
             plugins: [VuexProxyPlugin._hook],
-            strict: process.env.NODE_ENV !== 'production',
         });
         this.options.vue.VuexProxyPlugin = VuexProxyPlugin;
         this.options.vue.Store = store;
