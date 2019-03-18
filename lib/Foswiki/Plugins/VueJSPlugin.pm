@@ -123,6 +123,10 @@ sub VUE {
 
 sub _collectDocumentData {
     my ($session, $web, $topic) = @_;
+
+    my $wikiName = Foswiki::Func::getWikiName();
+    return '' unless Foswiki::Func::checkAccessPermission('VIEW', $wikiName, undef, $topic, $web);
+
     my ($topicObject) = Foswiki::Func::readTopic($web, $topic);
 
     my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
@@ -132,15 +136,26 @@ sub _collectDocumentData {
 
     return "" unless $topicObject->getFormName();
 
-    my $form = Foswiki::Form->new($session, $web, $topicObject->getFormName());
-    my @metaFields = $topicObject->find('FIELD');
-    foreach my $field (@metaFields) {
-        my $formField = $form->getField($field->{name});
-        if($formField->{type} =~ m/user/) {
-            my $users = _getUserObjectsByCuids($session, $field->{value});
-            $typeData{$field->{name}} = $users;
-        } else {
-            $typeData{$field->{name}} = $field->{value};
+    my $formName =  $topicObject->getFormName();
+    if($formName) {
+        my ($formWeb, $formTopic) = Foswiki::Func::normalizeWebTopicName($web, $formName);
+        if(Foswiki::Func::checkAccessPermission('VIEW', $wikiName, undef, $formTopic, $formWeb)) {
+            try {
+                my $form = Foswiki::Form->new($session, $formWeb, $formTopic);
+                my @metaFields = $topicObject->find('FIELD');
+                foreach my $field (@metaFields) {
+                    my $formField = $form->getField($field->{name});
+                    if($formField->{type} =~ m/user/) {
+                        my $users = _getUserObjectsByCuids($session, $field->{value});
+                        $typeData{$field->{name}} = $users;
+                    } else {
+                        $typeData{$field->{name}} = $field->{value};
+                    }
+                }
+            } catch Foswiki::OopsException with {
+                my $error = shift;
+                Foswiki::Func::writeWarning("Could not read form data: $error");
+            };
         }
     }
 
