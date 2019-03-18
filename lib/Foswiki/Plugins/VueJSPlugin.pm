@@ -9,6 +9,7 @@ use Digest::MD5 qw(md5_hex);
 Container for Vue.JS
 =cut
 
+use Error ':try';
 
 use Foswiki::Func ();
 use Foswiki::Plugins ();
