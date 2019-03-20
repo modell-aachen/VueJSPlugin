@@ -25,7 +25,7 @@
   border-top: 1.1em solid rgba(82,202,228, 0.2);
   border-right: 1.1em solid rgba(82,202,228, 0.2);
   border-bottom: 1.1em solid rgba(82,202,228, 0.2);
-  border-left: 1.1em solid #52cae4;
+  border-left: 1.1em solid #279ac8;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);

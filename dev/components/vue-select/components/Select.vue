@@ -850,7 +850,7 @@ export default {
 
         &.open {
             background-color:transparent;
-            border-color: #52cae4;
+            border-color: #279ac8;
         }
 
         &.multi {

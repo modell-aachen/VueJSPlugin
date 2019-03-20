@@ -21,11 +21,11 @@ For further documentation please have a look at the Foundation docs.
 ---++ Colors
 <div class="grid-x grid-margin-x">
     <div class="cell shrink">
-        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #57c9e8"></div>
+        <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #279ac8"></div>
     </div>
     <div class="cell small-3">
         $ma-primary-color<br />
-        #57c9e8
+        #279ac8
     </div>
     <div class="cell shrink">
         <div style="width: 50px; height: 50px; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; background: #6a7f84"></div>

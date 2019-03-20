@@ -81,7 +81,7 @@
 }
 .v-select .dropdown-toggle.open {
       background-color: transparent;
-      border-color: #52cae4;
+      border-color: #279ac8;
 }
 .v-select .dropdown-toggle.multi {
       height: auto;
@@ -419,6 +419,8 @@
 }
 
 
+
+
 .flatskin-wrapped .jqTabPaneFlat > .vue-tabpane-group li.current a.hasSubMenu {
   background: #eff3f4;
   border-bottom: 2px solid #eff3f4;
@@ -458,11 +460,11 @@ ul.vue-tabpane-group .more-tab a,
 }
 ul.vue-tabpane-group .more-tab a.active,
     #modacWrapper ul.vue-tabpane-group .more-tab a.active {
-      color: #52cae4 !important;
+      color: #279ac8 !important;
 }
 ul.vue-tabpane-group .more-tab a:hover,
     #modacWrapper ul.vue-tabpane-group .more-tab a:hover {
-      color: #52cae4 !important;
+      color: #279ac8 !important;
 }
 ul.vue-tabpane-group .more-tab .show-more-dropdown,
   #modacWrapper ul.vue-tabpane-group .more-tab .show-more-dropdown {
@@ -549,7 +551,7 @@ ul.vue-tabpane-group .hidden-tab,
 }
 .flatskin-wrapped .vue-wizard .icon {
     margin: 16px;
-    color: #52cae4;
+    color: #279ac8;
 }
 
 
@@ -926,7 +928,7 @@ div.columns.ma-left-label-input-sidebar {
 }
 .vue-attachments .progress-bar .meter,
     .flatskin-wrapped .vue-attachments .progress-bar .meter {
-      background-color: #52cae4;
+      background-color: #279ac8;
       border-radius: 4px;
       height: calc(16px - 2px);
 }
