@@ -6,7 +6,7 @@
 
 <script>
 </script>
-<style>
+<style style="scss">
 .loader__wrapper {
   height: 5em;
   overflow: hidden;
@@ -25,7 +25,7 @@
   border-top: 1.1em solid rgba(82,202,228, 0.2);
   border-right: 1.1em solid rgba(82,202,228, 0.2);
   border-bottom: 1.1em solid rgba(82,202,228, 0.2);
-  border-left: 1.1em solid #279ac8;
+  border-left: 1.1em solid $ma-primary;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
