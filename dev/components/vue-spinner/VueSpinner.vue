@@ -6,7 +6,9 @@
 
 <script>
 </script>
-<style style="scss">
+<style lang="scss">
+@import '../../sass/settings.scss';
+
 .loader__wrapper {
   height: 5em;
   overflow: hidden;
