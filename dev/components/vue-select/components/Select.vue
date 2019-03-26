@@ -4,7 +4,11 @@
         class="dropdown v-select">
         <label
             v-if="label"
-            class="input-label">{{ label }}</label>
+            class="input-label">{{ label }}
+            <vue-explanation-tooltip
+                v-if="tooltipText"
+                :text="tooltipText"/>
+        </label>
         <input
             v-validate="validate"
             v-if="name.length"
@@ -141,7 +145,7 @@
         <small
             v-if="sublabel"
             class="sublabel ma-tertiary-text">
-            {{ sublabel }}
+            <span v-html="sublabel" />
         </small>
     </div>
 
@@ -174,6 +178,10 @@ export default {
             default: () => [],
         },
         label: {
+            type: String,
+            default: undefined
+        },
+        tooltipText: {
             type: String,
             default: undefined
         },
@@ -781,6 +789,7 @@ export default {
 
     .input-label {
         @include input-label();
+        display: flex;
     }
 
     .dropdown-menu {
