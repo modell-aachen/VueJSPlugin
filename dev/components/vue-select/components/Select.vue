@@ -5,9 +5,7 @@
         <label
             v-if="label"
             class="input-label">{{ label }}
-            <vue-explanation-tooltip
-                v-if="tooltipText"
-                :text="tooltipText"/>
+            <slot name="labelTooltip" />
         </label>
         <input
             v-validate="validate"
@@ -145,7 +143,9 @@
         <small
             v-if="sublabel"
             class="sublabel ma-tertiary-text">
-            <span v-html="sublabel" />
+            <slot name="unescapedSublabel">
+                {{ sublabel }}
+            </slot>
         </small>
     </div>
 
@@ -178,10 +178,6 @@ export default {
             default: () => [],
         },
         label: {
-            type: String,
-            default: undefined
-        },
-        tooltipText: {
             type: String,
             default: undefined
         },
