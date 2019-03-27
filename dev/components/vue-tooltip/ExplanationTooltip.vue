@@ -1,9 +1,12 @@
 <template>
-    <div class="flatskin-wrapped">
+    <div
+        :id="id"
+        class="flatskin-wrapped">
         <v-popover
+            :container="idSelector"
             placement="right"
             trigger="hover"
-            popover-class="flatskin-wrapped"
+            popover-class="flatskin-wrapped proptest"
             popover-wrapper-class="">
             <i
                 :class="icon"
@@ -27,6 +30,16 @@ export default {
             type: [String, Array],
             default: 'far fa-question-circle'
         },
+    },
+    data () {
+        return {
+            id: null,
+            idSelector: null,
+        };
+    },
+    mounted () {
+        this.id = "popover" + this._uid;
+        this.idSelector = "#popover" + this._uid;
     },
 };
 </script>
