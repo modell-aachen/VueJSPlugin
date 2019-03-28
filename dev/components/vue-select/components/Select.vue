@@ -141,9 +141,9 @@
             <small class="ma-failure" >{{ definedErrorMessage }}</small>
         </template>
         <small
-            v-if="sublabel"
+            v-if="sublabel || this.$slots.sublabel"
             class="sublabel ma-tertiary-text">
-            <slot name="unescapedSublabel">
+            <slot name="sublabel">
                 {{ sublabel }}
             </slot>
         </small>
