@@ -3,7 +3,7 @@
         <vue-input-real-number
             :value="internalValue"
             :label="label"
-            :name="name + 'Display'"
+            :name="name"
             :validate="validate"
             :placeholder="placeholder"
             :icon="icon"
