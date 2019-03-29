@@ -1,10 +1,9 @@
 <template>
     <div
-        :id="id"
         class="flatskin-wrapped">
         <v-popover
+            :placement="placement"
             :container="false"
-            placement="right"
             trigger="hover"
             popover-class="flatskin-wrapped"
             popover-wrapper-class="">
@@ -29,6 +28,10 @@ export default {
         'icon':{
             type: [String, Array],
             default: 'far fa-question-circle'
+        },
+        'placement':{
+            type: String,
+            default: 'right'
         },
     },
 };

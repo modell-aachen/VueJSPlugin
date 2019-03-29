@@ -178,7 +178,6 @@ h3, label {
         z-index: $sidebar-z-index * 1.5;
     }
 }
-
-.sidebar .popover {
+.vue-sidebar .v-popover .popover {
     z-index: $sidebar-z-index * 1.5;
 }
