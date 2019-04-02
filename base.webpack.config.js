@@ -1,6 +1,7 @@
 let path = require('path');
 let projectRoot = path.resolve(__dirname);
 
+const CompressionPlugin = require('compression-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -9,11 +10,6 @@ let includeDirs = [
     projectRoot + '/node_modules/nprogress/',
     projectRoot + '/frontend-tests'
 ];
-
-let babelLoaderOptions = {
-    presets: [['@babel/preset-env', { "modules": false }]],
-    plugins: ["transform-es2017-object-entries"]
-};
 
 module.exports = {
     resolve: {
@@ -25,9 +21,14 @@ module.exports = {
     entry: './dev/main.js',
     output: {
         path: path.join(__dirname, 'pub/System/VueJSPlugin/'),
+        filename: 'VueJSPlugin.js',
     },
     devtool: "source-map",
     plugins: [
+        new CompressionPlugin({
+            minRatio: 1,
+            test: [/\.(?:js|css)$/]
+        }),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: 'VueJSPlugin.min.css'
@@ -108,6 +109,11 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.pug$/,
+                include: includeDirs,
+                use: 'pug-plain-loader'
             },
             {
                 test: /\.(woff|woff2|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,

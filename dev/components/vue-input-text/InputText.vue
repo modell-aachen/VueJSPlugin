@@ -1,38 +1,5 @@
-<template>
-    <div
-        :class="{'ma-failure': hasError, 'has-label': (label!=undefined)}"
-        class="ma-input ma-input-group">
-        <label
-            v-if="label"
-            class="input-label">{{ label }}
-        </label>
-        <div class="ma-input--wrapper">
-            <i
-                v-if="icon"
-                :class="icon"
-                class="ma-input-text-icon"
-                aria-hidden="true"/>
-
-            <input
-                v-validate="validate"
-                :name="name"
-                v-model="data"
-                :placeholder="placeholder"
-                :class="{'ma-small': isSmall, 'ma-input-text-indent': (icon!=undefined)}"
-                :disabled="isDisabled"
-                :maxlength="maxLength"
-                type="text"
-                @blur="$emit('blur')">
-
-            <template v-if="hasError">
-                <i
-                    class="fas fa-exclamation-circle"
-                    aria-hidden="true"/>
-                <small>{{ definedErrorMessage }}</small>
-            </template>
-
-        </div>
-    </div>
+<template lang="pug">
+    extends InputTextTemplate.pug
 </template>
 
 <script>
@@ -81,7 +48,13 @@ export default {
         'errorMessage': {
             type: String,
             default: undefined,
-        }
+        },
+        'extraClasses': {
+            type: Object,
+            default: () => {
+                return {};
+            },
+        },
     },
     inject: ['$validator'],
     computed: {
@@ -98,7 +71,16 @@ export default {
         },
         definedErrorMessage: function() {
             return this.validationErrors.first(this.name) || this.errorMessage;
-        }
+        },
+        inputClasses() {
+            return Object.assign(
+                {
+                    'ma-small': this.isSmall,
+                    'ma-input-text-indent': (this.icon !== undefined)
+                },
+                this.extraClasses,
+            );
+        },
     },
     watch: {
         data: function(value){

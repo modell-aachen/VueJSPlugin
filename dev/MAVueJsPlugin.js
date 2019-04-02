@@ -7,11 +7,14 @@ import VueCheckItem from './components/vue-check-item/CheckItem.vue';
 import VueHistoryList from './components/vue-history-list/HistoryList.vue';
 import VueLoaderStore from './components/vue-fullscreen-loader/store/index.js';
 import VueInputText from './components/vue-input-text/InputText.vue';
+import VueInputRealNumber from './components/vue-input-real-number/InputRealNumber.vue';
+import VueInputRealNumberFormWrapper from './components/vue-input-real-number/InputRealNumberFormWrapper.vue';
 import VuePagination from './components/vue-pagination/VueSimplePagination.vue';
 import VueSpinner from './components/vue-spinner/VueSpinner.vue';
 import VueTabpane from './components/vue-tabpane/TabPane.vue';
 import VueTab from './components/vue-tabpane/Tab.vue';
-import VueTooltip from './components/vue-tooltip/Tooltip.vue';
+import VueInformationTooltip from './components/vue-tooltip/InformationTooltip.vue';
+import VueExplanationTooltip from './components/vue-tooltip/ExplanationTooltip.vue';
 import VueTextBlock from './components/vue-text-block/VueTextBlock.vue';
 import VueDadList from './components/vue-dad-list/DadList.vue';
 import VueDadItem from './components/vue-dad-list/DadItem.vue';
@@ -30,7 +33,7 @@ import Sidebar from './components/sidebar/Sidebar.vue';
 import SidebarStandardLayout from './components/sidebar/StandardLayout.vue';
 import VueAttachments from './components/vue-attachments/Attachments.vue';
 import Base64 from 'js-base64';
-import { VTooltip } from 'v-tooltip';
+import { VPopover } from 'v-tooltip';
 import i18next from 'i18next';
 import Vddl from 'vddl';
 import VueParams from 'vue-params';
@@ -54,6 +57,18 @@ import VueTable from './components/vue-table/Table.vue';
 import {searchGridInit, Grid} from './components/search-grid/index.js';
 import SearchGridStandardFields from './components/search-grid/components/StandardFields.js';
 import VueClipboard from 'vue-clipboard2';
+import { module as DocumentStore } from './document-store';
+import { module as QwikiStore} from './qwiki-store';
+
+let bufferedMutations;
+const getStoreData = (vue) => {
+    bufferedMutations = vue.getConfigById('VueJSPluginStoreData');
+    Object.keys(bufferedMutations).forEach(name => {
+        if(vue.storeExists(vue.Store, name)) {
+            bufferedMutations[name].forEach(transaction => vue.Store.commit(transaction.mutation, transaction.payload));
+        }
+    });
+};
 
 class MAVueJsPlugin {
     constructor(options) {
@@ -64,6 +79,7 @@ class MAVueJsPlugin {
         this.debounce = options.debounce;
         this.slideUpDown = options.slideUpDown;
         this.vueTimers = options.vueTimers;
+        this.tooltip = options.tooltip;
     }
     install(Vue, options){
         i18next.init();
@@ -93,12 +109,15 @@ class MAVueJsPlugin {
         Vue.component('vue-button', VueButton);
         Vue.component('vue-check-item', VueCheckItem);
         Vue.component('vue-input-text', VueInputText);
+        Vue.component('vue-input-real-number', VueInputRealNumber);
+        Vue.component('vue-input-real-number-form-wrapper', VueInputRealNumberFormWrapper);
         Vue.component('vue-history-list', VueHistoryList);
         Vue.component('vue-pagination', VuePagination);
         Vue.component('vue-spinner', VueSpinner);
         Vue.component('vue-tabpane', VueTabpane);
         Vue.component('vue-tab', VueTab);
-        Vue.component('vue-tooltip', VueTooltip);
+        Vue.component('vue-information-tooltip', VueInformationTooltip);
+        Vue.component('vue-explanation-tooltip', VueExplanationTooltip);
         Vue.component('vue-text-block', VueTextBlock);
         Vue.component('vue-dad-list', VueDadList);
         Vue.component('vue-dad-item', VueDadItem);
@@ -118,8 +137,9 @@ class MAVueJsPlugin {
         Vue.component('vue-mixed-input', VueMixedInput);
         Vue.component('vue-table', VueTable);
         Vue.component('search-grid', Grid);
+        Vue.component('v-popover', VPopover);
 
-        Vue.directive('tooltip', VTooltip);
+        Vue.directive('tooltip', this.tooltip);
         Vue.directive('click-outside', VueClickOutside.directive);
 
         Vue.directive('scroll', {
@@ -134,39 +154,70 @@ class MAVueJsPlugin {
         });
 
         //Global functions
+        Vue.storeExists = (store, name) => {
+            let parts;
+            if(!name.split) {
+                parts = name.splice();
+            } else {
+                parts = name.split('/');
+            }
+            let exists = false;
+            let path = store.state;
+            while(parts.length) {
+                path = path[parts.shift()];
+                exists = path;
+            }
+            return exists;
+        };
         Vue.registerStoreModule = (name, module) => {
-            if(options.store.state[name]) {
+            if(Vue.storeExists(options.store, name)) {
                 options.store.unregisterModule(name);
             }
             options.store.registerModule(name, module);
+            let namespace = name.join ? name.join('/') : name;
+            if(bufferedMutations && bufferedMutations[namespace]) {
+                bufferedMutations[namespace].forEach(transaction => options.store.commit(transaction.mutation, transaction.payload));
+            }
+        };
+
+        Vue.getConfigById = (id) => {
+            let base64Config = this.jquery('script.' + id).html();
+            if(!base64Config) {
+                return "";
+            }
+            let config = Base64.Base64.decode(base64Config);
+            return JSON.parse(config);
         };
 
         Vue.registerStoreModule('vueLoaderStore', VueLoaderStore);
+        Vue.registerStoreModule(['Qwiki'], QwikiStore);
+        Vue.registerStoreModule(['Qwiki', 'Document'], DocumentStore);
         Vue.onDocumentReady = (fn) => {
             this.jquery(fn);
         };
 
+        getStoreData(Vue);
+
         Vue.instantiateEach = (selector, options) => {
             this.jquery(selector).each((i, element) => {
                 let instanceOptions = Object.assign({}, options);
+                element.className += " GlossaryConditionalTag";
                 instanceOptions.el = element;
                 new Vue(instanceOptions);
             });
         };
 
-        Vue.getConfigById = (id) => {
-            let base64Config = this.jquery('.' + id).html();
-            let config = Base64.Base64.decode(base64Config);
-            return JSON.parse(config);
-        };
-
         Vue.makeAbsoluteUrl = (url) => {
-            const absoluteBasePath = this.foswiki.getScriptUrl().replace(/bin\/$/,'');
+            const absoluteBasePath = Vue.baseUrl();
             if(!url){
                 url = "";
             }
             url = url.replace(/^\//,'');
-            return `${absoluteBasePath}${url}`;
+            return `${absoluteBasePath}/${url}`;
+        };
+
+        Vue.baseUrl = () => {
+            return this.foswiki.getScriptUrl().replace(/\/bin\/$/,'');
         };
 
         Vue.addTranslation = (language, namespace, translations) => {
@@ -231,6 +282,7 @@ class MAVueJsPlugin {
         if(!language){
             language = 'en';
         }
+        this.moment.locale(language);
         Vue.params.i18nextLanguage = language;
         Vue.prototype.$lang = language;
         Vue.prototype.$ajax = this.jquery.ajax;

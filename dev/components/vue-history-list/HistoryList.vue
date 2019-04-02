@@ -78,12 +78,15 @@ export default {
     .history-list-line-container {
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
         padding-top: 4px;
     }
 }
 .history-list-line {
     height: 100%;
     width: 2px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: $ma-grey;
 }
 .link-to-history {

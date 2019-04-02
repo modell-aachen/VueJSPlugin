@@ -42,7 +42,6 @@
                     :original-index="tab.originalIndex"
                     class="hidden-tab" />
             </ul>
-            <span class="clearfix"/>
             <slot/>
         </div>
         <vue-dropdown
@@ -230,7 +229,6 @@ ul.vue-tabpane-group,
   padding-left: 0;
   list-style: none;
   display: block;
-  float: left;
   overflow: visible !important;
   border-bottom: 2px solid $light-gray;
   width: 100%;
@@ -272,5 +270,4 @@ ul.vue-tabpane-group,
     visibility: hidden;
   }
 }
-
 </style>

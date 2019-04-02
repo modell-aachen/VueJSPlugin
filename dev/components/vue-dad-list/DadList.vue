@@ -24,7 +24,9 @@
                             :item="item"
                             :index="index"
                             :is-draggable="isDraggable"
-                            :last-opened-item-id="lastOpenedItemId"/>
+                            :set-last-opened-id="setLastOpenedId"
+                            :last-opened-item-id="lastOpenedItemId"
+                            :set-drag-status="onItemDragStatusChanged"/>
                         <div
                             v-else
                             :is="itemType"
@@ -41,6 +43,8 @@
                     <div
                         :is="itemType"
                         :item="dummyItem"
+                        :set-last-opened-id="() => {}"
+                        :set-drag-status="() => {}"
                         :index="99999"/>
                 </vddl-placeholder>
             </slot>
@@ -51,6 +55,7 @@
             <vue-button
                 :title="buttonTitle"
                 :type="buttonType"
+                data-test="dadListAddIcon"
                 icon="far fa-plus"
                 @click.native="addItemEvent"/>
         </slot>
@@ -123,10 +128,6 @@ export default {
                 this.$emit('input', newValue);
             }
         }
-    },
-    created: function() {
-        this.$on('lastOpened', this.setLastOpenedId);
-        this.$on('drag-status-change', this.onItemDragStatusChanged);
     },
     methods: {
         handleDrop: function(data) {

@@ -362,6 +362,27 @@ The following examples provide an overview of its functionality. The correspondi
 %INCLUDE{"%WEB%.%TOPIC%" section="InputTextVueTemplate"}%
 </script>
 
+---+ Vue Input Real Number
+
+<div class="flatskin-wrapped">
+ <div id="input-real-number-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"InputRealNumberVueTemplate"}%
+<div>
+    <vue-input-real-number v-model="userInput" />
+    <vue-input-real-number v-model="userInput" label="Single line label" />
+    <vue-input-real-number v-model="userInput" placeholder="Small" is-small />
+    <vue-input-real-number v-model="userInput" placeholder="Disabled" is-disabled />
+</div>
+%ENDSECTION{"InputRealNumberVueTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="input-real-number-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="InputRealNumberVueTemplate"}%
+</script>
+
 ---+ Vue Select
 
 <div class="flatskin-wrapped">
@@ -627,7 +648,9 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
        :can-drop-in-title="true"
        @dropped-item="addItemFromDummyList"
        :allowed-types="['status']"
-       :last-opend-item-id="props.lastOpendItemId"
+       :last-opened-item-id="props.lastOpenedItemId"
+       :set-last-opened-id="props.setLastOpenedId"
+       :set-drag-status="props.setDragStatus"
        :remove-options="{name: 'Löschen', onRemove: onRemoveItem}"
        >
        <div class="grid-x grid-margin-x">
@@ -728,7 +751,13 @@ Alerts can be triggered by calling the $showAlert function. See the [[%PUBURLPAT
 %TWISTY%
 <verbatim>
 %STARTSECTION{"TooltipTemplate"}%
-<vue-tooltip text="Hier wird die Batch-Nummer der Produktion eingetragen"/>
+<div>
+  <vue-explanation-tooltip text="Hier wird die Batch-Nummer der Produktion eingetragen"/>
+  <vue-information-tooltip hover-text="Wer darf diese Seite sehen?">
+    Gombert<br>
+    KeyUserGroup
+  </vue-information-tooltip>
+</div>
 %ENDSECTION{"TooltipTemplate"}%
 
 %VUETOOLTIP{text="I am a Macro!"}%

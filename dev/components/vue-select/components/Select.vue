@@ -4,7 +4,9 @@
         class="dropdown v-select">
         <label
             v-if="label"
-            class="input-label">{{ label }}</label>
+            class="input-label">{{ label }}
+            <slot name="labelTooltip" />
+        </label>
         <input
             v-validate="validate"
             v-if="name.length"
@@ -116,6 +118,7 @@
                     v-show="open"
                     ref="dropdownMenu"
                     :transition="transition"
+                    data-test="vueSelectList"
                     class="dropdown-menu-list">
                     <li
                         v-for="(option,index) in filteredOptions"
@@ -138,9 +141,11 @@
             <small class="ma-failure" >{{ definedErrorMessage }}</small>
         </template>
         <small
-            v-if="sublabel"
+            v-if="sublabel || this.$slots.sublabel"
             class="sublabel ma-tertiary-text">
-            {{ sublabel }}
+            <slot name="sublabel">
+                {{ sublabel }}
+            </slot>
         </small>
     </div>
 
@@ -780,6 +785,7 @@ export default {
 
     .input-label {
         @include input-label();
+        display: flex;
     }
 
     .dropdown-menu {
@@ -849,7 +855,7 @@ export default {
 
         &.open {
             background-color:transparent;
-            border-color: #52cae4;
+            border-color: $ma-primary;
         }
 
         &.multi {

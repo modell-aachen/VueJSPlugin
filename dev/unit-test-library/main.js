@@ -1,31 +1,12 @@
 import "@babel/polyfill";
-import { mount, shallowMount, createLocalVue, config } from '@vue/test-utils';
-import Frontend from '../Frontend';
-import FoswikiMock from './FoswikiMock.js';
-import AlertPluginMock from './AlertPluginMock.js';
-import DebounceMock from './DebounceMock.js';
-import SlideUpDownMock from './SlideUpDownMock.vue';
-import VueTimersMock from './VueTimersMock.js';
+import { mount, shallowMount, config } from '@vue/test-utils';
 import visualMethods from './VisualMethodsMocker.js';
-import moment from 'moment';
-
-import jquery from 'jquery';
+import {buildVue} from './localVueBuilder';
 
 config.logModifiedComponents = false;
 
-const localVue = createLocalVue();
-const frontend = new Frontend({
-    vue: localVue,
-    foswiki: FoswikiMock,
-    moment: moment,
-    jquery: jquery,
-    alertPlugin: AlertPluginMock,
-    debounce: DebounceMock,
-    slideUpDown: SlideUpDownMock,
-    vueTimers: VueTimersMock,
-});
+const localVue = buildVue();
 
-frontend.setup();
 visualMethods.mock();
 
 export default {
@@ -53,3 +34,4 @@ export default {
     },
     vue: localVue
 };
+export {buildVue, mount};

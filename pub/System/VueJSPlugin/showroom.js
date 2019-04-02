@@ -47,6 +47,13 @@ Vue.onDocumentReady(function(){
           userInput: ''
         }
     });
+    new Vue({
+        el: '#input-real-number-examples',
+        template: '#input-real-number-template',
+        data: {
+          userInput: ''
+        }
+    });
     try {
         let pagedSelectorJson = $('#paged-selector-json').text();
         let pagedSelectorOptions = JSON.parse(pagedSelectorJson);
@@ -429,7 +436,7 @@ Vue.onDocumentReady(function(){
                 "initialFacetting": 0,
                 "initialFiltering": 1,
                 "hasLiveFilter": true,
-                "q": "type:topic",
+                "q": "",
                 "initialHideColumn": false,
                 "wizardNoResultsConfig": {
                     "params": ["Nothing here", "fa-magic", "Unfortunately we could not find anything for these filters"],

@@ -1,13 +1,15 @@
 import Attachments from '../dev/components/vue-attachments/Attachments.vue';
 import TestCase from '../dev/unit-test-library/main';
+import AttachmentOnServer from '../dev/components/vue-attachments/AttachmentOnServer.vue';
 
 describe("The Attachment component's", () => {
     let wrapper;
+    const firstAttachmentName = "TestBlock_TextFile.txt";
     /* eslint-disable camelcase */
     const exampleAttachments = [
         {
             attachment: "TestBlock_TextFile.txt",
-            name: "TestBlock_TextFile.txt",
+            name: firstAttachmentName,
             block: "TestBlock",
             presented_name: "A very technical/unreadable text123file",
             size: "1234",
@@ -42,7 +44,8 @@ describe("The Attachment component's", () => {
     };
     const optionsClone = () => JSON.parse(JSON.stringify(options));
     beforeEach(() => {
-        wrapper = TestCase.mount(Attachments, options);
+        wrapper = TestCase.mount(Attachments, optionsClone());
+        spyOn(wrapper.vm, '$getStrikeOneToken').and.returnValue(Promise.resolve());
     });
 
     describe("file tiles'", () => {
@@ -87,8 +90,6 @@ describe("The Attachment component's", () => {
     });
     describe("upload component", () => {
         it("uploads with the proper parameters", async () => {
-            spyOn(wrapper.vm, '$getStrikeOneToken').and.returnValue(Promise.resolve());
-
             let postSpy = spyOn(wrapper.vm, 'post').and.callFake((url, body) => {
                 expect(body.get('filename')).toBe('TestBlock_(Text)File.txt');
                 expect(body.get('presented_name')).toBe('(Text)File.txt');
@@ -118,6 +119,71 @@ describe("The Attachment component's", () => {
             wrapper.vm.uploadOnSuccess({name: '21316.htm'}, {bodyText: 'OK: OopsException(attention/upload_name_changed web=>TestWeb topic=>TestTopic params=>[TestBlock_21316.htm,TestBlock_21316.htm.txt])'});
             let filtered = wrapper.vm.internalAttachments.filter(item => item.name === 'TestBlock_21316.htm.txt' && item.presented_name === '21316.htm');
             expect(filtered.length).toBe(1);
+        });
+    });
+    describe("attachment on the server", async ()  => {
+        describe("read-only attribute", async () => {
+            it("is set while being deleted", async (done) => {
+                spyOn(wrapper.vm, 'post').and.callFake(() => {
+                    attachment = wrapper.find(AttachmentOnServer);
+                    expect(attachment.vm.readonly).toBeTruthy();
+                    return done();
+                });
+                let attachment = wrapper.find(AttachmentOnServer);
+                wrapper.vm.deleteAttachment({name: firstAttachmentName});
+            });
+            it("is unset when deletion failed", async () => {
+                spyOn(window.console, 'log').and.returnValue();
+                spyOn(wrapper.vm, 'post').and.returnValue(Promise.reject('error'));
+                await wrapper.vm.deleteAttachment({name: firstAttachmentName});
+                return Vue.nextTick().then(() => {
+                    let attachment = wrapper.find(AttachmentOnServer);
+                    expect(attachment.vm.readonly).toBeFalsy();
+                });
+            });
+            it("is set when in a readonly block", async () => {
+                let myOptions = optionsClone();
+                myOptions.propsData.readonly = true;
+                wrapper = TestCase.mount(Attachments, myOptions);
+                expect(wrapper.find(AttachmentOnServer).vm.readonly).toBeTruthy();
+            });
+        });
+        describe("delete function", async () => {
+            it("handles being called with an invalid attachment", async () => {
+                spyOn(wrapper.vm, 'post').and.callFake(() => {
+                    fail();
+                });
+                let consoleSpy = spyOn(window.console, 'log').and.returnValue();
+                await wrapper.vm.deleteAttachment({name: 'does not exist'});
+                expect(consoleSpy).toHaveBeenCalled();
+            });
+            it("handles being called with a readonly attachment", async () => {
+                let myOptions = optionsClone();
+                myOptions.propsData.attachments[0].readonly = true;
+                wrapper = TestCase.mount(Attachments, myOptions);
+                spyOn(wrapper.vm, 'post').and.callFake(() => {
+                    fail();
+                });
+                let consoleSpy = spyOn(window.console, 'log').and.returnValue();
+                await wrapper.vm.deleteAttachment(wrapper.find(AttachmentOnServer).vm.attachment);
+                expect(consoleSpy).toHaveBeenCalled();
+            });
+            it("removes the deleted attachment from the list", async () => {
+                spyOn(wrapper.vm, 'post').and.returnValue(Promise.resolve());
+                await wrapper.vm.deleteAttachment({name: firstAttachmentName});
+                expect(wrapper.vm.internalAttachments.length).toBe(2);
+            });
+            it("calls the rest handler", async () => {
+                let postForm;
+                let spy = spyOn(wrapper.vm, 'post').and.callFake((undefined, form) => {
+                    postForm = form;
+                    return Promise.resolve();
+                });
+                await wrapper.vm.deleteAttachment({name: firstAttachmentName});
+                expect(spy).toHaveBeenCalled();
+                expect(postForm.get('filename')).toBe(firstAttachmentName);
+                expect(postForm.get('webtopic')).toBe('TestWeb/TestTopic');
+            });
         });
     });
 });

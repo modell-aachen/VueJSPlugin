@@ -1,4 +1,7 @@
 {
+    "attachments_delete_delete": "Delete attachment",
+    "attachments_delete_keep": "Keep attachment",
+    "attachments_delete_title": "Do you want to permanently delete this attachment?",
     "collapsible_dad_item_drop_target": "move here",
     "common_cancel": "Cancel",
     "default_error_text": "Your request could not be processed because of an technical issue. Please try again.",

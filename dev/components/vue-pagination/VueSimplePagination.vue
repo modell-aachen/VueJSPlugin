@@ -5,7 +5,8 @@
                 <li :class="getClass('previous')">
                     <a
                         aria-label="Previous"
-                        @click="triggerPageChange(value-1)">
+                        href=""
+                        @click.prevent="triggerPageChange(value-1)">
                         {{ $t('paging_previous') }}
                     </a>
                 </li>
@@ -14,13 +15,15 @@
                     :key="page.number"
                     :class="getClass(page.number)"><a
                         v-if="page.number"
-                        @click="triggerPageChange(page.number)">
+                        href=""
+                        @click.prevent="triggerPageChange(page.number)">
                         {{ page.number }}</a><span v-if="pageNull(page)">...</span>
                 </li>
                 <li :class="getClass('next')">
                     <a
                         aria-label="Next"
-                        @click="triggerPageChange(value+1)">
+                        href=""
+                        @click.prevent="triggerPageChange(value+1)">
                         {{ $t('paging_next') }}
                     </a>
                 </li>

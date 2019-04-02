@@ -9,20 +9,29 @@ use Digest::MD5 qw(md5_hex);
 Container for Vue.JS
 =cut
 
+use Error ':try';
 
 use Foswiki::Func ();
 use Foswiki::Plugins ();
+use Foswiki::OopsException ();
 use Digest::MD5 qw(md5_hex);
 use JSON;
+use Encode;
 
 our $VERSION = '0.00_001';
 our $RELEASE = '0.1';
 our $SHORTDESCRIPTION = 'Plugin to load VueJS dependencies.';
-our $service;
 our $NO_PREFS_IN_TOPIC = 1;
+our $mutations;
+our $loaded;
+
+use constant {
+    STOREPLACEHOLDER => '{"placeholder":"VueJSPlugin::Store::Placeholder::78uilhayfegjlhzt3q"}',
+};
 
 sub initPlugin {
     my ($topic, $web) = @_;
+
     unless ( $Foswiki::cfg{Plugins}{JQueryPlugin}{Enabled} ) {
         Foswiki::Func::writeWarning(
             "VueJSPlugin is enabled but JQueryPlugin is not. Both must be installed and enabled for vue.js."
@@ -34,9 +43,13 @@ sub initPlugin {
         '<link rel="stylesheet" type="text/css" media="all" href="%PUBURLPATH%/%SYSTEMWEB%/VueJSPlugin/VueJSPlugin.min.css?version=%QUERYVERSION{"VueJSPlugin"}%" />');
 
     Foswiki::Func::registerTagHandler('GETVIRTUALWEB', \&tagGETVIRTUALWEB);
-    Foswiki::Func::registerTagHandler('VUE', \&loadDependencies);
+    Foswiki::Func::registerTagHandler('VUE', \&VUE);
     Foswiki::Func::registerTagHandler('VUETOOLTIP', \&renderTooltip);
     Foswiki::Func::registerTagHandler('VUEATTACHMENTS', \&tagVUEATTACHMENTS);
+
+    Foswiki::Func::registerRESTHandler(
+        'deleteFromBlock', \&_restDeleteFromBlock,
+        authenticate => 1, http_allow => 'POST', validate => 1 );
 
     if ($Foswiki::cfg{Plugins}{SolrPlugin}{Enabled}) {
         require Foswiki::Plugins::SolrPlugin;
@@ -45,6 +58,8 @@ sub initPlugin {
         );
     }
 
+    $mutations = {};
+    $loaded = 0;
     return 1;
 }
 
@@ -57,51 +72,128 @@ sub renderTooltip {
     );
     loadDependencies($session, \%vueVersion, $topic, $web, $topicObject);
     my $vueClientToken = getClientToken();
-    my $html = "<div class=\"vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-tooltip text=\"$params->{text}\"";
+    my $html = "<div class=\"vue-container\" data-vue-client-token=\"$vueClientToken\"><vue-explanation-tooltip text=\"$params->{text}\"";
     $html .= " icon=\"$params->{icon}\"" if $params->{icon};
     $html .= "/></div>";
     return $html;
 }
 
 sub loadDependencies {
+    my ( $session ) = @_;
 
-    my ( $session, $params, $topic, $web, $topicObject ) = @_;
+    if($loaded){
+        return;
+    }
     my $pluginURL = '%PUBURL%/%SYSTEMWEB%/VueJSPlugin';
-    my $dev = $Foswiki::cfg{Plugins}{VueJSPlugin}{UseSource} || 1;
-    my $suffix = $dev ? '' : '.min';
-    my $version = $params->{VERSION} || "1";
 
-    my $app = $params->{_DEFAULT} || "";
     my $vueScripts = "";
 
-    # Version 2 will become the new default. v1 is just there for compatibility.
-    if($version eq "2"){
-        $vueScripts = "<script type='text/javascript' src='$pluginURL/VueJSPlugin$suffix.js'></script>";
-    }
-    else {
-        $vueScripts = "<script type='text/javascript' src='$pluginURL/vue.v1$suffix.js'></script>"
-    }
+    $vueScripts = "<script type='text/javascript' src='$pluginURL/VueJSPlugin.js?version=$RELEASE'></script>";
+
+    my $storeScript = '<script class="$zone $id VueJSPluginStoreData" id="VueJSPluginStoreData" type="text/json">' . STOREPLACEHOLDER . '</script>';
+    Foswiki::Func::addToZone( "script", "VUEJSPLUGIN::STOREDATA", $storeScript );
 
     Foswiki::Plugins::JQueryPlugin::createPlugin('jqp::moment', $session);
-    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT');
+    Foswiki::Func::addToZone( 'script', 'VUEJSPLUGIN', $vueScripts, 'JQUERYPLUGIN::JQP::MOMENT,VUEJSPLUGIN::STOREDATA');
 
-    my $scripts = "";
-    my $return = "";
-    if($app){
-        $scripts = <<LOAD;
-<script type='text/javascript' src='$pluginURL/$app$suffix.js'></script>
-<link rel='stylesheet' type='text/css' href='$pluginURL/$app$suffix.css' />
-LOAD
-
-        my ($meta, $text) = Foswiki::Func::readTopic('System', $app .'VueTemplate');
-        $return .= _loadTemplate($text);
-        ($meta, $text) = Foswiki::Func::readTopic('System', 'VueJSTemplate');
-        $return .= _loadTemplate($text);
-    }
-
-    return $return . $scripts;
+    $loaded = 1;
 }
 
+sub VUE {
+    my ( $session, $params, $topic, $web, $topicObject ) = @_;
+
+    loadDependencies($session);
+
+    my $document = _collectDocumentData($session, $web, $topic);
+    pushToStore('Qwiki/Document/setDocument', $document);
+
+    my $qwikiVersion = Foswiki::Func::expandCommonVariables('%QUERYVERSION{"QwikiContrib"}%');
+    pushToStore('Qwiki/setVersion', $qwikiVersion);
+
+    my $repositoryString = $Foswiki::cfg{ExtensionsRepositories};
+    $repositoryString =~ /pub\/,(.*?),/;
+    my $customer = $1;
+    pushToStore('Qwiki/setCustomer', $customer);
+
+    pushToStore('Qwiki/setUserId', Foswiki::Func::getCanonicalUserID());
+
+    pushToStore('Qwiki/setEnvironment', $Foswiki::cfg{ModacHelpersPlugin}{Environment});
+
+    return "";
+}
+
+sub _collectDocumentData {
+    my ($session, $web, $topic) = @_;
+
+    my $wikiName = Foswiki::Func::getWikiName();
+    return '' unless Foswiki::Func::checkAccessPermission('VIEW', $wikiName, undef, $topic, $web);
+
+    my ($topicObject) = Foswiki::Func::readTopic($web, $topic);
+
+    my ($lastEditDate, $lastEditor, $revision) = $topicObject->getRevisionInfo();
+    my $firstMeta = Foswiki::Meta->load($session, $web, $topic, 1);
+    my ($creationDate, $creator) = $firstMeta->getRevisionInfo();
+    my %typeData;
+
+    return "" unless $topicObject->getFormName();
+
+    my $formName =  $topicObject->getFormName();
+    if($formName) {
+        my ($formWeb, $formTopic) = Foswiki::Func::normalizeWebTopicName($web, $formName);
+        if(Foswiki::Func::checkAccessPermission('VIEW', $wikiName, undef, $formTopic, $formWeb)) {
+            try {
+                my $form = Foswiki::Form->new($session, $formWeb, $formTopic);
+                my @metaFields = $topicObject->find('FIELD');
+                foreach my $field (@metaFields) {
+                    my $formField = $form->getField($field->{name});
+                    if($formField->{type} =~ m/user/) {
+                        my $users = _getUserObjectsByCuids($session, $field->{value});
+                        $typeData{$field->{name}} = $users;
+                    } else {
+                        $typeData{$field->{name}} = $field->{value};
+                    }
+                }
+            } catch Foswiki::OopsException with {
+                my $error = shift;
+                Foswiki::Func::writeWarning("Could not read form data: $error");
+            };
+        }
+    }
+
+    return {
+        web => $web,
+        topic => $topic,
+        creator => _getUserObjectsByCuids($session, $creator),
+        creationDate => $creationDate,
+        lastEditor => _getUserObjectsByCuids($session, $lastEditor),
+        lastEditDate => $lastEditDate,
+        revision => $revision,
+        text => '',
+        typeData => \%typeData,
+    };
+}
+
+sub _getUserObjectsByCuids {
+    my ($session, $userString) = @_;
+
+    return () unless $userString;
+    my @userCuids= split(/\s*,\s*/, $userString);
+    my @users;
+    foreach my $userId (@userCuids) {
+        push @users, {
+            displayName => _getUserDisplayName($session, $userId),
+            type => 'user',
+            guid => $userId,
+        };
+    }
+    return \@users;
+}
+
+sub _getUserDisplayName {
+    my ($session, $cuid) = @_;
+    my $mapper = $session->{users}->{mapping};
+    return $mapper->getDisplayName($cuid);
+}
 sub getClientToken {
     my $clientToken = md5_hex(rand);
     # render token directly instead of using afterCommonTagsHandler
@@ -110,16 +202,6 @@ sub getClientToken {
       "<script type=\"application/json\" class=\"vue-client-registrations\">{\"token\": \"$clientToken\"}</script>"
     );
     return $clientToken;
-}
-
-sub _loadTemplate {
-    my  ($text) = @_;
-    my @components = ( $text =~ /TMPL:DEF\{"([^"]+)"\}/g);
-    my $snippet;
-    foreach my $component (@components) {
-        $snippet .= "<script id='$component' type='x-template'>\n%TMPL:P{\"$component\"}%\n</script>\n";
-    }
-    return $snippet;
 }
 
 sub tagGETVIRTUALWEB {
@@ -195,6 +277,47 @@ sub tagVUEATTACHMENTS {
 sub beforeAttachHandler {
     my ($web, $topic, $attachmentName, $opts) = @_;
     return beforeUploadHandler($opts, $topic, $web);
+}
+
+sub _restDeleteFromBlock {
+    my ($session) = @_;
+
+    my $query = Foswiki::Func::getCgiQuery();
+
+    my ($web, $topic) = Foswiki::Func::normalizeWebTopicName(undef, $query->param('webtopic'));
+    my $filename = $query->param('filename');
+    my ($meta) = Foswiki::Func::readTopic($web, $topic);
+    my $attachment = $meta->get('FILEATTACHMENT', $filename);
+    unless($attachment) {
+        Foswiki::Func::writeWarning("Attachment not found: '$filename'\@'" . $query->param('webtopic') ."'");
+        throw Foswiki::OopsException(
+            "oopsgeneric",
+            web => $web,
+            topic => $topic,
+            def => 'TopicNotFound',
+            params => [],
+        );
+    }
+    $attachment->{block} = 'deleted';
+    $meta->put('FILEATTACHMENT', $attachment);
+    $meta->saveAs();
+}
+
+sub pushToStore {
+    my ($mutation, $payload) = @_;
+
+    my $namespace = $mutation =~ s#(.*)/.*#$1#r;
+    $mutations->{$namespace} ||= [];
+    push @{$mutations->{$namespace}}, {mutation => $mutation, payload => $payload};
+}
+
+sub completePageHandler {
+    return unless $mutations;
+    my $json = JSON::to_json( $mutations );
+    my $base64 = MIME::Base64::encode(encode('UTF-8', $json));
+
+    my $STOREPLACEHOLDER = STOREPLACEHOLDER;
+    $_[0] =~ s#$STOREPLACEHOLDER#$base64#g;
 }
 
 sub beforeUploadHandler {

@@ -13,9 +13,6 @@ module.exports = merge.smart(baseConfig, {
       vue: 'vue/dist/vue.js'
     }
   },
-  output: {
-    filename: 'VueJSPlugin.js',
-  },
   module: {
     rules: [
     ]
