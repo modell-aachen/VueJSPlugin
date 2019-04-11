@@ -45,7 +45,15 @@ export default {
             if(!topicTitle) {
                 return '';
             }
-            topicTitle = topicTitle.split(/^, /gm);
+
+            if(Array.isArray(topicTitle)) {
+                // ie. multi-select
+                for(let i = 1; i< topicTitle.length; i++) {
+                    url.unshift(url[0]);
+                }
+            } else {
+                topicTitle = topicTitle.split(/^, /gm);
+            }
 
             let result = new Array();
 
