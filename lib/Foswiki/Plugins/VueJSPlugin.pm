@@ -145,8 +145,9 @@ sub _collectDocumentData {
                 my $form = Foswiki::Form->new($session, $formWeb, $formTopic);
                 my @metaFields = $topicObject->find('FIELD');
                 foreach my $field (@metaFields) {
+                    next unless $field->{name} && defined $field->{value};
                     my $formField = $form->getField($field->{name});
-                    if($formField->{type} =~ m/user/) {
+                    if($formField && $formField->{type} && $formField->{type} =~ m/user/) {
                         my $users = _getUserObjectsByCuids($session, $field->{value});
                         $typeData{$field->{name}} = $users;
                     } else {
