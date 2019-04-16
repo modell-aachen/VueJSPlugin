@@ -18,10 +18,12 @@
                     <tbody>
                         <tr
                             v-for="(dataItem,index) in data"
-                            :key="index">
+                            :key="index"
+                            :data-test="'row' + index">
                             <td
                                 v-for="(column,index) in columns"
-                                :key="index">
+                                :key="index"
+                                :data-test="'column' + index">
                                 <slot
                                     :name="'column' + index"
                                     :item="dataItem" />
