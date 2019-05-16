@@ -187,6 +187,7 @@ export default {
 <style lang="scss">
 .vddl-list {
     min-height: 24px;
+    user-select: none;
 }
 .vddl-list, .vddl-draggable {
     position: relative;
