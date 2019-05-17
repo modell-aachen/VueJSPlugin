@@ -1,33 +1,43 @@
 module.exports = {
-    "moduleFileExtensions": [
-        "js",
-        "json",
-        "vue",
-        "ts"
+    moduleFileExtensions: [
+        'js',
+        'jsx',
+        'json',
+        'vue',
+        'ts',
+        'tsx',
     ],
-    "transform": {
-        ".*\\.(vue)$": "vue-jest",
-        "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-        "^.+\\.tsx?$": "ts-jest"
+    transform: {
+        '^.+\\.vue$': 'vue-jest',
+        '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+        '^.+\\.jsx?$': 'babel-jest',
+        '^.+\\.tsx?$': 'ts-jest',
     },
-    "moduleNameMapper": {
-        "\\.(css|less)$": "identity-obj-proxy",
-        "^vue$": "vue/dist/vue.js"
-    },
-    "testRegex": "Spec\\.js$",
-    "transformIgnorePatterns": [
-        "node_modules/(?!(vue-timers)/)"
+    transformIgnorePatterns: [
+        '/node_modules/(?!nprogress)',
     ],
-    "collectCoverageFrom": [
+    moduleNameMapper: {
+        '^@/(.*)$': '<rootDir>/dev/$1',
+    },
+    snapshotSerializers: [
+        'jest-serializer-vue',
+    ],
+    testMatch: [
+        '**/frontend-tests/**/*Spec.(js|jsx|ts|tsx)|**/__frontend-tests__/*.(js|jsx|ts|tsx)',
+    ],
+    testURL: 'http://localhost/',
+    coverageReporters: ["lcov", "text-summary"],
+    collectCoverageFrom: [
         "dev/**/*.{js,vue}",
         "!**/node_modules/**"
     ],
-    "coverageReporters": ["lcov", "text-summary"],
-    "globals": {
-        "ts-jest": {
-            "diagnostics": {
-                "ignoreCodes": [151001]
-            }
+    watchPlugins: [
+        'jest-watch-typeahead/filename',
+        'jest-watch-typeahead/testname',
+    ],
+    globals: {
+        'ts-jest': {
+            babelConfig: true,
         },
-    }
+    },
 };
