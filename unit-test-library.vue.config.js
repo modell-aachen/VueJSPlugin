@@ -28,6 +28,7 @@ module.exports = {
     },
     pages,
     chainWebpack: config => {
+        config.plugins.delete('hmr');
         for (const page in pages) {
             config.plugins.delete(`html-${page}`);
             config.plugins.delete(`preload-${page}`);
