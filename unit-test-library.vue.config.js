@@ -17,6 +17,9 @@ module.exports = {
             libraryTarget: 'umd',
             filename: '[name].js',
         },
+        module: {
+            noParse: [/vue-params|vue-i18next/],
+        },
     },
     css: {
         extract: {

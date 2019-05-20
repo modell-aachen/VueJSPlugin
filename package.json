@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "VueJSPlugin",
   "scripts": {
-    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --no-clean",
-    "build:unit-test-library": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/unit-test-library.vue.config.js vue-cli-service build",
+    "build:unit-test-library": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/unit-test-library.vue.config.js vue-cli-service build --mode development",
     "lint": "vue-cli-service lint dev frontend-tests",
     "test:unit": "vue-cli-service test:unit"
   },

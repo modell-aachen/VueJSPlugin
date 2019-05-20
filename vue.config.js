@@ -25,34 +25,46 @@ module.exports = {
         output: {
             filename: '[name].js',
         },
+        module: {
+            noParse: [/vue-params|vue-i18next/],
+        },
     },
     css: {
         extract: {
             filename: '[name].css',
         },
     },
+    runtimeCompiler: true,
     chainWebpack: config => {
         config.module
             .rule('fonts')
             .use('url-loader')
             .tap(options => {
-                options.fallback.options.name = 'fonts/[name].[ext]';
+                opensansDir = `fonts/opensans/`;
+                options.fallback.options = {
+                    name: '[name].[ext]',
+                    outputPath: `./${opensansDir}`,
+                    publicPath: `/${outputDir}/${opensansDir}`,
+                    useRelativePath: false,
+                };
                 return options;
             });
 
         config.module
             .rule('images')
-            .use('url-loader')
-            .tap(options => {
-                options.fallback.options.name = 'images/[name].[ext]';
-                return options;
-            });
+            .uses
+            .delete('url-loader');
 
         config.module
             .rule('images')
             .use('file-loader')
             .loader('file-loader')
-            .tap(options => ({ name: 'images/[name].[ext]' }))
+            .tap(() => ({
+                name: '[name].[ext]',
+                outputPath: `./images/`,
+                publicPath: `/${outputDir}/images/`,
+                useRelativePath: false,
+            }))
             .end();
 
         config.plugins.delete('hmr');

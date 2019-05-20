@@ -14,10 +14,10 @@ module.exports = {
         parser: '@typescript-eslint/parser',
     },
     rules: {
+        '@typescript-eslint/no-use-before-define': [0],
         'no-duplicate-imports': [2, { 'includeExports': true }],
         'brace-style': [1],
         'callback-return': [2, ['callback', 'cb', 'next', 'done', 'proceed']],
-        'camelcase': [1, { 'properties': 'always' }],
         'comma-dangle': ['warn', 'always-multiline'],
         'comma-style': [2, 'last'],
         'curly': [2],

@@ -18,26 +18,26 @@ pub/System/VueJSPlugin/VueJSPlugin.js.gz 0644
 pub/System/VueJSPlugin/VueJSPlugin.js.map 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.css 0644
 pub/System/VueJSPlugin/VueJSPlugin.min.css.gz 0644
-pub/System/VueJSPlugin/fonts/open-sans-latin-300.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-300.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-300italic.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-300italic.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-400.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-400.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-400italic.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-400italic.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-600.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-600.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-600italic.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-600italic.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-700.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-700.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-700italic.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-700italic.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-800.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-800.woff2
-pub/System/VueJSPlugin/fonts/open-sans-latin-800italic.woff
-pub/System/VueJSPlugin/fonts/open-sans-latin-800italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-300.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-300.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-300italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-300italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-400.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-400.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-400italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-400italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-600.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-600.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-600italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-600italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-700.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-700.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-700italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-700italic.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-800.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-800.woff2
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-800italic.woff
+pub/System/VueJSPlugin/fonts/opensans/open-sans-latin-800italic.woff2
 pub/System/VueJSPlugin/images/ajax-loader.gif
 pub/System/VueJSPlugin/images/border.png
 pub/System/VueJSPlugin/images/bullet.gif
