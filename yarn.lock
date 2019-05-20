@@ -821,7 +821,7 @@
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.9.tgz#a67287861c928ebf4159a908d1fb1a2a34d4097a"
   integrity sha512-p8zp5xqkly3g4cCmo2mKOHI9+Z/kObmDj0BmjbDDJQlgDTiEGTbm17MEwTAusV6XceCy+bNw9q/ZHXHyKo3zkg==
 
-"@typescript-eslint/eslint-plugin@^1.1.0":
+"@typescript-eslint/eslint-plugin@^1.1.0", "@typescript-eslint/eslint-plugin@^1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-1.9.0.tgz#29d73006811bf2563b88891ceeff1c5ea9c8d9c6"
   integrity sha512-FOgfBorxjlBGpDIw+0LaZIXRX6GEEUfzj8LXwaQIUCp+gDOvkI+1WgugJ7SmWiISqK9Vj5r8S7NDKO/LB+6X9A==
