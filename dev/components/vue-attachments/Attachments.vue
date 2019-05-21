@@ -236,9 +236,9 @@ export default {
             if(check && check[1].length) {
                 let name = check[1];
                 this.internalAttachments = this.internalAttachments.filter(attachment => attachment.name !== name);
-                /* eslint-disable camelcase */ // metadata is usually not camelcase in foswiki
+                /* eslint-disable @typescript-eslint/camelcase */ // metadata is usually not camelcase in foswiki
                 this.internalAttachments.push({name, presented_name: file.name});
-                /* eslint-enable camelcase */
+                /* eslint-enable @typescript-eslint/camelcase */
             }
         },
         uploadOnError(file, error) {

@@ -676,6 +676,21 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
+"@modac/eslint-config@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@modac/eslint-config/-/eslint-config-0.1.1.tgz#6ecb40e5c3bb64fa54d61507d6d34b6a3e91912a"
+  integrity sha512-NlEcRA8Ja1veqbbBCL/jT35otHPV8tC3HWH341svLeOAs+pwEej9DcfT+WMlxmu38fUS4+GPJn8Y4nh73o6b0w==
+
+"@modac/jest-config@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@modac/jest-config/-/jest-config-0.1.0.tgz#ac0d8ee2af91d17792ed9e8c36c261046897d724"
+  integrity sha512-70BNRYrj0sOvuv13DYIBbePneUbFCktZaD42rxZW2MbnlfyHugD9yLDDxZq+rC2dfc/dVpmPdfsK+w1S64iCrg==
+
+"@modac/tsconfig@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@modac/tsconfig/-/tsconfig-0.1.0.tgz#5640c98c27ba785fe910d1c6882d598dc68f286c"
+  integrity sha512-UaTrLLGY72GFALTyWvthCbzGJbGwDGJ7kxchOhbQzHpsXyNPm1kzkCRW0DwhaY1WPRYTaDxrWvHlQ4OhQQsJMg==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -714,6 +729,15 @@
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.2.0.tgz#4fde4b8b97aec3d6375d000f1151600c42cd2d72"
   integrity sha512-vMHDHmhKWGMsPqQUaN6f+9p4XuGrLBTB30dV8ZFOXkVbQOSG20rjI9nMaSoDkELCmFFCIu9cL+mvuxLcA7TRug==
+  dependencies:
+    "@sentry/types" "5.2.0"
+    "@sentry/utils" "5.2.0"
+    tslib "^1.9.3"
+
+"@sentry/integrations@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-5.2.0.tgz#752bab3e6f39e4f1c4c7dd46a674a32268af9607"
+  integrity sha512-wvGgOAGTcTbVY7DAHfnX3ZiBsfTtYriFCo6HlLM83UODXqnSb0GpYZSpZSBR/8x3gxI7zxj+BRAYSL3hTtSNJA==
   dependencies:
     "@sentry/types" "5.2.0"
     "@sentry/utils" "5.2.0"

@@ -30,6 +30,9 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@modac/eslint-config": "^0.1.1",
+    "@modac/jest-config": "^0.1.0",
+    "@modac/tsconfig": "^0.1.0",
     "@types/jest": "^23.1.4",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
