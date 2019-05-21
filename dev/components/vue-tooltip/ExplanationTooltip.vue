@@ -10,7 +10,7 @@
             <i
                 :class="icon"
                 class="tooltip-icon fa-fw"
-                aria-hidden="true"/>
+                aria-hidden="true" />
             <template slot="popover">
                 {{ text }}
             </template>
@@ -23,15 +23,15 @@ export default {
     props: {
         'text': {
             type: String,
-            default: ''
+            default: '',
         },
         'icon':{
             type: [String, Array],
-            default: 'far fa-question-circle'
+            default: 'far fa-question-circle',
         },
         'placement':{
             type: String,
-            default: 'right'
+            default: 'right',
         },
     },
 };

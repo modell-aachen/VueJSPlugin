@@ -4,14 +4,14 @@
             <button
                 class="sidebar-tab-button close"
                 @click.prevent="hideModal">
-                <i class="fa fa-2x fa-times"/>
+                <i class="fa fa-2x fa-times" />
             </button>
         </div>
         <div class="modal-content">
             <component
                 :is="type"
                 :config="contentConfig"
-                @hide-modal="hideModal"/>
+                @hide-modal="hideModal" />
         </div>
     </div>
 </template>
@@ -21,23 +21,23 @@ import ConfirmModal from './ConfirmModal';
 export default {
     name: 'SidebarModal',
     components: {
-        ConfirmModal
+        ConfirmModal,
     },
     props: {
         type: {
             type: String,
-            default: ''
+            default: '',
         },
         contentConfig: {
             type: Object,
-            default: undefined
-        }
+            default: undefined,
+        },
     },
     methods: {
         hideModal() {
             this.$emit("hide-modal");
-        }
-    }
+        },
+    },
 };
 </script>
 

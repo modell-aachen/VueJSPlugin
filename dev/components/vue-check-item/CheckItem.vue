@@ -31,7 +31,7 @@
                     <component
                         :is="$slots.description !== undefined || description !== undefined ? 'b' : 'span'"
                         class="cell auto">
-                        <slot/>
+                        <slot />
                     </component>
                     <div
                         v-if="badge"
@@ -49,9 +49,9 @@
                     </template>
                     <slot
                         v-if="$slots.description"
-                        name="description"/>
+                        name="description" />
                 </span>
-            </label><slot v-if="isSwitch"/><br>
+            </label><slot v-if="isSwitch" /><br>
         </div>
     </div>
 </template>
@@ -60,7 +60,7 @@
 export default {
     model: {
         prop: 'modelValue',
-        event: 'input'
+        event: 'input',
     },
     props: {
         id: {
@@ -75,15 +75,15 @@ export default {
         },
         label: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         labelDummy: { // reserve space for the label, even if we have none
             type: Boolean,
-            default: false
+            default: false,
         },
         isSmall: {
             type: Boolean,
-            default: false
+            default: false,
         },
         value: {
             type: String,
@@ -107,7 +107,7 @@ export default {
         },
         type:{
             type: String,
-            default: 'checkbox'
+            default: 'checkbox',
         },
         description: {
             type: String,
@@ -131,14 +131,14 @@ export default {
             } else {
                 return !!this.modelValue;
             }
-        }
+        },
     },
     watch: {
         checked(newValue) {
             if (newValue !== this.state) {
                 this.toggle();
             }
-        }
+        },
     },
     mounted() {
         if (this.checked && !this.state) {
@@ -166,7 +166,7 @@ export default {
                 }
             }
             this.$emit('input', value);
-        }
+        },
     },
 };
 </script>

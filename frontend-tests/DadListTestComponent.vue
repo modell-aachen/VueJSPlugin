@@ -14,7 +14,7 @@
             :set-last-opened-id="props.setLastOpenedId"
             :set-drag-status="props.setDragStatus"
             :remove-options="{ name: 'Löschen', onRemove: onRemoveItem }"
-            @dropped-item="addItemFromDummyList"/>
+            @dropped-item="addItemFromDummyList" />
     </vue-dad-list>
 </template>
 
@@ -36,22 +36,22 @@ export default {
                             {
                                 id: 1,
                                 label: "SubItem 1",
-                                type: "status"
+                                type: "status",
                             },
                             {
                                 id: 2,
                                 label: "SubItem 2",
-                                type: "status"
-                            }
+                                type: "status",
+                            },
                         ],
                         [
                             {
                                 id: 11,
                                 label: "SubItem B",
-                                type: "status"
-                            }
-                        ]
-                    ]
+                                type: "status",
+                            },
+                        ],
+                    ],
                 },
                 {
                     id: 2,
@@ -63,18 +63,18 @@ export default {
                             {
                                 id: 101,
                                 label: "SubItem 1",
-                                type: "status"
+                                type: "status",
                             },
                             {
                                 id: 102,
                                 label: "SubItem 2",
-                                type: "status"
-                            }
+                                type: "status",
+                            },
                         ],
-                        []
-                    ]
-                }
-            ]
+                        [],
+                    ],
+                },
+            ],
         };
     },
     methods: {
@@ -85,12 +85,12 @@ export default {
             this.list.push({
                 id: Vue.getUniqueId(),
                 label: "New Item A1",
-                type: "metadataBlock"
+                type: "metadataBlock",
             });
         },
         onRemoveItem: function(item, index) {
             this.list.splice(index, 1);
-        }
+        },
     },
 };
 </script>

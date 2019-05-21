@@ -8,8 +8,8 @@
             <slot name="labelTooltip" />
         </label>
         <input
-            v-validate="validate"
             v-if="name.length"
+            v-validate="validate"
             :name="name"
             :value="stringifiedValue"
             type="hidden">
@@ -33,8 +33,8 @@
 
                     <span
                         v-for="(option,index) in internalValue"
-                        :class="{multi: multiple, badge: multiple}"
                         :key="index"
+                        :class="{multi: multiple, badge: multiple}"
                         class="selected-tag">
                         <template v-if="!multiple && !open">
                             <span
@@ -49,7 +49,7 @@
                             <i
                                 class="far fa-times close-icon"
                                 aria-hidden="true"
-                                @mousedown.stop="deselect(option)"/>
+                                @mousedown.stop="deselect(option)" />
                         </a>
                     </span>
                     <span class="form-control__wrapper">
@@ -82,7 +82,7 @@
                     style="min-width: 30px; max-width:30px; align-self: center; text-align:right;">
                     <i
                         class="select-arrow fa fa-caret-down"
-                        aria-hidden="true"/>
+                        aria-hidden="true" />
                 </div>
             </div>
         </div>
@@ -134,11 +134,11 @@
                         </a>
                     </li>
                 </ul>
-                <vue-spinner v-if="isLoading"/>
+                <vue-spinner v-if="isLoading" />
             </v-infinite-scroll>
         </div>
-        <template v-if="hasError" >
-            <small class="ma-failure" >{{ definedErrorMessage }}</small>
+        <template v-if="hasError">
+            <small class="ma-failure">{{ definedErrorMessage }}</small>
         </template>
         <small
             v-if="sublabel || this.$slots.sublabel"
@@ -148,7 +148,6 @@
             </slot>
         </small>
     </div>
-
 </template>
 
 
@@ -179,7 +178,7 @@ export default {
         },
         label: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         /**
      * If set, this component will create an input element with this name and
@@ -196,7 +195,7 @@ export default {
      */
         maxHeight: {
             type: String,
-            default: '40vh'
+            default: '40vh',
         },
 
         /**
@@ -204,7 +203,7 @@ export default {
      */
         multiple: {
             type: Boolean,
-            default: false
+            default: false,
         },
 
         /**
@@ -212,7 +211,7 @@ export default {
      */
         placeholder: {
             type: String,
-            default: ''
+            default: '',
         },
 
         /**
@@ -221,7 +220,7 @@ export default {
      */
         transition: {
             type: String,
-            default: 'expand'
+            default: 'expand',
         },
 
         /**
@@ -229,7 +228,7 @@ export default {
      */
         clearSearchOnSelect: {
             type: Boolean,
-            default: true
+            default: true,
         },
 
         /**
@@ -255,7 +254,7 @@ export default {
      */
         optionLabel: {
             type: String,
-            default: 'label'
+            default: 'label',
         },
 
         /**
@@ -272,7 +271,7 @@ export default {
                     }
                 }
                 return option;
-            }
+            },
         },
 
         /**
@@ -282,7 +281,7 @@ export default {
      */
         onChange: {
             type: Function,
-            default: null
+            default: null,
         },
 
         /**
@@ -290,7 +289,7 @@ export default {
      */
         resetOnOptionsChange: {
             type: Boolean,
-            default: false
+            default: false,
         },
 
         dataLimit: {
@@ -326,7 +325,7 @@ export default {
         */
         validate: {
             type: String,
-            default: ''
+            default: '',
         },
         /**
         * Set validation error message
@@ -367,7 +366,7 @@ export default {
             },
             set(internalValue){
                 this.$emit('input', internalValue);
-            }
+            },
         },
         hideOptions() {
             return true;
@@ -383,7 +382,7 @@ export default {
         },
         getClasses() {
             return {
-                ['width-'+this.widthClass]: this.widthClass
+                ['width-'+this.widthClass]: this.widthClass,
             };
         },
         getToggleClasses() {
@@ -391,7 +390,7 @@ export default {
                 'open': this.open,
                 'loading': this.loading,
                 'multi': this.multiple,
-                'ma-failure': this.hasError
+                'ma-failure': this.hasError,
             };
         },
 
@@ -401,9 +400,7 @@ export default {
      * @return {String} Placeholder text
      */
         searchPlaceholder() {
-            if (this.placeholder) {
-                return this.placeholder;
-            }
+            return this.placeholder;
         },
 
 

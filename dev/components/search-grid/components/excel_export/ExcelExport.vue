@@ -9,7 +9,7 @@
         </a>
         <i
             v-show="loading"
-            class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"/>
+            class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" />
     </div>
 </template>
 
@@ -23,12 +23,12 @@ export default {
     props: {
         fields: {
             type: Array,
-            default: () => []
-        }
+            default: () => [],
+        },
     },
     data() {
         return {
-            loading: false
+            loading: false,
         };
     },
     computed: {
@@ -42,7 +42,7 @@ export default {
             return  this.fields.filter((field) => {
                 return FieldRenderer.supportsFieldRendering(field.component);
             });
-        }
+        },
     },
     methods: {
         getEntriesToExport() {
@@ -57,7 +57,7 @@ export default {
                     url: this.$foswiki.getScriptUrl('rest', 'SearchGridPlugin', 'searchproxy'),
                     traditional: true,
                     data: params,
-                    dataType: 'json'
+                    dataType: 'json',
                 })
                     .done((result) => {
                         return resolve(result.response.docs);
@@ -92,14 +92,14 @@ export default {
                     web: this.$foswiki.preferences.WEB,
                     topic: this.$foswiki.preferences.TOPIC,
                     header: this.fieldsToExport.length,
-                    data: data
+                    data: data,
                 };
 
                 return this.$ajax({
                     type: "POST",
                     url: this.$foswiki.getScriptUrl('restauth', 'ExportExcelPlugin', 'export'),
                     traditional: true,
-                    data: {payload: JSON.stringify(exportRequestData)}
+                    data: {payload: JSON.stringify(exportRequestData)},
                 })
                     .done((downloadUrl) => {
                         resolve(downloadUrl);
@@ -127,8 +127,8 @@ export default {
         },
         downloadExcelFile(downloadUrl) {
             window.location.href = downloadUrl;
-        }
-    }
+        },
+    },
 };
 </script>
 

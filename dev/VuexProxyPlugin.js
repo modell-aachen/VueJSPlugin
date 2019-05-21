@@ -11,5 +11,5 @@ export default {
     },
     register(callback) {
         callbacks.push(callback);
-    }
+    },
 };

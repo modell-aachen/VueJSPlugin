@@ -39,23 +39,23 @@ describe("The table component", () => {
             propsData: {
                 columns: [{
                     headerText: "First name",
-                    enableSort: true
+                    enableSort: true,
                 }, {
                     headerText: "Last name",
-                    enableSort: false
+                    enableSort: false,
                 }],
                 data: [{
                     firstName: "John",
-                    lastName: "Johnson"
+                    lastName: "Johnson",
                 },{
                     firstName: "Lisa",
-                    lastName: "Lisason"
-                }]
+                    lastName: "Lisason",
+                }],
             },
             scopedSlots: {
                 "column0": "<div class='test-column'>{{props.item.firstName}}</div>",
-                "column1": "<div clasS='test-column'>{{props.item.lastName}}</div>"
-            }
+                "column1": "<div clasS='test-column'>{{props.item.lastName}}</div>",
+            },
         });
     });
 
@@ -73,35 +73,35 @@ describe("The table component", () => {
 
         expect(getLastSortChangedEvent()).toEqual({
             sortedColumnIndex: 0,
-            sortOrder: "asc"
+            sortOrder: "asc",
         });
     }));
 
     it("sends a descending sort event when an ascending sorted header is clicked", TestCase.wrapAsync(async () => {
         table.setProps({
             sortedColumnIndex: 0,
-            sortOrder: 'asc'
+            sortOrder: 'asc',
         });
 
         await clickOnTableHeader(0);
 
         expect(getLastSortChangedEvent()).toEqual({
             sortedColumnIndex: 0,
-            sortOrder: "desc"
+            sortOrder: "desc",
         });
     }));
 
     it("sends an ascending sort event when a descending sorted header is clicked", TestCase.wrapAsync(async () => {
         table.setProps({
             sortedColumnIndex: 0,
-            sortOrder: 'desc'
+            sortOrder: 'desc',
         });
 
         await clickOnTableHeader(0);
 
         expect(getLastSortChangedEvent()).toEqual({
             sortedColumnIndex: 0,
-            sortOrder: "asc"
+            sortOrder: "asc",
         });
     }));
 
@@ -114,11 +114,11 @@ describe("The table component", () => {
     it("shows the defined column slots", TestCase.wrapAsync(async () => {
         const actualTableValues = [
             getColumnTextsForRow(0),
-            getColumnTextsForRow(1)
+            getColumnTextsForRow(1),
         ];
         const expectedTableValues = [
             ["John", "Johnson"],
-            ["Lisa", "Lisason"]
+            ["Lisa", "Lisason"],
         ];
         expect(actualTableValues).toEqual(expectedTableValues);
     }));

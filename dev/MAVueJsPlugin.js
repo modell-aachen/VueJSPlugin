@@ -94,7 +94,7 @@ class MAVueJsPlugin {
         Vue.use(VueClipboard);
         const veeValidateConfig = {
             errorBagName: 'validationErrors',
-            fieldsBagName: 'validationFields'
+            fieldsBagName: 'validationFields',
         };
         Vue.use(VeeValidate, veeValidateConfig);
         Vue.use(new this.alertPlugin);
@@ -150,7 +150,7 @@ class MAVueJsPlugin {
                     }
                 };
                 window.addEventListener('scroll', f);
-            }
+            },
         });
 
         //Global functions
@@ -290,12 +290,12 @@ class MAVueJsPlugin {
         Vue.addTranslation('en', 'VueJSPlugin', translationsEn);
         Vue.addTranslation('de', 'VueJSPlugin', translationsDe);
         Validator.localize('de', {
-            messages: VeeValidateTranslationDe.messages
+            messages: VeeValidateTranslationDe.messages,
         });
         Validator.localize(language);
 
         Vue.SearchGrid = {
-            StandardFields: SearchGridStandardFields
+            StandardFields: SearchGridStandardFields,
         };
 
         searchGridInit(Vue);

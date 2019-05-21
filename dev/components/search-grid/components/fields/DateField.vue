@@ -19,7 +19,7 @@ export default {
                 return this.$moment(date, this.$moment.ISO_8601).fromNow(true);
             }
             return this.$moment(date, this.$moment.ISO_8601).toDate().toLocaleDateString();
-        }
-    }
+        },
+    },
 };
 </script>

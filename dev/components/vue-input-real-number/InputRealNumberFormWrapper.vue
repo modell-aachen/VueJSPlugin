@@ -13,7 +13,7 @@
             :show-error="showError"
             :error-message="errorMessage"
             :extra-classes="{foswikiInputField: true, foswikiMandatory: isMandatory}"
-            @input="input"/>
+            @input="input" />
 
         <input
             :name="name"

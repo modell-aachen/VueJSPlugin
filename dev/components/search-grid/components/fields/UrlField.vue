@@ -24,7 +24,7 @@ export default {
         },
         openInNewTab(){
             return this.params[2];
-        }
+        },
     },
     methods: {
         splitList: function(){
@@ -63,7 +63,7 @@ export default {
 
             return result;
 
-        }
-    }
+        },
+    },
 };
 </script>

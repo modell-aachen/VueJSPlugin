@@ -120,7 +120,7 @@ describe("The Real Number Input component", () => {
         const options = {
             propsData: {
                 name: 'test-input',
-            }
+            },
         };
         beforeEach(() => {
             wrapper = createInput(options);

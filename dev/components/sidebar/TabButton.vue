@@ -6,7 +6,7 @@
         @click.prevent="click">
         <i
             :class="icon"
-            class="far fa-2x"/>
+            class="far fa-2x" />
     </button>
 </template>
 
@@ -16,31 +16,31 @@ export default {
     props: {
         icon: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         tooltip: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         type: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         isActive: {
             type: Boolean,
-            default: false
-        }
+            default: false,
+        },
     },
     computed: {
         isCloseButton: function() {
             return this.type === 'close';
-        }
+        },
     },
     methods: {
         click: function() {
             this.$emit('click');
-        }
-    }
+        },
+    },
 };
 </script>
 

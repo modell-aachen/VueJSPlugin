@@ -40,7 +40,7 @@ describe("The Input components", () => {
                         icon: ['fas','fa-paperclip'],
                         isSmall: true,
                         isDisabled: true,
-                    }
+                    },
                 };
                 const wrapper = createInput(options);
                 it("label", () => {
@@ -67,8 +67,8 @@ describe("The Input components", () => {
                 const options = {
                     propsData: {
                         name: 'test-input',
-                        validate: 'email'
-                    }
+                        validate: 'email',
+                    },
                 };
                 const wrapper = createInput(options);
                 it("every time data changes", () => {

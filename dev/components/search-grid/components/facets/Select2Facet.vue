@@ -3,9 +3,9 @@
         <label class="input-label">{{ header }}</label>
         <div class="facet-select2">
             <vue-select
+                v-model="selectedFacet"
                 :placeholder="$t('search_term')"
                 :sort-slot-options="false"
-                v-model="selectedFacet"
                 :initial-options="options"
                 :on-search="onSearchDebounce"
                 :get-option-label="getOptionLabel"
@@ -14,7 +14,9 @@
                 :on-get-more-options="onGetMoreOptions"
                 multiple
                 is-small>
-                <template slot="more-results">{{ $t('show_more_results') }}</template>
+                <template slot="more-results">
+                    {{ $t('show_more_results') }}
+                </template>
             </vue-select>
         </div>
     </div>
@@ -41,13 +43,13 @@ export default {
         },
         onSearchDebounce(){
             return debounce(this.onSearch, 300);
-        }
+        },
     },
     watch: {
         facetCharacteristics() {
             this.moreResultsText = ShowMoreResultsString;
             this.buildOptions(this.facetCharacteristics);
-        }
+        },
     },
     created: function () {
         this.$on('reset', function () {
@@ -96,7 +98,7 @@ export default {
                                 title: facet.title,
                                 value: facet.field,
                                 field: facet.field, // required for sorting / finding out if there is a none option
-                                count: facet.count
+                                count: facet.count,
                             });
                         }
                     }
@@ -105,7 +107,7 @@ export default {
                         label: this.getLabel(facet.title, facet.count),
                         title: facet.title,
                         value: facet.field,
-                        count: facet.count
+                        count: facet.count,
                     });
                 }
             }
@@ -131,7 +133,7 @@ export default {
             } else {
                 this.moreResultsText = NoMoreResultsString;
             }
-        }
+        },
     },
 };
 </script>

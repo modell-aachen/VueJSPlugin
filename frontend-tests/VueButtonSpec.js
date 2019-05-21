@@ -18,8 +18,8 @@ describe("The Button component", () => {
                 type: 'primary',
                 color: 'ma-warning-color',
                 icon: ['fas','fa-paperclip'],
-                isDisabled: true
-            }
+                isDisabled: true,
+            },
         };
         const wrapper = mount(Button, options);
         it("title", () => {
@@ -67,7 +67,7 @@ describe("The Button component", () => {
             propsData: {
                 title: 'TEST',
                 type: 'primary',
-            }
+            },
         };
 
         it("for alignment default/none", () => {

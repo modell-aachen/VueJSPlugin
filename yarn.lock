@@ -677,9 +677,9 @@
     postcss "^7.0.0"
 
 "@modac/eslint-config@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@modac/eslint-config/-/eslint-config-0.1.1.tgz#6ecb40e5c3bb64fa54d61507d6d34b6a3e91912a"
-  integrity sha512-NlEcRA8Ja1veqbbBCL/jT35otHPV8tC3HWH341svLeOAs+pwEej9DcfT+WMlxmu38fUS4+GPJn8Y4nh73o6b0w==
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@modac/eslint-config/-/eslint-config-0.1.2.tgz#659919654ca60fbca72215e81754b01398ccb623"
+  integrity sha512-bG6uFZ1hZapHxWnO6ojZ3MtyLCppMn5uMG1Jp06bHi8h0akFyg3xD73qKEcyb2o9WwhtE6atVsZ7JBAG9331ZA==
 
 "@modac/jest-config@^0.1.0":
   version "0.1.0"

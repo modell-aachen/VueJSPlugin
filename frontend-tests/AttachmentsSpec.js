@@ -40,7 +40,7 @@ describe("The Attachment component's", () => {
             block: 'TestBlock',
             attachments: exampleAttachments,
             attachmentNameFilter: '[()]',
-        }
+        },
     };
     const optionsClone = () => JSON.parse(JSON.stringify(options));
     beforeEach(() => {

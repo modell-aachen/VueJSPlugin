@@ -67,7 +67,7 @@ export default {
         },
         hideOptions() {
             return this.numberOfActivatedSources <= 1;
-        }
+        },
     },
     methods: {
         getFilterOptions() {
@@ -161,7 +161,7 @@ export default {
             return this.$http.get(
                 this.$foswiki.getScriptUrl('rest', 'RenderPlugin', 'tag'),
                 {
-                    params
+                    params,
                 }
             ).then(res => {
                 return res.json(); // for some reason jsonp did not work

@@ -6,7 +6,7 @@
         {{ column.headerText }}
         <i
             :class="'fa fa-' + sortingIconClass"
-            aria-hidden="true"/>
+            aria-hidden="true" />
     </th>
     <th
         v-else
@@ -23,20 +23,20 @@ export default Vue.extend({
     props: {
         column: {
             type: Object,
-            required: true
+            required: true,
         },
         columnIndex: {
             type: Number,
-            required: true
+            required: true,
         },
         sortedColumnIndex: {
             type: Number,
-            required: true
+            required: true,
         },
         sortOrder: {
             type: String,
-            required: true
-        }
+            required: true,
+        },
     },
     computed: {
         isSorted() {
@@ -49,11 +49,13 @@ export default Vue.extend({
                         return "caret-up";
                     case SortOrder.DESC:
                         return "caret-down";
+                    default:
+                        return 'sort';
                 }
             } else {
                 return 'sort';
             }
-        }
+        },
     },
     methods: {
         toggleSort() {
@@ -73,10 +75,10 @@ export default Vue.extend({
 
             this.$emit("sort-changed", {
                 sortedColumnIndex: this.columnIndex,
-                sortOrder: newSortOrder
+                sortOrder: newSortOrder,
             });
-        }
-    }
+        },
+    },
 });
 </script>
 

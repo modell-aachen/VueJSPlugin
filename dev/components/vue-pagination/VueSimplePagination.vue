@@ -13,7 +13,8 @@
                 <li
                     v-for="page in pages"
                     :key="page.number"
-                    :class="getClass(page.number)"><a
+                    :class="getClass(page.number)">
+                    <a
                         v-if="page.number"
                         href=""
                         @click.prevent="triggerPageChange(page.number)">
@@ -38,35 +39,35 @@ export default {
     props: {
         value: {
             required: true,
-            type: Number
+            type: Number,
         },
         pageCount: {
             required: true,
-            type: Number
+            type: Number,
         },
         ulClass: {
             type: [String, Object],
-            default: 'pagination'
+            default: 'pagination',
         },
         pageLimit: {
             default: 7,
             type: Number,
             validator: function(limit) {
                 return limit === 7 || limit === 15;
-            }
+            },
         },
     },
 
     data: function () {
         return {
-            pages: []
+            pages: [],
         };
     },
 
     computed: {
         moreThanOnePage() {
             return this.pageCount > 1;
-        }
+        },
     },
 
     watch: {
@@ -75,7 +76,7 @@ export default {
         },
         pageCount(){
             this.buildPageList();
-        }
+        },
     },
 
     mounted() {
@@ -91,25 +92,25 @@ export default {
                 if (this.value >= offset &&  this.value < this.pageCount - offset + 2) {
                     this.makePagesRange(1, 1);
                     this.pages.push({
-                        number: null
+                        number: null,
                     });
                     this.makePagesRange(this.value - spacing, this.value + spacing);
                     this.pages.push({
-                        number: null
+                        number: null,
                     });
                     this.makePagesRange(this.pageCount, this.pageCount);
 
                 } else if (this.value < this.pageLimit -1) {
                     this.makePagesRange(1, offset - 1);
                     this.pages.push({
-                        number: null
+                        number: null,
                     });
                     this.makePagesRange(this.pageCount, this.pageCount);
 
                 } else if (this.value >= this.pageCount - offset + 2) {
                     this.makePagesRange(1, 1);
                     this.pages.push({
-                        number: null
+                        number: null,
                     });
                     this.makePagesRange(this.pageCount - offset + 2, this.pageCount);
 
@@ -122,7 +123,7 @@ export default {
         makePagesRange(x,y) {
             for (let i=x;i<=y;i++){
                 this.pages.push({
-                    number: i
+                    number: i,
                 });
             }
         },
@@ -152,7 +153,7 @@ export default {
             if (this.value !== newPage) {
                 this.$emit('input', newPage);
             }
-        }
-    }
+        },
+    },
 };
 </script>

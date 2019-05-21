@@ -1,11 +1,11 @@
 let foswiki = {
     preferences: {
-        SCRIPTURL: "rest"
+        SCRIPTURL: "rest",
     },
     jsi18n: {
         get(module, text){
             return "MT:" + text;
-        }
+        },
     },
     getPreference(preference) {
         return `Value of ${preference}`;
@@ -18,7 +18,7 @@ let foswiki = {
     },
     getScriptUrlPath: function(scriptName) {
         return "http://wiki.de/bin/"+scriptName;
-    }
+    },
 };
 
 export default foswiki;

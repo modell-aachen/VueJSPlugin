@@ -6,7 +6,7 @@
                     :src="doc['icon']"
                     class="solrHitIcon"
                     height="16"
-                    width="16" >
+                    width="16">
                 <a :href="doc['url']">{{ doc["title"] }}</a>
                 <span class="foswikiGrayText foswikiSmallish solrContainerLink"> {{ sIn }} <a :href="doc['container_url']">{{ doc["web"] }}</a>
                     <em
@@ -18,8 +18,12 @@
                         :title="fieldLanguage"
                         class="modacFlag"></span>
             </h3>
-            <div class="solrHilite">{{ doc["text"] }}</div>
-            <div class="solrRevisoin">{{ date }}, {{ doc["author_s"] }}</div>
+            <div class="solrHilite">
+                {{ doc["text"] }}
+            </div>
+            <div class="solrRevisoin">
+                {{ date }}, {{ doc["author_s"] }}
+            </div>
         </div>
     </div>
 </template>
@@ -31,7 +35,7 @@ export default {
     mixins: [FieldMixin],
     data: function () {
         return {
-            sIn: this.$foswiki.jsi18n.get('SearchGrid', 'in')
+            sIn: this.$foswiki.jsi18n.get('SearchGrid', 'in'),
         };
     },
     computed: {
@@ -44,7 +48,7 @@ export default {
         },
         date: function(){
             return this.$moment(this.doc['date']);
-        }
-    }
+        },
+    },
 };
 </script>

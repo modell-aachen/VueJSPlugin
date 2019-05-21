@@ -10,8 +10,8 @@
         @page-changed="onPageChanged">
         <template
             v-for="(field,index) in filteredFields"
-            slot-scope="{item}"
-            :slot="'column' + index">
+            :slot="'column' + index"
+            slot-scope="{item}">
             <component
                 :is="field.component"
                 :key="index"
@@ -34,21 +34,21 @@ export default {
     props: {
         results: {
             type: Array,
-            required: true
+            required: true,
         },
         filteredFields: {
             type: Array,
-            required: true
+            required: true,
         },
         api: {
             type: Object,
-            required: true
-        }
+            required: true,
+        },
     },
     data() {
         return {
             pageCount: 1,
-            currentPage: 1
+            currentPage: 1,
         };
     },
     computed: {
@@ -56,7 +56,7 @@ export default {
             return this.filteredFields.map((field) => {
                 return {
                     headerText: field.title,
-                    enableSort: field.sortField !== 'none'
+                    enableSort: field.sortField !== 'none',
                 };
             });
         },
@@ -76,7 +76,7 @@ export default {
             }
             let sortCrits = this.gridState.sortCrits[0];
             return sortCrits.order;
-        }
+        },
     },
     methods: {
         onSortChanged({sortedColumnIndex, sortOrder}) {
@@ -85,7 +85,7 @@ export default {
         },
         onPageChanged() {
 
-        }
-    }
+        },
+    },
 };
 </script>

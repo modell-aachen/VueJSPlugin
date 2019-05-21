@@ -53,7 +53,7 @@ describe("Alert Plugin", () => {
 
         const areConfirmed = [
             await showAlert({ type: "info" }),
-            await showAlert({ type: "error" })
+            await showAlert({ type: "error" }),
         ];
 
         expect(areConfirmed).toEqual([true, false]);
