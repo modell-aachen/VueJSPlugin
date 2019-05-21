@@ -23,11 +23,12 @@ div(
             :placeholder="placeholder"
             :class="inputClasses"
             :disabled="isDisabled"
+            :readOnly="isReadonly"
             :maxlength="maxLength"
             :name="name"
             @blur="$emit('blur')"
             data-test="inputElement"
-            type="text"
+            :type="inputType"
         )&attributes(inputExtraAttributes)
 
         template(v-if="hasError")

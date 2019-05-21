@@ -57,6 +57,7 @@ import VueTable from './components/vue-table/Table.vue';
 import {searchGridInit, Grid} from './components/search-grid/index.js';
 import SearchGridStandardFields from './components/search-grid/components/StandardFields.js';
 import VueClipboard from 'vue-clipboard2';
+import VueDatepicker from './components/vue-datepicker/datepicker';
 import { module as DocumentStore } from './document-store';
 import { module as QwikiStore} from './qwiki-store';
 
@@ -138,6 +139,7 @@ class MAVueJsPlugin {
         Vue.component('vue-table', VueTable);
         Vue.component('search-grid', Grid);
         Vue.component('v-popover', VPopover);
+        Vue.component('vue-datepicker', VueDatepicker);
 
         Vue.directive('tooltip', this.tooltip);
         Vue.directive('click-outside', VueClickOutside.directive);

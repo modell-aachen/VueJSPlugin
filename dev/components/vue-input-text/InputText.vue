@@ -33,6 +33,14 @@ export default {
             type: Boolean,
             default: false
         },
+        'isPassword': {
+            type: Boolean,
+            default: false,
+        },
+        'isReadonly': {
+            type: Boolean,
+            default: false,
+        },
         'value':{
             type: String,
             default: ''
@@ -80,6 +88,9 @@ export default {
                 },
                 this.extraClasses,
             );
+        },
+        inputType() {
+            return this.isPassword ? 'password' : 'text';
         },
     },
     watch: {
