@@ -7,8 +7,10 @@
                     v-show="value.count > 0 || isSelected(value)"
                     :key="index">
                     <vue-check-item
-                        :value="value.field"
-                        v-model="selectedCheckboxes">{{ getLabel(value.title, value.count) }}</vue-check-item>
+                        v-model="selectedCheckboxes"
+                        :value="value.field">
+                        {{ getLabel(value.title, value.count) }}
+                    </vue-check-item>
                 </li>
             </template>
         </ul>
@@ -22,7 +24,7 @@ export default {
     data: function(){
         return {
             selectedCheckboxes: this.params.length > 3 ? this.params[3].split(";") : [],
-            facetMap: {}
+            facetMap: {},
         };
     },
     watch: {
@@ -31,7 +33,7 @@ export default {
         },
         facetCharacteristics(){
             this.updateFacetMap();
-        }
+        },
     },
     created: function () {
         this.updateFacetMap();
@@ -68,7 +70,7 @@ export default {
         },
         reset() {
             this.selectedCheckboxes = [];
-        }
+        },
     },
 };
 </script>

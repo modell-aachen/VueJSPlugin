@@ -1,23 +1,31 @@
 <template>
     <div>
-        <h3 class="ma-primary-color">{{ config.header }}</h3>
+        <h3 class="ma-primary-color">
+            {{ config.header }}
+        </h3>
         <div>
             <p
                 v-for="descriptionText in description"
-                :key="descriptionText.descriptionText">{{ descriptionText }}</p>
+                :key="descriptionText.descriptionText">
+                {{ descriptionText }}
+            </p>
         </div>
         <div class="small button-group float-right">
             <button
                 class="default button"
-                @click.prevent="onButtonClick(config.abortButton)">{{ config.abortButton.name }}</button>
+                @click.prevent="onButtonClick(config.abortButton)">
+                {{ config.abortButton.name }}
+            </button>
             <button
                 class="primary button"
-                @click.prevent="onButtonClick(config.acceptButton)">{{ config.acceptButton.name }}</button>
+                @click.prevent="onButtonClick(config.acceptButton)">
+                {{ config.acceptButton.name }}
+            </button>
         </div>
         <div class="modal-background-icon">
             <i
                 :class="config.backgroundIcon"
-                class="fa"/>
+                class="fa" />
         </div>
     </div>
 </template>
@@ -27,8 +35,8 @@ export default {
     props: {
         config: {
             type: Object,
-            required: true
-        }
+            required: true,
+        },
     },
     computed: {
         description() {
@@ -36,14 +44,14 @@ export default {
                 return [this.config.description];
             }
             return this.config.description;
-        }
+        },
     },
     methods: {
         onButtonClick(buttonConfig) {
             buttonConfig.onClick();
             this.$emit('hide-modal');
-        }
-    }
+        },
+    },
 };
 </script>
 

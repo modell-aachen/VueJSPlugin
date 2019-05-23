@@ -15,7 +15,7 @@
                 <div class="thumbnail">
                     <i
                         :class="iconClass"
-                        class="far fa-3x"/>
+                        class="far fa-3x" />
                 </div>
 
                 <img

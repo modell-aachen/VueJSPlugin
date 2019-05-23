@@ -9,11 +9,11 @@ describe("The Splitbutton component", () => {
             propsData: {
                 mainButtonTitle: "Main button",
                 onMainButtonClick: mainButtonCallback,
-                dropdownButtonTitle: "Dropdown button"
+                dropdownButtonTitle: "Dropdown button",
             },
             slots: {
-                "dropdown-content": "<div class='slot-content'>Slot content</div>"
-            }
+                "dropdown-content": "<div class='slot-content'>Slot content</div>",
+            },
         });
     });
 

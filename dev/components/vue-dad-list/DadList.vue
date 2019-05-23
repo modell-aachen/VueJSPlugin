@@ -8,8 +8,8 @@
             class="panel__body--list">
             <template v-for="(item, index) in internalValue">
                 <vddl-draggable
-                    :type="item.type"
                     :key="item.id"
+                    :type="item.type"
                     :draggable="item"
                     :index="index"
                     :wrapper="internalValue"
@@ -26,15 +26,15 @@
                             :is-draggable="isDraggable"
                             :set-last-opened-id="setLastOpenedId"
                             :last-opened-item-id="lastOpenedItemId"
-                            :set-drag-status="onItemDragStatusChanged"/>
+                            :set-drag-status="onItemDragStatusChanged" />
                         <div
-                            v-else
                             :is="itemType"
+                            v-else
                             :item="item"
                             :index="index"
                             :is-draggable="isDraggable"
                             :last-opened-item-id="lastOpenedItemId"
-                            @click.native="clickItemEvent(item)"/>
+                            @click.native="clickItemEvent(item)" />
                     </template>
                 </vddl-draggable>
             </template>
@@ -45,7 +45,7 @@
                         :item="dummyItem"
                         :set-last-opened-id="() => {}"
                         :set-drag-status="() => {}"
-                        :index="99999"/>
+                        :index="99999" />
                 </vddl-placeholder>
             </slot>
         </vddl-list>
@@ -57,7 +57,7 @@
                 :type="buttonType"
                 data-test="dadListAddIcon"
                 icon="far fa-plus"
-                @click.native="addItemEvent"/>
+                @click.native="addItemEvent" />
         </slot>
     </div>
 </template>
@@ -68,39 +68,39 @@ export default {
     props: {
         'value':{
             type: Array,
-            required: true
+            required: true,
         },
         'itemType': {
             type: String,
-            default: ''
+            default: '',
         },
         'allowedTypes': {
             type: Array,
-            default: null
+            default: null,
         },
         'buttonTitle': {
             type: String,
-            default: 'Add'
+            default: 'Add',
         },
         'isDraggable': {
             type: Boolean,
-            default: true
+            default: true,
         },
         'useSlot': {
             type: Boolean,
-            default: true
+            default: true,
         },
         'buttonType': {
             type: String,
-            default: ''
-        }
+            default: '',
+        },
     },
     inject: ['$validator'],
     data: function() {
         return {
             dummyItem: {
                 "id": 5,
-                "label": ""
+                "label": "",
             },
             DaDList: true,
             lastOpenedItemId: null,
@@ -109,8 +109,8 @@ export default {
             droppedIndex: -1,
             listId: Vue.getUniqueId(),
             itemStates: {
-                noDrag: {}
-            }
+                noDrag: {},
+            },
         };
     },
     computed: {
@@ -126,8 +126,8 @@ export default {
                     delete item.__listId;
                 });
                 this.$emit('input', newValue);
-            }
-        }
+            },
+        },
     },
     methods: {
         handleDrop: function(data) {
@@ -180,8 +180,8 @@ export default {
         },
         onItemDragStart: function( itemId ) {
             this.$emit('drag-started', itemId );
-        }
-    }
+        },
+    },
 };
 </script>
 <style lang="scss">

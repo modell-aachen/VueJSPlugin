@@ -88,7 +88,7 @@ module.exports = {
 
             return slotOptions;
 
-        }
+        },
     },
     methods: {
         getSlotData(offset) {

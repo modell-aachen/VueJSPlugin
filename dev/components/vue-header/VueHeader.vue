@@ -3,11 +3,11 @@
         :is="'h' + scrubbedLevel"
         :class="headerClass"
         class="vue-header">
-        <slot/>
+        <slot />
         <i
             v-if="status"
             :class="status"
-            class="fas fa-exclamation-triangle ma-status-triangle"/>
+            class="fas fa-exclamation-triangle ma-status-triangle" />
         <small
             v-if="sublabel"
             class="sublabel">
@@ -35,8 +35,8 @@ export default {
         },
         status: {
             type: String,
-            default: ""
-        }
+            default: "",
+        },
     },
     computed: {
         scrubbedLevel() {
@@ -54,7 +54,7 @@ export default {
             headerClass['ma-margin-top-' + (this.level === 3 ? 'medium' : 'large')] = true;
             return headerClass;
         },
-    }
+    },
 };
 </script>
 

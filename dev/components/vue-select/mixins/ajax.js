@@ -7,7 +7,7 @@ module.exports = {
      */
         loading: {
             type: Boolean,
-            default: false
+            default: false,
         },
 
         /**
@@ -23,7 +23,7 @@ module.exports = {
      */
         onSearch: {
             type: Function,
-            default: () => false
+            default: () => false,
         },
 
         /**
@@ -33,8 +33,8 @@ module.exports = {
      */
         debounce: {
             type: Number,
-            default: 0
-        }
+            default: 0,
+        },
     },
 
     watch: {
@@ -64,6 +64,6 @@ module.exports = {
                 this.loading = toggle;
             }
             return this.loading;
-        }
-    }
+        },
+    },
 };

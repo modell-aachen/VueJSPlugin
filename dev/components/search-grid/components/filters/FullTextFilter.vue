@@ -1,11 +1,11 @@
 <template>
     <div class="search-grid-top-filter">
         <vue-input-text
-            :label="params[0]"
             :id="id"
             v-model="filterText"
+            :label="params[0]"
             is-small
-            @keyup.enter="onConfirm"/>
+            @keyup.enter="onConfirm" />
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     data:  function () {
         return {
             filterText: '',
-            isFilter: true
+            isFilter: true,
         };
     },
     computed: {
@@ -53,12 +53,12 @@ export default {
             }
             queries += ')';
             return queries;
-        }
+        },
     },
     watch: {
         filterText(){
             this.$emit("filter-change");
-        }
+        },
     },
     methods: {
         reset() {
@@ -66,8 +66,8 @@ export default {
         },
         onConfirm() {
             this.$emit("confirm");
-        }
-    }
+        },
+    },
 };
 </script>
 

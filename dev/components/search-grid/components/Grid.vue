@@ -14,24 +14,24 @@
                                 v-for="(filter,index) in prefs.filters"
                                 class="cell shrink">
                                 <component
-                                    v-if="hasLiveFilter"
                                     :is="filter.component"
+                                    v-if="hasLiveFilter"
                                     :key="index"
                                     :params="filter.params"
                                     :facet-values="facetValues"
                                     @filter-change="applyFiltersDebounce"
                                     @confirm="applyFilters"
                                     @facet-changed="facetChanged"
-                                    @register-facet="registerFacet"/>
+                                    @register-facet="registerFacet" />
                                 <component
-                                    v-else
                                     :is="filter.component"
+                                    v-else
                                     :key="index"
                                     :params="filter.params"
                                     :facet-values="facetValues"
                                     @confirm="applyFilters"
                                     @facet-changed="facetChanged"
-                                    @register-facet="registerFacet"/>
+                                    @register-facet="registerFacet" />
                             </template>
                             <div
                                 v-if="hasFilters && !hasLiveFilter"
@@ -43,7 +43,7 @@
                             </div>
                             <vue-spacer
                                 v-if="hasFilters && !hasLiveFilter"
-                                factor-horizontal="2"/>
+                                factor-horizontal="2" />
                             <div
                                 v-if="hasAddons"
                                 class="cell shrink align-self-bottom">
@@ -51,22 +51,22 @@
                                     <component
                                         :is="addon"
                                         :key="index"
-                                        :api="api"/>
+                                        :api="api" />
                                 </template>
                             </div>
                             <vue-spacer
                                 v-if="hasAddons"
-                                factor-horizontal="3"/>
+                                factor-horizontal="3" />
                             <div
                                 v-if="hasExcelExport"
                                 class="cell shrink align-self-bottom">
                                 <div class="">
-                                    <excel-export :fields="prefs.fields"/>
+                                    <excel-export :fields="prefs.fields" />
                                 </div>
                             </div>
                             <vue-spacer
                                 v-if="hasExcelExport"
-                                factor-horizontal="3"/>
+                                factor-horizontal="3" />
                             <div
                                 v-if="hasGridView"
                                 class="cell shrink align-self-bottom">
@@ -75,11 +75,11 @@
                                         :class="{disabled: isGridView, selected: !isGridView}"
                                         type="icon"
                                         icon="fa fa-bars"
-                                        @click.native="toggleGridView('table')"/><vue-button
+                                        @click.native="toggleGridView('table')" /><vue-button
                                             :class="{disabled: !isGridView, selected: isGridView}"
                                             type="icon"
                                             icon="fa fa-th-large"
-                                            @click.native="toggleGridView('grid')"/>
+                                            @click.native="toggleGridView('grid')" />
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                         <vue-button
                             :is-disabled="!isFilterApplied"
                             :title="$t('reset_all')"
-                            @click.native="clearFacets()"/>
+                            @click.native="clearFacets()" />
                     </div>
                 </div>
                 <div class="grid-x">
@@ -100,7 +100,9 @@
                             <div
                                 v-if="!wizardConfig || !wizardConfig.component"
                                 v-show="results.length == 0"
-                                class="cell auto"><p>{{ $t("no_results") }}</p></div>
+                                class="cell auto">
+                                <p>{{ $t("no_results") }}</p>
+                            </div>
                             <div
                                 v-else
                                 v-show="wizardConfig.component && results.length == 0"
@@ -108,11 +110,13 @@
                                 <component
                                     :is="wizardConfig.component"
                                     :params="wizardConfig.params"
-                                    class="ma-bg-white-color"/>
+                                    class="ma-bg-white-color" />
                             </div>
                             <div
                                 v-show="results.status == 'error'"
-                                class="cell auto"><p>{{ results.msg }}</p></div>
+                                class="cell auto">
+                                <p>{{ results.msg }}</p>
+                            </div>
                             <div
                                 v-show="!isGridView && results.length > 0"
                                 class="columns search-grid-results">
@@ -120,7 +124,7 @@
                                     :results="results"
                                     :filtered-fields="filteredFields"
                                     :initial-sort="prefs.initialSort"
-                                    :api="api"/>
+                                    :api="api" />
                             </div>
                             <template v-if="hasGridView">
                                 <div
@@ -131,21 +135,21 @@
                                     <div
                                         :is="prefs.gridField.component"
                                         :doc="result"
-                                        :params="prefs.gridField.params"/>
+                                        :params="prefs.gridField.params" />
                                 </div>
                             </template>
                             <vue-spacer
                                 v-if="showFacets"
                                 class="cell shrink"
-                                factor-horizontal="5"/>
+                                factor-horizontal="5" />
                         </div>
                         <div class="grid-x">
                             <div class="cell">
                                 <vue-pagination
                                     v-if="pageCount > 1"
-                                    :page-count="pageCount"
                                     v-model="gridState.currentPage"
-                                    @input="pageChanged"/>
+                                    :page-count="pageCount"
+                                    @input="pageChanged" />
                             </div>
                         </div>
                     </div>
@@ -159,22 +163,21 @@
                                     {{ $t("filters") }}
                                 </h3>
                                 <vue-spacer
-                                    factor-vertical="3"/>
+                                    factor-vertical="3" />
                                 <component
+                                    :is="facet.component"
                                     v-for="(facet,index) in prefs.facets"
                                     :key="index"
-                                    :is="facet.component"
                                     :params="facet.params"
                                     :facet-values="facetValues"
                                     :facet-total-counts="prefs.result.facetTotalCounts"
                                     @facet-changed="facetChanged"
                                     @get-facet-info="fetchFacetCharacteristics"
-                                    @register-facet="registerFacet"/>
+                                    @register-facet="registerFacet" />
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -205,17 +208,17 @@ export default {
         MultiSelectFacet,
         SingleSelectFacet,
         Select2Facet,
-        ExcelExport
+        ExcelExport,
     },
     props: {
         preferencesSelector: {
             type: String,
-            default: () => ""
+            default: () => "",
         },
         preferences: {
             type: Object,
-            default: () => null
-        }
+            default: () => null,
+        },
     },
     data : function () {
         return {
@@ -227,7 +230,7 @@ export default {
             prefs: {
                 filters: [],
                 facets: [],
-                fields: []
+                fields: [],
             },
             id: {},
             requestFailed: false,
@@ -241,7 +244,7 @@ export default {
             isGridView: false,
             entryClickHandler: null,
             wizardConfig: null,
-            wizardNoResultsConfig: null
+            wizardNoResultsConfig: null,
         };
     },
     computed: {
@@ -251,7 +254,7 @@ export default {
             },
             set(value) {
                 this.$store.commit("searchGrid/" + mutations.SET_CURRENT_PAGE, {gridState: this.gridState, page: value});
-            }
+            },
         },
         sortCrits: {
             get() {
@@ -259,7 +262,7 @@ export default {
             },
             set(value) {
                 this.$store.commit("searchGrid/" + mutations.CHANGE_SORT, {gridState: this.gridState, sortCrits: value});
-            }
+            },
         },
         results: {
             get() {
@@ -267,7 +270,7 @@ export default {
             },
             set(value) {
                 this.$store.commit("searchGrid/" + mutations.SET_RESULTS, {gridState: this.gridState, results: value});
-            }
+            },
         },
         resultsPerPage: {
             get() {
@@ -275,7 +278,7 @@ export default {
             },
             set(value) {
                 this.$store.commit("searchGrid/" + mutations.SET_RESULTS_PER_PAGE, {gridState: this.gridState, resultsPerPage: value});
-            }
+            },
         },
         numResults: {
             get() {
@@ -283,7 +286,7 @@ export default {
             },
             set(value) {
                 this.$store.commit("searchGrid/" + mutations.SET_NUM_RESULTS, {gridState: this.gridState, numResults: value});
-            }
+            },
         },
         applyFiltersDebounce() {
             return debounce(this.applyFilters, 700);
@@ -333,9 +336,9 @@ export default {
                 showColumns: this.showColumns,
                 hideColumns: this.hideColumns,
                 initialHideColumn: this.initialHideColumn,
-                setDocumentValue: this.setDocumentValue
+                setDocumentValue: this.setDocumentValue,
             };
-        }
+        },
     },
     created: async function() {
         let self = this;
@@ -378,7 +381,7 @@ export default {
         this.parseAllFacetResults(this.prefs.result);
 
         NProgress.configure({
-            showSpinner: false
+            showSpinner: false,
         });
     },
     mounted() {
@@ -397,8 +400,8 @@ export default {
                     url: this.$foswiki.getScriptUrl('rest', 'SearchGridPlugin', 'initialResultSet'),
                     traditional: true,
                     data: {
-                        config: JSON.stringify(this.prefs)
-                    }
+                        config: JSON.stringify(this.prefs),
+                    },
                 }).done((result) => {
                     this.prefs.result = JSON.parse(result);
                     resolve();
@@ -523,7 +526,7 @@ export default {
                 "facet.sort": "count",
                 "fl" : this.prefs.fieldRestriction,
                 "includeDeletedDocuments": this.prefs.includeDeletedDocuments,
-                form: this.prefs.form
+                form: this.prefs.form,
             };
 
             params["facet.field"] = [];
@@ -554,7 +557,7 @@ export default {
                 headers: { 'X-HTTP-Method-Override': 'GET' },
                 url: this.$foswiki.getScriptUrl('rest', 'SearchGridPlugin', 'searchproxy'),
                 traditional: true,
-                data: params
+                data: params,
             })
                 .done(function(result){
                     result = JSON.parse(result);
@@ -585,7 +588,7 @@ export default {
                 "facet.offset": offset,
                 "facet.limit": facet.limit,
                 "facet.sort": "count",
-                form: this.prefs.form
+                form: this.prefs.form,
             };
 
             if(searchTerm !== ""){
@@ -638,7 +641,7 @@ export default {
                 facet.push({
                     'title': displayValue,
                     'count': facetResult[i+1],
-                    'field': field
+                    'field': field,
                 });
             }
             // sort facet-options; 'None' should be the last element
@@ -662,7 +665,7 @@ export default {
                 }
                 this.facetValues = parsedFacetValues;
             }
-        }
+        },
     },
 };
 </script>

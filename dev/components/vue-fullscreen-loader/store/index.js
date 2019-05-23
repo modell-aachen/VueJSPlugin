@@ -6,6 +6,6 @@ export default {
     mutations: {
         setShowLoader (state, status) {
             state.showLoader = status;
-        }
+        },
     },
 };

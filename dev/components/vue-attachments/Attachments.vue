@@ -8,7 +8,7 @@
                 :class="{'dropzone-overlay--active': $upload.dropzone(uploadId).active && canUpload }"
                 class="dropzone-overlay">
                 <p>
-                    <i class="fas fa-upload"/>
+                    <i class="fas fa-upload" />
                     <br>
                     {{ $t('upload_dnd_area') }}
                 </p>
@@ -19,7 +19,9 @@
                 @click="$upload.select(uploadId)">
                 <div
                     class="upload-box attachment-tile">
-                    <div class="upload-icon"><i class="fa fa-3x fa-upload"/></div>
+                    <div class="upload-icon">
+                        <i class="fa fa-3x fa-upload" />
+                    </div>
                     <div>{{ $t('upload_file') }}</div>
                 </div>
                 <div
@@ -34,7 +36,7 @@
                 :web="internalWeb"
                 :topic="internalTopic"
                 :readonly="!canUpload || attachment.readonly"
-                @delete="deleteAttachment(attachment)"/>
+                @delete="deleteAttachment(attachment)" />
             <attachment-uploading
                 v-for="attachment in $upload.files(uploadId).progress"
                 :key="getUniqueId(attachment)"
@@ -236,9 +238,9 @@ export default {
             if(check && check[1].length) {
                 let name = check[1];
                 this.internalAttachments = this.internalAttachments.filter(attachment => attachment.name !== name);
-                /* eslint-disable camelcase */ // metadata is usually not camelcase in foswiki
+                /* eslint-disable @typescript-eslint/camelcase */ // metadata is usually not camelcase in foswiki
                 this.internalAttachments.push({name, presented_name: file.name});
-                /* eslint-enable camelcase */
+                /* eslint-enable @typescript-eslint/camelcase */
             }
         },
         uploadOnError(file, error) {

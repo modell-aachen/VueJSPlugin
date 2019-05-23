@@ -11,7 +11,7 @@ const searchGridInit = (vue) => {
         },
         registerComponent: function(name, component){
             vue.component(name, component);
-        }
+        },
     };
 
     window.SearchGridPlugin = SearchGridPlugin;
@@ -22,11 +22,11 @@ const searchGridInit = (vue) => {
 
         vue.instantiateEach('.SearchGridContainer', {
             components: {
-                grid: Grid
+                grid: Grid,
             },
             created: function () {
                 this.$moment.locale(this.$lang);
-            }
+            },
         });
     });
 };

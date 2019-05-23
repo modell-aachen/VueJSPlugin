@@ -7,7 +7,7 @@ const mock = {
             confirmations = [confirmations];
         }
         this.confirmations = confirmations;
-    }
+    },
 };
 
 class AlertPluginMock extends BaseAlertPlugin {

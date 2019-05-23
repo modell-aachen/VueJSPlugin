@@ -51,12 +51,12 @@ export default {
             }else{
                 return "";
             }
-        }
+        },
     },
     watch: {
         doc: function () {
             this.ampel = this.calculateAmpelData();
-        }
+        },
     },
     methods: {
         calculateAmpelData(){
@@ -64,7 +64,7 @@ export default {
                 red: "ampel_r.png",
                 green: "ampel_g.png",
                 yellow: "ampel_o.png",
-                none: "ampel.png"
+                none: "ampel.png",
             };
             let showDate = (this.params[1])?((this.params[1] === 0)?false:true):false;
             let warnTimeY = (this.params[2])?parseInt(this.params[2]):7;
@@ -91,10 +91,10 @@ export default {
                 diffDate: diffDate,
                 warnStatus: warnStatus,
                 statusImage: statusImageMap[warnStatus],
-                showDate: showDate
+                showDate: showDate,
             };
             return ampel;
-        }
+        },
     },
 };
 </script>

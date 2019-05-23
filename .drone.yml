@@ -1,10 +1,10 @@
 pipeline:
   run tests:
-    image: node
+    image: node:12
     commands:
       - yarn
-      - yarn run lint
-      - yarn run test --coverage
+      - yarn lint
+      - yarn test:unit --coverage
     when:
       event: push
   sonar:

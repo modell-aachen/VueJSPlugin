@@ -23,16 +23,16 @@ describe("The DadListComponent component", () => {
                     {
                         id: 107,
                         label: "SubItem 1",
-                        type: "status"
+                        type: "status",
                     },
                     {
                         id: 108,
                         label: "SubItem 2",
-                        type: "status"
-                    }
+                        type: "status",
+                    },
                 ],
-                []
-            ]
+                [],
+            ],
         });
     });
 

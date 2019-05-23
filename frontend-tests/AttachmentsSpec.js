@@ -5,7 +5,7 @@ import AttachmentOnServer from '../dev/components/vue-attachments/AttachmentOnSe
 describe("The Attachment component's", () => {
     let wrapper;
     const firstAttachmentName = "TestBlock_TextFile.txt";
-    /* eslint-disable camelcase */
+    /* eslint-disable @typescript-eslint/camelcase */
     const exampleAttachments = [
         {
             attachment: "TestBlock_TextFile.txt",
@@ -32,7 +32,7 @@ describe("The Attachment component's", () => {
             version: "3",
         },
     ];
-    /* eslint-enable camelcase */
+    /* eslint-enable @typescript-eslint/camelcase */
     const options = {
         propsData: {
             web: 'TestWeb',
@@ -40,7 +40,7 @@ describe("The Attachment component's", () => {
             block: 'TestBlock',
             attachments: exampleAttachments,
             attachmentNameFilter: '[()]',
-        }
+        },
     };
     const optionsClone = () => JSON.parse(JSON.stringify(options));
     beforeEach(() => {

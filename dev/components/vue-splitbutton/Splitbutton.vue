@@ -20,20 +20,20 @@
                     <i
                         :class="splitButtonIconClass"
                         class="dropdown-icon far"
-                        aria-hidden="true"/>
+                        aria-hidden="true" />
                 </div>
             </a>
         </div>
         <div
-            v-click-outside="onClickOutside"
             v-show="isDropdownOpen"
             ref="dropdownContent"
+            v-click-outside="onClickOutside"
             :style="dropdownPosition"
             class="ma-splitbutton-dropdown">
             <ul
                 class="dropdown-content-list"
                 @click="isDropdownOpen=false">
-                <slot name="dropdown-content"/>
+                <slot name="dropdown-content" />
             </ul>
         </div>
     </div>
@@ -45,23 +45,23 @@ export default {
     props: {
         'mainButtonTitle': {
             type: String,
-            default: ""
+            default: "",
         },
         'onMainButtonClick': {
             type: Function,
-            default: () => {}
+            default: () => {},
         },
         'dropdownButtonTitle': {
             type: String,
-            required: true
+            required: true,
         },
         'isMainButtonDisabled': {
             type: Boolean,
-            default: false
+            default: false,
         },
         'isDropdownDisabled': {
             type: Boolean,
-            default: false
+            default: false,
         },
     },
     data() {
@@ -69,17 +69,17 @@ export default {
             isDropdownOpen: false,
             dropdownPosition: {
                 top: "0px",
-                left: "0px"
-            }
+                left: "0px",
+            },
         };
     },
     computed: {
         splitButtonIconClass() {
             return {
                 "fa-angle-down": !this.isDropdownOpen,
-                "fa-angle-up": this.isDropdownOpen
+                "fa-angle-up": this.isDropdownOpen,
             };
-        }
+        },
     },
     methods: {
         toggleDropdown(ev) {
@@ -108,7 +108,7 @@ export default {
 
             this.dropdownPosition = {
                 top: dropdownTop,
-                left: dropdownLeft
+                left: dropdownLeft,
             };
         },
         onClickOutside(ev) {
@@ -118,8 +118,8 @@ export default {
             if(this.isDropdownOpen){
                 this.isDropdownOpen = false;
             }
-        }
-    }
+        },
+    },
 };
 </script>
 <style lang="scss">

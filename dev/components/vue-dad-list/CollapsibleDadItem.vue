@@ -16,17 +16,19 @@
                             class="cell shrink align-self-middle">
                             <i
                                 :class="item.icon"
-                                class="ma-type-icon"/>
+                                class="ma-type-icon" />
                         </div>
                         <div class="cell shrink">
                             <vue-spacer
                                 :factor-horizontal="(item.icon) ? 2 : 3"
-                                factor-vertical="auto"/>
+                                factor-vertical="auto" />
                         </div>
                         <div class="cell shrink align-self-middle">
                             <vue-header3
                                 :sublabel="item.subLabel"
-                                :status="item.status">{{ item.label || item.description }}</vue-header3>
+                                :status="item.status">
+                                {{ item.label || item.description }}
+                            </vue-header3>
                         </div>
                     </div>
                 </div>
@@ -34,8 +36,8 @@
                     <!-- Dummy Drop List -->
                     <vue-dad-list
                         v-if="canDropInTitle && collapsed"
-                        :allowed-types="allowedTypes"
                         v-model="dummyDropList"
+                        :allowed-types="allowedTypes"
                         class="title-dad-list"
                         item-type="vue-simple-dad-item">
                         <vddl-placeholder slot="placeholder">
@@ -43,13 +45,13 @@
                                 <h3>{{ dropTargetDescription !== undefined ? dropTargetDescription : $t('collapsible_dad_item_drop_target') }}</h3>
                             </div>
                         </vddl-placeholder>
-                        <div slot="addArea"/>
+                        <div slot="addArea" />
                     </vue-dad-list>
                 </div>
                 <div
                     v-if="$slots.rightMenu"
                     class="cell shrink align-self-middle ma-right-menu">
-                    <slot name="rightMenu"/>
+                    <slot name="rightMenu" />
                 </div>
                 <div
                     v-if="removeOptions && !collapsed"
@@ -59,9 +61,9 @@
                         @click="removeOptions.onRemove(item, index)">{{ removeOptions.name }}</a>
                 </div>
                 <div class="cell shrink align-self-middle ma-toggle-cell">
-                    <span ><i
+                    <span><i
                         :class="chevronByCollapsed"
-                        class="fas fa-fw"/></span>
+                        class="fas fa-fw" /></span>
                 </div>
             </div>
             <vue-slide-up-down
@@ -72,7 +74,7 @@
                     @mouseenter="markItemDraggable(false)"
                     @mouseleave="markItemDraggable(true)">
                     <div class="grid-container fluid">
-                        <slot/>
+                        <slot />
                     </div>
                 </div>
             </vue-slide-up-down>
@@ -87,7 +89,7 @@ export default {
     props: {
         canDropInTitle: {
             type: Boolean,
-            default: false
+            default: false,
         },
         dropTargetDescription: {
             type: String,
@@ -95,49 +97,49 @@ export default {
         },
         item:{
             type: Object,
-            required: true
+            required: true,
         },
         index: {
             type: Number,
-            required: true
+            required: true,
         },
         multiOpen: {
             type: Boolean,
-            default: false
+            default: false,
         },
         lastOpenedItemId: {
             type: [String, Number],
-            default: null
+            default: null,
         },
         allowedTypes: {
             type: Array,
             default: function() {
                 return null;
-            }
+            },
         },
         removeOptions: {
             type: Object,
-            default: null
+            default: null,
         },
         setLastOpenedId: {
             type: Function,
-            required: true
+            required: true,
         },
         setDragStatus: {
             type: Function,
-            required: true
-        }
+            required: true,
+        },
     },
     data: function() {
         return {
             dummyDropList: [],
-            collapsed: true
+            collapsed: true,
         };
     },
     computed: {
         chevronByCollapsed: function() {
             return this.collapsed ? 'fa-chevron-right' : 'fa-chevron-down';
-        }
+        },
     },
     watch: {
         dummyDropList: function(newList) {
@@ -166,10 +168,10 @@ export default {
         markItemDraggable( draggable ) {
             this.setDragStatus( {
                 id: this.item.id,
-                isDraggable: draggable
+                isDraggable: draggable,
             });
-        }
-    }
+        },
+    },
 };
 </script>
 

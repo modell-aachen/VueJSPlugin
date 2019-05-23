@@ -24,7 +24,7 @@ export default {
         },
         openInNewTab(){
             return this.params[2];
-        }
+        },
     },
     methods: {
         splitList: function(){
@@ -55,7 +55,7 @@ export default {
                 topicTitle = topicTitle.split(/^, /gm);
             }
 
-            let result = new Array();
+            let result = [];
 
             for(let i = 0 ; i < url.length ; i++){
                 result[i] = {Url:url[i],Title:topicTitle[i]};
@@ -63,7 +63,7 @@ export default {
 
             return result;
 
-        }
-    }
+        },
+    },
 };
 </script>

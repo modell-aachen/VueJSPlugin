@@ -16,7 +16,7 @@
                             <div
                                 v-if="!isLastItem(index)"
                                 class="cell auto history-list-line-container">
-                                <div class="history-list-line"/>
+                                <div class="history-list-line" />
                             </div>
                         </div>
                     </div>
@@ -30,14 +30,17 @@
                                 <small
                                     class="link-to-history"> {{ item.date }}
                                     <template v-if="item.action">- </template>
+                                    <!-- eslint-disable-next-line vue/no-v-html -->
                                     <span v-html="item.action" />
-                                    <i class="history-icon far fa-history"/>
+                                    <i class="history-icon far fa-history" />
                                 </small>
                             </a>
                         </div>
                         <div><b>{{ item.actor }}</b> {{ item.description }}</div>
-                        <div v-if="item.comment">{{ item.comment }}</div>
-                        <vue-spacer factor-vertical="5"/>
+                        <div v-if="item.comment">
+                            {{ item.comment }}
+                        </div>
+                        <vue-spacer factor-vertical="5" />
                     </div>
                 </template>
             </div>

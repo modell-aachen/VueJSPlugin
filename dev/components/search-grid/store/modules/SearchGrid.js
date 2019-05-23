@@ -8,13 +8,13 @@ function gridStateFactory(){
         resultsPerPage: 10, //How many results are shown per page
         numResults: 0, //The total amount of results for the current query
         sortCrits: [], //Sort criterias
-        facets: []
+        facets: [],
     };
 }
 
 // Initial state for the grid module
 const INITIAL_STATE = {
-    gridStates: [] //Contains the grid states of all grids
+    gridStates: [], //Contains the grid states of all grids
 };
 
 const actions = {
@@ -22,7 +22,7 @@ const actions = {
         let newGridState = gridStateFactory();
         commit(types.ADD_GRID_STATE, {newGridState});
         callback(newGridState);
-    }
+    },
 };
 
 // Mutations
@@ -54,5 +54,5 @@ export default {
     namespaced: true,
     state: INITIAL_STATE,
     actions,
-    mutations
+    mutations,
 };

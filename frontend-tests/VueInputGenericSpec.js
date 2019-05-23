@@ -32,7 +32,7 @@ describe("The Input components", () => {
                     expect(wrapper.find('input').attributes().readonly).toBe(undefined);
                 });
             });
-            describe("uses property", () => {
+            describe("uses property", async () => {
                 const options = {
                     propsData: {
                         label: 'TEST',
@@ -42,9 +42,10 @@ describe("The Input components", () => {
                         isSmall: true,
                         isDisabled: true,
                         isReadonly: true,
-                    }
+                    },
                 };
                 const wrapper = createInput(options);
+                await Vue.nextTick();
                 it("label", () => {
                     expect(wrapper.contains('label')).toBe(true);
                     expect(wrapper.find('label').html()).toContain(options.propsData.label);
@@ -72,7 +73,7 @@ describe("The Input components", () => {
                 it("uses type=text for non-passwords", () => {
                     const options = {
                         propsData: {
-                        }
+                        },
                     };
                     const wrapper = createInput(options);
                     expect(wrapper.find('input').attributes().type).toBe('text');
@@ -81,7 +82,7 @@ describe("The Input components", () => {
                     const options = {
                         propsData: {
                             isPassword: true,
-                        }
+                        },
                     };
                     const wrapper = createInput(options);
                     expect(wrapper.find('input').attributes().type).toBe('password');
@@ -91,8 +92,8 @@ describe("The Input components", () => {
                 const options = {
                     propsData: {
                         name: 'test-input',
-                        validate: 'email'
-                    }
+                        validate: 'email',
+                    },
                 };
                 const wrapper = createInput(options);
                 it("every time data changes", () => {

@@ -3,7 +3,7 @@
         <div
             v-show="isLoading"
             class="vue-fullscreen-loader">
-            <vue-spinner/>
+            <vue-spinner />
         </div>
     </transition>
 </template>
@@ -17,7 +17,7 @@ export default {
                 return this.$store.state.vueLoaderStore.showLoader;
             }
             return false;
-        }
+        },
     },
     created: function() {
         this.$mount();

@@ -5,14 +5,14 @@ describe("The mixed input component", () => {
     let mixedInput;
     const options = [{
         id: "option-1",
-        label: "a"
+        label: "a",
     },{
         id: "option-2",
-        label: "c"
+        label: "c",
     },{
         id: "option-3",
-        label: "b"
-    },];
+        label: "b",
+    }];
     const clickOnMainInput = async () => {
         return new Promise((resolve) => {
             mixedInput.find({ref: 'input-root'}).trigger('click');
@@ -64,8 +64,8 @@ describe("The mixed input component", () => {
     beforeEach(() => {
         mixedInput = TestCase.mount(MixedInput, {
             propsData: {
-                options
-            }
+                options,
+            },
         });
     });
 
@@ -124,27 +124,27 @@ describe("The mixed input component", () => {
         mixedInput.setProps({
             value: [{
                 type: "text",
-                value: "ab"
+                value: "ab",
             },{
                 type: "option",
-                id: "option-3"
+                id: "option-3",
             },{
                 type: "text",
-                value: "cd"
+                value: "cd",
             },{
                 type: "text",
-                value: "ef"
-            }]
+                value: "ef",
+            }],
         });
         expect(getLastEmittedModel()).toEqual([{
             type: "text",
-            value: "ab"
+            value: "ab",
         },{
             type: "option",
-            id: "option-3"
+            id: "option-3",
         },{
             type: "text",
-            value: "cdef"
+            value: "cdef",
         }]);
     }));
 });

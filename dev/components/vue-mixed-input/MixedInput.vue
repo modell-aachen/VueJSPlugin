@@ -72,7 +72,6 @@
             </ul>
         </div>
     </div>
-
 </template>
 
 
@@ -81,34 +80,34 @@ const KEY_CODES = {
     "Backspace": 8,
     "Delete": 46,
     "ArrowLeft": 37,
-    "ArrowRight": 39
+    "ArrowRight": 39,
 };
 
 export default {
     props: {
         value: {
             type: Array,
-            default: () => []
+            default: () => [],
         },
         label: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         options: {
             type: Array,
-            default: () => []
-        }
+            default: () => [],
+        },
     },
     data() {
         return {
             internalSelectedItems: this.toInternalValue([]),
-            focusedItemIndex: null
+            focusedItemIndex: null,
         };
     },
     computed: {
         open() {
             return this.focusedItemIndex !== null;
-        }
+        },
     },
     watch: {
         value: {
@@ -119,15 +118,15 @@ export default {
                 }
             },
             deep: true,
-            immediate: true
+            immediate: true,
         },
         internalSelectedItems: {
             handler(newInternalValue) {
                 const newValue = this.toValue(newInternalValue);
                 this.$emit('input', newValue);
             },
-            deep: true
-        }
+            deep: true,
+        },
     },
     methods: {
         onSelectedOptionClick(index) {
@@ -203,12 +202,12 @@ export default {
                     case "text":
                         return {
                             type: "text",
-                            value: item.value
+                            value: item.value,
                         };
                     case "option": {
                         return {
                             type: "option",
-                            id: item.id
+                            id: item.id,
                         };
                     }
                 }
@@ -264,7 +263,7 @@ export default {
             const splitPosition = element.selectionStart;
             return [
                 this.getInternalTextItem(item.value.substring(0, splitPosition)),
-                this.getInternalTextItem(item.value.substring(splitPosition))
+                this.getInternalTextItem(item.value.substring(splitPosition)),
             ];
         },
         getTextItemRef(index) {
@@ -274,14 +273,14 @@ export default {
         getInternalTextItem(value = "") {
             return {
                 value,
-                type: "text"
+                type: "text",
             };
         },
         getInternalOptionItem(optionId) {
             return {
                 type: "option",
                 id: optionId,
-                label: this.options.find(element => element.id === optionId).label
+                label: this.options.find(element => element.id === optionId).label,
             };
         },
         hasFocusOnStringStart(index) {
@@ -317,8 +316,8 @@ export default {
                 this.focusItem(index, itemLength);
                 event.preventDefault();
             }
-        }
-    }
+        },
+    },
 };
 </script>
 

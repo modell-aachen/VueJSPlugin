@@ -6,7 +6,7 @@
             <div v-if="!params[2]">{{ params[0] }}</div>
             <img
                 v-if="params[2]"
-                :src="params[2]" >
+                :src="params[2]">
         </a>
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
             return linkText.replace(/\$([a-z-_]+)/g, function(a,b) {
                 return doc[b];
             });
-        }
-    }
+        },
+    },
 };
 </script>

@@ -13,7 +13,7 @@ export default {
     props: {
         isFullWidth: {
             type: Boolean,
-            default: false
+            default: false,
         },
         type: {
             type: String,
@@ -25,13 +25,13 @@ export default {
                     'disabled',
                     'akzent'];
                 return types.includes(value);
-            }
-        }
+            },
+        },
     },
     computed: {
         textClass() {
             return `ma-${this.type}-text`;
-        }
+        },
     },
 };
 </script>

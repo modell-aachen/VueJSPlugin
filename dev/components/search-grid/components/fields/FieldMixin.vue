@@ -3,12 +3,12 @@ export default {
     props: {
         doc: {
             type: Object,
-            default: () => {}
+            default: () => {},
         },
         params: {
             type: Array,
-            default: () => []
-        }
-    }
+            default: () => [],
+        },
+    },
 };
 </script>

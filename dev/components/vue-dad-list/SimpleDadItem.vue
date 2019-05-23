@@ -3,7 +3,7 @@
         <div class="ma-simple-item">
             <div
                 :class="{'ma-simple-item--removeable': itemRemoveable}"
-                class="cell grid-x align-justify grid-padding-x ma-draggable" >
+                class="cell grid-x align-justify grid-padding-x ma-draggable">
                 <div
                     :class="{'auto': itemRemoveable, 'ma-simple-item-title--small': isSmallItem}"
                     class="cell ma-simple-item-title">
@@ -11,7 +11,9 @@
                         <div class="cell auto align-self-middle">
                             <vue-header3
                                 :sublabel="item.subLabel"
-                                :status="item.status">{{ item.label || item.description }}</vue-header3>
+                                :status="item.status">
+                                {{ item.label || item.description }}
+                            </vue-header3>
                         </div>
                     </div>
                 </div>
@@ -35,30 +37,30 @@ export default {
     props: {
         item: {
             type: Object,
-            required: true
+            required: true,
         },
         index: {
             type: Number,
-            required: true
+            required: true,
         },
         isSmallItem: {
             type: Boolean,
-            default: false
+            default: false,
         },
         isDraggable: {
             type: Boolean,
-            default: true
+            default: true,
         },
         showDeleteButton: {
             type: Boolean,
-            default: true
-        }
+            default: true,
+        },
     },
     computed: {
         itemRemoveable: function() {
             return this.$listeners && this.$listeners['remove-item'];
-        }
-    }
+        },
+    },
 };
 </script>
 

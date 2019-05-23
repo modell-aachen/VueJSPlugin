@@ -13,19 +13,21 @@
                             class="cell shrink align-self-middle">
                             <i
                                 :class="item.icon"
-                                class="ma-type-icon"/>
+                                class="ma-type-icon" />
                         </div>
                         <div
                             v-if="item.icon"
                             class="cell shrink">
                             <vue-spacer
                                 factor-vertical="auto"
-                                factor-horizontal="2"/>
+                                factor-horizontal="2" />
                         </div>
                         <div class="cell shrink align-self-middle">
                             <vue-header3
                                 :sublabel="item.subLabel"
-                                :status="item.status">{{ item.label || item.description }}</vue-header3>
+                                :status="item.status">
+                                {{ item.label || item.description }}
+                            </vue-header3>
                         </div>
                     </div>
                 </div>
@@ -34,7 +36,7 @@
                     class="cell shrink align-self-middle ma-toggle-cell">
                     <span @click.prevent="toggleCollapsed"><i
                         :class="chevronByCollapsed"
-                        class="fas fa-fw"/></span>
+                        class="fas fa-fw" /></span>
                 </div>
             </div>
             <vue-slide-up-down
@@ -42,7 +44,7 @@
                 :duration="300">
                 <div class="ma-collapsible-item-content">
                     <div class="grid-container fluid">
-                        <slot/>
+                        <slot />
                     </div>
                 </div>
             </vue-slide-up-down>
@@ -56,38 +58,38 @@ export default {
     props: {
         item:{
             type: Object,
-            required: true
+            required: true,
         },
         collapsible: {
             type: Boolean,
-            default: true
+            default: true,
         },
         allowedTypes: {
             type: Array,
             default: function() {
                 return [];
-            }
-        }
+            },
+        },
     },
     data: function() {
         let collapsible = this.collapsible ? true : false;
         return {
             dummyDropList: [],
-            collapsed: collapsible
+            collapsed: collapsible,
         };
     },
     computed: {
         chevronByCollapsed: function() {
             return this.collapsed ? 'fa-chevron-right' : 'fa-chevron-down';
-        }
+        },
     },
     methods: {
         toggleCollapsed: function() {
             if(this.collapsible){
                 this.collapsed = !this.collapsed;
             }
-        }
-    }
+        },
+    },
 };
 </script>
 

@@ -6,16 +6,20 @@
                 <vue-check-item
                     v-model="selectedRadio"
                     type="radio"
-                    checked>{{ $t("all") }}</vue-check-item>
+                    checked>
+                    {{ $t("all") }}
+                </vue-check-item>
             </li>
             <template v-for="(value,index) in facetCharacteristics">
                 <li
                     v-show="value.count > 0 || isSelected(value)"
                     :key="index">
                     <vue-check-item
-                        :value="value.field"
                         v-model="selectedRadio"
-                        type="radio">{{ getLabel(value.title, value.count) }}</vue-check-item>
+                        :value="value.field"
+                        type="radio">
+                        {{ getLabel(value.title, value.count) }}
+                    </vue-check-item>
                 </li>
             </template>
         </ul>
@@ -28,13 +32,13 @@ export default {
     mixins: [FacetMixin],
     data: function(){
         return {
-            selectedRadio: this.params.length > 3 ? this.params[3] : ''
+            selectedRadio: this.params.length > 3 ? this.params[3] : '',
         };
     },
     watch: {
         selectedRadio(){
             this.updateSelectedFacets();
-        }
+        },
     },
     created: function () {
         this.updateSelectedFacets();
@@ -64,7 +68,7 @@ export default {
         },
         reset() {
             this.selectedRadio = "";
-        }
+        },
     },
 };
 </script>

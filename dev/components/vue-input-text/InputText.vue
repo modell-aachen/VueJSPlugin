@@ -7,31 +7,31 @@ export default {
     props: {
         'label':{
             type: String,
-            default: undefined
+            default: undefined,
         },
         'name': {
             type: String,
-            default: 'noname'
+            default: 'noname',
         },
         'validate': {
             type: String,
-            default: ''
+            default: '',
         },
         'placeholder':{
             type: String,
-            default: undefined
+            default: undefined,
         },
         'icon':{
             type: [String, Array],
-            default: undefined
+            default: undefined,
         },
         'isSmall':{
             type: Boolean,
-            default: false
+            default: false,
         },
         'isDisabled':{
             type: Boolean,
-            default: false
+            default: false,
         },
         'isPassword': {
             type: Boolean,
@@ -43,7 +43,7 @@ export default {
         },
         'value':{
             type: String,
-            default: ''
+            default: '',
         },
         'maxLength':{
             type: Number,
@@ -72,7 +72,7 @@ export default {
             },
             set: function(newValue) {
                 this.$emit('input', newValue);
-            }
+            },
         },
         hasError: function(){
             return this.validationErrors.has(this.name) || this.showError;
@@ -84,7 +84,7 @@ export default {
             return Object.assign(
                 {
                     'ma-small': this.isSmall,
-                    'ma-input-text-indent': (this.icon !== undefined)
+                    'ma-input-text-indent': (this.icon !== undefined),
                 },
                 this.extraClasses,
             );
@@ -98,13 +98,13 @@ export default {
             if( this.name ) {
                 this.$validator.validate(this.name, value);
             }
-        }
+        },
     },
     mounted() {
         if( this.validate.length > 0 && this.name.length<= 0) {
             window.console.warn("[vue-input-text] validation requires the name attribute to be set. Currently no validation is performed. Input label '" + this.label + "'");
         }
-    }
+    },
 };
 </script>
 

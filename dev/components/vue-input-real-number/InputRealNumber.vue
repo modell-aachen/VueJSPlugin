@@ -129,33 +129,30 @@ export default {
             displayValue,
         };
     },
-    computed: Object.assign(
-        {},
-        InputTextField.computed,
-        {
-            data: {
-                get() {
-                    return this.displayValue;
-                },
-                set(value) {
-                    const oldCursorStart = this.$refs.input.selectionStart || 0;
-                    const oldCursorEnd = this.$refs.input.selectionEnd || oldCursorStart;
-                    let {newCursorStart, newCursorEnd, newValue} = filterInput(oldCursorStart, oldCursorEnd, value, this.displayValue);
+    computed: {
+        ...InputTextField.computed,
+        data: {
+            get() {
+                return this.displayValue;
+            },
+            set(value) {
+                const oldCursorStart = this.$refs.input.selectionStart || 0;
+                const oldCursorEnd = this.$refs.input.selectionEnd || oldCursorStart;
+                let {newCursorStart, newCursorEnd, newValue} = filterInput(oldCursorStart, oldCursorEnd, value, this.displayValue);
 
-                    if(newValue === this.displayValue) {
-                        this.cacheDefeat = Math.random();
-                    }
-                    this.displayValue = newValue;
-                    this.$emit('input', displayValueToNumberString(newValue));
+                if(newValue === this.displayValue) {
+                    this.cacheDefeat = Math.random();
+                }
+                this.displayValue = newValue;
+                this.$emit('input', displayValueToNumberString(newValue));
 
-                    this.$nextTick(() => {
-                        this.$refs.input.selectionStart = newCursorStart;
-                        this.$refs.input.selectionEnd = newCursorEnd;
-                    });
-                },
+                this.$nextTick(() => {
+                    this.$refs.input.selectionStart = newCursorStart;
+                    this.$refs.input.selectionEnd = newCursorEnd;
+                });
             },
         },
-    ),
+    },
     mounted() {
         this.$refs.input.selectionStart = this.displayValue.length;
         this.$refs.input.selectionEnd = this.displayValue.length;

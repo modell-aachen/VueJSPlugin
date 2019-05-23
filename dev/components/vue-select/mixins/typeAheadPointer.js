@@ -1,14 +1,14 @@
 module.exports = {
     data() {
         return {
-            typeAheadPointer: -1
+            typeAheadPointer: -1,
         };
     },
 
     watch: {
         filteredOptions() {
             this.typeAheadPointer = 0;
-        }
+        },
     },
 
     methods: {
@@ -56,5 +56,5 @@ module.exports = {
                 this.search = "";
             }
         },
-    }
+    },
 };

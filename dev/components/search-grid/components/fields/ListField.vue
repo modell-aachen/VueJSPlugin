@@ -2,8 +2,12 @@
     <div>
         <div
             v-for="(item,index) in getList()"
-            :key="index">{{ item }}<br v-if="showMoreHint"></div>
-        <template v-if="more">{{ gettext('and') }} <span class="more-hint">{{ gettext('[_1] more', more) }}</span></template>
+            :key="index">
+            {{ item }}<br v-if="showMoreHint">
+        </div>
+        <template v-if="more">
+            {{ gettext('and') }} <span class="more-hint">{{ gettext('[_1] more', more) }}</span>
+        </template>
     </div>
 </template>
 
@@ -39,7 +43,7 @@ export default {
         },
         showMoreHint() {
             return !this.more;
-        }
+        },
     },
     methods: {
         getList: function() {
@@ -64,8 +68,8 @@ export default {
         },
         gettext: function(text, param) {
             return window.jsi18n.get('SearchGrid', text, param);
-        }
-    }
+        },
+    },
 };
 </script>
 
