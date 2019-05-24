@@ -677,9 +677,9 @@
     postcss "^7.0.0"
 
 "@modac/eslint-config@^0.1.1":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@modac/eslint-config/-/eslint-config-0.1.4.tgz#f8a102881fcdc1793ff50e6b2f28b8648e78f08e"
-  integrity sha512-5Ql41PNAPjRTfoFwZbwKSV9+0Bj3aLN2Y4QNNO/MpVEVpoSQi5Ydq0/WDsQy6W4aB2KHGVGM0IPULZkN0/APnQ==
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@modac/eslint-config/-/eslint-config-0.1.6.tgz#5caa70800bf7a74e83bd0d0ebc6cd4b910f44326"
+  integrity sha512-DRPbNtxTUNHHosE4eBlO+ToU6LsnNCizkJDv8PZ3iPnjPPewifmwSG/T69VT+4kDA8S3+THjO+NDX38Z9eVV6g==
 
 "@modac/jest-config@^0.1.0":
   version "0.1.2"
@@ -687,9 +687,9 @@
   integrity sha512-uKOwu32tVAhpE6YoOuSOtpV/wmaV31PYr1Cg1RXNv3gXAlSHUlyRdpZTLPT2ixUOETp291vDvrZmBnnxnXQFew==
 
 "@modac/tsconfig@^0.1.0":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@modac/tsconfig/-/tsconfig-0.1.2.tgz#6333ebc5c6df6fca8062588c2f8895290c703e62"
-  integrity sha512-RDFMw+y/a7zJYilp65+cXtTysCuczbEwpMMDvNPqxI+yXAaaf8uRA3V9/R8tHpuTtvC5Bqsh89KFY6TICSLywA==
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@modac/tsconfig/-/tsconfig-0.1.3.tgz#29a42437facff0e20d88b274ab87440240374794"
+  integrity sha512-B9qePKxvx2ikUTj1/vLy1lqZQiy8UytJK1l07goq5G11Il7xLB86B/0z+nzvLqrAzn8LVtw2sufaKQgEyr7vbw==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -5190,9 +5190,9 @@ https-browserify@^1.0.0:
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
 i18next@^15.1.1:
-  version "15.1.2"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-15.1.2.tgz#635b7bc688cf36620cab8fa1c3af97817a47f95a"
-  integrity sha512-98ELn/dqep00DQ/v1E1gpM21HNN6nqU3mS85mYKd9P7lXrhfUcuysPaa3HviKSFb3WPdjf7avuAST3P0dhNp/A==
+  version "15.1.3"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-15.1.3.tgz#f1984cbee0e3cb00cff9008b037264289ce8840a"
+  integrity sha512-hN2DZLoRSY2h/RYeNqth5XxV4N1ekKGSJDCGhFmmuXkOCAfK5CkUG4VBv9OBXrvf93xApv0KKBVrb0zJP31EKg==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
