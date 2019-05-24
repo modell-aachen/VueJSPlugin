@@ -31,7 +31,7 @@ module.exports = {
     },
     css: {
         extract: {
-            filename: '[name].css',
+            filename: '[name].min.css',
         },
     },
     runtimeCompiler: true,
