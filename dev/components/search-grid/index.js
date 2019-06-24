@@ -25,9 +25,9 @@ const searchGridInit = (vue) => {
             let selector = $this.find('.prefsSelector').text();
             let grid = jQuery('<vue-grid></vue-grid>');
             grid.attr('preferences-selector', selector);
-            $this.append(grid);
+            $this.empty().append(grid);
         });
-        vue.instantiateEach('.SearchGridContainer', {
+        vue.instantiateEach('.SearchGridContainer vue-grid', {
             components: {
                 vueGrid: Grid,
             },
