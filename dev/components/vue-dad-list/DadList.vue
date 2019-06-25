@@ -6,38 +6,40 @@
             :horizontal="false"
             :drop="handleDrop"
             class="panel__body--list">
-            <template v-for="(item, index) in internalValue">
-                <vddl-draggable
-                    :key="item.id"
-                    :type="item.type"
-                    :draggable="item"
-                    :index="index"
-                    :wrapper="internalValue"
-                    :moved="handleMoved"
-                    :disable-if="itemStates.noDrag[item.id]"
-                    :dragstart="(data) => { onItemDragStart(item.id); }"
-                    class="panel__body--item"
-                    effect-allowed="move">
-                    <template>
-                        <slot
-                            v-if="useSlot"
-                            :item="item"
-                            :index="index"
-                            :is-draggable="isDraggable"
-                            :set-last-opened-id="setLastOpenedId"
-                            :last-opened-item-id="lastOpenedItemId"
-                            :set-drag-status="onItemDragStatusChanged" />
-                        <div
-                            :is="itemType"
-                            v-else
-                            :item="item"
-                            :index="index"
-                            :is-draggable="isDraggable"
-                            :last-opened-item-id="lastOpenedItemId"
-                            @click.native="clickItemEvent(item)" />
-                    </template>
-                </vddl-draggable>
-            </template>
+            <div>
+                <template v-for="(item, index) in internalValue">
+                    <vddl-draggable
+                        :key="item.id"
+                        :type="item.type"
+                        :draggable="item"
+                        :index="index"
+                        :wrapper="internalValue"
+                        :moved="handleMoved"
+                        :disable-if="itemStates.noDrag[item.id]"
+                        :dragstart="(data) => { onItemDragStart(item.id); }"
+                        class="panel__body--item"
+                        effect-allowed="move">
+                        <template>
+                            <slot
+                                v-if="useSlot"
+                                :item="item"
+                                :index="index"
+                                :is-draggable="isDraggable"
+                                :set-last-opened-id="setLastOpenedId"
+                                :last-opened-item-id="lastOpenedItemId"
+                                :set-drag-status="onItemDragStatusChanged" />
+                            <div
+                                :is="itemType"
+                                v-else
+                                :item="item"
+                                :index="index"
+                                :is-draggable="isDraggable"
+                                :last-opened-item-id="lastOpenedItemId"
+                                @click.native="clickItemEvent(item)" />
+                        </template>
+                    </vddl-draggable>
+                </template>
+            </div>
             <slot name="placeholder">
                 <vddl-placeholder>
                     <div
