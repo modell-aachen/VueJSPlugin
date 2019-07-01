@@ -83,7 +83,7 @@ class MAVueJsPlugin {
         this.tooltip = options.tooltip;
     }
     install(Vue, options){
-        i18next.init();
+        i18next.init({ fallbackLng: 'en' });
         Vue.use(VueParams);
         Vue.use(VueI18Next);
         Vue.use(VueRouter);
