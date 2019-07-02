@@ -2,8 +2,8 @@
     <div class="ma-block">
         <div class="ma-simple-item">
             <div
-                :class="{'ma-simple-item--removeable': itemRemoveable}"
-                class="cell grid-x align-justify grid-padding-x ma-draggable">
+                :class="classes"
+                class="cell grid-x align-justify grid-padding-x">
                 <div
                     :class="{'auto': itemRemoveable, 'ma-simple-item-title--small': isSmallItem}"
                     class="cell ma-simple-item-title">
@@ -57,6 +57,12 @@ export default {
         },
     },
     computed: {
+        classes() {
+            return {
+                'ma-simple-item--removeable': this.itemRemoveable,
+                'ma-draggable': this.isDraggable,
+            };
+        },
         itemRemoveable: function() {
             return this.$listeners && this.$listeners['remove-item'];
         },

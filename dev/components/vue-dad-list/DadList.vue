@@ -13,6 +13,7 @@
                         v-if="useSlot"
                         :item="item"
                         :index="index"
+                        :is-draggable="isDraggable"
                         :set-last-opened-id="setLastOpenedId"
                         :last-opened-item-id="lastOpenedItemId" />
                     <div
@@ -20,6 +21,7 @@
                         v-else
                         :item="item"
                         :index="index"
+                        :is-draggable="isDraggable"
                         :last-opened-item-id="lastOpenedItemId"
                         @click.native="$emit('click-item', item)" />
                 </div>
@@ -82,8 +84,17 @@ export default {
         };
     },
     computed: {
+        hasAllowedType() {
+            return this.allowedTypes && this.allowedTypes.length > 0;
+        },
         allowedGroup() {
-            return this.allowedTypes.length > 0 ? this.allowedTypes[0] : '';
+            if (this.hasAllowedType) {
+                return this.allowedTypes[0];
+            }
+            return {
+                name: '',
+                put: false,
+            };
         },
         internalValue: {
             get() {
