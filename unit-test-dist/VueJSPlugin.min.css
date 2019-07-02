@@ -508,34 +508,20 @@ ul.vue-tabpane-group .hidden-tab,
   text-decoration: underline;
 }
 
-.vddl-list {
+.dad-list-drop-area[data-v-1172c362] {
   min-height: 24px;
-}
-.vddl-list, .vddl-draggable {
-  position: relative;
-}
-.vddl-dragging {
-  opacity: .7;
-}
-.vddl-placeholder {
-  opacity: 0.4;
-}
-.vddl-dragging-source {
-  display: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-.handle {
-  cursor: move;
-}
 .ma-block .ma-collapsible-header-drop-zone,
 .ma-block .title-dad-list,
-.ma-block .panel__body--list {
+.ma-block .dad-list-drop-area {
   height: 100%;
 }
 
-.handle {
-  cursor: move;
-}
 .ma-simple-wfapp-list .ma-block .ma-simple-item h3 {
   margin-bottom: 0;
 }

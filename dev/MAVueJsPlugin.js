@@ -35,7 +35,6 @@ import VueAttachments from './components/vue-attachments/Attachments.vue';
 import Base64 from 'js-base64';
 import { VPopover } from 'v-tooltip';
 import i18next from 'i18next';
-import Vddl from 'vddl';
 import VueParams from 'vue-params';
 import VueI18Next from 'vue-i18next';
 import VeeValidateTranslationDe from 'vee-validate/dist/locale/de';
@@ -91,7 +90,6 @@ class MAVueJsPlugin {
         Vue.use(InfiniteScroll);
         Vue.use(this.vueTimers);
         Vue.use(VueUpload);
-        Vue.use(Vddl);
         Vue.use(VueClipboard);
         const veeValidateConfig = {
             errorBagName: 'validationErrors',

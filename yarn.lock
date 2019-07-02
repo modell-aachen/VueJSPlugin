@@ -9469,6 +9469,11 @@ sort-keys@^2.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
+sortablejs@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.9.0.tgz#2d1e74ae6bac2cb4ad0622908f340848969eb88d"
+  integrity sha512-Ot6bYJ6PoqPmpsqQYXjn1+RKrY2NWQvQt/o4jfd/UYwVWndyO5EPO8YHbnm5HIykf8ENsm4JUrdAvolPT86yYA==
+
 source-list-map@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
@@ -10531,13 +10536,6 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vddl@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/vddl/-/vddl-0.7.1.tgz#9fd3fdd7ebea78160b822cb42c145d64da0d4eba"
-  integrity sha512-6vnkOlzeBqP9Qd90Foz01zHym8oyF0cgM6vIexXK8pDMVsnHDjI3uKPcV6Yn1JOxHlbfdworGLfPAzfoxnXnyQ==
-  dependencies:
-    vue "^2.4.2"
-
 vee-validate@^2.2.7:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-2.2.8.tgz#fa0af21bf7deb8eaaf1c043d917a22f8bd7be43f"
@@ -10712,10 +10710,17 @@ vue-visible@^1.0.2:
   resolved "https://registry.yarnpkg.com/vue-visible/-/vue-visible-1.0.2.tgz#4589036bbf3cfcf4cfbcb209ae8062e9b7cafa91"
   integrity sha512-yaX2its9XAJKGuQqf7LsiZHHSkxsIK8rmCOQOvEGEoF41blKRK8qr9my4qYoD6ikdLss4n8tKqYBecmaY0+WJg==
 
-vue@^2.2.1, vue@^2.4.2, vue@^2.6.10:
+vue@^2.2.1, vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
+
+vuedraggable@^2.23.0:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/vuedraggable/-/vuedraggable-2.23.0.tgz#1f4a5a601675a5dbf0d96ee61aebfffa43445262"
+  integrity sha512-RgdH16k43WNoxyRcv/OarB/DZh9SY5TYthk9TS4YiHXpelD1DytEG0phLAXiXx5EhsmdH8ltSWxklGa4g1WTCw==
+  dependencies:
+    sortablejs "^1.9.0"
 
 vuejs-datepicker@^1.5.4:
   version "1.5.4"
