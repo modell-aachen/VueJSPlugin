@@ -34,19 +34,14 @@
                 </div>
                 <div class="cell auto align-self-middle ma-collapsible-header-drop-zone">
                     <!-- Dummy Drop List -->
-                    <vue-dad-list
+                    <dad-list
                         v-if="canDropInTitle && collapsed"
                         v-model="dummyDropList"
                         :allowed-types="allowedTypes"
                         class="title-dad-list"
-                        item-type="vue-simple-dad-item">
-                        <vddl-placeholder slot="placeholder">
-                            <div class="ma-simple-dad-item-drop-area">
-                                <h3>{{ dropTargetDescription !== undefined ? dropTargetDescription : $t('collapsible_dad_item_drop_target') }}</h3>
-                            </div>
-                        </vddl-placeholder>
+                        item-type="simple-dad-item">
                         <div slot="addArea" />
-                    </vue-dad-list>
+                    </dad-list>
                 </div>
                 <div
                     v-if="$slots.rightMenu"
@@ -70,9 +65,7 @@
                 :active="!collapsed"
                 :duration="300">
                 <div
-                    class="ma-collapsible-item-content"
-                    @mouseenter="markItemDraggable(false)"
-                    @mouseleave="markItemDraggable(true)">
+                    class="ma-collapsible-item-content">
                     <div class="grid-container fluid">
                         <slot />
                     </div>
@@ -83,9 +76,14 @@
 </template>
 
 <script>
+import DadList from './DadList.vue';
+
 export default {
     name: 'CollapsibleDadItem',
     i18nextNamespace: 'VueJSPlugin',
+    components: {
+        DadList,
+    },
     props: {
         canDropInTitle: {
             type: Boolean,
@@ -125,10 +123,6 @@ export default {
             type: Function,
             required: true,
         },
-        setDragStatus: {
-            type: Function,
-            required: true,
-        },
     },
     data: function() {
         return {
@@ -165,25 +159,16 @@ export default {
                 this.setLastOpenedId(this.item.id);
             }
         },
-        markItemDraggable( draggable ) {
-            this.setDragStatus( {
-                id: this.item.id,
-                isDraggable: draggable,
-            });
-        },
     },
 };
 </script>
 
 
 <style lang="scss">
-.handle {
-  cursor: move;
-}
 .ma-block {
     .ma-collapsible-header-drop-zone,
     .title-dad-list,
-    .panel__body--list {
+    .dad-list-drop-area {
         height: 100%;
     }
 }

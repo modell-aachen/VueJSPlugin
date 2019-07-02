@@ -67,10 +67,6 @@ export default {
 
 <style lang="scss">
 @import '../../sass/settings.scss';
-.handle {
-  cursor: move;
-}
-
 .ma-simple-wfapp-list .ma-block .ma-simple-item h3 {
   margin-bottom: 0;
 }
