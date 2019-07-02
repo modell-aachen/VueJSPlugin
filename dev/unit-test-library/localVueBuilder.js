@@ -9,6 +9,7 @@ import TooltipMock from './TooltipMock.js';
 import moment from 'moment';
 import jquery from 'jquery';
 
+window.jQuery = jquery;
 const buildVue = () => {
     const localVue = createLocalVue();
     const frontend = new Frontend({
