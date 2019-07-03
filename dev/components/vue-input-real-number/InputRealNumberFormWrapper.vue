@@ -41,14 +41,14 @@ export default {
             internalValue: this.value,
         };
     },
-    methods: {
-        input(value) {
-            this.internalValue = value;
-        },
-    },
     computed: {
         numberComponentInputName(){
             return `${this.name}NumberInput`;
+        },
+    },
+    methods: {
+        input(value) {
+            this.internalValue = value;
         },
     },
 };
