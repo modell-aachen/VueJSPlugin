@@ -3,7 +3,7 @@
         <vue-input-real-number
             :value="internalValue"
             :label="label"
-            :name="name"
+            :name="numberComponentInputName"
             :validate="validate"
             :placeholder="placeholder"
             :icon="icon"
@@ -12,12 +12,12 @@
             :max-length="maxLength"
             :show-error="showError"
             :error-message="errorMessage"
-            :extra-classes="{foswikiInputField: true, foswikiMandatory: isMandatory}"
             @input="input" />
 
         <input
             :name="name"
             :value="internalValue"
+            :class="{foswikiInputField: true, foswikiMandatory: isMandatory}"
             type="hidden">
     </span>
 </template>
@@ -44,6 +44,11 @@ export default {
     methods: {
         input(value) {
             this.internalValue = value;
+        },
+    },
+    computed: {
+        numberComponentInputName(){
+            return `${this.name}NumberInput`;
         },
     },
 };
