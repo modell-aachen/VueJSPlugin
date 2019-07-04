@@ -3,7 +3,7 @@
         <vue-input-real-number
             :value="internalValue"
             :label="label"
-            :name="numberComponentInputName"
+            :name="necessaryNameForValidate"
             :validate="validate"
             :placeholder="placeholder"
             :icon="icon"
@@ -42,7 +42,7 @@ export default {
         };
     },
     computed: {
-        numberComponentInputName(){
+        necessaryNameForValidate(){
             return `${this.name}NumberInput`;
         },
     },
