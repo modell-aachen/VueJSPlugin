@@ -107,7 +107,7 @@ describe("The Sidebar component", () => {
 function createSidebar (props){
     delete Sidebar.inject;
     const wrapper = TestCase.mount(Sidebar, {
-        propsData: props
+        propsData: props,
     });
     return wrapper.vm;
 }

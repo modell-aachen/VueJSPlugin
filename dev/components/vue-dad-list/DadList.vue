@@ -1,54 +1,32 @@
 <template>
     <div>
-        <vddl-list
-            :list="internalValue"
-            :allowed-types="allowedTypes"
-            :horizontal="false"
-            :drop="handleDrop"
-            class="panel__body--list">
+        <draggable
+            v-model="internalValue"
+            :group="allowedGroup"
+            class="dad-list-drop-area"
+            :disabled="!isDraggable"
+            handle=".ma-draggable"
+            :animation="1">
             <template v-for="(item, index) in internalValue">
-                <vddl-draggable
-                    :type="item.type"
-                    :key="item.id"
-                    :draggable="item"
-                    :index="index"
-                    :wrapper="internalValue"
-                    :moved="handleMoved"
-                    :disable-if="itemStates.noDrag[item.id]"
-                    :dragstart="(data) => { onItemDragStart(item.id); }"
-                    class="panel__body--item"
-                    effect-allowed="move">
-                    <template>
-                        <slot
-                            v-if="useSlot"
-                            :item="item"
-                            :index="index"
-                            :is-draggable="isDraggable"
-                            :set-last-opened-id="setLastOpenedId"
-                            :last-opened-item-id="lastOpenedItemId"
-                            :set-drag-status="onItemDragStatusChanged"/>
-                        <div
-                            v-else
-                            :is="itemType"
-                            :item="item"
-                            :index="index"
-                            :is-draggable="isDraggable"
-                            :last-opened-item-id="lastOpenedItemId"
-                            @click.native="clickItemEvent(item)"/>
-                    </template>
-                </vddl-draggable>
-            </template>
-            <slot name="placeholder">
-                <vddl-placeholder>
+                <div :key="item.id">
+                    <slot
+                        v-if="useSlot"
+                        :item="item"
+                        :index="index"
+                        :is-draggable="isDraggable"
+                        :set-last-opened-id="setLastOpenedId"
+                        :last-opened-item-id="lastOpenedItemId" />
                     <div
                         :is="itemType"
-                        :item="dummyItem"
-                        :set-last-opened-id="() => {}"
-                        :set-drag-status="() => {}"
-                        :index="99999"/>
-                </vddl-placeholder>
-            </slot>
-        </vddl-list>
+                        v-else
+                        :item="item"
+                        :index="index"
+                        :is-draggable="isDraggable"
+                        :last-opened-item-id="lastOpenedItemId"
+                        @click.native="$emit('click-item', item)" />
+                </div>
+            </template>
+        </draggable>
         <slot
             :add="addItemEvent"
             name="addArea">
@@ -57,148 +35,89 @@
                 :type="buttonType"
                 data-test="dadListAddIcon"
                 icon="far fa-plus"
-                @click.native="addItemEvent"/>
+                @click.native="addItemEvent" />
         </slot>
     </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable';
 export default {
-    name: 'VueDadList',
+    name: 'DadList',
+    components: {
+        draggable,
+    },
     props: {
         'value':{
             type: Array,
-            required: true
+            required: true,
         },
         'itemType': {
             type: String,
-            default: ''
+            default: '',
         },
         'allowedTypes': {
             type: Array,
-            default: null
+            default: null,
         },
         'buttonTitle': {
             type: String,
-            default: 'Add'
+            default: 'Add',
         },
         'isDraggable': {
             type: Boolean,
-            default: true
+            default: true,
         },
         'useSlot': {
             type: Boolean,
-            default: true
+            default: true,
         },
         'buttonType': {
             type: String,
-            default: ''
-        }
+            default: '',
+        },
     },
     inject: ['$validator'],
     data: function() {
         return {
-            dummyItem: {
-                "id": 5,
-                "label": ""
-            },
-            DaDList: true,
             lastOpenedItemId: null,
-            hasDropped: false,
-            hasDroppedExtern: false,
-            droppedIndex: -1,
-            listId: Vue.getUniqueId(),
-            itemStates: {
-                noDrag: {}
-            }
         };
     },
     computed: {
+        hasAllowedType() {
+            return this.allowedTypes && this.allowedTypes.length > 0;
+        },
+        allowedGroup() {
+            if (this.hasAllowedType) {
+                return this.allowedTypes[0];
+            }
+            return {
+                name: '',
+                put: false,
+            };
+        },
         internalValue: {
             get() {
-                this.value.forEach((item) => {
-                    item.__listId = this.listId;
-                });
                 return this.value;
             },
             set(newValue) {
-                newValue.forEach((item) => {
-                    delete item.__listId;
-                });
                 this.$emit('input', newValue);
-            }
-        }
+            },
+        },
     },
     methods: {
-        handleDrop: function(data) {
-            const { index, item} = data;
-            const external = item.__listId !== this.listId;
-            if(external){
-                const value = this.internalValue.slice();
-                value.splice(index, 0, item);
-                this.internalValue = value;
-                this.hasDropped = false;
-            } else {
-                this.hasDropped = true;
-                this.droppedIndex = index;
-            }
-        },
-        handleMoved: function(data){
-            const { index } = data;
-            if(this.hasDropped){
-                this.hasDropped = false;
-                let to = this.droppedIndex;
-                const from = index;
-                if(from < to){
-                    to--;
-                }
-                const value = this.internalValue.slice();
-                //Swap: Delete element at index 'from' and insert on index 'to'.
-                value.splice(to, 0, value.splice(from, 1)[0]);
-                this.internalValue = value;
-            } else {
-                const value = this.internalValue.slice();
-                value.splice(index, 1);
-                this.internalValue = value;
-            }
-        },
         addItemEvent: function() {
             this.$emit("add-item");
-        },
-        clickItemEvent(item) {
-            this.$emit("click-item", item);
         },
         setLastOpenedId: function(newId) {
             this.lastOpenedItemId = newId;
         },
-        onItemDragStatusChanged({id, isDraggable}) {
-            if(isDraggable){
-                Vue.delete(this.itemStates.noDrag, id);
-            } else {
-                Vue.set(this.itemStates.noDrag, id, true);
-            }
-        },
-        onItemDragStart: function( itemId ) {
-            this.$emit('drag-started', itemId );
-        }
-    }
+    },
 };
 </script>
-<style lang="scss">
-.vddl-list {
+<style scoped lang="scss">
+.dad-list-drop-area {
     min-height: 24px;
-}
-.vddl-list, .vddl-draggable {
-    position: relative;
-}
-.vddl-dragging {
-    opacity: .7;
-}
-.vddl-placeholder{
-    opacity: 0.4;
-}
-
-.vddl-dragging-source {
-    display: none;
+    user-select: none;
 }
 </style>

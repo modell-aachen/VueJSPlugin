@@ -5,8 +5,8 @@ describe("The ConfirmModal component", () => {
     describe("onButtonClick method", () => {
         const options = {
             propsData: {
-                config: {}
-            }
+                config: {},
+            },
         };
         it("should emit the hide modal event.", () => {
             let modal = TestCase.createVueComponent(ConfirmModal, options);

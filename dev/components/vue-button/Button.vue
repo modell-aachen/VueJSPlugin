@@ -11,7 +11,7 @@
             <i
                 :class="icon"
                 class="button-icon"
-                aria-hidden="true"/>
+                aria-hidden="true" />
         </div>
         <span
             v-if="title && title.length"
@@ -26,11 +26,11 @@ export default {
     props: {
         'title':{
             type: String,
-            default: ''
+            default: '',
         },
         'href': {
             type: String,
-            default: ''
+            default: '',
         },
         'type':{
             type: String,
@@ -43,11 +43,11 @@ export default {
                     'delete',
                     'icon'];
                 return types.includes(value);
-            }
+            },
         },
         'onClick': {
             type: Function,
-            default: undefined
+            default: undefined,
         },
         'color': {
             type: String,
@@ -55,14 +55,14 @@ export default {
             validator: function(value) {
                 let colors = [
                     '',
-                    'ma-warning-color'
+                    'ma-warning-color',
                 ];
                 return colors.includes(value);
-            }
+            },
         },
         'icon':{
             type: [String, Array],
-            default: undefined
+            default: undefined,
         },
         'alignment': {
             type: String,
@@ -71,19 +71,19 @@ export default {
                 let types = [
                     'center',
                     'left',
-                    'right'
+                    'right',
                 ];
                 return types.includes(value);
-            }
+            },
         },
         'noMargins':{
             type: Boolean,
-            default: false
+            default: false,
         },
         'isDisabled':{
             type: Boolean,
-            default: false
-        }
+            default: false,
+        },
     },
     data: function(){
         return { textAligment: 'text-' + this.alignment };
@@ -96,8 +96,8 @@ export default {
             if(!this.isDisabled && this.onClick){
                 this.onClick();
             }
-        }
-    }
+        },
+    },
 };
 </script>
 

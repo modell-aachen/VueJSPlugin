@@ -3,14 +3,13 @@
         <div
             v-if="isActive"
             class="sidebar-overlay"
-            @click="!uncancelable && hide({allowConfirmation: true})"/>
+            @click="!uncancelable && hide({allowConfirmation: true})" />
         <transition name="sidebar">
             <div
                 v-if="isActive"
                 :class="{active: isActive}"
                 class="flatskin-wrapped sidebar-container"
                 @click.stop>
-
                 <div class="sidebar-tab-controls">
                     <tab-button
                         v-if="!uncancelable"
@@ -25,13 +24,13 @@
                                 :icon="tab.icon"
                                 :title="tab.tooltip"
                                 :is-active="selectedTab === index"
-                                @click="selectTab(index)"/>
+                                @click="selectTab(index)" />
                         </template>
                     </div>
                 </div>
 
                 <div class="sidebar-tab-contents">
-                    <slot v-if="tabs.length == 0"/>
+                    <slot v-if="tabs.length == 0" />
                     <slot
                         v-if="tabs.length > 0"
                         :name="'tab' + selectedTab">
@@ -44,7 +43,7 @@
                         v-if="isModalActive"
                         :type="modalOptions.type"
                         :content-config="modalOptions.contentConfig"
-                        @hide-modal="hideModal"/>
+                        @hide-modal="hideModal" />
                 </transition>
             </div>
         </transition>
@@ -67,7 +66,7 @@ export default {
             type: Array,
             default() {
                 return [];
-            }
+            },
         },
         uncancelable: {
             type: Boolean,
@@ -85,8 +84,8 @@ export default {
         isModalActive: {
             get(){
                 return !!this.modalOptions;
-            }
-        }
+            },
+        },
     },
     methods: {
         show(){
@@ -137,7 +136,7 @@ export default {
         },
         hideModal() {
             this.modalOptions = null;
-        }
+        },
     },
 };
 </script>

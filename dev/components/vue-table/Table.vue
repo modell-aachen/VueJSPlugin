@@ -12,18 +12,20 @@
                                 :sort-order="sortOrder"
                                 :column="column"
                                 :column-index="index"
-                                @sort-changed="onSortChanged"/>
+                                @sort-changed="onSortChanged" />
                         </tr>
                     </thead>
                     <tbody>
                         <tr
                             v-for="(dataItem,index) in data"
-                            :key="index">
+                            :key="index"
+                            :data-test="'row' + index">
                             <td
-                                v-for="(column,index) in columns"
-                                :key="index">
+                                v-for="(column, col_index) in columns"
+                                :key="col_index"
+                                :data-test="'column' + col_index">
                                 <slot
-                                    :name="'column' + index"
+                                    :name="'column' + col_index"
                                     :item="dataItem" />
                             </td>
                         </tr>
@@ -49,33 +51,33 @@ import TableHead from './TableHead.vue';
 import { SortOrder } from './SortOrder';
 export default Vue.extend({
     components: {
-        TableHead
+        TableHead,
     },
     props: {
         columns: {
             type: Array,
-            default: () => []
+            default: () => [],
         },
         data: {
             type: Array,
-            default: () => []
+            default: () => [],
         },
         pageCount: {
             type: Number,
-            default: () => 1
+            default: () => 1,
         },
         currentPage: {
             type: Number,
-            default: () => 1
+            default: () => 1,
         },
         sortedColumnIndex: {
             type: Number,
-            default: () => -1
+            default: () => -1,
         },
         sortOrder: {
             type: String,
-            default: () => SortOrder.ASC
-        }
+            default: () => SortOrder.ASC,
+        },
     },
     methods: {
         onSortChanged(sortChangedEvent) {
@@ -83,8 +85,8 @@ export default Vue.extend({
         },
         onCurrentPageChanged(currentPage) {
             this.$emit("page-changed", currentPage);
-        }
-    }
+        },
+    },
 });
 </script>
 <style lang="scss">

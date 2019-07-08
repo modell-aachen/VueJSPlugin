@@ -64,7 +64,7 @@ describe("The PagedSelector component's", () => {
 
         it("reacts to new options", () => {
             pagedSelector.options = [
-                {value: 'new', label: 'New'}
+                {value: 'new', label: 'New'},
             ];
             pagedSelector.$nextTick(() => {
                 expect(pagedSelector.displayedOptions.length).toBe(1);

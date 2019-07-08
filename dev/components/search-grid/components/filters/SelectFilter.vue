@@ -4,10 +4,10 @@
             :for="id"
             class="input-label">{{ params[0] }}</label>
         <vue-select
+            v-model="selectedOption"
             :prevent-search-filter="true"
             :initial-options="getOptions"
-            v-model="selectedOption"
-            is-small/>
+            is-small />
     </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
     data:  function () {
         return {
             selectedOption: this.params.length > 2 ? [this.params[2]] : [],
-            isFilter: true
+            isFilter: true,
         };
     },
     computed: {
@@ -44,12 +44,12 @@ export default {
                 options.push(facetValue);
             }
             return options;
-        }
+        },
     },
     watch: {
         selectedOption() {
             this.watchSelectedOption();
-        }
+        },
     },
     mounted: function(){
         this.selectedFacetUnwatch();
@@ -73,7 +73,7 @@ export default {
         },
         reset() {
             this.selectedOption = [];
-        }
+        },
     },
 };
 </script>

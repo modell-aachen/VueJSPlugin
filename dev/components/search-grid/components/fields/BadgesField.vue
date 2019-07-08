@@ -14,12 +14,12 @@ export default {
     computed: {
         field() {
             return this.params[0];
-        }
+        },
     },
     methods: {
         getList: function() {
             return this.doc[this.field];
-        }
-    }
+        },
+    },
 };
 </script>

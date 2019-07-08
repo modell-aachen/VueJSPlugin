@@ -2,7 +2,7 @@ module.exports = {
     watch: {
         typeAheadPointer() {
             this.maybeAdjustScroll();
-        }
+        },
     },
 
     methods: {
@@ -61,7 +61,7 @@ module.exports = {
         viewport() {
             return {
                 top: this.$refs.dropdownMenu.scrollTop,
-                bottom: this.$refs.dropdownMenu.offsetHeight + this.$refs.dropdownMenu.scrollTop
+                bottom: this.$refs.dropdownMenu.offsetHeight + this.$refs.dropdownMenu.scrollTop,
             };
         },
 
@@ -74,5 +74,5 @@ module.exports = {
             this.$refs.dropdownMenu.scrollTop = position;
             return this.$refs.dropdownMenu.scrollTop;
         },
-    }
+    },
 };

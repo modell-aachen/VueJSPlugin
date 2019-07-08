@@ -6,18 +6,18 @@
                 class="vue-tabpane-group">
                 <Tab
                     v-for="tab in tabsToShow"
+                    :id="tab.id"
                     ref="shownTab"
                     :key="tab.id"
-                    :id="tab.id"
                     :has-sub="tab.hasSub || false"
                     :name="tab.name"
                     :is-current="tab.current || false"
                     :original-index="tab.originalIndex"
                     class="visible-tab"
-                    @select="selectTab"/>
+                    @select="selectTab" />
                 <li
-                    v-visible="tabsToHide.length > 0"
                     ref="moreTab"
+                    v-visible="tabsToHide.length > 0"
                     class="more-tab"
                     @click.prevent="toggleMoreDropdown">
                     <a
@@ -28,21 +28,21 @@
                         <i
                             :class="moreTabIconClass"
                             class="dropdown-icon far"
-                            aria-hidden="true"/>
+                            aria-hidden="true" />
                     </a>
                 </li>
                 <Tab
                     v-for="(tab, index) in tabsToHide"
+                    :id="tab.id"
                     ref="hiddenTab"
                     :key="index"
-                    :id="tab.id"
                     :has-sub="tab.hasSub"
                     :name="tab.name"
                     :is-current="tab.current || false"
                     :original-index="tab.originalIndex"
                     class="hidden-tab" />
             </ul>
-            <slot/>
+            <slot />
         </div>
         <vue-dropdown
             v-if="tabsToHide.length > 0"
@@ -55,8 +55,8 @@
                 :key="tab.id"
                 class="hidden-tab-entry"
                 @click.prevent="selectTabFromMore(tab.id)">
-                <a
-                    v-html="tab.name" />
+                <!-- eslint-disable-next-line vue/no-v-html -->
+                <a v-html="tab.name" />
             </li>
         </vue-dropdown>
     </div>
@@ -75,8 +75,8 @@ export default {
     props: {
         type: {
             type: String,
-            default: ""
-        }
+            default: "",
+        },
     },
     data: () => ({
         tabs: [],
@@ -88,9 +88,9 @@ export default {
         moreTabIconClass() {
             return {
                 "fa-angle-down": !this.isDropdownOpen,
-                "fa-angle-up": this.isDropdownOpen
+                "fa-angle-up": this.isDropdownOpen,
             };
-        }
+        },
     },
     mounted() {
         this.tabs = this.getTabComponentsFromDefaultSlot();
@@ -213,8 +213,8 @@ export default {
         },
         onDropdownHide() {
             this.isDropdownOpen = false;
-        }
-    }
+        },
+    },
 };
 </script>
 

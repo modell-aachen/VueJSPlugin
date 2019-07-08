@@ -650,7 +650,6 @@ We use <a href="https://vuejs.org/v2/guide/components.html#Scoped-Slots">Scoped 
        :allowed-types="['status']"
        :last-opened-item-id="props.lastOpenedItemId"
        :set-last-opened-id="props.setLastOpenedId"
-       :set-drag-status="props.setDragStatus"
        :remove-options="{name: 'Löschen', onRemove: onRemoveItem}"
        >
        <div class="grid-x grid-margin-x">
@@ -796,6 +795,31 @@ Alerts can be triggered by calling the $showAlert function. See the [[%PUBURLPAT
 <script type="text/x-template" id="table-template">
 %INCLUDE{"%WEB%.%TOPIC%" section="TableVueTemplate"}%
 </script>
+
+---+ Datepicker
+<div class="flatskin-wrapped">
+  <div id="datepicker-examples"></div>
+</div>
+%TWISTY%
+<verbatim>
+%STARTSECTION{"DatepickerTemplate"}%
+<div>
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-6">
+      <vue-datepicker v-model="value"/>
+    </div>
+    <div>
+      value: {{ value }}
+    </div>
+  </div>
+</div>
+%ENDSECTION{"DatepickerTemplate"}%
+</verbatim>
+%ENDTWISTY%
+<script type="text/x-template" id="datepicker-template">
+%INCLUDE{"%WEB%.%TOPIC%" section="DatepickerTemplate"}%
+</script>
+
 
 ---+ HistoryList
 <div class="flatskin-wrapped">

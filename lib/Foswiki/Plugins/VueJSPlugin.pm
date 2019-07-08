@@ -119,6 +119,8 @@ sub VUE {
 
     pushToStore('Qwiki/setEnvironment', $Foswiki::cfg{ModacHelpersPlugin}{Environment});
 
+    pushToStore('Qwiki/setSentryEnabled', !$Foswiki::cfg{Extensions}{ModacHelpersPlugin}{NoFrontendSentry});
+
     return "";
 }
 

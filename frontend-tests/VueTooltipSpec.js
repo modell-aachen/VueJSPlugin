@@ -16,7 +16,7 @@ describe("The ExplanationTooltip component", () => {
             propsData: {
                 text: 'TEST',
                 icon: ['fas','fa-paperclip'],
-            }
+            },
         };
         const wrapper = mount(ExplanationTooltip, options);
         it("text", () => {
@@ -33,7 +33,7 @@ describe("The InformationTooltip component", () => {
         const options = {
             propsData: {
                 hoverText: 'TEST?',
-            }
+            },
         };
         const wrapper = mount(InformationTooltip, options);
         it("hover text with correct class for styling", () => {

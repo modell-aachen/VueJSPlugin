@@ -21,7 +21,7 @@ describe("The CheckItem component", () => {
                     name: 'test[]',
                     value: 'Foo',
                     checked: true,
-                    modelValue: ['Foo']
+                    modelValue: ['Foo'],
                 },
             };
             wrapper = mount(CheckItem, options);

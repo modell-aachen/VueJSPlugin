@@ -16,8 +16,8 @@ export default {
     data: function() {
         let dataObject = {
             classObject: {
-                "inactive-link": true
-            }
+                "inactive-link": true,
+            },
         };
         if(this.params.length >= 3 && this.params[2] !== "") {
             dataObject.classObject[this.params[2]] = true;
@@ -31,13 +31,13 @@ export default {
                 return "";
             }
             return this.doc[this.params[1]];
-        }
+        },
     },
     mounted: function(){
         if(this.url !== "") {
             this.classObject["inactive-link"] = false;
         }
-    }
+    },
 };
 </script>
 

@@ -11,7 +11,7 @@ const searchGridInit = (vue) => {
         },
         registerComponent: function(name, component){
             vue.component(name, component);
-        }
+        },
     };
 
     window.SearchGridPlugin = SearchGridPlugin;
@@ -20,13 +20,20 @@ const searchGridInit = (vue) => {
         Vue.addTranslation('en', 'SearchGrid', translationsEn);
         Vue.addTranslation('de', 'SearchGrid', translationsDe);
 
-        vue.instantiateEach('.SearchGridContainer', {
+        jQuery('div.SearchGridContainer').each(function() {
+            let $this = jQuery(this);
+            let selector = $this.find('.prefsSelector').text();
+            let grid = jQuery('<vue-grid></vue-grid>');
+            grid.attr('preferences-selector', selector);
+            $this.empty().append(grid);
+        });
+        vue.instantiateEach('.SearchGridContainer vue-grid', {
             components: {
-                grid: Grid
+                vueGrid: Grid,
             },
             created: function () {
                 this.$moment.locale(this.$lang);
-            }
+            },
         });
     });
 };

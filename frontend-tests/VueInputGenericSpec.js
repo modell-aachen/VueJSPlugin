@@ -28,10 +28,11 @@ describe("The Input components", () => {
                 it("has correct html structure", () => {
                     expect(wrapper.contains('label')).toBe(false);
                     expect(wrapper.contains('input')).toBe(true);
-                    expect(wrapper.attributes().disabled).not.toBe('disabled');
+                    expect(wrapper.find('input').attributes().disabled).toBe(undefined);
+                    expect(wrapper.find('input').attributes().readonly).toBe(undefined);
                 });
             });
-            describe("uses property", () => {
+            describe("uses property", async () => {
                 const options = {
                     propsData: {
                         label: 'TEST',
@@ -40,9 +41,11 @@ describe("The Input components", () => {
                         icon: ['fas','fa-paperclip'],
                         isSmall: true,
                         isDisabled: true,
-                    }
+                        isReadonly: true,
+                    },
                 };
                 const wrapper = createInput(options);
+                await Vue.nextTick();
                 it("label", () => {
                     expect(wrapper.contains('label')).toBe(true);
                     expect(wrapper.find('label').html()).toContain(options.propsData.label);
@@ -62,13 +65,35 @@ describe("The Input components", () => {
                 it("isDisabled", () => {
                     expect(wrapper.find('input').attributes().disabled).toBe('disabled');
                 });
+                it("isReadonly", () => {
+                    expect(wrapper.find('input').attributes().readonly).toBe('true');
+                });
+            });
+            describe("handling the 'type'", () => {
+                it("uses type=text for non-passwords", () => {
+                    const options = {
+                        propsData: {
+                        },
+                    };
+                    const wrapper = createInput(options);
+                    expect(wrapper.find('input').attributes().type).toBe('text');
+                });
+                it("uses type=password for passwords", () => {
+                    const options = {
+                        propsData: {
+                            isPassword: true,
+                        },
+                    };
+                    const wrapper = createInput(options);
+                    expect(wrapper.find('input').attributes().type).toBe('password');
+                });
             });
             describe("send typed event", () => {
                 const options = {
                     propsData: {
                         name: 'test-input',
-                        validate: 'email'
-                    }
+                        validate: 'email',
+                    },
                 };
                 const wrapper = createInput(options);
                 it("every time data changes", () => {

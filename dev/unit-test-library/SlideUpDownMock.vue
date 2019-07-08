@@ -9,12 +9,12 @@ export default {
     props: {
         active: {
             type: Boolean,
-            default: true
+            default: true,
         },
         duration: {
             type: Number,
-            default: 500
-        }
-    }
+            default: 500,
+        },
+    },
 };
 </script>

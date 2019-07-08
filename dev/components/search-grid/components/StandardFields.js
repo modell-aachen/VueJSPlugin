@@ -21,5 +21,5 @@ export default {
     "date-field": DateField,
     "solr-field": SolrField,
     "image-field": ImageField,
-    "test-grid-field": TestGridField
+    "test-grid-field": TestGridField,
 };

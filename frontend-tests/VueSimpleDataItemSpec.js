@@ -41,7 +41,7 @@ describe("The SimpleDadItem component", () => {
                     item: {},
                     index: 0,
                 },
-                listeners: {}
+                listeners: {},
             };
         });
 

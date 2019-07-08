@@ -9,12 +9,12 @@ export default {
     props: {
         'factorVertical':{
             type: [String, Number],
-            default: '1'
+            default: '1',
         },
         'factorHorizontal': {
             type: [String, Number],
-            default: '1'
-        }
+            default: '1',
+        },
     },
     computed: {
         styleObject: function () {
@@ -24,7 +24,7 @@ export default {
                 height: factorVertical,
                 width: factorHorizontal,
             };
-        }
+        },
     },
     methods: {
         getStyleValue: function (value){
@@ -34,8 +34,8 @@ export default {
                 return 'auto';
             }
             return value*8+"px";
-        }
-    }
+        },
+    },
 };
 </script>
 

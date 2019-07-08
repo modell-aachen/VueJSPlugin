@@ -3,7 +3,7 @@
         v-show="current"
         class="vue-tab">
         <div class="vue-tab-contents">
-            <slot/>
+            <slot />
         </div>
     </div>
 </template>
@@ -18,20 +18,20 @@ export default {
         },
         hasSub: {
             type: Boolean,
-            default: false
+            default: false,
         },
         id: {
             type: String,
             default: function() {
                 return Vue.getUniqueId();
             },
-        }
+        },
     },
     data: function() {
         return {
-            current: false
+            current: false,
         };
-    }
+    },
 };
 </script>
 

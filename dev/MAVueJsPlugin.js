@@ -35,7 +35,6 @@ import VueAttachments from './components/vue-attachments/Attachments.vue';
 import Base64 from 'js-base64';
 import { VPopover } from 'v-tooltip';
 import i18next from 'i18next';
-import Vddl from 'vddl';
 import VueParams from 'vue-params';
 import VueI18Next from 'vue-i18next';
 import VeeValidateTranslationDe from 'vee-validate/dist/locale/de';
@@ -57,6 +56,7 @@ import VueTable from './components/vue-table/Table.vue';
 import {searchGridInit, Grid} from './components/search-grid/index.js';
 import SearchGridStandardFields from './components/search-grid/components/StandardFields.js';
 import VueClipboard from 'vue-clipboard2';
+import VueDatepicker from './components/vue-datepicker/datepicker';
 import { module as DocumentStore } from './document-store';
 import { module as QwikiStore} from './qwiki-store';
 
@@ -82,7 +82,7 @@ class MAVueJsPlugin {
         this.tooltip = options.tooltip;
     }
     install(Vue, options){
-        i18next.init();
+        i18next.init({ fallbackLng: 'en' });
         Vue.use(VueParams);
         Vue.use(VueI18Next);
         Vue.use(VueRouter);
@@ -90,11 +90,10 @@ class MAVueJsPlugin {
         Vue.use(InfiniteScroll);
         Vue.use(this.vueTimers);
         Vue.use(VueUpload);
-        Vue.use(Vddl);
         Vue.use(VueClipboard);
         const veeValidateConfig = {
             errorBagName: 'validationErrors',
-            fieldsBagName: 'validationFields'
+            fieldsBagName: 'validationFields',
         };
         Vue.use(VeeValidate, veeValidateConfig);
         Vue.use(new this.alertPlugin);
@@ -138,6 +137,7 @@ class MAVueJsPlugin {
         Vue.component('vue-table', VueTable);
         Vue.component('search-grid', Grid);
         Vue.component('v-popover', VPopover);
+        Vue.component('vue-datepicker', VueDatepicker);
 
         Vue.directive('tooltip', this.tooltip);
         Vue.directive('click-outside', VueClickOutside.directive);
@@ -150,7 +150,7 @@ class MAVueJsPlugin {
                     }
                 };
                 window.addEventListener('scroll', f);
-            }
+            },
         });
 
         //Global functions
@@ -290,12 +290,12 @@ class MAVueJsPlugin {
         Vue.addTranslation('en', 'VueJSPlugin', translationsEn);
         Vue.addTranslation('de', 'VueJSPlugin', translationsDe);
         Validator.localize('de', {
-            messages: VeeValidateTranslationDe.messages
+            messages: VeeValidateTranslationDe.messages,
         });
         Validator.localize(language);
 
         Vue.SearchGrid = {
-            StandardFields: SearchGridStandardFields
+            StandardFields: SearchGridStandardFields,
         };
 
         searchGridInit(Vue);

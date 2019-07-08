@@ -89,7 +89,7 @@ export default {
 
             this.style = {
                 top: dropdownTop,
-                left: dropdownLeft
+                left: dropdownLeft,
             };
         },
         onClickOutside() {

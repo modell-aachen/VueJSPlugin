@@ -6,7 +6,7 @@
             {{ user.name }}
             <vue-user-card
                 v-if="!user.name.includes('Group')"
-                :id="user.id"/><br>
+                :id="user.id" /><br>
         </span>
     </div>
     <div v-else>
@@ -42,7 +42,7 @@ export default {
             let users = this.userNames.map((name, index) => {
                 return {
                     name,
-                    id: this.userIds[index]
+                    id: this.userIds[index],
                 };
             });
             return users.sort((a,b) => {
@@ -50,7 +50,7 @@ export default {
                 let lcNameB = b.name.toLowerCase();
                 return lcNameA.localeCompare(lcNameB);
             });
-        }
-    }
+        },
+    },
 };
 </script>

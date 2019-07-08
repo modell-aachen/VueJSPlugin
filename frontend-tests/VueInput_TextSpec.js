@@ -13,7 +13,7 @@ describe("The InputText component", () => {
             propsData: {
                 name: 'test-input',
                 validate: 'email',
-            }
+            },
         };
         const wrapper = createInput(options);
         it("and show error on validation error", () => {

@@ -1,11 +1,13 @@
 <template>
     <li
         :class="{current: isCurrent}">
+        <!-- eslint-disable vue/no-v-html -->
         <a
             :class="{'hasSubMenu': hasSub}"
             href="#"
             @click.prevent="onSelect"
-            v-html="name"/>
+            v-html="name" />
+            <!-- eslint-enable -->
     </li>
 </template>
 
@@ -14,7 +16,7 @@ export default {
     props: {
         id: {
             type: String,
-            required: true
+            required: true,
         },
         isCurrent: {
             type: Boolean,
@@ -31,7 +33,7 @@ export default {
         originalIndex: {
             type: Number,
             required: true,
-        }
+        },
     },
     methods: {
         onSelect() {

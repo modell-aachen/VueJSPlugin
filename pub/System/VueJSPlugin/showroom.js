@@ -255,6 +255,13 @@ Vue.onDocumentReady(function(){
         template: '#tooltip-template',
     });
     new Vue({
+        el: '#datepicker-examples',
+        template: '#datepicker-template',
+        data: {
+            value: "554385600"
+        }
+    });
+    new Vue({
         el: '#mixed-input-examples',
         template: '#mixed-input-template',
         data: {

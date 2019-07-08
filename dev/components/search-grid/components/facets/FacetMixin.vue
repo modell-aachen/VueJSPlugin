@@ -7,21 +7,21 @@ export default {
     props: {
         params: {
             type: Array,
-            default: () => []
+            default: () => [],
         },
         facetValues: {
             type: Object,
-            default: () => {}
+            default: () => {},
         },
         facetTotalCounts: {
             type: Object,
-            default: () => {}
-        }
+            default: () => {},
+        },
     },
     data: function(){
         return {
             selectedFacet: [],
-            selectedFacetUnwatch: null
+            selectedFacetUnwatch: null,
         };
     },
     computed: {
@@ -73,7 +73,7 @@ export default {
         },
         facetCharacteristics: function(){
             return this.facetValues[this.field];
-        }
+        },
     },
     mounted: function () {
         this.$store.commit("searchGrid/" + mutations.REGISTER_FACET, {gridState: this.gridState, facet: this});
@@ -110,7 +110,7 @@ export default {
                     return w !== "";
                 });
             return terms;
-        }
+        },
     },
 };
 </script>

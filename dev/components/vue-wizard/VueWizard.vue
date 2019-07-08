@@ -1,15 +1,18 @@
 <template>
     <div class="vue-wizard grid-x">
-
         <div class="cell shrink icon">
             <i
-                :class="iconClass"/>
+                :class="iconClass" />
         </div>
 
         <div class="cell auto grid-y">
-            <vue-header3 v-if="heading">{{ heading }}</vue-header3>
+            <vue-header3 v-if="heading">
+                {{ heading }}
+            </vue-header3>
             <div class="cell ma-margin-top-medium">
-                <div v-if="text">{{ text }}</div>
+                <div v-if="text">
+                    {{ text }}
+                </div>
                 <div
                     v-if="( buttonCallback || buttonHref) && buttonText"
                     class="ma-margin-top-large">
@@ -19,7 +22,7 @@
                         :href="buttonHref"
                         data-test="actionButton"
                         type="primary"
-                        @click.native="buttonCallback"/>
+                        @click.native="buttonCallback" />
                 </div>
             </div>
         </div>
@@ -42,8 +45,8 @@ export default {
     props: {
         params: {
             type: Array,
-            required: true
-        }
+            required: true,
+        },
     },
     data: function() {
         return {
@@ -52,7 +55,7 @@ export default {
             heading: "",
             buttonHref: "",
             buttonText: "",
-            buttonCallback: ""
+            buttonCallback: "",
         };
     },
     watch: {
@@ -64,7 +67,7 @@ export default {
             this.buttonText = "";
             this.buttonCallback = "";
             this.setParams();
-        }
+        },
     },
     created: function(){
         this.setParams();
@@ -89,7 +92,7 @@ export default {
             if(this.params[5]) {
                 this.buttonCallback = this.params[5];
             }
-        }
+        },
     },
 };
 </script>

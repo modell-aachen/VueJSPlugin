@@ -7,8 +7,8 @@ describe("The Pagination component", () => {
         const options = {
             propsData: {
                 value: 1,
-                pageCount: 2
-            }
+                pageCount: 2,
+            },
         };
         const wrapper = mount(Pagination, options);
         it("renders a 7 items long list", () => {
@@ -27,8 +27,8 @@ describe("The Pagination component", () => {
         const options = {
             propsData: {
                 value: 1,
-                pageCount: 50
-            }
+                pageCount: 50,
+            },
         };
         const wrapper = mount(Pagination, options);
         it("when 1st page is active", () => {

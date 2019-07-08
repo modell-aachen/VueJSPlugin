@@ -35,7 +35,7 @@ class BaseAlertPlugin {
         const baseConfig = {
             buttonsStyling: false,
             customClass: "flatskin-wrapped",
-            cancelButtonClass: "button"
+            cancelButtonClass: "button",
         };
 
         switch(type) {

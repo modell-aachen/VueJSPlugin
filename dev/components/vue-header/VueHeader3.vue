@@ -7,7 +7,7 @@ export default {
         level: {
             type: [Number, String],
             default: 3,
-            validator: LevelValidator
+            validator: LevelValidator,
         },
     },
 };

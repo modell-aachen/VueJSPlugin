@@ -21,6 +21,7 @@ class Frontend {
         this.options.vue.use(maVueJsPlugin, {store});
 
         window.Vue = this.options.vue;
+        window.VueX = require('vuex');
         window.i18next = i18next;
         this.options.jquery(function () {
             Vue.instantiateEach('.vue-container');

@@ -5,6 +5,7 @@ const module = {
         customer: '',
         userId: '',
         environment: '',
+        sentryEnabled: '',
     },
     mutations: {
         setVersion(state, version) {
@@ -18,6 +19,9 @@ const module = {
         },
         setEnvironment(state, environment) {
             state.environment = environment;
+        },
+        setSentryEnabled(state, enabled) {
+            state.sentryEnabled = (enabled === "1");
         },
     },
 };
