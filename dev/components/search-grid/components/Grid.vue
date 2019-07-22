@@ -67,21 +67,6 @@
                             <vue-spacer
                                 v-if="hasExcelExport"
                                 factor-horizontal="3" />
-                            <div
-                                v-if="hasGridView"
-                                class="cell shrink align-self-bottom">
-                                <div class="grid-toggle">
-                                    <vue-button
-                                        :class="{disabled: isGridView, selected: !isGridView}"
-                                        type="icon"
-                                        icon="fa fa-bars"
-                                        @click.native="toggleGridView('table')" /><vue-button
-                                            :class="{disabled: !isGridView, selected: isGridView}"
-                                            type="icon"
-                                            icon="fa fa-th-large"
-                                            @click.native="toggleGridView('grid')" />
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="cell small-4 medium-2 large-2 resetFilterButton">
@@ -94,7 +79,6 @@
                 <div class="grid-x">
                     <div class="cell auto">
                         <div
-                            :class="isGridView ? ['medium-up-1', 'xlarge-up-2', 'xxxlarge-up-3', 'xxxxlarge-up-3'] : []"
                             class="grid-x searchGridTable">
                             <!-- Table -->
                             <div
@@ -118,7 +102,7 @@
                                 <p>{{ results.msg }}</p>
                             </div>
                             <div
-                                v-show="!isGridView && results.length > 0"
+                                v-show="results.length > 0"
                                 class="columns search-grid-results">
                                 <table-controller
                                     :results="results"
@@ -126,18 +110,6 @@
                                     :initial-sort="prefs.initialSort"
                                     :api="api" />
                             </div>
-                            <template v-if="hasGridView">
-                                <div
-                                    v-for="(result,index) in results"
-                                    v-show="isGridView && results.length > 0"
-                                    :key="index"
-                                    class="columns">
-                                    <div
-                                        :is="prefs.gridField.component"
-                                        :doc="result"
-                                        :params="prefs.gridField.params" />
-                                </div>
-                            </template>
                             <vue-spacer
                                 v-if="showFacets"
                                 class="cell shrink"
@@ -237,11 +209,9 @@ export default {
             errorMessage: "",
             filters: [],
             isFilterApplied: false,
-            hasGridView: false,
             hasLiveFilter: false,
             columnsToHide: [],
             initialHideColumn: false,
-            isGridView: false,
             entryClickHandler: null,
             wizardConfig: null,
             wizardNoResultsConfig: null,
@@ -332,7 +302,6 @@ export default {
         },
         api: function() {
             return {
-                isGridView: this.isGridView,
                 showColumns: this.showColumns,
                 hideColumns: this.hideColumns,
                 initialHideColumn: this.initialHideColumn,
@@ -360,7 +329,6 @@ export default {
         this.resultsPerPage = this.prefs.resultsPerPage;
         this.numResults = this.prefs.result.response.numFound;
         this.results = this.prefs.result.response.docs;
-        this.hasGridView = this.prefs.hasOwnProperty('gridField');
         this.hasLiveFilter = this.prefs.hasLiveFilter;
         this.initialHideColumn = this.prefs.initialHideColumn;
         this.wizardConfig = this.prefs.wizardNoEntriesConfig;
@@ -439,16 +407,6 @@ export default {
         pageChanged: function(newPage){
             this.currentPage = newPage;
             this.fetchData();
-        },
-        toggleGridView: function(changeTo) {
-            if(changeTo === "table" && !this.isGridView) {
-                return;
-            }
-            if(changeTo === "grid" && this.isGridView) {
-                return;
-            }
-
-            this.isGridView = !this.isGridView;
         },
         registerFacet: function(facet){
             this.facets.push(facet);
