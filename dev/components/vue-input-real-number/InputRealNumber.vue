@@ -3,7 +3,6 @@
 
     block inputExtraAttributes
         - inputExtraAttributes[':cacheDefeat'] = "cacheDefeat"
-        - inputExtraAttributes[':name'] = "name"
         - delete inputExtraAttributes['v-validate']
 </template>
 
