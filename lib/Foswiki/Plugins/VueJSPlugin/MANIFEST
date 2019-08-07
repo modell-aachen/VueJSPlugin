@@ -7,6 +7,7 @@ data/System/VarVUETOOLTIP.txt 0644
 data/System/VueJSPlugin.txt 0644
 data/System/VueJSPluginComponents.txt 0644
 data/System/VueJSPluginShowroom.txt 0644
+data/System/VueJSPluginShowroomViewTemplate.txt 0644
 data/System/VueJSPluginSidebar.txt 0644
 data/System/VueJSPluginTabpane.txt 0644
 lib/Foswiki/Plugins/VueJSPlugin.pm 0644
