@@ -23,7 +23,9 @@
                                 :factor-horizontal="(item.icon) ? 2 : 3"
                                 factor-vertical="auto" />
                         </div>
-                        <div class="cell shrink align-self-middle" data-test="title">
+                        <div
+                            class="cell shrink align-self-middle"
+                            data-test="title">
                             <vue-header3
                                 :sublabel="item.subLabel"
                                 :status="item.status">
