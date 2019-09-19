@@ -518,7 +518,6 @@ export default {
                 data: params,
             })
                 .done(function(result){
-                    result = JSON.parse(result);
                     self.numResults = result.response.numFound;
                     self.results = result.response.docs;
                     self.parseAllFacetResults(result);
@@ -567,7 +566,6 @@ export default {
                 traditional: true,
             })
                 .done(function(result){
-                    result = JSON.parse(result);
                     let parsedResult = self.parseFacetResult(facet.field, result.facet_counts.facet_fields[facet.field], result.facet_dsps);
                     callback(parsedResult);
                 });
