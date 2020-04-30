@@ -50,7 +50,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "formdata-polyfill": "^3.0.17",
     "i18next": "^15.1.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
     "moment": "^2.24.0",
